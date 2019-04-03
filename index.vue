@@ -1,50 +1,44 @@
 <template>
 <div>
-  <div class="login">
+  <div class="forum">
     <div class="top">
        <img src="/static/tabs/home.png" class="go-back" @click="back()"/>
-       <span>初次登录</span>   
+       <span>论坛主页</span>   
     </div>
-    <div class="photo">
-       <img src="/static/images/user.png" class="img-user"/>
+    <div class="search">
+       <input type="text" class="input" v-model="word" placeholder="请输入关键词" @focus="focusinput(e)"></input>    
     </div>
-    <div class="choose-school">
-       <span>请选择驾校:</br></span>
-       <radio-group class="radio-group" @change="radioChange">
-           <label class="radio" v-for="(item, index) in items" :key="item.name">
-               <radio :value="item.name" :checked="item.checked"/> {{item.value}}
-           </label>
-       </radio-group>   
+    <div class="menu">
+       <div class="post">
+          <img src="/static/images/user.png" class="go-post" @click="post()"/>
+          <span><br/>我发出的</span>
+       </div>
+       <div class="comment">
+          <img src="/static/images/user.png" class="go-comment" @click="comment()"/>
+          <span><br/>我评论的</span>
+       </div>
+       <div class="my-like">
+          <img src="/static/images/user.png" class="go-like" @click="like()"/>
+          <span><br/>我点赞的</span>
+       </div>
+       <div class="share">
+          <img src="/static/images/user.png" class="go-share" @click="share()"/>
+          <span><br/>分享</span>
+       </div>
     </div>
-    <div class="schoolNum">
-       <span>请填写驾校验证码:</br></span>
-       <input type="text" class="input" v-model="word" placeholder="例：CM77" @focus="focusinput(e)"></input>
+    <div class="news">
+       <div class="title">
+          <img src="/static/images/user.png" class="go-mine" @click="mine()"/>
+          <span>木子22222</span>
+       </div>
+       <div class="content">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;黑盒测试. 近日接到用户反馈，垃圾邮件增多。怀疑学校网站出现邮件地址泄露。此处，邮件地址泄露定义为，在网页内容中出现非图片形式的电子邮件地址。<br/>
+          <img src="/static/tabs/home-active.png"/> 
+       </div>
     </div>
-    <button v-on:click="click">确定</button>
   </div>
 </div>
 </template>
-
-
-<script>
-export default {
-  data () {
-    return {
-      items: [
-        {name: '1', value: '驾校一', checked: 'true'},
-        {name: '2', value: '驾校二'},
-        {name: '3', value: '驾校三'}
-      ]
-    }
-  },
-  methods: {
-    radioChange (e) {
-      console.log('radio发生change事件，携带value值为：', e.target.value)
-    }
-  }
-}
-</script>
-
 
 <style>
   .top {
@@ -52,6 +46,7 @@ export default {
     height: 2.2em;
     position: relative;
     border-bottom: 1px solid silver;
+    margin-bottom: 10px;
   }
   .go-back{
     width: 10%;
@@ -61,56 +56,74 @@ export default {
     height: 2.2em;
     position: relative;
     left:28%;
-    bottom:13%;
+    bottom:15%;
     font-size:25px;  
   }
-  .photo {
-    width: 15%;
-    height: 8.4em;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-  }
-
-  .img-user {
-    width: 3.4em;
-    height: 3.4em;
-  }
-  
-  .choose-school {
+  .search{
     width: 90%;
-    margin: 0 auto;
+    height:1.5em;
+    border-radius:20px 20px 20px 20px;
+    border:1px solid #E0E0E0;
+    margin-bottom: 30px;
+    margin-left: auto; 
+    margin-right: auto;
+    background-color:#E0E0E0;
   }
+  .menu {
+    height: 4.2em;
+    width:90%;
+    position: relative;
+    text-align:center;
+    margin-bottom: 40px;
+    margin-left: auto; 
+    margin-right: auto;
+  }
+  .post {
+    width:25%;
+    float:left;
+  }
+  .comment {
+    width:25%;
+    float:left;
+  }
+  .my-like{
+    width:25%;
+    float:left; 
+  }
+  .share{
+    width:25%;
+    float:left;
+  }
+  .menu span{
+    text-align:center;
+    font-size:15px;
+    color:blue;
+  }
+  .menu img{
+    width: 76%;
+    height: 3em;
+  }
+  .news{
+    margin-left: 2%; 
+    margin-right: 2%;
+    border:1px solid silver;
+  }
+  .title{
+    height:80px;
+  }
+  .news img{
+    width: 20%;
+    height: 3.2em;
 
-  .choose-school span {
-    font-size: 19px;
-    margin-bottom: 10px;
   }
-
-  .radio-group {
-    margin-left: 3px;
-    text-align: center;
-    font-size: 17px;
-    display: inline-block;
-    margin-bottom: 10px;
+  .news span{
+    position: relative;
+    left:3%;
+    bottom:25%;
   }
-
-  .schoolNum {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .schoolNum span {
-    font-size: 19px;
-    margin-bottom: 10px;
-  }
-  .input {
-    margin-bottom: 10px;
-  }
-
-  button {
-    width:100%;
-    height: 54px;
-    background-color:#7CCD7C;
+  .content{
+    position: relative;
+    margin-left: 5%; 
+    margin-right: 5%;
   }
 </style>
