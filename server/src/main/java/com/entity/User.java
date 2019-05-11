@@ -14,7 +14,6 @@ public class User {
     private String schoolID;
     private String teacherID;
     private Date examTime;
-    private String commentPost;
     private String likePost;
 
 
@@ -30,14 +29,13 @@ public class User {
         this.teacherID = teacherID;
         this.examTime = examTime;
     }
-    public User(String userID, String userName, String schoolID, String teacherID, Date examTime, String commentPost,
+    public User(String userID, String userName, String schoolID, String teacherID, Date examTime,
                 String likePost){
         this.userID=userID;
         this.userName=userName;
         this.schoolID=schoolID;
         this.teacherID = teacherID;
         this.examTime = examTime;
-        this.commentPost=commentPost;
         this.likePost=likePost;
     }
 
@@ -73,12 +71,6 @@ public class User {
         this.examTime = examTime;
     }
 
-    public String getcommentPost() {
-        return commentPost;
-    }
-    public void setcommentPost(String commentPost) {
-        this.commentPost = commentPost;
-    }
 
     public String getlikePost() {
         return likePost;

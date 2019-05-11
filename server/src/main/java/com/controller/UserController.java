@@ -31,7 +31,7 @@ public class UserController {
         try{
             User user0=userRepository.findByUserID(userId);
             User user1 = new User(userId,userName,userSchool,userTeacher,examTime1,
-                    user0.getcommentPost(),user0.getlikePost());
+                    user0.getlikePost());
             userRepository.save(user1);
             nameChangeResult=true;
             return nameChangeResult;
@@ -53,7 +53,7 @@ public class UserController {
         try{
             User user0=userRepository.findByUserID(userId);
             User user1 = new User(userId,user0.getuserName(),user0.getschoolID(),user0.getteacherID(),
-                    examTime1, user0.getcommentPost(),user0.getlikePost());
+                    examTime1,user0.getlikePost());
             userRepository.save(user1);
             timeChangeResult=true;
             return timeChangeResult;

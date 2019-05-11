@@ -14,7 +14,7 @@ public class CityController {
     @Autowired
     private CityRepository cityRepository;
 
-    //http://localhost:8888/saveCity?cityName=北京&cityIntroduce=中国首都
+    //http://localhost:8888/saveCity?cityName=beijing&cityIntroduce=test
     @GetMapping(value = "saveCity")
     public String saveCity(String cityName,String cityIntroduce){
         City city = new City(cityName,cityIntroduce);
