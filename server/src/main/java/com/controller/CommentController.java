@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 import com.entity.*;
 import com.repository.*;
+import java.util.Map;
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,10 +51,11 @@ public class CommentController {
 //    我的评论
 //    http://localhost:8888/MyComment?userId=ll
     @GetMapping(value = "MyComment")
-    public List<Comment> MyComment(String userId) throws ParseException {
-        List<Comment> comments =commentRepository.findByUserID(userId);
-
-        return comments;
+    public Map<String, Object> myComment(String userId) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<Comment> comments = commentRepository.findByUserID(userId);
+        map.put("comments",comments);
+        return map;
     }
 
 
