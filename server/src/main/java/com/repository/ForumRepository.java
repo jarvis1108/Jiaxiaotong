@@ -10,5 +10,6 @@ public interface ForumRepository extends JpaRepository<Forum,Integer> {
     List<Forum> findByUserID(String userid);
     List<Forum> findAll();
     Forum findByForumID(int forumid);
+    List<Forum> findByForumContenLike(String content);
 }
 

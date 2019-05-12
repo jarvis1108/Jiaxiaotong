@@ -4,7 +4,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="forum")
-public class Forum {
+public class Forum implements Comparable<Forum>{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int forumID;
@@ -14,25 +14,34 @@ public class Forum {
     private int likeNumber;
     private int commentNum;
 
+//    @Lob
+//    @Basic(fetch = FetchType.LAZY)
+//    @Column(name=" picture", columnDefinition="longblob", nullable=true)
+    private String picture;
+
 
     public Forum(){};
     public Forum(int forumID ){
         this.forumID=forumID;
     }
-    public Forum(String userID, Date postTime,String forumConten){
+    public Forum(String userID, Date postTime,String forumConten,String picture){
         this.userID=userID;
         this.forumID=forumID;
         this.postTime = postTime;
         this.forumConten=forumConten;
+
+        this.picture=picture;
     }
     public Forum(int forumID, String userID, Date postTime,String forumConten,
-                 int likeNumber, int commentNum){
+                 int likeNumber, int commentNum,String picture){
         this.userID=userID;
         this.forumID=forumID;
         this.postTime=postTime;
         this.forumConten=forumConten;
         this.likeNumber=likeNumber;
         this.commentNum=commentNum;
+
+        this.picture=picture;
     }
 
     public int getforumID() {
@@ -70,5 +79,18 @@ public class Forum {
     }
     public void setcommentNum(int commentNum) {
         this.commentNum = commentNum;
+    }
+
+
+    public String getpicture() {
+        return picture;
+    }
+    public void setpicture(String picture) {
+        this.picture = picture;
+    }
+
+    @Override
+    public int compareTo(Forum forum) {
+        return forum.getlikeNumber()- this.likeNumber;
     }
 }
