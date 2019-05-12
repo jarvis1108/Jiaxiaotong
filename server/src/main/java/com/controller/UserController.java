@@ -83,7 +83,7 @@ public class UserController {
     }
 
 
-
+//    验证码绑定驾校和老师
     @GetMapping(value = "GetSchoolInfo")
     public Map<String, Object> GetSchoolInfo(String userId,String identyCode){
         Map<String, Object> map = new HashMap<String, Object>();
@@ -94,6 +94,7 @@ public class UserController {
 
         user.setschoolID(schoolID);
         user.setteacherID(teacherID);
+        userRepository.save(user);
         School school=schoolRepository.findBySchoolID(schoolID);
         Teacher teacher=teacherRepository.findByTeacherID(teacherID);
 
