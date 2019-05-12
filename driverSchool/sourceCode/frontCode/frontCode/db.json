@@ -1,0 +1,199 @@
+{
+    "info": {
+        "userInfo": [
+            {
+                "userId": "1",
+                "name": "李兰",
+                "sex": "女",
+                "img":"/static/images/user.png",           
+                 "freeTime": [
+                    {
+                        "time": "周一上午",
+                        "isChoosed": true,
+                        "id":0
+                    },
+                    {
+                        "time": "周一下午",
+                        "isChoosed": false,
+                        "id":1
+                    },
+                    {
+                        "time": "周二上午",
+                        "isChoosed": false,
+                        "id":2
+                    },
+                    {
+                        "time": "周二下午",
+                        "isChoosed": false,
+                        "id":3
+                    },
+                    {
+                        "time": "周三上午",
+                        "isChoosed": true,
+                        "id":4
+                    },
+                    {
+                        "time": "周三下午",
+                        "isChoosed": false,
+                        "id":5
+                    },
+                    {
+                        "time": "周四上午",
+                        "isChoosed": true,
+                        "id":6
+                    },
+                    {
+                        "time": "周四下午",
+                        "isChoosed": false,
+                        "id":7
+                        
+                    },
+                    {
+                        "time": "周五上午",
+                        "isChoosed": false,
+                        "id":8
+                    },
+                    {
+                        "time": "周五下午",
+                        "isChoosed": false,
+                        "id":9
+                    },
+                    {
+                        "time": "周六上午",
+                        "isChoosed": false,
+                        "id":10
+                    },
+                    {
+                        "time": "周六下午",
+                        "isChoosed": false,
+                        "id":11
+                    },
+                    {
+                        "time": "周日上午",
+                        "isChoosed": false,
+                        "id":12
+                    },
+                    {
+                        "time": "周日下午",
+                        "isChoosed": false,
+                        "id":13
+                    }
+                ]
+
+            },
+            {
+                "userId": "1",
+                "name": "李岚",
+                "sex": "男"
+            }
+        ],
+        "driverSchool": [
+            {
+                "schoolName": "三环驾校",
+                "identiCode": "A2CD",
+                "teachers": [
+                    "李教练",
+                    "王教练",
+                    "肖教练"
+                ]
+            },
+            {
+                "schoolName": "宝岛驾校",
+                "identiCode": "CD3X",
+                "teachers": [
+                    "李教练",
+                    "王教练",
+                    "肖教练"
+                ]
+            }
+        ],
+        "freeTime": [
+            "周一上午",
+            "周二下午",
+            "周六上午",
+            "周六下午"
+        ],
+        "school": {
+            "schoolName": "三环驾校",
+            "identiCode": "A2CD",
+            "teacher": [
+                "李三",
+                "王四",
+                "肖五"
+            ],
+            "freeTime": [
+                {
+                    "time": "周一上午",
+                    "isChoosed": false,
+                    "id":0
+                },
+                {
+                    "time": "周一下午",
+                    "isChoosed": false,
+                    "id":1
+                },
+                {
+                    "time": "周二上午",
+                    "isChoosed": false,
+                    "id":2
+                },
+                {
+                    "time": "周二下午",
+                    "isChoosed": false,
+                    "id":3
+                },
+                {
+                    "time": "周三上午",
+                    "isChoosed": false,
+                    "id":4
+                },
+                {
+                    "time": "周三下午",
+                    "isChoosed": false,
+                    "id":5
+                },
+                {
+                    "time": "周四上午",
+                    "isChoosed": false,
+                    "id":6
+                },
+                {
+                    "time": "周四下午",
+                    "isChoosed": false,
+                    "id":7
+                    
+                },
+                {
+                    "time": "周五上午",
+                    "isChoosed": false,
+                    "id":8
+                },
+                {
+                    "time": "周五下午",
+                    "isChoosed": false,
+                    "id":9
+                },
+                {
+                    "time": "周六上午",
+                    "isChoosed": false,
+                    "id":10
+                },
+                {
+                    "time": "周六下午",
+                    "isChoosed": false,
+                    "id":11
+                },
+                {
+                    "time": "周日上午",
+                    "isChoosed": false,
+                    "id":12
+                },
+                {
+                    "time": "周日下午",
+                    "isChoosed": false,
+                    "id":13
+                }
+            ]
+        }
+    }
+}
