@@ -134,13 +134,13 @@ public class ForumController {
         User user=userRepository.findByUserID(userId);
         String s =user.getlikePost();
         String[] f = s.split("-");
-        int[] forumNums=new int[f.length];
-        for(int i=0;i<f.length;i++){
-            forumNums[i]=Integer.parseInt(f[i]);
+        int[] forumNums=new int[f.length-1];
+        for(int i=0;i<f.length-1;i++){
+            forumNums[i]=Integer.parseInt(f[i+1]);
         }
 
         List<Forum> forums=new ArrayList<>();
-        for(int i=0;i<f.length;i++){
+        for(int i=0;i<f.length-1;i++){
             forums.add(forumRepository.findByForumID(forumNums[i]));
         }
 
