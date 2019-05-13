@@ -26,17 +26,22 @@ public class ForumController {
     private UserRepository userRepository;
 
 //    获取帖子
-//    http://localhost:8888/GetForum?
+//    http://localhost:8888/GetForum?userId=ll
     @GetMapping(value = "GetForum")
-    public List<Forum> GetForum() throws ParseException {
+    public List<Forum> GetForum(String userId) throws ParseException {
         List<Forum> forums =forumRepository.findAll();
+
+        for (Forum f :forums){
+            String s=String.valueOf(f.getforumID());
+            f.setuserLike(isNotlike(s,userId));
+        }
 
         return forums;
     }
 
 
 //    发帖
-//    http://localhost:8888/PublishForums?userId=ll&postTime=1000-02-04&forumConten=aj12
+//    http://localhost:8888/PublishForums?userId=ll&postTime=1000-02-04&forumConten=aj12&picture=
     @GetMapping(value = "PublishForums")
     public Boolean PublishForums(String userId, String postTime,String forumConten,
                   String picture) throws ParseException {
@@ -60,10 +65,16 @@ public class ForumController {
 
 
 //    我的发帖
-//    http://localhost:8888/MyForums?userId=h
+//    http://localhost:8888/MyForums?userId=h&userId=
     @GetMapping(value = "MyForums")
     public List<Forum> MyForums(String userId) throws ParseException {
         List<Forum> forums =forumRepository.findByUserID(userId);
+
+        for (Forum o :forums){
+            String s=String.valueOf(o.getforumID());
+            o.setuserLike(isNotlike(s,userId));
+        }
+
 
         return forums;
     }
@@ -132,26 +143,15 @@ public class ForumController {
         for(int i=0;i<f.length;i++){
             forums.add(forumRepository.findByForumID(forumNums[i]));
         }
+
+        for (Forum r:forums){
+            r.setuserLike(true);
+        }
         return forums;
     }
 
 
-//    判断某一用户是否点赞某一帖子
-//    http://localhost:8888/isNotlike?userId=ll&forumId=4
-    @GetMapping(value = "isNotlike")
-    public Boolean isNotlike(String forumId,String userId) throws ParseException {
-        Boolean isNotlikeResult=false;
-        try{
-            User user=userRepository.findByUserID(userId);
-            String s=user.getlikePost();
-            isNotlikeResult=s.contains(forumId+"-");
-            return isNotlikeResult;
-        }
-        catch (Exception e){
-            return isNotlikeResult;
-        }
 
-    }
 
 
 //    取消点赞
@@ -185,12 +185,37 @@ public class ForumController {
 
 
 //   搜索 按点赞数降序s排列
-//   localhost:8888/Search?content=fw
+//   localhost:8888/Search?content=fw&userId=
     @GetMapping(value = "Search")
-    public List<Forum> Search(String content ) throws ParseException {
+    public List<Forum> Search(String content,String userId ) throws ParseException {
         List<Forum> forums = new ArrayList<Forum>();
         forums = forumRepository.findByForumContenLike("%"+content+"%");
         Collections.sort(forums);
+
+        for (Forum u :forums){
+            String s=String.valueOf(u.getforumID());
+            u.setuserLike(isNotlike(s,userId));
+        }
         return forums;
+    }
+
+
+
+
+    //    判断某一用户是否点赞某一帖子  内置函数
+//    http://localhost:8888/isNotlike?userId=ll&forumId=4
+//    @GetMapping(value = "isNotlike")
+    public Boolean isNotlike(String forumId,String userId) throws ParseException {
+        Boolean isNotlikeResult=false;
+        try{
+            User user=userRepository.findByUserID(userId);
+            String s=user.getlikePost();
+            isNotlikeResult=s.contains(forumId+"-");
+            return isNotlikeResult;
+        }
+        catch (Exception e){
+            return isNotlikeResult;
+        }
+
     }
 }

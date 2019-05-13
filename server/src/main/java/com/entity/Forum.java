@@ -13,6 +13,7 @@ public class Forum implements Comparable<Forum>{
     private String forumConten;
     private int likeNumber;
     private int commentNum;
+    private boolean userLike=false; // 用于对某一用户是否点赞判断
 
 //    @Lob
 //    @Basic(fetch = FetchType.LAZY)
@@ -26,14 +27,13 @@ public class Forum implements Comparable<Forum>{
     }
     public Forum(String userID, Date postTime,String forumConten,String picture){
         this.userID=userID;
-        this.forumID=forumID;
         this.postTime = postTime;
         this.forumConten=forumConten;
 
         this.picture=picture;
     }
     public Forum(int forumID, String userID, Date postTime,String forumConten,
-                 int likeNumber, int commentNum,String picture){
+                 int likeNumber, int commentNum,String picture,boolean userLike){
         this.userID=userID;
         this.forumID=forumID;
         this.postTime=postTime;
@@ -41,6 +41,7 @@ public class Forum implements Comparable<Forum>{
         this.likeNumber=likeNumber;
         this.commentNum=commentNum;
 
+        this.userLike=userLike;
         this.picture=picture;
     }
 
@@ -87,6 +88,13 @@ public class Forum implements Comparable<Forum>{
     }
     public void setpicture(String picture) {
         this.picture = picture;
+    }
+
+    public boolean getuserLike() {
+        return userLike;
+    }
+    public void setuserLike(boolean userLike) {
+        this.userLike = userLike;
     }
 
     @Override
