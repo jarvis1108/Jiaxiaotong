@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface ArrangeRepository extends JpaRepository<Arrange,Integer> {
     List<Arrange> findByTeacherIDAndArrangeTimeBetween(String teacherID, Date startDate, Date endDate);
-    List<Arrange> findByTeacherIDAndArrangeTimAndArrangeTimeIndex(String teacherID, Date arrangeTime, int arrangeTimeIndex);
-
+    List<Arrange> findByTeacherIDAndArrangeTimeAndArrangeTimeIndex(String teacherID, Date arrangeTime, int arrangeTimeIndex);
     Arrange findByUserID(String userID);
 }

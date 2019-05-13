@@ -1,4 +1,6 @@
 package com.entity;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -9,9 +11,11 @@ import java.util.Date;
 
 public class Arrange {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id//主键
+    @GeneratedValue(generator = "uuid")//主键生成策略使用UUID
+    @GenericGenerator(name = "uuid", strategy = "uuid")
     private String arrangeID;
+
     private Date arrangeTime;
     private String teacherID;
     private String userID;

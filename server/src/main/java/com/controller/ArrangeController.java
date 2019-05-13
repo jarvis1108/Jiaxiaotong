@@ -29,6 +29,7 @@ public class ArrangeController {
 
 
     public static Date getThisWeekMonday(Date date) {
+
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         // 获得当前日期是一个星期的第几天
@@ -45,13 +46,6 @@ public class ArrangeController {
         return cal.getTime();
     }
 
-    public static Date getNextWeekMonday(Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(getThisWeekMonday(date));
-        cal.add(Calendar.DATE, 7);
-        return cal.getTime();
-    }
-
     public static Date getThisWeekSunday(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(getThisWeekMonday(date));
@@ -59,22 +53,36 @@ public class ArrangeController {
         return cal.getTime();
     }
 
-    //    获取可用时间
-    @GetMapping(value = "GetTimeList")
-    public List<String> GetTimeList (String userId){
+    public static Date getNextWeekSunday(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getThisWeekMonday(date));
+        cal.add(Calendar.DATE, 13);
+        return cal.getTime();
+    }
 
-        User user = userRepository.findByUserID(userId);
+
+    //    获取不可用时间
+    //    http://localhost:8888/GetTimeList?userID=ll
+    @GetMapping(value = "GetTimeList")
+    public List<String> GetTimeList (String userID){
+
+        User user = userRepository.findByUserID(userID);
         String teacherID = user.getteacherID();
+
         Date dt = new Date();
-        Date startDate = getNextWeekMonday(dt);
-        Date endDate = getThisWeekMonday(startDate);
+        dt.setHours(23);
+        dt.setMinutes(59);
+        dt.setSeconds(59);
+        Date startDate = getThisWeekSunday(dt);
+        Date endDate = getNextWeekSunday(dt);
         List<Arrange> arranges = arrangeRepository.findByTeacherIDAndArrangeTimeBetween(teacherID, startDate, endDate);
 
         //"2019-05-12-0",4
         Map<String, Integer> arrangeTimes = new HashMap<String, Integer>();
         String arrangeTime;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         for (Arrange arrange:arranges){
-            arrangeTime = arrange.getarrangeTime().toString() + "-" + arrange.getarrangeTimeIndex();
+            arrangeTime = sdf.format(arrange.getarrangeTime()) + "-" + arrange.getarrangeTimeIndex();
             //累计每个时段预约数目
             if(arrangeTimes.get(arrangeTime)!=null){
                 arrangeTimes.put(arrangeTime,arrangeTimes.get(arrangeTime)+1);
@@ -86,7 +94,7 @@ public class ArrangeController {
 
         List<String> res = new ArrayList<String>();
         for (Map.Entry<String, Integer> entry : arrangeTimes.entrySet()) {
-            if(entry.getValue() < MAXARRANGE){
+            if(entry.getValue() == MAXARRANGE){
                 res.add(entry.getKey());
             }
         }
@@ -95,17 +103,28 @@ public class ArrangeController {
     }
 
     //     新建预约
+    //     http://localhost:8888/NewArrange?userID=ll&arrangeDate=2019-05-20&arrangeTimeIndex=0
     @GetMapping(value = "NewArrange")
-    public Boolean NewArrange (String userID, Date arrangeTime, int arrangeTimeIndex){
+    public Boolean NewArrange (String userID, String arrangeDate, int arrangeTimeIndex){
         Boolean arrangeResult=false;
         try{
             User user = userRepository.findByUserID(userID);
             String teacherID = user.getteacherID();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date arrangeTime = sdf.parse(arrangeDate);
+
+            //检查是否已有预约
+            //与Leave方法冲突，前端限制预约数目
+            //Arrange arrange = arrangeRepository.findByUserID(userID);
+            //if(arrange. != null){
+            //   return arrangeResult;
+            //}
+
             //检查该时段预约数目
-            List<Arrange> arranges = arrangeRepository.findByTeacherIDAndArrangeTimAndArrangeTimeIndex(teacherID, arrangeTime, arrangeTimeIndex);
+            List<Arrange> arranges = arrangeRepository.findByTeacherIDAndArrangeTimeAndArrangeTimeIndex(teacherID, arrangeTime, arrangeTimeIndex);
             if(arranges.size() < MAXARRANGE){
-                Arrange arrange = new Arrange(arrangeTime , teacherID, userID, arrangeTimeIndex);
-                arrangeRepository.save(arrange);
+                Arrange newArrange = new Arrange(arrangeTime , teacherID, userID, arrangeTimeIndex);
+                arrangeRepository.save(newArrange);
                 arrangeResult = true;
             }
             return arrangeResult;
@@ -116,15 +135,17 @@ public class ArrangeController {
     }
 
     //     请假
+    //     http://localhost:8888/Leave?userID=ll&changeTime=2019-05-21&changeTimeIndex=1
     @GetMapping(value = "Leave")
-    public Boolean Leave (String userID, Date changeTime, int changeTimeIndex){
+    public Boolean Leave (String userID, String changeTime, int changeTimeIndex){
         Boolean leaveResult = false;
         Boolean changeResult = false;
         try{
+            Arrange arrangeBefore = arrangeRepository.findByUserID(userID);
+            String arrangeIDBefore = arrangeBefore.getarrangeID();
             changeResult = NewArrange (userID, changeTime, changeTimeIndex);
             if(changeResult){
-                Arrange arrange = arrangeRepository.findByUserID(userID);
-                arrangeRepository.delete(arrange);
+                arrangeRepository.delete(arrangeBefore);
                 leaveResult = true;
                 return leaveResult;
             }else{
