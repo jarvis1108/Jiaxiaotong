@@ -29,30 +29,38 @@ public class UserController {
     @Autowired
     private TeacherRepository teacherRepository;
 
-//    设置个人信息
+    //    设置个人信息
 //    localhost:8888/SetUserInfo?userId=ll&userName=bf&userSchool=cd&userTeacher=as&examTime=1000-02-02
     @GetMapping(value = "SetUserInfo")
-    public Boolean SetUserInfo(String userId, String userName, String userSchool,
-                               String userTeacher, String examTime) throws ParseException {
-        Boolean nameChangeResult=false;
+    public int SetUserInfo(String userId, String userName, String userSchool,
+                           String userTeacher, String examTime) throws ParseException {
+        int nameChangeResult=0;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date examTime1=new Date();
         examTime1=sdf.parse(examTime);
-        try{
-            User user0=userRepository.findByUserID(userId);
-            User user1 = new User(userId,userName,userSchool,userTeacher,examTime1,
-                    user0.getlikePost());
-            userRepository.save(user1);
-            nameChangeResult=true;
+
+        User user0=userRepository.findByUserID(userId);
+        int schoolId=GetSchoolId(userSchool);
+        if (schoolId==0){
             return nameChangeResult;
         }
-        catch (Exception e){
-            return nameChangeResult;
+
+        int teacherId=GetTeacherId(userTeacher,String.valueOf(schoolId));
+
+        if (teacherId==0){
+            return nameChangeResult+1;
         }
+
+        User user1 = new User(userId,userName,String.valueOf(schoolId),String.valueOf(teacherId),examTime1,
+                user0.getlikePost());
+        userRepository.save(user1);
+
+        return nameChangeResult+2;
+
 
     }
 
-//    设置考试时间
+    //    设置考试时间
 //    http://localhost:8888/SetExamTime?userId=ll&examTime=1000-02-04
     @GetMapping(value = "SetExamTime")
     public Boolean SetExamTime(String userId, String examTime) throws ParseException {
@@ -75,15 +83,19 @@ public class UserController {
     }
 
 
-//    获取个人信息
+    //    获取个人信息
     @GetMapping(value = "GetUserInfo")
     public User GetUserInfo(String userId) throws ParseException {
         User user=userRepository.findByUserID(userId);
+        School school=schoolRepository.findBySchoolID(user.getschoolID());
+        Teacher teacher=teacherRepository.findByTeacherID(user.getteacherID());
+        user.setschoolID(school.getschoolName());
+        user.setteacherID(teacher.getteacherName());
         return user;
     }
 
 
-//    验证码绑定驾校和老师
+    //    验证码绑定驾校和老师
     @GetMapping(value = "GetSchoolInfo")
     public Map<String, Object> GetSchoolInfo(String userId,String identyCode){
         Map<String, Object> map = new HashMap<String, Object>();
@@ -106,7 +118,32 @@ public class UserController {
         return map;
     }
 
+    //获取学校名 返回学校名 沒找到返回0
+//    @GetMapping(value = "GetSchoolId")
+    public int GetSchoolId(String schoolName) throws ParseException {
+        try{
+            School school=schoolRepository.findBySchoolName(schoolName);
+            int schoolID = Integer.valueOf(school.getschoolID()).intValue();
+            return schoolID;
+        }
+        catch (Exception e){
+            return 0;
+        }
+    }
 
+    //获取老师名 返回老师名 沒找到返回0
+//    @GetMapping(value = "GetTeacherId")
+    public int GetTeacherId(String teacherName,String schoolId) throws ParseException {
+        try{
+            Teacher teacher=teacherRepository.findByTeacherNameAndSchoolID(teacherName,schoolId);
+            System.out.println(teacher.getteacherID());
+            int teacherId = Integer.valueOf(teacher.getteacherID()).intValue();
+            return teacherId;
+        }
+        catch (Exception e){
+            return 0;
+        }
+    }
 
 
 }
