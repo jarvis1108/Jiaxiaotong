@@ -27,6 +27,15 @@ public class ArrangeController {
 
     private static int MAXARRANGE = 4;
 
+    //     查询用户已预约的时间
+    //     http://localhost:8888/GetArrange?userID=ll
+    @GetMapping(value = "GetArrange")
+    public String GetArrange (String userID){
+        Arrange arrange = arrangeRepository.findByUserID(userID);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String arrangeTime = sdf.format(arrange.getarrangeTime()) + "-" + arrange.getarrangeTimeIndex();
+        return arrangeTime;
+    }
 
     public static Date getThisWeekMonday(Date date) {
 
