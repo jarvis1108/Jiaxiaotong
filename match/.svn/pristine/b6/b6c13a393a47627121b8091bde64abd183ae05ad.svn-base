@@ -1,0 +1,59 @@
+<template name="index$0b8e8563">
+  <view class="_div data-v-6a3ab69a st-wrong-topic-container">
+    <image class="_img data-v-6a3ab69a st-wrong-topic-bg" src="/static/images/bg.png"></image>
+    <view class="_div data-v-6a3ab69a st-wrong-topic-container" wx:if="{{isEmpty}}">
+      <label class="_span data-v-6a3ab69a st-alarm a1">暂时还没有错题</label>
+      <label class="_span data-v-6a3ab69a st-alarm a2">先去答题吧</label>
+    </view>
+    <view class="_div data-v-6a3ab69a st-wrong-topic-container" wx:if="{{!isEmpty}}">
+      <view class="_div data-v-6a3ab69a st-wrong-topic-questionIndex">
+        <image class="_img data-v-6a3ab69a st-wrong-topic-questionIndex-bg" src="/static/images/wrongTopic/Hexagon.png"></image>
+        <label class="_span data-v-6a3ab69a st-wrong-topic-questionIndex-span"> 第
+          <label class="_span data-v-6a3ab69a">{{questionIndex}}</label> 题 </label>
+      </view>
+      <view class="_div data-v-6a3ab69a st-wrong-topic-question {{contentAni}}">
+        <label class="_span data-v-6a3ab69a st-wrong-topic-questionTitle"> {{questionList[questionIndex-1].question}} </label>
+        <view class="_ul data-v-6a3ab69a st-wrong-topic-choiceList">
+          <view wx:key="item.questionIndex" key="{{item.questionIndex}}" wx:for="{{choiceList}}" wx:for-index="index" wx:for-item="item" class="_li data-v-6a3ab69a {{item.style}}"> {{item.label}}.{{item.content}}
+            <image class="_img data-v-6a3ab69a st-wrong-topic-errorIcon" wx:if="{{item.isRight === -1}}" src="/static/images/wrongTopic/Errorlabel.png"></image>
+            <image class="_img data-v-6a3ab69a st-wrong-topic-correctIcon" wx:if="{{item.isRight === 1}}" src="/static/images/wrongTopic/Correctlabel.png"></image>
+          </view>
+        </view>
+      </view>
+      <view class="_div data-v-6a3ab69a st-wrong-topic-arrow">
+        <image wx:if="{{questionIndex > 1}}" bindtap="handleProxy" class="_img data-v-6a3ab69a st-wrong-topic-arrow-left" src="/static/images/wrongTopic/Leftarrow_icon.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+        <image wx:if="{{questionIndex < questionList.length}}" bindtap="handleProxy" class="_img data-v-6a3ab69a st-wrong-topic-arrow-right" src="/static/images/wrongTopic/Rightarrow_icon.png" data-eventid="{{'1'}}" data-comkey="{{$k}}"></image>
+      </view>
+      <view class="_div data-v-6a3ab69a st-wrong-topic-iconList">
+        <view class="_div data-v-6a3ab69a st-wrong-topic-iconList-collect" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">
+          <image class="_img data-v-6a3ab69a st-wrong-topic-icon" src="/static/images/wrongTopic/Collection-icon.png"></image>
+          <label class="_span data-v-6a3ab69a st-wrong-topic-text12">收藏</label>
+        </view>
+        <view class="_div data-v-6a3ab69a st-wrong-topic-iconList-correct" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}">
+          <image class="_img data-v-6a3ab69a st-wrong-topic-icon" src="/static/images/wrongTopic/Errorcorrection-icon.png"></image>
+          <label class="_span data-v-6a3ab69a st-wrong-topic-text12">纠错</label>
+        </view>
+        <view class="_div data-v-6a3ab69a">
+          <button class="_button data-v-6a3ab69a st-wrong-topic-iconList-share" open-type="share">
+            <view class="_div data-v-6a3ab69a">
+              <image class="_img data-v-6a3ab69a st-wrong-topic-icon" src="/static/images/wrongTopic/Share-icon.png"></image>
+              <label class="_span data-v-6a3ab69a st-wrong-topic-text12" style="top: 50%">分享</label>
+            </view>
+          </button>
+        </view>
+      </view>
+      <image class="_img data-v-6a3ab69a st-wrong-topic-halo" src="/static/images/wrongTopic/Halo.png"></image>
+      <view class="_div data-v-6a3ab69a st-wrong-topic-details {{contentAni}}">
+        <view class="_div data-v-6a3ab69a st-wrong-topic-analysis">
+          <label class="_span data-v-6a3ab69a">解析:{{questionList[questionIndex-1].questionAnalyze}}</label>
+        </view>
+        <view class="_div data-v-6a3ab69a st-wrong-topic-source">
+          <label class="_span data-v-6a3ab69a">出处：{{questionList[questionIndex-1].reference}}</label>
+        </view>
+        <view class="_div data-v-6a3ab69a st-wrong-topic-knowledge">
+          <label class="_span data-v-6a3ab69a">考点:{{questionList[questionIndex-1].content}}</label>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

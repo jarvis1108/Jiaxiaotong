@@ -1,0 +1,55 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.Question;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+import java.util.List;
+import static org.junit.Assert.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class QuestionRepositoryTest {
+
+    @Autowired
+    private QuestionRepository repository;
+
+
+
+
+    @Test
+    public void findAll() {
+        List<Question> questions =repository.findAll();
+        assertNotEquals(0, questions.size());
+        questions.forEach(System.out::println);
+    }
+    @Test
+    public void findAll1() {
+        PageRequest pageable=PageRequest.of(0,1);
+        Page<Question> questionPage=repository.findAll(pageable);
+        List<Question> questions =questionPage.getContent();
+        assertNotEquals(0, questions.size());
+        questions.forEach(System.out::println);
+    }
+    @Test
+    public void save() {
+        Question question=new Question();
+        question.setQuestionId("6");
+        question.setQuestion("这是题目测试类");
+        Question result=repository.save(question);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void findQuestionByQuestionId(){
+        String questionId="6";
+        Question question=repository.findQuestionByQuestionId(questionId);
+        System.out.println(question);
+    }
+
+}

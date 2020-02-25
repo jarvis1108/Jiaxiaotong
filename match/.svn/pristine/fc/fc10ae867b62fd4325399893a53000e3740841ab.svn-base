@@ -1,0 +1,79 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionMultipleChoice;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class QuestionMultipleChoiceRepositoryTest {
+
+    @Autowired
+    private QuestionMultipleChoiceRepository questionMultipleChoiceRepository;
+
+    @Test
+    public void findAll() {
+        PageRequest pageable = PageRequest.of(0, 1);
+        Page<QuestionMultipleChoice> questionMultipleChoicesPage = questionMultipleChoiceRepository.findAll(pageable);
+
+        List<QuestionMultipleChoice> questionMultipleChoices = questionMultipleChoicesPage.getContent();
+        assertEquals(1, questionMultipleChoices.size());
+
+        questionMultipleChoices.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll1() {
+        List<QuestionMultipleChoice> questionMultipleChoices =questionMultipleChoiceRepository.findAll();
+        assertNotEquals(0, questionMultipleChoices.size());
+        questionMultipleChoices.forEach(System.out::println);
+    }
+
+
+
+    @Test
+    public void findQuestionMultipleChoiceByQuestionNo() {
+    }
+
+    @Test
+    public void findQuestionMultipleChoiceByCreateUser() {
+    }
+
+    @Test
+    public void save() {
+        QuestionMultipleChoice questionMultipleChoice=new QuestionMultipleChoice();
+        questionMultipleChoice.setIsValid(Byte.valueOf("1"));
+        questionMultipleChoice.setQuestionId("23");
+        //questionMultipleChoice.setLastUpdTime();
+        questionMultipleChoice.setQuestionNo("3");
+//        questionMultipleChoice.setCreateTime();
+        questionMultipleChoice.setChoiceA("wed");
+        questionMultipleChoice.setChoiceB("wre");
+        questionMultipleChoice.setChoiceC("wse");
+        questionMultipleChoice.setChoiceD("wce");
+        questionMultipleChoice.setAnswer("A");
+        QuestionMultipleChoice result= questionMultipleChoiceRepository.save(questionMultipleChoice);
+        assertNotNull(result);
+
+        System.out.println(questionMultipleChoice);
+    }
+    @Test
+    public void findQuestionMultipleChoiceByQuestionId() {
+        String questionId="23";
+        QuestionMultipleChoice questionMultipleChoice=questionMultipleChoiceRepository.findQuestionMultipleChoiceByQuestionId(questionId);
+        assertNotNull(questionMultipleChoice);
+        System.out.println(questionMultipleChoice);
+    }
+}

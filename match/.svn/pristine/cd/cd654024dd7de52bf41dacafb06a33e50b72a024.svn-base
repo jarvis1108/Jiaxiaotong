@@ -1,0 +1,93 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.UserLoginRecordRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserLoginRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserLoginRecordService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * 用户服务接口实现类
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:46
+ */
+@Service
+public class UserLoginRecordServiceImpl implements UserLoginRecordService {
+
+    @Autowired
+    private UserLoginRecordRepository userLoginRecordRepository;
+
+    /**
+     * 获取用户登陆记录信息
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页
+     * @return 用户信息列表
+     */
+    @Override
+    @Transactional
+    public List<UserLoginRecord> getUserLoginRecordList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null) {
+            return userLoginRecordRepository.findAll();
+        } else {
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<UserLoginRecord> userLoginRecordPage = userLoginRecordRepository.findAll(pageable);
+            return userLoginRecordPage.getContent();
+        }
+    }
+
+    /**
+     * 获取所有用户登陆记录信息
+     *
+     * @return
+     */
+    @Override
+    public List<UserLoginRecord> getAllUserLoginRecords() {
+        return userLoginRecordRepository.findAll();
+    }
+
+    /**
+     * 创建用户登陆信息
+     *
+     * @param newUserLoginRecord
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public UserLoginRecord create(UserLoginRecord newUserLoginRecord) throws ErrorInfo {
+        if (newUserLoginRecord == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_009", "用户登陆信息为空", null);
+        return userLoginRecordRepository.save(newUserLoginRecord);
+    }
+
+    /**
+     * 更新某一用户登陆信息
+     *
+     * @param updatedUserLoginRecord 待更新用户
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public UserLoginRecord update(UserLoginRecord updatedUserLoginRecord) throws ErrorInfo {
+        if (updatedUserLoginRecord == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_009", "用户登陆信息为空", null);
+        }
+        UserLoginRecord userLoginRecord = userLoginRecordRepository.findUserLoginRecordByUserLoginId(updatedUserLoginRecord.getUserLoginId());
+        if (userLoginRecord == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_010", "用户登陆信息不存在", null);
+        UpdateUtil.copyProperties(updatedUserLoginRecord, userLoginRecord);
+
+        return userLoginRecordRepository.save(userLoginRecord);
+    }
+}

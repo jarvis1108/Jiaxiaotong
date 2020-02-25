@@ -1,0 +1,443 @@
+global.webpackJsonp([5],{
+
+/***/ 280:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(281);
+
+
+
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__index__["a" /* default */]);
+app.$mount();
+/* harmony default export */ __webpack_exports__["default"] = ({
+  config: {
+    navigationBarTitleText: '知识练兵场'
+  }
+});
+
+/***/ }),
+
+/***/ 281:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_6a3ab69a_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(284);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(282)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-6a3ab69a"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_6a3ab69a_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\pages\\wrong-topic\\index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6a3ab69a", Component.options)
+  } else {
+    hotAPI.reload("data-v-6a3ab69a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 282:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 283:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_wx__ = __webpack_require__(2);
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  data: function data() {
+    return {
+      questionIndex: 1, //题号
+      questionList: [{
+        questionIndex: 0,
+        questionCode: "", //题干
+        answer: "",
+        userAnswer: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+        questionAnalyze: "",
+        reference: "",
+        content: ""
+      }], //问题列表
+      choiceList: [{ label: "A", content: "" }, { label: "B" }, { label: "C" }, { label: "D" }], //因为接口中没有choiceList，所以增加一个变量
+      userAnswer: "", //当前题目用户的选择
+      rightAnswer: "", //正确选项
+      contentAni: "" //题目卡片动画效果
+    };
+  },
+  onLoad: function onLoad() {
+    var _this = this;
+
+    return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+      return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this.questionIndex = 1;
+              _context.next = 3;
+              return _this.$store.dispatch("getQuestionList", 10, 1);
+
+            case 3:
+              _this.questionList = _context.sent;
+
+              _this.userAnswer = _this.questionList[_this.questionIndex - 1].userAnswer;
+              _this.rightAnswer = _this.questionList[_this.questionIndex - 1].answer;
+              _this.getChoiceList();
+              _this.setChoiceStyle();
+              console.log(_this.questionList);
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, _this);
+    }))();
+  },
+
+  methods: {
+    getChoiceList: function getChoiceList() {
+      this.choiceList[0].content = this.questionList[this.questionIndex - 1].choiceA;
+      this.choiceList[1].content = this.questionList[this.questionIndex - 1].choiceB;
+      this.choiceList[2].content = this.questionList[this.questionIndex - 1].choiceC;
+      this.choiceList[3].content = this.questionList[this.questionIndex - 1].choiceD;
+    },
+    setChoiceStyle: function setChoiceStyle() {
+      var _this2 = this;
+
+      console.log("changeStyle");
+      this.choiceList.forEach(function (item) {
+        if (item.label === _this2.userAnswer && _this2.userAnswer !== _this2.rightAnswer) {
+          item.isRight = -1;
+          item.style = "fault";
+        } else if (item.label === _this2.rightAnswer) {
+          item.isRight = 1;
+          item.style = "correct";
+        } else {
+          item.isRight = 0;
+          item.style = "primary";
+        }
+      });
+    },
+    nextQuestion: function nextQuestion() {
+      var _this3 = this;
+
+      this.questionIndex += 1;
+      this.contentAni = "rotate";
+      setTimeout(function () {
+        _this3.userAnswer = _this3.questionList[_this3.questionIndex - 1].userAnswer;
+        _this3.rightAnswer = _this3.questionList[_this3.questionIndex - 1].answer;
+        _this3.getChoiceList();
+        _this3.setChoiceStyle();
+      }, 500);
+      setTimeout(function () {
+        _this3.contentAni = "";
+      }, 1000);
+    },
+    lastQuestion: function lastQuestion() {
+      var _this4 = this;
+
+      this.questionIndex -= 1;
+      this.contentAni = "rotate";
+      setTimeout(function () {
+        _this4.userAnswer = _this4.questionList[_this4.questionIndex - 1].userAnswer;
+        _this4.rightAnswer = _this4.questionList[_this4.questionIndex - 1].answer;
+        _this4.getChoiceList();
+        _this4.setChoiceStyle();
+      }, 1000);
+      setTimeout(function () {
+        _this4.contentAni = "";
+      }, 1000);
+    },
+    on_collect: function on_collect() {
+      var _this5 = this;
+
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+        var isSuccess;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _this5.$store.dispatch("collectQuestion", _this5.questionList[_this5.questionIndex - 1].questionId);
+
+              case 2:
+                isSuccess = _context2.sent;
+
+                if (isSuccess != null) {
+                  console.log(isSuccess);
+                  __WEBPACK_IMPORTED_MODULE_2__utils_wx__["a" /* default */].showSuccess('收藏成功');
+                }
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, _this5);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 284:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "st-wrong-topic-container"
+  }, [_c('img', {
+    staticClass: "st-wrong-topic-bg",
+    attrs: {
+      "src": "/static/images/bg.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-wrong-topic-questionIndex"
+  }, [_c('img', {
+    staticClass: "st-wrong-topic-questionIndex-bg",
+    attrs: {
+      "src": "/static/images/wrongTopic/Hexagon.png"
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "st-wrong-topic-questionIndex-span"
+  }, [_vm._v("\n      第\n      "), _c('span', [_vm._v(_vm._s(_vm.questionIndex))]), _vm._v("\n      题\n      ")])]), _vm._v(" "), _c('div', {
+    staticClass: "st-wrong-topic-question",
+    class: _vm.contentAni
+  }, [_c('span', {
+    staticClass: "st-wrong-topic-questionTitle"
+  }, [_vm._v("\n      " + _vm._s(_vm.questionList[_vm.questionIndex - 1].question) + "\n    ")]), _vm._v(" "), _c('ul', {
+    staticClass: "st-wrong-topic-choiceList"
+  }, _vm._l((_vm.choiceList), function(item, index) {
+    return _c('li', {
+      key: item.questionIndex,
+      class: item.style
+    }, [_vm._v("\n        " + _vm._s(item.label) + "." + _vm._s(item.content) + "\n        "), (item.isRight === -1) ? _c('img', {
+      staticClass: "st-wrong-topic-errorIcon",
+      attrs: {
+        "src": "/static/images/wrongTopic/Errorlabel.png"
+      }
+    }) : _vm._e(), _vm._v(" "), (item.isRight === 1) ? _c('img', {
+      staticClass: "st-wrong-topic-correctIcon",
+      attrs: {
+        "src": "/static/images/wrongTopic/Correctlabel.png"
+      }
+    }) : _vm._e()])
+  }))], 1), _vm._v(" "), _c('div', {
+    staticClass: "st-wrong-topic-arrow"
+  }, [(_vm.questionIndex > 1) ? _c('img', {
+    staticClass: "st-wrong-topic-arrow-left",
+    attrs: {
+      "src": "/static/images/wrongTopic/Leftarrow_icon.png",
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.lastQuestion
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.questionIndex < _vm.questionList.length) ? _c('img', {
+    staticClass: "st-wrong-topic-arrow-right",
+    attrs: {
+      "src": "/static/images/wrongTopic/Rightarrow_icon.png",
+      "eventid": '1'
+    },
+    on: {
+      "click": _vm.nextQuestion
+    }
+  }) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "st-wrong-topic-iconList"
+  }, [_c('div', {
+    staticClass: "st-wrong-topic-iconList-collect",
+    attrs: {
+      "eventid": '2'
+    },
+    on: {
+      "click": _vm.on_collect
+    }
+  }, [_c('img', {
+    staticClass: "st-wrong-topic-icon",
+    attrs: {
+      "src": "/static/images/wrongTopic/Collection-icon.png"
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "st-wrong-topic-text12"
+  }, [_vm._v("收藏")])]), _vm._v(" "), _c('div', {
+    staticClass: "st-wrong-topic-iconList-correct",
+    attrs: {
+      "eventid": '3'
+    },
+    on: {
+      "click": _vm.on_correct
+    }
+  }, [_c('img', {
+    staticClass: "st-wrong-topic-icon",
+    attrs: {
+      "src": "/static/images/wrongTopic/Errorcorrection-icon.png"
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "st-wrong-topic-text12"
+  }, [_vm._v("纠错")])]), _vm._v(" "), _c('div', [_c('button', {
+    staticClass: "st-wrong-topic-iconList-share",
+    attrs: {
+      "open-type": "share"
+    }
+  }, [_c('div', [_c('img', {
+    staticClass: "st-wrong-topic-icon",
+    attrs: {
+      "src": "/static/images/wrongTopic/Share-icon.png"
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "st-wrong-topic-text12",
+    staticStyle: {
+      "top": "50%"
+    }
+  }, [_vm._v("分享")])])])], 1)]), _vm._v(" "), _c('img', {
+    staticClass: "st-wrong-topic-halo",
+    attrs: {
+      "src": "/static/images/wrongTopic/Halo.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-wrong-topic-details",
+    class: _vm.contentAni
+  }, [_c('div', {
+    staticClass: "st-wrong-topic-analysis"
+  }, [_c('span', [_vm._v("解析:" + _vm._s(_vm.questionList[_vm.questionIndex - 1].questionAnalyze))])]), _vm._v(" "), _c('div', {
+    staticClass: "st-wrong-topic-source"
+  }, [_c('span', [_vm._v("出处：" + _vm._s(_vm.questionList[_vm.questionIndex - 1].reference))])]), _vm._v(" "), _c('div', {
+    staticClass: "st-wrong-topic-knowledge"
+  }, [_c('span', [_vm._v("考点:" + _vm._s(_vm.questionList[_vm.questionIndex - 1].content))])])])])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6a3ab69a", esExports)
+  }
+}
+
+/***/ })
+
+},[280]);
+//# sourceMappingURL=main.js.map

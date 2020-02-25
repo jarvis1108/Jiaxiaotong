@@ -1,0 +1,236 @@
+package com.dxtwangxiao.strongestsuperscholar.web.websocket.pk;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserService;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.MatchRecordDTO;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestion;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.UserDTO;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResultData;
+import com.dxtwangxiao.strongestsuperscholar.web.websocket.common.MatchManagement;
+import com.dxtwangxiao.strongestsuperscholar.web.websocket.common.Message;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.socket.*;
+
+import java.io.IOException;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * 好友对战 WebSocket处理类，真正的匹配及出题业务逻辑在此
+ * <p>
+ * Created by Devin
+ * 2018-08-08 上午 09:32
+ */
+public class PkWebSocketHandler implements WebSocketHandler {
+
+    // 启动类set方法注入，解决无法注入Bean的问题
+    private static ApplicationContext applicationContext;
+
+    public static void setApplicationContext(ApplicationContext context) {
+        applicationContext = context;
+    }
+
+    private static final Map<String, WebSocketSession> users;    // 用户列表
+
+    static {
+        users = new ConcurrentHashMap<>();
+    }
+
+    @Override
+    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+        // 1.从session中获取当前用户Id和战局Id
+        String userId = (String) session.getAttributes().get("MATCH_USER_ID");
+        String matchId = (String) session.getAttributes().get("MATCH_ID");
+
+        // 2.根据用户ID获取其信息
+        UserService userService = applicationContext.getBean(UserService.class);
+        UserDTO userDTO = userService.getUserDTOById(userId);
+        users.put(userId, session);
+
+        // 3.判断战局是否达到最大人数
+        MatchRecordDTO matchRecordDTO = MatchManagement.getInstance().getMatchByMatchId(matchId);
+        if (matchRecordDTO.getUserMaxCount().intValue() == matchRecordDTO.getUserFactCount().intValue()) {
+            Message message = new Message();
+            message.setMsgType("Z");
+            message.setMsgDesc("战局达到最大人数");
+            message.setMsgID(UUID.randomUUID().toString());
+            message.setMsgData(null);
+            sendMessageToUser(userId, new TextMessage(JSON.toJSONString(message)));
+            return;
+        }
+
+        // 4.更新战局信息
+        Message result = new Message();
+        result.setMsgType("A");
+        result.setMsgDesc("好友信息");
+        result.setMsgID(UUID.randomUUID().toString());
+        Map<String, Object> curData = new HashMap<>();
+        curData.put("matchId", matchRecordDTO.getMatchRecordId());
+
+        if (matchRecordDTO.getUserId().equals(userId)) {
+            MatchManagement.getInstance().addUser(matchId, userDTO, Byte.valueOf("1"));
+        } else {
+            MatchManagement.getInstance().addUser(matchId, userDTO, Byte.valueOf("0"));
+            matchRecordDTO.setFightStatus(Byte.valueOf("1"));
+
+            // (1)向好友发送客户端信息
+            curData.put("friend", userDTO);
+            result.setMsgData(new ResultData(curData));
+            sendMessageToUser(matchRecordDTO.getUserId(), new TextMessage(JSON.toJSONString(result)));
+
+            // (2)向客户端发送好友信息
+            UserDTO friendDto = userService.getUserDTOById(matchRecordDTO.getUserId());
+            curData.replace("friend", friendDto);
+            result.setMsgData(new ResultData(curData));
+            sendMessageToUser(userId, new TextMessage(JSON.toJSONString(result)));
+        }
+    }
+
+    @Override
+    public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
+        String userId = (String) session.getAttributes().get("MATCH_USER_ID");
+
+        JSONObject jsonObject = JSON.parseObject(message.getPayload().toString());
+        String msgType = jsonObject.getString("msgType");
+        JSONObject msgData = jsonObject.getJSONObject("msgData");
+
+        // 战局发起者点击开始对战，通知战局内所有用户
+        if (msgType.equals("A-0")) {
+            String matchId = msgData.getString("matchId");
+            MatchRecordDTO match = MatchManagement.getInstance().getMatchByMatchId(matchId);
+
+            Message result = new Message();
+            result.setMsgID(UUIDUtil.getUUID());
+            result.setMsgType("A-0");
+            result.setMsgDesc("开始对战");
+            result.setMsgData(null);
+
+            sendMessageToList(match.getUserList(), new TextMessage(JSON.toJSONString(result)));
+        }
+
+        // 客户端请求出题，根据战局Id和题目索引获取战局信息
+        if (msgType.equals("A")) {
+            String matchId = msgData.getString("matchId");
+            Integer no = msgData.getInteger("no");
+
+            // (1)根据战局ID获取战局记录，进而获取战局题目
+            MatchRecordDTO match = MatchManagement.getInstance().getMatchByMatchId(matchId);
+            MultipleQuestion multipleQuestion = match.getQuestionList().get(no - 1);
+
+            // (2)向客户端发送消息，表明出题成功
+            if (match.getRequestQuestionUserCount() == match.getUserFactCount()) {
+                Message result = new Message();
+                result.setMsgID(UUID.randomUUID().toString());
+                result.setMsgType("B");
+                Map<String, Object> curData = new HashMap<>();
+                curData.put("question", multipleQuestion);
+                result.setMsgData(new ResultData(curData));
+                result.setMsgDesc("出题成功");
+
+                sendMessageToList(match.getUserList(), new TextMessage(JSON.toJSONString(result)));
+                MatchManagement.getInstance().initRequestQuestionCount(matchId);
+            }
+        }
+
+        // 客户端请求计算分数，同时需要返回给对手
+        if (msgType.equals("B")) {
+            String matchId = msgData.getString("matchId");
+            String correctAnswer = msgData.getString("correctAnswer");
+            String userAnswer = msgData.getString("userAnswer");
+            Integer timeLeft = msgData.getInteger("timeLeft");
+            Integer questionIndex = msgData.getInteger("no");
+
+            // 存储用户学点消耗到数据库
+            Integer amount = 10 - timeLeft;
+            Byte isTrue;
+            if (userAnswer.equals(correctAnswer)) {
+                isTrue = Byte.valueOf("1");
+            } else {
+                isTrue = Byte.valueOf("0");
+            }
+            MatchManagement.getInstance().saveLpConsumeRecord(matchId, userId, questionIndex, userAnswer, amount, isTrue);
+
+            // 计算分数
+            int score;
+            if (correctAnswer.equals(userAnswer)) {
+                score = timeLeft * (200 / 10);
+            } else {
+                score = 0;
+            }
+
+            // 向客户端发送消息
+            Message result = new Message();
+            result.setMsgID(UUID.randomUUID().toString());
+            result.setMsgType("C-1");
+            Map<String, Object> curData = new HashMap<>();
+            curData.put("score", score);
+            result.setMsgData(new ResultData(curData));
+            result.setMsgDesc("发送给用户的成绩");
+            sendMessageToUser(userId, new TextMessage(JSON.toJSONString(result)));
+
+            result.setMsgType("C-2");
+            curData.put("answer", userAnswer);
+            result.setMsgDesc("发送给对手的成绩");
+            for (UserDTO userDTO : MatchManagement.getInstance().getMatchByMatchId(matchId).getUserList()) {
+                String userDTOId = userDTO.getUserId();
+                if (!userDTOId.equals(userId))
+                    sendMessageToUser(userDTOId, new TextMessage(JSON.toJSONString(result)));
+            }
+        }
+    }
+
+    @Override
+    public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
+
+    }
+
+    @Override
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception {
+        System.out.println("在线用户数量：" + users.size());
+        String userId = (String) session.getAttributes().get("MATCH_USER_ID");
+        users.remove(userId);
+        MatchManagement.getInstance().removeMatchByUserId(userId);
+        System.out.println("在线用户数量：" + users.size());
+    }
+
+    @Override
+    public boolean supportsPartialMessages() {
+        return false;
+    }
+
+    private boolean sendMessageToUser(String userID, TextMessage message) {
+        if (users.get(userID) == null)
+            return false;
+
+        WebSocketSession session = users.get(userID);
+        if (!session.isOpen())
+            return false;
+
+        try {
+            session.sendMessage(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
+    private void sendMessageToList(List<UserDTO> list, TextMessage message) {
+        for (UserDTO userDTO : list) {
+            String userId = userDTO.getUserId();
+            if (users.get(userId) == null) continue;
+            WebSocketSession session = users.get(userId);
+            if (!session.isOpen()) continue;
+
+            try {
+                session.sendMessage(message);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+}

@@ -1,0 +1,97 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.question;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionRecitation;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionRecitationService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition: 背诵题控制器类
+ * @date 2018\6\29 0029
+ */
+@RestController
+@RequestMapping("/qst/QuestionRecitation")
+public class QuestionRecitationController {
+
+    @Autowired
+    private QuestionRecitationService questionRecitationService;
+
+    /**
+     *获取背诵题列表
+     * @param pageSize    页大小
+     * @param currentPage 当前页数，从1开始
+     * @param request     Http请求
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo GetQuestionRecitationList(Integer pageSize, Integer currentPage,HttpServletRequest request)throws ErrorInfo {
+        RequestInfo requestInfo=WebUtil.parseGetRequest(request);
+        List<QuestionRecitation> retList;
+        if(pageSize == null||currentPage == null){
+            retList = questionRecitationService.findAll();
+        }
+        else if(pageSize <= 0 || currentPage <= 0){
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+        else{
+                retList =questionRecitationService.getQuestionRecitationList(pageSize,currentPage);
+        }
+
+        return new ResponseInfo(requestInfo,retList);
+    }
+    /**
+     * 编辑背诵题信息
+     * @param requestInfo 请求体中的请求信息
+     * @return
+     */
+    @PostMapping("/edit")
+    public ResponseInfo editQuestionRecitation(@RequestBody RequestInfo requestInfo)throws ErrorInfo{
+        JSONObject reqParams = requestInfo.getReqParam();
+        if(reqParams.getString("questionId")==null){
+            // 必须传入题目id
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+        QuestionRecitation toUpdate = JSON.parseObject(reqParams.toJSONString(),QuestionRecitation.class);
+        QuestionRecitation questionRecitation = questionRecitationService.update(toUpdate);
+        return new ResponseInfo(requestInfo,questionRecitation);
+
+    }
+    /**
+     * 添加背诵题
+     * @param requestInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @PostMapping("/add")
+    public ResponseInfo addQuestionRecitation(@RequestBody RequestInfo requestInfo)throws ErrorInfo{
+        JSONObject reqParams = requestInfo.getReqParam();
+        if(reqParams.getString("questionId")==null){
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+        QuestionRecitation toAdd = JSON.parseObject(reqParams.toJSONString(),QuestionRecitation.class);
+        QuestionRecitation questionRecitation = questionRecitationService.create(toAdd);
+        return new ResponseInfo(requestInfo,questionRecitation);
+    }
+    /**
+     * 根据questionId删除背诵题
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/rmQuestionRecitation")
+    public ResponseInfo deleteQuestionRecitation(@RequestParam("questionId")String questionId,@RequestBody RequestInfo requestInfo)throws ErrorInfo{
+       questionRecitationService.deleteQuestionRecitationById(questionId);
+       return new ResponseInfo(requestInfo, CommConst.ERR_SUCCESS.getCode(), CommConst.ERR_SUCCESS.getMessage(), null);
+        }
+
+}

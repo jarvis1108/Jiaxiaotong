@@ -1,0 +1,219 @@
+@import "/static/css/vendor.wxss";
+
+#topup.data-v-c2bd5ac6 {
+  position: absolute;
+  right: 5%;
+  top: 65%;
+  height: 14%;
+  width: 44%;
+}
+#rank.data-v-c2bd5ac6 {
+  position: absolute;
+  right: 5%;
+  top: 49%;
+  height: 14%;
+  width: 44%;
+}
+.pk_btn.data-v-c2bd5ac6 {
+  position: absolute;
+  right: 5%;
+  top: 24%;
+  height: 23%;
+  width: 44%;
+}
+#pk.data-v-c2bd5ac6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#exercise.data-v-c2bd5ac6 {
+  position: absolute;
+  left: 5%;
+  top: 57%;
+  width: 44%;
+  height: 22%;
+}
+.text_34.data-v-c2bd5ac6 {
+  position: absolute;
+  font-family: "PingFang-SC-Medium";
+  font-size: 34rpx;
+  color: rgb(255, 255, 255);
+}
+#dualmeet.data-v-c2bd5ac6 {
+  position: absolute;
+  left: 5%;
+  top: 24%;
+  height: 31%;
+  width: 44%;
+}
+#goldMall.data-v-c2bd5ac6 {
+  position: absolute;
+  left: 5%;
+  top: 81%;
+  height: 14%;
+  width: 44%;
+}
+#groupBattle.data-v-c2bd5ac6 {
+  position: absolute;
+  right: 5%;
+  top: 81%;
+  height: 14%;
+  width: 44%;
+}
+.st-personal-center-level-outer.data-v-c2bd5ac6 {
+  position: absolute;
+  left: 17%;
+  top: 17.5%;
+  height: 24rpx;
+  width: 200rpx;
+  border: 2rpx solid #D2691E;
+  background: white;
+  border-radius: 20rpx;
+}
+.st-personal-center-level-inner.data-v-c2bd5ac6 {
+  position: absolute;
+  height: 100%;
+  background: #D2691E;
+  border-radius: 20rpx;
+}
+#user_coin.data-v-c2bd5ac6 {
+  position: absolute;
+  right: 12%;
+  top: 9%;
+}
+.text_28.data-v-c2bd5ac6 {
+  position: absolute;
+  font-family: "PingFang-SC-Medium";
+  font-size: 28rpx;
+  color: rgb(255, 255, 255);
+  top: 17%;
+}
+#grade.data-v-c2bd5ac6,
+.text_24.data-v-c2bd5ac6 {
+  position: absolute;
+  font-family: "PingFang-SC-Medium";
+  font-size: 24rpx;
+  color: rgb(255, 255, 255);
+  top: 17%;
+}
+#coin_icon.data-v-c2bd5ac6 {
+  position: absolute;
+  top: 9.5%;
+  right: 22%;
+  height: 26rpx;
+  width: 26rpx;
+}
+#user_name.data-v-c2bd5ac6 {
+  font-family: "PingFang-SC-Medium";
+  font-size: 36rpx;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  left: 28%;
+  top: 8%;
+}
+#bg.data-v-c2bd5ac6,
+#background.data-v-c2bd5ac6 {
+  border: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+#person_info.data-v-c2bd5ac6 {
+  position: absolute;
+  top: 2%;
+  left: 5%;
+  height: 20%;
+  width: 90%;
+}
+#user_icon.data-v-c2bd5ac6 {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-color: darkgrey;
+  border: 8rpx solid white;
+}
+.st-grade-dialog-container.data-v-e99682ac {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(207, 235, 255);
+  z-index: 0;
+}
+.st-grade-dialog-list.data-v-e99682ac {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  width: 90%;
+  height: 70%;
+}
+.st-grade-dialog-list ._li.data-v-e99682ac {
+  position: relative;
+  height: 18%;
+  width: 100%;
+  margin-bottom: 5%;
+  opacity: 0;
+  animation: slideFromBottom 1s forwards;
+}
+.st-grade-dialog-li-bg.data-v-e99682ac {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.st-grade-dialog-li-icon.data-v-e99682ac {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  height: 70%;
+  width: 17%;
+}
+.st-grade-dialog-li-name.data-v-e99682ac {
+  position: absolute;
+  top: 15%;
+  font-size: 40rpx;
+  color: white;
+  font-weight: bold;
+  left: 28%;
+}
+.st-grade-dialog-li-text.data-v-e99682ac {
+  position: absolute;
+  top: 55%;
+  font-size: 24rpx;
+  color: rgb(203, 255, 232);
+  font-weight: bold;
+  left: 28%;
+}
+.st-grade-dialog-li-select-icon.data-v-e99682ac {
+  position: absolute;
+  right: 5%;
+  height: 40%;
+  top: 30%;
+  width: 12%;
+  animation: zoomOut 0.5s;
+}
+.st-grade-dialog-selected-tip.data-v-e99682ac {
+  position: absolute;
+  top: 75%;
+  width: 50%;
+  left: 25%;
+  font-size: 32rpx;
+  color: green;
+  text-align: center;
+  animation: opacity 0.5s;
+}
+.st-grade-dialog-selected-btn.data-v-e99682ac {
+  position: absolute;
+  top: 82%;
+  width: 30%;
+  left: 35%;
+  height: 8%;
+  color: #fff;
+  background: green;
+  animation: opacity 0.5s;
+}

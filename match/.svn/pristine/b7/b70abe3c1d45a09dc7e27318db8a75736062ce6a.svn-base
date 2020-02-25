@@ -1,0 +1,23 @@
+<template name="battle-loading$b7ab9a3a">
+  <view class="_div data-v-efc81b5a loading">
+    <view class="_div data-v-efc81b5a st-battle-loading-bg">
+      <image class="_img data-v-efc81b5a st-battle-loading-bg-img" src="/static/images/battleLoading/Earth_bg.png"></image>
+      <view class="_div data-v-efc81b5a st-battle-loading-astronaut">
+        <image class="_img data-v-efc81b5a st-battle-loading-astronaut-bg" src="/static/images/battleLoading/Astronaut.png"></image>
+        <image class="_img data-v-efc81b5a st-battle-loading-astronaut-head" src="/static/images/battleLoading/Highlight.png"></image>
+        <image class="_img data-v-efc81b5a st-battle-loading-astronaut-headimage" src="{{user.headImage}}"></image>
+      </view>
+      <image class="_img data-v-efc81b5a st-battle-loading-planet1" src="/static/images/battleLoading/Planet1.png"></image>
+      <image class="_img data-v-efc81b5a st-battle-loading-planet2" src="/static/images/battleLoading/Planet2.png"></image>
+      <image class="_img data-v-efc81b5a st-battle-loading-planet3" src="/static/images/battleLoading/Planet3.png"></image>
+      <image class="_img data-v-efc81b5a st-battle-loading-planet4" src="/static/images/battleLoading/Planet4.png"></image>
+      <image class="_img data-v-efc81b5a st-battle-loading-planet5" src="/static/images/battleLoading/Planet5.png"></image>
+    </view>
+    <label class="_span data-v-efc81b5a st-battle-loading-username">{{user.wechatName}}同学</label>
+    <label class="_span data-v-efc81b5a st-battle-loading-level">{{level}}</label>
+    <label class="_span data-v-efc81b5a st-battle-loading-timing-tip" wx:if="{{timing%3 === 0}}">匹配中.</label>
+    <label class="_span data-v-efc81b5a st-battle-loading-timing-tip" wx:if="{{timing%3 === 1}}">匹配中..</label>
+    <label class="_span data-v-efc81b5a st-battle-loading-timing-tip" wx:if="{{timing%3 === 2}}">匹配中...</label>
+    <label class="_span data-v-efc81b5a st-battle-loading-timing" wx:if="{{timing >= 3}}">{{timing}}秒</label>
+  </view>
+</template>

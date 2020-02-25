@@ -1,0 +1,12 @@
+<import src="friend-pk-waiting$4e60f29c" />
+<import src="battle-ready$084e6854" />
+<import src="battle$5451b740" />
+<import src="battle-result$3dea7e7a" />
+<template name="index$8d25e22c">
+  <view class="_div data-v-cec56956 st-battle-main-container">
+    <template wx:if="{{step === 'A'}}" bindwaitTimeOut="handleProxy" bindgiveUpBattle="handleProxy" bindbeginBattle="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'3'], $root}}" is="friend-pk-waiting$4e60f29c"></template>
+    <template wx:elif="{{step === 'A-0'}}" data="{{...$root[$kk+'0'], $root}}" is="battle-ready$084e6854"></template>
+    <template wx:elif="{{questionIndex < 6}}" binduserAnswered="handleProxy" bindcutdownout="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'1'], $root}}" is="battle$5451b740"></template>
+    <template wx:else data="{{...$root[$kk+'2'], $root}}" is="battle-result$3dea7e7a"></template>
+  </view>
+</template>

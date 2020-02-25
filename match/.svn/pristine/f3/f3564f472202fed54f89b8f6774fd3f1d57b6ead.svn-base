@@ -1,0 +1,56 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionLib;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:   题库表数据服务层
+ * @date 2018\8\15 0015
+ */
+public interface QuestionLibService {
+    /**
+     * 根据私有题库ID查询该题库
+     * @param questionLibId
+     * @return
+     */
+    QuestionLib getQuestionLibByQuestionLibId(String questionLibId)throws ErrorInfo;
+    /**
+     * 根据所属用户ID查询该题库
+     * @param userId
+     * @return
+     */
+   List<QuestionLib>  getQuestionLibByUserId(String userId)throws ErrorInfo;
+
+    /**
+     * 根据所属用户ID和是否默认题库查询该题库
+     * @param userId
+     * @return
+     */
+    QuestionLib  getQuestionLibByUserIdAndIsDefaultQuestionLib(String userId,Byte isDefaultQuestionLib)throws ErrorInfo;
+
+    /**
+     * 获取所有题库
+     * @return 包含所有题库
+     */
+    List<QuestionLib> findAll();
+
+    /**
+     * 新增题库
+     * @paramQuestionForLib
+     */
+    QuestionLib create(QuestionLib questionLib)throws ErrorInfo;
+    /**
+     * 删除题库
+     * @paramQuestionForLibId
+     */
+    boolean deleteQuestionLibByQuestionLibId(String QuestionLibId)throws ErrorInfo;
+    /**
+     * 修改题库
+     * @param updateQuestionLib
+     */
+    QuestionLib update(QuestionLib updateQuestionLib)throws ErrorInfo;
+
+}

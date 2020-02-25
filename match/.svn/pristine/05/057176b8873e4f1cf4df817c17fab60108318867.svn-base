@@ -1,0 +1,63 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionRecitationForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionRecitationForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionRecitationForLibService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+/**
+ * Created by 孙伟浩 on 2018/9/6.
+ */
+@Service
+public class QuestionRecitationForLibServiceImpl implements QuestionRecitationForLibService {
+
+    @Autowired
+    private QuestionRecitationForLibRepository questionRecitationForLibRepository;
+
+    /**
+     * 存储上传题目
+     *
+     * @param questionRecitationForLib 上传的背诵题目
+     * @return
+     */
+    @Override
+    public void saveQuestionRecitationForLib(QuestionRecitationForLib questionRecitationForLib){
+        questionRecitationForLibRepository.saveAndFlush(questionRecitationForLib);
+    }
+
+    /**
+     * 删除背诵题目
+     *
+     * @param questionRecitationForLibId 要删除的背诵题目Id
+     * @return
+     */
+    @Override
+    public void deleteQuestionRecitationForLib(String questionRecitationForLibId){
+        questionRecitationForLibRepository.deleteById(questionRecitationForLibId);
+    }
+
+    /**
+     * 更新背诵题目
+     *
+     * @param  questionRecitationForLib 更新的背诵题目
+     * @return
+     */
+    @Override
+    public void updateQuestionRecitationForLib(QuestionRecitationForLib questionRecitationForLib){
+        questionRecitationForLibRepository.saveAndFlush(questionRecitationForLib);
+    }
+
+    /**
+     * 根据Id查找背诵题目
+     *
+     * @param  questionRecitationForLibId 背诵题目Id
+     * @return 存在时返回背诵题目,否则返回null
+     */
+    @Override
+    public QuestionRecitationForLib findQuestionRecitationForLibById(String questionRecitationForLibId){
+        return questionRecitationForLibRepository.findById(questionRecitationForLibId).orElse(null);
+    }
+}

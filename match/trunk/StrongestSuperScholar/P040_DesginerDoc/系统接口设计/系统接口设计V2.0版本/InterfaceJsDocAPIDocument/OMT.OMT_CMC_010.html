@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: OMT_CMC_010</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: OMT_CMC_010</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>OMT_CMC_010<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    
+    <h4 class="name" id="OMT_CMC_010"><span class="type-signature"></span>new OMT_CMC_010<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">实现功能：社区模块接口设计</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="OMT_OMT_CMC_010.js.html">OMT/OMT_CMC_010.js</a>, <a href="OMT_OMT_CMC_010.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~addNewMember"><span class="type-signature">(inner) </span>addNewMember<span class="signature">(objParam, objResult)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">实现功能： 为训练营添加新的用户</p>
+    
+
+
+
+<div class="description">
+    **POST**  /api/v1/community/addMember/{newMember}   (newMember为要添加的新用户的id)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>reqId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求类型 固定值为: OMT_CMC_010_addNewMember</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.当前自己用户Id(即使用者的id)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>objResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求的ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求类型</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVO</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVO</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>wechatName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户微信名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lastUserId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户父节点Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>communityRoleId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户在社区中的角色Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>treeNodeCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户的树形结点Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isLeafNode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Byte</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户是否是叶子节点</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>communityRoleName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户在社区中的角色名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>level</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户在社区的等级</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="OMT_OMT_CMC_010.js.html">OMT/OMT_CMC_010.js</a>, <a href="OMT_OMT_CMC_010.js.html#line92">line 92</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>暂无</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getSpecialTrainingMembers"><span class="type-signature">(inner) </span>getSpecialTrainingMembers<span class="signature">(objParam, objResult)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">实现功能：返回训练营所有成员信息</p>
+    
+
+
+
+<div class="description">
+    **POST** /api/v1/community/getMembers
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>reqId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求类型 固定值为: OMT_CMC_010_getSpecialTrainingMembers</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.用户Id</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqPageInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.分页信息
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pageSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.分页信息.页面大小</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>curPage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.分页信息.页码</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>objResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求的ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求类型</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVOList</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVOList[i</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVOList[i].userID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVOList[i].wechatName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户微信名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVOList[i].lastUserId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户父节点Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVOList[i].communityRoleId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户在社区中的角色Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVOList[i].treeNodeCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户的树形结点Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVOList[i].isLeafNode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Byte</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户是否是叶子节点</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVOList[i].communityRoleName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户在社区中的角色名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>membersVOList[i].level</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.训练营成员VO视图列表第i个成员.用户在社区的等级</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="OMT_OMT_CMC_010.js.html">OMT/OMT_CMC_010.js</a>, <a href="OMT_OMT_CMC_010.js.html#line58">line 58</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>暂无</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BAM.BAM_ADM_010.html">BAM_ADM_010</a></li><li><a href="BAM.BAM_ORD_010.html">BAM_ORD_010</a></li><li><a href="BAM.BAM_PRO_010.html">BAM_PRO_010</a></li><li><a href="BAM.BAM_QST_010.html">BAM_QST_010</a></li><li><a href="BAM.BAM_RUL_010.html">BAM_RUL_010</a></li><li><a href="BAM.BAM_USR_010.html">BAM_USR_010</a></li><li><a href="COY.COY_CMC_010.html">COY_CMC_010</a></li><li><a href="INX.INX_VWE_000.html">INX_VWE_000</a></li><li><a href="MAL.MAL_CHG_010.html">MAL_CHG_010</a></li><li><a href="MAL.MAL_CHG_030.html">MAL_CHG_030</a></li><li><a href="MAL.MAL_COM_010.html">MAL_COM_010</a></li><li><a href="MAL.MAL_RHG_030.html">MAL_RHG_030</a></li><li><a href="MAL.MAL_RNG_010.html">MAL_RNG_010</a></li><li><a href="MAL.MAL_RNG_020.html">MAL_RNG_020</a></li><li><a href="MAL.MAL_SLS_010.html">MAL_SLS_010</a></li><li><a href="MAL.MAL_SLS_020.html">MAL_SLS_020</a></li><li><a href="MTH.COM_MTH_RSL.html">COM_MTH_RSL</a></li><li><a href="MTH.MTH_EXC_010.html">MTH_EXC_010</a></li><li><a href="OMT.OMT_CMC_010.html">OMT_CMC_010</a></li><li><a href="QFL.BAM_QRL_010.html">BAM_QRL_010</a></li><li><a href="QFL.QFL_CHO_010.html">QFL_CHO_010</a></li><li><a href="QFL.QFL_CHO_020.html">QFL_CHO_020</a></li><li><a href="QFL.QFL_CHO_030.html">QFL_CHO_030</a></li><li><a href="QFL.QFL_LOG_010.html">QFL_LOG_010</a></li><li><a href="QST.QST_QSL_010.html">QST_QSL_010</a></li><li><a href="QST.QST_RFL_010.html">QST_RFL_010</a></li><li><a href="STA.SYS_RAN_010.html">SYS_RAN_010</a></li><li><a href="SYS.SYS_FBK_010.html">SYS_FBK_010</a></li><li><a href="SYS.SYS_PER_010.html">SYS_PER_010</a></li><li><a href="SYS.SYS_PER_080.html">SYS_PER_080</a></li></ul><h3>Namespaces</h3><ul><li><a href="BAM.html">BAM</a></li><li><a href="INX.html">INX</a></li><li><a href="MAL.html">MAL</a></li><li><a href="MTH.html">MTH</a></li><li><a href="STA.html">STA</a></li><li><a href="SYS.html">SYS</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Nov 25 2018 19:29:47 GMT+0800 (GMT+08:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<import src="questioncard$39029e89" />
+<import src="cut_down$6e790812" />
+<template name="index$946c8d6e">
+  <view class="_div data-v-b930fba0 bs-container-competition-div">
+    <image class="_img data-v-b930fba0 bs-bg-img" src="/copy-asset/static/images/bg@3x.png"></image>
+    <image class="_img data-v-b930fba0 bs-e_score_photo" src="/copy-asset/static/images/battle/Scorethelabel2@3x.png"></image>
+    <image class="_img data-v-b930fba0 bs-p_score_photo" src="/copy-asset/static/images/battle/Scorethelabel1@3x.png"></image>
+    <view class="_div data-v-b930fba0 bs-player-div">
+      <image class="_img data-v-b930fba0 bs-score_hoop-img" src="/copy-asset/static/images/battle/Scorecircle@3x.png"></image>
+      <view class="_div data-v-b930fba0 topBox">
+        <view class="_div data-v-b930fba0 topCircle" style=" {{('transform:' + ('rotate(' + eTopRotation + 'deg);') + ';')}}">
+          <image class="_img data-v-b930fba0 c1" src="/copy-asset/static/images/battle/Answerprogresscircle-bg@3x.png"></image>
+        </view>
+      </view>
+      <view class="_div data-v-b930fba0 bottomBox">
+        <view class="_div data-v-b930fba0 bottomCircle" style=" {{('transform:' + ('rotate(' + eBottomRotation + 'deg);') + ';')}}">
+          <image class="_img data-v-b930fba0 c2" src="/copy-asset/static/images/battle/Answerprogresscircle-bg@3x.png"></image>
+        </view>
+      </view>
+      <view class="_div data-v-b930fba0 bs-photo-div">
+        <image class="_img data-v-b930fba0 photo_hoop" src="/copy-asset/static/images/battle/Pictureframe@3x.png"></image>
+        <image class="_img data-v-b930fba0 user_photo" src="{{playerIcon}}"></image>
+      </view>
+    </view>
+    <view class="_div data-v-b930fba0 bs-pName-div bs-text1">{{ playerName }}</view>
+    <view class="_div data-v-b930fba0 bs-pScore-div bs-text2">{{ playerScore }}</view>
+    <view class="_div data-v-b930fba0 bs-enemy-div">
+      <image class="_img data-v-b930fba0 bs-score_hoop-img" src="/copy-asset/static/images/battle/Scorecircle@3x.png"></image>
+      <view class="_div data-v-b930fba0 topBox">
+        <view class="_div data-v-b930fba0 topCircle" style=" {{('transform:' + ('rotate(' + eTopRotation + 'deg);') + ';')}}">
+          <image class="_img data-v-b930fba0 c1" src="/copy-asset/static/images/battle/Answerprogresscircle-bg@3x.png"></image>
+        </view>
+      </view>
+      <view class="_div data-v-b930fba0 bottomBox">
+        <view class="_div data-v-b930fba0 bottomCircle" style=" {{('transform:' + ('rotate(' + eBottomRotation + 'deg);') + ';')}}">
+          <image class="_img data-v-b930fba0 c2" src="/copy-asset/static/images/battle/Answerprogresscircle-bg@3x.png"></image>
+        </view>
+      </view>
+      <view class="_div data-v-b930fba0 bs-photo-div">
+        <image class="_img data-v-b930fba0 photo_hoop" src="/copy-asset/static/images/battle/Pictureframe@3x.png"></image>
+        <image class="_img data-v-b930fba0 user_photo" src="{{enemyIcon}}"></image>
+      </view>
+    </view>
+    <view class="_div data-v-b930fba0 bs-eName-div bs-text1">{{ enemyName }}</view>
+    <label class="_span data-v-b930fba0 bs-eScore-div bs-text2">{{ enemyScore }}</label>
+    <view class="_div data-v-b930fba0 bs-question-card-div" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+      <template data="{{...$root[$kk+'0'], $root}}" is="questioncard$39029e89"></template>
+    </view>
+    <view class="_div data-v-b930fba0 bs-cut-down-div">
+      <template data="{{...$root[$kk+'1'], $root}}" is="cut_down$6e790812"></template>
+    </view>
+  </view>
+</template>

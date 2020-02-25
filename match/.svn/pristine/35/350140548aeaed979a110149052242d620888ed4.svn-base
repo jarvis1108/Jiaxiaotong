@@ -1,0 +1,73 @@
+package com.dxtwangxiao.strongestsuperscholar.module.community.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.community.entity.CommunityRole;
+import com.dxtwangxiao.strongestsuperscholar.module.community.service.CommunityRoleService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class CommunityRoleServiceImplTest {
+
+    @Autowired
+    private CommunityRoleService service;
+
+    @Test
+    public void create()throws ErrorInfo {
+        CommunityRole communityRole=new CommunityRole();
+        communityRole.setCommunityRoleId("235");
+        communityRole.setCommunityRoleName("ddd");
+        CommunityRole result=service.create(communityRole);
+        assertNotNull(result);
+        System.out.println(result);
+
+    }
+
+    @Test
+    public void findAll() throws ErrorInfo{
+        List<CommunityRole> communityRoles = service.findAll();
+        assertNotEquals(0, communityRoles.size());
+        communityRoles.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll1()throws ErrorInfo {
+        List<CommunityRole> communityRoles = service.findAll(1,1);
+        assertNotEquals(0, communityRoles.size());
+        communityRoles.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void findById()throws ErrorInfo {
+        String communityRoleId="123";
+        CommunityRole communityRole=service.findById(communityRoleId);
+        assertNotNull(communityRole);
+        System.out.println(communityRole);
+    }
+
+    @Test
+    public void updateById() throws ErrorInfo{
+        CommunityRole communityRole=new CommunityRole();
+        communityRole.setCommunityRoleId("123");
+        communityRole.setCommunityRoleName("dds");
+        CommunityRole result=service.update(communityRole);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteById() throws ErrorInfo{
+        String communityRoleId="3";
+        service.deleteById(communityRoleId);
+
+    }
+}

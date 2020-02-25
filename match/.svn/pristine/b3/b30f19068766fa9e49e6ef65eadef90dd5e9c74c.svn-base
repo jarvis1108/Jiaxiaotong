@@ -1,0 +1,90 @@
+package com.dxtwangxiao.strongestsuperscholar.module.community.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.community.dao.CommunityRoleRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.community.entity.CommunityRole;
+import com.dxtwangxiao.strongestsuperscholar.module.community.service.CommunityRoleService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Slf4j
+public class CommunityRoleServiceImpl implements CommunityRoleService {
+    @Autowired
+    private CommunityRoleRepository communityRoleRepository;
+
+    @Transactional
+    @Override
+    public CommunityRole create(CommunityRole communityRole)throws ErrorInfo {
+        if(communityRole==null) {
+            throw new ErrorInfo("E_201807300855_57_011", "社区角色为空", null);
+        }
+
+        return communityRoleRepository.save(communityRole);
+
+
+    }
+    @Transactional
+    @Override
+    public List<CommunityRole> findAll() throws ErrorInfo{
+        return communityRoleRepository.findAll();
+
+
+    }
+    @Transactional
+    @Override
+    public List<CommunityRole> findAll(Integer currentPage, Integer pageSize) {
+        if(currentPage == null || pageSize == null){
+            return communityRoleRepository.findAll();
+        }else{
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<CommunityRole> communityRoles = communityRoleRepository.findAll(pageable);
+            return communityRoles.getContent();
+        }
+    }
+    @Transactional
+    @Override
+    public CommunityRole findById(String communityRoleId)throws ErrorInfo {
+        CommunityRole communityRole=communityRoleRepository.findByCommunityRoleId(communityRoleId);
+        if(communityRole==null){
+            throw new ErrorInfo("E_201807300855_57_011", "社区角色为空", null);
+        }
+        return  communityRole;
+    }
+
+    @Transactional
+    @Override
+    public CommunityRole update(CommunityRole communityRole)throws ErrorInfo {
+        if(communityRole==null){
+            throw new ErrorInfo("E_201807300855_57_011", "社区角色为空", null);
+        }
+        CommunityRole communityRole1=communityRoleRepository.findByCommunityRoleId(communityRole.getCommunityRoleId());
+        if(communityRole1==null){
+            throw new ErrorInfo("E_201807300855_57_012", "社区角色不存在", null);
+        }
+        UpdateUtil.copyProperties(communityRole, communityRole1);
+        return  communityRoleRepository.save(communityRole1);
+    }
+
+    @Transactional
+    @Override
+    public boolean deleteById(String communityRoleId)throws ErrorInfo {
+        CommunityRole communityRole = communityRoleRepository.findByCommunityRoleId(communityRoleId);
+
+        if (communityRole== null) {
+            throw new ErrorInfo("E_201807300855_57_012", "社区角色不存在", null);
+        }
+        communityRole.setIsValid(Byte.valueOf("0"));
+        communityRoleRepository.save(communityRole);
+        return true;
+    }
+}

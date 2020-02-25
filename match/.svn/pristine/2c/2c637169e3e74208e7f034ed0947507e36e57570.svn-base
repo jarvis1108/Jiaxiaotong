@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dxtwangxiao.questionchecktool.dao.SubjectVOMapper">
+    <resultMap id="BaseResultMap" type="com.dxtwangxiao.questionchecktool.vo.SubjectVO">
+        <result column="SubjectID" jdbcType="VARCHAR" property="subjectID"/>
+        <result column="SubjectNo" jdbcType="VARCHAR" property="subjectNo"/>
+        <result column="InitID" jdbcType="VARCHAR" property="initID"/>
+        <result column="InitNo" jdbcType="VARCHAR" property="initNo"/>
+        <result column="IsCorrect" jdbcType="TINYINT" property="isCorrect"/>
+        <result column="SubjectName" jdbcType="VARCHAR" property="subjectName"/>
+        <result column="SubjectShortName" jdbcType="VARCHAR" property="subjectShortName"/>
+        <result column="GradePhaseID" jdbcType="VARCHAR" property="gradePhaseID"/>
+        <result column="GradePhaseName" jdbcType="VARCHAR" property="gradePhaseName"/>
+        <result column="GradeID" jdbcType="VARCHAR" property="gradeID"/>
+        <result column="GradeName" jdbcType="VARCHAR" property="gradeName"/>
+        <result column="CourseID" jdbcType="VARCHAR" property="courseID"/>
+        <result column="CourseName" jdbcType="VARCHAR" property="courseName"/>
+        <result column="BookVerID" jdbcType="VARCHAR" property="bookVerID"/>
+        <result column="Booklet" jdbcType="VARCHAR" property="booklet"/>
+        <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="CreateUser" jdbcType="VARCHAR" property="createUser"/>
+        <result column="LastUpdTime" jdbcType="TIMESTAMP" property="lastUpdTime"/>
+        <result column="LastUpdUser" jdbcType="VARCHAR" property="lastUpdUser"/>
+        <result column="IsValid" jdbcType="TINYINT" property="isValid"/>
+        <result column="Remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+
+    <resultMap id="GradePhaseResultMap" type="com.dxtwangxiao.questionchecktool.vo.GradePhaseInfoVO">
+        <result column="GradePhaseID" property="gradePhaseID"/>
+        <result column="GradePhaseName" property="gradePhaseName"/>
+    </resultMap>
+
+    <resultMap id="GradeInfoMap" type="com.dxtwangxiao.questionchecktool.vo.GradeInfoVO">
+        <result column="GradeID" property="gradeID"/>
+        <result column="GradeName" property="gradeName"/>
+    </resultMap>
+
+    <select id="selectGradeInfoByGradePhaseID" resultMap="GradeInfoMap">
+        select distinct GradeID, GradeName from Dvlp_v_Init_Subject
+        where GradePhaseID = #{gradePhaseID} and GradeID is not null
+    </select>
+
+    <select id="selectAllGradePhaseInfo" resultMap="GradePhaseResultMap">
+        select distinct GradePhaseID, GradePhaseName from Dvlp_v_Init_Subject
+        where GradePhaseID is not null
+    </select>
+
+    <select id="selectSubjectByID" resultMap="BaseResultMap">
+        select * from Dvlp_v_Init_Subject where SubjectID = #{subjectID}
+        order by SubjectName
+    </select>
+
+    <select id="selectSubjectByGradeID" resultMap="BaseResultMap">
+        select * from Dvlp_v_Init_Subject where GradeID = #{gradeID}
+        order by SubjectName
+    </select>
+
+    <select id="selectSubjectByGradePhaseID" resultMap="BaseResultMap">
+        select * from Dvlp_v_Init_Subject where GradePhaseID = #{gradePhaseID}
+        order by SubjectName
+    </select>
+
+
+    <select id="selectBasicSubject" resultMap="BaseResultMap">
+        select * from Dvlp_v_Init_Subject where Booklet = "基础知识";
+    </select>
+
+</mapper>

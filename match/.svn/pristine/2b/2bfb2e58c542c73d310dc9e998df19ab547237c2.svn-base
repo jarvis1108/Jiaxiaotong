@@ -1,0 +1,30 @@
+package com.dxtwangxiao.strongestsuperscholar.module.scholarship.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.scholarship.dao.ScholarshipRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.scholarship.entity.Scholarship;
+import com.dxtwangxiao.strongestsuperscholar.module.scholarship.service.ScholarshipService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Created by 孙伟浩 on 2018/9/26.
+ */
+@Service
+public class ScholarshipServiceImpl implements ScholarshipService {
+
+    @Autowired
+    ScholarshipRepository scholarshipRepository;
+
+    /**
+     * 获取奖学金列表
+     *
+     * @param
+     * @return   奖学金列表
+     */
+    @Override
+    public List<Scholarship> listScholarship(){
+       return  scholarshipRepository.findAll();
+    }
+}

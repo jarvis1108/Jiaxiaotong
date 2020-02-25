@@ -1,0 +1,69 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserSelectedCourse;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition: 用户课程选择表服务层
+ * @date 2018\7\27 0027
+ */
+public interface UserSelectedCourseService {
+    /**
+     * 获取所有用户课程选择列表
+     * @return
+     */
+    List<UserSelectedCourse> findAll();
+
+    /**
+     * 创建用户课程选择表
+     * @param newUserSelectedCourse
+     * @return
+     * @throws ErrorInfo
+     */
+    UserSelectedCourse create(UserSelectedCourse newUserSelectedCourse) throws ErrorInfo;
+
+    /**
+     * 更新用户课程选择列表
+     * @param updatedUserSelectedCourse
+     * @return
+     * @throws ErrorInfo
+     */
+    UserSelectedCourse update(UserSelectedCourse updatedUserSelectedCourse) throws ErrorInfo;
+
+    /**
+     * 根据userSelectedId删除用户课程选择表
+     * @param userSelectedId
+     * @return
+     * @throws ErrorInfo
+     */
+    boolean deleteByUserSelectedId(String userSelectedId) throws ErrorInfo;
+
+    /**
+     * 根据userSelectedId查找用户课程选择表
+     * @param userSelectedId
+     * @return
+     * @throws ErrorInfo
+     */
+    UserSelectedCourse findByUserSelectedId(String userSelectedId) throws ErrorInfo;
+
+    /**
+     * 根据userSelectedId、selectedType查找用户课程选择列表
+     * @param userId
+     * @param selectedType
+     * @return
+     * @throws ErrorInfo
+     */
+    List<UserSelectedCourse> findByUserIdAndSelectedType(String userId,String selectedType) throws ErrorInfo;
+
+    /**
+     * 根据userSelectedId查找用户课程选择列表
+     * @param userId
+     * @return
+     * @throws ErrorInfo
+     */
+    List<UserSelectedCourse> findByUserId(String userId) throws ErrorInfo;
+
+}

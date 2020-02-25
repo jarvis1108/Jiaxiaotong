@@ -1,0 +1,26 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.CourseInfo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @Author: meiyu
+ * @Date: 2018/7/13 15:26
+ */
+@Repository
+public interface CourseInfoRepository extends CrudRepository<CourseInfo,String> {
+    List<CourseInfo> findAll();
+
+    Page<CourseInfo> findAll(Pageable pageable);
+
+    CourseInfo save(CourseInfo courseInfo);
+
+    CourseInfo findCourseInfoByCourseId(String courseId);
+
+    CourseInfo findByCourseName(String courseName);
+}

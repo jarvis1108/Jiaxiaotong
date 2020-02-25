@@ -1,0 +1,30 @@
+package com.dxtwangxiao.strongestsuperscholar.module.community.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.community.entity.SpecialTraining;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface SpecialTrainingRepository extends CrudRepository<SpecialTraining, String> {
+    Page<SpecialTraining> findAll(Pageable pageable);
+
+    List<SpecialTraining> findAll();
+
+    SpecialTraining findBySpecialTrainingId(String specialTrainingId);
+
+    SpecialTraining save(SpecialTraining specialTraining);
+
+    void deleteBySpecialTrainingId(String specialTrainingId);
+
+    /**
+     * 根据用户id获取其特训营所有成员信息。
+     * @param userId
+     * @return
+     */
+
+    List<SpecialTraining> findByUserId(String userId);
+}

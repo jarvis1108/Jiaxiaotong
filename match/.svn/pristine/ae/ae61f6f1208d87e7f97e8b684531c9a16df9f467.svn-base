@@ -1,0 +1,586 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>群比赛（对战中）--变更后</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/群比赛（对战中）--变更后/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/群比赛（对战中）--变更后/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u606" class="ax_default box_1">
+        <div id="u606_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u607" class="ax_default" data-left="137" data-top="20" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u608" class="ax_default" data-left="137" data-top="20" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u609" class="ax_default box_2">
+            <div id="u609_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u610" class="ax_default image1">
+          <img id="u610_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u611" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u611_div" class=""></div>
+          <div id="u611_text" class="text ">
+            <p><span>群比赛</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u612" class="ax_default image2">
+          <img id="u612_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u613" class="ax_default image">
+          <img id="u613_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u614" class="ax_default label">
+        <div id="u614_div" class=""></div>
+        <div id="u614_text" class="text ">
+          <p><span>下面读音错误的一组是？</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u615" class="ax_default button">
+        <div id="u615_div" class=""></div>
+        <div id="u615_text" class="text ">
+          <p><span>解(xiè)狐</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u616" class="ax_default button">
+        <div id="u616_div" class=""></div>
+        <div id="u616_text" class="text ">
+          <p><span>押(jiě)解</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u617" class="ax_default button">
+        <div id="u617_div" class=""></div>
+        <div id="u617_text" class="text ">
+          <p><span>解</span><span>(jiě)</span><span>说员</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u618" class="ax_default button">
+        <div id="u618_div" class=""></div>
+        <div id="u618_text" class="text ">
+          <p><span>解</span><span>(jiě)</span><span>落三秋</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u619" class="ax_default box_1">
+        <div id="u619_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u620" class="ax_default" data-left="534" data-top="20" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u621" class="ax_default" data-left="534" data-top="20" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u622" class="ax_default box_2">
+            <div id="u622_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u623" class="ax_default image1">
+          <img id="u623_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u624" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u624_div" class=""></div>
+          <div id="u624_text" class="text ">
+            <p><span>群比赛</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u625" class="ax_default image2">
+          <img id="u625_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u626" class="ax_default image">
+          <img id="u626_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u627" class="ax_default label">
+        <div id="u627_div" class=""></div>
+        <div id="u627_text" class="text ">
+          <p><span>请背诵下面横线中空缺的句子</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u628" class="ax_default paragraph">
+        <div id="u628_div" class=""></div>
+        <div id="u628_text" class="text ">
+          <p style="font-size:18px;"><span style="font-family:'PingFangSC-Semibold', 'PingFang SC Semibold', 'PingFang SC';font-weight:600;">水龙吟</span><span style="font-family:'Arial-BoldMT', 'Arial Bold', 'Arial';font-weight:700;">·</span><span style="font-family:'PingFangSC-Semibold', 'PingFang SC Semibold', 'PingFang SC';font-weight:600;">次韵章质夫杨花词</span></p><p><span style="font-family:'PingFangSC-Semibold', 'PingFang SC Semibold', 'PingFang SC';font-weight:600;font-size:18px;">苏轼</span></p><p style="font-size:16px;"><span style="font-family:'ArialMT', 'Arial';font-weight:400;"><br></span></p><p style="font-size:16px;"><span style="font-family:'PingFangSC-Regular', 'PingFang SC';font-weight:400;">似花还似非花，也无人惜从教坠。</span></p><p style="font-size:16px;"><span style="font-family:'PingFangSC-Regular', 'PingFang SC';font-weight:400;">__________，__________，_____________。</span></p><p style="font-size:16px;"><span style="font-family:'PingFangSC-Regular', 'PingFang SC';font-weight:400;">萦损柔肠，困酣娇眼，欲开还闭。</span></p><p style="font-size:16px;"><span style="font-family:'PingFangSC-Regular', 'PingFang SC';font-weight:400;">梦随风万里，寻郎去处，又还被、莺呼起。</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u629" class="ax_default icon">
+        <img id="u629_img" class="img " src="images/对抗赛（选择题）/u279.png"/>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u630" class="ax_default label">
+        <div id="u630_div" class=""></div>
+        <div id="u630_text" class="text ">
+          <p><span>正在录音</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u631" class="ax_default box_1">
+        <div id="u631_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u632" class="ax_default" data-left="929" data-top="20" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u633" class="ax_default" data-left="929" data-top="20" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u634" class="ax_default box_2">
+            <div id="u634_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u635" class="ax_default image1">
+          <img id="u635_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u636" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u636_div" class=""></div>
+          <div id="u636_text" class="text ">
+            <p><span>群比赛</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u637" class="ax_default image2">
+          <img id="u637_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u638" class="ax_default image">
+          <img id="u638_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u639" class="ax_default _文本段落">
+        <div id="u639_div" class=""></div>
+        <div id="u639_text" class="text ">
+          <p><span style="font-family:'ArialMT', 'Arial';">960</span><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">分</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u640" class="ax_default _文本段落">
+        <div id="u640_div" class=""></div>
+        <div id="u640_text" class="text ">
+          <p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">答对</span><span style="font-family:'ArialMT', 'Arial';">4</span><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">题</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u641" class="ax_default" data-left="958" data-top="329" data-width="308" data-height="44">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u642" class="ax_default shape">
+          <div id="u642_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u643" class="ax_default shape">
+          <div id="u643_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u644" class="ax_default shape">
+          <div id="u644_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u645" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u645_img" class="img " src="images/群比赛（对战中）--变更后/u645.png"/>
+          <div id="u645_text" class="text ">
+            <p><span>排名</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u646" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u646_img" class="img " src="images/群比赛（对战中）--变更后/u646.png"/>
+          <div id="u646_text" class="text ">
+            <p><span>头像</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u647" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u647_img" class="img " src="images/群比赛（对战中）--变更后/u647.png"/>
+          <div id="u647_text" class="text ">
+            <p><span>得分</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u648" class="ax_default" data-left="958" data-top="373" data-width="308" data-height="44">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u649" class="ax_default shape">
+          <div id="u649_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u650" class="ax_default shape">
+          <div id="u650_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u651" class="ax_default shape">
+          <div id="u651_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u652" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u652_img" class="img " src="images/群比赛（对战中）--变更后/u645.png"/>
+          <div id="u652_text" class="text ">
+            <p><span>排名</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u653" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u653_img" class="img " src="images/群比赛（对战中）--变更后/u646.png"/>
+          <div id="u653_text" class="text ">
+            <p><span>头像</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u654" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u654_img" class="img " src="images/群比赛（对战中）--变更后/u647.png"/>
+          <div id="u654_text" class="text ">
+            <p><span>得分</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u655" class="ax_default" data-left="958" data-top="417" data-width="308" data-height="44">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u656" class="ax_default shape">
+          <div id="u656_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u657" class="ax_default shape">
+          <div id="u657_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u658" class="ax_default shape">
+          <div id="u658_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u659" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u659_img" class="img " src="images/群比赛（对战中）--变更后/u645.png"/>
+          <div id="u659_text" class="text ">
+            <p><span>排名</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u660" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u660_img" class="img " src="images/群比赛（对战中）--变更后/u646.png"/>
+          <div id="u660_text" class="text ">
+            <p><span>头像</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u661" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u661_img" class="img " src="images/群比赛（对战中）--变更后/u647.png"/>
+          <div id="u661_text" class="text ">
+            <p><span>得分</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u662" class="ax_default" data-left="958" data-top="461" data-width="308" data-height="44">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u663" class="ax_default shape">
+          <div id="u663_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u664" class="ax_default shape">
+          <div id="u664_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u665" class="ax_default shape">
+          <div id="u665_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u666" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u666_img" class="img " src="images/群比赛（对战中）--变更后/u645.png"/>
+          <div id="u666_text" class="text ">
+            <p><span>排名</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u667" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u667_img" class="img " src="images/群比赛（对战中）--变更后/u646.png"/>
+          <div id="u667_text" class="text ">
+            <p><span>头像</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u668" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u668_img" class="img " src="images/群比赛（对战中）--变更后/u647.png"/>
+          <div id="u668_text" class="text ">
+            <p><span>得分</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u669" class="ax_default" data-left="958" data-top="505" data-width="308" data-height="44">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u670" class="ax_default shape">
+          <div id="u670_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u671" class="ax_default shape">
+          <div id="u671_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u672" class="ax_default shape">
+          <div id="u672_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u673" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u673_img" class="img " src="images/群比赛（对战中）--变更后/u645.png"/>
+          <div id="u673_text" class="text ">
+            <p><span>排名</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u674" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u674_img" class="img " src="images/群比赛（对战中）--变更后/u646.png"/>
+          <div id="u674_text" class="text ">
+            <p><span>头像</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u675" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u675_img" class="img " src="images/群比赛（对战中）--变更后/u647.png"/>
+          <div id="u675_text" class="text ">
+            <p><span>得分</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u676" class="ax_default" data-left="958" data-top="549" data-width="308" data-height="44">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u677" class="ax_default shape">
+          <div id="u677_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u678" class="ax_default shape">
+          <div id="u678_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u679" class="ax_default shape">
+          <div id="u679_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u680" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u680_img" class="img " src="images/群比赛（对战中）--变更后/u645.png"/>
+          <div id="u680_text" class="text ">
+            <p><span>排名</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u681" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u681_img" class="img " src="images/群比赛（对战中）--变更后/u646.png"/>
+          <div id="u681_text" class="text ">
+            <p><span>头像</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u682" class="ax_default _28号字_页面备注信息及列表的表头说明文字__）">
+          <img id="u682_img" class="img " src="images/群比赛（对战中）--变更后/u647.png"/>
+          <div id="u682_text" class="text ">
+            <p><span>得分</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u683" class="ax_default button">
+        <div id="u683_div" class=""></div>
+        <div id="u683_text" class="text ">
+          <p><span>继续挑战</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u684" class="ax_default button">
+        <div id="u684_div" class=""></div>
+        <div id="u684_text" class="text ">
+          <p><span>分享结果</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u685" class="ax_default label">
+        <div id="u685_div" class=""></div>
+        <div id="u685_text" class="text ">
+          <p><span>金币：&nbsp; &nbsp; +0</span></p><p><span>绩点：&nbsp; &nbsp; +5</span></p><p><span>学点：&nbsp; &nbsp; -30s</span></p><p><span>经验：&nbsp; &nbsp; +2</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u686" class="ax_default" data-left="291" data-top="114" data-width="67" data-height="67">
+
+        <!-- Unnamed (Group) -->
+        <div id="u687" class="ax_default" data-left="291" data-top="114" data-width="67" data-height="67">
+
+          <!-- Unnamed (Pie Chart) -->
+          <div id="u688" class="ax_default refs-chart-data">
+            <img id="u688_img" class="img " src="images/对抗赛（选择题）/u227.png"/>
+          </div>
+
+          <!-- Unnamed (Pie Chart) -->
+          <div id="u689" class="ax_default refs-chart-data">
+            <img id="u689_img" class="img " src="images/对抗赛（选择题）/u228.png"/>
+          </div>
+
+          <!-- Unnamed (Ellipse) -->
+          <div id="u690" class="ax_default ellipse">
+            <img id="u690_img" class="img " src="images/对抗赛（选择题）/u229.png"/>
+            <div id="u690_text" class="text ">
+              <p><span>9</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u691" class="ax_default" data-left="680" data-top="108" data-width="67" data-height="67">
+
+        <!-- Unnamed (Group) -->
+        <div id="u692" class="ax_default" data-left="680" data-top="108" data-width="67" data-height="67">
+
+          <!-- Unnamed (Pie Chart) -->
+          <div id="u693" class="ax_default refs-chart-data">
+            <img id="u693_img" class="img " src="images/对抗赛（选择题）/u227.png"/>
+          </div>
+
+          <!-- Unnamed (Pie Chart) -->
+          <div id="u694" class="ax_default refs-chart-data">
+            <img id="u694_img" class="img " src="images/对抗赛（选择题）/u228.png"/>
+          </div>
+
+          <!-- Unnamed (Ellipse) -->
+          <div id="u695" class="ax_default ellipse">
+            <img id="u695_img" class="img " src="images/对抗赛（选择题）/u229.png"/>
+            <div id="u695_text" class="text ">
+              <p><span>9</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u696" class="ax_default label">
+        <div id="u696_div" class=""></div>
+        <div id="u696_text" class="text ">
+          <p><span>等待群成员完成答题</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u697" class="ax_default label">
+        <div id="u697_div" class=""></div>
+        <div id="u697_text" class="text ">
+          <p><span>等待群成员完成答题</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

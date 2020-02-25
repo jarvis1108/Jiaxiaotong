@@ -1,0 +1,79 @@
+package com.dxtwangxiao.strongestsuperscholar.web.vo;
+
+/**
+ * 通用异常类
+ * 无论是否错误，错误码必须提供。一般返回具体错误，因此一般情况下错误码中的objInnerErr为null
+ * <p>
+ * Created by Devin
+ * 2018-06-28 下午 01:07
+ */
+public class ErrorInfo extends Exception {
+    /**
+     * 错误码
+     */
+    private String strErrCode;
+
+    /**
+     * 错误信息
+     */
+    private String strErrMsg;
+
+    /**
+     * 内部错识信息
+     */
+    private ErrorInfo objInnerError;
+
+    /**
+     * 缺省无参构造函数
+     */
+    public ErrorInfo() {
+
+    }
+
+    /**
+     * 构造函数（构造链基础实现）
+     * @param strErrCode        错误码
+     * @param strErrMsg         错误信息
+     * @param objInnerError     内部异常
+     */
+    public ErrorInfo(String strErrCode, String strErrMsg, ErrorInfo objInnerError) {
+        super(strErrMsg);
+        this.InitData(strErrCode,strErrMsg,objInnerError);
+    }
+
+    public String getStrErrCode() {
+        return strErrCode;
+    }
+
+    public void setStrErrCode(String strErrCode) {
+        this.strErrCode = strErrCode;
+    }
+
+    public String getStrErrMsg() {
+        return strErrMsg;
+    }
+
+    public void setStrErrMsg(String strErrMsg) {
+        this.strErrMsg = strErrMsg;
+    }
+
+    public ErrorInfo getObjInnerError() {
+        return objInnerError;
+    }
+
+    public void setObjInnerError(ErrorInfo objInnerError) {
+        this.objInnerError = objInnerError;
+    }
+
+    /**
+     *  数据实初始化
+     * @param strErrCode        错误码
+     * @param strErrMsg         错误信息
+     * @param objInnerError     内部错误
+     */
+    protected void InitData(String strErrCode, String strErrMsg, ErrorInfo objInnerError){
+        this.strErrCode = strErrCode;
+        this.strErrMsg = strErrMsg;
+        this.objInnerError = objInnerError;
+    }
+}

@@ -1,0 +1,42 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionMultipleChoiceForLib;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:   私有题目库选择题题目表
+ * @date 2018\8\15 0015
+ */
+public interface QuestionMultipleChoiceForLibService {
+    /**
+     * 根据私有试题ID获得多选题
+     * @param questionForLibId
+     * @return
+     */
+   QuestionMultipleChoiceForLib getQuestionMultipleChoiceForLibByQuestionForLibId(String questionForLibId)throws ErrorInfo;
+
+    /**
+     * 获取所有选择题题目表
+     * @return 包含所有选择题题目表
+     */
+    List<QuestionMultipleChoiceForLib> findAll();
+
+    /**
+     * 新增选择题题目表
+     * @paramQuestionForLib
+     */
+   QuestionMultipleChoiceForLib create(QuestionMultipleChoiceForLib  questionMultipleChoiceForLib)throws ErrorInfo;
+    /**
+     * 删除选择题题目表
+     * @paramQuestionForLibId
+     */
+    boolean deleteQuestionMultipleChoiceForLibByQuestionForLibId(String questionForLibId)throws ErrorInfo;
+    /**
+     * 修改选择题题目表
+     * @param updateQuestionMultipleChoiceForLib
+     */
+   QuestionMultipleChoiceForLib update(QuestionMultipleChoiceForLib updateQuestionMultipleChoiceForLib)throws ErrorInfo;
+}

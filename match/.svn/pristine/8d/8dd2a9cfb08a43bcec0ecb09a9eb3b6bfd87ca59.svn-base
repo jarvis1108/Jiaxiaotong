@@ -1,0 +1,188 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.question;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.Question;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionRecitationForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionForLibService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionRecitationForLibService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.RecitationQuestionForLibService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.RecitationQuestionForLib;
+import com.dxtwangxiao.strongestsuperscholar.web.error.CommonError;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResultData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by 孙伟浩 on 2018/9/8.
+ */
+@RestController
+@RequestMapping("api/v1/qst/questionRecitationForLib")
+@Transactional
+public class QuestionRecitationForlibController {
+
+    @Autowired
+    private QuestionRecitationForLibService questionRecitationForLibService;
+
+    @Autowired
+    private QuestionForLibService questionForLibService;
+
+    @Autowired
+    private RecitationQuestionForLibService recitationQuestionForLibService;
+
+    /**
+     * 存储题目
+     *
+     * @param  requestInfo 请求信息
+     * @return ResponseInfo
+     */
+    @PostMapping
+    public ResponseInfo save(@RequestBody RequestInfo requestInfo) throws Exception{
+
+        JSONObject reqParam = requestInfo.getReqParam();
+        JSONObject reqUserInfo = requestInfo.getReqUserInfo();
+
+        String questionForlibId  = UUIDUtil.getUUID();
+        String questionLibId = reqParam.getString("questionLibId");
+        String fromQuestionId = reqParam.getString("fromQuestionId");
+        String answer = reqParam.getString("answer");
+        Timestamp createTime = new Timestamp(DateUtil.getCurrentTimeStamp());
+        String createUser = reqUserInfo.getString("userId");
+        Byte isValid = 1;
+
+        try {
+            //存储questionForLib
+            QuestionForLib questionForLib =
+                    new QuestionForLib(questionForlibId,questionForlibId,questionForlibId,questionLibId,questionLibId,
+                            reqParam.getByte("isPublic"),reqParam.getString("requestTypeId"),reqParam.getString("knowledgeId"),
+                            reqParam.getString("courseId"),reqParam.getString("gradeId"),
+                            reqParam.getString("question"),reqParam.getString("provider"),reqParam.getString("personInCharge"),
+                            reqParam.getString("reference"),reqParam.getInteger("questionLevel"),reqParam.getDouble("difficulty"),
+                            reqParam.getDouble("coinWeight"),reqParam.getDouble("gpWeight"),reqParam.getString("questionAnalyze"),
+                            reqParam.getInteger("recommendTime"),fromQuestionId,fromQuestionId,createTime,createUser,null,null,isValid,reqParam.getString("remark"),
+                            reqParam.getByte("isFromQuestion"));
+
+            questionForLibService.saveQuestionForLib(questionForLib);
+
+            //存储questionRecitationForLib
+            QuestionRecitationForLib questionRecitationForLib =
+                    new QuestionRecitationForLib(questionForlibId,questionForlibId,questionLibId,questionLibId,fromQuestionId,fromQuestionId,
+                            answer,createTime,createUser,null,null,isValid,reqParam.getString("remark"));
+            questionRecitationForLibService.saveQuestionRecitationForLib(questionRecitationForLib);
+        }
+        catch (Exception e){
+            throw new ErrorInfo(CommonError.INNER_ERR.getCode(),e.getMessage(),null);
+        }
+        RecitationQuestionForLib recitationQuestionForLib = recitationQuestionForLibService.findRecitationForLibById(questionForlibId);
+        return new ResponseInfo(requestInfo,recitationQuestionForLib);
+    }
+
+    /**
+     * 删除题目
+     *
+     * @param  questionForLibId 题目id
+     * @return responseInfo
+     */
+    @PostMapping("/{questionForlibId}")
+    public ResponseInfo delete(@PathVariable("questionForLibId") String questionForLibId) throws Exception{
+
+        try {
+            questionForLibService.deleteQuestionForLib(questionForLibId);
+            questionRecitationForLibService.deleteQuestionRecitationForLib(questionForLibId);
+        }
+        catch (Exception e){
+            throw new ErrorInfo(CommonError.INNER_ERR.getCode(),e.getMessage(),null);
+        }
+
+        return new ResponseInfo(null,null,new ResultData(null));
+    }
+
+    /**
+     * 更新题目
+     *
+     * @param  requestInfo 请求信息
+     * @param questionForLibId 题目id
+     * @return responseInfo
+     */
+    @PutMapping("/{questionForLibId}")
+    public ResponseInfo update(@PathVariable("questionForLibId") String questionForLibId, @RequestBody RequestInfo requestInfo)
+    throws Exception
+    {
+        JSONObject reqParam = requestInfo.getReqParam();
+        JSONObject reqUserInfo = requestInfo.getReqUserInfo();
+        //从请求中获取参数
+
+        String questionLibId = reqParam.getString("questionLibId");
+        String fromQuestionId = reqParam.getString("fromQuestionId");
+        String answer = reqParam.getString("answer");
+        Timestamp lastUpdTime = new Timestamp(DateUtil.getCurrentTimeStamp());
+        String lastUpdUser = reqUserInfo.getString("userId");
+        Byte isValid = reqParam.getByte("isValid");
+
+        try {
+            //更新questionForLib
+            QuestionForLib newQuestionForLib =
+                    new QuestionForLib(questionForLibId, questionForLibId, questionForLibId, questionLibId, questionLibId,
+                            reqParam.getByte("isPublic"), reqParam.getString("requestTypeId"), reqParam.getString("knowledgeId"),
+                            reqParam.getString("courseId"),reqParam.getString("gradeId"),
+                            reqParam.getString("question"), reqParam.getString("provider"), reqParam.getString("personInCharge"),
+                            reqParam.getString("reference"), reqParam.getInteger("questionLevel"), reqParam.getDouble("difficulty"),
+                            reqParam.getDouble("coinWeight"), reqParam.getDouble("gpWeight"), reqParam.getString("questionAnalyze"),
+                            reqParam.getInteger("recommendTime"), fromQuestionId, fromQuestionId, null, null, lastUpdTime, lastUpdUser, isValid, reqParam.getString("remark"),
+                            reqParam.getByte("isFromQuestion"));
+            QuestionForLib oldQuestionForLib = questionForLibService.findQuestionForLibById(questionForLibId);
+            //问题不存在
+            if (oldQuestionForLib == null) {
+                return new ResponseInfo(requestInfo, CommonError.REQ_PARAM_ERR.getCode(), "问题不存在!", null);
+            }
+            //填充空属性
+            UpdateUtil.copyProperties(newQuestionForLib, oldQuestionForLib);
+            questionForLibService.updateQuestionForLib(newQuestionForLib);
+
+            //更新questionRecitationForLib
+            QuestionRecitationForLib newQuestionRecitationForLib =
+                    new QuestionRecitationForLib(questionForLibId, questionForLibId, questionLibId, questionLibId, fromQuestionId, fromQuestionId,
+                            answer, null, null, lastUpdTime, lastUpdUser, isValid, reqParam.getString("remark"));
+            QuestionRecitationForLib oldQuestionRecitationForLib = questionRecitationForLibService.findQuestionRecitationForLibById(questionForLibId);
+            UpdateUtil.copyProperties(newQuestionRecitationForLib, oldQuestionRecitationForLib);
+            questionRecitationForLibService.saveQuestionRecitationForLib(newQuestionRecitationForLib);
+        }
+        catch (Exception e){
+            throw new ErrorInfo(CommonError.INNER_ERR.getCode(),e.getMessage(),null);
+        }
+        return new ResponseInfo(requestInfo,recitationQuestionForLibService.findRecitationForLibById(questionForLibId));
+    }
+
+    /**
+     * 查询题目
+     *
+     * @param  requestInfo 请求信息
+     * @return responseInfo
+     */
+    @PostMapping("/list")
+    public ResponseInfo search(@RequestBody RequestInfo requestInfo) throws Exception{
+        JSONObject reqParam = requestInfo.getReqParam();
+
+        List<RecitationQuestionForLib> recitationQuestionForLibList = new ArrayList<>();
+        try {
+            recitationQuestionForLibList = recitationQuestionForLibService.search(reqParam);
+        }
+        catch (Exception e){
+            throw new ErrorInfo(CommonError.INNER_ERR.getCode(),e.getMessage(),null);
+        }
+
+        return new ResponseInfo(requestInfo,recitationQuestionForLibList);
+    }
+}

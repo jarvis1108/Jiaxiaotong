@@ -1,0 +1,223 @@
+<template>
+  <div class="st-exercise-object-select-container">
+    <div class="st-exercise-object-select-gradelist">
+      <ul>
+        <li @click="select(item,index)" 
+            :class="{'select':item.select,'unselect':!item.select}" 
+            v-for="item in gradeList" :key="item">
+          {{item.text}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="st-exercise-object-select-board">
+      <div class="st-exercise-object-select-gradeicon-div">
+        <img class="st-exercise-object-select-gradeicon" :src="selectGradeIconImage" />
+      </div>
+
+      <div class="st-exercise-object-select-objectlist">
+			  <div class="st-exercise-object-select-flex-div">
+          <div @click="selectObject(item)" :class="{'selectObject':item.select,'unselectObject':!item.select}" :style="'animation:'+ animation +' 1s'" class="st-exercise-object-select-box" v-for="item in gradeList[listIndex].objectList" :key="item">
+            <div class="st-exercise-object-select-objectname-div">
+              {{ item.name }} 
+            </div>
+            <div :class="{'selectImage':item.select,'unselectImage':!item.select}" class="st-exercise-object-select-objectphoto-img-div">
+            <img class="st-exercise-object-select-objectphoto-img" :src="item.photo"/>
+            </div>
+          </div>	
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</template>
+<script>
+import wxs from "../../utils/wx";
+export default {
+  data() {
+    return {
+      gradeList: [],  //年级列表
+      selectGradeIconImage:
+        "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png", //被选中的图标图片地址,默认为一年级对应的logo
+      listIndex: 0,
+      animation: "slideFromBottom" //科目滑入动画
+    };
+  },
+  async onLoad(){
+    this.gradeList = await this.$store.dispatch('getExerciseObjectList');
+    this.listIndex = 0;
+  },
+  watch: {
+    listIndex() {
+      //动画效果
+      this.animation = "slideFromBottom";
+      setTimeout(() => {
+        this.animation = "";
+      }, 1000);
+    }
+  },
+  methods: {
+    //选定年级
+    select(item, index) {
+      this.gradeList.forEach(element => {
+        element.select = false;
+        element.objectList.forEach(item=>{
+          item.select = false;
+        })
+      });
+      item.select = true;
+      this.selectGradeIconImage = item.iconImage;
+      this.listIndex = index;
+    },
+    //选定学科
+    async selectObject(item){
+      this.gradeList[this.listIndex].objectList.forEach(element=>{
+        element.select = false;
+      });
+      item.select = true;
+      const res = await wxs.showModal({
+        title:"确认",
+        content:`您选择了"${this.gradeList[this.listIndex].text} ${item.name}"`
+      });
+      if(res.confirm){
+        wxs.navigateTo(`../exercise/main?objectNo=${item.objectId}`);
+      }
+    }
+  }
+};
+</script>
+<style scoped>
+.st-exercise-object-select-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(207, 235, 255);
+}
+.st-exercise-object-select-gradelist {
+  position: absolute;
+  width: 25%;
+  left: 2%;
+  top: 5%;
+  height: 90%;
+  border-radius: 10px;
+  background: rgb(83, 181, 247);
+}
+.st-exercise-object-select-board {
+  position: absolute;
+  width: 70%;
+  right: 2%;
+  top: 5%;
+  height: 90%;
+  border-radius: 10px;
+  background: rgb(83, 181, 247);
+}
+.st-exercise-object-select-gradeicon-div {
+  position: absolute;
+  width: 20%;
+  left: 3%;
+  top: 2%;
+  height: 90%;
+}
+.st-exercise-object-select-gradeicon {
+  position: absolute;
+  width: 49px;
+  height: 49px;
+}
+.st-exercise-object-select-objectlist {
+  position: absolute;
+  width: 70%;
+  right: 5%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.st-exercise-object-select-flex-div {
+  width: 88%;
+  left: 6%;
+  top: 6.52%;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  overflow: auto;
+  height: 90%;
+}
+
+.st-exercise-object-select-box {
+  flex: 0 0 auto;
+  height: 14.29vh;
+  width: 21vw;
+  margin-bottom: 3.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.selectObject{
+  color: green;
+}
+.selectImage{
+  background: green;
+}
+.unselectObject{
+  color: rgb(83, 181, 247);
+}
+.unselectImage{
+  background: rgb(22, 202, 217);
+}
+.st-exercise-object-select-objectname-div {
+  flex: 0 0 auto;
+  width: 20.26vw;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0.63vh;
+}
+
+.st-exercise-object-select-objectphoto-img-div {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+.st-exercise-object-select-objectphoto-img {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  top: 20%;
+  left: 20%;
+}
+.st-exercise-object-select-gradelist ul {
+  position: absolute;
+  height: 100%;
+  width: 80%;
+  left: 10%;
+  top: 3%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.st-exercise-object-select-gradelist ul li {
+  position: relative;
+  height: 4%;
+  margin-bottom: 20%;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 5%;
+}
+.select {
+  border-radius: 12.5px;
+  color: rgb(109, 166, 255);
+  background: white;
+  animation: zoomOut 0.2s;
+}
+.unselect {
+  color: #fff;
+}
+</style>

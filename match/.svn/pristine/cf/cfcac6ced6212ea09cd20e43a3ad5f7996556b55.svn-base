@@ -1,0 +1,53 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordQuestion;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordQuestionService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+
+public class MatchRecordQuestionServiceImplTest {
+
+    @Autowired
+    private MatchRecordQuestionService matchRecordQuestionService;
+
+    @Test
+    public void create() throws ErrorInfo {
+        MatchRecordQuestion matchRecordQuestion =new MatchRecordQuestion();
+        matchRecordQuestion.setCreateTime(Timestamp.valueOf("2018-06-27 12:01:01"));
+        matchRecordQuestion.setCreateUser("test");
+        matchRecordQuestion.setIsValid(Byte.valueOf("1"));
+        matchRecordQuestion.setLastUpdTime(Timestamp.valueOf("2018-06-27 10:20:31"));
+        matchRecordQuestion.setLastUpdUser("test");
+        matchRecordQuestion.setMatchRecordId("2");
+        matchRecordQuestion.setMatchRecordNo("2");
+        matchRecordQuestion.setMatchRecordQuestionId("1");
+        matchRecordQuestion.setQuestionId("1");
+        matchRecordQuestion.setQuestionIndex(2);
+        matchRecordQuestion.setQuestionNo("1");
+        matchRecordQuestion.setRemark("this is test");
+        MatchRecordQuestion result = matchRecordQuestionService.create(matchRecordQuestion);
+        Assert.assertNotNull(result);
+        System.out.println(result);
+    }
+    @Test
+    public void getMatchRecordQuestionList() {
+        List<MatchRecordQuestion> matchRecordQuestionList = matchRecordQuestionService.getMatchRecordQuestionList(2,1);
+        assertNotEquals(0, matchRecordQuestionList.size());
+        matchRecordQuestionList.forEach(System.out::println);
+    }
+
+
+}

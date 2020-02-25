@@ -1,0 +1,56 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.dao.GradePhaseInfoRelRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.GradePhaseInfoRel;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.GradePhaseInfoRelService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\7\17 0017
+ */
+@Service
+public class GradePhaseInfoRelServiceImpl implements GradePhaseInfoRelService {
+    @Autowired
+    private GradePhaseInfoRelRepository gradePhaseInfoRelRepository;
+
+    @Override
+    public List<GradePhaseInfoRel> findAll() {
+        return gradePhaseInfoRelRepository.findAll();
+    }
+
+    @Override
+    public GradePhaseInfoRel create(GradePhaseInfoRel newGradePhaseInfoRel) throws ErrorInfo {
+        return gradePhaseInfoRelRepository.save(newGradePhaseInfoRel);
+    }
+
+    @Override
+    public GradePhaseInfoRel update(GradePhaseInfoRel updatedGradePhaseInfoRel) throws ErrorInfo {
+        return gradePhaseInfoRelRepository.save(updatedGradePhaseInfoRel);
+    }
+
+    @Override
+    public List<GradePhaseInfoRel> findByGradePhaseId(String gradePhaseId) throws ErrorInfo {
+        List<GradePhaseInfoRel> gradePhaseInfoRels = gradePhaseInfoRelRepository.findByGradePhaseId(gradePhaseId);
+        if (gradePhaseInfoRels.size() == 0) {
+            throw new ErrorInfo("E_201807300855_57_016", "该年级类型错误", null);
+        }
+
+        return gradePhaseInfoRels;
+    }
+
+    @Override
+    public GradePhaseInfoRel getByGradePhaseIdAndGradeId(String gradePhaseId, String gradeId) {
+        return gradePhaseInfoRelRepository.findByGradePhaseIdAndGradeId(gradePhaseId, gradeId);
+    }
+
+    @Override
+    public GradePhaseInfoRel getByInternalLevel(Integer internalLevel) {
+        return gradePhaseInfoRelRepository.findByInternalLevel(internalLevel);
+    }
+}

@@ -1,0 +1,456 @@
+<template>
+  <div>
+    <img id="bg" src="/static/images/bg.png"/>
+    <img id="question_bg" src="/static/images/exerciseReview/subject-bg.png"/>
+
+    <div id="content" :class="contentAni" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
+      <div id="bar">
+        <img v-if="questionIndex>1" @click="lastQuestion" class="arrow" id="leftArrow" src="/static/images/exerciseReview/leftArrow.png"/>
+        <div class="questionId">
+          <span>第</span>
+          <span id="questionIndex">{{questionIndex}}</span>
+          <span>题</span>
+        </div>
+        <img v-if="questionIndex<questionList.length" @click="nextQuestion" class="arrow" id="rightArrow"
+             src="/static/images/exerciseReview/rightArrow.png"/>
+      </div>
+      <div id="questionContent">
+        <span>
+        <!-- {{questionList[questionIndex-1].questionTitle}}  -->
+        {{questionList[questionIndex-1].question}} 
+        </span>
+      </div>
+      <hr id="hr">
+      <div id="result" :class="resultColor">{{result}}</div>
+      <div id="choiceList">
+        <!-- <div class="choice" v-for="choice in questionList[questionIndex-1].choiceList" :id="'choice'+choice.label"
+             :key="choice">
+          <img class="choice_img" :src="choice.img"/>
+          <span :id="choice.style" class="choice_content">{{choice.label}}.{{choice.content}}</span>
+          <img class="errorIcon" v-if="choice.isRight === -1" src="/static/images/exerciseReview/Errorlabel.png"/>
+          <img class="correctIcon" v-if="choice.isRight === 1" src="/static/images/exerciseReview/Correctlabel.png"/>
+        </div> -->
+         <div class="choice"  :id="choiceA" :key="choice">
+                  <img class="choice_img" :src="indexList[questionIndex-1].choiceList[0].img" :key="choice"/>
+                  <span :id="indexList[questionIndex-1].choiceList[0].style" class="choice_content" :key="choice">{{questionList[questionIndex - 1].choiceA}}</span>
+                  <img class="errorIcon" v-if="indexList[questionIndex-1].choiceList[0].isRight === -1" src="/static/images/exercise/Errorlabel.png"/>
+                  <img class="correctIcon" v-if="indexList[questionIndex-1].choiceList[0].isRight === 1" src="/static/images/exercise/Correctlabel.png"/>
+              </div>
+                <div class="choice" :id="choiceA" :key="choice">
+                  <img class="choice_img" :src="indexList[questionIndex-1].choiceList[1].img" :key="choice"/>
+                  <span :id="indexList[questionIndex-1].choiceList[1].style" class="choice_content" :key="choice">{{questionList[questionIndex - 1].choiceB}}</span>
+                  <img class="errorIcon" v-if="indexList[questionIndex-1].choiceList[1].isRight === -1" src="/static/images/exercise/Errorlabel.png"/>
+                  <img class="correctIcon" v-if="indexList[questionIndex-1].choiceList[1].isRight === 1" src="/static/images/exercise/Correctlabel.png"/>
+              </div>
+                <div class="choice" :id="choiceA" :key="choice">
+                  <img class="choice_img" :src="indexList[questionIndex-1].choiceList[2].img" :key="choice"/>
+                  <span :id="indexList[questionIndex-1].choiceList[2].style" class="choice_content" :key="choice">{{questionList[questionIndex - 1].choiceC}}</span>
+                  <img class="errorIcon" v-if="indexList[questionIndex-1].choiceList[2].isRight === -1" src="/static/images/exercise/Errorlabel.png"/>
+                  <img class="correctIcon" v-if="indexList[questionIndex-1].choiceList[2].isRight === 1" src="/static/images/exercise/Correctlabel.png"/>
+              </div>
+                <div class="choice"  :id="choiceA" :key="choice">
+                  <img class="choice_img" :src="indexList[questionIndex-1].choiceList[3].img" :key="choice"/>
+                  <span :id="indexList[questionIndex-1].choiceList[3].style" class="choice_content" :key="choice">{{questionList[questionIndex - 1].choiceD}}</span>
+                  <img class="errorIcon" v-if="indexList[questionIndex-1].choiceList[3].isRight === -1" src="/static/images/exercise/Errorlabel.png"/>
+                  <img class="correctIcon" v-if="indexList[questionIndex-1].choiceList[3].isRight === 1" src="/static/images/exercise/Correctlabel.png"/>
+              </div>
+
+      </div>
+
+    </div>
+
+    <div id="iconList">
+      <!-- <div id="collect" @click="on_collect"> -->
+        <div id="collect" @click="on_collect(questionList[questionIndex - 1].questionId)">
+        <img class="icon" id="collectIcon" src="/static/images/exerciseReview/Collection-icon.png"/>
+        <span class="text_12">收藏</span>
+      </div>
+      <div id="correct" @click="on_correct">
+        <img class="icon" id="correctIcon" src="/static/images/exerciseReview/Errorcorrection-icon.png"/>
+        <span class="text_12">纠错</span>
+      </div>
+      <div>
+        <button id="share" open-type="share">
+          <div>
+            <img class="icon" id="shareIcon" src="/static/images/exerciseReview/Share-icon.png"/>
+            <span class="text_12" style="top: 50%">分享</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <img id="halo" src="/static/images/exerciseReview/Halo.png"/>
+
+    <div id="details">
+      <!-- <div id="analysis">
+        <span>解析:{{questionList[questionIndex-1].analysis}}</span></div>
+      <div id="source"><span>出处：{{questionList[questionIndex-1].source}}</span></div>
+      <div id="knowledge"><span>考点:{{questionList[questionIndex-1].knowledge}}</span></div> -->
+        <div id="analysis">
+        <span>解析:{{questionList[questionIndex-1].questionAnalyze}}</span></div>
+      <div id="source"><span>出处：{{questionList[questionIndex-1].reference}}</span></div>
+      <div id="knowledge"><span>考点:{{questionList[questionIndex-1].content}}</span></div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import wxs from "../../utils/wx";
+
+  export default {
+    name: "index.vue",
+    data() {
+      return { 
+         questionList: [
+        {
+          question: "",
+          choiceA: "",
+          choiceB: "",
+          choiceC: "",
+          choiceD: "",
+          answer: "",
+          reference: "",
+          questionAnalyze: "",
+          content: "",
+        }
+      ],  //问题列表
+        questionIndex: 1,         //题号
+        indexList: [],           //选项样式
+        userAnswer: '',          //用户选择选项
+        rightAnswer: '',         //正确选项
+        resultColor: '',          //标记结果元素的颜色
+        contentAni: '',            //为题目卡片增加动画
+        touchDot: 0,               //  触摸时的原点
+        touchDirection: 0,          //滑屏方向，-1代表左滑，1代表右滑
+      }
+    },
+    computed: {
+      'result'() {
+        return (this.userAnswer === this.rightAnswer) ? '回答正确' : '回答错误'
+      }
+    },
+    async onLoad(option) {
+      this.questionIndex = 1;
+      this.questionList = JSON.parse(option.questionList);
+      this.indexList = JSON.parse(option.indexList);
+      // this.userAnswer = this.questionList[this.questionIndex - 1].userAnswer;
+      // this.rightAnswer = this.questionList[this.questionIndex - 1].rightAnswer;
+      this.userAnswer = this.indexList[this.questionIndex - 1].userAnswer;
+      this.rightAnswer = this.questionList[this.questionIndex - 1].answer;
+      this.getResult();
+      this.setChoiceStyle();
+      wxs.showShareMenu(true);
+    },
+    methods: {
+      //判断该题答题结果，以便增加对应样式
+      getResult() {
+        if (this.userAnswer === this.rightAnswer) {
+          this.resultColor = 'correct';
+        } else {
+          this.resultColor = 'fault';
+        }
+      },
+      setChoiceStyle() {
+        // this.questionList[this.questionIndex - 1].choiceList.forEach((item) => {
+           this.indexList[this.questionIndex - 1].choiceList.forEach((item) => {
+          if (item.label === this.userAnswer && this.userAnswer !== this.rightAnswer) {
+            item.isRight = -1;
+            item.img = '/static/images/exerciseReview/Erroroption-bg.png';
+            item.style = 'errorChoice';
+          } else if (item.label === this.rightAnswer) {
+            item.isRight = 1;
+            item.img = '/static/images/exerciseReview/Checktheoptionbox.png';
+            item.style = 'correctChoice';
+          } else {
+            item.isRight = 0;
+            item.img = '/static/images/exerciseReview/Optionbox.png';
+          }
+        });
+      },
+      async on_collect(questionId) {
+      	var isSuccess = await this.$store.dispatch("collectQuestion", questionId);
+      	if(isSuccess!=null){
+      		console.log(isSuccess);
+      		wxs.showSuccess('收藏成功');
+      	}
+      },
+      on_correct() {
+        wxs.showSuccess('已加入错题本');
+      },
+      nextQuestion() {
+        this.questionIndex += 1;
+        this.contentAni = 'rotate';
+        setTimeout(() => {
+          // this.userAnswer = this.questionList[this.questionIndex - 1].userAnswer;
+          // this.rightAnswer = this.questionList[this.questionIndex - 1].rightAnswer;
+          this.userAnswer = this.indexList[this.questionIndex - 1].userAnswer;
+          this.rightAnswer = this.questionList[this.questionIndex - 1].answer;
+          this.getResult();
+          this.setChoiceStyle();
+        }, 500);
+        setTimeout(() => {
+          this.contentAni = '';
+        }, 1000);
+
+      },
+      lastQuestion() {
+        this.questionIndex -= 1;
+        this.contentAni = 'rotate';
+        setTimeout(() => {
+          // this.userAnswer = this.questionList[this.questionIndex - 1].userAnswer;
+          // this.rightAnswer = this.questionList[this.questionIndex - 1].rightAnswer;
+          this.userAnswer = this.indexList[this.questionIndex - 1].userAnswer;
+          this.rightAnswer = this.questionList[this.questionIndex - 1].answer;
+          this.getResult();
+          this.setChoiceStyle();
+        }, 1000);
+        setTimeout(() => {
+          this.contentAni = '';
+        }, 1000);
+      },
+      touchStart(e) {
+        this.touchDot = e.touches[0].pageX;
+      },
+      touchMove(e) {
+        var touchMove = e.touches[0].pageX;
+        //左滑
+        if (touchMove - this.touchDot <= -40) {
+          this.touchDirection = -1;
+        } else if (touchMove - this.touchDot >= 40) {
+          this.touchDirection = 1;
+        }
+      },
+      touchEnd() {
+        if (this.touchDirection === -1) {
+          if (this.questionIndex < this.questionList.length) {
+            this.nextQuestion();
+          }
+        } else if (this.touchDirection === 1) {
+          if (this.questionIndex > 1) {
+            this.lastQuestion();
+          }
+        }
+      }
+    },
+    onShareAppMessage() {
+      return {
+        title: '只有学霸才能征服的题目，快来看看吧！',
+        path: '/pages/exercise/main',
+        success: (res) => {
+          console.log('success');
+        }
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  #hr {
+    position: absolute;
+    top: 25%;
+    width: 90%;
+    left: 5%;
+    height: 0;
+    border-bottom: 0.1px dashed rgb(162, 162, 162);
+  }
+
+  #result {
+    position: absolute;
+    top: 27%;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .fault {
+    color: rgb(255, 78, 86);
+  }
+
+  .correct {
+    color: rgb(59, 202, 255);
+  }
+
+  #choiceList {
+    position: absolute;
+    top: 28%;
+    left: 7%;
+    width: 85%;
+  }
+
+  .choice {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    margin-top: 8%;
+    font-size: 18px;
+    animation: zoomOut .5s;
+  }
+
+  .choice_img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .choice_content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 5%;
+    top: 20%;
+    z-index: 1;
+  }
+
+  #errorChoice, #correctChoice {
+    color: white;
+  }
+
+  .correctIcon {
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    right: 10%;
+    top: 25%;
+  }
+
+  .errorIcon {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 10%;
+    top: 30%;
+  }
+
+  #questionContent {
+    position: absolute;
+    top: 10%;
+    width: 80%;
+    height: 20%;
+    left: 10%;
+    font-size: 12px;
+  }
+
+  #bar {
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    height: 5%;
+  }
+
+  #bar .arrow {
+    width: 13px;
+    height: 11px;
+    position: absolute;
+  }
+
+  .questionId {
+    font-size: 12px;
+    color: rgb(162, 162, 162);
+    position: absolute;
+    top: -7px;
+    left: 45%;
+  }
+
+  #questionIndex {
+    font-size: 17px;
+  }
+
+  #rightArrow {
+    position: absolute;
+    right: 20%;
+    top: 0;
+  }
+
+  #leftArrow {
+    position: absolute;
+    left: 20%;
+    top: 0;
+  }
+
+  #analysis, #source, #knowledge {
+    position: relative;
+    margin-top: 2%;
+    width: 100%;
+  }
+
+  #details {
+    position: absolute;
+    text-align: center;
+    top: 85%;
+    width: 70%;
+    left: 15%;
+    height: 10%;
+    font-size: 12px;
+    color: white;
+  }
+
+  #halo {
+    position: absolute;
+    height: 0.5%;
+    top: 84%;
+    width: 70%;
+    left: 15%;
+  }
+
+  #collect, #share, #correct {
+    position: relative;
+    float: left;
+    width: 33.3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  #share, #share::after {
+    border: none;
+    background: transparent;
+    overflow: auto;
+    padding: 0;
+    margin-top: -2%;
+    height: 100%;
+  }
+
+  .icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .text_12 {
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 100%;
+    left: 36%;
+  }
+
+  #iconList {
+    position: absolute;
+    top: 75%;
+    height: 6%;
+    width: 70%;
+    left: 15%;
+  }
+
+  #content, #question_bg {
+    position: absolute;
+    top: 3%;
+    height: 72%;
+    left: 5%;
+    width: 90%;
+    overflow: hidden;
+  }
+
+  #bg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+  }
+
+  .rotate {
+    animation: rotate .8s;
+  }
+
+</style>

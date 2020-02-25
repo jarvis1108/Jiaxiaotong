@@ -1,0 +1,65 @@
+<import src="setting-dialog$4d56c360" />
+<template name="index$f9647670">
+  <view id="background" class="_div data-v-04cb0a0a">
+    <view class="_div data-v-04cb0a0a">
+      <image id="bg" src="/static/images/bg.png" class="_img data-v-04cb0a0a"></image>
+      <image id="person_info" src="/static/images/home/Personalinformation-bg.png" class="_img data-v-04cb0a0a"></image>
+      <image bindtap="handleProxy" id="user_icon" src="{{userInfo.headImage}}" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_img data-v-04cb0a0a"></image>
+      <view class="_p data-v-04cb0a0a">
+        <label id="user_name" class="_span data-v-04cb0a0a">{{userInfo.wechatName}}</label>
+      </view>
+      <image id="coin_icon" src="/static/images/home/Goldcoin.png" class="_img data-v-04cb0a0a"></image>
+      <view class="_p data-v-04cb0a0a">
+        <label id="user_coin" class="_span data-v-04cb0a0a text_28">{{userInfo.coin}}</label>
+      </view>
+      <view class="_p data-v-04cb0a0a">
+        <label id="grade" style="left: 10%" class="_span data-v-04cb0a0a">{{userInfo.externalLevel}}</label>
+        <label class="_span data-v-04cb0a0a text_24" style="left: 12%">级</label>
+      </view>
+      <view class="_div data-v-04cb0a0a st-personal-center-level-outer">
+        <view class="_div data-v-04cb0a0a st-personal-center-level-inner" style=" {{'width:' + progress + '%'}}"></view>
+      </view>
+      <view class="_p data-v-04cb0a0a">
+        <label class="_span data-v-04cb0a0a text_28" style="right: 38%">绩点</label>
+        <label id="gpa" class="_span data-v-04cb0a0a text_28" style="right: 30%">{{userInfo.gradePoint}}</label>
+      </view>
+      <view class="_p data-v-04cb0a0a">
+        <label class="_span data-v-04cb0a0a text_28" style="right: 20%">学点</label>
+        <label id="lp" class="_span data-v-04cb0a0a text_28" style="right: 12%">{{userInfo.learningPoint}}</label>
+      </view>
+    </view>
+    <view class="_div data-v-04cb0a0a">
+      <button open-type="share" class="_button data-v-04cb0a0a share_btn">
+        <image id="share" src="/static/images/home/share_icon.png" class="_img data-v-04cb0a0a"></image>
+      </button>
+      <view class="_p data-v-04cb0a0a">
+        <label class="_span data-v-04cb0a0a text_34" style="left: 9%;top: 50%">分享小程序</label>
+      </view>
+      <image id="exercise" bindtap="handleProxy" src="/static/images/home/Collection_icon.png" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_img data-v-04cb0a0a"></image>
+      <view class="_p data-v-04cb0a0a">
+        <label class="_span data-v-04cb0a0a text_34" style="left: 9%;top: 74%">题目收藏</label>
+      </view>
+      <image id="goldMall" bindtap="handleProxy" src="/static/images/home/Setup_icon.png" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_img data-v-04cb0a0a"></image>
+      <view class="_p data-v-04cb0a0a">
+        <label class="_span data-v-04cb0a0a text_34" style="left: 9%;top: 90%">设置</label>
+      </view>
+      <image id="pk" bindtap="handleProxy" src="/static/images/home/Wrongtopic_icon.png" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_img data-v-04cb0a0a"></image>
+      <view class="_p data-v-04cb0a0a">
+        <label class="_span data-v-04cb0a0a text_34" style="left: 55%;top: 42%">我的错题</label>
+      </view>
+      <image id="rank" bindtap="handleProxy" src="/static/images/home/Opinion_icon.png" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_img data-v-04cb0a0a"></image>
+      <view class="_p data-v-04cb0a0a">
+        <label class="_span data-v-04cb0a0a text_34" style="left: 55%;top: 58%">意见反馈</label>
+      </view>
+      <image id="topup" bindtap="handleProxy" src="/static/images/home/Articles_icon.png" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_img data-v-04cb0a0a"></image>
+      <view class="_p data-v-04cb0a0a">
+        <label class="_span data-v-04cb0a0a text_34" style="left: 55%;top: 74%">我的物品</label>
+      </view>
+      <image id="groupBattle" bindtap="handleProxy" src="/static/images/home/Scholarship_icon.png" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_img data-v-04cb0a0a"></image>
+      <view class="_p data-v-04cb0a0a">
+        <label class="_span data-v-04cb0a0a text_34" style="left: 55%;top: 90%">奖学金</label>
+      </view>
+    </view>
+    <template wx:if="{{showSetting}}" bindlistenCloseDialog="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="setting-dialog$4d56c360"></template>
+  </view>
+</template>

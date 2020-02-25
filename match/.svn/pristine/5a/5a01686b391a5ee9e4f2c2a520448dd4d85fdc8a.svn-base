@@ -1,0 +1,39 @@
+package com.dxtwangxiao.strongestsuperscholar.web.util;
+
+/**
+ * 数学工具类
+ * <p>
+ * Created By Devin
+ * 2018-09-07 上午 11:26
+ */
+public class MathUtil {
+
+    /**
+     * 生成随机数
+     *
+     * @param max    最大值
+     * @param number 生成的随机数数目
+     * @return
+     */
+    public static int[] getRandomNumbers(long max, int number) {
+        int[] intArray = new int[number];
+        int i = 0;
+        while (i < number) {
+            int num = (int) (Math.random() * max);
+            if (contain(intArray, num)) {
+                continue;
+            } else {
+                intArray[i] = num;
+            }
+            i++;
+        }
+        return intArray;
+    }
+
+    private static boolean contain(int[] intArray, int number) {
+        for (int anIntArray : intArray) {
+            if (anIntArray == number) return true;
+        }
+        return false;
+    }
+}

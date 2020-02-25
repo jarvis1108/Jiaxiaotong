@@ -1,0 +1,1981 @@
+global.webpackJsonp([1],{
+
+/***/ 151:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(152);
+
+
+
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__index__["a" /* default */]);
+app.$mount();
+
+/***/ }),
+
+/***/ 152:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_1d4d36a3_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(177);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(153)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1d4d36a3"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_1d4d36a3_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\pages\\battle\\index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1d4d36a3", Component.options)
+  } else {
+    hotAPI.reload("data-v-1d4d36a3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 153:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 154:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_battle_loading_vue__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_battle_ready_vue__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_battle_vue__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_battle_result_vue__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_wx__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__utils_RequestObj__ = __webpack_require__(107);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  components: {
+    battleLoading: __WEBPACK_IMPORTED_MODULE_1__components_battle_loading_vue__["a" /* default */], //加载页
+    battleReady: __WEBPACK_IMPORTED_MODULE_2__components_battle_ready_vue__["a" /* default */], //准备页
+    battle: __WEBPACK_IMPORTED_MODULE_3__components_battle_vue__["a" /* default */], //对战页
+    battleResult: __WEBPACK_IMPORTED_MODULE_4__components_battle_result_vue__["a" /* default */] //结果页
+  },
+  data: function data() {
+    return {
+      userInfo: {}, //用户信息
+      opponentInfo: {}, //对手信息
+      battleId: "", //战局id
+      step: "", //标明战局状态，与返回消息类型匹配
+      questionIndex: 0, //题目序号
+      question: {}, //试题
+      userScore: 0, //用户分数
+      opponentScore: 0, //对手分数
+      userCorrectNum: 0, //用户答对题数
+      opponentCorrectNum: 0, //对手答对题数
+      userLearningPoit: 0, //用户消耗学点数
+      userAnswer: {
+        //用户单题的答案信息
+        answer: "",
+        timeLeft: ""
+      },
+      opponentAnswer: {
+        score: 0,
+        answer: ""
+      }, //对手单题的答案信息
+      waitUser: true, //等待用户答题
+      waitOpponent: true, //等待对手答题
+      socket: null //网络连接
+    };
+  },
+  onLoad: function onLoad() {
+    this.userInfo = this.$store.state.userInfo;
+    this.opponentInfo = {};
+    this.step = "0";
+    this.startMatch();
+  },
+
+  watch: {
+    questionIndex: function questionIndex() {
+      this.opponentAnswer = {
+        score: 0,
+        answer: ""
+      };
+    },
+    waitUser: function waitUser() {
+      var _this = this;
+
+      setTimeout(function () {
+        if (!_this.waitUser && !_this.waitOpponent) {
+          _this.waitUser = true;
+          _this.waitOpponent = true;
+          _this.sendMessage();
+        }
+      }, 1000);
+    },
+    waitOpponent: function waitOpponent() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        if (!_this2.waitUser && !_this2.waitOpponent) {
+          _this2.waitUser = true;
+          _this2.waitOpponent = true;
+          _this2.sendMessage();
+        }
+      }, 1000);
+    }
+  },
+  methods: {
+    changeUserAnswer: function changeUserAnswer(data) {
+      this.userAnswer = data;
+      this.userLearningPoit += 10 - data.timeLeft;
+      this.waitUser = false;
+      this.sendMessage();
+    },
+    startMatch: function startMatch() {
+      var _this3 = this;
+
+      var that = this;
+      wx.connectSocket({
+        url: __WEBPACK_IMPORTED_MODULE_6__config__["b" /* socketUrl */] + "/match?userId=" + this.userInfo.userId
+      });
+
+      wx.onSocketOpen(function (res) {
+        console.log("连接已建立");
+      });
+
+      wx.onSocketMessage(function (res) {
+        _this3.receiveMessage(res);
+      });
+
+      wx.onSocketClose(function (res) {
+        // 监听WebSocket关闭。
+        if (this.questionIndex < 6) {
+          this.startMatch();
+        } else {
+          console.log("Websocket关闭");
+        }
+      });
+    },
+    receiveMessage: function receiveMessage(res) {
+      var result = JSON.parse(res.data);
+      this.step = result.msgType;
+      if (result.msgType === "A") {
+        // 服务器返回消息类型为A，表示服务器已经匹配到对手，此时可以进行页面跳转，并请求服务器发送题目
+        console.log("匹配成功");
+        this.opponentInfo = result.msgData.curData.opponent;
+        this.battleId = result.msgData.curData.matchId;
+      } else if (result.msgType === "B") {
+        this.question = result.msgData.curData.question;
+      } else if (result.msgType === "C-1") {
+        this.userScore += result.msgData.curData.score;
+        if (result.msgData.curData.score > 0) {
+          //用户答对
+          this.userCorrectNum += 1;
+        }
+      } else if (result.msgType === "C-2") {
+        this.opponentAnswer = {
+          score: result.msgData.curData.score,
+          answer: result.msgData.curData.answer
+        };
+        this.opponentScore += this.opponentAnswer.score;
+        if (this.opponentAnswer.score > 0) this.opponentCorrectNum += 1;
+        this.waitOpponent = false;
+      }
+    },
+    sendMessage: function sendMessage() {
+      //用户和对手都未答题时发送信息为请求题目
+      if (this.waitUser && this.waitOpponent) {
+        this.questionIndex += 1;
+        wx.sendSocketMessage({
+          data: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()({
+            msgID: Object(__WEBPACK_IMPORTED_MODULE_7__utils_RequestObj__["b" /* getuuid */])(),
+            msgType: "A",
+            msgData: {
+              matchId: this.battleId,
+              no: this.questionIndex
+            },
+            msgDesc: "请求出题"
+          })
+        });
+      } else if (!this.waitUser) {
+        //用户答题完毕，计算分数
+        wx.sendSocketMessage({
+          data: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()({
+            msgID: Object(__WEBPACK_IMPORTED_MODULE_7__utils_RequestObj__["b" /* getuuid */])(),
+            msgType: "B",
+            msgData: {
+              matchId: this.battleId,
+              correctAnswer: this.question.answer,
+              userAnswer: this.userAnswer.answer,
+              timeLeft: this.userAnswer.timeLeft,
+              no: this.questionIndex
+            },
+            msgDesc: "请求计算当前分数和返回结果"
+          })
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 155:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_battle_loading_vue__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_efc81b5a_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_battle_loading_vue__ = __webpack_require__(158);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(156)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-efc81b5a"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_battle_loading_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_efc81b5a_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_battle_loading_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\components\\battle-loading.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] battle-loading.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-efc81b5a", Component.options)
+  } else {
+    hotAPI.reload("data-v-efc81b5a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 156:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 157:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_wx_js__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    user: {
+      type: Object,
+      required: true
+    },
+    close: {
+      type: Boolean,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      opponentInfo: {
+        headImage: "/static/images/nick.jpg",
+        wechatName: "皮皮虾",
+        city: "西安",
+        externalLevel: 15
+      },
+      interval: null,
+      timing: 0 //匹配时间计时
+    };
+  },
+  onLoad: function onLoad() {
+    var _this = this;
+
+    this.timing = 0;
+    this.interval = setInterval(function () {
+      if (_this.timing < 30) {
+        _this.timing += 1;
+      } else {
+        var that = _this;
+        // wxs.showTip("匹配超时");
+        setTimeout(function () {
+          clearInterval(_this.interval);
+          that.$emit("matchTimeOut");
+        }, 1000);
+      }
+    }, 1000);
+  },
+
+  watch: {
+    close: function close() {
+      console.log('loading:' + this.close);
+      if (!this.close) {
+        clearInterval(this.interval);
+      }
+    }
+  },
+  computed: {
+    level: function level() {
+      var level = parseInt(this.user.externalLevel / 5);
+      switch (level) {
+        case 0:
+          return "新手";
+          break;
+        case 1:
+          return "熟手";
+          break;
+        case 2:
+          return "优秀";
+          break;
+        case 3:
+          return "课代表";
+          break;
+        case 4:
+          return "学霸";
+          break;
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 158:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "loading"
+  }, [_c('div', {
+    staticClass: "st-battle-loading-bg"
+  }, [_c('img', {
+    staticClass: "st-battle-loading-bg-img",
+    attrs: {
+      "src": "/static/images/battleLoading/Earth_bg@2x.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-battle-loading-astronaut"
+  }, [_c('img', {
+    staticClass: "st-battle-loading-astronaut-bg",
+    attrs: {
+      "src": "/static/images/battleLoading/Astronaut@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-astronaut-head",
+    attrs: {
+      "src": "/static/images/battleLoading/Highlight@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-astronaut-headimage",
+    attrs: {
+      "src": _vm.user.headImage
+    }
+  })]), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-planet1",
+    attrs: {
+      "src": "/static/images/battleLoading/Planet1@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-planet2",
+    attrs: {
+      "src": "/static/images/battleLoading/Planet2@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-planet3",
+    attrs: {
+      "src": "/static/images/battleLoading/Planet3@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-planet4",
+    attrs: {
+      "src": "/static/images/battleLoading/Planet4@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-planet5",
+    attrs: {
+      "src": "/static/images/battleLoading/Planet5@2x.png"
+    }
+  })]), _vm._v(" "), _c('span', {
+    staticClass: "st-battle-loading-username"
+  }, [_vm._v(_vm._s(_vm.user.wechatName) + "同学")]), _vm._v(" "), _c('span', {
+    staticClass: "st-battle-loading-level"
+  }, [_vm._v(_vm._s(_vm.level))]), _vm._v(" "), (_vm.timing % 3 === 0) ? _c('span', {
+    staticClass: "st-battle-loading-timing-tip"
+  }, [_vm._v("匹配中.")]) : _vm._e(), _vm._v(" "), (_vm.timing % 3 === 1) ? _c('span', {
+    staticClass: "st-battle-loading-timing-tip"
+  }, [_vm._v("匹配中..")]) : _vm._e(), _vm._v(" "), (_vm.timing % 3 === 2) ? _c('span', {
+    staticClass: "st-battle-loading-timing-tip"
+  }, [_vm._v("匹配中...")]) : _vm._e(), _vm._v(" "), (_vm.timing >= 3) ? _c('span', {
+    staticClass: "st-battle-loading-timing"
+  }, [_vm._v(_vm._s(_vm.timing) + "秒")]) : _vm._e()])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-efc81b5a", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 159:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_battle_ready_vue__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_bc691a0c_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_battle_ready_vue__ = __webpack_require__(162);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(160)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-bc691a0c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_battle_ready_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_bc691a0c_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_battle_ready_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\components\\battle-ready.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] battle-ready.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-bc691a0c", Component.options)
+  } else {
+    hotAPI.reload("data-v-bc691a0c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 160:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 161:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_wx__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    userInfo: {
+      type: Object,
+      required: true
+    },
+    opponentInfo: {
+      type: Object,
+      required: true
+    },
+    close: {
+      type: Function,
+      required: true
+    }
+  },
+  onLoad: function onLoad() {
+    var _this = this;
+
+    //页面显示完毕后请求题目跳转页面
+    setTimeout(function () {
+      _this.close();
+    }, 4000);
+  },
+
+  computed: {
+    userLevel: function userLevel() {
+      return this.level(this.userInfo.externalLevel);
+    },
+    opponentLevel: function opponentLevel() {
+      return this.level(this.opponentInfo.externalLevel);
+    }
+  },
+  methods: {
+    level: function level(_level) {
+      var proficiency = parseInt(_level / 5);
+      switch (proficiency) {
+        case 0:
+          return "新手";
+          break;
+        case 1:
+          return "熟手";
+          break;
+        case 2:
+          return "优秀";
+          break;
+        case 3:
+          return "课代表";
+          break;
+        case 4:
+          return "学霸";
+          break;
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 162:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "st-battle-ready-container"
+  }, [_c('img', {
+    staticClass: "st-battle-ready-bg",
+    attrs: {
+      "src": "/static/images/battleReady/Matching_bg@2x.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-battle-ready-user-div"
+  }, [_c('div', {
+    staticClass: "st-battle-ready-user-img"
+  }, [_c('img', {
+    staticClass: "st-battle-ready-meteor",
+    attrs: {
+      "src": "/static/images/battleReady/Meteor1_bg@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-ready-user-icon",
+    attrs: {
+      "src": _vm.userInfo.headImage
+    }
+  })]), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-ready-user-line",
+    attrs: {
+      "src": "/static/images/battleReady/Dottedline2@2x.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-battle-ready-userinfo-div"
+  }, [_c('span', {
+    staticClass: "st-battle-ready-span"
+  }, [_vm._v(_vm._s(_vm.userInfo.wechatName) + "同学")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('span', {
+    staticClass: "st-battle-ready-span"
+  }, [_vm._v("来自：" + _vm._s(_vm.userInfo.city))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('span', {
+    staticClass: "st-battle-ready-span"
+  }, [_vm._v("等级：" + _vm._s(_vm.userLevel))])], 1)]), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-ready-vs",
+    attrs: {
+      "src": "/static/images/battleReady/vs@2x.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-battle-ready-opponent-div"
+  }, [_c('div', {
+    staticClass: "st-battle-ready-opponent-img"
+  }, [_c('img', {
+    staticClass: "st-battle-ready-meteor",
+    attrs: {
+      "src": "/static/images/battleReady/Meteor2_bg@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-ready-opponent-icon",
+    attrs: {
+      "src": _vm.opponentInfo.headImage
+    }
+  })]), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-ready-opponent-line",
+    attrs: {
+      "src": "/static/images/battleReady/Dottedline1@2x.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-battle-ready-opponentInfo-div"
+  }, [_c('span', {
+    staticClass: "st-battle-ready-span"
+  }, [_vm._v(_vm._s(_vm.opponentInfo.wechatName) + "同学")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('span', {
+    staticClass: "st-battle-ready-span"
+  }, [_vm._v("来自：" + _vm._s(_vm.opponentInfo.city))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('span', {
+    staticClass: "st-battle-ready-span"
+  }, [_vm._v("等级：" + _vm._s(_vm.opponentLevel))])], 1)])])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-bc691a0c", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 163:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_battle_vue__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_72898964_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_battle_vue__ = __webpack_require__(172);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(164)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-72898964"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_battle_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_72898964_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_battle_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\components\\battle.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] battle.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-72898964", Component.options)
+  } else {
+    hotAPI.reload("data-v-72898964", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 164:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 165:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_cut_down__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_questioncard__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assests_js_TweenMax_min__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__App__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_wx__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    userInfo: {
+      type: Object,
+      required: true
+    },
+    opponentInfo: {
+      type: Object,
+      required: true
+    },
+    question: {
+      type: Object,
+      required: true
+    },
+    userScore: {
+      required: true
+    },
+    opponentAnswer: {
+      type: Object,
+      required: true
+    },
+    questionIndex: {
+      required: true
+    },
+    nextQuestion: {
+      type: Function,
+      required: true
+    },
+    waitUser: {
+      type: Boolean,
+      required: true
+    },
+    waitOpponent: {
+      type: Boolean,
+      required: true
+    }
+  },
+  components: {
+    cutdown: __WEBPACK_IMPORTED_MODULE_0__components_cut_down__["a" /* default */],
+    questioncard: __WEBPACK_IMPORTED_MODULE_1__components_questioncard__["a" /* default */]
+  },
+  data: function data() {
+    return {
+      choiceLabelList: ["A", "B", "C", "D"], //选项标签列表
+      type: 0, //进入类型，0-常规对抗赛，1-好友对抗赛
+      userDisplayScore: 0, //用于显示的分数
+      aUserDisplayScore: 0, //用于显示的分数的动画
+      opponentDisplayScore: 0, //用于显示的分数
+      aOpponentDisplayScore: 0, //用于显示的分数的动画
+      isClickable: true, //是否可以点击
+      interval: null, //定时器
+      cd: 10, //倒计时
+      userWrong: "", //用户答错的选项
+      opponentWrong: "", //对手答错的选项
+      showQuestion: false //是否显示题目【适应动画时间、保证倒计时开始的那一刻才显示题目】
+    };
+  },
+
+  watch: {
+    //当前进入下一题，重置数据
+    questionIndex: function questionIndex() {
+      this.isClickable = true;
+      this.interval = null;
+      this.cd = 10;
+      this.userWrong = "";
+      this.setInterval();
+    },
+    opponentAnswer: function opponentAnswer() {
+      if (this.opponentAnswer.answer != this.question.answer) {
+        this.opponentWrong = this.opponentAnswer.answer;
+      }
+      this.opponentDisplayScore += this.opponentAnswer.score;
+    },
+    userScore: function userScore() {
+      this.userDisplayScore = this.userScore;
+    },
+    userDisplayScore: function userDisplayScore(newVal) {
+      __WEBPACK_IMPORTED_MODULE_2__assests_js_TweenMax_min__["TweenLite"].to(this.$data, 0.5, { aUserDisplayScore: newVal });
+    },
+    opponentDisplayScore: function opponentDisplayScore(newVal) {
+      __WEBPACK_IMPORTED_MODULE_2__assests_js_TweenMax_min__["TweenLite"].to(this.$data, 0.5, { aOpponentDisplayScore: newVal });
+    }
+  },
+  computed: {
+    animatedUserScore: function animatedUserScore() {
+      return this.aUserDisplayScore.toFixed(0);
+    },
+    animatedOpponentScore: function animatedOpponentScore() {
+      return this.aOpponentDisplayScore.toFixed(0);
+    },
+
+    pBottomRotation: function pBottomRotation() {
+      if (this.userDisplayScore < 250) {
+        return this.userDisplayScore * 360 / 500;
+      } else {
+        return 180;
+      }
+    },
+    pTopRotation: function pTopRotation() {
+      if (this.userDisplayScore < 250) {
+        return;
+      } else {
+        return this.userDisplayScore * 360 / 500 - 180;
+      }
+    },
+    eBottomRotation: function eBottomRotation() {
+      if (this.opponentDisplayScore < 250) {
+        return this.opponentDisplayScore * 360 / 500;
+      } else {
+        return 180;
+      }
+    },
+    eTopRotation: function eTopRotation() {
+      if (this.opponentDisplayScore < 250) {
+        return;
+      } else {
+        return this.opponentDisplayScore * 360 / 500 - 180;
+      }
+    }
+  },
+  methods: {
+    cutdownd: function cutdownd(data) {
+      this.cd = data;
+    },
+    optionClick: function optionClick(label) {
+      if (this.isClickable) {
+        this.isClickable = false;
+        //若用户答错，修改userWrong值
+        if (label != this.question.answer) {
+          this.userWrong = label;
+        }
+        //将用户输入返回
+        this.$emit("userAnswered", {
+          answer: label,
+          timeLeft: this.cd
+        });
+      }
+    },
+
+    //时间到
+    cutDownOut: function cutDownOut() {
+      this.$emit("userAnswered", {
+        answer: "",
+        timeLeft: this.cd
+      });
+    },
+    change: function change(flag) {
+      var _this2 = this;
+
+      if (flag) {
+        this.nextQuestion();
+        clearInterval(this.interval);
+        this.setInterval();
+        //修改题目显示状态
+        this.showQuestion = false;
+        setTimeout(function () {
+          _this2.showQuestion = true;
+          console.log("显示题目");
+        }, 2000);
+      }
+    },
+
+    //创造分数圆环和显示分数增长的动画
+    userScoreIncrease: function userScoreIncrease(value) {
+      var _this3 = this;
+
+      this.userDisplayScore += value;
+      var _this = this;
+      setTimeout(function () {
+        if (_this3.userScore > _this3.userDisplayScore) {
+          _this.userScoreIncrease(value);
+        }
+      }, 50);
+    },
+    getuserScore: function getuserScore() {
+      if (this.userScore > this.userDisplayScore) {
+        var value = (this.userScore - this.userDisplayScore) / 10;
+        this.userScoreIncrease(value);
+      }
+    },
+    opponentScoreIncrease: function opponentScoreIncrease(value) {
+      var _this4 = this;
+
+      this.opponentDisplayScore += value;
+      var _this = this;
+      setTimeout(function () {
+        if (_this4.opponentAnswer.score > _this4.opponentDisplayScore) {
+          _this.opponentScoreIncrease(value);
+        }
+      }, 50);
+    },
+    getopponentScore: function getopponentScore() {
+      if (this.opponentAnswer.score > this.opponentDisplayScore) {
+        var value = (this.opponentAnswer.score - this.opponentDisplayScore) / 10;
+        this.opponentScoreIncrease(value);
+      }
+    },
+    setInterval: function (_setInterval) {
+      function setInterval() {
+        return _setInterval.apply(this, arguments);
+      }
+
+      setInterval.toString = function () {
+        return _setInterval.toString();
+      };
+
+      return setInterval;
+    }(function () {
+      var _this5 = this;
+
+      // 设置定时：2500ms-倒计时前动画时间，10000ms=10s-倒计时时间
+      this.interval = setInterval(function () {
+        _this5.change(_this5.showQuestion);
+      }, 12500);
+    })
+  },
+  onLoad: function onLoad() {
+    this.userDisplayScore = 0;
+    this.opponentDisplayScore = 0;
+    this.interval = null;
+    this.showQuestion = false;
+  }
+});
+
+/***/ }),
+
+/***/ 172:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "battle"
+  }, [_c('img', {
+    staticClass: "bs-bg-img",
+    attrs: {
+      "src": "/static/images/bg@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "bs-e_score_photo",
+    attrs: {
+      "src": "/static/images/battle/Scorethelabel2@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "bs-p_score_photo",
+    attrs: {
+      "src": "/static/images/battle/Scorethelabel1@2x.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "bs-user-div"
+  }, [_c('img', {
+    staticClass: "bs-score_hoop-img",
+    attrs: {
+      "src": "/static/images/battle/Scorecircle@2x.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "topBox"
+  }, [_c('div', {
+    staticClass: "topCircle",
+    style: ({
+      transform: 'rotate(' + _vm.eTopRotation + 'deg);'
+    })
+  }, [_c('img', {
+    staticClass: "c1",
+    attrs: {
+      "src": "/static/images/battle/Answerprogresstopcircle-bg@2x.png"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "bottomBox"
+  }, [_c('div', {
+    staticClass: "bottomCircle",
+    style: ({
+      transform: 'rotate(' + _vm.eBottomRotation + 'deg);'
+    })
+  }, [_c('img', {
+    staticClass: "c2",
+    attrs: {
+      "src": "/static/images/battle/Answerprogressbottomcircle-bg@2x.png"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "bs-photo-div"
+  }, [_c('img', {
+    staticClass: "photo_hoop",
+    attrs: {
+      "src": "/static/images/battle/Pictureframe@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "user_photo",
+    attrs: {
+      "src": _vm.userInfo.headImage
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "bs-pName-div bs-text1"
+  }, [_vm._v(_vm._s(_vm.userInfo.wechatName))]), _vm._v(" "), _c('div', {
+    staticClass: "bs-pScore-div bs-text2"
+  }, [_vm._v(_vm._s(_vm.animatedUserScore))]), _vm._v(" "), _c('div', {
+    staticClass: "bs-opponent-div"
+  }, [_c('img', {
+    staticClass: "bs-score_hoop-img",
+    attrs: {
+      "src": "/static/images/battle/Scorecircle@2x.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "topBox"
+  }, [_c('div', {
+    staticClass: "topCircle",
+    style: ({
+      transform: 'rotate(' + _vm.eTopRotation + 'deg);'
+    })
+  }, [_c('img', {
+    staticClass: "c1",
+    attrs: {
+      "src": "/static/images/battle/Answerprogresstopcircle-bg@2x.png"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "bottomBox"
+  }, [_c('div', {
+    staticClass: "bottomCircle",
+    style: ({
+      transform: 'rotate(' + _vm.eBottomRotation + 'deg);'
+    })
+  }, [_c('img', {
+    staticClass: "c2",
+    attrs: {
+      "src": "/static/images/battle/Answerprogressbottomcircle-bg@2x.png"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "bs-photo-div"
+  }, [_c('img', {
+    staticClass: "photo_hoop",
+    attrs: {
+      "src": "/static/images/battle/Pictureframe@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "user_photo",
+    attrs: {
+      "src": _vm.opponentInfo.headImage
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "bs-eName-div bs-text1"
+  }, [_vm._v(_vm._s(_vm.opponentInfo.wechatName))]), _vm._v(" "), _c('span', {
+    staticClass: "bs-eScore-div bs-text2"
+  }, [_vm._v(_vm._s(_vm.animatedOpponentScore))]), _vm._v(" "), _c('div', {
+    staticClass: "st-questionCard-div"
+  }, [_c('img', {
+    staticClass: "st-bg",
+    attrs: {
+      "src": "/static/images/battle/subject-bg@2x.png",
+      "alt": ""
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-questionTitle-div"
+  }, [_c('span', [_vm._v("\n                    " + _vm._s(_vm.question.question) + "\n                ")])]), _vm._v(" "), _c('div', {
+    staticClass: "st-questionOption-div",
+    attrs: {
+      "id": "choiceList"
+    }
+  }, _vm._l((_vm.choiceLabelList), function(label, index) {
+    return _c('div', {
+      key: label,
+      staticClass: "choice",
+      attrs: {
+        "eventid": '0-' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.optionClick(label)
+        }
+      }
+    }, [(_vm.userWrong === label || (_vm.opponentWrong === label && !_vm.waitUser)) ? _c('img', {
+      staticClass: "choice_img",
+      attrs: {
+        "src": "/static/images/battle/Erroroption-bg@2x.png"
+      }
+    }) : (_vm.question.answer === label && !_vm.waitUser) ? _c('img', {
+      staticClass: "choice_img",
+      attrs: {
+        "src": "/static/images/battle/Checktheoptionbox@2x.png"
+      }
+    }) : _c('img', {
+      staticClass: "choice_img",
+      attrs: {
+        "src": "/static/images/battle/Optionbox@2x.png"
+      }
+    }), _vm._v(" "), (label === 'A') ? _c('span', {
+      staticClass: "choice_content"
+    }, [_vm._v(_vm._s(_vm.question.choiceA))]) : _vm._e(), _vm._v(" "), (label === 'B') ? _c('span', {
+      staticClass: "choice_content"
+    }, [_vm._v(_vm._s(_vm.question.choiceB))]) : _vm._e(), _vm._v(" "), (label === 'C') ? _c('span', {
+      staticClass: "choice_content"
+    }, [_vm._v(_vm._s(_vm.question.choiceC))]) : _vm._e(), _vm._v(" "), (label === 'D') ? _c('span', {
+      staticClass: "choice_content"
+    }, [_vm._v(_vm._s(_vm.question.choiceD))]) : _vm._e(), _vm._v(" "), (_vm.userWrong === label) ? _c('img', {
+      staticClass: "errorIcon",
+      attrs: {
+        "src": "/static/images/battle/Errorlabel@2x.png"
+      }
+    }) : _vm._e(), _vm._v(" "), ((_vm.cd === 0) || _vm.question.answer === label && !_vm.waitUser) ? _c('img', {
+      staticClass: "correctIcon",
+      attrs: {
+        "src": "/static/images/battle/Correctlabel@2x.png"
+      }
+    }) : _vm._e(), _vm._v(" "), (_vm.opponentWrong === label && !_vm.waitUser) ? _c('img', {
+      staticClass: "opponent-errorIcon",
+      attrs: {
+        "src": "/static/images/battle/Errorlabel@2x.png"
+      }
+    }) : _vm._e(), _vm._v(" "), ((_vm.cd === 0) || _vm.question.answer === label && !_vm.waitUser && !_vm.waitOpponent) ? _c('img', {
+      staticClass: "opponent-correctIcon",
+      attrs: {
+        "src": "/static/images/battle/Correctlabel@2x.png"
+      }
+    }) : _vm._e()])
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "bs-cut-down-div"
+  }, [_c('cutdown', {
+    attrs: {
+      "order": _vm.questionIndex,
+      "showOrder": "true",
+      "eventid": '1',
+      "mpcomid": '0'
+    },
+    on: {
+      "cutdownd": _vm.cutdownd,
+      "cutdownout": _vm.cutDownOut
+    }
+  })], 1)])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-72898964", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 173:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_battle_result_vue__ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_564cbbd6_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_battle_result_vue__ = __webpack_require__(176);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(174)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-564cbbd6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_battle_result_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_564cbbd6_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_battle_result_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\components\\battle-result.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] battle-result.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-564cbbd6", Component.options)
+  } else {
+    hotAPI.reload("data-v-564cbbd6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 174:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 175:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assests_js_TweenMax_min__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_wx__ = __webpack_require__(2);
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: "result",
+  props: {
+    userInfo: {
+      type: Object,
+      required: true
+    },
+    opponentInfo: {
+      type: Object,
+      required: true
+    },
+    userScore: {
+      required: true
+    },
+    opponentScore: {
+      required: true
+    },
+    userCorrectNum: {
+      required: true
+    },
+    opponentCorrectNum: {
+      required: true
+    },
+    userLearningPoit: {
+      required: true
+    },
+    battleId: {
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      type: 0, //进入类型，0-对抗赛，1-好友对抗
+      aUserMark: 0, //用户分数--动画
+      aOpponentMark: 0,
+      userMark: 0,
+      opponentMark: 0
+    };
+  },
+
+  methods: {
+    on_continue: function on_continue() {
+      if (this.type === 0) {
+        //TODO：切换至匹配页
+        __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].redirectTo("../battle/main");
+      } else {
+        __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateBack(0);
+      }
+    }
+  },
+  computed: {
+    isUserWin: function isUserWin() {
+      return this.userScore >= this.opponentScore ? true : false;
+    },
+    userWidth: function userWidth() {
+      return this.isUserWin ? 59 : 39;
+    },
+    opponentWidth: function opponentWidth() {
+      return this.isUserWin ? 39 : 59;
+    },
+    animatedUserMark: function animatedUserMark() {
+      return this.aUserMark.toFixed(0);
+    },
+    animatedOpponentMark: function animatedOpponentMark() {
+      return this.aOpponentMark.toFixed(0);
+    },
+    userAnswerNum: function userAnswerNum() {
+      switch (this.userCorrectNum) {
+        case 0:
+          return "零";
+        case 1:
+          return "一";
+        case 2:
+          return "二";
+        case 3:
+          return "三";
+        case 4:
+          return "四";
+        case 5:
+          return "五";
+      }
+    },
+    opponentAnswerNum: function opponentAnswerNum() {
+      switch (this.opponentCorrectNum) {
+        case 0:
+          return "零";
+        case 1:
+          return "一";
+        case 2:
+          return "二";
+        case 3:
+          return "三";
+        case 4:
+          return "四";
+        case 5:
+          return "五";
+      }
+    }
+  },
+  watch: {
+    userMark: function userMark(newVal) {
+      __WEBPACK_IMPORTED_MODULE_2__assests_js_TweenMax_min__["TweenLite"].to(this.$data, 1.5, { aUserMark: newVal, delay: 0.5 });
+    },
+    opponentMark: function opponentMark(newVal) {
+      __WEBPACK_IMPORTED_MODULE_2__assests_js_TweenMax_min__["TweenLite"].to(this.$data, 1.5, { aOpponentMark: newVal, delay: 0.5 });
+    }
+  },
+  onLoad: function onLoad() {
+    var _this = this;
+
+    return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+      var learningPoint, coin, experience, res;
+      return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this.userMark = _this.userScore;
+              _this.opponentMark = _this.opponentScore;
+              //答题结束，将结果返回给后台
+              learningPoint = 0 - _this.userLearningPoit;
+              coin = _this.isUserWin ? 50 : -50;
+              experience = _this.isUserWin ? 10 : 5;
+              _context.next = 7;
+              return _this.$store.dispatch("saveBattleResult", {
+                matchId: _this.battleId,
+                userId: _this.userInfo.userId,
+                coin: coin,
+                gradePoint: _this.userCorrectNum,
+                learningPoint: learningPoint,
+                experience: experience,
+                isWin: _this.isUserWin
+              });
+
+            case 7:
+              res = _context.sent;
+
+              __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].showShareMenu(true);
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, _this);
+    }))();
+  },
+  onShareAppMessage: function onShareAppMessage() {
+    return {
+      title: "我的记录在此，谁敢来比，输了的发红包",
+      path: "/page/index/main"
+    };
+  }
+});
+
+/***/ }),
+
+/***/ 176:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "result"
+  }, [_c('img', {
+    attrs: {
+      "id": "bg",
+      "src": "/static/images/bg@2x.png"
+    }
+  }), _vm._v(" "), (_vm.isUserWin) ? _c('img', {
+    staticClass: "winImg",
+    attrs: {
+      "src": "/static/images/battleResult/Challengesuccess@2x.png"
+    }
+  }) : _vm._e(), _vm._v(" "), (!_vm.isUserWin) ? _c('img', {
+    staticClass: "winImg",
+    attrs: {
+      "src": "/static/images/battleResult/Challengefailure@2x.png"
+    }
+  }) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "info"
+  }, [_c('div', {
+    style: ('width:' + _vm.userWidth + '%'),
+    attrs: {
+      "id": "userInfo"
+    }
+  }, [_c('img', {
+    attrs: {
+      "id": "userIcon",
+      "src": _vm.userInfo.headImage
+    }
+  }), _vm._v(" "), _c('span', {
+    attrs: {
+      "id": "userName"
+    }
+  }, [_vm._v(_vm._s(_vm.userInfo.wechatName))]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "font-weight": "bold"
+    },
+    attrs: {
+      "id": "userAnswerNum"
+    }
+  }, [_vm._v("答对" + _vm._s(_vm.userAnswerNum) + "题")]), _vm._v(" "), _c('div', {
+    staticClass: "mark",
+    attrs: {
+      "id": "userScore"
+    }
+  }, [_c('span', [_vm._v(_vm._s(_vm.animatedUserMark))]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "font-size": "16px"
+    }
+  }, [_vm._v("分")]), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c('div', {
+    style: ('width:' + _vm.opponentWidth + '%'),
+    attrs: {
+      "id": "opponentInfo"
+    }
+  }, [_c('img', {
+    attrs: {
+      "id": "opponentIcon",
+      "src": _vm.opponentInfo.headImage
+    }
+  }), _vm._v(" "), _c('span', {
+    attrs: {
+      "id": "opponentName"
+    }
+  }, [_vm._v(_vm._s(_vm.opponentInfo.wechatName))]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "font-weight": "bold"
+    },
+    attrs: {
+      "id": "opponentAnswerNum"
+    }
+  }, [_vm._v("答对" + _vm._s(_vm.opponentAnswerNum) + "题")]), _vm._v(" "), _c('div', {
+    staticClass: "mark",
+    attrs: {
+      "id": "opponentScore"
+    }
+  }, [_c('span', [_vm._v(_vm._s(_vm.animatedOpponentMark))]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "font-size": "18px"
+    }
+  }, [_vm._v("分")]), _vm._v(" "), _vm._m(1)])])]), _vm._v(" "), _c('div', {
+    staticClass: "table"
+  }, [_c('div', {
+    staticStyle: {
+      "display": "table-row"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      "display": "table-cell",
+      "width": "50%"
+    }
+  }, [_vm._v("金币：")]), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "display": "table-cell",
+      "width": "50%"
+    }
+  }, [_vm._v("+" + _vm._s(_vm.isUserWin ? 100 : 0))])]), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "display": "table-row"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      "display": "table-cell",
+      "width": "50%"
+    }
+  }, [_vm._v("绩点：")]), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "display": "table-cell",
+      "width": "50%"
+    }
+  }, [_vm._v("+" + _vm._s(_vm.userCorrectNum))])]), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "display": "table-row"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      "display": "table-cell",
+      "width": "50%"
+    }
+  }, [_vm._v("学点：")]), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "display": "table-cell",
+      "width": "50%"
+    }
+  }, [_vm._v("-" + _vm._s(_vm.userLearningPoit))])]), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "display": "table-row"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      "display": "table-cell",
+      "width": "50%"
+    }
+  }, [_vm._v("经验：")]), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "display": "table-cell",
+      "width": "50%"
+    }
+  }, [_vm._v("+" + _vm._s(_vm.isUserWin ? 10 : 5))])])]), _vm._v(" "), _c('img', {
+    staticClass: "btn",
+    attrs: {
+      "id": "continue",
+      "src": "/static/images/battleResult/1.1Continue-btn@2x.png",
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.on_continue
+    }
+  }), _vm._v(" "), (_vm.isUserWin) ? _c('button', {
+    staticClass: "btn",
+    attrs: {
+      "id": "showoff",
+      "open-type": "share"
+    }
+  }, [_c('img', {
+    staticClass: "btn_img",
+    attrs: {
+      "src": "/static/images/battleResult/1.1Showoff-btn@2x.png"
+    }
+  })]) : _vm._e(), _vm._v(" "), (!_vm.isUserWin) ? _c('button', {
+    staticClass: "btn",
+    attrs: {
+      "id": "share",
+      "open-type": "share"
+    }
+  }, [_c('img', {
+    staticClass: "btn_img",
+    attrs: {
+      "src": "/static/images/battleResult/Shareresults-btn@2x.png"
+    }
+  })]) : _vm._e(), _vm._v(" "), _c('span', {
+    attrs: {
+      "id": "tip"
+    }
+  }, [_vm._v("分享到微信群可获得50金币奖励")])], 1)
+}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('span', {
+    staticClass: "flag"
+  }, [_vm._v("—")])])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('span', {
+    staticClass: "flag"
+  }, [_vm._v("—")])])
+}]
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-564cbbd6", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 177:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "st-battle-main-container"
+  }, [(_vm.step == '0') ? _c('battleLoading', {
+    attrs: {
+      "user": _vm.userInfo,
+      "close": _vm.step == '0',
+      "mpcomid": '3'
+    }
+  }) : (_vm.step == 'A') ? _c('battleReady', {
+    attrs: {
+      "userInfo": _vm.userInfo,
+      "opponentInfo": _vm.opponentInfo,
+      "close": _vm.sendMessage,
+      "mpcomid": '0'
+    }
+  }) : (_vm.questionIndex < 6) ? _c('battle', {
+    attrs: {
+      "userInfo": _vm.userInfo,
+      "userScore": _vm.userScore,
+      "opponentAnswer": _vm.opponentAnswer,
+      "opponentInfo": _vm.opponentInfo,
+      "question": _vm.question,
+      "questionIndex": _vm.questionIndex,
+      "nextQuestion": _vm.sendMessage,
+      "waitUser": _vm.waitUser,
+      "waitOpponent": _vm.waitOpponent,
+      "eventid": '0',
+      "mpcomid": '1'
+    },
+    on: {
+      "userAnswered": _vm.changeUserAnswer,
+      "cutdownout": _vm.cutDownOut
+    }
+  }) : _c('battleResult', {
+    attrs: {
+      "userInfo": _vm.userInfo,
+      "opponentInfo": _vm.opponentInfo,
+      "battleId": _vm.battleId,
+      "userScore": _vm.userScore,
+      "opponentScore": _vm.opponentScore,
+      "userCorrectNum": _vm.userCorrectNum,
+      "opponentCorrectNum": _vm.opponentCorrectNum,
+      "userLearningPoit": _vm.userLearningPoit,
+      "mpcomid": '2'
+    }
+  })], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1d4d36a3", esExports)
+  }
+}
+
+/***/ })
+
+},[151]);
+//# sourceMappingURL=main.js.map

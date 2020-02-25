@@ -1,0 +1,111 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.system;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.MatchSetting;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.MatchSettingService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * 匹配设置控制器
+ * <p>
+ * Created by Devin
+ * 2018-07-02 下午 03:45
+ */
+@RestController
+@RequestMapping("/api/v1/sys/matchsetting")
+public class MatchSettingController {
+
+    private final MatchSettingService matchSettingService;
+
+    @Autowired
+    public MatchSettingController(MatchSettingService matchSettingService) {
+        this.matchSettingService = matchSettingService;
+    }
+
+    /**
+     * 获取匹配设置信息列表
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页数，从1开始
+     * @param request     Http请求
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo getMatchSettingList(Integer pageSize, Integer currentPage, HttpServletRequest request) throws ErrorInfo {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<MatchSetting> matchSettings;
+        if (pageSize == null || currentPage == null) {
+            matchSettings = matchSettingService.getAllMatchSettings();
+        } else if (pageSize <= 0 || currentPage <= 0) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        } else {
+            matchSettings = matchSettingService.getMatchSettingList(pageSize, currentPage);
+        }
+
+        return new ResponseInfo(requestInfo, matchSettings);
+    }
+
+    /**
+     * 编辑匹配设置信息
+     *
+     * @param requestInfo 请求体中的请求信息
+     * @return
+     */
+    @PostMapping("/edit")
+    public ResponseInfo editMatchSetting(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        // 获取请求参数，并进行封装
+        JSONObject reqParam = requestInfo.getReqParam();
+        if (reqParam.getString("matchSettingId") == null) {
+            // 必须传入匹配设置ID
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+
+        MatchSetting updatedMatchSetting = JSON.parseObject(reqParam.toJSONString(), MatchSetting.class);
+        MatchSetting result = matchSettingService.update(updatedMatchSetting);
+
+        return new ResponseInfo(requestInfo, result);
+    }
+
+    /**
+     * 新增匹配设置
+     *
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/add")
+    public ResponseInfo addMatchSetting(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParam = requestInfo.getReqParam();
+        if (reqParam.getString("matchSettingId") == null) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+
+        MatchSetting matchSetting = JSON.parseObject(reqParam.toJSONString(), MatchSetting.class);
+        MatchSetting result = matchSettingService.create(matchSetting);
+
+        return new ResponseInfo(requestInfo, result);
+    }
+
+    /**
+     * 根据id删除某一匹配设置（逻辑删除）
+     *
+     * @param matchSettingId
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/rmmatchsetting")
+    public ResponseInfo deleteMatchSettingByID(@RequestParam("MatchSettingID") String matchSettingId, @RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        matchSettingService.deleteByMatchSettingId(matchSettingId);
+        return new ResponseInfo(requestInfo, CommConst.ERR_SUCCESS.getCode(), CommConst.ERR_SUCCESS.getMessage(), null);
+    }
+
+}

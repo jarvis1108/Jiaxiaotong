@@ -1,0 +1,38 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionRecitationForLib;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\8\15 0015
+ */
+@Repository
+public interface QuestionRecitationForLibRepository extends CrudRepository<QuestionRecitationForLib,String> {
+    /**
+     * 根据试题ID获得多选题
+     * @param questionForLibId
+     * @return
+     */
+    QuestionRecitationForLib findByQuestionForLibId(String questionForLibId);
+
+    /**
+     * 根据私有题库的ID获得该题库下所有多选题
+     * @param questionLibId
+     * @return
+     */
+    List<QuestionRecitationForLib> findByQuestionLibId(String questionLibId);
+
+    /**
+     * 新增或者修改私有题库的背诵题
+     * @param questionRecitationForLib
+     * @return
+     */
+    QuestionRecitationForLib save(QuestionRecitationForLib questionRecitationForLib);
+
+    List<QuestionRecitationForLib> findAll();
+}

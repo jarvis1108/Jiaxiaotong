@@ -1,0 +1,29 @@
+<template name="grade-dialog$e37302de">
+  <view class="_div data-v-9d26b986 {{'gradeDialog ' + animation}}">
+    <view class="_div data-v-9d26b986 dialog-mask"></view>
+    <view class="_ul data-v-9d26b986 list">
+      <view wx:key="index" key="{{index}}" wx:for="{{first_list}}" wx:for-index="index" wx:for-item="item" class="_li data-v-9d26b986">
+        <button bindtap="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" class="_button data-v-9d26b986 {{first_animation}}" style=" {{'animation-delay:' + 0.3 * index + 's'}}"> {{item.text}} </button>
+      </view>
+    </view>
+    <view class="_ul data-v-9d26b986 primary-list" wx:if="{{level===0}}">
+      <view wx:key="index" key="{{index}}" wx:for="{{primary}}" wx:for-index="index" wx:for-item="item" class="_li data-v-9d26b986">
+        <button bindtap="handleProxy" data-eventid="{{'1-'+index}}" data-comkey="{{$k}}" class="_button data-v-9d26b986 {{[true ? 'second-slideIn' : '', item.select ? 'selected' : '']}}" style=" {{'animation-delay:' + (0.5 * index + 1) + 's;opacity:0;'}}">
+        {{item.text}} </button>
+      </view>
+    </view>
+    <view class="_ul data-v-9d26b986 list" wx:if="{{level===1}}">
+      <view wx:key="index" key="{{index}}" wx:for="{{junior}}" wx:for-index="index" wx:for-item="item" class="_li data-v-9d26b986">
+        <button bindtap="handleProxy" data-eventid="{{'2-'+index}}" data-comkey="{{$k}}" class="_button data-v-9d26b986 {{[true ? 'second-slideIn' : '', item.select ? 'selected' : '']}}" style=" {{'animation-delay:' + (0.5 * index + 1) + 's;opacity:0;'}}">
+        {{item.text}} </button>
+      </view>
+    </view>
+    <view class="_ul data-v-9d26b986 list" wx:if="{{level===2}}">
+      <view wx:key="index" key="{{index}}" wx:for="{{senior}}" wx:for-index="index" wx:for-item="item" class="_li data-v-9d26b986">
+        <button bindtap="handleProxy" data-eventid="{{'3-'+index}}" data-comkey="{{$k}}" class="_button data-v-9d26b986 {{[true ? 'second-slideIn' : '', item.select ? 'selected' : '']}}" style=" {{'animation-delay:' + (0.5 * index + 1) + 's;opacity:0;'}}">
+        {{item.text}} </button>
+      </view>
+    </view>
+    <button wx:if="{{ok}}" bindgetuserinfo="handleProxy" class="_button data-v-9d26b986 definite-btn" open-type="getUserInfo" data-eventid="{{'4'}}" data-comkey="{{$k}}">确定 </button>
+  </view>
+</template>

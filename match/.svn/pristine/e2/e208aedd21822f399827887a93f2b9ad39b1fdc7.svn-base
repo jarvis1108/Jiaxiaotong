@@ -1,0 +1,10 @@
+<template name="index$bd3ef586">
+  <view class="_ul data-v-7b30bf1a">
+    <view wx:key="item.time" key="{{item.time}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item" class="_li data-v-7b30bf1a">
+      <view class="_div data-v-7b30bf1a name"> {{ item.name }} </view>
+      <view class="_div data-v-7b30bf1a price"> {{ item.price }} </view>
+      <view class="_div data-v-7b30bf1a time"> {{ item.time }} </view>
+      <view class="_div data-v-7b30bf1a state"> {{ item.state }} </view>
+    </view>
+  </view>
+</template>

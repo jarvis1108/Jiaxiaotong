@@ -1,0 +1,138 @@
+@import "/static/css/vendor.wxss";
+
+.st-content-div.data-v-6915e87a {
+  height: 100%;
+  width: 100%;
+}
+.st-img.data-v-6915e87a {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+.st-bg.data-v-6915e87a {
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+.st-numberConternt-ul.data-v-6915e87a {
+  position: absolute;
+  width: 100%;
+}
+.st-numberList-li.data-v-6915e87a {
+  float: left;
+  margin-top: 15%;
+  margin-left: 3%;
+}
+.st-number-div.data-v-6915e87a {
+  height: 46rpx;
+  width: 46rpx;
+  border: 2rpx solid #ffffff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 46rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+}
+.st-right-number-div.data-v-6915e87a {
+  height: 46rpx;
+  width: 46rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 46rpx;
+  border: 2rpx solid rgb(59, 202, 255);
+  background: rgb(59, 202, 255);
+  color: #ffffff;
+  font-size: 30rpx;
+}
+.st-false-number-div.data-v-6915e87a {
+  height: 46rpx;
+  width: 46rpx;
+  border-radius: 50%;
+  text-align: center;
+  border: 2rpx solid rgb(255, 78, 86);
+  background: rgb(255, 78, 86);
+  line-height: 46rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+}
+.st-questionCard-div.data-v-6915e87a {
+  position: absolute;
+  top: 23%;
+  left: 5%;
+  height: 70%;
+  width: 90%;
+}
+.st-time-div.data-v-6915e87a {
+  height: 90rpx;
+  width: 80rpx;
+  position: absolute;
+  top: -4%;
+  left: 46%;
+}
+.st-questionTitle-div.data-v-6915e87a {
+  position: absolute;
+  top: 8%;
+  width: 80%;
+  height: 20%;
+  left: 11%;
+  font-size: 24rpx;
+}
+#hr.data-v-6915e87a {
+  position: absolute;
+  top: 25%;
+  width: 90%;
+  left: 5%;
+  height: 0;
+  border-bottom: 0.2rpx dashed rgb(162, 162, 162);
+}
+#errorChoice.data-v-6915e87a,
+#correctChoice.data-v-6915e87a {
+  color: white;
+}
+.st-questionOption-div.data-v-6915e87a {
+  position: absolute;
+  top: 28%;
+  left: 7%;
+  width: 85%;
+}
+.choice.data-v-6915e87a {
+  position: relative;
+  width: 100%;
+  height: 90rpx;
+  margin-top: 8%;
+  font-size: 36rpx;
+  animation: choiceZoomOut 0.5s;
+}
+.choice_img.data-v-6915e87a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.choice_content.data-v-6915e87a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 5%;
+  top: 20%;
+  z-index: 1;
+}
+.correctIcon.data-v-6915e87a {
+  width: 38rpx;
+  height: 38rpx;
+  position: absolute;
+  right: 10%;
+  top: 25%;
+  animation: zoomOut 0.5s;
+}
+.errorIcon.data-v-6915e87a {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 10%;
+  top: 30%;
+  animation: zoomOut 0.5s;
+}
+.rotate.data-v-6915e87a {
+  animation: rotate 1s;
+}

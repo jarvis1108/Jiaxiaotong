@@ -1,0 +1,55 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.question;
+
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.ErrorQuestion;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.ErrorQuestionService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionLibService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestionCollection;
+import com.dxtwangxiao.strongestsuperscholar.web.error.CommonError;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResultData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * 错题模块控制器
+ * <p>
+ * Created By Xiaohe
+ * 2018-09-09 下午 20.00
+ */
+@RestController
+@RequestMapping("api/v1/qst/errorquestion")
+public class ErrorQuestionController {
+    @Autowired
+    private ErrorQuestionService errorQuestionService;
+    /**
+     * 根据用户UserId查询错题
+     *
+     * @param request http请求
+     * @return  responseInfo
+     */
+    @GetMapping("/list")
+    public ResponseInfo errorquestionlist(HttpServletRequest request) throws Exception
+    {
+        JSONObject jsonObject = new JSONObject();
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        try {
+            JSONObject reqParam = requestInfo.getReqParam();
+            String userId = reqParam.getString("userId");
+            System.out.print(userId);
+            //获取错题
+            List<ErrorQuestion> errorQuestionList=errorQuestionService.getByUserId(userId);
+            jsonObject.put("errorQuestionList", errorQuestionList);
+            return new ResponseInfo(requestInfo, jsonObject);
+        }
+        catch (Exception e){
+            throw new ErrorInfo(CommonError.INNER_ERR.getCode(), e.getMessage(), null);
+        }
+    }
+}

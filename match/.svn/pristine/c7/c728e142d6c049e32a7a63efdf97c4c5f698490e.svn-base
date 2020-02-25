@@ -1,0 +1,31 @@
+<template name="index$64eb64ae">
+  <view class="_div data-v-342aa810 st-content-div">
+    <image class="_img data-v-342aa810 st-img" src="/copy-asset/static/images/bg@3x.png" alt></image>
+    <view class="_ul data-v-342aa810 st-numberConternt-ul">
+      <view class="_li data-v-342aa810 st-numberList-li" wx:key="item.index" key="{{item.index}}" wx:for="{{indexList}}" wx:for-index="index" wx:for-item="item">
+        <view wx:if="{{item.isRight === 1}}" class="_div data-v-342aa810 st-right-number-div"> {{item.index}} </view>
+        <view wx:elif="{{item.isRight === -1}}" class="_div data-v-342aa810 st-false-number-div"> {{item.index}} </view>
+        <view wx:else class="_div data-v-342aa810 st-number-div"> {{item.index}} </view>
+      </view>
+    </view>
+    <view class="_div data-v-342aa810 st-questionCard-div {{contentAni}}" id="content" bindtouchstart="handleProxy" bindtouchmove="handleProxy" bindtouchend="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+      <image class="_img data-v-342aa810 st-bg" src="/copy-asset/static/images/exercise/subject-bg@3x.png" alt></image>
+      <view class="_div data-v-342aa810 st-time-div">
+        <image class="_img data-v-342aa810 st-bg" src="/copy-asset/static/images/exercise/Hexagon@3x.png" alt></image>
+      </view>
+      <view class="_div data-v-342aa810 st-questionTitle-div">
+        <label class="_span data-v-342aa810"> {{questionList[questionIndex-1].questionContent}} </label>
+      </view>
+      <view id="hr" class="_hr data-v-342aa810"></view>
+      <view class="_div data-v-342aa810 st-questionOption-div" id="choiceList">
+        <view class="_div data-v-342aa810 choice" bindtap="handleProxy" id="{{'choice'+choice.label}}" wx:key="choice" key="{{choice}}" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" wx:for="{{questionList[questionIndex-1].choiceList}}" wx:for-index="index"
+          wx:for-item="choice">
+          <image class="_img data-v-342aa810 choice_img" src="{{choice.img}}" key="{{choice}}"></image>
+          <label id="{{choice.style}}" class="_span data-v-342aa810 choice_content" key="{{choice}}">{{choice.label}}.{{choice.content}}</label>
+          <image class="_img data-v-342aa810 errorIcon" wx:if="{{choice.isRight === -1}}" src="/static/images/exercise/Errorlabel@3x.png"></image>
+          <image class="_img data-v-342aa810 correctIcon" wx:if="{{choice.isRight === 1}}" src="/static/images/exercise/Correctlabel@3x.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

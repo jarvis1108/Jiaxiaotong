@@ -1,0 +1,827 @@
+global.webpackJsonp([27],{
+
+/***/ 105:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export RequestObj */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store__ = __webpack_require__(46);
+/**
+ * 请求对象
+ * @param data
+ * @constructor
+ */
+
+
+function RequestObj(data) {
+  this.requestID = getuuid();
+  this.reqType = data.reqType;
+  this.reqUserInfo = {
+    openId: __WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */].state.openId,
+    token: __WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */].state.token
+  };
+  this.reqParam = data.reqParam;
+  this.pageInfo = {
+    pageSize: data.pageSize,
+    curPage: data.curPage
+  };
+  this.reqRefData = data.reqRefData;
+}
+
+/**
+ * 用于生成uuid
+ */
+function randomNum4() {
+  return ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
+}
+function getuuid() {
+  return randomNum4() + randomNum4() + '-' + randomNum4() + '-' + randomNum4() + '-' + randomNum4() + '-' + randomNum4() + randomNum4() + randomNum4();
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (RequestObj);
+
+/***/ }),
+
+/***/ 106:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 108:
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 46:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_wx__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__ = __webpack_require__(105);
+
+
+
+
+
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */].Store({
+  state: {
+    userInfo: {},
+    userId: "",
+    token: ""
+  },
+  actions: {
+
+    /**
+     * 获取年级类型列表
+     * @param {*} param0 
+     */
+    gradePhaseInfoList: function gradePhaseInfoList(_ref) {
+      var _this = this;
+
+      var commit = _ref.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+        var gradePhaseInfoList, gradePhaseRes, i, gradeRes;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                gradePhaseInfoList = [];
+                //拿到类型列表
+
+                _context.next = 3;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/gradePhaseInfo',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'INX_VWE_000_GetGradePhaseInfoType',
+                    reqParam: {}
+                  })
+                });
+
+              case 3:
+                gradePhaseRes = _context.sent;
+
+                //扩充类型列表，遍历并获取到每个类型对应的年级列表
+                gradePhaseInfoList = gradePhaseRes.resResult.curData.gradePhaseInfoList;
+                i = 0;
+
+              case 6:
+                if (!(i < gradePhaseInfoList.length)) {
+                  _context.next = 25;
+                  break;
+                }
+
+                gradePhaseInfoList[i]['select'] = false;
+                _context.next = 10;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/gradeInfo',
+                  reqType: 'INX_VWE_000_GetGradeByGradeType',
+                  reqParam: { gradePhaseId: gradePhaseInfoList[i].gradePhaseID }
+                });
+
+              case 10:
+                gradeRes = _context.sent;
+                _context.t0 = i;
+                _context.next = _context.t0 === 0 ? 14 : _context.t0 === 1 ? 16 : _context.t0 === 2 ? 18 : _context.t0 === 3 ? 20 : 22;
+                break;
+
+              case 14:
+                gradePhaseInfoList[i]['gradeList'] = gradeRes.resResult.curData.primary.gradeInfoList;
+                return _context.abrupt('break', 22);
+
+              case 16:
+                gradePhaseInfoList[i]['gradeList'] = gradeRes.resResult.curData.junior.gradeInfoList;
+                return _context.abrupt('break', 22);
+
+              case 18:
+                gradePhaseInfoList[i]['gradeList'] = gradeRes.resResult.curData.senior.gradeInfoList;
+                return _context.abrupt('break', 22);
+
+              case 20:
+                gradePhaseInfoList[i]['gradeList'] = [];
+                return _context.abrupt('break', 22);
+
+              case 22:
+                ++i;
+                _context.next = 6;
+                break;
+
+              case 25:
+                return _context.abrupt('return', gradePhaseInfoList);
+
+              case 26:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    },
+
+
+    /**
+     * 获取登陆信息并保存在store中[首次登录,需提交用户信息至后台]
+     * @param {*} param0 
+     */
+    firstLogin: function firstLogin(_ref2, gradeId) {
+      var _this2 = this;
+
+      var commit = _ref2.commit,
+          state = _ref2.state;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+        var infoResult, res, logResult, result;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["b" /* getUserInfo */])({
+                  withCredentials: false
+                });
+
+              case 2:
+                infoResult = _context2.sent;
+                _context2.next = 5;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/user',
+                  method: 'POST',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'INX_VWE_000_firstLogin',
+                    reqParam: {
+                      nickName: infoResult.userInfo.nickName,
+                      avatarUrl: infoResult.userInfo.avatarUrl,
+                      gender: infoResult.userInfo.gender,
+                      city: infoResult.userInfo.city,
+                      gradeId: gradeId
+                    }
+                  })
+                });
+
+              case 5:
+                res = _context2.sent;
+
+                //将用户信息保存在全局
+                state.userId = res.resResult.curData.user.userId;
+                state.token = res.resResult.curData.token;
+                state.userInfo = res.resResult.curData.user;
+
+                //拿到用户登陆code传递给后台
+                _context2.next = 11;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["c" /* login */])();
+
+              case 11:
+                logResult = _context2.sent;
+                _context2.next = 14;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/login',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_GetOpenId',
+                    reqParam: {
+                      userId: state.userId,
+                      code: logResult.code
+                    }
+                  })
+                });
+
+              case 14:
+                result = _context2.sent;
+
+              case 15:
+              case 'end':
+                return _context2.stop();
+            }
+          }
+        }, _callee2, _this2);
+      }))();
+    },
+
+
+    /**
+     * 获取登陆信息并保存在store中[非首次登陆，直接请求用户信息]
+     * @param commit
+     * @returns {Promise<void>}
+     */
+    login: function login(_ref3) {
+      var _this3 = this;
+
+      var commit = _ref3.commit,
+          state = _ref3.state;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
+        var logResult, res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["c" /* login */])();
+
+              case 2:
+                logResult = _context3.sent;
+
+                console.log(logResult.code);
+                _context3.next = 6;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/userInfo',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_login',
+                    reqParam: { code: logResult.code }
+                  })
+                });
+
+              case 6:
+                res = _context3.sent;
+
+                state.userId = res.resResult.curData.user.userId;
+                state.token = res.resResult.curData.token;
+                state.userInfo = res.resResult.curData.user;
+
+              case 10:
+              case 'end':
+                return _context3.stop();
+            }
+          }
+        }, _callee3, _this3);
+      }))();
+    },
+
+
+    /**
+     * 获取知识练兵场学科列表
+     * @param {*} param0 
+     */
+    getExerciseObjectList: function getExerciseObjectList(_ref4) {
+      var _this4 = this;
+
+      var commit = _ref4.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee4() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/exercise',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_getExerciseObjectList',
+                    reqParam: {}
+                  })
+                });
+
+              case 2:
+                res = _context4.sent;
+                return _context4.abrupt('return', res.objectList.resResult.curData.data);
+
+              case 4:
+              case 'end':
+                return _context4.stop();
+            }
+          }
+        }, _callee4, _this4);
+      }))();
+    },
+
+
+    /**
+     * 获取问题列表
+     * @param commit
+     * @param listSize 问题列表的大小
+     * @returns {Promise<*>}
+     */
+    getQuestionList: function getQuestionList(_ref5, listSize) {
+      var _this5 = this;
+
+      var commit = _ref5.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee5() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/exercise',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_GetQuestionList',
+                    reqParam: { listSize: listSize }
+                  })
+                });
+
+              case 2:
+                res = _context5.sent;
+                return _context5.abrupt('return', res.questionList.resResult.curData.data);
+
+              case 4:
+              case 'end':
+                return _context5.stop();
+            }
+          }
+        }, _callee5, _this5);
+      }))();
+    },
+
+
+    /**
+     * 获取对抗赛结果信息
+     * @param commit
+     * @param state
+     * @returns {Promise<*>}
+     */
+    getResultInfo: function getResultInfo(_ref6, battleId) {
+      var _this6 = this;
+
+      var commit = _ref6.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee6() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/battleResult',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_getResultInfo',
+                    reqParam: { battleId: battleId }
+                  })
+                });
+
+              case 2:
+                res = _context6.sent;
+                return _context6.abrupt('return', res.resResult.curData.result);
+
+              case 4:
+              case 'end':
+                return _context6.stop();
+            }
+          }
+        }, _callee6, _this6);
+      }))();
+    },
+
+
+    /**
+     *根据战局Id获取群比赛玩家列表
+     * @param {*} param0 
+     * @param {*} battleId 
+     */
+    getPlayerListByBattleId: function getPlayerListByBattleId(_ref7, battleId) {
+      var _this7 = this;
+
+      var commit = _ref7.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee7() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/groupBattle',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_GetPlyerListById',
+                    reqParam: { battleId: battleId }
+                  })
+                });
+
+              case 2:
+                res = _context7.sent;
+                return _context7.abrupt('return', res.playerList.resResult.curData.data);
+
+              case 4:
+              case 'end':
+                return _context7.stop();
+            }
+          }
+        }, _callee7, _this7);
+      }))();
+    },
+
+
+    /**
+     * 获取兑换页面的商品列表
+     */
+    getProductList: function getProductList(_ref8) {
+      var _this8 = this;
+
+      var commit = _ref8.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee8() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/topup',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_GetProductList',
+                    reqParam: {}
+                  })
+                });
+
+              case 2:
+                res = _context8.sent;
+                return _context8.abrupt('return', res.productList.resResult.curData.productList);
+
+              case 4:
+              case 'end':
+                return _context8.stop();
+            }
+          }
+        }, _callee8, _this8);
+      }))();
+    },
+
+
+    /**
+     * 获取金币商城页面商品列表
+     * @param {*} param0 
+     */
+    getProductListOfMall: function getProductListOfMall(_ref9) {
+      var _this9 = this;
+
+      var commit = _ref9.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee9() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/goldMall',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_GetProductListOfMall',
+                    reqParam: {}
+                  })
+                });
+
+              case 2:
+                res = _context9.sent;
+                return _context9.abrupt('return', res.productList.resResult.curData.data);
+
+              case 4:
+              case 'end':
+                return _context9.stop();
+            }
+          }
+        }, _callee9, _this9);
+      }))();
+    },
+
+
+    /**
+     * 获取我的物品页面的物品列表
+     * @param {*} param0 
+     */
+    getProductListOfMine: function getProductListOfMine(_ref10) {
+      var _this10 = this;
+
+      var commit = _ref10.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee10() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                _context10.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/myItems',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'MAL_000_getProductListOfMine'
+                  })
+                });
+
+              case 2:
+                res = _context10.sent;
+                return _context10.abrupt('return', res.productList.resResult.curData.data);
+
+              case 4:
+              case 'end':
+                return _context10.stop();
+            }
+          }
+        }, _callee10, _this10);
+      }))();
+    },
+
+
+    /**
+    * 获取奖学金页面的物品列表
+    * @param {*} param0 
+    */
+    getProductListOfScholarship: function getProductListOfScholarship(_ref11) {
+      var _this11 = this;
+
+      var commit = _ref11.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee11() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/scholarship',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'MAL_000_getProductListOfScholarship'
+                  })
+                });
+
+              case 2:
+                res = _context11.sent;
+                return _context11.abrupt('return', res.productList.resResult.curData.data);
+
+              case 4:
+              case 'end':
+                return _context11.stop();
+            }
+          }
+        }, _callee11, _this11);
+      }))();
+    },
+
+
+    /**
+     * 获取排行榜界面好友排行
+     * @param {*} param0 
+     * @param {*} type 0-好友排行，1-全国排行 
+     */
+    getRankList: function getRankList(_ref12, type) {
+      var _this12 = this;
+
+      var commit = _ref12.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee12() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee12$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                _context12.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/rank',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_getRankList',
+                    reqParam: { type: type }
+                  })
+                });
+
+              case 2:
+                res = _context12.sent;
+
+                if (!(type === 0)) {
+                  _context12.next = 7;
+                  break;
+                }
+
+                return _context12.abrupt('return', res.rankList.resResult.curData.data);
+
+              case 7:
+                return _context12.abrupt('return', res.worldRankList.resResult.curData.data);
+
+              case 8:
+              case 'end':
+                return _context12.stop();
+            }
+          }
+        }, _callee12, _this12);
+      }))();
+    },
+
+
+    /**
+     * 获取用户的充值记录
+     * @param {*} param0 
+     */
+    getTopupRecords: function getTopupRecords(_ref13) {
+      var _this13 = this;
+
+      var commit = _ref13.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee13() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee13$(_context13) {
+          while (1) {
+            switch (_context13.prev = _context13.next) {
+              case 0:
+                _context13.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/topupRecord',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_getTopupRecords',
+                    reqParam: {}
+                  })
+                });
+
+              case 2:
+                res = _context13.sent;
+                return _context13.abrupt('return', res.recordList.resResult.curData.data);
+
+              case 4:
+              case 'end':
+                return _context13.stop();
+            }
+          }
+        }, _callee13, _this13);
+      }))();
+    },
+
+
+    /**
+     * 获取用户的兑换记录
+     * @param {*} param0 
+     */
+    getExchangeRecords: function getExchangeRecords(_ref14) {
+      var _this14 = this;
+
+      var commit = _ref14.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee14() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee14$(_context14) {
+          while (1) {
+            switch (_context14.prev = _context14.next) {
+              case 0:
+                _context14.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/exchangeRecords',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_getExchangeRecords',
+                    reqParam: {}
+                  })
+                });
+
+              case 2:
+                res = _context14.sent;
+                return _context14.abrupt('return', res.recordList.resResult.curData.data);
+
+              case 4:
+              case 'end':
+                return _context14.stop();
+            }
+          }
+        }, _callee14, _this14);
+      }))();
+    },
+
+
+    /**
+     * 获取用户训练营信息
+     * @param {*} param0 
+     */
+    getMyCampInfo: function getMyCampInfo(_ref15) {
+      var _this15 = this;
+
+      var commit = _ref15.commit;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee15() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee15$(_context15) {
+          while (1) {
+            switch (_context15.prev = _context15.next) {
+              case 0:
+                _context15.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_5__utils_wx__["d" /* request */])({
+                  url: __WEBPACK_IMPORTED_MODULE_4__config__["a" /* api */] + '/myCamp',
+                  data: new __WEBPACK_IMPORTED_MODULE_6__utils_RequestObj__["a" /* default */]({
+                    reqType: 'SYS_PRE_000_getMyCampInfo',
+                    reqParam: {}
+                  })
+                });
+
+              case 2:
+                res = _context15.sent;
+                return _context15.abrupt('return', res.campInfo.resResult.curData.data);
+
+              case 4:
+              case 'end':
+                return _context15.stop();
+            }
+          }
+        }, _callee15, _this15);
+      }))();
+    }
+  }
+}));
+
+/***/ }),
+
+/***/ 68:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assests_css_st_animate_css__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assests_css_st_animate_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assests_css_st_animate_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_resource__ = __webpack_require__(107);
+
+
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.productionTip = false;
+__WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */].mpType = 'app';
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_resource__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$store = __WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */];
+
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */]);
+app.$mount();
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // 这个字段走 app.json
+  config: {
+    // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
+    pages: ['^pages/index/main', 'pages/my-camp/main', 'pages/home/main'],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#5F37DB',
+      navigationBarTitleText: '首页',
+      navigationBarTextStyle: '#fff'
+    },
+    tabBar: {
+      "color": "rgb(58,70,97)",
+      "selectedColor": "orange",
+      "list": [{
+        "selectedIconPath": "/static/images/Answer-icon@2x.png",
+        "iconPath": "static/images/Answer-icon-Notselected@2x.png",
+        "pagePath": "pages/index/main",
+        "text": "答题"
+      }, {
+        "selectedIconPath": "static/images/Community-icon@2x.png",
+        "iconPath": "static/images/Community-icon-Notselected@2x.png",
+        "pagePath": "pages/my-camp/main",
+        "text": "社区"
+      }, {
+        "selectedIconPath": "static/images/My.icon@2x.png",
+        "iconPath": "static/images/My.iconNotselected@2x.png",
+        "pagePath": "pages/home/main",
+        "text": "我的"
+      }]
+    }
+  }
+});
+
+/***/ })
+
+},[68]);
+//# sourceMappingURL=app.js.map

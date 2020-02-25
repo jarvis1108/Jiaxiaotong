@@ -1,0 +1,45 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.QuestionSetting;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 问题设置数据访问层
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:30
+ */
+@Repository
+public interface QuestionSettingRepository extends CrudRepository<QuestionSetting, String> {
+    /**
+     * 查询试题设置列表
+     * @return
+     */
+    List<QuestionSetting> findAll();
+
+    /**
+     * 创建、更新试题设置表信息
+     * @param questionSetting
+     * @return
+     */
+    QuestionSetting save(QuestionSetting questionSetting);
+
+    /**
+     * 根据试题设置ID查询试题设置表
+     * @param id
+     * @return
+     */
+    QuestionSetting findQuestionSettingByQuestionSettingId(String id);
+
+    /**
+     * 分页查询试题设置列表
+     * @param pageable
+     * @return
+     */
+    Page<QuestionSetting> findAll(Pageable pageable);
+}

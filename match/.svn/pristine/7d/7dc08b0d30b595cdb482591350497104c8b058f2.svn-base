@@ -1,0 +1,66 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.Admin;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 管理员数据访问层单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 02:14
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class AdminRepositoryTest {
+
+    @Autowired
+    private AdminRepository adminRepository;
+
+    @Test
+    public void findAll() {
+        List<Admin> adminList = adminRepository.findAll();
+        assertNotEquals(0, adminList.size());
+
+        adminList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll1() {
+        PageRequest pageable = PageRequest.of(1, 1);
+        Page<Admin> adminPage = adminRepository.findAll(pageable);
+
+        List<Admin> adminList = adminPage.getContent();
+        assertEquals(1, adminList.size());
+
+        adminList.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void findAdminByAdminId() {
+        String adminId = "1";
+        Admin admin = adminRepository.findAdminByAdminId(adminId);
+
+        assertNotNull(admin);
+        System.out.println(admin);
+    }
+
+    @Test
+    public void save() {
+        Admin admin = new Admin();
+        admin.setAdminId("3");
+        admin.setAccount("3");
+        admin.setAdminNo("3");
+        admin.setAdminPsw("3");
+    }
+}

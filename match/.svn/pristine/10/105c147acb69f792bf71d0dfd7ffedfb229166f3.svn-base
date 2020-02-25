@@ -1,0 +1,34 @@
+<template name="index$8870d088">
+  <view class="_div data-v-cea1da1a content">
+    <view class="_div data-v-cea1da1a layer_001">
+      <view class="_div data-v-cea1da1a text_001 position_001">订单信息</view>
+      <view class="_div data-v-cea1da1a position_002">
+        <view id="left_001" class="_div data-v-cea1da1a">
+          <image src="{{productObj.productImage}}" id="img_001" class="_img data-v-cea1da1a"></image>
+        </view>
+        <view id="left_002" class="_div data-v-cea1da1a">
+          <view class="_div data-v-cea1da1a text_001">{{productObj.productName}}</view>
+          <view class="_div data-v-cea1da1a text_002">{{productObj.productPrice}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-cea1da1a line_001"></view>
+    <view class="_div data-v-cea1da1a layer_002">
+      <view id="left_002" class="_div data-v-cea1da1a  text_003">商品总价</view>
+      <view id="right_002" class="_div data-v-cea1da1a text_004">{{productObj.productPrice}}</view>
+    </view>
+    <view class="_div data-v-cea1da1a line_001"></view>
+    <view class="_div data-v-cea1da1a layer_003">
+      <view class="_div data-v-cea1da1a text_001 position_001">支付方式</view>
+      <view class="_div data-v-cea1da1a position_002">
+        <view id="left_003" class="_div data-v-cea1da1a">
+          <image src="/static/images/pay/WeChatPayment_Icon.png" id="img_002" class="_img data-v-cea1da1a"></image>
+        </view>
+        <view id="left_004" class="_div data-v-cea1da1a text_005"> 微信支付 </view>
+      </view>
+    </view>
+    <view class="_div data-v-cea1da1a layer_005">
+      <button id="button_001" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_button data-v-cea1da1a">去支付</button>
+    </view>
+  </view>
+</template>

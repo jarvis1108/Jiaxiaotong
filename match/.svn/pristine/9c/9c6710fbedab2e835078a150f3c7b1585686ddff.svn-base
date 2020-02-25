@@ -1,0 +1,5580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: QST_RFL_010</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: QST_RFL_010</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>QST_RFL_010<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    
+    <h4 class="name" id="QST_RFL_010"><span class="type-signature"></span>new QST_RFL_010<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">实现功能：私有题库模块接口设计</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="QST_QST_RFL_010.js.html">QST/QST_RFL_010.js</a>, <a href="QST_QST_RFL_010.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~DeleteRecitationQuestionForLib"><span class="type-signature">(inner) </span>DeleteRecitationQuestionForLib<span class="signature">(objParam, objResult)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">实现功能：删除背诵题目</p>
+    
+
+
+
+<div class="description">
+    **DELETE** /api/v1/qst/questionRecitationForLib/{questionForLibId}
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>reqID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求类型 固定值为: QST_RFL_010_DeleteRecitationQuestionForLib</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqUserInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.当前用户信息
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.当前用户信息.用户Id</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数(无)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqRefData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.存放业务以外的其它信息 default: {}</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.分页信息(无)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>objResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求的ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求类型</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>curData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果(null)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>errorInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.出错信息(具体结构框架统一定义)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resRefData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.存放业务以外的其它信息(预留扩展，一般情况下不用) default: {}</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="QST_QST_RFL_010.js.html">QST/QST_RFL_010.js</a>, <a href="QST_QST_RFL_010.js.html#line128">line 128</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>暂无</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~GetRecitationQuestionForLibList"><span class="type-signature">(inner) </span>GetRecitationQuestionForLibList<span class="signature">(objParam, objResult)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">实现功能：获取所有符合条件的私有题库中背诵题目</p>
+    
+
+
+
+<div class="description">
+    **POST** /api/v1/qst/questionRecitationForLib/list
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>reqID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求类型 固定值为: QST_RFL_010_GetRecitationQuestionForLibList</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqUserInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.当前用户信息
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.当前用户信息.用户Id</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数(检索条件)
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>questionLibId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.私有题库Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>count</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.问题数目</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>knowledgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.知识点Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subjectId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.学科Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradePhaseId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.年纪阶段Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.年级Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.课程Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>minQuestionLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.最低级别</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxQuestionLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.最高级别</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>minDifficulty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">double</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.最小难度系数</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxDifficulty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">double</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.最大难度系数</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqRefData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.存放业务以外的其它信息 default: {}</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.分页信息(无)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>objResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求的ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求类型</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>curData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果 default: {}
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>questionRecitationForLibList</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionRecitationForLibList【i】</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表.第i条记录
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>questionForLibId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.背诵题Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionForLibNo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.背诵题编号</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionForLibCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.背诵题编码</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>knowledgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.知识点Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>knowledgeContent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.知识点内容</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.年级Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeShortName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.年级简称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.年级名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subjectId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.学科Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subjectShortName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.学科简称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subjectName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.学科名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.课程Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseShortName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.课程简称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.课程名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>question</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.问题内容</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>answer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.答案</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionAnalyze</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.解析</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reference</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.引用出处</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.问题级别</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>difficulty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.难度系数</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>coinWeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.金币权值</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gpWeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.绩点权值</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>recommendTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题列表【i】.推荐答题时间</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>errorInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.出错信息(具体结构框架统一定义)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resRefData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.存放业务以外的其它信息(预留扩展，一般情况下不用) default: {}</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="QST_QST_RFL_010.js.html">QST/QST_RFL_010.js</a>, <a href="QST_QST_RFL_010.js.html#line265">line 265</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>暂无</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~SaveRecitationQuestionForLib"><span class="type-signature">(inner) </span>SaveRecitationQuestionForLib<span class="signature">(objParam, objResult)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">实现功能：存储背诵题目</p>
+    
+
+
+
+<div class="description">
+    **POST** /api/v1/qst/questionRecitationForLib
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>reqID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求类型 固定值为: QST_RFL_010_SaveRecitationQuestionForLib</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqUserInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.当前用户信息
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.当前用户信息.用户Id</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>questionLibId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.题库Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionLibNo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.题库编码</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isPublic</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">byte</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.是否公开 1:是 0:否</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionTypeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.试题类型Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>knowledgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.知识点Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.课程Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.年级Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>question</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.问题内容</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>provider</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.提供者Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>personInCharge</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.负责人Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reference</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.引用出处</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.级别</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>difficulty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">double</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.难度系数</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>coinWeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">double</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.金币权值</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gpWeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">double</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.绩点权值</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>answer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.答案</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionAnalyze</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.解析</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>recommendTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.推荐答题时间, 以秒为单位</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fromQuestionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.来自试题Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fromQuestionNo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.来自试题编码</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>remark</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.备注说明</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isFromQuestion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">byte</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.是否来自试题 1:是 0:否</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqRefData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.存放业务以外的其它信息 default: {}</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.分页信息(无)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>objResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求的ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求类型</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>curData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>questionForLibId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionForLibNo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题编号</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionForLibCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题编码</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>knowledgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.知识点Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>knowledgeContent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.知识点内容</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.年级Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeShortName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.年级简称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.年级名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subjectId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.学科Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subjectShortName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.学科简称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subjectName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.学科名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.课程Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseShortName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.课程简称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.课程名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>question</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.问题内容</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>answer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.答案</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionAnalyze</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.解析</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reference</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.引用出处</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.问题级别</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>difficulty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.难度系数</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>coinWeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.金币权值</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gpWeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.绩点权值</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>recommendTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.推荐答题时间</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>errorInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.出错信息(具体结构框架统一定义)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resRefData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.存放业务以外的其它信息(预留扩展，一般情况下不用) default: {}</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="QST_QST_RFL_010.js.html">QST/QST_RFL_010.js</a>, <a href="QST_QST_RFL_010.js.html#line98">line 98</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>暂无</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~UpdateRecitationQuestionForLib"><span class="type-signature">(inner) </span>UpdateRecitationQuestionForLib<span class="signature">(objParam, objResult)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">实现功能：更新背诵题目</p>
+    
+
+
+
+<div class="description">
+    **PUT** /api/v1/qst/questionRecitationForLib/{questionForLibId}
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>reqID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求类型 固定值为: QST_RFL_010_UpdateRecitationQuestionForLib</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqUserInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.当前用户信息
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.当前用户信息.用户Id</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>questionLibId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.题库Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionLibNo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.题库编码</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isPublic</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">byte</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.是否公开 1:是 0:否</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionTypeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.试题类型Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>knowledgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.知识点Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>question</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.问题内容</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>provider</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.提供者Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>personInCharge</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.负责人Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reference</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.引用出处</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.级别</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>difficulty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">double</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.难度系数</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>coinWeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">double</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.金币权值</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gpWeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">double</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.绩点权值</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>answer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.答案</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionAnalyze</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.解析</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>recommendTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.推荐答题时间, 以秒为单位</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fromQuestionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.来自试题Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fromQuestionNo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.来自试题编码</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>remark</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.备注说明</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isFromQuestion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">byte</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.是否来自试题 1:是 0:否</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqRefData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.存放业务以外的其它信息 default: {}</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.分页信息(无)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>objResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求的ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求类型</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>curData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>questionForLibId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionForLibNo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题编号</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionForLibCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.背诵题编码</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>knowledgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.知识点Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>knowledgeContent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.知识点内容</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.年级Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeShortName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.年级简称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gradeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.年级名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subjectId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.学科Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subjectShortName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.学科简称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subjectName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.学科名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.课程Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseShortName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.课程简称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>courseName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.课程名</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>question</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.问题内容</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>answer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.答案</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionAnalyze</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.解析</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reference</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.引用出处</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.问题级别</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>difficulty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.难度系数</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>coinWeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.金币权值</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gpWeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.绩点权值</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>recommendTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.推荐答题时间</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>errorInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.出错信息(具体结构框架统一定义)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resRefData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.存放业务以外的其它信息(预留扩展，一般情况下不用) default: {}</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="QST_QST_RFL_010.js.html">QST/QST_RFL_010.js</a>, <a href="QST_QST_RFL_010.js.html#line200">line 200</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>暂无</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="COY.COY_CMC_010.html">COY_CMC_010</a></li><li><a href="INX.INX_VWE_000.html">INX_VWE_000</a></li><li><a href="MAL.MAL_CHG_010.html">MAL_CHG_010</a></li><li><a href="MAL.MAL_CHG_030.html">MAL_CHG_030</a></li><li><a href="MAL.MAL_RHG_030.html">MAL_RHG_030</a></li><li><a href="MAL.MAL_RNG_010.html">MAL_RNG_010</a></li><li><a href="MAL.MAL_RNG_020.html">MAL_RNG_020</a></li><li><a href="MAL.SLS_RCD_010.html">SLS_RCD_010</a></li><li><a href="MTH.COM_MTH_RSL.html">COM_MTH_RSL</a></li><li><a href="MTH.MTH_EXC_010.html">MTH_EXC_010</a></li><li><a href="OMT.OMT_CMC_010.html">OMT_CMC_010</a></li><li><a href="QFL.QFL_CHO_010.html">QFL_CHO_010</a></li><li><a href="QFL.QFL_CHO_020.html">QFL_CHO_020</a></li><li><a href="QFL.QFL_CHO_030.html">QFL_CHO_030</a></li><li><a href="QST.QST_QSL_010.html">QST_QSL_010</a></li><li><a href="QST.QST_RFL_010.html">QST_RFL_010</a></li><li><a href="STA.SYS_RAN_010.html">SYS_RAN_010</a></li><li><a href="SYS.SYS_PER_010.html">SYS_PER_010</a></li><li><a href="SYS.SYS_PER_080.html">SYS_PER_080</a></li></ul><h3>Namespaces</h3><ul><li><a href="INX.html">INX</a></li><li><a href="MAL.html">MAL</a></li><li><a href="MTH.html">MTH</a></li><li><a href="STA.html">STA</a></li><li><a href="SYS.html">SYS</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Sep 22 2018 15:45:53 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

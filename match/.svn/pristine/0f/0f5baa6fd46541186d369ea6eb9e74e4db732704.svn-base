@@ -1,0 +1,14 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.LevelExperience;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ * Created By Devin
+ * 2018-08-27 下午 06:57
+ */
+@Repository
+public interface LevelExperienceRepository extends CrudRepository<LevelExperience, String> {
+    LevelExperience findByMinExperienceLessThanEqualAndMaxExperienceGreaterThan(Integer minExperience, Integer maxExperience);
+}

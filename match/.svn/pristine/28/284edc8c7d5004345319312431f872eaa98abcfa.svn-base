@@ -1,0 +1,91 @@
+@import "/static/css/vendor.wxss";
+
+.st-topup-record-noRecord-span.data-v-3377f879 {
+  position: absolute;
+  width: 60%;
+  height: 20%;
+  top: 25%;
+  left: 20%;
+  text-align: center;
+  z-index: 10;
+  color: #000;
+  font-size: 38rpx;
+}
+.st-topup-record-container.data-v-3377f879 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(207, 235, 255);
+}
+.st-topup-record-ul.data-v-3377f879 {
+  position: absolute;
+  height: 80%;
+  top: 5%;
+  width: 90%;
+  left: 5%;
+  overflow: auto;
+}
+.st-topup-record-li.data-v-3377f879 {
+  position: relative;
+  height: 200rpx;
+  width: 100%;
+  margin-bottom: 2%;
+}
+.st-topup-record-li-bg.data-v-3377f879 {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  z-index: 0;
+}
+.st-topup-record-li-icon.data-v-3377f879 {
+  position: absolute;
+  width: 113rpx;
+  height: 113rpx;
+  top: 10%;
+  left: 5%;
+}
+.st-topup-record-li-name-div.data-v-3377f879 {
+  position: absolute;
+  width: 152rpx;
+  height: 28rpx;
+  top: 70%;
+  left: 5%;
+  background: #fff;
+  border-radius: 14rpx;
+  text-align: center;
+  font-size: 20rpx;
+}
+.st-topup-record-li-blue-name.data-v-3377f879 {
+  color: rgb(61, 138, 218);
+}
+.st-topup-record-li-green-name.data-v-3377f879 {
+  color: rgb(121, 181, 61);
+}
+.st-topup-record-li-cyan-name.data-v-3377f879 {
+  color: rgb(32, 196, 163);
+}
+.st-topup-record-li-blue-datatime.data-v-3377f879 {
+  color: rgb(254 , 254, 255);
+}
+.st-topup-record-li-green-datatime.data-v-3377f879 {
+  color: rgb(182, 223, 142);
+}
+.st-topup-record-li-cyan-datatime.data-v-3377f879 {
+  color: rgb(146, 232, 215);
+}
+.st-topup-record-li-price.data-v-3377f879 {
+  position: absolute;
+  top: 25%;
+  right: 10%;
+  font-size: 36rpx;
+  color: #fff;
+}
+.st-topup-record-li-datatime.data-v-3377f879 {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  font-size: 20rpx;
+  color: #fff;
+}

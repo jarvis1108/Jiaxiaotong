@@ -1,0 +1,26 @@
+@import "/static/css/vendor.wxss";
+
+._li {
+  height: 150rpx;
+  width: 600rpx;
+  left: 75rpx;
+  background: burlywood;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  position: relative;
+}
+.price {
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+.time {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.state {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}

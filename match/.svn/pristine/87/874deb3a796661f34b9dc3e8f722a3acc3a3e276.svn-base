@@ -1,0 +1,81 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminRole;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 管理员角色服务单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 04:37
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class AdminRoleServiceTest {
+
+    @Autowired
+    private AdminRoleService adminRoleService;
+
+    @Test
+    public void getAdminRoleList() {
+        List<AdminRole> adminRoleList = adminRoleService.getAdminRoleList(2, 1);
+        assertNotEquals(0, adminRoleList.size());
+
+        adminRoleList.forEach(System.out::println);
+    }
+
+    @Test
+    public void getAdminRoles() {
+        List<AdminRole> adminRoleList = adminRoleService.getAdminRoles();
+        assertNotEquals(0, adminRoleList.size());
+
+        adminRoleList.forEach(System.out::println);
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        AdminRole adminRole = new AdminRole();
+        adminRole.setAdminRoleId("4");
+        adminRole.setAdminRoleNo("4");
+        adminRole.setAdminRoleName("普通用户");
+        adminRole.setPurviewCode("{nothing: true}");
+        adminRole.setIsValid(Byte.valueOf("1"));
+
+        AdminRole result = adminRoleService.create(adminRole);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void update() throws ErrorInfo {
+        AdminRole adminRole = new AdminRole();
+        adminRole.setAdminRoleId("4");
+        adminRole.setAdminRoleNo("4");
+        adminRole.setAdminRoleName("普通用户");
+        adminRole.setPurviewCode("{nothing}");
+        adminRole.setIsValid(Byte.valueOf("1"));
+
+        AdminRole result = adminRoleService.update(adminRole);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteByAdminRoleId() throws ErrorInfo {
+        String adminRoleId = "4";
+        boolean result = adminRoleService.deleteByAdminRoleId(adminRoleId);
+
+        assertTrue(result);
+    }
+}

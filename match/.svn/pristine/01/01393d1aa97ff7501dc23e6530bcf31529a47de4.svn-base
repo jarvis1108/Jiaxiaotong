@@ -1,0 +1,133 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.BackendAdmin.question;
+
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.Question;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionMultipleChoice;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestionCollection;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.QuestionMultipleChoiceVO;
+import com.dxtwangxiao.strongestsuperscholar.web.error.CommonError;
+import com.dxtwangxiao.strongestsuperscholar.web.error.StrongestScholarException;
+import com.dxtwangxiao.strongestsuperscholar.web.util.Constants;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResultData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
+
+/**
+ * Created by 孙伟浩 on 2018/10/11.
+ */
+@RestController
+@RequestMapping("api/v1/bam/qst/questionMultipleChoice")
+@Transactional
+public class QuestionMultipleChoiceController {
+
+    @Autowired
+    private QuestionService questionService;
+
+    /**
+      * 存储选择题
+      *
+      * @param  requestInfo
+      * @return 背诵题表现层对象
+      */
+    @PostMapping
+    public ResponseInfo save(@RequestBody RequestInfo requestInfo) throws Exception{
+        JSONObject reqParam = requestInfo.getReqParam();
+        JSONObject reqUserInfo = requestInfo.getReqUserInfo();
+        QuestionMultipleChoiceVO questionMultipleChoiceVO = new QuestionMultipleChoiceVO();
+        try {
+            questionMultipleChoiceVO = questionService.saveQuestionMultipleChoice(reqUserInfo.getString("userId"), reqParam);
+        }
+        catch (Exception e){
+            throw new StrongestScholarException(CommonError.INNER_ERR.getCode(), e.getMessage());
+        }
+        return new ResponseInfo(requestInfo, questionMultipleChoiceVO);
+    }
+
+    /**
+      * 删除选择题
+      *
+      * @param  questionId 试题Id
+      * @param requestInfo 请求信息
+      * @return
+      */
+    @DeleteMapping("/{questionId}")
+    public ResponseInfo delete(@PathVariable("questionId") String questionId, @RequestBody RequestInfo requestInfo)
+    throws Exception
+    {
+
+        try {
+            questionService.deleteQuestionMultipleChoice(questionId);
+        }
+        catch (Exception e){
+            throw new StrongestScholarException(CommonError.INNER_ERR.getCode(), e.getMessage());
+        }
+
+        return new ResponseInfo(requestInfo, new JSONObject());
+    }
+
+
+    /**
+      * 更新选择题
+      *
+      * @param  questionId 试题Id
+      * @param  requestInfo 请求信息
+      * @return
+      */
+    @PostMapping("/{questionId}")
+    public ResponseInfo update(@PathVariable("questionId") String questionId, @RequestBody RequestInfo requestInfo)
+    throws Exception
+    {
+        JSONObject reqParam = requestInfo.getReqParam();
+        JSONObject reqUserInfo = requestInfo.getReqUserInfo();
+
+        QuestionMultipleChoiceVO questionMultipleChoiceVO = new QuestionMultipleChoiceVO();
+
+        try {
+            questionMultipleChoiceVO = questionService.updateQuestionMultipleChoice(questionId, reqUserInfo.getString("userId"), reqParam);
+        }
+        catch (Exception e){
+            throw new StrongestScholarException(CommonError.INNER_ERR.getCode(), e.getMessage());
+        }
+        return new ResponseInfo(requestInfo, questionMultipleChoiceVO);
+    }
+
+    /**
+     * 获取选择题列表
+     *
+     * @param  request 请求
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo list(HttpServletRequest request) throws Exception{
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        JSONObject reqParam =  requestInfo.getReqParam();
+        JSONObject reqPageInfo = requestInfo.getReqPageInfo();
+        Integer pageSize = reqPageInfo.getInteger("pageSize");
+        Integer pageNum = reqPageInfo.getInteger("pageNum");
+        Pageable pageable = new PageRequest(pageNum - 1, pageSize == null ? Constants.PAGE_SIZE : pageSize);
+        // TODO: 2018/10/11 增加排序
+        Page<QuestionMultipleChoiceVO> questionMultipleChoiceVOS = null;
+        try {
+            questionMultipleChoiceVOS = questionService.listQuestionMultipleChoice(pageable, reqParam);
+        }
+        catch (Exception e){
+            throw new StrongestScholarException(CommonError.INNER_ERR.getCode(), e.getMessage());
+        }
+
+        return new ResponseInfo(requestInfo, questionMultipleChoiceVOS);
+    }
+
+}

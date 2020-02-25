@@ -1,0 +1,11 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.LevelExperience;
+
+/**
+ * Created By Devin
+ * 2018-08-27 下午 07:09
+ */
+public interface LevelExperienceService {
+    LevelExperience getByExperience(Integer experience);
+}

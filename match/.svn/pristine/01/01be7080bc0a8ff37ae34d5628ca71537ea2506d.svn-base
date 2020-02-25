@@ -1,0 +1,76 @@
+@import "/static/css/vendor.wxss";
+
+.st-container-practiceResult-div.data-v-1729c37d {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+.st-bg.data-v-1729c37d {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+.st-result-div.data-v-1729c37d {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  height: 200rpx;
+  width: 80%;
+  line-height: 200rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  background-color: rgb(114, 201, 150);
+}
+.st-result-div ._p.data-v-1729c37d {
+  font-size: 60rpx;
+  color: rgb(255, 255, 255);
+}
+.st-score-div.data-v-1729c37d {
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 30%;
+  width: 40%;
+  display: table;
+  color: white;
+  font-size: 40rpx;
+}
+.st-buttonOpinion-div.data-v-1729c37d {
+  text-align: center;
+  position: absolute;
+  top: 70%;
+}
+.st-numberConternt-ul.data-v-1729c37d {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+.st-numberList-li.data-v-1729c37d {
+  float: left;
+  margin-top: 15%;
+  margin-left: 3%;
+}
+.st-right-number-div.data-v-1729c37d {
+  height: 46rpx;
+  width: 46rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 46rpx;
+  border: 2rpx solid rgb(59, 202, 255);
+  background: rgb(59, 202, 255);
+  color: #ffffff;
+  font-size: 30rpx;
+}
+.st-false-number-div.data-v-1729c37d {
+  height: 46rpx;
+  width: 46rpx;
+  border-radius: 50%;
+  text-align: center;
+  border: 2rpx solid rgb(255, 78, 86);
+  background: rgb(255, 78, 86);
+  line-height: 46rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+}

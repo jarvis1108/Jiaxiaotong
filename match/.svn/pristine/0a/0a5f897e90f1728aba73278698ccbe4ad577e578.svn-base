@@ -1,0 +1,39 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionLib;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:       题库表数据访问层
+ * @date 2018\8\15 0015
+ */
+@Repository
+public interface QuestionLibRepository extends CrudRepository<QuestionLib, String> {
+    /**
+     * 根据私有题库ID查询该题库
+     * @param questionLibId
+     * @return
+     */
+    QuestionLib findByQuestionLibId(String questionLibId);
+
+    /**
+     * 根据用户ID查询该用户的所有私有题库
+     * @param userId
+     * @return
+     */
+    List<QuestionLib> findByUserId(String userId);
+
+    QuestionLib findQuestionLibByUserIdAndAndIsDefaultQuestionLib(String userId,Byte isDefaultQuestionLib);
+
+    /**
+     * 新增或者修改私有题库
+     * @param question
+     */
+    QuestionLib save(QuestionLib question);
+
+    List<QuestionLib> findAll();
+}

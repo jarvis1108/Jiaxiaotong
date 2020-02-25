@@ -1,0 +1,7 @@
+export const api = 'http://localhost:8080/api';
+
+export const socketUrl = 'http://localhost:8080/api/socket';
+
+export default {
+  api,socketUrl
+}

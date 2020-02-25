@@ -1,0 +1,117 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.AdminRoleRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminRole;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.AdminRoleService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * 管理员角色服务接口实现类
+ * <p>
+ * Created by Devin
+ * 2018-07-02 上午 11:25
+ */
+@Service
+public class AdminRoleServiceImpl implements AdminRoleService {
+
+    @Autowired
+    private AdminRoleRepository adminRoleRepository;
+
+    /**
+     * 获取管理员角色信息列表
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页，从1开始
+     * @return
+     */
+    @Override
+    public List<AdminRole> getAdminRoleList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null) {
+            return adminRoleRepository.findAll();
+        } else {
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<AdminRole> adminRolePage = adminRoleRepository.findAll(pageable);
+            return adminRolePage.getContent();
+        }
+    }
+
+    /**
+     * 获取所有管理员角色信息列表
+     *
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public List<AdminRole> getAdminRoles() {
+        return adminRoleRepository.findAll();
+    }
+
+    /**
+     * 创建管理员角色
+     *
+     * @param newAdminRole
+     * @return
+     * @throws ErrorInfo
+     *          成功:000,表示成功
+     *          错误：E_201807091554_007_001，表示：文件不存在
+     *          错误：E_201807091554_007_002，表示：读文件失败(废弃)
+     *          错误：E_201807091554_007_003，表示：读文件失败(废弃)
+     */
+    @Override
+    public AdminRole create(AdminRole newAdminRole) throws ErrorInfo {
+        if (newAdminRole == null)
+        {
+            throw new ErrorInfo("E_201807091554_007_001", "管理员角色信息为空", null);
+        }
+        
+        return adminRoleRepository.save(newAdminRole);
+    }
+
+    /**
+     * 更新管理员角色
+     *
+     * @param updatedAdminRole
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public AdminRole update(AdminRole updatedAdminRole) throws ErrorInfo {
+        if (updatedAdminRole == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_005", "管理员角色信息为空", null);
+        }
+        AdminRole adminRole = adminRoleRepository.findAdminRoleByAdminRoleId(updatedAdminRole.getAdminRoleId());
+        if (adminRole == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00"+ "_13_006", "管理员角色不存在", null);
+        }
+        UpdateUtil.copyProperties(updatedAdminRole, adminRole);
+
+        return adminRoleRepository.save(adminRole);
+    }
+
+    /**
+     * 根据id删除管理员角色信息，逻辑删除
+     *
+     * @param adminRoleId 待删除管理员角色id
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public boolean deleteByAdminRoleId(String adminRoleId) throws ErrorInfo {
+        AdminRole adminRole = adminRoleRepository.findAdminRoleByAdminRoleId(adminRoleId);
+        if (adminRole == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_006", "管理员角色不存在", null);
+        }
+        adminRole.setIsValid(Byte.valueOf("0"));
+        adminRoleRepository.save(adminRole);
+        return true;
+    }
+}

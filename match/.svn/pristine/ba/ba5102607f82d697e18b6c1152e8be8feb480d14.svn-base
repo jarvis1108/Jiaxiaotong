@@ -1,0 +1,51 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminPurview;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 管理员角色设置服务接口
+ * <p>
+ * Created by Devin
+ * 2018-07-02 上午 11:44
+ */
+public interface AdminPurviewService {
+    /**
+     * 分页查询所有管理员权限表
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<AdminPurview> getAdminPurviewList(Integer pageSize, Integer currentPage);
+
+    /**
+     * 查询所有管理员权限表
+     * @return
+     */
+    List<AdminPurview> getAdminPurviewList();
+
+    /**
+     * 新建管理员权限表
+     * @param newAdminPurview
+     * @return
+     * @throws ErrorInfo
+     */
+    AdminPurview create(AdminPurview newAdminPurview) throws ErrorInfo;
+    /**
+     * 更新管理员权限表
+     * @param updatedAdminPurview
+     * @return
+     * @throws ErrorInfo
+     */
+    AdminPurview update(AdminPurview updatedAdminPurview) throws ErrorInfo;
+
+    /**
+     * 根据管理员权限ID删除管理权限表
+     * @param adminPurviewId
+     * @return
+     * @throws ErrorInfo
+     */
+    boolean deleteByAdminPurviewId(String adminPurviewId) throws ErrorInfo;
+}

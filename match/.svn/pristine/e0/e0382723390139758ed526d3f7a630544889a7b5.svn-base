@@ -1,0 +1,26 @@
+<template name="authenticate-dialog$6e159856">
+  <view class="_div data-v-061b6f78 authenticateDialog">
+    <view class="_div data-v-061b6f78 dialog-mask"></view>
+    <image bindtap="handleProxy" class="_img data-v-061b6f78 st-authenticate-dialog-close-icon" src="/static/images/personalCenter/close_icon.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+    <view class="_div data-v-061b6f78 st-authenticate-dialog-vertical-line"></view>
+    <image class="_img data-v-061b6f78 st-authenticate-dialog-bg" src="/static/images/personalCenter/Setup_bg.png"></image>
+    <image class="_img data-v-061b6f78 st-authenticate-dialog-icon" src="/static/images/personalCenter/Mobilephoneauthentication_icon.png"></image>
+    <label class="_span data-v-061b6f78 st-authenticate-dialog-setup-text">手机认证</label>
+    <view class="_div data-v-061b6f78 st-authenticate-dialog-telNum-div">
+      <label class="_span data-v-061b6f78 st-authenticate-dialog-telNum-text">手机号</label>
+      <view class="_div data-v-061b6f78 st-authenticate-dialog-telNum-input-div">
+        <input type="text" class="_input data-v-061b6f78 st-authenticate-dialog-telNum-input" value="{{telNum}}" bindinput="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" />
+      </view>
+    </view>
+    <view class="_div data-v-061b6f78 st-authenticate-dialog-code-div">
+      <label class="_span data-v-061b6f78 st-authenticate-dialog-code-text">验证码</label>
+      <view class="_div data-v-061b6f78 st-authenticate-dialog-code-input-div">
+        <input type="text" class="_input data-v-061b6f78 st-authenticate-dialog-code-input" value="{{authenticateCode}}" bindinput="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" />
+        <image class="_img data-v-061b6f78 st-authenticate-dialog-code-img" src="/static/images/personalCenter/Getverificationcode_bg.png"></image>
+        <label bindtap="handleProxy" wx:if="{{interval === null}}" class="_span data-v-061b6f78 st-authenticate-dialog-code-span" data-eventid="{{'3'}}" data-comkey="{{$k}}">获取验证码</label>
+        <label wx:else class="_span data-v-061b6f78 st-authenticate-dialog-cutdown-span">{{cutDown}}s</label>
+      </view>
+    </view>
+    <image bindtap="handleProxy" class="_img data-v-061b6f78 st-authenticate-dialog-submit-icon" src="/static/images/personalCenter/Submit_icon.png" data-eventid="{{'4'}}" data-comkey="{{$k}}"></image>
+  </view>
+</template>

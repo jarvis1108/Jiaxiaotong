@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/competition/main",
+    "pages/counter/main",
+    "pages/logs/main",
+    "pages/myIndex/main",
+    "pages/recharge_con/main",
+    "pages/recharge/main",
+    "pages/rechargeLog/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "black",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "rgb(58,70,97)",
+    "selectedColor": "orange",
+    "list": [
+      {
+        "selectedIconPath": "/static/img/Answer-icon@3x.png",
+        "iconPath": "/static/img/Answer-icon-Notselected@3x.png",
+        "pagePath": "pages/counter/main",
+        "text": "答题"
+      },
+      {
+        "selectedIconPath": "/static/img/Community-icon@3x.png",
+        "iconPath": "/static/img/Community-icon-Notselected@3x.png",
+        "pagePath": "pages/index/main",
+        "text": "社区"
+      },
+      {
+        "selectedIconPath": "/static/img/My.icon@3x.png",
+        "iconPath": "/static/img/My.iconNotselected@3x.png",
+        "pagePath": "pages/myIndex/main",
+        "text": "我的"
+      }
+    ]
+  }
+}

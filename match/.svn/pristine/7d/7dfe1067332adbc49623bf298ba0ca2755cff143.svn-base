@@ -1,0 +1,105 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.QuestionSettingRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.QuestionSetting;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.QuestionSettingService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * 出题设置服务实现类
+ * <p>
+ * Created by Devin
+ * 2018-07-03 上午 09:44
+ */
+@Service
+public class QuestionSettingServiceImpl implements QuestionSettingService {
+    @Autowired
+    private QuestionSettingRepository questionSettingRepository;
+
+    /**
+     * 获取出题设置信息
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页
+     * @return 用户信息列表
+     */
+    @Override
+    @Transactional
+    public List<QuestionSetting> getQuestionSettingList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null) {
+            return questionSettingRepository.findAll();
+        } else {
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<QuestionSetting> questionSettingPage = questionSettingRepository.findAll(pageable);
+            return questionSettingPage.getContent();
+        }
+    }
+
+    /**
+     * 获取所有出题设置信息
+     *
+     * @return
+     */
+    @Override
+    public List<QuestionSetting> getAllQuestionSettings() {
+        return questionSettingRepository.findAll();
+    }
+
+    @Override
+    public QuestionSetting create(QuestionSetting newQuestionSetting) throws ErrorInfo {
+        if (newQuestionSetting == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_013", "出题设置信息为空", null);
+        return questionSettingRepository.save(newQuestionSetting);
+    }
+
+    /**
+     * 更新某一出题设置
+     *
+     * @param updatedQuestionSetting
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public QuestionSetting update(QuestionSetting updatedQuestionSetting) throws ErrorInfo {
+        if (updatedQuestionSetting == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_013", "出题设置信息为空", null);
+        }
+        QuestionSetting questionSetting = questionSettingRepository.findQuestionSettingByQuestionSettingId(updatedQuestionSetting.getQuestionSettingId());
+        if (questionSetting == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_014", "出题设置信息不存在", null);
+        }
+        UpdateUtil.copyProperties(updatedQuestionSetting, questionSetting);
+
+        return questionSettingRepository.save(questionSetting);
+    }
+
+    /**
+     * 根据ID删除某一出题设置信息
+     *
+     * @param questionSettingId
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public boolean deleteByQuestionSettingId(String questionSettingId) throws ErrorInfo {
+        QuestionSetting questionSetting = questionSettingRepository.findQuestionSettingByQuestionSettingId(questionSettingId);
+        if (questionSetting == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_014", "出题设置信息不存在", null);
+        }
+        questionSetting.setIsValid(Byte.valueOf("0"));
+        questionSettingRepository.save(questionSetting);
+        return true;
+    }
+}

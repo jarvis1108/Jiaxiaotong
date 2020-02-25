@@ -1,0 +1,55 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionForLib;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition: 题库题目表数据访问层
+ * @date 2018\8\15 0015
+ */
+@Repository
+public interface QuestionForLibRepository extends CrudRepository<QuestionForLib, String> {
+    /**
+     * 根据试题ID获取题库提目表
+     *
+     * @param questionForLibId
+     * @return
+     */
+    QuestionForLib findByQuestionForLibId(String questionForLibId);
+
+    /**
+     * 根据私有题库ID获取该题库下的所有题目表
+     *
+     * @param questionLibId
+     * @return
+     */
+
+    List<QuestionForLib> findByQuestionLibId(String questionLibId);
+
+    /**
+     * 根据知识点获取题库题目表
+     *
+     * @param knowledgeId
+     * @return
+     */
+    QuestionForLib findByKnowledgeId(String knowledgeId);
+
+    /**
+     * 新增或者修改私有题库
+     *
+     * @param questionForLib
+     * @return
+     */
+    QuestionForLib save(QuestionForLib questionForLib);
+
+    /**
+     *
+     * @return
+     */
+    List<QuestionForLib> findAll();
+
+}

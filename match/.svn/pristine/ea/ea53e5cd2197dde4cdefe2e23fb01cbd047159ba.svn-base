@@ -1,0 +1,77 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.MatchSetting;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 匹配设置服务单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 04:49
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class MatchSettingServiceTest {
+
+    @Autowired
+    private MatchSettingService matchSettingService;
+
+    @Test
+    public void getMatchSettingList() {
+        List<MatchSetting> matchSettingList = matchSettingService.getMatchSettingList(2, 1);
+        assertNotEquals(0, matchSettingList);
+
+        matchSettingList.forEach(System.out::println);
+    }
+
+    @Test
+    public void getAllMatchSettings() {
+        List<MatchSetting> matchSettingList = matchSettingService.getAllMatchSettings();
+        assertNotEquals(0, matchSettingList);
+
+        matchSettingList.forEach(System.out::println);
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        MatchSetting matchSetting = new MatchSetting();
+        matchSetting.setMatchSettingId("4");
+        matchSetting.setMaxMatchCount(2);
+        matchSetting.setMatchTime(10);
+
+        MatchSetting result = matchSettingService.create(matchSetting);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void update() throws ErrorInfo {
+        MatchSetting matchSetting = new MatchSetting();
+        matchSetting.setMatchSettingId("4");
+        matchSetting.setMaxMatchCount(2);
+        matchSetting.setMatchTime(20);
+
+        MatchSetting result = matchSettingService.update(matchSetting);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteByMatchSettingId() throws ErrorInfo {
+        String matchSettingId = "4";
+        boolean result = matchSettingService.deleteByMatchSettingId(matchSettingId);
+
+        assertTrue(result);
+    }
+}

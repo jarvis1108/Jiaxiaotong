@@ -1,0 +1,73 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionMultipleChoice;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionMultipleChoiceService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+
+public class QuestionMultipleChoiceServiceImplTest {
+    @Autowired
+    private QuestionMultipleChoiceService service;
+
+    @Test
+    public void getAllQuestionMultipleChoice() {
+        List<QuestionMultipleChoice> questionMultipleChoices = service.getAllQuestionMultipleChoice();
+        assertNotEquals(0, questionMultipleChoices.size());
+        questionMultipleChoices.forEach(System.out::println);
+    }
+
+    @Test
+    public void getQuestionMultipleChoiceList()throws ErrorInfo {
+        List<QuestionMultipleChoice> questionMultipleChoices = service.getQuestionMultipleChoiceList(1, 1);
+        assertNotEquals(0, questionMultipleChoices.size());
+        questionMultipleChoices.forEach(System.out::println);
+    }
+    @Test
+    public void create() throws ErrorInfo {
+        QuestionMultipleChoice questionMultipleChoice=new QuestionMultipleChoice();
+        questionMultipleChoice.setQuestionId("356");
+        questionMultipleChoice.setIsValid(Byte.valueOf("1"));
+        QuestionMultipleChoice result=service.create(questionMultipleChoice);
+        assertNotNull(result);
+        System.out.println(result);
+
+    }
+
+    @Test
+    public void getQuestionMultipleChoiceByQuestionId()throws ErrorInfo {
+        String questionId="3";
+        QuestionMultipleChoice questionMultipleChoice=service.getQuestionMultipleChoiceByQuestionId(questionId);
+        assertNotNull(questionMultipleChoice);
+        System.out.println(questionMultipleChoice);
+    }
+
+    @Test
+    public void updateQuestionMultipleChoice()throws ErrorInfo {
+        QuestionMultipleChoice questionMultipleChoice=new QuestionMultipleChoice();
+        questionMultipleChoice.setQuestionId("3");
+        questionMultipleChoice.setIsValid(Byte.valueOf("0"));
+        QuestionMultipleChoice result=service.updateQuestionMultipleChoice(questionMultipleChoice);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteQuestionMultipleChoiceByQuestionId() throws ErrorInfo{
+        String questionId = "3";
+        service.deleteQuestionMultipleChoiceByQuestionId(questionId);
+    }
+
+
+}

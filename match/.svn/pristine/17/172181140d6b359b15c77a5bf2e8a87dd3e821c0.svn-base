@@ -1,0 +1,74 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserGPDetail;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
+/**
+ * 用户绩点流水明细单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 03:19
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserGPDetailRepositoryTest {
+
+    @Autowired
+    private UserGPDetailRepository userGPDetailRepository;
+
+    @Test
+    public void findByUserId() {
+        String userId = "1";
+        Pageable pageable = PageRequest.of(1, 1);
+        Page<UserGPDetail> userGPDetailPage = userGPDetailRepository.findByUserId(userId, pageable);
+        List<UserGPDetail> userGPDetailList = userGPDetailPage.getContent();
+        assertNotEquals(0, userGPDetailList.size());
+
+        userGPDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll() {
+        List<UserGPDetail> userGPDetailList = userGPDetailRepository.findAll();
+        assertNotEquals(0, userGPDetailList.size());
+
+        userGPDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAllByUserId() {
+        String userId = "1";
+        List<UserGPDetail> userGPDetailList = userGPDetailRepository.findAllByUserId(userId);
+        assertNotEquals(0, userGPDetailList.size());
+
+        userGPDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        UserGPDetail userGPDetail = new UserGPDetail();
+        userGPDetail.setUserGpDetailId("3");
+        userGPDetail.setUserGpDetailNo("3");
+        userGPDetail.setUserId("1");
+        userGPDetail.setUserNo("1");
+        userGPDetail.setCurrentAmount(100);
+
+        UserGPDetail result = userGPDetailRepository.save(userGPDetail);
+        assertNotNull(result);
+
+        System.out.println(result);
+
+    }
+}

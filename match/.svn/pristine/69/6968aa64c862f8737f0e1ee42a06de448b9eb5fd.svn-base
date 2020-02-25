@@ -1,0 +1,50 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.web.dto.UserDTO;
+
+/**
+ * 用户服务接口
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:40
+ */
+public interface UserService {
+
+    /**
+     * 根据用户Id获取用户信息
+     *
+     * @param userId
+     * @return
+     */
+    UserDTO getUserDTOById(String userId);
+
+    /**
+     * 创建新用户
+     *
+     * @param nickName     用户昵称
+     * @param avatarUrl    用户头像地址
+     * @param gender       用户性别，1表示男，2表示女，0表示未知
+     * @param city         用户所在城市
+     * @param gradePhaseId 年纪阶段Id
+     * @param gradeId      年级Id
+     * @return 创建后的用户信息
+     */
+    UserDTO createUser(String nickName, String avatarUrl, String gender, String city, String gradePhaseId, String gradeId);
+
+    /**
+     * 保存指定用户的openid
+     *
+     * @param userId 用户Id
+     * @param openid 微信小程序code
+     * @return 更新后的用户信息
+     */
+    Boolean saveUserOpenid(String userId, String openid);
+
+    /**
+     * 根据openid获取用户信息
+     *
+     * @param openid 用户openid
+     * @return 用户信息
+     */
+    UserDTO getUserDTOByOpenid(String openid);
+}

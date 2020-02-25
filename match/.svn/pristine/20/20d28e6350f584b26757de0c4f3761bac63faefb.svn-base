@@ -1,0 +1,61 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionMultipleChoice;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 多项选择题数据访问
+ *
+ * @author shenhao
+ */
+@Repository
+public interface QuestionMultipleChoiceRepository extends CrudRepository<QuestionMultipleChoice, String> {
+
+    /**
+     * 分页查询多项选择题
+     *
+     * @param pageable
+     * @return
+     */
+    Page<QuestionMultipleChoice> findAll(Pageable pageable);
+
+    /**
+     * 获取全部多项选择题
+     *
+     * @return 含有全部选择题的序列
+     */
+    List<QuestionMultipleChoice> findAll();
+
+    /**
+     * 根据题目编号查询多项选择题，
+     *
+     * @param questionId 题目编号
+     * @return 该多项选择题
+     */
+    QuestionMultipleChoice findQuestionMultipleChoiceByQuestionId(String questionId);
+
+    /**
+     * 根据试题编码查询多项选择题
+     *
+     * @param questionNo 试题编码
+     * @return 该多项选择题
+     */
+    QuestionMultipleChoice findQuestionMultipleChoiceByQuestionNo(String questionNo);
+
+    /**
+     * 根据录入者ID查询选择题，根据录入时间倒序排序
+     *
+     * @param createUser 选择题录入
+     * @return 该录入者创建的选择题序列
+     */
+
+    List<QuestionMultipleChoice> findQuestionMultipleChoiceByCreateUser(String createUser);
+
+    QuestionMultipleChoice save(QuestionMultipleChoice questionMultipleChoice);
+
+}

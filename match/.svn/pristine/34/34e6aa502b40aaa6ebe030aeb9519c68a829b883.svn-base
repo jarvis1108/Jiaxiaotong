@@ -1,0 +1,73 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionRecitation;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionRecitationService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class QuestionRecitationServiceImplTest {
+
+   @Autowired
+   private QuestionRecitationService service;
+
+    @Test
+    public void findAll() {
+        List<QuestionRecitation> questionRecitations=service.findAll();
+        assertNotEquals(0,questionRecitations.size());
+        questionRecitations.forEach(System.out::println);
+
+    }
+    @Test
+    public void getQuestionRecitationList()throws ErrorInfo {
+        List<QuestionRecitation> questionRecitations=service.getQuestionRecitationList(1,1);
+        assertNotEquals(0,questionRecitations.size());
+        questionRecitations.forEach(System.out::println);
+    }
+    @Test
+    public void create()throws ErrorInfo {
+        QuestionRecitation questionRecitation=new QuestionRecitation();
+        questionRecitation.setQuestionId("3");
+        questionRecitation.setCreateTime(Timestamp.valueOf("2018-11-03 15:32:23"));
+        QuestionRecitation result=service.create(questionRecitation);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+    @Test
+    public void getQuestionRecitationByQuestionId()throws ErrorInfo {
+        String questionId="3";
+        QuestionRecitation questionRecitation=service.getQuestionRecitationByQuestionId(questionId);
+        assertNotNull(questionRecitation);
+        System.out.println(questionRecitation);
+
+    }
+
+
+
+
+    @Test
+    public void update()throws ErrorInfo {
+        QuestionRecitation questionRecitation=new QuestionRecitation();
+        questionRecitation.setQuestionId("3");
+        questionRecitation.setIsValid(Byte.valueOf("1"));
+        QuestionRecitation result=service.update(questionRecitation);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+    @Test
+    public void deleteQuestionRecitationById() throws ErrorInfo{
+        String questionId = "3";
+        service.deleteQuestionRecitationById(questionId);
+    }
+
+}

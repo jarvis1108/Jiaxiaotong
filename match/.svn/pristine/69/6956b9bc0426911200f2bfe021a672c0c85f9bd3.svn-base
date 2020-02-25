@@ -1,0 +1,11 @@
+<template name="payTip$76b9d521">
+  <view class="_div data-v-34a8a9ff payTip">
+    <view class="_div data-v-34a8a9ff dialog-mask"></view>
+    <image class="_img data-v-34a8a9ff st-setting-dialog-bg" src="/static/images/payTip/Springwindow_bg.png"></image>
+    <image class="_img data-v-34a8a9ff st-setting-dialog-icon" src="/static/images/payTip/Mooncard_3_icon.png"></image>
+    <image bindtap="handleProxy" class="_img data-v-34a8a9ff st-setting-dialog-close-icon" src="/static/images/payTip/Close_1_icon.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+    <view class="_div data-v-34a8a9ff st-setting-dialog-line">{{ProName}}</view>
+    <label class="_span data-v-34a8a9ff st-setting-dialog-setup-text">购买后，可获得一整个月的学点，方便学习。</label>
+    <button class="_button data-v-34a8a9ff st-setting-dialog-button" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">确认购买</button>
+  </view>
+</template>

@@ -1,0 +1,38 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionMultipleChoiceForLib;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:       私有题目库选择题题目表数据访问层
+ * @date 2018\8\15 0015
+ */
+@Repository
+public interface QuestionMultipleChoiceForLibRepository extends CrudRepository<QuestionMultipleChoiceForLib,String> {
+    /**
+     * 根据私有试题ID获得多选题
+     * @param questionForLibId
+     * @return
+     */
+    QuestionMultipleChoiceForLib findByQuestionForLibId(String questionForLibId);
+
+    /**
+     * 根据私有题库的ID获得该题库下所有多选题
+     * @param QuestionLibId
+     * @return
+     */
+    List<QuestionMultipleChoiceForLib> findByQuestionLibId(String QuestionLibId);
+
+    /**
+     * 新增或者修改私有题库的多选题
+     * @param questionMultipleChoiceForLib
+     * @return
+     */
+    QuestionMultipleChoiceForLib save(QuestionMultipleChoiceForLib questionMultipleChoiceForLib);
+
+    List<QuestionMultipleChoiceForLib> findAll();
+}

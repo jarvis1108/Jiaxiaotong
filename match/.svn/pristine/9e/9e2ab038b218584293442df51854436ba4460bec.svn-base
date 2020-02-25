@@ -1,0 +1,97 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionLibService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:   私有题库服务实现类
+ * @date 2018\8\15 0015
+ */
+@Service
+public class QuestionLibServiceImpl implements QuestionLibService {
+
+    @Autowired
+    private QuestionLibRepository repository;
+    @Override
+    public QuestionLib getQuestionLibByQuestionLibId(String questionLibId) throws ErrorInfo {
+        QuestionLib questionLib=repository.findByQuestionLibId(questionLibId);
+        if(questionLib==null)
+        {
+            throw new ErrorInfo("E_" + "2018-08-15 14:26:00" + "_57_026", "私有题库不存在", null);
+
+        }
+        return questionLib;
+    }
+
+    @Override
+    public List<QuestionLib> getQuestionLibByUserId(String userId) throws ErrorInfo {
+        List<QuestionLib> questionLibs=repository.findByUserId(userId);
+        if(questionLibs.size()==0)
+        {
+            throw new ErrorInfo("E_" + "2018-08-15 14:26:00" + "_57_032", "该用户的私有题库不存在", null);
+
+        }
+        return questionLibs;
+    }
+
+    @Override
+    public QuestionLib getQuestionLibByUserIdAndIsDefaultQuestionLib(String userId, Byte isDefaultQuestionLib) throws ErrorInfo {
+        QuestionLib questionLib=repository.findQuestionLibByUserIdAndAndIsDefaultQuestionLib(userId,isDefaultQuestionLib);
+        if(questionLib==null){
+           // throw new ErrorInfo("E_" + "2018-08-15 14:26:00" + "_57_032", "该用户的默认私有题库不存在", null);
+            return null;
+        }
+        return questionLib;
+    }
+
+    @Override
+    public List<QuestionLib> findAll() {
+        return repository.findAll();
+    }
+
+    @Transactional
+    @Override
+    public QuestionLib create(QuestionLib questionLib) throws ErrorInfo {
+        if(questionLib==null){
+            throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_027","私有题库为空",null);
+        }
+        return repository.save(questionLib);
+    }
+
+    @Transactional
+    @Override
+    public boolean deleteQuestionLibByQuestionLibId(String questionLibId) throws ErrorInfo {
+        QuestionLib questionLib=repository.findByQuestionLibId(questionLibId);
+        if(questionLib==null)
+        {
+            throw new ErrorInfo("E"+"2018-08-29 9:26:00"+"_57_035","私有题库不存在",null);
+
+        }
+        questionLib.setIsValid(Byte.valueOf("0"));
+        repository.save(questionLib);
+        return true;
+
+    }
+    @Transactional
+    @Override
+    public QuestionLib update(QuestionLib updateQuestionLib) throws ErrorInfo {
+        if(updateQuestionLib==null)
+        {throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_027","私有题库为空",null);
+        }
+        QuestionLib questionLib=repository.findByQuestionLibId(updateQuestionLib.getQuestionLibId());
+        if(questionLib==null){
+            throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_026","私有题库不存在",null);
+        }
+        UpdateUtil.copyProperties(updateQuestionLib, questionLib);
+        return  repository.save(questionLib);
+    }
+}

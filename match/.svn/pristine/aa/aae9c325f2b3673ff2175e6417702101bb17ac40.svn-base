@@ -1,0 +1,49 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserGPDetail;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 用户绩点流水明细服务接口
+ * <p>
+ * Created by Devin
+ * 2018-07-03 上午 10:40
+ */
+public interface UserGPDetailService {
+    /**
+     * 分页查询用户绩点流水明细列表
+     * @param userId
+     * @param pageSize
+     * @param currentPage
+     * @return
+     * @throws ErrorInfo
+     */
+    List<UserGPDetail> getUserGPDetailList(String userId, Integer pageSize, Integer currentPage) throws ErrorInfo;
+
+    /**
+     * 查询用户绩点流水明细列表
+     * @param userId
+     * @return
+     * @throws ErrorInfo
+     */
+    List<UserGPDetail> getAllUserGPDetails(String userId) throws ErrorInfo;
+
+    /**
+     * 创建用户绩点流水明细表
+     * @param newUserGPDetail
+     * @return
+     * @throws ErrorInfo
+     */
+    UserGPDetail create(UserGPDetail newUserGPDetail) throws ErrorInfo;
+
+    /**
+     * 更新用户绩点流水明细表中用户绩点信息
+     * @param matchId
+     * @param userId
+     * @param gradePoint
+     * @return
+     */
+    UserGPDetail save(String matchId, String userId, Integer gradePoint);
+}

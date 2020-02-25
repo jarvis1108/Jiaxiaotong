@@ -1,0 +1,33 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.SubjectService;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.SubjectDTO;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created By Devin
+ * 2018-09-03 下午 08:08
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SubjectServiceImplTest {
+
+    @Autowired
+    private SubjectService subjectService;
+
+    @Test
+    public void getByGrade() {
+        String gradePhaseId = "3bac2315-88a5-11e8-a7b0-5254009bf409";
+        String gradeId = "";
+        List<SubjectDTO> subjectDTOList = subjectService.getByGrade(gradePhaseId, gradeId);
+        subjectDTOList.forEach(System.out::println);
+    }
+}

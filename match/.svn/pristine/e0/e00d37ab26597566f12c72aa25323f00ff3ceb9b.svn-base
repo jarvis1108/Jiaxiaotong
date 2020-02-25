@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dxtwangxiao.questionchecktool.dao.MultipleChoiceQuestionVOMapper">
+    <resultMap id="BaseResultMap" type="com.dxtwangxiao.questionchecktool.vo.MultipleChoiceQuestionVO">
+        <result column="QuestionID" jdbcType="VARCHAR" property="questionID"/>
+        <result column="QuestionNo" jdbcType="VARCHAR" property="questionNo"/>
+        <result column="InitID" jdbcType="VARCHAR" property="initID"/>
+        <result column="InitNo" jdbcType="VARCHAR" property="initNo"/>
+        <result column="InitName" jdbcType="VARCHAR" property="initName"/>
+        <result column="InitDes" jdbcType="VARCHAR" property="initDes"/>
+        <result column="Question" jdbcType="VARCHAR" property="question"/>
+        <result column="ChoiceA" jdbcType="VARCHAR" property="choiceA"/>
+        <result column="ChoiceB" jdbcType="VARCHAR" property="choiceB"/>
+        <result column="ChoiceC" jdbcType="VARCHAR" property="choiceC"/>
+        <result column="ChoiceD" jdbcType="VARCHAR" property="choiceD"/>
+        <result column="Answer" jdbcType="VARCHAR" property="answer"/>
+        <result column="QuestionAnalyze" jdbcType="VARCHAR" property="questionAnalyze"/>
+        <result column="Difficulty" jdbcType="DOUBLE" property="difficulty"/>
+        <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="CreateUser" jdbcType="VARCHAR" property="createUser"/>
+        <result column="LastUpdTime" jdbcType="TIMESTAMP" property="lastUpdTime"/>
+        <result column="LastUpdUser" jdbcType="VARCHAR" property="lastUpdUser"/>
+        <result column="IsCheckPass" jdbcType="VARCHAR" property="isCheckPass"/>
+        <result column="SubjectID" jdbcType="VARCHAR" property="subjectID"/>
+        <result column="SubjectNo" jdbcType="VARCHAR" property="subjectNo"/>
+        <result column="SubjectName" jdbcType="VARCHAR" property="subjectName"/>
+        <result column="SubjectShortName" jdbcType="VARCHAR" property="subjectShortName"/>
+        <result column="GradePhaseID" jdbcType="VARCHAR" property="gradePhaseID"/>
+        <result column="GradePhaseName" jdbcType="VARCHAR" property="gradePhaseName"/>
+        <result column="GradeID" jdbcType="VARCHAR" property="gradeID"/>
+        <result column="GradeName" jdbcType="VARCHAR" property="gradeName"/>
+        <result column="CourseID" jdbcType="VARCHAR" property="courseID"/>
+        <result column="CourseName" jdbcType="VARCHAR" property="courseName"/>
+        <result column="BookVerID" jdbcType="VARCHAR" property="bookVerID"/>
+        <result column="Booklet" jdbcType="VARCHAR" property="booklet"/>
+        <result column="KnowledgeID" jdbcType="VARCHAR" property="knowledgeID"/>
+        <result column="Content" jdbcType="VARCHAR" property="content"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from Dvlp_v_MultipleChoice
+    </select>
+
+    <select id="selectAllQuestions" resultMap="BaseResultMap">
+        select * from Dvlp_v_MultipleChoice
+        <where>
+            <if test="gradePhaseName != null">GradePhaseName = #{gradePhaseName}</if>
+            <if test="courseName != null">and CourseName = #{courseName}</if>
+            <if test="gradeName != null">and GradeName = #{gradeName}</if>
+            <if test="booklet != null">and Booklet = #{booklet}</if>
+            <if test="isCheckPass != null">and IsCheckPass = #{isCheckPass}</if>
+            <if test="initID != null">and InitID = #{initID}</if>
+        </where>
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        select * from Dvlp_v_MultipleChoice where QuestionID = #{questionID};
+    </select>
+
+</mapper>

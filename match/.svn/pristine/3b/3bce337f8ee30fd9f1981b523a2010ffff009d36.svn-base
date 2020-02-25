@@ -1,0 +1,24 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.BookVerInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @Author: meiyu
+ * @Date: 2018/7/13 16:06
+ */
+
+@Service
+public interface BookVerInfoService {
+
+    List<BookVerInfo> findAll();
+
+    BookVerInfo create(BookVerInfo newBookVerInfo) throws ErrorInfo;
+
+    BookVerInfo update(BookVerInfo updatedBookVerInfo) throws ErrorInfo;
+
+    boolean deleteByBookVerInfoId(String BookVerId) throws ErrorInfo;
+}

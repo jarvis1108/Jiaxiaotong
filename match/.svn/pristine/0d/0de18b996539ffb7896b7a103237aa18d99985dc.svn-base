@@ -1,0 +1,51 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionRecitation;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\6\26 0026
+ */
+public interface QuestionRecitationService {
+    /**
+     * 根据QuestionRecitationId获取背诵题信息
+     *
+     * @param questionId 背诵题id
+     * @return 待查询背诵题信息
+     */
+    QuestionRecitation getQuestionRecitationByQuestionId(String questionId)throws ErrorInfo;
+
+    /**
+     * 获取所有背诵题
+     * @return 包含所有背诵题的序列
+     */
+    List<QuestionRecitation> findAll();
+
+    /**
+     * 新增背诵题
+     * @param QuestionRecitation
+     */
+    QuestionRecitation create(QuestionRecitation QuestionRecitation)throws ErrorInfo;
+    /**
+     * 删除背诵题
+     * @param questionId
+     */
+    boolean deleteQuestionRecitationById(String questionId)throws ErrorInfo;
+    /**
+     * 修改背诵题
+     * @param updateQuestionRecitation
+     */
+    QuestionRecitation update(QuestionRecitation updateQuestionRecitation)throws ErrorInfo;
+    /**
+     * 分页查询背诵题
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<QuestionRecitation> getQuestionRecitationList(Integer pageSize, Integer currentPage)throws ErrorInfo;
+
+}

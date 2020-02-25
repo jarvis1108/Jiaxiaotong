@@ -1,0 +1,36 @@
+<template name="index$fd356c0c">
+  <view class="_div data-v-3389c91d st-grade-dialog-container">
+    <view class="_ul data-v-3389c91d st-grade-dialog-list">
+      <view wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'1-'+index}}" data-comkey="{{$k}}" wx:for="{{gradePhaseInfoList}}" wx:for-index="index" wx:for-item="item" class="_li data-v-3389c91d" style=" {{'animation-delay:' + 0.3 * index + 's'}}">
+        <picker wx:if="{{index < 2}}" mode="selector" value="{{listIndex}}" range="{{item.gradeList}}" range-key="gradeName" bindchange="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" class="_picker data-v-3389c91d">
+          <image wx:if="{{index%4 === 0}}" class="_img data-v-3389c91d st-grade-dialog-li-bg" src="/static/images/gradeDialog/Primaryschool_bg.png"></image>
+          <image wx:elif="{{index%4 === 1}}" class="_img data-v-3389c91d st-grade-dialog-li-bg" src="/static/images/gradeDialog/Juniorhighschool_bg.png"></image>
+          <image wx:elif="{{index%4 === 2}}" class="_img data-v-3389c91d st-grade-dialog-li-bg" src="/static/images/gradeDialog/Highschool_bg.png"></image>
+          <image wx:else class="_img data-v-3389c91d st-grade-dialog-li-bg" src="/static/images/gradeDialog/University_bg.png"></image>
+          <image wx:if="{{index%4 === 0}}" class="_img data-v-3389c91d st-grade-dialog-li-icon" src="/static/images/gradeDialog/Primaryschool_icon.png"></image>
+          <image wx:elif="{{index%4 === 1}}" class="_img data-v-3389c91d st-grade-dialog-li-icon" src="/static/images/gradeDialog/Juniorhighschool.png"></image>
+          <image wx:elif="{{index%4 === 2}}" class="_img data-v-3389c91d st-grade-dialog-li-icon" src="/static/images/gradeDialog/Highschool_icon.png"></image>
+          <image wx:else class="_img data-v-3389c91d st-grade-dialog-li-icon" src="/static/images/gradeDialog/University_icon.png"></image>
+          <label class="_span data-v-3389c91d st-grade-dialog-li-name">{{item.gradePhaseName}}</label>
+          <label class="_span data-v-3389c91d st-grade-dialog-li-text">{{item.description}}</label>
+          <image wx:if="{{item.select}}" class="_img data-v-3389c91d st-grade-dialog-li-select-icon" src="/static/images/gradeDialog/Selectedlevel_icon.png"></image>
+        </picker>
+        <view wx:else class="_div data-v-3389c91d">
+          <image wx:if="{{index%4 === 0}}" class="_img data-v-3389c91d st-grade-dialog-li-bg" src="/static/images/gradeDialog/Primaryschool_bg.png"></image>
+          <image wx:elif="{{index%4 === 1}}" class="_img data-v-3389c91d st-grade-dialog-li-bg" src="/static/images/gradeDialog/Juniorhighschool_bg.png"></image>
+          <image wx:elif="{{index%4 === 2}}" class="_img data-v-3389c91d st-grade-dialog-li-bg" src="/static/images/gradeDialog/Highschool_bg.png"></image>
+          <image wx:else class="_img data-v-3389c91d st-grade-dialog-li-bg" src="/static/images/gradeDialog/University_bg.png"></image>
+          <image wx:if="{{index%4 === 0}}" class="_img data-v-3389c91d st-grade-dialog-li-icon" src="/static/images/gradeDialog/Primaryschool_icon.png"></image>
+          <image wx:elif="{{index%4 === 1}}" class="_img data-v-3389c91d st-grade-dialog-li-icon" src="/static/images/gradeDialog/Juniorhighschool.png"></image>
+          <image wx:elif="{{index%4 === 2}}" class="_img data-v-3389c91d st-grade-dialog-li-icon" src="/static/images/gradeDialog/Highschool_icon.png"></image>
+          <image wx:else class="_img data-v-3389c91d st-grade-dialog-li-icon" src="/static/images/gradeDialog/University_icon.png"></image>
+          <label class="_span data-v-3389c91d st-grade-dialog-li-name">{{item.gradePhaseName}}</label>
+          <label class="_span data-v-3389c91d st-grade-dialog-li-text">{{item.description}}</label>
+          <image wx:if="{{item.select}}" class="_img data-v-3389c91d st-grade-dialog-li-select-icon" src="/static/images/gradeDialog/Selectedlevel_icon.png"></image>
+        </view>
+      </view>
+    </view>
+    <label wx:if="{{selectedGrade.length > 0}}" class="_span data-v-3389c91d st-grade-dialog-selected-tip">已选择：{{selectedGrade}}</label>
+    <button bindgetuserinfo="handleProxy" open-type="getUserInfo" wx:if="{{selectedGrade.length > 0}}" class="_button data-v-3389c91d st-grade-dialog-selected-btn" data-eventid="{{'2'}}" data-comkey="{{$k}}">确定</button>
+  </view>
+</template>

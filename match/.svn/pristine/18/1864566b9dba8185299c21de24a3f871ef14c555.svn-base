@@ -1,0 +1,50 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserLoginRecord;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+
+/**
+ * 用户登陆记录数据访问层
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:20
+ */
+public interface UserLoginRecordRepository extends CrudRepository<UserLoginRecord, String> {
+    /**
+     * 查询所有用户登陆记录列表
+     * @return
+     */
+    List<UserLoginRecord> findAll();
+
+    /**
+     *根据用户ID查询该用户的登陆记录表
+     * @param userId
+     * @return
+     */
+    List<UserLoginRecord> findAllByUserId(String userId);
+
+    /**
+     *创建、更新用户登陆记录表
+     * @param userLoginRecord
+     * @return
+     */
+    UserLoginRecord save(UserLoginRecord userLoginRecord);
+
+    /**
+     *根据用户登录ID查询该用户的登陆记录表
+     * @param id
+     * @return
+     */
+    UserLoginRecord findUserLoginRecordByUserLoginId(String id);
+
+    /**
+     *分页查询所有用户的登陆记录列表
+     * @param pageable
+     * @return
+     */
+    Page<UserLoginRecord> findAll(Pageable pageable);
+}

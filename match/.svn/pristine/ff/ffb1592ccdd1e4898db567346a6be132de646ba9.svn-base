@@ -1,0 +1,57 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.Coupon;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.service.CouponService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * @Author: meiyu
+ * @Date: 2018/7/5 15:01
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class CouponServiceImplTest {
+
+    @Autowired
+    private CouponService couponService;
+
+    @Test
+    public void getCouponList() throws ErrorInfo {
+        List<Coupon> couponList = couponService.getCouponList(2,1);
+        assertNotEquals(1, couponList.size());
+        couponList.forEach(System.out::println);
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        Coupon coupon = new Coupon();
+        coupon.setAmount(1);
+        coupon.setBeginTime(Timestamp.valueOf("2018-07-07 12:12:12"));
+        coupon.setCouponId("1");
+        coupon.setCouponNo("1");
+        coupon.setCouponType(Byte.valueOf("1"));
+        coupon.setCreateTime(Timestamp.valueOf("2018-07-07 12:12:12"));
+        coupon.setCreateUser("1");
+        coupon.setEndTime(Timestamp.valueOf("2018-07-07 12:12:12"));
+        coupon.setIsValid(Byte.valueOf("1"));
+        coupon.setLastUpdTime(Timestamp.valueOf("2018-07-07 12:12:12"));
+        coupon.setLastUpdUser("11");
+        coupon.setPeriodAmount(1);
+        coupon.setRemark("this is test");
+
+        Coupon result = couponService.create(coupon);
+        Assert.assertNotNull(result);
+        System.out.println(result);
+    }
+}

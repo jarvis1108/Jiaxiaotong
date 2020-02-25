@@ -1,0 +1,33 @@
+spring:
+  thymeleaf:
+      cache: false
+  datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://47.97.111.166:3306/StrongestScholar?useSSL=false&useUnicode=true&characterEncoding=utf-8
+      password: strongestscholar
+      username: strongestscholar
+  jpa:
+      database: MYSQL
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+          ddl-auto: update
+          naming:
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+server:
+  servlet:
+    context-path: /strongestscholar
+
+mp:
+  appid: wxcd2ecf69fb1db5a6
+  appSecret: 8f0c86d2275e7840a8b7d81c043e481d
+  mch_id: abcdefghijklmn
+  key: abcdefjhijklmn
+  signType: MD5
+  tradeType: JSAPI
+  codeToOpenidUrl: https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
+  unifiedOrderUrl: https://api.mch.weixin.qq.com/pay/unifiedorder
+  notifyUrl: http://localhost:8080/strongestscholar/api/v1/wechat/notify

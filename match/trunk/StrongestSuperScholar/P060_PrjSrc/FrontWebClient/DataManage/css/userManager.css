@@ -1,0 +1,34 @@
+ #searchMenu,#searchMenu1{
+    position: relative;
+    left: 31%;
+} 
+
+#allMenu,#allMenu1{
+    display:flex;
+
+}
+.upTitle{
+    position: relative; 
+    left:30%;
+    font-size:24px;
+}
+.searchInput{
+    width:84px;
+    height:24px;
+    font-size:12px;
+}
+/* #menu{
+    position: relative;
+    left:10px;
+    top:10px;
+
+} */
+#firstMenu,#secondMenu{
+    color:blue;
+}
+
+#tableUserUpdate{
+    width: 80%;
+    height: 150px;
+    right:0px;
+} 

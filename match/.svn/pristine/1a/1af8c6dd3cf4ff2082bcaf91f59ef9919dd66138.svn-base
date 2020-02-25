@@ -1,0 +1,264 @@
+@import "/static/css/vendor.wxss";
+
+.st-personal-center-container-div {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(95, 55, 219);
+}
+.st-personal-center-usericon {
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  height: 126rpx;
+  width: 126rpx;
+  border-radius: 50%;
+  border: 6rpx solid #fff;
+  background: rgb(181, 181, 181);
+}
+.st-personal-center-username {
+  position: absolute;
+  top: 18%;
+  width: 100%;
+  font-size: 28rpx;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+.st-personal-center-authenticate-tip {
+  position: absolute;
+  top: 23%;
+  width: 100%;
+  text-align: center;
+  font-size: 18rpx;
+  color: #fff;
+}
+.st-personal-center-authenticated-tip {
+  position: absolute;
+  top: 23%;
+  width: 100%;
+  text-align: center;
+  font-size: 18rpx;
+  color: rgb(239, 199, 41);
+  animation: rotateIn 1s;
+}
+.st-personal-center-authenticate-icon {
+  top: 2rpx;
+  width: 14rpx;
+  height: 18rpx;
+}
+.st-personal-center-level-div {
+  position: absolute;
+  top: 28%;
+  width: 70%;
+  left: 15%;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #fff;
+}
+.st-personal-center-level-span {
+  position: absolute;
+  left: 65%;
+  font-size: 24rpx;
+  font-weight: normal;
+}
+.st-personal-center-level-outer {
+  position: absolute;
+  left: 20%;
+  height: 80%;
+  top: 5%;
+  width: 40%;
+  background: #fff;
+  border-radius: 20rpx;
+  border: 2rpx solid #fff;
+}
+.st-personal-center-level-inner {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  background: rgb(121, 181, 61);
+  border-radius: 20rpx;
+}
+.st-personal-center-infolist {
+  position: absolute;
+  top: 35%;
+  height: 30%;
+  left: 15%;
+  width: 70%;
+}
+.st-personal-center-infolist ._ul {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.st-personal-center-infolist ._ul ._li {
+  position: relative;
+  height: 16%;
+  margin-bottom: 10%;
+  background: #fff;
+  border-radius: 40rpx;
+  width: 100%;
+}
+.st-personal-center-infoList-green,
+.st-personal-center-infoList-blue {
+  position: absolute;
+  font-weight: bold;
+  width: 40%;
+  float: left;
+  font-size: 24rpx;
+  top: 15%;
+}
+.st-personal-center-infoList-green {
+  left: 10%;
+  color: rgb(121, 181, 61);
+}
+.st-personal-center-infoList-blue {
+  left: 60%;
+  color: rgb(61, 138, 218);
+}
+.st-personal-center-record-div {
+  position: absolute;
+  top: 80%;
+  width: 70%;
+  left: 15%;
+  display: flex;
+}
+.st-personal-center-record-div ._a {
+  width: 50%;
+  float: left;
+  font-size: 34rpx;
+  color: rgb(158, 200, 252);
+  text-align: center;
+}
+.st-authenticate-dialog-bg.data-v-061b6f78 {
+  position: absolute;
+  height: 50%;
+  width: 70%;
+  top: 30%;
+  left: 15%;
+}
+.st-authenticate-dialog-close-icon.data-v-061b6f78 {
+  position: absolute;
+  top: 24%;
+  right: 20%;
+  width: 6%;
+  height: 3.5%;
+}
+.st-authenticate-dialog-vertical-line.data-v-061b6f78 {
+  position: absolute;
+  top: 27.5%;
+  right: 23%;
+  height: 5%;
+  width: 2rpx;
+  border-right: 2rpx solid #fff;
+}
+.dialog-mask.data-v-061b6f78 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 0;
+}
+.st-authenticate-dialog-icon.data-v-061b6f78 {
+  position: absolute;
+  top: 33%;
+  left: 42%;
+  height: 9%;
+  width: 15%;
+}
+.st-authenticate-dialog-setup-text.data-v-061b6f78 {
+  position: absolute;
+  top: 43%;
+  left: 40%;
+  font-size: 36rpx;
+  color: white;
+}
+.st-authenticate-dialog-telNum-div.data-v-061b6f78 {
+  position: absolute;
+  top: 52%;
+  left: 20%;
+  width: 60%;
+  display: flex;
+}
+.st-authenticate-dialog-code-div.data-v-061b6f78 {
+  position: absolute;
+  top: 61%;
+  left: 20%;
+  width: 60%;
+  display: flex;
+}
+.st-authenticate-dialog-telNum-text.data-v-061b6f78,
+.st-authenticate-dialog-code-text.data-v-061b6f78 {
+  position: absolute;
+  left: 5%;
+  width: 25%;
+  top: 2%;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: rgb(95, 55, 219);
+}
+.st-authenticate-dialog-telNum-input-div.data-v-061b6f78,
+.st-authenticate-dialog-code-input-div.data-v-061b6f78 {
+  position: absolute;
+  left: 33%;
+  width: 65%;
+  border-radius: 34rpx;
+  height: 68rpx;
+  background: rgb(95, 55, 219);
+  border: 2rpx solid rgb(95, 55, 219);
+}
+.st-authenticate-dialog-telNum-input.data-v-061b6f78 {
+  position: absolute;
+  width: 100%;
+  top: 5%;
+  color: white;
+  font-size: 36rpx;
+  text-align: center;
+}
+.st-authenticate-dialog-code-input.data-v-061b6f78 {
+  position: absolute;
+  display: block;
+  width: 60%;
+  top: 5%;
+  left: 10%;
+  color: white;
+  font-size: 36rpx;
+}
+.st-authenticate-dialog-code-img.data-v-061b6f78 {
+  position: absolute;
+  width: 50%;
+  right: 0;
+  height: 100%;
+}
+.st-authenticate-dialog-submit-icon.data-v-061b6f78 {
+  position: absolute;
+  top: 71%;
+  height: 5.5%;
+  width: 24%;
+  left: 38%;
+}
+.st-authenticate-dialog-code-span.data-v-061b6f78 {
+  position: absolute;
+  width: 50%;
+  right: 0;
+  height: 50%;
+  top: 25%;
+  color: rgb(95, 55, 219);
+  font-size: 24rpx;
+  text-align: center;
+}
+.st-authenticate-dialog-cutdown-span.data-v-061b6f78 {
+  position: absolute;
+  width: 50%;
+  right: 0;
+  height: 60%;
+  top: 20%;
+  color: rgb(95, 55, 219);
+  font-size: 32rpx;
+  text-align: center;
+  animation: zoomOut .5s;
+}

@@ -1,0 +1,52 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.MatchSetting;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 匹配设置服务接口
+ * <p>
+ * Created by Devin
+ * 2018-07-02 下午 03:40
+ */
+public interface MatchSettingService {
+    /**
+     * 分页查询所有匹配设置信息表
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<MatchSetting> getMatchSettingList(Integer pageSize, Integer currentPage);
+
+    /**
+     * 查询所有匹配设置信息表
+     * @return
+     */
+    List<MatchSetting> getAllMatchSettings();
+
+    /**
+     * 创建匹配设置表
+     * @param newMatchSetting
+     * @return
+     * @throws ErrorInfo
+     */
+    MatchSetting create(MatchSetting newMatchSetting) throws ErrorInfo;
+
+    /**
+     * 更新匹配设置表
+     * @param updatedMatchSetting
+     * @return
+     * @throws ErrorInfo
+     */
+    MatchSetting update(MatchSetting updatedMatchSetting) throws ErrorInfo;
+
+    /**
+     * 根据匹配设置ID删除匹配设置表
+     * @param matchSettingId
+     * @return
+     * @throws ErrorInfo
+     */
+    boolean deleteByMatchSettingId(String matchSettingId) throws ErrorInfo;
+}

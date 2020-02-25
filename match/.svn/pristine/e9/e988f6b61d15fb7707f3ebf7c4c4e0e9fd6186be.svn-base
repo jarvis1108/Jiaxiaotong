@@ -1,0 +1,94 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.match;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordQuestion;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordQuestionService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
+import java.util.List;
+
+/**
+ * @author meiyu
+ * 对战记录题目
+ */
+@RestController
+@RequestMapping("/mth/MatchRecordQuestion")
+
+public class MatchRecordQuestionController {
+    private final MatchRecordQuestionService matchRecordQuestionService;
+
+    @Autowired
+    public MatchRecordQuestionController(MatchRecordQuestionService matchRecordQuestionService) {
+        this.matchRecordQuestionService = matchRecordQuestionService;
+    }
+
+    /**
+     * 获取对战记录题目列表
+     *
+     * @param pageSize
+     * @param currentPage
+     * @param request
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo getMatchRecordQuestionList(Integer pageSize, Integer currentPage, HttpServletRequest request) {
+
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<MatchRecordQuestion> matchRecordQuestions;
+        if (pageSize == null || currentPage == null) {
+            matchRecordQuestions = matchRecordQuestionService.getMatchRecordQuestionList(pageSize, currentPage);
+        } else if (pageSize <= 0 || currentPage <= 0) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        } else {
+            matchRecordQuestions = matchRecordQuestionService.getMatchRecordQuestionList(pageSize, currentPage);
+        }
+        return new ResponseInfo(requestInfo, matchRecordQuestions);
+    }
+
+    /**
+     * 根据战局ID查询对战记录中题目
+     * @param matchRecordId
+     * @param request
+     * @return
+     * @throws ErrorInfo
+     */
+    @GetMapping("/getMatchRecordQuestion")
+    public ResponseInfo getMatchRecordQuestion(@PathParam("matchRecordId") String matchRecordId, HttpServletRequest request) throws ErrorInfo {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<MatchRecordQuestion> matchRecordQuestions;
+        if (matchRecordId == null){
+            return new ResponseInfo(requestInfo,CommConst.ERR_REQ_PARAM.getCode(),CommConst.ERR_REQ_PARAM.getMessage(),null);
+        }else {
+            matchRecordQuestions = matchRecordQuestionService.findAllByMatchRecordId(matchRecordId);
+        }
+        return new ResponseInfo(requestInfo,matchRecordQuestions);
+
+    }
+
+    /**
+     * 提交新对战记录题目
+     *
+     * @param requestInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @PostMapping("/add")
+    public ResponseInfo addMatchRecordUser(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParams = requestInfo.getReqParam();
+        if (reqParams.getString("matchRecordQuestionId") == null) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+        MatchRecordQuestion matchRecordQuestion = JSON.parseObject(reqParams.toJSONString(), MatchRecordQuestion.class);
+        MatchRecordQuestion result = matchRecordQuestionService.create(matchRecordQuestion);
+        return new ResponseInfo(requestInfo,result);
+    }
+}

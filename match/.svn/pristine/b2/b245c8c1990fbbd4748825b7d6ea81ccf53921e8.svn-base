@@ -1,0 +1,28 @@
+<template name="index$119269ac">
+  <view class="_div data-v-ebb98162 st-background-base-div">
+    <image class="_img data-v-ebb98162 st-background-bg-div" src="/static/images/bg@2x.png"></image>
+    <view class="_div data-v-ebb98162 st-result-detail-div">
+      <image class="_img data-v-ebb98162 st-background-bg-div" src="/static/images/groupBattleResult/Performancedisplay_bg@2x.png"></image>
+      <view id="st-total-grade-p" class="_p data-v-ebb98162">{{grade}}分</view>
+      <view id="st-total-correct-p" class="_p data-v-ebb98162">答对{{correct}}题</view>
+      <view id="st-coin-change-p" class="_p data-v-ebb98162 st-detail-text-p">金币：    +{{coin}}</view>
+      <view id="st-gradepoint-change-p" class="_p data-v-ebb98162 st-detail-text-p">绩点：    +{{gradepoint}}</view>
+      <view id="st-studypoint-change-p" class="_p data-v-ebb98162 st-detail-text-p">学点：    -{{studypoint}}</view>
+      <view id="st-expression-change-p" class="_p data-v-ebb98162 st-detail-text-p">经验：    +{{expression}}</view>
+    </view>
+    <view class="_div data-v-ebb98162 st-player-range-div">
+      <view class="_div data-v-ebb98162 st-player-detail-div" wx:key="player" key="{{player}}" wx:for="{{playerList}}" wx:for-index="index" wx:for-item="player">
+        <view class="_div data-v-ebb98162 st-player-img-div">
+          <image class="_img data-v-ebb98162 st-background-bg-div user-icon" src="{{player.userIcon}}"></image>
+        </view>
+        <view class="_p data-v-ebb98162">第{{player.rank}}名</view>
+      </view>
+    </view>
+    <view class="_div data-v-ebb98162 st-continue-game-div">
+      <image bindtap="handleProxy" class="_img data-v-ebb98162 st-background-bg-div" src="/static/images/groupBattleResult/1.1Continue-btn@2x.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+    </view>
+    <button class="_button data-v-ebb98162 st-share-result-div" id="showoff" open-type="share">
+      <image class="_img data-v-ebb98162 btn_img" src="/static/images/groupBattleResult/1.1Showoff-btn@2x.png"></image>
+    </button>
+  </view>
+</template>

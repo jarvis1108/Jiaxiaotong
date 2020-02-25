@@ -1,0 +1,77 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.QuestionSetting;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 匹配设置服务单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 04:53
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class QuestionSettingServiceTest {
+
+    @Autowired
+    private QuestionSettingService questionSettingService;
+
+    @Test
+    public void getQuestionSettingList() {
+        List<QuestionSetting> questionSettingList = questionSettingService.getQuestionSettingList(2, 1);
+        assertNotEquals(0, questionSettingList);
+
+        questionSettingList.forEach(System.out::println);
+    }
+
+    @Test
+    public void getAllQuestionSettings() {
+        List<QuestionSetting> questionSettingList = questionSettingService.getAllQuestionSettings();
+        assertNotEquals(0, questionSettingList);
+
+        questionSettingList.forEach(System.out::println);
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        QuestionSetting questionSetting = new QuestionSetting();
+        questionSetting.setQuestionSettingId("4");
+        questionSetting.setQuestionTypeId("2");
+        questionSetting.setMatchType("匹配");
+
+        QuestionSetting result = questionSettingService.create(questionSetting);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void update() throws ErrorInfo {
+        QuestionSetting questionSetting = new QuestionSetting();
+        questionSetting.setQuestionSettingId("4");
+        questionSetting.setQuestionTypeId("2");
+        questionSetting.setMatchType("匹配");
+
+        QuestionSetting result = questionSettingService.update(questionSetting);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteByQuestionSettingId() throws ErrorInfo {
+        String questionSettingId = "4";
+        boolean result = questionSettingService.deleteByQuestionSettingId(questionSettingId);
+
+        assertTrue(result);
+    }
+}

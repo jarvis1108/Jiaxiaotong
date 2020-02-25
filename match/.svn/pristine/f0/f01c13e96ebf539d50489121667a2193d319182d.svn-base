@@ -1,0 +1,25 @@
+package com.dxtwangxiao.strongestsuperscholar.module.community.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.community.entity.SpecialTraining;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+public interface SpecialTrainingService {
+    SpecialTraining create(SpecialTraining specialTraining)throws ErrorInfo;
+    List<SpecialTraining> findAll()throws ErrorInfo;
+    List<SpecialTraining> findAll(Integer currentPage, Integer pageSize);
+    SpecialTraining findById(String specialTrainingId)throws ErrorInfo;
+    SpecialTraining update(SpecialTraining specialTraining)throws ErrorInfo;
+    boolean deleteById(String specialTrainingId)throws ErrorInfo;
+
+    /**
+     * 根据用户id获取其特训营所有成员信息。
+     * @param userId
+     * @return
+     */
+
+    List<SpecialTraining> getSpecialTrainingUserInfo(String userId) throws ErrorInfo;
+
+
+}

@@ -1,0 +1,354 @@
+global.webpackJsonp([16],{
+
+/***/ 216:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(217);
+
+
+
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__index__["a" /* default */]);
+app.$mount();
+/* harmony default export */ __webpack_exports__["default"] = ({
+  config: {
+    navigationBarTitleText: '群比赛'
+  }
+});
+
+/***/ }),
+
+/***/ 217:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_7aa47bb1_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(220);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(218)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-7aa47bb1"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_7aa47bb1_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\pages\\group-battle-waiting\\index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7aa47bb1", Component.options)
+  } else {
+    hotAPI.reload("data-v-7aa47bb1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 218:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 219:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_wx__ = __webpack_require__(2);
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  data: function data() {
+    return {
+      waitOpponent: true, //是否处于等待状态
+      isHost: true,
+      hostInfo: {
+        name: "",
+        img: ""
+      },
+      opponent: {
+        wechatName: "",
+        headImage: "",
+        externalLevel: 0,
+        city: ""
+      }, //好友信息
+      hostname: "",
+      fold: true,
+      nums: 6,
+      playerList: []
+    };
+  },
+
+  computed: {
+    //列表折叠、摊开动画效果
+    'bgStyle': function bgStyle() {
+      if (this.playerList.length > 5 && this.playerList.length <= 10) {
+        return this.fold ? 'firstHide' : 'firstExtend';
+      } else if (this.playerList.length > 10 && this.playerList.length <= 15) {
+        return this.fold ? 'secondHide' : 'secondExtend';
+      } else {
+        return this.fold ? 'thirdHide' : 'thirdExtend';
+      }
+    }
+  },
+  onLoad: function onLoad() {
+    var _this = this;
+
+    return __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.mark(function _callee() {
+      var battleId;
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              //TODO:从options参数中拿到战局Id
+              battleId = "002";
+              //获取playList
+
+              _context.next = 3;
+              return _this.$store.dispatch("getPlayerListByBattleId", battleId);
+
+            case 3:
+              _this.playerList = _context.sent;
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, _this);
+    }))();
+  },
+
+
+  methods: {
+    expand: function expand() {
+      if (this.fold === true) {
+        this.fold = false;
+      } else if (this.fold === false) {
+        this.fold = true;
+      }
+    },
+    on_startBattle: function on_startBattle() {
+      __WEBPACK_IMPORTED_MODULE_3__utils_wx__["b" /* default */].redirectTo("../group-battle/main?playerList=" + __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()(this.playerList) + "&battleId=" + this.battleId);
+    }
+  },
+  onShareAppMessage: function onShareAppMessage(res) {
+    var that = this;
+    if (res.from === "button") {
+      console.log(res.target);
+    }
+    return {
+      title: this.user.wechatName + "向你发出了智商pk，点击应战！",
+      path: "/pages/group-battle-waiting/main?" + this.matchId + "&isCreator=false",
+      complete: function complete() {
+        var friend = {
+          wechatName: "小王子",
+          headImage: "/static/images/nick.jpg",
+          externalLevel: 1,
+          city: "青岛"
+        };
+        that.opponent = friend;
+        that.waitOpponent = false;
+      }
+    };
+  },
+  created: function created() {}
+});
+
+/***/ }),
+
+/***/ 220:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "st-background-base-div"
+  }, [_c('img', {
+    staticClass: "st-background-bg-div",
+    attrs: {
+      "src": "/static/images/bg.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.isHost),
+      expression: "isHost"
+    }],
+    attrs: {
+      "id": "st-status-text-div"
+    }
+  }, [_vm._v("等待成员加入...")]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.isHost),
+      expression: "!isHost"
+    }],
+    attrs: {
+      "id": "st-status-text-div"
+    }
+  }, [_vm._v("等待房主开局...")]), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "st-players-list2-div"
+    }
+  }, [_c('img', {
+    staticClass: "st-background-bg-div",
+    class: _vm.bgStyle,
+    attrs: {
+      "src": "/static/images/groupBattleWaiting/Headportrait_bg.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "st-triangel-button2-div",
+      "eventid": '0'
+    },
+    on: {
+      "click": function($event) {
+        _vm.fold = !_vm.fold
+      }
+    }
+  }, [_c('img', {
+    staticClass: "st-background-bg-div",
+    class: {
+      'right': !_vm.fold, 'bottom': _vm.fold
+    },
+    attrs: {
+      "src": "/static/images/groupBattleWaiting/Rightarrow_icon.png"
+    }
+  })]), _vm._v(" "), _vm._l((_vm.playerList), function(b, index) {
+    return (!_vm.fold || (_vm.fold && index < 5)) ? _c('div', {
+      key: b,
+      class: {
+        'slideIn': index >= 5 && !_vm.fold, 'slideOut': index >= 5 && _vm.fold
+      },
+      attrs: {
+        "id": "st-player-image2-div"
+      }
+    }, [_c('div', {
+      staticClass: "st-background-bg-div"
+    }, [_vm._v(_vm._s(b.name))])]) : _vm._e()
+  })], 2), _vm._v(" "), _vm._m(0), _vm._v(" "), (_vm.nums > 1) ? _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.isHost),
+      expression: "isHost"
+    }],
+    attrs: {
+      "id": "st-game-start-div"
+    }
+  }, [_c('img', {
+    staticClass: "st-background-bg-div",
+    attrs: {
+      "src": "/static/images/groupBattleWaiting/Startthecompetition_btn.png",
+      "eventid": '1'
+    },
+    on: {
+      "click": _vm.on_startBattle
+    }
+  })]) : _vm._e()])
+}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "st-host-logo-div"
+    }
+  }, [_c('img', {
+    staticClass: "st-background-bg-div",
+    attrs: {
+      "src": "/static/images/groupBattleWaiting/Owner_icon.png"
+    }
+  })])
+}]
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7aa47bb1", esExports)
+  }
+}
+
+/***/ })
+
+},[216]);
+//# sourceMappingURL=main.js.map

@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/battle-object-modify/main",
+    "pages/battle-object-select/main",
+    "pages/battle/main",
+    "pages/exchange-record/main",
+    "pages/exercise-object-select/main",
+    "pages/exercise-result/main",
+    "pages/exercise-review/main",
+    "pages/exercise/main",
+    "pages/friend-pk/main",
+    "pages/gold-mall/main",
+    "pages/grade-select/main",
+    "pages/group-battle/main",
+    "pages/home/main",
+    "pages/my-camp/main",
+    "pages/my-items/main",
+    "pages/my-question/main",
+    "pages/pay/main",
+    "pages/personal-center/main",
+    "pages/rank/main",
+    "pages/scholarship/main",
+    "pages/topup-record/main",
+    "pages/topup/main",
+    "pages/wrong-topic/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#5F37DB",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "color": "rgb(58,70,97)",
+    "selectedColor": "orange",
+    "list": [
+      {
+        "selectedIconPath": "/static/images/Answer-icon.png",
+        "iconPath": "static/images/Answer-icon-Notselected.png",
+        "pagePath": "pages/index/main",
+        "text": "答题"
+      },
+      {
+        "selectedIconPath": "static/images/Community-icon.png",
+        "iconPath": "static/images/Community-icon-Notselected.png",
+        "pagePath": "pages/my-camp/main",
+        "text": "社区"
+      },
+      {
+        "selectedIconPath": "static/images/My.icon.png",
+        "iconPath": "static/images/My.iconNotselected.png",
+        "pagePath": "pages/home/main",
+        "text": "我的"
+      }
+    ]
+  }
+}

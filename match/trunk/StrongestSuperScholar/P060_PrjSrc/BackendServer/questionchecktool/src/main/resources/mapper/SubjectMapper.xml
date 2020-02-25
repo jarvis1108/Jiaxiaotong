@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dxtwangxiao.questionchecktool.dao.SubjectMapper">
+    <resultMap id="BaseResultMap" type="com.dxtwangxiao.questionchecktool.entity.Subject">
+        <id column="SubjectID" jdbcType="VARCHAR" property="subjectID"/>
+        <result column="SubjectNo" jdbcType="VARCHAR" property="subjectNo"/>
+        <result column="InitID" jdbcType="VARCHAR" property="initID"/>
+        <result column="InitNo" jdbcType="VARCHAR" property="initNo"/>
+        <result column="IsCorrect" jdbcType="TINYINT" property="isCorrect"/>
+        <result column="SubjectName" jdbcType="VARCHAR" property="subjectName"/>
+        <result column="SubjectShortName" jdbcType="VARCHAR" property="subjectShortName"/>
+        <result column="GradePhaseID" jdbcType="VARCHAR" property="gradePhaseID"/>
+        <result column="GradeID" jdbcType="VARCHAR" property="gradeID"/>
+        <result column="CourseID" jdbcType="VARCHAR" property="courseID"/>
+        <result column="BookVerID" jdbcType="VARCHAR" property="bookVerID"/>
+        <result column="Booklet" jdbcType="VARCHAR" property="booklet"/>
+        <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="CreateUser" jdbcType="VARCHAR" property="createUser"/>
+        <result column="LastUpdTime" jdbcType="TIMESTAMP" property="lastUpdTime"/>
+        <result column="LastUpdUser" jdbcType="VARCHAR" property="lastUpdUser"/>
+        <result column="IsValid" jdbcType="TINYINT" property="isValid"/>
+        <result column="Remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    SubjectID, SubjectNo, InitID, InitNo, IsCorrect, SubjectName, SubjectShortName, GradePhaseID, 
+    GradeID, CourseID, BookVerID, Booklet, CreateTime, CreateUser, LastUpdTime, LastUpdUser, 
+    IsValid, Remark
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_ITN_Subject
+        where SubjectID = #{subjectID,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_ITN_Subject
+    where SubjectID = #{subjectID,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.dxtwangxiao.questionchecktool.entity.Subject">
+    insert into t_ITN_Subject (SubjectID, SubjectNo, InitID, 
+      InitNo, IsCorrect, SubjectName, 
+      SubjectShortName, GradePhaseID, GradeID, 
+      CourseID, BookVerID, Booklet, 
+      CreateTime, CreateUser, LastUpdTime, 
+      LastUpdUser, IsValid, Remark
+      )
+    values (#{subjectID,jdbcType=VARCHAR}, #{subjectNo,jdbcType=VARCHAR}, #{initID,jdbcType=VARCHAR}, 
+      #{initNo,jdbcType=VARCHAR}, #{isCorrect,jdbcType=TINYINT}, #{subjectName,jdbcType=VARCHAR}, 
+      #{subjectShortName,jdbcType=VARCHAR}, #{gradePhaseID,jdbcType=VARCHAR}, #{gradeID,jdbcType=VARCHAR}, 
+      #{courseID,jdbcType=VARCHAR}, #{bookVerID,jdbcType=VARCHAR}, #{booklet,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{lastUpdTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdUser,jdbcType=VARCHAR}, #{isValid,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.dxtwangxiao.questionchecktool.entity.Subject">
+        insert into t_ITN_Subject
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="subjectID != null">
+                SubjectID,
+            </if>
+            <if test="subjectNo != null">
+                SubjectNo,
+            </if>
+            <if test="initID != null">
+                InitID,
+            </if>
+            <if test="initNo != null">
+                InitNo,
+            </if>
+            <if test="isCorrect != null">
+                IsCorrect,
+            </if>
+            <if test="subjectName != null">
+                SubjectName,
+            </if>
+            <if test="subjectShortName != null">
+                SubjectShortName,
+            </if>
+            <if test="gradePhaseID != null">
+                GradePhaseID,
+            </if>
+            <if test="gradeID != null">
+                GradeID,
+            </if>
+            <if test="courseID != null">
+                CourseID,
+            </if>
+            <if test="bookVerID != null">
+                BookVerID,
+            </if>
+            <if test="booklet != null">
+                Booklet,
+            </if>
+            <if test="createTime != null">
+                CreateTime,
+            </if>
+            <if test="createUser != null">
+                CreateUser,
+            </if>
+            <if test="lastUpdTime != null">
+                LastUpdTime,
+            </if>
+            <if test="lastUpdUser != null">
+                LastUpdUser,
+            </if>
+            <if test="isValid != null">
+                IsValid,
+            </if>
+            <if test="remark != null">
+                Remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="subjectID != null">
+                #{subjectID,jdbcType=VARCHAR},
+            </if>
+            <if test="subjectNo != null">
+                #{subjectNo,jdbcType=VARCHAR},
+            </if>
+            <if test="initID != null">
+                #{initID,jdbcType=VARCHAR},
+            </if>
+            <if test="initNo != null">
+                #{initNo,jdbcType=VARCHAR},
+            </if>
+            <if test="isCorrect != null">
+                #{isCorrect,jdbcType=TINYINT},
+            </if>
+            <if test="subjectName != null">
+                #{subjectName,jdbcType=VARCHAR},
+            </if>
+            <if test="subjectShortName != null">
+                #{subjectShortName,jdbcType=VARCHAR},
+            </if>
+            <if test="gradePhaseID != null">
+                #{gradePhaseID,jdbcType=VARCHAR},
+            </if>
+            <if test="gradeID != null">
+                #{gradeID,jdbcType=VARCHAR},
+            </if>
+            <if test="courseID != null">
+                #{courseID,jdbcType=VARCHAR},
+            </if>
+            <if test="bookVerID != null">
+                #{bookVerID,jdbcType=VARCHAR},
+            </if>
+            <if test="booklet != null">
+                #{booklet,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTime != null">
+                #{lastUpdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdUser != null">
+                #{lastUpdUser,jdbcType=VARCHAR},
+            </if>
+            <if test="isValid != null">
+                #{isValid,jdbcType=TINYINT},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dxtwangxiao.questionchecktool.entity.Subject">
+        update t_ITN_Subject
+        <set>
+            <if test="subjectNo != null">
+                SubjectNo = #{subjectNo,jdbcType=VARCHAR},
+            </if>
+            <if test="initID != null">
+                InitID = #{initID,jdbcType=VARCHAR},
+            </if>
+            <if test="initNo != null">
+                InitNo = #{initNo,jdbcType=VARCHAR},
+            </if>
+            <if test="isCorrect != null">
+                IsCorrect = #{isCorrect,jdbcType=TINYINT},
+            </if>
+            <if test="subjectName != null">
+                SubjectName = #{subjectName,jdbcType=VARCHAR},
+            </if>
+            <if test="subjectShortName != null">
+                SubjectShortName = #{subjectShortName,jdbcType=VARCHAR},
+            </if>
+            <if test="gradePhaseID != null">
+                GradePhaseID = #{gradePhaseID,jdbcType=VARCHAR},
+            </if>
+            <if test="gradeID != null">
+                GradeID = #{gradeID,jdbcType=VARCHAR},
+            </if>
+            <if test="courseID != null">
+                CourseID = #{courseID,jdbcType=VARCHAR},
+            </if>
+            <if test="bookVerID != null">
+                BookVerID = #{bookVerID,jdbcType=VARCHAR},
+            </if>
+            <if test="booklet != null">
+                Booklet = #{booklet,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CreateTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null">
+                CreateUser = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTime != null">
+                LastUpdTime = #{lastUpdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdUser != null">
+                LastUpdUser = #{lastUpdUser,jdbcType=VARCHAR},
+            </if>
+            <if test="isValid != null">
+                IsValid = #{isValid,jdbcType=TINYINT},
+            </if>
+            <if test="remark != null">
+                Remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where SubjectID = #{subjectID,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dxtwangxiao.questionchecktool.entity.Subject">
+    update t_ITN_Subject
+    set SubjectNo = #{subjectNo,jdbcType=VARCHAR},
+      InitID = #{initID,jdbcType=VARCHAR},
+      InitNo = #{initNo,jdbcType=VARCHAR},
+      IsCorrect = #{isCorrect,jdbcType=TINYINT},
+      SubjectName = #{subjectName,jdbcType=VARCHAR},
+      SubjectShortName = #{subjectShortName,jdbcType=VARCHAR},
+      GradePhaseID = #{gradePhaseID,jdbcType=VARCHAR},
+      GradeID = #{gradeID,jdbcType=VARCHAR},
+      CourseID = #{courseID,jdbcType=VARCHAR},
+      BookVerID = #{bookVerID,jdbcType=VARCHAR},
+      Booklet = #{booklet,jdbcType=VARCHAR},
+      CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      CreateUser = #{createUser,jdbcType=VARCHAR},
+      LastUpdTime = #{lastUpdTime,jdbcType=TIMESTAMP},
+      LastUpdUser = #{lastUpdUser,jdbcType=VARCHAR},
+      IsValid = #{isValid,jdbcType=TINYINT},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where SubjectID = #{subjectID,jdbcType=VARCHAR}
+  </update>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+    select * from t_ITN_Subject;
+  </select>
+</mapper>

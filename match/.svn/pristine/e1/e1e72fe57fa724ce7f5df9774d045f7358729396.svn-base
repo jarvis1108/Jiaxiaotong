@@ -1,0 +1,27 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.CourseInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @Author: meiyu
+ * @Date: 2018/7/13 16:00
+ */
+
+@Service
+public interface CourseInfoService {
+    List<CourseInfo> getCourseInfoList(Integer pageSize, Integer currentPage);
+
+    List<CourseInfo> findAll();
+
+    CourseInfo create(CourseInfo newCourseInfo) throws ErrorInfo;
+
+    CourseInfo update(CourseInfo updatedAdminPurview) throws ErrorInfo;
+
+    boolean deleteByCourseId(String courseId) throws ErrorInfo;
+
+    CourseInfo findByCourseName(String courseName)throws ErrorInfo;
+}

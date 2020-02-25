@@ -1,0 +1,71 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminPurview;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 管理员角色设置单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 02:35
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class AdminPurviewRepositoryTest {
+
+    @Autowired
+    private AdminPurviewRepository adminPurviewRepository;
+
+    @Test
+    public void findAll() {
+        List<AdminPurview> adminPurviewList = adminPurviewRepository.findAll();
+        assertNotEquals(0, adminPurviewList.size());
+
+        adminPurviewList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll1() {
+        Pageable pageable = PageRequest.of(1, 1);
+        Page<AdminPurview> adminPurviewPage = adminPurviewRepository.findAll(pageable);
+        List<AdminPurview> adminPurviewList = adminPurviewPage.getContent();
+
+        assertNotEquals(0, adminPurviewList.size());
+        adminPurviewList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAdminPurviewByAdminPurviewId() {
+        String adminPurviewId = "1";
+        AdminPurview adminPurview = adminPurviewRepository.findAdminPurviewByAdminPurviewId(adminPurviewId);
+
+        assertNotNull(adminPurview);
+        System.out.println(adminPurview);
+    }
+
+    @Test
+    public void save() {
+        AdminPurview adminPurview = new AdminPurview();
+        adminPurview.setAdminPurviewId("3");
+        adminPurview.setAdminId("1");
+        adminPurview.setAdminNo("1");
+        adminPurview.setAdminRoleId("1");
+        adminPurview.setAdminRoleNo("1");
+
+        AdminPurview result = adminPurviewRepository.save(adminPurview);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+}

@@ -1,0 +1,72 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.ProductInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * @author: meiyu
+ * @Date: 2018/7/5 12:00
+ * @description 商品信息数据访问层单元测试
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ProductInfoRepositoryTest {
+
+    @Autowired
+    private ProductInfoRepository productInfoRepository;
+
+    @Test
+    public void findAll() {
+        PageRequest pageable = PageRequest.of(1, 1);
+        Page<ProductInfo> productInfoPage = productInfoRepository.findAll(pageable);
+
+        List<ProductInfo> productInfoList = productInfoPage.getContent();
+        assertEquals(0, productInfoList.size());
+        productInfoList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll1() {
+        List<ProductInfo> productInfoList = productInfoRepository.findAll();
+        assertNotEquals(0, productInfoList.size());
+
+        productInfoList.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        ProductInfo productInfo = new ProductInfo();
+        productInfo.setIsValid(Byte.valueOf("1"));
+        productInfo.setUnitOfDenominator("1");
+        productInfo.setUnitOfNumerator("1");
+        productInfo.setProductType("1");
+        productInfo.setBeginTime(Timestamp.valueOf("2018-07-07 12:12:12"));
+        productInfo.setCreateTime(Timestamp.valueOf("2018-07-07 12:12:12"));
+        productInfo.setCreateUser("m");
+        productInfo.setEndTime(Timestamp.valueOf("2018-07-07 12:12:12"));
+        productInfo.setLastUpdTime(Timestamp.valueOf("2018-07-07 12:12:12"));
+        productInfo.setLastUpdUser("k");
+        productInfo.setPaymentType(Byte.valueOf("1"));
+        productInfo.setProductPrice(2.00);
+        productInfo.setProductId("1");
+        productInfo.setProductName("s");
+        productInfo.setProductNo("1");
+        productInfo.setRemark("1");
+        productInfo.setSpecification("test");
+
+        ProductInfo result = productInfoRepository.save(productInfo);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+}

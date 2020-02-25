@@ -1,0 +1,52 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.Admin;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 管理员数据访问层
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 02:57
+ */
+@Repository
+public interface AdminRepository extends CrudRepository<Admin, String> {
+    /**
+     * 查询所有管理员记录
+     *
+     * @return 管理员列表
+     */
+    List<Admin> findAll();
+
+
+    /**
+     * 根据Pageable对象进行分页查询
+     *
+     * @param pageable 请求分页参数
+     * @return Page对象，存储了分页的基本信息
+     */
+    @Query("select a from Admin a")
+    Page<Admin> findAll(Pageable pageable);
+
+    /**
+     * 根据id获取管理员信息
+     *
+     * @param id 管理员id
+     * @return
+     */
+    Admin findAdminByAdminId(String id);
+
+    /**
+     * 存储或更新管理员信息
+     *
+     * @param administrator 待存储或更新管理员信息
+     * @return 存储或更新的管理员信息
+     */
+    Admin save(Admin administrator);
+}

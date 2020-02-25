@@ -1,0 +1,19 @@
+<template name="payTip$1670d7db">
+  <view class="_div data-v-34a8a9ff payTip">
+    <view class="_div data-v-34a8a9ff dialog-mask"></view>
+    <image class="_img data-v-34a8a9ff st-setting-dialog-bg" src="/static/images/payTip/Springwindow_bg.png"></image>
+    <view wx:if="{{index % 3 === 0}}" class="_div data-v-34a8a9ff st-setting-dialog-icon-div" id="blue">
+      <image class="_img data-v-34a8a9ff st-setting-dialog-icon-img" src="{{product.productImage}}"></image>
+    </view>
+    <view wx:elif="{{index % 3 === 1}}" class="_div data-v-34a8a9ff st-setting-dialog-icon-div" id="green">
+      <image class="_img data-v-34a8a9ff st-setting-dialog-icon-img" src="{{product.productImage}}"></image>
+    </view>
+    <view wx:else class="_div data-v-34a8a9ff st-setting-dialog-icon-div" id="cyan">
+      <image class="_img data-v-34a8a9ff st-setting-dialog-icon-img" src="{{product.productImage}}"></image>
+    </view>
+    <image bindtap="handleProxy" class="_img data-v-34a8a9ff st-setting-dialog-close-icon" src="/static/images/payTip/Close_1_icon.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+    <view class="_div data-v-34a8a9ff st-setting-dialog-line">{{product.productName}}</view>
+    <label class="_span data-v-34a8a9ff st-setting-dialog-setup-text">{{product.productDesc}}</label>
+    <button class="_button data-v-34a8a9ff st-setting-dialog-button" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">确认购买</button>
+  </view>
+</template>

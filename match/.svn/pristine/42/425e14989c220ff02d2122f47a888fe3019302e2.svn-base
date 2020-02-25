@@ -1,0 +1,58 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 试题类型数据访问
+ *
+ * @author shenhao
+ */
+@Repository
+public interface QuestionTypeRepository extends CrudRepository<QuestionType, String> {
+
+    /**
+     * 查询所有试题类型
+     *
+     * @return 包含所有试题类型的序列
+     */
+    List<QuestionType> findAll();
+
+    //QuestionType findQuestionTypeByQuestionTypeName(String questionTypeName);
+
+    /**
+     * 分页查询试题类型
+     *
+     * @param pageable
+     * @return
+     */
+    Page<QuestionType> findAll(Pageable pageable);
+
+    /**
+     * 根据试题类型名id查询试题类型
+     *
+     * @param questionTypeId 试题类型id
+     * @return 对应试题类型序列
+     */
+    QuestionType findQuestionTypeByQuestionTypeId(String questionTypeId);
+
+    /**
+     * 根据试题类型名查询试题类型
+     *
+     * @param questionTypeName 试题类型id
+     * @return 对应试题类型序列
+     */
+    QuestionType findQuestionTypeByQuestionTypeName(String questionTypeName);
+
+    /**
+     * 新增或者修改试题类型
+     *
+     * @param questionType
+     */
+    QuestionType save(QuestionType questionType);
+}

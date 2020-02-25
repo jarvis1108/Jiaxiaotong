@@ -1,0 +1,84 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.dao.MatchRecordQuestionRepository;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordQuestion;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordQuestionService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+/**
+ * @author meiyu
+ * 战局题目记录
+ */
+@Service
+public class MatchRecordQuestionServiceImpl implements MatchRecordQuestionService {
+
+    @Autowired
+    private MatchRecordQuestionRepository matchRecordQuestionRepository;
+
+
+    /**
+     * 获取对战记录题目
+     *
+     * @param pageSize
+     * @param currentPage
+     * @return 题目列表
+     */
+    @Transactional
+    @Override
+    public List<MatchRecordQuestion> getMatchRecordQuestionList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null || pageSize <= 0 || currentPage <= 0) {
+            return null;
+        } else {
+            PageRequest pageable = PageRequest.of(currentPage, pageSize);
+            Page<MatchRecordQuestion> page = matchRecordQuestionRepository.findAll(pageable);
+            return page.getContent();
+        }
+    }
+
+    /**
+     * 根据战局id获取所有对战记录题目
+     *
+     * @param matchRecordId
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public List<MatchRecordQuestion> findAllByMatchRecordId(String matchRecordId) throws ErrorInfo {
+        if (matchRecordId == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_01_016", "找不到战局", null);
+        List<MatchRecordQuestion> matchRecordQuestionList = matchRecordQuestionRepository.findAllByMatchRecordId(matchRecordId);
+        return matchRecordQuestionList;
+    }
+
+    @Override
+    public MatchRecordQuestion save(MatchRecordQuestion matchRecordQuestion) {
+        return matchRecordQuestionRepository.save(matchRecordQuestion);
+    }
+
+    /**
+     * 新增战局题目
+     *
+     * @param matchRecordQuestion
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public MatchRecordQuestion create(MatchRecordQuestion matchRecordQuestion) throws ErrorInfo {
+        if (matchRecordQuestion == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_01_002", "新建题目为空", null);
+        return matchRecordQuestionRepository.save(matchRecordQuestion);
+    }
+
+}

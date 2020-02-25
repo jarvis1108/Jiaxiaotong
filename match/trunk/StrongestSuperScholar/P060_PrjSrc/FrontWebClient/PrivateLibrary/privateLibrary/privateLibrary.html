@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>最强学霸</title>
+    <link rel="stylesheet" type="text/css" href="css/privateLibrary.css"/>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+<div class="head">私有题库</div>
+<div class="taskbar">
+    <div class="Personal-information">
+        <div class="Head portrait"><img class="hp" src="img/IMG_1785.JPG"/></div>
+        <div class="Name">sk.tu</div>
+    </div>
+    <div class="Upload" id="Upload">题目录入</div>
+    <div class="questionType-hide" id="questionType">
+        <ul>
+            <li class="questionType-selected" id="chooseQuestion">选择题</li>
+            <li class="questionType-recently" id="reciteQuestion">背诵题</li>
+        </ul>
+    </div>
+    <div class="My-topic" id="questionManager">题目管理</div>
+    <div class="questionType-hide" id="questionManagerType">
+        <ul>
+            <li class="questionType-selected" id="questionManagerChoice">选择题</li>
+            <li class="questionType-recently" id="questionManagerRecite">背诵题</li>
+        </ul>
+    </div>
+</div>
+<div class="questionUpdate-hide" id="questionUpdate">
+
+    <div class="contents" id="Form">
+
+        <div>
+            <ul class="gradeAndCourse-Ul">
+                <li><select name="Discipline" class="Course" id="selectedCourse">
+                    <option value="chinese">语文</option>
+                    <option value="english">英语</option>
+                    <option value="math">数学</option>
+                    <option value="physics">物理</option>
+                    <option value="chemistry">化学</option>
+                </select></li>
+                <li><select name="Grade" class="Course" id="selectedGrade">
+                    <option value="Grade one">一年级</option>
+                    <option value="Grade two">二年级</option>
+                    <option value="Grade three">三年级</option>
+                    <option value="Grade four">四年级</option>
+                </select></li>
+            </ul>
+        </div>
+
+        <div id="chooseContent" style="display: block">
+
+            <div class="chooseDiv">
+                <ul class="subjectUl" id="subUl-1">
+                    <li>
+                        <div class="subject-choose-selected">单选题</div>
+                    </li>
+                    <li>
+                        <div class="subject-Recite">多选题</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="Problem">
+                <p>请输入题目内容:</p>
+                <input type="text" class="Problem-stem" id="Problem-stem">
+            </div>
+            <p style="display: block;">请输入选项答案：</p>
+            <div class="Options">
+
+                <ul>
+                    <li>
+                        <lable>A:</lable>
+                        <input type="text" id="optionA" value=""/>
+                    </li>
+                    <li>
+                        <lable>B:</lable>
+                        <input type="text" id="optionB" value=""/>
+                    </li>
+                    <li>
+                        <lable>C:</lable>
+                        <input type="text" id="optionC" value=""/>
+                    </li>
+                    <li>
+                        <lable>D:</lable>
+                        <input type="text" id="optionD" value=""/>
+                    </li>
+                </ul>
+            </div>
+            <p style="margin-top: 18px">答案解析：</p>
+            <input type="text" class="Problem-stem" style="margin-top: 15px; margin-left: 86px">
+            <div class="Answer">
+                <p>请选择正确答案：</p>
+                <ul id="answerUl">
+                    <li>
+                        <div optionNumber=0 class="optionBtn">A</div>
+                    </li>
+                    <li>
+                        <div optionNumber=1 class="optionBtn">B</div>
+                    </li>
+                    <li>
+                        <div optionNumber=2 class="optionBtn">C</div>
+                    </li>
+                    <li>
+                        <div optionNumber=3 class="optionBtn">D</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="Time">
+                <p>请选择答题时间:</p>
+                <ul id="timeUl-1">
+                    <li>
+                        <div timeNumber=10 class="timeOption">10s</div>
+                    </li>
+                    <li>
+                        <div timeNumber=20 class="timeOption">20s</div>
+                    </li>
+                    <li>
+                        <div timeNumber=30 class="timeOption">30s</div>
+                    </li>
+                    <li>
+                        <div timeNumber=40 class="timeOption">40s</div>
+                    </li>
+                    <li>
+                        <div timeNumber=50 class="timeOption">50s</div>
+                    </li>
+                    <li>
+                        <div timeNumber=60 class="timeOption">60s</div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="button-reciting">
+                <button class="Submit" id="Submit-1">提交</button>
+            </div>
+        </div>
+
+        <div id="reciteContent" style="display: none">
+
+            <div class="chooseDiv">
+                <ul class="subjectUl" id="subUl-2">
+                    <li>
+                        <div class="subject-choose-selected">节选背诵</div>
+                    </li>
+                    <li>
+                        <div class="subject-Recite">全篇背诵</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="Problem">
+                <p>请输入题目内容:</p>
+                <input style="margin-left: 100px;" id="reciteTitle" class="Problem-stem type=" text"  value="" />
+            </div>
+            <div class="Problem">
+                <p>请输入需要背诵的部分:</p>
+                <input id="reciteInputContent" class="Problem-stem  type=" text"  value="" />
+            </div>
+            <div class="Problem">
+                <p>请输入背诵部分的答案:</p>
+                <input id="answerInputContent" class="Problem-stem type=" text"  value="" />
+            </div>
+            <div class="Time">
+                <p>请选择答题时间:</p>
+                <ul id="timeUl-2">
+                    <li>
+                        <div timeNumber="10" class="timeOption">10s</div>
+                    </li>
+                    <li>
+                        <div timeNumber="20" class="timeOption">20s</div>
+                    </li>
+                    <li>
+                        <div timeNumber="30" class="timeOption">30s</div>
+                    </li>
+                    <li>
+                        <div timeNumber="40" class="timeOption">40s</div>
+                    </li>
+                    <li>
+                        <div timeNumber="50" class="timeOption">50s</div>
+                    </li>
+                    <li>
+                        <div timeNumber="60" class="timeOption">60s</div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="button-reciting">
+                <button class="Submit" id="Submit-2">提交</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!--题目管理的div-->
+<div class="contentsManager-hide" id="contentsManager">
+    <div>
+        <ul class="gradeAndCourse-Ul">
+            <li><select name="Discipline" class="selectInput" id="">
+                <option value="allSubject">全部学科</option>
+                <option value="chinese">语文</option>
+                <option value="english">英语</option>
+                <option value="math">数学</option>
+                <option value="physics">物理</option>
+                <option value="chemistry">化学</option>
+            </select></li>
+            <li><select name="Grade" class="selectInput" id="">
+                <option value="allGrade">全部年级</option>
+                <option value="Grade one">一年级</option>
+                <option value="Grade two">二年级</option>
+                <option value="Grade three">三年级</option>
+                <option value="Grade four">四年级</option>
+                <option value="Grade five">五年级</option>
+                <option value="Grade six">六年级</option>
+            </select></li>
+            <li>
+                <select name="Type" class="selectInput" id="">
+                    <option value="">全部题型</option>
+                    <option value="">单选题</option>
+                    <option value="">多选题</option>
+                </select>
+            </li>
+            <li>
+                <select name="state" class="selectInput" id="">
+                    <option value="">全部状态</option>
+                    <option value="">启用</option>
+                    <option value="">禁用</option>
+                </select>
+            </li>
+            <li>
+                <input type="text" value="" placeholder="关键字搜索" class="exploreInput">
+            </li>
+            <li>
+                <input type="button" value="搜索" class="exploreBtn">
+            </li>
+        </ul>
+    </div>
+
+
+
+        <script src="layui/layui.js" charset="utf-8"></script>
+        <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+
+        <div id="choiceManagerDiv" class="choiceManagerContent">
+            <!--第一步：编写模版。你可以使用一个script标签存放模板，如：-->
+            <script id="choiceModel" type="text/html">
+
+                {{#  layui.each(d.choiceForLibList, function(index, item){ }}
+                <tr>
+                    <td>{{ item.questionLibId }}</td>
+                    <td>{{ item.courseName }}</td>
+                    <td>{{ item.gradeName }}</td>
+                    <td>{{ item.question }}</td>
+                    <td>{{ item.recommendTime }}</td>
+                    <td>{{ item.choiceA }}</td>
+                    <td>{{ item.choiceB }}</td>
+                    <td>{{ item.choiceC }}</td>
+                    <td>{{ item.choiceD }}</td>
+                    <td>{{ item.answer }}</td>
+                    <td>
+                        <button>修改</button>
+                        <button style="margin-left: 5px">删除</button>
+                    </td>
+                </tr>
+                {{#  }); }}
+                {{#  if(d.choiceForLibList.length === 0){ }}
+                无数据
+                {{#  } }}
+            </script>
+
+
+            <!--第二步：建立视图。用于呈现渲染结果。-->
+            <div id="choiceTableQuestion" style="width: 95%; margin: 0 auto;">
+
+            </div>
+        </div>
+
+
+    <div class="reciteManagerContent" id="reciteManagerDiv">
+
+        <!--第一步：编写模版。你可以使用一个script标签存放模板，如：-->
+        <script id="reciteModel" type="text/html">
+
+            {{#  layui.each(d.questionRecitationForLibList, function(index, item){ }}
+            <tr>
+                <td>{{ item.questionForLibId }}</td>
+                <td>{{ item.subjectName }}</td>
+                <td>{{ item.gradeName }}</td>
+                <td>{{ item.question }}</td>
+                <td>{{ item.recommendTime }}</td>
+                <td>{{ item.answer }}</td>
+                <td>
+                    <button>修改</button>
+                    <button style="margin-left: 5px">删除</button>
+                </td>
+            </tr>
+            {{#  }); }}
+            {{#  if(d.questionRecitationForLibList.length === 0){ }}
+            无数据
+            {{#  } }}
+        </script>
+
+        <!--第二步：建立视图。用于呈现渲染结果。-->
+        <div id="reciteTableQuestion" style="width: 95%; margin: 0 auto;">
+
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+</body>
+
+
+<script>
+
+    function my$(id) {
+        return typeof(id) === "string" ? document.getElementById(id) : id;
+    }
+
+    var questionUpdate = my$("questionUpdate");     //获取题目录入的整个div
+    var Upload = my$("Upload");                    //获取"题目录入"按钮
+    var questionType = my$("questionType");        //获取录入题目的类型
+
+    var chooseQueObj = my$("chooseQuestion");        //获取选择题按钮对象
+    var reciteQueObj = my$("reciteQuestion");        //获取背诵题按钮对象
+
+    var questionManager = my$("questionManager");     //获取"题目管理"按钮
+    var contentsManager = my$("contentsManager");      //获取题目管理的div
+    var questionManagerType = my$("questionManagerType");   //获取题目管理内题目类型的div
+
+    var questionManagerChoice = my$("questionManagerChoice");  //获取"题目管理"——"选择题"按钮
+    var questionManagerRecite = my$("questionManagerRecite");  //获取"题目管理"——"背诵题"按钮
+
+
+    var show = false;
+    var showed = false;
+
+    Upload.onclick = function () {                    //"题目录入"按钮的点击(录入题目类型的隐藏和显示)
+        if (!show) {
+            questionUpdate.className = "questionUpdate-show";    //显示题目录入的整个div
+            questionType.className = "questionType-show";        //显示录入题目内的题目类型
+
+            questionManagerType.className = "questionType-hide"; //显示题目管理内的题目类型
+            contentsManager.className = "contentsManager-hide";  //隐藏题目管理的整个div
+
+            show = !show;
+
+            if (showed) {
+                showed = !showed;
+            }
+        }
+    };
+    chooseQueObj.onclick = function () {               //选择题按钮的点击事件
+        reciteQueObj.className = "questionType-recently";
+        this.className = "questionType-selected";
+        my$("reciteContent").style.display = "none";
+        my$("chooseContent").style.display = "block";
+    };
+    reciteQueObj.onclick = function () {               //背诵题按钮的点击事件
+        chooseQueObj.className = "questionType-recently";
+        this.className = "questionType-selected";
+        my$("chooseContent").style.display = "none";
+        my$("reciteContent").style.display = "block";
+    };
+
+
+    questionManager.onclick = function () {                       //"题目管理"按钮的点击事件
+        if (!showed) {
+            questionUpdate.className = "questionUpdate-hide";    //隐藏题目录入的整个div
+
+            contentsManager.className = "contentsManager-show";  //显示题目管理的整个div
+
+            questionType.className = "questionType-hide";        //隐藏录入题目内的题目类型
+            questionManagerType.className = "questionType-show"; //显示题目管理内的题目类型
+
+            showed = !showed;
+            if (show) {
+                show = !show;
+            }
+        }
+    };
+    questionManagerChoice.onclick = function () {                   //题目管理-选择题按钮的点击事件
+        questionManagerRecite.className = "questionType-recently";
+        this.className = "questionType-selected";
+        my$("choiceManagerDiv").style.display = "block";
+        my$("reciteManagerDiv").style.display = "none";
+    };
+    questionManagerRecite.onclick = function () {                   //题目管理-背诵题按钮的点击
+
+        // $.ajax({
+        //     url: 'http://120.77.148.123:8089/strongestscholar/api/v1/qst/questionRecitationForLib/list',
+        //     type: 'get',
+        //     data: {
+        //         reqId: '1',
+        //         reqType: 'QST_RFL_010_GetRecitationQuestionForLibList',
+        //         reqUserInfo: JSON.stringify({
+        //             userId: '1'
+        //         }),
+        //         reqParam: JSON.stringify({
+        //             questionLibId: '1'
+        //         }),
+        //         reqPageInfo: JSON.stringify({
+        //             pageSize: 2,
+        //             curPage: 1
+        //         })
+        //     },
+        //     dataType: 'json',
+        //     // headers:{'Content-Type':'application/json; charset=utf-8'},
+        //     success: function (res) {
+        //
+        //         console.log(res);
+        //
+        //         var resultData = res.resResult.curData;
+        //         var getTpl = reciteModel.innerHTML;
+        //         var reciteTableQuestion = my$("reciteTableQuestion");
+        //
+        //         var code = '<table class="layui-table">';
+        //         code += '<thead><tr><th>题目编号</th><th>科目</th><th>年级</th><th>题干</th><th>答题时间</th><th>答案</th><th>操作</th></tr></thead><tbody>';
+        //
+        //         laytpl(getTpl).render(resultData, function (html) {
+        //             reciteTableQuestion.innerHTML = code + html + '</tbody></table>';
+        //         });
+        //
+        //     },
+        //     error: function (res) {
+        //         console.log(res)
+        //     }
+        // });
+        questionManagerChoice.className = "questionType-recently";
+        this.className = "questionType-selected";
+        my$("choiceManagerDiv").style.display = "none";
+        my$("reciteManagerDiv").style.display = "block";
+    };
+
+
+
+
+    // 第三步：渲染模版
+    layui.use('laytpl', function () {
+        var laytpl = layui.laytpl;
+        $.ajax({
+            url: 'http://120.77.148.123:8089/strongestscholar/api/v1/question/questionForLib/listPageChoice',
+            type: 'get',
+            data: {
+                reqId: '1',
+                reqType: 'QFL_CHO_030_listChoice',
+                reqUserInfo: JSON.stringify({
+                    userId: '1'
+                }),
+                reqParam: JSON.stringify({
+                    questionLibId: '1'
+                }),
+                reqPageInfo: JSON.stringify({
+                    pageSize: 2,
+                    curPage: 1
+                })
+            },
+            dataType: 'json',
+            success: function (res) {
+
+                console.log(res);
+                var resultData = res.resResult.curData;
+                var getTpl = choiceModel.innerHTML;
+                var choiceTableQuestion = my$("choiceTableQuestion");
+
+                var code = '<table class="layui-table">';
+                code += '<thead><tr><th>题目编号</th><th>科目</th><th>年级</th><th>题干</th><th>答题时间</th><th>选项A</th><th>选项B</th><th>选项C</th><th>选项D</th><th>答案</th><th>操作</th></tr></thead><tbody>';
+
+                laytpl(getTpl).render(resultData, function (html) {
+                    choiceTableQuestion.innerHTML = code + html + '</tbody></table>';
+                });
+
+            },
+            error: function (res) {
+                console.log(res)
+            }
+        });
+
+        $.ajax({
+            url: 'http://120.77.148.123:8089/strongestscholar/api/v1/qst/questionRecitationForLib/list',
+            type: 'get',
+            data: {
+                reqId: '1',
+                reqType: 'QST_RFL_010_GetRecitationQuestionForLibList',
+                reqUserInfo: JSON.stringify({
+                    userId: '1'
+                }),
+                reqParam: JSON.stringify({
+                    questionLibId: '1'
+                }),
+                reqPageInfo: JSON.stringify({
+                    pageSize: 2,
+                    curPage: 1
+                })
+            },
+            dataType: 'json',
+            // headers:{'Content-Type':'application/json; charset=utf-8'},
+            success: function (res) {
+
+                console.log(res);
+
+                var resultData = res.resResult.curData;
+                var getTpl = reciteModel.innerHTML;
+                var reciteTableQuestion = my$("reciteTableQuestion");
+
+                var code = '<table class="layui-table">';
+                code += '<thead><tr><th>题目编号</th><th>科目</th><th>年级</th><th>题干</th><th>答题时间</th><th>答案</th><th>操作</th></tr></thead><tbody>';
+
+                laytpl(getTpl).render(resultData, function (html) {
+                    reciteTableQuestion.innerHTML = code + html + '</tbody></table>';
+                });
+
+            },
+            error: function (res) {
+                console.log(res)
+            }
+        });
+
+    })
+
+</script>
+
+
+<script src="js/chooseQuestion.js"></script>
+
+<script src="js/reciteQuestion.js"></script>
+
+</html>

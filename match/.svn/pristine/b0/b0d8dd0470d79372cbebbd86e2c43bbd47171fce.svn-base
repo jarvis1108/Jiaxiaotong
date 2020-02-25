@@ -1,0 +1,49 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminRole;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 管理员角色数据访问层
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 02:59
+ */
+@Repository
+public interface AdminRoleRepository extends CrudRepository<AdminRole, String> {
+    /**
+     * 查询所有管理员角色
+     *
+     * @return 管理员角色列表
+     */
+    List<AdminRole> findAll();
+
+    /**
+     * 存储或更新管理员角色记录
+     *
+     * @param administrator 待存储或更新管理员角色记录
+     * @return 存储或更新后的管理员角色记录
+     */
+    AdminRole save(AdminRole administrator);
+
+    /**
+     * 分页查询所有管理员角色
+     *
+     * @param pageable
+     * @return
+     */
+    Page<AdminRole> findAll(Pageable pageable);
+
+    /**
+     * 根据管理员角色Id查询
+     *
+     * @param adminRoleId
+     * @return
+     */
+    AdminRole findAdminRoleByAdminRoleId(String adminRoleId);
+}

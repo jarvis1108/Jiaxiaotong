@@ -1,0 +1,32 @@
+<template name="index$556d40c5">
+  <view class="_div data-v-1729c37d st-container-practiceResult-div">
+    <image src="/static/images/bg.png" class="_img data-v-1729c37d st-bg"></image>
+    <view class="_ul data-v-1729c37d st-numberConternt-ul">
+      <view class="_li data-v-1729c37d st-numberList-li" wx:key="index" key="{{index}}" wx:for="{{answerResult}}" wx:for-index="index" wx:for-item="item">
+        <view wx:if="{{item === 1}}" class="_div data-v-1729c37d st-right-number-div"> {{index+1}} </view>
+        <view wx:elif="{{item === -1}}" class="_div data-v-1729c37d st-false-number-div"> {{index+1}} </view>
+      </view>
+    </view>
+    <view class="_div data-v-1729c37d st-result-div">
+      <view class="_p data-v-1729c37d">答对{{correctNumber}}题</view>
+    </view>
+    <view class="_div data-v-1729c37d st-score-div">
+      <view style="display: table-row" class="_div data-v-1729c37d">
+        <view style="display: table-cell;width: 50%" class="_div data-v-1729c37d">绩点：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-1729c37d">+{{animatedGPANumber}}</view>
+      </view>
+      <view style="display: table-row" class="_div data-v-1729c37d">
+        <view style="display: table-cell;width: 50%" class="_div data-v-1729c37d">学点：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-1729c37d">-{{animatedStudyNumber}}</view>
+      </view>
+      <view style="display: table-row" class="_div data-v-1729c37d">
+        <view style="display: table-cell;width: 50%" class="_div data-v-1729c37d">经验：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-1729c37d">+{{animatedExperience}}</view>
+      </view>
+    </view>
+    <view class="_div data-v-1729c37d st-buttonOpinion-div">
+      <image bindtap="handleProxy" src="/static/images/exerciseResult/Onemoreround-btn.png" style="width:220px;height: 60px;" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_img data-v-1729c37d"></image>
+      <image bindtap="handleProxy" src="/static/images/exerciseResult/Thisroundofreview-btn.png" style="width:220px;height: 60px;margin-top:20px;" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_img data-v-1729c37d"></image>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,8 @@
+<template name="index$ba1ed2cc">
+  <view class="_div data-v-25f9b485 st-advice-feedback-container">
+    <view class="_div data-v-25f9b485 st-advice-feedback-box">
+      <textarea class="_textarea data-v-25f9b485 st-adbvice-feedback-input" value="{{content}}" bindinput="handleProxy" placeholder-class="place-holder" placeholder="留下您宝贵的意见，让我们做得更好" style="height: 10em" data-eventid="{{'0'}}" data-comkey="{{$k}}" />
+    </view>
+    <button bindtap="handleProxy" class="_button data-v-25f9b485 st-advice-feedback-btn" data-eventid="{{'1'}}" data-comkey="{{$k}}">提交意见</button>
+  </view>
+</template>

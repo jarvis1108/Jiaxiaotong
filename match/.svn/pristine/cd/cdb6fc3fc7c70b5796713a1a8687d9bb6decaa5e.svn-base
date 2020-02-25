@@ -1,0 +1,35 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.GradePhaseInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class GradePhaseInfoRepositoryTest {
+
+    @Autowired
+    private GradePhaseInfoRepository repository;
+    @Test
+    public void findAll() {
+        List<GradePhaseInfo> gradePhaseInfos=repository.findAll();
+        assertNotEquals(0,gradePhaseInfos.size());
+        gradePhaseInfos.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        GradePhaseInfo gradePhaseInfo=new GradePhaseInfo();
+        gradePhaseInfo.setGradePhaseId("2");
+        gradePhaseInfo.setGradePhaseNo("4");
+        gradePhaseInfo.setIsValid(Byte.valueOf("1"));
+        GradePhaseInfo result=repository.save(gradePhaseInfo);
+        System.out.println(result);
+    }
+}

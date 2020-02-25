@@ -1,0 +1,102 @@
+package com.dxtwangxiao.strongestsuperscholar.web.vo;
+
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+
+/**
+ * Created by Devin
+ * 2018-06-29 上午 08:41
+ */
+public class ResultData {
+    /**
+     * 当前结果的数据
+     */
+    private Object curData;
+
+    /**
+     * 是否成功
+     */
+    private Boolean isSuccess;
+
+    /**
+     * 当前的错误信息
+     */
+    private ErrorInfo errorInfo;
+
+    /**
+     * 构造函数（缺省无参构造函数）
+     */
+    public ResultData() {
+    }
+
+    /**
+     * 构造函数(完整参数)
+     *
+     * @param errorInfo
+     * @param isSuccess
+     * @param curData
+     */
+    public ResultData(ErrorInfo errorInfo, Boolean isSuccess, Object curData) {
+        this.InitData(errorInfo, isSuccess, curData);
+    }
+
+    /**
+     * 构造函数，主要用于成功时
+     *
+     * @param curData
+     */
+    public ResultData(Object curData) {
+        this.InitData(null, true, curData);
+    }
+
+    /**
+     * 构造函数(主要用于错误时)
+     *
+     * @param strErrCode     错误码（非空）
+     * @param strErrMsg      错误信息（非空）
+     * @param innerErrorInfo 内部错误
+     */
+    public ResultData(String strErrCode, String strErrMsg, ErrorInfo innerErrorInfo) {
+        this.InitData(new ErrorInfo(strErrCode, strErrMsg, innerErrorInfo), false, null);
+    }
+
+    public ErrorInfo getErrorInfo() {
+        return errorInfo;
+    }
+
+    public void setErrorInfo(ErrorInfo errorInfo) {
+        this.errorInfo = errorInfo;
+    }
+
+    public Object getCurData() {
+        return curData;
+    }
+
+    public void setCurData(Object curData) {
+        this.curData = curData;
+    }
+
+    /**
+     * 数据初始化函数(主要用于构造链处理)
+     *
+     * @param errorInfo 出错信息
+     * @param isSuccess 是否成功
+     * @param curData   当前结果数据
+     */
+    private void InitData(ErrorInfo errorInfo, Boolean isSuccess, Object curData) {
+        if (errorInfo == null) {
+            this.errorInfo = new ErrorInfo(CommConst.ERR_SUCCESS.getCode(), CommConst.ERR_SUCCESS.getMessage(), null);
+        } else {
+            this.errorInfo = errorInfo;
+        }
+        this.curData = curData;
+        this.isSuccess = isSuccess;
+    }
+
+    public Boolean getSuccess() {
+        return isSuccess;
+    }
+
+    public void setSuccess(Boolean success) {
+        isSuccess = success;
+    }
+}

@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: MAL_CHG_030</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: MAL_CHG_030</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="MAL.html">MAL</a>.</span>MAL_CHG_030<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    
+    <h4 class="name" id="MAL_CHG_030"><span class="type-signature"></span>new MAL_CHG_030<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">兑换记录接口定义</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="MAL_MAL_CHG_030%20.js.html">MAL/MAL_CHG_030 .js</a>, <a href="MAL_MAL_CHG_030%20.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~GetExchangeRecordList"><span class="type-signature">(inner) </span>GetExchangeRecordList<span class="signature">(objParam, objResult)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">实现功能：获取用户兑换记录</p>
+    
+
+
+
+<div class="description">
+    **GET** /api/v1/mall/orderRecord/list
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>reqId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求类型 固定值为: MAL_CHG_030_GetExchangeRecordList</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqUserInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.当前用户信息
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.当前用户信息.用户Id</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqParam</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.用户ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>purchaseWay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.请求的业务参数.购买方式      0表示人民币，1表示金币</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqRefData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.存放业务以外的其它信息 default: {}</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqPageInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.分页信息 default: {}
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pageSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.分页信息.页面大小</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>curPage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要传入的参数.分页信息.页码    从1开始</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>objResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求的ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reqType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.请求类型</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resResult</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>curData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果 default: {}
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>orderRecordList</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>orderRecordList【i】</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表.第i条记录
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>orderRecordId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.订单记录Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>orderRecordNo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.订单记录编号</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.用户Id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>purchaseWay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.购买方式   0表示人民币，1表示金币</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>productId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.商品id</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>productNo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.商品编码</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>productName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.商品名称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>productImage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.商品图片</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>productPrice</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.商品单价</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sumPrice</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.订单商品总价</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actualSumPrice</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.订单实际支付价格</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>arrDataList【i】.createTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.当前业务结果.兑换记录列表【i】.订单创建时间</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isSuccess</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.是否成功</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.响应返回的业务数据.响应消息</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resRefData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">返回结果.存放业务以外的其它信息(预留扩展，一般情况下不用) default: {}</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="MAL_MAL_CHG_030%20.js.html">MAL/MAL_CHG_030 .js</a>, <a href="MAL_MAL_CHG_030%20.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>暂无</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BAM.BAM_ORD_010.html">BAM_ORD_010</a></li><li><a href="BAM.BAM_PRO_010.html">BAM_PRO_010</a></li><li><a href="BAM.BAM_QST_010.html">BAM_QST_010</a></li><li><a href="BAM.BAM_USR_010.html">BAM_USR_010</a></li><li><a href="INX.INX_VWE_000.html">INX_VWE_000</a></li><li><a href="MAL.MAL_CHG_010.html">MAL_CHG_010</a></li><li><a href="MAL.MAL_CHG_030.html">MAL_CHG_030</a></li><li><a href="MAL.MAL_COM_010.html">MAL_COM_010</a></li><li><a href="MAL.MAL_RHG_030.html">MAL_RHG_030</a></li><li><a href="MAL.MAL_RNG_010.html">MAL_RNG_010</a></li><li><a href="MAL.MAL_RNG_020.html">MAL_RNG_020</a></li><li><a href="MAL.MAL_SLS_010.html">MAL_SLS_010</a></li><li><a href="MAL.MAL_SLS_020.html">MAL_SLS_020</a></li><li><a href="MTH.COM_MTH_RSL.html">COM_MTH_RSL</a></li><li><a href="MTH.MTH_EXC_010.html">MTH_EXC_010</a></li><li><a href="OMT.OMT_CMC_010.html">OMT_CMC_010</a></li><li><a href="QFL.QFL_CHO_010.html">QFL_CHO_010</a></li><li><a href="QFL.QFL_CHO_020.html">QFL_CHO_020</a></li><li><a href="QFL.QFL_CHO_030.html">QFL_CHO_030</a></li><li><a href="QFL.QFL_LOG_010.html">QFL_LOG_010</a></li><li><a href="QST.QST_QSL_010.html">QST_QSL_010</a></li><li><a href="QST.QST_RFL_010.html">QST_RFL_010</a></li><li><a href="STA.SYS_RAN_010.html">SYS_RAN_010</a></li><li><a href="SYS.SYS_FBK_010.html">SYS_FBK_010</a></li><li><a href="SYS.SYS_PER_010.html">SYS_PER_010</a></li><li><a href="SYS.SYS_PER_080.html">SYS_PER_080</a></li></ul><h3>Namespaces</h3><ul><li><a href="INX.html">INX</a></li><li><a href="MAL.html">MAL</a></li><li><a href="MTH.html">MTH</a></li><li><a href="STA.html">STA</a></li><li><a href="SYS.html">SYS</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Nov 06 2018 15:23:56 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserLoginRecord;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 用户登陆数据访问层单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 02:59
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserLoginRecordRepositoryTest {
+
+    @Autowired
+    private UserLoginRecordRepository userLoginRecordRepository;
+
+    @Test
+    public void findAll() {
+        List<UserLoginRecord> userLoginRecordList = userLoginRecordRepository.findAll();
+        assertNotEquals(0, userLoginRecordList.size());
+
+        userLoginRecordList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAllByUserId() {
+        String userId = "1";
+        List<UserLoginRecord> userLoginRecordList = userLoginRecordRepository.findAllByUserId(userId);
+        assertNotEquals(0, userLoginRecordList.size());
+
+        userLoginRecordList.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        UserLoginRecord userLoginRecord = new UserLoginRecord();
+        userLoginRecord.setUserLoginId("3");
+        userLoginRecord.setUserId("1");
+        userLoginRecord.setUserNo("1");
+
+        UserLoginRecord result = userLoginRecordRepository.save(userLoginRecord);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void findUserLoginRecordByUserLoginId() {
+        String userLoginId = "1";
+        UserLoginRecord userLoginRecord = userLoginRecordRepository.findUserLoginRecordByUserLoginId(userLoginId);
+        assertNotNull(userLoginRecord);
+
+        System.out.println(userLoginRecord);
+    }
+
+    @Test
+    public void findAll1() {
+        Pageable pageable = PageRequest.of(1, 1);
+        Page<UserLoginRecord> userLoginRecordPage = userLoginRecordRepository.findAll(pageable);
+
+        List<UserLoginRecord> userLoginRecordList = userLoginRecordPage.getContent();
+        assertNotEquals(0, userLoginRecordList.size());
+
+        userLoginRecordList.forEach(System.out::println);
+
+    }
+}

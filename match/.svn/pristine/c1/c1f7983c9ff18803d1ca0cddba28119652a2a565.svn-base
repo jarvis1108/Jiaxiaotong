@@ -1,0 +1,44 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.dao.ProductInfoRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.ProductInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.service.ProductInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * 商品信息服务 实现类
+ * <p>
+ * Created by Devin
+ * 2018-09-015 PM 03:47
+ */
+@Service
+public class ProductInfoServiceImpl implements ProductInfoService {
+
+    @Autowired
+    private ProductInfoRepository productInfoRepository;
+
+    /**
+     * 根据支付方式获取商品信息列表
+     *
+     * @param paymentType 支付方式：0表示人民币，1表示金币，2表示都支持
+     * @return 商品信息列表
+     */
+    @Override
+    public List<ProductInfo> getByPaymentType(Byte paymentType) {
+        return productInfoRepository.findAllByPaymentType(paymentType);
+    }
+
+    /**
+     * 根据商品Id获取商品信息
+     *
+     * @param productInfoId 商品Id
+     * @return 商品信息
+     */
+    @Override
+    public ProductInfo getProductById(String productInfoId) {
+        return productInfoRepository.findByProductId(productInfoId);
+    }
+}

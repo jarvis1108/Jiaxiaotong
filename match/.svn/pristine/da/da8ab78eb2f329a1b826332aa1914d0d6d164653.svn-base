@@ -1,0 +1,22 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.RecitationQuestionForLib;
+import com.google.gson.JsonObject;
+
+import javax.validation.constraints.Size;
+import java.util.List;
+
+/**
+ * Created by 孙伟浩 on 2018/9/7.
+ */
+public interface RecitationQuestionForLibService {
+
+
+    /**
+      *
+      *
+      * @param  reqParam 搜索参数
+      * @return 背诵题表现层实体列表
+      */
+    List<RecitationQuestionForLib> search(JsonObject reqParam);
+}

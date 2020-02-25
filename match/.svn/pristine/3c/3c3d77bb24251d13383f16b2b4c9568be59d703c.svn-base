@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>设置</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/设置/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/设置/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1036" class="ax_default box_1">
+        <div id="u1036_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u1037" class="ax_default" data-left="43" data-top="8" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u1038" class="ax_default" data-left="43" data-top="8" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u1039" class="ax_default box_2">
+            <div id="u1039_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u1040" class="ax_default image1">
+          <img id="u1040_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u1041" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u1041_div" class=""></div>
+          <div id="u1041_text" class="text ">
+            <p><span>设置</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u1042" class="ax_default image2">
+          <img id="u1042_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u1043" class="ax_default image">
+          <img id="u1043_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1044" class="ax_default label">
+        <div id="u1044_div" class=""></div>
+        <div id="u1044_text" class="text ">
+          <p><span style="text-decoration:underline;">兑换记录</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Repeater) -->
+      <div id="u1045" class="ax_default">
+        <script id="u1045_script" type="axure-repeater-template">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u1046" class="ax_default refs-design-apple1 u1046">
+            <div id="u1046_div" class="u1046_div"></div>
+          </div>
+
+          <!-- Unnamed (Horizontal Line) -->
+          <div id="u1047" class="ax_default line u1047">
+            <img id="u1047_img" class="img u1047_img" src="images/设置/u1047.png"/>
+          </div>
+
+          <!-- Unnamed (Group) -->
+          <div id="u1048" class="ax_default u1048" data-left="0" data-top="0" data-width="160" data-height="44">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1049" class="ax_default refs-design-apple1 u1049">
+              <div id="u1049_div" class="u1049_div"></div>
+            </div>
+
+            <!-- Title (Rectangle) -->
+            <div id="u1050" class="ax_default refs-design-apple1 u1050" data-label="Title">
+              <div id="u1050_div" class="u1050_div"></div>
+              <div id="u1050_text" class="text u1050_text">
+                <p><span>标题</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unnamed (Group) -->
+          <div id="u1051" class="ax_default u1051" data-left="185" data-top="0" data-width="190" data-height="44">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1052" class="ax_default refs-design-apple1 u1052">
+              <div id="u1052_div" class="u1052_div"></div>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u1053" class="ax_default u1053" data-left="308" data-top="7" data-width="51" data-height="31">
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u1054" class="ax_default refs-webm-wechat u1054">
+                <img id="u1054_img" class="img u1054_img" src="images/设置/u1054.png"/>
+              </div>
+
+              <!-- Unnamed (Ellipse) -->
+              <div id="u1055" class="ax_default refs-webm-wechat u1055">
+                <img id="u1055_img" class="img u1055_img" src="images/设置/u1055.png"/>
+              </div>
+            </div>
+          </div>
+        </script>
+        <div id="u1045-1" class="" style="width: 375px; height: 44px;">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u1046-1" class="ax_default refs-design-apple1 u1046" style="width: 375px; height: 44px; left: 0px; top: 0px;visibility: inherit">
+            <div id="u1046-1_div" class="u1046_div" style="width: 375px; height: 44px;visibility: inherit"></div>
+          </div>
+
+          <!-- Unnamed (Horizontal Line) -->
+          <div id="u1047-1" class="ax_default line u1047" style="width: 359px; height: 1px; left: 16px; top: 43px;visibility: inherit">
+            <img id="u1047-1_img" class="img u1047_img" src="images/设置/u1047.png"/>
+          </div>
+
+          <!-- Unnamed (Group) -->
+          <div id="u1048-1" class="ax_default u1048" style="visibility: inherit" data-left="0" data-top="0" data-width="160" data-height="44">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1049-1" class="ax_default refs-design-apple1 u1049" style="width: 160px; height: 44px; left: 0px; top: 0px;visibility: inherit">
+              <div id="u1049-1_div" class="u1049_div" style="width: 160px; height: 44px;visibility: inherit"></div>
+            </div>
+
+            <!-- Title (Rectangle) -->
+            <div id="u1050-1" class="ax_default refs-design-apple1 u1050" data-label="Title" style="width: 144px; height: 24px; left: 16px; top: 10px;visibility: inherit">
+              <div id="u1050-1_div" class="u1050_div" style="width: 144px; height: 24px;visibility: inherit"></div>
+              <div id="u1050-1_text" class="text u1050_text" style="position: absolute;left: 0px;top: 0px;width: 144px;visibility: inherit">
+                <p><span>标题</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unnamed (Group) -->
+          <div id="u1051-1" class="ax_default u1051" style="visibility: inherit" data-left="185" data-top="0" data-width="190" data-height="44">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1052-1" class="ax_default refs-design-apple1 u1052" style="width: 190px; height: 44px; left: 185px; top: 0px;visibility: inherit">
+              <div id="u1052-1_div" class="u1052_div" style="width: 190px; height: 44px;visibility: inherit"></div>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u1053-1" class="ax_default u1053" style="visibility: inherit" data-left="308" data-top="7" data-width="51" data-height="31">
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u1054-1" class="ax_default refs-webm-wechat u1054" style="width: 51px; height: 31px; left: 308px; top: 7px;visibility: inherit">
+                <img id="u1054-1_img" class="img u1054_img" src="images/设置/u1054.png"/>
+              </div>
+
+              <!-- Unnamed (Ellipse) -->
+              <div id="u1055-1" class="ax_default refs-webm-wechat u1055" style="width: 29px; height: 29px; left: 308px; top: 8px;visibility: inherit">
+                <img id="u1055-1_img" class="img u1055_img" src="images/设置/u1055.png"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="u1045-2" class="" style="width: 375px; height: 44px;">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u1046-2" class="ax_default refs-design-apple1 u1046" style="width: 375px; height: 44px; left: 0px; top: 0px;visibility: inherit">
+            <div id="u1046-2_div" class="u1046_div" style="width: 375px; height: 44px;visibility: inherit"></div>
+          </div>
+
+          <!-- Unnamed (Horizontal Line) -->
+          <div id="u1047-2" class="ax_default line u1047" style="width: 359px; height: 1px; left: 16px; top: 43px;visibility: inherit">
+            <img id="u1047-2_img" class="img u1047_img" src="images/设置/u1047.png"/>
+          </div>
+
+          <!-- Unnamed (Group) -->
+          <div id="u1048-2" class="ax_default u1048" style="visibility: inherit" data-left="0" data-top="0" data-width="160" data-height="44">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1049-2" class="ax_default refs-design-apple1 u1049" style="width: 160px; height: 44px; left: 0px; top: 0px;visibility: inherit">
+              <div id="u1049-2_div" class="u1049_div" style="width: 160px; height: 44px;visibility: inherit"></div>
+            </div>
+
+            <!-- Title (Rectangle) -->
+            <div id="u1050-2" class="ax_default refs-design-apple1 u1050" data-label="Title" style="width: 144px; height: 24px; left: 16px; top: 10px;visibility: inherit">
+              <div id="u1050-2_div" class="u1050_div" style="width: 144px; height: 24px;visibility: inherit"></div>
+              <div id="u1050-2_text" class="text u1050_text" style="position: absolute;left: 0px;top: 0px;width: 144px;visibility: inherit">
+                <p><span>标题</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unnamed (Group) -->
+          <div id="u1051-2" class="ax_default u1051" style="visibility: inherit" data-left="185" data-top="0" data-width="190" data-height="44">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1052-2" class="ax_default refs-design-apple1 u1052" style="width: 190px; height: 44px; left: 185px; top: 0px;visibility: inherit">
+              <div id="u1052-2_div" class="u1052_div" style="width: 190px; height: 44px;visibility: inherit"></div>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u1053-2" class="ax_default u1053" style="visibility: inherit" data-left="308" data-top="7" data-width="51" data-height="31">
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u1054-2" class="ax_default refs-webm-wechat u1054" style="width: 51px; height: 31px; left: 308px; top: 7px;visibility: inherit">
+                <img id="u1054-2_img" class="img u1054_img" src="images/设置/u1054.png"/>
+              </div>
+
+              <!-- Unnamed (Ellipse) -->
+              <div id="u1055-2" class="ax_default refs-webm-wechat u1055" style="width: 29px; height: 29px; left: 308px; top: 8px;visibility: inherit">
+                <img id="u1055-2_img" class="img u1055_img" src="images/设置/u1055.png"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u1056" class="ax_default" data-left="351" data-top="79" data-width="51" data-height="31">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u1057" class="ax_default refs-webm-wechat">
+          <div id="u1057_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u1058" class="ax_default refs-webm-wechat">
+          <img id="u1058_img" class="img " src="images/设置/u1058.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u1059" class="ax_default" data-left="351" data-top="122" data-width="51" data-height="31">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u1060" class="ax_default refs-webm-wechat">
+          <div id="u1060_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u1061" class="ax_default refs-webm-wechat">
+          <img id="u1061_img" class="img " src="images/设置/u1058.png"/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

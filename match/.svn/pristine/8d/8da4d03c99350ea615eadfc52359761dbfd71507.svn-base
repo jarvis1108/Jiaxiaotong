@@ -1,0 +1,42 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionRecitationForLib;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:   私有题目库背诵题题目表
+ * @date 2018\8\15 0015
+ */
+public interface QuestionRecitationForLibService {
+    /**
+     * 根据私有试题ID获得背诵题
+     * @param questionForLibId
+     * @return
+     */
+   QuestionRecitationForLib getQuestionRecitationForLibByQuestionForLibId(String questionForLibId)throws ErrorInfo;
+
+    /**
+     * 获取所有背诵题
+     * @return 包含所有背诵题
+     */
+    List<QuestionRecitationForLib> findAll();
+
+    /**
+     * 新增背诵题题目表
+     * @paramQuestionForLib
+     */
+   QuestionRecitationForLib create(QuestionRecitationForLib questionRecitationForLib)throws ErrorInfo;
+    /**
+     * 删除背诵题题目表
+     * @paramQuestionForLibId
+     */
+    boolean deleteQuestionRecitationForLibByQuestionForLibId(String questionForLibId)throws ErrorInfo;
+    /**
+     * 修改背诵题题目表
+     * @param updateQuestionRecitationForLib
+     */
+   QuestionRecitationForLib update(QuestionRecitationForLib updateQuestionRecitationForLib)throws ErrorInfo;
+}

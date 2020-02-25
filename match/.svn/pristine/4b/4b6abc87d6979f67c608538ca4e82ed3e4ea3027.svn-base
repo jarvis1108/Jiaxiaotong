@@ -1,0 +1,10 @@
+<template name="goods$2ab4eae0">
+  <view class="_div data-v-64c87934 box">
+    <view class="_div data-v-64c87934 recharge">
+      <label class="_span data-v-64c87934">{{ name }}</label>
+    </view>
+    <view class="_div data-v-64c87934 price">
+      <navigator url="{{ url + '?name=' + name + '&price=' + price }}" class="_a data-v-64c87934">{{ price }}</navigator>
+    </view>
+  </view>
+</template>

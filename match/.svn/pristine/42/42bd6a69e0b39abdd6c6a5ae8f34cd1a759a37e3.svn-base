@@ -1,0 +1,75 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.dao.MatchRecordUserRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordUser;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordUserService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+/**
+ * @author meiyu
+ * 对战记录参与用户
+ */
+
+@Service
+public class MatchRecordUserServiceImpl implements MatchRecordUserService {
+
+    @Autowired
+    private MatchRecordUserRepository matchRecordUserRepository;
+
+    /**
+     * 新建参与对战用户
+     *
+     * @param matchRecordUser
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public MatchRecordUser create(MatchRecordUser matchRecordUser) throws ErrorInfo {
+        if (matchRecordUser == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_01_003", "新建用户为空", null);
+        return matchRecordUserRepository.save(matchRecordUser);
+    }
+
+    /**
+     * 获取所有参与对战用户列表
+     *
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    @Transactional
+    @Override
+    public List<MatchRecordUser> getMatchRecordUserList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null || pageSize <= 0 || currentPage <= 0) {
+            return null;
+        } else {
+            Pageable pageable = PageRequest.of(currentPage, pageSize);
+            Page<MatchRecordUser> page = matchRecordUserRepository.findAll(pageable);
+            return page.getContent();
+        }
+    }
+
+    @Override
+    public MatchRecordUser save(MatchRecordUser matchRecordUser) {
+        return matchRecordUserRepository.save(matchRecordUser);
+    }
+
+    @Override
+    public MatchRecordUser getByMatchIdAndUserId(String matchId, String userId) {
+        return matchRecordUserRepository.findByMatchRecordIdAndUserId(matchId, userId);
+    }
+
+    @Override
+    public MatchRecordUser update(MatchRecordUser matchRecordUser) {
+        return matchRecordUserRepository.save(matchRecordUser);
+    }
+}

@@ -1,0 +1,1 @@
+<import src="../../components/index$df53003a" /><template is="index$df53003a" data="{{ ...$root['0'], $root }}"/>

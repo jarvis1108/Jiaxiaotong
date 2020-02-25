@@ -1,0 +1,59 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.LPConsumeRecord;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.LPConsumeRecordService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+
+
+public class LPConsumeRecordServiceImplTest {
+    @Autowired
+    private LPConsumeRecordService lpConsumeRecordService;
+
+    @Test
+    public void create() throws ErrorInfo {
+        LPConsumeRecord lpConsumeRecord = new LPConsumeRecord();
+        lpConsumeRecord.setAmount(11);
+        lpConsumeRecord.setBeginTime(Timestamp.valueOf("2018-06-27 12:03:04"));
+        lpConsumeRecord.setCreateTime(Timestamp.valueOf("2018-06-27 12:03:04"));
+        lpConsumeRecord.setEndTime(Timestamp.valueOf("2018-06-27 12:03:04"));
+        lpConsumeRecord.setIsTrue(Byte.valueOf("1"));
+        lpConsumeRecord.setIsValid(Byte.valueOf("1"));
+        lpConsumeRecord.setLpConsumeRecordId("2");
+        lpConsumeRecord.setMatchRecordId("1");
+        lpConsumeRecord.setMatchRecordNo("1");
+        lpConsumeRecord.setMatchRecordQuestionId("124");
+        lpConsumeRecord.setMatchRecordUserId("1");
+        lpConsumeRecord.setQuestionId("1");
+        lpConsumeRecord.setUserId("1");
+        lpConsumeRecord.setUserNo("1");
+        lpConsumeRecord.setRemark("test");
+        lpConsumeRecord.setQuestionNo("1");
+
+        LPConsumeRecord result = lpConsumeRecordService.create(lpConsumeRecord);
+        Assert.assertNotNull(result);
+        System.out.println(result);
+    }
+    @Test
+    public void getLPConsumeRecordList() {
+        List<LPConsumeRecord> lpConsumeRecordList = lpConsumeRecordService.getLPConsumeRecordList(2,1);
+        assertNotEquals(1, lpConsumeRecordList.size());
+        lpConsumeRecordList.forEach(System.out::println);
+    }
+
+
+}

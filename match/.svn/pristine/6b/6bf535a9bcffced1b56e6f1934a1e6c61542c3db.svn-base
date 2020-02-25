@@ -1,0 +1,12 @@
+<import src="goods$2ab4eae0" />
+<template name="index$b1194348">
+  <view id="base" class="_div data-v-3cf226a0 {{animation}}">
+    <image class="_img data-v-3cf226a0 bg" src="/copy-asset/dist/static/img/bg.png"></image>
+    <view class="_div data-v-3cf226a0 b1">
+      <template price="10元/月" data="{{...$root[$kk+'0'], $root}}" is="goods$2ab4eae0"></template>
+    </view>
+    <view id="memory" class="_div data-v-3cf226a0">
+      <navigator url="../rechargeLog/main" class="_a data-v-3cf226a0">充值记录</navigator>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,26 @@
+package com.dxtwangxiao.strongestsuperscholar.config;
+
+import com.dxtwangxiao.strongestsuperscholar.web.interceptor.JwtAuthInterceptor;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import javax.annotation.Resource;
+
+/**
+ * Web相关配置
+ * <p>
+ * Created By Devin
+ * 2018-10-08 上午 12:30
+ */
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Resource
+    private JwtAuthInterceptor jwtAuthInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(jwtAuthInterceptor).addPathPatterns("/**");
+    }
+}

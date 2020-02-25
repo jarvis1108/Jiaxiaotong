@@ -1,0 +1,15 @@
+<template name="index$45fe2666">
+  <view id="base" class="_div data-v-3d009cba {{animation}}">
+    <image class="_img data-v-3d009cba bg" src="/copy-asset/dist/static/img/bg.png"></image>
+    <view class="_div data-v-3d009cba name"> {{ name }} </view>
+    <view class="_div data-v-3d009cba price">
+      <label class="_span data-v-3d009cba left">商品总价</label>
+      <label class="_span data-v-3d009cba right">{{ price }}</label>
+    </view>
+    <view class="_div data-v-3d009cba pay">
+      <label class="_span data-v-3d009cba left">支付方式</label>
+      <label class="_span data-v-3d009cba right">微信支付</label>
+    </view>
+    <button bindtap="handleProxy" class="_button data-v-3d009cba confirm" data-eventid="{{'0'}}" data-comkey="{{$k}}">去支付</button>
+  </view>
+</template>

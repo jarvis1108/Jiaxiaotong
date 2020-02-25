@@ -1,0 +1,185 @@
+<template>
+  <div class="content">
+
+    <div class="layer_001">
+      <div class="text_001 position_001">订单信息</div>
+      <div class="position_002">
+        <div id="left_001">
+          <img :src='productObj.productImage' id="img_001" >
+        </div>
+        <div id="left_002">
+          <div class="text_001">{{productObj.productName}}</div>
+          <div class="text_002">{{productObj.productPrice}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="line_001"></div>
+    <div class="layer_002">
+      <div id="left_002" class=" text_003">商品总价</div>
+      <div id="right_002" class="text_004">{{productObj.productPrice}}</div>
+    </div>
+    <div class="line_001"></div>
+    <div class="layer_003">
+      <div class="text_001 position_001">支付方式</div>
+      <div class="position_002">
+        <div id="left_003">
+          <img src="/static/images/pay/WeChatPayment_Icon.png" id="img_002" > 
+        </div>
+        <div id="left_004" class="text_005">
+          微信支付
+        </div>
+      </div>
+
+    </div>
+    <div class="layer_005">
+      <button id="button_001" @click="pay">去支付</button>
+    </div>
+    
+  </div>
+</template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      // productObj:{
+      //     productId: '', 
+      //     productName:'', 
+      //     productPrice:'',
+      //     productImage:'',
+      //   }
+      productObj: null,
+      price: "",
+    }
+  },
+  onLoad:function(options){
+    console.log("222");
+    console.log(options.productObj);
+    this.productObj = JSON.parse(options.productObj);
+    console.log(this.productObj);
+  },
+  computed:{
+  },
+  methods: {
+    async pay(){
+      console.log(this.productObj.productId);
+      await this.$store.dispatch('pay',this.productObj.productId);
+    },
+  }
+};
+</script>
+
+<style>
+.content{
+  position: fixed;
+  background-color: rgb(235, 235, 235);
+  float: top;
+  height: 100%;
+  width: 100%;
+}
+.layer_001{
+  background-color: white;
+  float: top;
+  width: 100%;
+  height: 170px;
+}
+.layer_002{
+  background-color: white;
+  float: top;
+  width: 100%;
+  height: 55px;
+}
+.layer_003{
+  background-color: white;
+  float: top;
+  width: 100%;
+  height: 120px;
+}
+.layer_005{
+  float: top;
+  padding-top: 15%;
+}
+.text_001{
+  font-family:'PingFang-SC-Medium';
+  font-size: 22px;
+  color: rgb(66, 50, 61);
+}
+.text_002{
+  font-family:'PingFang-SC-Regular';
+  margin-top: 10px;
+  color: rgb(158,158,158);
+}
+.text_003{
+  font-family:'PingFang-SC-Medium';
+  font-size: 22px;
+  color: rgb(66, 50, 61);
+}
+.text_004{
+  font-family:'PingFang-SC-Regular';
+  font-size: 22px;
+  color: rgb(255, 105, 19);
+}
+.text_005{
+  font-family:'PingFang-SC-Regular';
+  font-size: 20px;
+  color: rgb(66, 50, 61);
+  padding-left: 12px;
+  padding-top:8px;
+}
+.position_001{
+  height: 41px;
+  width: 100%;
+  padding-left: 20px;
+  padding-top: 12px;
+  padding-bottom: 10px;
+}
+.position_002{
+  float: left;
+}
+#img_001{
+  width: 80px;
+  height: 80px;
+  margin-left: 20px;
+}
+#img_002{
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+}
+#left_001{
+  float: left;
+}
+#left_002{
+  float: left;
+  padding-top:12px;
+  padding-left: 18px;
+  padding-bottom: 14px;
+}
+#right_002{
+  float: right;
+  padding-top:12px;
+  padding-right: 18px;
+  padding-bottom: 14px;
+}
+#left_003{
+  float: left;
+}
+#left_004{
+  float: left;
+}
+#button_001{
+  color: rgb(255, 255, 255);
+  font-family:'PingFang-SC-Medium';
+  font-size: 22px;
+  background-color: rgb(9, 187, 7);
+  width: 60%;
+  height: 9%;
+  
+}
+.line_001{
+  border: 5px solid rgb(235, 235, 235);
+  float: top;
+  width: 100%;
+}
+</style>

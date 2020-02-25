@@ -1,0 +1,172 @@
+<template>
+  <div class="st-my-camp-container">
+
+    <img class="st-my-camp-header-img" src="/static/images/myCamp/Trainingcamp_banner@2x.png"/>
+
+    <div class="st-my-camp-mine-div">
+      <img  class="st-my-camp-board-bg" src="/static/images/myCamp/Mymessage_bg@2x.png" />
+      <img class="st-my-camp-usericon" :src="avatarUrl"/>
+      
+      <span class="st-my-camp-username">我</span>
+      <span class="st-my-camp-usertitle">{{title}}</span>
+      <hr class="st-my-camp-hr"/>
+      <span class="st-my-camp-userlevel">等级{{level}}</span>
+      <span class="st-my-camp-memberNum">成员{{memberNum}}</span>
+    </div>
+
+    <div class="st-my-camp-memberList-div">
+      <ul>
+        <li v-for="item in memberList" :key="item">
+          <img  class="st-my-camp-board-bg" src="/static/images/myCamp/Battalioninformation_bg@2x.png" /> 
+
+          <img class="st-my-camp-usericon" :src="item.avatarUrl"/>
+          <span class="st-my-camp-username">{{item.name}}</span>
+          <span class="st-my-camp-usertitle">{{item.title}}</span>
+          <hr class="st-my-camp-hr"/>
+          <span class="st-my-camp-userlevel">等级{{item.level}}</span>
+          <span class="st-my-camp-memberNum">成员{{item.memberNum}}</span>         
+        </li>
+      </ul>
+    </div>
+
+    <img :style="'top:'+inviteBtnTop+'%'" class="st-my-camp-invite-btn" src="/static/images/myCamp/Invite_btn@2x.png"/>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      avatarUrl: "", //用户头像
+      title: "新兵", //头衔
+      level: 13, //等级
+      memberNum: 3, //训练营成员
+      memberList:[],  //成员列表
+    };
+  },
+  async onLoad() {
+    this.avatarUrl = this.$store.state.userInfo.headImage;
+    let campInfo = await this.$store.dispatch('getMyCampInfo');
+    this.title = campInfo.myTitle;
+    this.level = campInfo.myLevel;
+    this.memberNum = campInfo.memberNum;
+    this.memberList = campInfo.memberList;
+  },
+  computed:{
+    'inviteBtnTop'(){
+      if(this.memberList.length > 2 || this.memberList.length <= 0){
+        return 80;
+      }else{
+        return 40+13*this.memberList.length;
+      }
+    }
+  }
+};
+</script>
+
+<style>
+.st-my-camp-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(207, 235, 255);
+}
+.st-my-camp-header-img{
+  position: absolute;
+  top: 2%;
+  height: 20%;
+  left: 5%;
+  width: 90%;
+}
+.st-my-camp-mine-div {
+  position: absolute;
+  top: 23%;
+  left: 5%;
+  width: 90%;
+  height: 15%;
+}
+.st-my-camp-memberList-div{
+  position: absolute;
+  top: 38.5%;
+  left: 5%;
+  width: 90%;
+  height: 40%;
+  overflow: auto;
+}
+.st-my-camp-memberList-div ul{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: slideFromTop 1.5s;
+}
+.st-my-camp-memberList-div ul li{
+  position: relative;
+  height: 32%;
+  width: 100%;
+  margin-bottom: 2%;
+}
+.st-my-camp-invite-btn{
+  position: absolute;
+  width: 26%;
+  left: 37%;
+  height: 5.5%;
+  z-index: 10;
+  overflow: auto;
+  animation: slideFromBottomDelay 2.5s;
+}
+.st-my-camp-board-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.st-my-camp-usericon {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: rgb(255, 243, 102);
+  left: 5%;
+  top: 15%;
+}
+.st-my-camp-username {
+  position: absolute;
+  left: 25%;
+  top: 20%;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+}
+.st-my-camp-usertitle {
+  position: absolute;
+  right: 10%;
+  top: 20%;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+}
+.st-my-camp-hr {
+  position: absolute;
+  left: 22.5%;
+  height: 2px;
+  background: #fff;
+  top: 45%;
+  width: 75%;
+}
+.st-my-camp-userlevel{
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  font-size: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+.st-my-camp-memberNum{
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  font-size: 10px;
+  font-weight: bold;
+  color: rgb(179, 255, 240);
+}
+</style>

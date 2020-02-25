@@ -1,0 +1,213 @@
+<template>
+<div class="st-container-practiceResult-div">
+
+<img src="/static/images/bg@2x.png" class="st-bg">
+
+<ul class="st-numberConternt-ul">
+  <li v-for="(item,index) in answerResult" class="st-numberList-li" :key="index">
+    <div v-if="item === 1" class="st-right-number-div">
+      {{index+1}}    
+    </div>
+    <div v-else-if="item === -1" class="st-false-number-div">
+      {{index+1}}    
+    </div>
+  </li>
+</ul>
+
+<div class="st-result-div">
+	<p>答对{{correctNumber}}题</p>
+</div>
+
+ <div class="st-score-div">
+    <div style="display: table-row">
+      <div style="display: table-cell;width: 50%">绩点：</div>
+      <!-- <div style="display: table-cell;width: 50%">+{{GPANumber}}</div> -->
+      <div style="display: table-cell;width: 50%">+{{animatedGPANumber}}</div>
+    </div>
+    <div style="display: table-row">
+      <div style="display: table-cell;width: 50%">学点：</div>
+       <!-- <div style="display: table-cell;width: 50%">-{{StudyNumber}}</div>  -->
+       <div style="display: table-cell;width: 50%">-{{animatedStudyNumber}}</div> 
+    </div>
+    <div style="display: table-row">
+      <div style="display: table-cell;width: 50%">经验：</div>
+      <!-- <div style="display: table-cell;width: 50%">+{{Experience}}</div> -->
+        <div style="display: table-cell;width: 50%">+{{animatedExperience}}</div>
+    </div>
+  </div>
+
+<div class="st-buttonOpinion-div">
+<img @click="again" src="/static/images/exerciseResult/Onemoreround-btn@2x.png" style="width:220px;height: 60px;" />
+<img @click="review" src="/static/images/exerciseResult/Thisroundofreview-btn@2x.png" style="width:220px;height: 60px;margin-top:20px;" />
+</div>
+</div>
+</template>
+<script>
+import { TweenLite } from "../../assests/js/TweenMax.min";
+import wxs from "../../utils/wx";
+export default {
+  data() {
+    // 选项 数据
+    return {
+      correctNumber: 0,
+      GPANumber: 0,
+      gPANumber: 0,
+      agPANumber: 0,//动画 
+      StudyNumber: 0,
+      studyNumber: 0,
+      astudyNumber: 0,//设置动画
+      Experience: 0,
+      experience: 0,
+      aexperience: 0,
+      subjectId : "",//学科id
+      usedTime: 0, //共用时
+      answerResult: [], //保存结果信息
+      questionList: [], //保存问题列表
+      indexList: [] //保存样式列表
+    };
+  },
+   watch:{
+      studyNumber(newVal) {
+      TweenLite.to(this.$data, 1.0, { astudyNumber: newVal});
+    },
+    gPANumber(newVal) {
+      TweenLite.to(this.$data, 1.0, { agPANumber: newVal});
+    },
+    experience(newVal) {
+      TweenLite.to(this.$data, 1.0, { aexperience: newVal});
+    },
+  },
+  computed: {
+      animatedStudyNumber() {
+      return this.astudyNumber.toFixed(0);
+    },
+       animatedGPANumber() {
+      return this.agPANumber.toFixed(0);
+    },
+      animatedExperience() {
+      return this.aexperience.toFixed(0);
+    },
+  },
+  onLoad(option) {
+    //初始化数据
+    this.correctNumber = 0;
+    this.GPANumber = 0;
+    this.StudyNumber = 0;
+    this.Experience = 0;
+    this.studyNumber = 0;
+    this.gPANumber = 0;
+    this.experience = 0;
+    this.subjectId = option.subjectId;
+    this.usedTime = option.usedTime;
+    this.answerResult = JSON.parse(option.answerResult);
+    this.questionList = JSON.parse(option.questionList);
+    this.indexList = JSON.parse(option.indexList);
+
+    for (let i = 0; i < this.answerResult.length; ++i) {
+      if (this.answerResult[i] === 1) {
+        this.correctNumber += 1;
+      }
+    }
+    this.studyNumber = this.usedTime;
+    this.experience = 10;
+    this.gPANumber = this.correctNumber;
+    this.GPANumber = this.correctNumber;
+    this.StudyNumber = this.usedTime;
+    this.Experience = 10;
+  },
+ 
+  methods: {
+    again() {
+      wxs.redirectTo(`../exercise/main?subjectId=${this.subjectId}`);
+    },
+    review() {
+      console.log(JSON.stringify(this.questionList));
+      // wxs.navigateTo(
+      //   `../exercise-review/main?questionList=${JSON.stringify(
+      //     this.questionList
+      //   )}`
+        wxs.navigateTo(
+        `../exercise-review/main?questionList=${JSON.stringify(
+          this.questionList
+        )}&indexList=${JSON.stringify(this.indexList)}`
+      );
+    }
+  }
+};
+</script>
+<style scoped>
+.st-container-practiceResult-div {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+}
+.st-bg {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+.st-result-div {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  height: 200rpx;
+  width: 80%;
+  line-height: 200rpx;
+  text-align: center;
+  border-radius: 20px;
+  background-color: rgb(114, 201, 150);
+}
+.st-result-div p {
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+}
+.st-score-div {
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 30%;
+  width: 40%;
+  display: table;
+  color: white;
+  font-size: 20px;
+}
+.st-buttonOpinion-div {
+  text-align: center;
+  position: absolute;
+  top: 70%;
+}
+.st-numberConternt-ul {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+.st-numberList-li {
+  float: left;
+  margin-top: 15%;
+  margin-left: 3%;
+}
+.st-right-number-div {
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 23px;
+  border: 1px solid rgb(59, 202, 255);
+  background: rgb(59, 202, 255);
+  color: #ffffff;
+  font-size: 15px;
+}
+.st-false-number-div {
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  text-align: center;
+  border: 1px solid rgb(255, 78, 86);
+  background: rgb(255, 78, 86);
+  line-height: 23px;
+  color: #ffffff;
+  font-size: 15px;
+}
+</style>

@@ -1,0 +1,86 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.dao.BookVerInfoRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.BookVerInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.BookVerInfoService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+/**
+*@author: meiyu
+*@Date: 2018/7/13 16:35
+*@description 教材版本信息服务层实现
+*/
+@Service
+public class BookVerInfoServiceImpl implements BookVerInfoService {
+    @Autowired
+    private BookVerInfoRepository bookVerInfoRepository;
+
+    /**
+     * 查看所有教材版本信息
+     * @return
+     */
+    @Override
+    public List<BookVerInfo> findAll() {
+        return bookVerInfoRepository.findAll();
+    }
+
+    /**
+     * 创建新的教材版本信息
+     * @param newBookVerInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public BookVerInfo create(BookVerInfo newBookVerInfo) throws ErrorInfo {
+        if (newBookVerInfo == null)
+            throw new ErrorInfo("E_201807300854_01_022", "新建教材版本信息空", null);
+        return bookVerInfoRepository.save(newBookVerInfo);
+    }
+
+    /**
+     * 更新教材版本信息
+     * @param updatedBookVerInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public BookVerInfo update(BookVerInfo updatedBookVerInfo) throws ErrorInfo {
+        if (updatedBookVerInfo == null) {
+            throw new ErrorInfo("E_201807300854_01_022", "教材版本信息为空", null);
+        }
+        BookVerInfo bookVerInfo = bookVerInfoRepository.findByBookVerId(updatedBookVerInfo.getBookVerId());
+        if (bookVerInfo == null) {
+            throw new ErrorInfo("E_201807300854_01_023", "教材版本信息不存在", null);
+        }
+        UpdateUtil.copyProperties(updatedBookVerInfo, bookVerInfo);
+
+        return bookVerInfoRepository.save(updatedBookVerInfo);
+    }
+
+    /**
+     * 删除教材版本信息
+     * @param bookVerId
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public boolean deleteByBookVerInfoId(String bookVerId) throws ErrorInfo {
+        BookVerInfo bookVerInfo = bookVerInfoRepository.findByBookVerId(bookVerId);
+        if (bookVerId == null) {
+            throw new ErrorInfo("E_201807300854_01_024", "删除失败", null);
+        }
+        bookVerInfo.setIsValid(Byte.valueOf("0"));
+        bookVerInfoRepository.save(bookVerInfo);
+        return true;
+    }
+
+}

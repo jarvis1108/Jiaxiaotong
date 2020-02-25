@@ -1,0 +1,41 @@
+@import "/static/css/vendor.wxss";
+
+.st-advice-feedback-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(207, 235, 255);
+}
+.st-advice-feedback-box {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 35%;
+  border-radius: 50rpx;
+  background: rgb(255, 255, 255);
+}
+.st-adbvice-feedback-input {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 35%;
+}
+.place-holder {
+  position: absolute;
+  left: 20rpx;
+  top: 5%;
+  font-size: 32rpx;
+  color: rgb(138, 138, 138);
+}
+.st-advice-feedback-btn {
+  position: absolute;
+  top: 45%;
+  width: 90%;
+  left: 5%;
+  height: 8%;
+  border-radius: 32rpx;
+  color: rgb(255, 255, 255);
+  background: rgb(32, 196, 163);
+}

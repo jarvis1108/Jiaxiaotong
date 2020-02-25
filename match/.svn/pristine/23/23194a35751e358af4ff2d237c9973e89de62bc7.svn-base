@@ -1,0 +1,22 @@
+<template name="index$5605eff4">
+  <view class="_div data-v-51586517">
+    <image class="_img data-v-51586517 st-rank-bg" src="/static/images/bg.png"></image>
+    <image class="_img data-v-51586517 st-rank-ul-bg" src="/static/images/rank/Head_bg.png"></image>
+    <view class="_div data-v-51586517 rank-list-div">
+      <view class="_ul data-v-51586517 rank-list">
+        <view wx:key="index" key="{{index}}" wx:for="{{rankList}}" wx:for-index="index" wx:for-item="item" class="_li data-v-51586517">
+          <image wx:if="{{index === 0}}" class="_img data-v-51586517 st-rank-board-bg" src="/static/images/rank/Leaderboard_bg(green).png"></image>
+          <image wx:else class="_img data-v-51586517 st-rank-board-bg" src="/static/images/rank/Leaderboard_bg(blue).png"></image>
+          <label class="_span data-v-51586517 st-rank-num">{{index+1}}</label>
+          <image class="_img data-v-51586517 st-rank-user-icon" src="{{item.headImage}}"></image>
+          <label class="_span data-v-51586517 st-rank-user-name">{{item.wechatName}}</label>
+          <label class="_span data-v-51586517 st-rank-from">来自：{{item.city}}</label>
+          <view class="_hr data-v-51586517 st-rank-hr"></view>
+          <image class="_img data-v-51586517 st-rank-level-bg" src="/static/images/rank/Grade_icon.png"></image>
+          <label class="_span data-v-51586517 st-rank-level">{{item.externalLevel}}</label>
+        </view>
+      </view>
+    </view>
+    <view class="_p data-v-51586517 st-rank-tip">当前我的世界排行 {{userRank}}</view>
+  </view>
+</template>

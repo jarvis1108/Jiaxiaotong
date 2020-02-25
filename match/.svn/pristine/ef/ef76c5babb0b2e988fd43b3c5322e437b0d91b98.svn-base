@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>物品</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/物品/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/物品/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u971" class="ax_default box_1">
+        <div id="u971_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u972" class="ax_default" data-left="43" data-top="8" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u973" class="ax_default" data-left="43" data-top="8" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u974" class="ax_default box_2">
+            <div id="u974_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u975" class="ax_default image1">
+          <img id="u975_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u976" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u976_div" class=""></div>
+          <div id="u976_text" class="text ">
+            <p><span>我的物品</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u977" class="ax_default image2">
+          <img id="u977_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u978" class="ax_default image">
+          <img id="u978_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u979" class="ax_default" data-left="54" data-top="97" data-width="90" data-height="109">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u980" class="ax_default _形状1">
+          <img id="u980_img" class="img " src="images/物品/u980.png"/>
+          <div id="u980_text" class="text ">
+            <p><span>单场加分卡</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u981" class="ax_default _形状1">
+          <img id="u981_img" class="img " src="images/充值/u817.png"/>
+          <div id="u981_text" class="text ">
+            <p><span>3张</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u982" class="ax_default" data-left="181" data-top="97" data-width="81" data-height="109">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u983" class="ax_default _形状1">
+          <img id="u983_img" class="img " src="images/物品/u983.png"/>
+          <div id="u983_text" class="text ">
+            <p><span>金币+10%</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u984" class="ax_default _形状1">
+          <img id="u984_img" class="img " src="images/物品/u984.png"/>
+          <div id="u984_text" class="text ">
+            <p><span>1张</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u985" class="ax_default label">
+        <div id="u985_div" class=""></div>
+        <div id="u985_text" class="text ">
+          <p><span style="text-decoration:underline;">兑换记录</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u986" class="ax_default box_1">
+        <div id="u986_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u987" class="ax_default" data-left="431" data-top="8" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u988" class="ax_default" data-left="431" data-top="8" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u989" class="ax_default box_2">
+            <div id="u989_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u990" class="ax_default image1">
+          <img id="u990_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u991" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u991_div" class=""></div>
+          <div id="u991_text" class="text ">
+            <p><span>我的物品</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u992" class="ax_default image2">
+          <img id="u992_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u993" class="ax_default image">
+          <img id="u993_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u994" class="ax_default" data-left="442" data-top="97" data-width="90" data-height="109">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u995" class="ax_default _形状1">
+          <img id="u995_img" class="img " src="images/物品/u980.png"/>
+          <div id="u995_text" class="text ">
+            <p><span>单场加分卡</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u996" class="ax_default _形状1">
+          <img id="u996_img" class="img " src="images/充值/u817.png"/>
+          <div id="u996_text" class="text ">
+            <p><span>3张</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u997" class="ax_default" data-left="569" data-top="97" data-width="81" data-height="109">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u998" class="ax_default _形状1">
+          <img id="u998_img" class="img " src="images/物品/u983.png"/>
+          <div id="u998_text" class="text ">
+            <p><span>金币+10%</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u999" class="ax_default _形状1">
+          <img id="u999_img" class="img " src="images/物品/u984.png"/>
+          <div id="u999_text" class="text ">
+            <p><span>1张</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1000" class="ax_default label">
+        <div id="u1000_div" class=""></div>
+        <div id="u1000_text" class="text ">
+          <p><span style="text-decoration:underline;">兑换记录</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1001" class="ax_default">
+        <div id="u1001_div" class=""></div>
+      </div>
+
+      <!-- 图文弹框面板 (Dynamic Panel) -->
+      <div id="u1002" class="ax_default" data-label="图文弹框面板">
+        <div id="u1002_state0" class="panel_state" data-label="图文弹框" style="">
+          <div id="u1002_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1003" class="ax_default refs-webm-wechat">
+              <div id="u1003_div" class=""></div>
+            </div>
+
+            <!-- Caption (Rectangle) -->
+            <div id="u1004" class="ax_default refs-webm-wechat" data-label="Caption">
+              <div id="u1004_div" class=""></div>
+              <div id="u1004_text" class="text ">
+                <p><span>加分卡使用效果说明</span></p>
+              </div>
+            </div>
+
+            <!-- Title (Rectangle) -->
+            <div id="u1005" class="ax_default refs-webm-wechat" data-label="Title">
+              <div id="u1005_div" class=""></div>
+              <div id="u1005_text" class="text ">
+                <p><span>单场加分卡</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1006" class="ax_default box_2">
+              <div id="u1006_div" class=""></div>
+              <div id="u1006_text" class="text ">
+                <p><span>加分卡图片</span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1007" class="ax_default refs-webm-wechat">
+              <div id="u1007_div" class=""></div>
+              <div id="u1007_text" class="text ">
+                <p><span>使用</span></p>
+              </div>
+            </div>
+
+            <!-- Caption (Rectangle) -->
+            <div id="u1008" class="ax_default refs-webm-wechat" data-label="Caption">
+              <div id="u1008_div" class=""></div>
+              <div id="u1008_text" class="text ">
+                <p><span>剩余数量：16</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

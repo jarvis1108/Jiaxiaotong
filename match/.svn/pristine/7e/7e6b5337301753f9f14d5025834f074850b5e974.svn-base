@@ -1,0 +1,59 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionType;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\6\26 0026
+ */
+public interface QuestionTypeService {
+    /**
+     * 根据QuestionTypeId获取试题类型信息
+     *
+     * @param questionTypeId 用户id
+     * @return 待查询试题类型信息
+     */
+    QuestionType getQuestionTypeByQuestionTypeId(String questionTypeId) throws ErrorInfo;
+
+    /**
+     * 根据QuestionTypeName获取试题类型信息
+     *
+     * @param questionTypeName 用户id
+     * @return 待查询试题类型信息
+     */
+    QuestionType getQuestionTypeByQuestionTypeName(String questionTypeName) throws ErrorInfo;
+
+    /**
+     * 获取试题类型信息
+     * @return 包含所有试题类型信息的序列
+     */
+    List<QuestionType> findAll() throws ErrorInfo;
+
+    /**
+     * 新增试题类型信息
+     * @param newQuestionType
+     */
+    QuestionType create(QuestionType newQuestionType) throws ErrorInfo;
+    /**
+     * 删除试题类型信息
+     * @param questionTypeId
+     */
+    boolean deleteQuestionTypeById(String questionTypeId) throws ErrorInfo;
+    /**
+     * 修改试题类型信息
+     * @param updateQuestionType
+     */
+    QuestionType update(QuestionType updateQuestionType) throws ErrorInfo;
+
+    /**
+     * 分页查询试题类型
+     * @param pageSize 页面大小
+     * @param currentPage 页数
+     * @return
+     */
+    List<QuestionType> getQuestionTypeList(Integer pageSize, Integer currentPage) throws ErrorInfo;
+}

@@ -1,0 +1,111 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.system;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminPurview;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.AdminPurviewService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * 管理员角色设置控制器
+ * <p>
+ * Created by Devin
+ * 2018-06-29 下午 04:51
+ */
+@RestController
+@RequestMapping("/api/v1/sys/AdminPurview")
+public class AdminPurViewController {
+
+    private final AdminPurviewService adminPurviewService;
+
+    @Autowired
+    public AdminPurViewController(AdminPurviewService adminPurviewService) {
+        this.adminPurviewService = adminPurviewService;
+    }
+
+    /**
+     * 获取所有管理员角色设置信息
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页，从1开始
+     * @param request
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo getAdminPurviewList(Integer pageSize, Integer currentPage, HttpServletRequest request) {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<AdminPurview> admins;
+        if (pageSize == null || currentPage == null) {
+            admins = adminPurviewService.getAdminPurviewList();
+        } else if (pageSize <= 0 || currentPage <= 0) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        } else {
+            admins = adminPurviewService.getAdminPurviewList(pageSize, currentPage);
+        }
+
+        return new ResponseInfo(requestInfo, admins);
+    }
+
+    /**
+     * 编辑管理员角色设置信息
+     *
+     * @param requestInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @PostMapping("/edit")
+    public ResponseInfo editAdminPurview(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        // 获取请求参数，并进行封装
+        JSONObject reqParam = requestInfo.getReqParam();
+        if (reqParam.getString("AdminPurviewID") == null) {
+            // 必须传入管理员角色设置ID
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+
+        AdminPurview updatedAdmin = JSON.parseObject(reqParam.toJSONString(), AdminPurview.class);
+        AdminPurview result = adminPurviewService.update(updatedAdmin);
+
+        return new ResponseInfo(requestInfo, result);
+    }
+
+    /**
+     * 新增管理员角色设置
+     *
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/add")
+    public ResponseInfo addAdminPurview(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParam = requestInfo.getReqParam();
+        if (reqParam.getString("AdminPurviewID") == null) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+
+        AdminPurview AdminPurview = JSON.parseObject(reqParam.toJSONString(), AdminPurview.class);
+        AdminPurview result = adminPurviewService.create(AdminPurview);
+
+        return new ResponseInfo(requestInfo, result);
+    }
+
+    /**
+     * 根据id删除某一用户（逻辑删除）
+     *
+     * @param adminPurviewID
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/rmadminpurview")
+    public ResponseInfo deleteAdminPurview(@RequestParam("AdminPurviewID") String adminPurviewID, @RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        adminPurviewService.deleteByAdminPurviewId(adminPurviewID);
+        return new ResponseInfo(requestInfo, CommConst.ERR_SUCCESS.getCode(), CommConst.ERR_SUCCESS.getMessage(), null);
+    }
+}

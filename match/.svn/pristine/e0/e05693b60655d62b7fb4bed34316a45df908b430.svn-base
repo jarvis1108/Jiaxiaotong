@@ -1,0 +1,27 @@
+<import src="user_info$21e54bc3" />
+<template name="index$68498666">
+  <view id="base" class="_div data-v-685d969a">
+    <image class="_img data-v-685d969a bg" src="/copy-asset/dist/static/img/bg.png"></image>
+    <template data="{{...$root[$kk+'0'], $root}}" is="user_info$21e54bc3"></template>
+    <navigator url="/pages/competition/main" id="competition" class="_a data-v-685d969a">
+      <image src="/copy-asset/dist/static/img/dualmeet-bg@2x.png" class="_img data-v-685d969a bg"></image>
+      <label class="_span data-v-685d969a box_text">对抗赛</label>
+    </navigator>
+    <navigator url="#" id="train" class="_a data-v-685d969a">
+      <image src="/copy-asset/dist/static/img/paradeground-bg.png" class="_img data-v-685d969a bg"></image>
+      <label class="_span data-v-685d969a box_text">知识练兵场</label>
+    </navigator>
+    <navigator url="#" id="friend_fight" class="_a data-v-685d969a">
+      <image src="/copy-asset/dist/static/img/pk-bg.png" class="_img data-v-685d969a bg"></image>
+      <label class="_span data-v-685d969a box_text">好友对战</label>
+    </navigator>
+    <navigator url="#" id="rank" class="_a data-v-685d969a">
+      <image src="/copy-asset/dist/static/img/Rankinglist-bg.png" class="_img data-v-685d969a bg"></image>
+      <label class="_span data-v-685d969a box_text">排行榜</label>
+    </navigator>
+    <navigator url="/pages/recharge/main" id="recharge" class="_a data-v-685d969a">
+      <image src="/copy-asset/static/img/top-ups-bg@2x.png" class="_img data-v-685d969a bg"></image>
+      <label class="_span data-v-685d969a box_text">充值</label>
+    </navigator>
+  </view>
+</template>

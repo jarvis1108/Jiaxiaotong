@@ -1,0 +1,73 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.BookVerInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.BookVerInfoService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * @Author: meiyu
+ * @Date: 2018/7/13 16:49
+ */
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class BookVerInfoServiceImplTest {
+
+    @Autowired
+    private BookVerInfoService bookVerInfoService;
+
+    @Test
+    public void findAll() {
+        List<BookVerInfo> bookVerInfos = bookVerInfoService.findAll();
+        assertNotEquals(0,bookVerInfos.size());
+        bookVerInfos.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        BookVerInfo bookVerInfo = new BookVerInfo();
+        bookVerInfo.setCreateUser("test");
+        bookVerInfo.setBookVerName("人教版");
+        bookVerInfo.setBookVerId("001");
+        bookVerInfo.setIsValid(Byte.valueOf("1"));
+        bookVerInfo.setBookVerCode("1");
+        bookVerInfo.setBookVerNo("1");
+        bookVerInfo.setBookVerShortName("p");
+        bookVerInfo.setCreateTime(Timestamp.valueOf("2018-07-16 12:12:12"));
+        bookVerInfo.setLastUpdTime(Timestamp.valueOf("2018-07-16 12:12:12"));
+        bookVerInfo.setRemark("this is test");
+        BookVerInfo result = bookVerInfoService.create(bookVerInfo);
+        Assert.assertNotNull(result);
+        System.out.println(result);
+
+    }
+
+    @Test
+    public void update() throws ErrorInfo{
+        BookVerInfo bookVerInfo = new BookVerInfo();
+        bookVerInfo.setRemark("whoru");
+        bookVerInfo.setBookVerId("1");
+        BookVerInfo result = bookVerInfoService.update(bookVerInfo);
+
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteByBookVerInfoId() throws ErrorInfo{
+        String bookVerId = "1";
+        boolean result = bookVerInfoService.deleteByBookVerInfoId(bookVerId);
+        assertTrue(result);
+    }
+}

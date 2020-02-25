@@ -1,0 +1,128 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionRecitationRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionRecitation;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionRecitationService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:  背诵题服务实现类
+ * @date 2018\6\26 0026
+ */
+@Service
+@Slf4j
+public class QuestionRecitationServiceImpl implements QuestionRecitationService {
+
+    @Autowired
+    private QuestionRecitationRepository questionRecitationRepository;
+
+    @Transactional(readOnly=true)
+    @Override
+    public QuestionRecitation getQuestionRecitationByQuestionId(String questionId) throws ErrorInfo {
+        QuestionRecitation questionRecitation=questionRecitationRepository.findQuestionRecitationByQuestionId(questionId);
+        if(questionRecitation==null){
+           throw new ErrorInfo("E_"+"2018-07-30 09:00:00" +"_57_003","背诵题不存在",null);
+        }
+        return  questionRecitation;
+    }
+
+    /**
+     * 查找所有的背诵题
+     * @return
+     */
+    @Transactional(readOnly=true)
+    @Override
+    public List<QuestionRecitation> findAll() {
+        return questionRecitationRepository.findAll();
+    }
+
+    /**
+     * 增加背诵题
+     * @param newQuestionRecitation
+     * @return
+     */
+    @Transactional
+    @Override
+    public QuestionRecitation create(QuestionRecitation newQuestionRecitation)throws ErrorInfo {
+        if (newQuestionRecitation == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_004", "背诵题为空", null);
+        }
+
+
+         return  questionRecitationRepository.save(newQuestionRecitation);
+
+    }
+
+    /**
+     * 更据questionId删除背诵题
+     * @param questionId
+     * @return
+     */
+    @Transactional
+    @Override
+    public boolean deleteQuestionRecitationById(String questionId)throws  ErrorInfo {
+            QuestionRecitation questionRecitation =questionRecitationRepository.findQuestionRecitationByQuestionId(questionId);
+            if (questionRecitation == null) {
+                throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_003", "背诵题不存在", null);
+
+            }
+            questionRecitation.setIsValid(Byte.valueOf("0"));
+            questionRecitationRepository.save(questionRecitation);
+            return true;
+    }
+
+    /**
+     * 更新背诵题
+     * @param updateQuestionRecitation
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public QuestionRecitation update(QuestionRecitation updateQuestionRecitation)throws  ErrorInfo {
+        if (updateQuestionRecitation == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_004", "背诵题为空", null);
+        }
+        QuestionRecitation questionRecitation =questionRecitationRepository.findQuestionRecitationByQuestionId(updateQuestionRecitation.getQuestionId());
+        if (questionRecitation == null) {
+            String currentTime = DateUtil.getCurrentTime();
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_002", "背诵题不存在", null);
+        }
+        UpdateUtil.copyProperties(updateQuestionRecitation,questionRecitation);
+       return questionRecitationRepository.save(questionRecitation);
+
+    }
+
+    /**
+     * 分页获取背诵题信息
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    @Transactional
+    @Override
+    public List<QuestionRecitation> getQuestionRecitationList(Integer pageSize, Integer currentPage) {
+        if(pageSize == null || currentPage == null || pageSize<=0 || currentPage<=0){
+            return null;
+        }
+        Pageable pageable = PageRequest.of(currentPage,pageSize);
+        Page<QuestionRecitation> page = questionRecitationRepository.findAll(pageable);
+        if(page == null){
+            return null;
+        }
+        return page.getContent();
+    }
+
+}

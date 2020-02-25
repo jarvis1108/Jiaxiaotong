@@ -1,0 +1,25 @@
+<template name="questioncard$cc6caf78">
+  <view class="_div data-v-35f0dea2 bs-container-questioncard-div">
+    <image class="_img data-v-35f0dea2 bs-bg-img {{backAnimation}}" src="/static/images/battle/subject-bg.png"></image>
+    <image class="_img data-v-35f0dea2 bs-divider-img {{backAnimation}}" src="/static/images/battle/line.png"></image>
+    <view class="_div data-v-35f0dea2 bs-Question-div  {{animation}}" wx:if="{{questionType && showQuestion}}">
+      <view class="_div data-v-35f0dea2 bs-text2 bs-chooseTitle-div"> {{ question.title }}{{ question.type }} </view>
+      <view class="_div data-v-35f0dea2 bs-content-div">
+        <view class="_div data-v-35f0dea2 bs-option-div" bindtap="handleProxy" wx:key="item" key="{{item}}" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" wx:for="{{labelList}}" wx:for-index="index" wx:for-item="item">
+          <image class="_img data-v-35f0dea2 bs-bg-img" src="/static/images/battle/Optionbox.png"></image>
+          <image class="_img data-v-35f0dea2 bs-bg-img" src="/static/images/battle/Erroroption-bg.png" v-show="{{'isChoose'+item}}"></image>
+          <image id="bs-error-icon" src="/static/images/battle/Errorlabel.png" v-show="{{'isChoose'+item}}" class="_img data-v-35f0dea2"></image>
+          <image class="_img data-v-35f0dea2 bs-bg-img" src="/static/images/battle/Checktheoptionbox.png" v-show="{{'isTrueA'+item}}"></image>
+          <image id="bs-true-icon" src="/static/images/battle/Correctlabel.png" v-show="{{'isTrueA'+item}}" class="_img data-v-35f0dea2"></image>
+          <label class="_span data-v-35f0dea2"></label>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-35f0dea2 bs-Question-div  {{animation}}" wx:if="{{!questionType && showQuestion}}">
+      <view class="_div data-v-35f0dea2 bs-text2 bs-recordTitle-div"> {{ question.title }}{{ question.type }} </view>
+      <view class="_div data-v-35f0dea2 bs-text2 bs-content-div"> {{ question.content }} </view>
+      <image class="_img data-v-35f0dea2 bs-recordButton-img" bindtap="handleProxy" hidden="{{!(!recording)}}" src="/static/images/battle/Startrecording.png" data-eventid="{{'1'}}" data-comkey="{{$k}}"></image>
+      <image class="_img data-v-35f0dea2 bs-recordButton-img" bindtap="handleProxy" hidden="{{!(recording)}}" src="/static/images/battle/suspend.png" data-eventid="{{'2'}}" data-comkey="{{$k}}"></image>
+    </view>
+  </view>
+</template>

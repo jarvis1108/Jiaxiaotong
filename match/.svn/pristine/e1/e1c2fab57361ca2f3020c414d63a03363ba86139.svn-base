@@ -1,0 +1,52 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.QuestionSetting;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 出题设置服务接口
+ * <p>
+ * Created by Devin
+ * 2018-07-03 上午 09:42
+ */
+public interface QuestionSettingService {
+    /**
+     * 分页查询试题设置列表
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<QuestionSetting> getQuestionSettingList(Integer pageSize, Integer currentPage);
+
+    /**
+     * 查询试题设置列表
+     * @return
+     */
+    List<QuestionSetting> getAllQuestionSettings();
+
+    /**
+     *  创建试题设置表信息
+     * @param newQuestionSetting
+     * @return
+     * @throws ErrorInfo
+     */
+    QuestionSetting create(QuestionSetting newQuestionSetting) throws ErrorInfo;
+
+    /**
+     *  更新试题设置表信息
+     * @param updatedQuestionSetting
+     * @return
+     * @throws ErrorInfo
+     */
+    QuestionSetting update(QuestionSetting updatedQuestionSetting) throws ErrorInfo;
+
+    /**
+     * 根据试题设置ID查询试题设置表
+     * @param questionSettingId
+     * @return
+     * @throws ErrorInfo
+     */
+    boolean deleteByQuestionSettingId(String questionSettingId) throws ErrorInfo;
+}

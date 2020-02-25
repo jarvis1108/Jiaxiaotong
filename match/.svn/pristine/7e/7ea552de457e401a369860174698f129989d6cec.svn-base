@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dxtwangxiao.questionchecktool.dao.QuestionMapper">
+    <resultMap id="BaseResultMap" type="com.dxtwangxiao.questionchecktool.entity.Question">
+        <id column="QuestionID" jdbcType="VARCHAR" property="questionID"/>
+        <result column="QuestionNo" jdbcType="VARCHAR" property="questionNo"/>
+        <result column="InitID" jdbcType="VARCHAR" property="initID"/>
+        <result column="InitNo" jdbcType="VARCHAR" property="initNo"/>
+        <result column="IsCorrect" jdbcType="TINYINT" property="isCorrect"/>
+        <result column="ErrorReason" jdbcType="VARCHAR" property="errorReason"/>
+        <result column="QuestionCode" jdbcType="VARCHAR" property="questionCode"/>
+        <result column="QuestionTypeID" jdbcType="VARCHAR" property="questionTypeID"/>
+        <result column="KnowledgeID" jdbcType="VARCHAR" property="knowledgeID"/>
+        <result column="Question" jdbcType="VARCHAR" property="question"/>
+        <result column="Provider" jdbcType="VARCHAR" property="provider"/>
+        <result column="PersonInCharge" jdbcType="VARCHAR" property="personInCharge"/>
+        <result column="Reference" jdbcType="VARCHAR" property="reference"/>
+        <result column="QuestionLevel" jdbcType="INTEGER" property="questionLevel"/>
+        <result column="Difficulty" jdbcType="DOUBLE" property="difficulty"/>
+        <result column="CoinWeight" jdbcType="DOUBLE" property="coinWeight"/>
+        <result column="GPWeight" jdbcType="DOUBLE" property="GPWeight"/>
+        <result column="QuestionAnalyze" jdbcType="VARCHAR" property="questionAnalyze"/>
+        <result column="RecommendTime" jdbcType="INTEGER" property="recommendTime"/>
+        <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="CreateUser" jdbcType="VARCHAR" property="createUser"/>
+        <result column="LastUpdTime" jdbcType="TIMESTAMP" property="lastUpdTime"/>
+        <result column="LastUpdUser" jdbcType="VARCHAR" property="lastUpdUser"/>
+        <result column="PrsStatus" jdbcType="BIT" property="prsStatus"/>
+        <result column="PrsUserId" jdbcType="VARCHAR" property="prsUserId"/>
+        <result column="PrsUsername" jdbcType="VARCHAR" property="prsUsername"/>
+        <result column="PrsTime" jdbcType="TIMESTAMP" property="prsTime"/>
+        <result column="IsCheckPass" jdbcType="VARCHAR" property="isCheckPass"/>
+        <result column="CheckUserId" jdbcType="VARCHAR" property="checkUserId"/>
+        <result column="CheckUsername" jdbcType="VARCHAR" property="checkUsername"/>
+        <result column="CheckTime" jdbcType="TIMESTAMP" property="checkTime"/>
+        <result column="IsValid" jdbcType="TINYINT" property="isValid"/>
+        <result column="Remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="FromQuestionID" jdbcType="VARCHAR" property="fromQuestionID"/>
+        <result column="FromQuestionNo" jdbcType="VARCHAR" property="fromQuestionNo"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    QuestionID, QuestionNo, InitID, InitNo, IsCorrect, ErrorReason, QuestionCode, QuestionTypeID, 
+    KnowledgeID, Question, Provider, PersonInCharge, Reference, QuestionLevel,
+    Difficulty, CoinWeight, GPWeight, QuestionAnalyze, RecommendTime, CreateTime, CreateUser, 
+    LastUpdTime, LastUpdUser, PrsStatus, PrsUserId, PrsUsername, PrsTime, IsCheckPass, 
+    CheckUserId, CheckUsername, CheckTime, IsValid, Remark, FromQuestionID, FromQuestionNo
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_ITN_Question
+        where QuestionID = #{questionID,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_ITN_Question
+    where QuestionID = #{questionID,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.dxtwangxiao.questionchecktool.entity.Question">
+    insert into t_ITN_Question (QuestionID, QuestionNo, InitID, 
+      InitNo, IsCorrect, ErrorReason, 
+      QuestionCode, QuestionTypeID, KnowledgeID, Question, Provider,
+      PersonInCharge, Reference, QuestionLevel, 
+      Difficulty, CoinWeight, GPWeight, 
+      QuestionAnalyze, RecommendTime, CreateTime, 
+      CreateUser, LastUpdTime, LastUpdUser, 
+      PrsStatus, PrsUserId, PrsUsername, 
+      PrsTime, IsCheckPass, CheckUserId, 
+      CheckUsername, CheckTime, IsValid, 
+      Remark, FromQuestionID, FromQuestionNo
+      )
+    values (#{questionID,jdbcType=VARCHAR}, #{questionNo,jdbcType=VARCHAR}, #{initID,jdbcType=VARCHAR}, 
+      #{initNo,jdbcType=VARCHAR}, #{isCorrect,jdbcType=TINYINT}, #{errorReason,jdbcType=VARCHAR}, 
+      #{questionCode,jdbcType=VARCHAR}, #{questionTypeID,jdbcType=VARCHAR}, #{knowledgeID,jdbcType=VARCHAR}, 
+      #{question,jdbcType=VARCHAR}, #{provider,jdbcType=VARCHAR},
+      #{personInCharge,jdbcType=VARCHAR}, #{reference,jdbcType=VARCHAR}, #{questionLevel,jdbcType=INTEGER}, 
+      #{difficulty,jdbcType=DOUBLE}, #{coinWeight,jdbcType=DOUBLE}, #{GPWeight,jdbcType=DOUBLE}, 
+      #{questionAnalyze,jdbcType=VARCHAR}, #{recommendTime,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{lastUpdTime,jdbcType=TIMESTAMP}, #{lastUpdUser,jdbcType=VARCHAR}, 
+      #{prsStatus,jdbcType=BIT}, #{prsUserId,jdbcType=VARCHAR}, #{prsUsername,jdbcType=VARCHAR}, 
+      #{prsTime,jdbcType=TIMESTAMP}, #{isCheckPass,jdbcType=VARCHAR}, #{checkUserId,jdbcType=VARCHAR}, 
+      #{checkUsername,jdbcType=VARCHAR}, #{checkTime,jdbcType=TIMESTAMP}, #{isValid,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR}, #{fromQuestionID,jdbcType=VARCHAR}, #{fromQuestionNo,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.dxtwangxiao.questionchecktool.entity.Question">
+        insert into t_ITN_Question
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="questionID != null">
+                QuestionID,
+            </if>
+            <if test="questionNo != null">
+                QuestionNo,
+            </if>
+            <if test="initID != null">
+                InitID,
+            </if>
+            <if test="initNo != null">
+                InitNo,
+            </if>
+            <if test="isCorrect != null">
+                IsCorrect,
+            </if>
+            <if test="errorReason != null">
+                ErrorReason,
+            </if>
+            <if test="questionCode != null">
+                QuestionCode,
+            </if>
+            <if test="questionTypeID != null">
+                QuestionTypeID,
+            </if>
+            <if test="knowledgeID != null">
+                KnowledgeID,
+            </if>
+            <if test="question != null">
+                Question,
+            </if>
+            <if test="provider != null">
+                Provider,
+            </if>
+            <if test="personInCharge != null">
+                PersonInCharge,
+            </if>
+            <if test="reference != null">
+                Reference,
+            </if>
+            <if test="questionLevel != null">
+                QuestionLevel,
+            </if>
+            <if test="difficulty != null">
+                Difficulty,
+            </if>
+            <if test="coinWeight != null">
+                CoinWeight,
+            </if>
+            <if test="GPWeight != null">
+                GPWeight,
+            </if>
+            <if test="questionAnalyze != null">
+                QuestionAnalyze,
+            </if>
+            <if test="recommendTime != null">
+                RecommendTime,
+            </if>
+            <if test="createTime != null">
+                CreateTime,
+            </if>
+            <if test="createUser != null">
+                CreateUser,
+            </if>
+            <if test="lastUpdTime != null">
+                LastUpdTime,
+            </if>
+            <if test="lastUpdUser != null">
+                LastUpdUser,
+            </if>
+            <if test="prsStatus != null">
+                PrsStatus,
+            </if>
+            <if test="prsUserId != null">
+                PrsUserId,
+            </if>
+            <if test="prsUsername != null">
+                PrsUsername,
+            </if>
+            <if test="prsTime != null">
+                PrsTime,
+            </if>
+            <if test="isCheckPass != null">
+                IsCheckPass,
+            </if>
+            <if test="checkUserId != null">
+                CheckUserId,
+            </if>
+            <if test="checkUsername != null">
+                CheckUsername,
+            </if>
+            <if test="checkTime != null">
+                CheckTime,
+            </if>
+            <if test="isValid != null">
+                IsValid,
+            </if>
+            <if test="remark != null">
+                Remark,
+            </if>
+            <if test="fromQuestionID != null">
+                FromQuestionID,
+            </if>
+            <if test="fromQuestionNo != null">
+                FromQuestionNo,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="questionID != null">
+                #{questionID,jdbcType=VARCHAR},
+            </if>
+            <if test="questionNo != null">
+                #{questionNo,jdbcType=VARCHAR},
+            </if>
+            <if test="initID != null">
+                #{initID,jdbcType=VARCHAR},
+            </if>
+            <if test="initNo != null">
+                #{initNo,jdbcType=VARCHAR},
+            </if>
+            <if test="isCorrect != null">
+                #{isCorrect,jdbcType=TINYINT},
+            </if>
+            <if test="errorReason != null">
+                #{errorReason,jdbcType=VARCHAR},
+            </if>
+            <if test="questionCode != null">
+                #{questionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="questionTypeID != null">
+                #{questionTypeID,jdbcType=VARCHAR},
+            </if>
+            <if test="knowledgeID != null">
+                #{knowledgeID,jdbcType=VARCHAR},
+            </if>
+            <if test="question != null">
+                #{question,jdbcType=VARCHAR},
+            </if>
+            <if test="provider != null">
+                #{provider,jdbcType=VARCHAR},
+            </if>
+            <if test="personInCharge != null">
+                #{personInCharge,jdbcType=VARCHAR},
+            </if>
+            <if test="reference != null">
+                #{reference,jdbcType=VARCHAR},
+            </if>
+            <if test="questionLevel != null">
+                #{questionLevel,jdbcType=INTEGER},
+            </if>
+            <if test="difficulty != null">
+                #{difficulty,jdbcType=DOUBLE},
+            </if>
+            <if test="coinWeight != null">
+                #{coinWeight,jdbcType=DOUBLE},
+            </if>
+            <if test="GPWeight != null">
+                #{GPWeight,jdbcType=DOUBLE},
+            </if>
+            <if test="questionAnalyze != null">
+                #{questionAnalyze,jdbcType=VARCHAR},
+            </if>
+            <if test="recommendTime != null">
+                #{recommendTime,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTime != null">
+                #{lastUpdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdUser != null">
+                #{lastUpdUser,jdbcType=VARCHAR},
+            </if>
+            <if test="prsStatus != null">
+                #{prsStatus,jdbcType=BIT},
+            </if>
+            <if test="prsUserId != null">
+                #{prsUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="prsUsername != null">
+                #{prsUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="prsTime != null">
+                #{prsTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isCheckPass != null">
+                #{isCheckPass,jdbcType=VARCHAR},
+            </if>
+            <if test="checkUserId != null">
+                #{checkUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="checkUsername != null">
+                #{checkUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="checkTime != null">
+                #{checkTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isValid != null">
+                #{isValid,jdbcType=TINYINT},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="fromQuestionID != null">
+                #{fromQuestionID,jdbcType=VARCHAR},
+            </if>
+            <if test="fromQuestionNo != null">
+                #{fromQuestionNo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dxtwangxiao.questionchecktool.entity.Question">
+        update t_ITN_Question
+        <set>
+            <if test="questionNo != null">
+                QuestionNo = #{questionNo,jdbcType=VARCHAR},
+            </if>
+            <if test="initID != null">
+                InitID = #{initID,jdbcType=VARCHAR},
+            </if>
+            <if test="initNo != null">
+                InitNo = #{initNo,jdbcType=VARCHAR},
+            </if>
+            <if test="isCorrect != null">
+                IsCorrect = #{isCorrect,jdbcType=TINYINT},
+            </if>
+            <if test="errorReason != null">
+                ErrorReason = #{errorReason,jdbcType=VARCHAR},
+            </if>
+            <if test="questionCode != null">
+                QuestionCode = #{questionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="questionTypeID != null">
+                QuestionTypeID = #{questionTypeID,jdbcType=VARCHAR},
+            </if>
+            <if test="knowledgeID != null">
+                KnowledgeID = #{knowledgeID,jdbcType=VARCHAR},
+            </if>
+            <if test="question != null">
+                Question = #{question,jdbcType=VARCHAR},
+            </if>
+            <if test="provider != null">
+                Provider = #{provider,jdbcType=VARCHAR},
+            </if>
+            <if test="personInCharge != null">
+                PersonInCharge = #{personInCharge,jdbcType=VARCHAR},
+            </if>
+            <if test="reference != null">
+                Reference = #{reference,jdbcType=VARCHAR},
+            </if>
+            <if test="questionLevel != null">
+                QuestionLevel = #{questionLevel,jdbcType=INTEGER},
+            </if>
+            <if test="difficulty != null">
+                Difficulty = #{difficulty,jdbcType=DOUBLE},
+            </if>
+            <if test="coinWeight != null">
+                CoinWeight = #{coinWeight,jdbcType=DOUBLE},
+            </if>
+            <if test="GPWeight != null">
+                GPWeight = #{GPWeight,jdbcType=DOUBLE},
+            </if>
+            <if test="questionAnalyze != null">
+                QuestionAnalyze = #{questionAnalyze,jdbcType=VARCHAR},
+            </if>
+            <if test="recommendTime != null">
+                RecommendTime = #{recommendTime,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                CreateTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null">
+                CreateUser = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTime != null">
+                LastUpdTime = #{lastUpdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdUser != null">
+                LastUpdUser = #{lastUpdUser,jdbcType=VARCHAR},
+            </if>
+            <if test="prsStatus != null">
+                PrsStatus = #{prsStatus,jdbcType=BIT},
+            </if>
+            <if test="prsUserId != null">
+                PrsUserId = #{prsUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="prsUsername != null">
+                PrsUsername = #{prsUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="prsTime != null">
+                PrsTime = #{prsTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isCheckPass != null">
+                IsCheckPass = #{isCheckPass,jdbcType=VARCHAR},
+            </if>
+            <if test="checkUserId != null">
+                CheckUserId = #{checkUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="checkUsername != null">
+                CheckUsername = #{checkUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="checkTime != null">
+                CheckTime = #{checkTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isValid != null">
+                IsValid = #{isValid,jdbcType=TINYINT},
+            </if>
+            <if test="remark != null">
+                Remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="fromQuestionID != null">
+                FromQuestionID = #{fromQuestionID,jdbcType=VARCHAR},
+            </if>
+            <if test="fromQuestionNo != null">
+                FromQuestionNo = #{fromQuestionNo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where QuestionID = #{questionID,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dxtwangxiao.questionchecktool.entity.Question">
+    update t_ITN_Question
+    set QuestionNo = #{questionNo,jdbcType=VARCHAR},
+      InitID = #{initID,jdbcType=VARCHAR},
+      InitNo = #{initNo,jdbcType=VARCHAR},
+      IsCorrect = #{isCorrect,jdbcType=TINYINT},
+      ErrorReason = #{errorReason,jdbcType=VARCHAR},
+      QuestionCode = #{questionCode,jdbcType=VARCHAR},
+      QuestionTypeID = #{questionTypeID,jdbcType=VARCHAR},
+      KnowledgeID = #{knowledgeID,jdbcType=VARCHAR},
+      Question = #{question,jdbcType=VARCHAR},
+      Provider = #{provider,jdbcType=VARCHAR},
+      PersonInCharge = #{personInCharge,jdbcType=VARCHAR},
+      Reference = #{reference,jdbcType=VARCHAR},
+      QuestionLevel = #{questionLevel,jdbcType=INTEGER},
+      Difficulty = #{difficulty,jdbcType=DOUBLE},
+      CoinWeight = #{coinWeight,jdbcType=DOUBLE},
+      GPWeight = #{GPWeight,jdbcType=DOUBLE},
+      QuestionAnalyze = #{questionAnalyze,jdbcType=VARCHAR},
+      RecommendTime = #{recommendTime,jdbcType=INTEGER},
+      CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      CreateUser = #{createUser,jdbcType=VARCHAR},
+      LastUpdTime = #{lastUpdTime,jdbcType=TIMESTAMP},
+      LastUpdUser = #{lastUpdUser,jdbcType=VARCHAR},
+      PrsStatus = #{prsStatus,jdbcType=BIT},
+      PrsUserId = #{prsUserId,jdbcType=VARCHAR},
+      PrsUsername = #{prsUsername,jdbcType=VARCHAR},
+      PrsTime = #{prsTime,jdbcType=TIMESTAMP},
+      IsCheckPass = #{isCheckPass,jdbcType=VARCHAR},
+      CheckUserId = #{checkUserId,jdbcType=VARCHAR},
+      CheckUsername = #{checkUsername,jdbcType=VARCHAR},
+      CheckTime = #{checkTime,jdbcType=TIMESTAMP},
+      IsValid = #{isValid,jdbcType=TINYINT},
+      Remark = #{remark,jdbcType=VARCHAR},
+      FromQuestionID = #{fromQuestionID,jdbcType=VARCHAR},
+      FromQuestionNo = #{fromQuestionNo,jdbcType=VARCHAR}
+    where QuestionID = #{questionID,jdbcType=VARCHAR}
+  </update>
+
+    <update id="updateQuestion">
+        update t_ITN_Question
+        set Question = #{questionTitle},
+            QuestionAnalyze = #{questionAnalyze},
+            Difficulty = #{difficulty}
+        where QuestionID = #{questionID}
+    </update>
+
+</mapper>

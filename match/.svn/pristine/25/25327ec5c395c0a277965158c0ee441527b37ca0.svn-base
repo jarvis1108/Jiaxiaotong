@@ -1,0 +1,106 @@
+/** @file
+ * @description <br/> //  ******************************************************************
+ *              <br/> //  * 功能说明：最强学霸接口设计_知识练兵场模块
+ *              <br/> //  * 创建标志：韩晓峰 2018年09月03日创建
+ *              <br/> //  * 标志编号：13 韩晓峰 2018年09月03日
+ *              <br/> //  * 标志描述：
+ *              <br/> //  * 附注说明：兑换学点部分用例接口设计
+ *              <br/> //  *          （1）本文件的接口清单如下：
+ *              <br/> //  *              （a）GetGradeList：获取年级列表
+ *              <br/> //  *              （a）GetSubjectList：根据年级阶段Id和年级Id获取科目列表
+ *              <br/> //  * 当前状态：【编码中】【编码完成】【测试完】【可以试用】【正式使用√】【作废停用】
+ *              <br/> //  ******************************************************************
+ * @author 韩晓峰
+ * @copyright 暂无
+ */
+
+/**
+ * @class
+ * @summary 实现功能：知识练兵场模块接口设计
+ * @memberOf MTH
+ * @description                           
+ */
+function MTH_EXC_010() {
+
+    /**
+     * @summary 实现功能：获取年级列表
+     * @description **POST** /api/v1/base/gradeInfo/list
+     * @param {object} objParam                                        要传入的参数
+     * @param {string} objParam.reqID                                  要传入的参数.请求的Id
+     * @param {string} objParam.reqType                                要传入的参数.请求类型 固定值为: MTH_EXC_010_GetGradeList
+     * @param {object} objParam.reqUserInfo                            要传入的参数.当前用户信息
+     * @param {string} objParam.reqUserInfo.userId                     要传入的参数.当前用户信息.用户Id
+     * @param {object} objParam.reqParam                               要传入的参数.请求的业务参数
+     * @param {object} objParam.reqRefData                             要传入的参数.存放业务以外的其它信息 default: {}
+     * @param {object} objParam.pageInfo                               要传入的参数.分页信息 default: {}
+     * @param {object} objParam.pageInfo.pageSize                      要传入的参数.分页信息.页面大小
+     * @param {object} objParam.pageInfo.curPage                       要传入的参数.分页信息.页码
+     *
+     * @param {object} objResult                                                     返回结果
+     * @param {string} objResult.resID                                               返回结果.响应ID
+     * @param {string} objResult.reqID                                               返回结果.请求的ID
+     * @param {string} objResult.reqType                                             返回结果.请求类型
+     * @param {Object} objResult.resResult                                           返回结果.响应返回的业务数据
+     * @param {object} objResult.resResult.curData                                   返回结果.响应返回的业务数据.当前业务结果 default: {}
+     * @param {array} objResult.resResult.curData.gradeInfoList                      返回结果.响应返回的业务数据.当前业务结果.年级列表
+     * @param {object} objResult.resResult.curData.gradeInfoList【i】                 返回结果.响应返回的业务数据.当前业务结果.年级列表.第i条记录
+     * @param {object} objResult.resResult.curData.gradeInfoList【i】.gradePhaseRelId 返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级阶段相关Id
+     * @param {object} objResult.resResult.curData.gradeInfoList【i】.gradePhaseId    返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级阶段Id
+     * @param {object} objResult.resResult.curData.gradeInfoList【i】.gradePhaseNo    返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级阶段编号
+     * @param {object} objResult.resResult.curData.gradeInfoList【i】.gradePhaseName        返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级阶段名称
+     * @param {object} objResult.resResult.curData.gradeInfoList【i】.gradePhaseShortName   返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级阶段简称
+     * @param {object} objResult.resResult.curData.gradeInfoList【i】.gradePhaseCode        返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级阶段编码
+     * @param {string} objResult.resResult.curData.gradeInfoList【i】.gradeId               返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级ID
+     * @param {string} objResult.resResult.curData.gradeInfoList【i】.gradeNo         返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级编码
+     * @param {string} objResult.resResult.curData.gradeInfoList【i】.gradeCode       返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级编号
+     * @param {string} objResult.resResult.curData.gradeInfoList【i】.gradeName       返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级名称
+     * @param {string} objResult.resResult.curData.gradeInfoList【i】.gradeShortName  返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级名称缩写
+     * @param {string} objResult.resResult.curData.gradeInfoList【i】.showText        返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.年级展示文本  
+     * @param {object} objResult.resResult.errorInfo                                 返回结果.响应返回的业务数据.当前业务结果.出错信息(具体结构框架统一定义)
+     * @param {object} objResult.resRefData                                          返回结果.存放业务以外的其它信息(预留扩展，一般情况下不用) default: {}
+     * @version 1.0
+     * @example 暂无
+     */
+    function GetGradeList(objParam) {
+        var objResult = {};
+        return objResult;
+    }
+
+
+    /**
+     * @summary 实现功能：获取年级列表
+     * @description **POST** /api/v1/base/gradeInfo/list
+     * @param {object} objParam                                        要传入的参数
+     * @param {string} objParam.reqID                                  要传入的参数.请求的Id
+     * @param {string} objParam.reqType                                要传入的参数.请求类型 固定值为: MTH_EXC_010_GetGradeList
+     * @param {object} objParam.reqUserInfo                            要传入的参数.当前用户信息
+     * @param {string} objParam.reqUserInfo.userId                     要传入的参数.当前用户信息.用户Id
+     * @param {object} objParam.reqParam                               要传入的参数.请求的业务参数
+     * @param {object} objParam.reqRefData                             要传入的参数.存放业务以外的其它信息 default: {}
+     * @param {object} objParam.pageInfo                               要传入的参数.分页信息 default: {}
+     * @param {object} objParam.pageInfo.pageSize                      要传入的参数.分页信息.页面大小
+     * @param {object} objParam.pageInfo.curPage                       要传入的参数.分页信息.页码
+     * 
+     * @param {object} objResult                                                     返回结果
+     * @param {string} objResult.resID                                               返回结果.响应ID
+     * @param {string} objResult.reqID                                               返回结果.请求的ID
+     * @param {string} objResult.reqType                                             返回结果.请求类型
+     * @param {Object} objResult.resResult                                           返回结果.响应返回的业务数据
+     * @param {object} objResult.resResult.curData                                   返回结果.响应返回的业务数据.当前业务结果 default: {}
+     * @param {array} objResult.resResult.curData.subjectList                        返回结果.响应返回的业务数据.当前业务结果.科目列表
+     * @param {object} objResult.resResult.curData.subjectList【i】                   返回结果.响应返回的业务数据.当前业务结果.科目列表.第i条记录
+     * @param {object} objResult.resResult.curData.subjectList【i】.subjectId         返回结果.响应返回的业务数据.当前业务结果.科目列表【i】.科目Id
+     * @param {object} objResult.resResult.curData.subjectList【i】.subjectNo         返回结果.响应返回的业务数据.当前业务结果.科目列表【i】.科目编码
+     * @param {object} objResult.resResult.curData.subjectList【i】.subjectName       返回结果.响应返回的业务数据.当前业务结果.科目列表【i】.科目名称
+     * @param {object} objResult.resResult.curData.subjectList【i】.subjectShortName  返回结果.响应返回的业务数据.当前业务结果.科目列表【i】.科目简称
+     * @param {string} objResult.resResult.curData.subjectList【i】.showText          返回结果.响应返回的业务数据.当前业务结果.年级列表【i】.科目展示文本  
+     * @param {object} objResult.resResult.errorInfo                                 返回结果.响应返回的业务数据.当前业务结果.出错信息(具体结构框架统一定义)
+     * @param {object} objResult.resRefData                                          返回结果.存放业务以外的其它信息(预留扩展，一般情况下不用) default: {}
+     * @version 1.0
+     * @example 暂无
+     */
+    function GetSubjectList(objParam) {
+        var objeResult = {};
+        return objResult;
+    }
+}

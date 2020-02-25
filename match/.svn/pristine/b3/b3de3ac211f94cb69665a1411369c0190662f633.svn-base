@@ -1,0 +1,56 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestion;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestionCollection;
+
+import java.util.List;
+
+/**
+ * 试题服务 接口
+ * <p>
+ * Created By Devin
+ * 2018-09-04 上午 10:57
+ */
+public interface QuestionService {
+
+    /**
+     * 根据用户Id获取其所收藏的题目列表
+     *
+     * @param userId 用户Id
+     * @return 收藏的题目列表
+     */
+    List<MultipleQuestionCollection> getCollectionsByUserId(String userId);
+
+    /**
+     * 用户收藏题目
+     *
+     * @param userId     用户Id
+     * @param questionId 试题Id
+     * @return 收藏的题目信息
+     */
+    MultipleQuestionCollection collectQuestion(String userId, String questionId);
+
+    /**
+     * 用户取消收藏题目
+     *
+     * @param questionCollectionId 收藏题目Id
+     * @return
+     */
+    Boolean cancelCollection(String questionCollectionId);
+
+
+    /**
+     * 随机获取5道选择题，针对匹配对战、好友对战及群PK
+     *
+     * @return 题目列表
+     */
+    List<MultipleQuestion> getRandomQuestions();
+
+    /**
+     * 根据战局Id获取10道题目，用户知识练兵场
+     *
+     * @param subjectId 战局Id
+     * @return 题目列表
+     */
+    List<MultipleQuestion> getQuestionsBySubjectId(String subjectId);
+}

@@ -1,0 +1,73 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserCoinDetail;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 用户金币流水明细单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 03:08
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserCoinDetailRepositoryTest {
+
+    @Autowired
+    private UserCoinDetailRepository userCoinDetailRepository;
+
+    @Test
+    public void findByUserId() {
+        String userId = "1";
+        Pageable pageable = PageRequest.of(1, 1);
+        Page<UserCoinDetail> userCoinDetailPage = userCoinDetailRepository.findByUserId(userId, pageable);
+        List<UserCoinDetail> userCoinDetailList = userCoinDetailPage.getContent();
+        assertNotEquals(0, userCoinDetailList.size());
+
+        userCoinDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll() {
+        List<UserCoinDetail> userCoinDetailList = userCoinDetailRepository.findAll();
+        assertNotEquals(0, userCoinDetailList.size());
+
+        userCoinDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAllByUserId() {
+        String userId = "1";
+        List<UserCoinDetail> userCoinDetailList = userCoinDetailRepository.findAllByUserId(userId);
+        assertNotEquals(0, userCoinDetailList.size());
+
+        userCoinDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        UserCoinDetail userCoinDetail = new UserCoinDetail();
+        userCoinDetail.setUserCoinDetailId("3");
+        userCoinDetail.setUserCoinDetailNo("3");
+        userCoinDetail.setUserId("1");
+        userCoinDetail.setUserNo("1");
+        userCoinDetail.setCurrentAmount(100);
+
+        UserCoinDetail result = userCoinDetailRepository.save(userCoinDetail);
+        assertNotNull(result);
+
+        System.out.println(result);
+
+    }
+}

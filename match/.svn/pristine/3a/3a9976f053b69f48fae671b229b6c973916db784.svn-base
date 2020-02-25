@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:mysql://139.199.15.124:3306/QuestionBankTemp?useSSL=false&useUnicode=true&characterEncoding=utf-8
+    username: strongestscholar
+    password: strongestscholar
+    driver-class-name: com.mysql.jdbc.Driver
+  freemarker:
+    allow-request-override: false
+    check-template-location: true
+    charset: UTF-8
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: false
+
+
+
+server:
+  servlet:
+    context-path: /QuestionCheckTool
+    session:
+      timeout: 3600s
+  port: 8888
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dxtwangxiao.questionchecktool.entity
+  config-location: classpath:mybatis-config.xml
+  check-config-location: true
+

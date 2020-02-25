@@ -1,0 +1,16 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.QuestionMultipleChoiceForLibVO;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+
+/**
+ * @Author lh
+ * @Date 2018.09.07
+ */
+@Repository
+public interface QuestionMultipleChoiceForLibVORepository extends CrudRepository<QuestionMultipleChoiceForLibVO, String> {
+
+    List<QuestionMultipleChoiceForLibVO> findAllByQuestionLibIdOrderByCreateTimeAsc(String questionLibId);
+}

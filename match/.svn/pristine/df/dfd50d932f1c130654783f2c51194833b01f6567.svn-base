@@ -1,0 +1,50 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.ProductInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserCoinDetail;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 用户金币明细服务接口
+ * <p>
+ * Created by Devin
+ * 2018-07-03 上午 09:58
+ */
+public interface UserCoinDetailService {
+    /**
+     * 分页查询用户金币明细表
+     * @param userId
+     * @param pageSize
+     * @param currentPage
+     * @return
+     * @throws ErrorInfo
+     */
+    List<UserCoinDetail> getUserCoinDetailList(String userId, Integer pageSize, Integer currentPage) throws ErrorInfo;
+
+    /**
+     * 根据用户ID查询所有用户金币明细列表
+     * @param userId
+     * @return
+     * @throws ErrorInfo
+     */
+    List<UserCoinDetail> getAllUserCoinDetails(String userId) throws ErrorInfo;
+
+    /**
+     * 创建、更新用户金币明细表
+     * @param newUserCoinDetail
+     * @return
+     * @throws ErrorInfo
+     */
+    UserCoinDetail create(UserCoinDetail newUserCoinDetail) throws ErrorInfo;
+
+    /**
+     * 更新用户金币明细表
+     * @param matchId
+     * @param userId
+     * @param coin
+     * @return
+     */
+    UserCoinDetail save(String matchId, String userId, Integer coin);
+}

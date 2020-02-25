@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>批量导入试题</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/批量导入试题/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/ie.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="files/批量导入试题/data.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (矩形) -->
+      <div id="u1501" class="ax_default box_1">
+        <div id="u1501_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1502" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u1503" class="ax_default button">
+        <div id="u1503_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1504" class="text" style="visibility: visible;">
+          <p><span>选择题</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u1505" class="ax_default button">
+        <div id="u1505_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1506" class="text" style="visibility: visible;">
+          <p><span>背诵题</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (下拉列表框) -->
+      <div id="u1507" class="ax_default droplist">
+        <select id="u1507_input">
+          <option value="语文">语文</option>
+          <option value="数学">数学</option>
+        </select>
+      </div>
+
+      <!-- Unnamed (下拉列表框) -->
+      <div id="u1508" class="ax_default droplist">
+        <select id="u1508_input">
+          <option value="三年级">三年级</option>
+          <option value="四年级">四年级</option>
+        </select>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1509" class="ax_default text_field">
+        <input id="u1509_input" type="text" value="导入文件的目录及名称..."/>
+      </div>
+
+      <!-- Unnamed (提交按钮) -->
+      <div id="u1510" class="ax_default html_button">
+        <input id="u1510_input" type="submit" value="浏览"/>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u1511" class="ax_default button">
+        <div id="u1511_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1512" class="text" style="visibility: visible;">
+          <p><span>导入</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1513" class="ax_default text_field">
+        <input id="u1513_input" type="text" value="背诵题也需要指定学科和年级。"/>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u1514" class="ax_default box_1">
+        <div id="u1514_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1515" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1516" class="ax_default text_field">
+        <input id="u1516_input" type="text" value="导入完成，本次导入成功XXX题，不成功XXX题。不成功清单及原因见XXX文件。"/>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u1517" class="ax_default button">
+        <div id="u1517_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1518" class="text" style="visibility: visible;">
+          <p><span>确认</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1519" class="ax_default text_field">
+        <input id="u1519_input" type="text" value="浮窗显示3秒钟，没成功导入的题目择录出来，加上失败原因，生成一个EXCEL文件。"/>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u1520" class="ax_default box_1">
+        <div id="u1520_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1521" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1522" class="ax_default text_field">
+        <input id="u1522_input" type="text" value="最强学霸后台管理"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1523" class="ax_default text_field">
+        <input id="u1523_input" type="text" value="用户管理"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1524" class="ax_default text_field">
+        <input id="u1524_input" type="text" value="试题管理"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1525" class="ax_default text_field">
+        <input id="u1525_input" type="text" value="订单管理"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1526" class="ax_default text_field">
+        <input id="u1526_input" type="text" value="商品管理"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1527" class="ax_default text_field">
+        <input id="u1527_input" type="text" value="规则设置"/>
+      </div>
+
+      <!-- Unnamed (水平线) -->
+      <div id="u1528" class="ax_default line">
+        <img id="u1528_img" class="img " src="images/用户基本信息查询/u10.png"/>
+        <!-- Unnamed () -->
+        <div id="u1529" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1530" class="ax_default text_field">
+        <input id="u1530_input" type="text" value="统计分析"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1531" class="ax_default text_field">
+        <input id="u1531_input" type="text" value="系统设置"/>
+      </div>
+
+      <!-- Unnamed (图片) -->
+      <div id="u1532" class="ax_default image">
+        <img id="u1532_img" class="img " src="images/用户基本信息查询/u205.jpg"/>
+        <!-- Unnamed () -->
+        <div id="u1533" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1534" class="ax_default text_field">
+        <input id="u1534_input" type="text" value="Jack船长&nbsp; 退出"/>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u1535" class="ax_default box_1">
+        <div id="u1535_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1536" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1537" class="ax_default text_field">
+        <input id="u1537_input" type="text" value="试题管理"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1538" class="ax_default text_field">
+        <input id="u1538_input" type="text" value="非私有题库"/>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u1539" class="ax_default button">
+        <div id="u1539_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1540" class="text" style="visibility: visible;">
+          <p><span>模板下载</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u1541" class="ax_default button">
+        <div id="u1541_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1542" class="text" style="visibility: visible;">
+          <p><span>模板下载</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1543" class="ax_default text_field">
+        <input id="u1543_input" type="text" value="单选题手工录入"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1544" class="ax_default text_field">
+        <input id="u1544_input" type="text" value="批量导入试题"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1545" class="ax_default text_field">
+        <input id="u1545_input" type="text" value="编辑试题"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1546" class="ax_default text_field">
+        <input id="u1546_input" type="text" value="多选题手工录入"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1547" class="ax_default text_field">
+        <input id="u1547_input" type="text" value="背诵题手工录入"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1548" class="ax_default text_field">
+        <input id="u1548_input" type="text" value="一级菜单名称"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1549" class="ax_default text_field">
+        <input id="u1549_input" type="text" value="-&gt;"/>
+      </div>
+
+      <!-- Unnamed (文本框) -->
+      <div id="u1550" class="ax_default text_field">
+        <input id="u1550_input" type="text" value="二级菜单名称"/>
+      </div>
+    </div>
+  </body>
+</html>

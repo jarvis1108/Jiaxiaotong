@@ -1,0 +1,76 @@
+package com.dxtwangxiao.strongestsuperscholar.web.util;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
+public class NetStreamUtil {
+
+    /**
+     * Object对象的JSON字符串序列化
+     *
+     * @param objCur 当前Object对象
+     * @return 序列化后的字符串
+     */
+    public static String ObjectToJSONExpr(Object objCur) {
+        String strRetVal = null;
+        JSONObject objRetVal = ObjectToJSONObject(objCur);
+
+        if (objCur == null) {
+            return strRetVal;
+        }
+
+        strRetVal = objRetVal.toString();
+
+        return strRetVal;
+    }
+
+    /**
+     * Jsonp字符串的反序列化
+     *
+     * @param strJsonData JSON字符串
+     * @return 序列化为JSONObject对象
+     */
+    public static JSONObject JSONExprToJSONObject(String strJsonData) {
+        JSONObject objRetVal = null;
+
+        strJsonData = (strJsonData == null || strJsonData.equals("") ? "{}" : strJsonData);
+
+        objRetVal = JSONObject.parseObject(strJsonData);
+
+        return objRetVal;
+    }
+
+    /**
+     * Jsonp字符串的反序列化
+     *
+     * @param strJsonData JSON字符串
+     * @return 序列化为Object对象
+     */
+    public static <T> T JSONExprToObject(String strJsonData, Class<T> clazz) {
+        T objRetVal = null;
+
+        strJsonData = (strJsonData == null || strJsonData.equals("") ? "{}" : strJsonData);
+
+        objRetVal = JSON.parseObject(strJsonData, clazz);
+
+        return objRetVal;
+    }
+
+    /**
+     * Objectc对象向JSON对象的转换
+     *
+     * @param objCur 当前Object对象
+     * @return 转换后的JSON对象
+     */
+    public static JSONObject ObjectToJSONObject(Object objCur) {
+        JSONObject objRetVal = null;
+
+        if (objCur == null) {
+            return objRetVal;
+        }
+
+        objRetVal = (JSONObject) JSON.toJSON(objCur);
+
+        return objRetVal;
+    }
+}

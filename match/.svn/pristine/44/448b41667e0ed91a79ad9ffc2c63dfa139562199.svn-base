@@ -1,0 +1,23 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.dao.MatchRecordUserRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordUser;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * Created By Devin
+ * 2018-09-11 下午 08:10
+ */
+@Service
+public class MatchRecordUserServiceImpl implements MatchRecordUserService {
+
+	@Autowired
+	private MatchRecordUserRepository matchRecordUserRepository;
+
+	@Override
+	public MatchRecordUser save(MatchRecordUser matchRecordUser) {
+		return matchRecordUserRepository.save(matchRecordUser);
+	}
+}

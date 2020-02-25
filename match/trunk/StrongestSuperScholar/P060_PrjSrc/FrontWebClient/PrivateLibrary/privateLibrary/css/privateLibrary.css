@@ -1,0 +1,345 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.questionUpdate-hide {
+    display: none;
+}
+
+.questionUpdate-show {
+    display: block;
+}
+
+.head {
+    width: 100%;
+    height: 70px;
+    background-color: cadetblue;
+    color: white;
+    font-size: 24px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 70px;
+    float: left;
+    border-bottom: white solid 1px;
+}
+
+.taskbar {
+    width: 10%;
+    height: 910px;
+    background-color: cadetblue;
+    overflow: hidden;
+    float: left;
+    text-align: center;
+}
+
+.Personal-information {
+    background-color: cadetblue;
+    height: 90px;
+    overflow: hidden;
+    border-bottom: aliceblue solid 1px;
+}
+
+.hp {
+    width: 40px;
+    float: left;
+    border-radius: 50%;
+    border: white solid 2px;
+    /*line-height: 60px;*/
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.Name {
+    line-height: 90px;
+    color: white;
+    font-size: 12px important;
+}
+
+.Upload {
+    height: 40px;
+    background-color: yellowgreen;
+    color: white;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: aliceblue solid 1px;
+}
+
+.questionType-hide {
+    display: none;
+}
+
+.questionType-show {
+    display: block;
+}
+
+.questionType-recently {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.questionType-selected {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: red;
+}
+
+.My-topic {
+    height: 40px;
+    background-color: yellowgreen;
+    color: white;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: aliceblue solid 1px;
+}
+
+.contents {
+    background-color: antiquewhite;
+    width: 90%;
+    height: 910px;
+    float: left;
+}
+
+.gradeAndCourse-Ul {
+    overflow: hidden;
+}
+
+.gradeAndCourse-Ul li {
+    float: left;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.subjectUl {
+    overflow: hidden;
+    margin-left: 80px;
+}
+
+.subjectUl li {
+    float: left;
+}
+
+.subject-choose {
+    width: 130px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: white;
+    color: #5F9EA0;
+    border-radius: 10px;
+    border: #5F9EA0 solid 1px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.subject-choose-selected {
+    width: 132px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: #5F9EA0;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    line-height: 50px;
+}
+
+.subject-Recite {
+    width: 130px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 40px;
+    background-color: white;
+    color: #5F9EA0;
+    border-radius: 10px;
+    border: #5F9EA0 solid 1px;
+    text-align: center;
+    line-height: 50px;
+
+}
+
+.subject-Recite-selected {
+    width: 132px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 40px;
+    background-color: #5F9EA0;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    line-height: 50px;
+}
+
+.Course {
+    width: 200px;
+    height: 30px;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+p {
+    font-size: 20px;
+    margin-left: 20px;
+    float: left;
+}
+
+.Problem {
+    /*float: left;*/
+    line-height: 30px;
+    margin-top: 40px;
+}
+
+.Problem-stem {
+    width: 600px;
+    height: 30px;
+    margin-left: 40px;
+    /*float: left;*/
+    overflow: hidden;
+}
+
+.Options {
+    margin-left: 186px;
+}
+
+ul li input {
+    width: 400px;
+    height: 30px;
+    margin-top: 6px;
+}
+
+.Answer {
+    margin-top: 40px;
+}
+
+.Answer ul {
+    overflow: hidden;
+}
+
+.Answer ul li {
+    float: left;
+}
+
+.optionBtn {
+    width: 50px;
+    height: 30px;
+    margin-left: 20px;
+    background-color: #019082;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.optionBtn-selected {
+    width: 50px;
+    height: 30px;
+    margin-left: 20px;
+    background-color: yellow;
+    color: black;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.Time {
+    margin-top: 40px;
+}
+
+.Time ul {
+    overflow: hidden;
+}
+
+.Time ul li {
+    float: left;
+}
+
+.timeOption {
+    width: 50px;
+    height: 30px;
+    margin-left: 35px;
+    background-color: #019082;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.timeOption-selected {
+    width: 50px;
+    height: 30px;
+    margin-left: 35px;
+    background-color: yellow;
+    color: black;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 30px;
+}
+
+/*.button {*/
+/*width: 100%;*/
+/*text-align: center;*/
+/*margin-top: 80px;*/
+/*}*/
+
+.Submit {
+    width: 150px;
+    height: 50px;
+    background-color: white;
+    border: #019082 solid 1px;
+    border-radius: 10px;
+    color: #019082;
+}
+
+.button-reciting {
+    width: 100%;
+    text-align: center;
+    margin-top: 142px;
+
+}
+
+
+
+.contentsManager-show {
+    display: block;
+    background-color: antiquewhite;
+    width: 90%;
+    height: 910px;
+    float: left;
+}
+.contentsManager-hide {
+    display: none;
+}
+
+.selectInput {
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 30px;
+}
+.exploreInput {
+    margin-top: 30px;
+    height: 25px;
+    width: 300px;
+}
+.exploreBtn {
+    width: 60px;
+    height: 25px;
+    margin-top: 35px;
+}
+
+.questionTable td {
+    padding: 5px 20px;
+}
+
+.reciteManagerContent {
+    display: none;
+}
+
+

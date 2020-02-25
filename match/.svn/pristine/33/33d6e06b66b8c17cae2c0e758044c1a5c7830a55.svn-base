@@ -1,0 +1,45 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.GradeInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.GradeInfoService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+
+public class GradeInfoServiceImplTest {
+
+    @Autowired
+    private GradeInfoService service;
+
+    @Test
+    public void findAll() {
+        List<GradeInfo> gradeInfos=service.findAll();
+        assertNotEquals(0,gradeInfos.size());
+        gradeInfos.forEach(System.out::println);
+    }
+
+    @Test
+    public void create()throws ErrorInfo {
+        GradeInfo gradeInfo=new GradeInfo();
+        gradeInfo.setGradeId("2");
+        gradeInfo.setGradeNo("3");
+        GradeInfo result=service.create(gradeInfo);
+        assertNotNull(result);
+        System.out.println(result);
+
+
+    }
+
+    @Test
+    public void update() {
+    }
+}

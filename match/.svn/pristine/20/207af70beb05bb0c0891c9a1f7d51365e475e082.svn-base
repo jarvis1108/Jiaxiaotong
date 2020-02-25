@@ -1,0 +1,74 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionRecitationForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionRecitationForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionRecitationForLibService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:  私有题库背诵题服务实现类
+ * @date 2018\8\15 0015
+ */
+@Service
+public class QuestionRecitationForLibServiceImpl implements QuestionRecitationForLibService {
+
+    @Autowired
+    private QuestionRecitationForLibRepository repository;
+    @Override
+    public QuestionRecitationForLib getQuestionRecitationForLibByQuestionForLibId(String questionForLibId) throws ErrorInfo {
+        QuestionRecitationForLib questionRecitationForLib=repository.findByQuestionForLibId(questionForLibId);
+        if(questionRecitationForLib==null)
+        {
+            throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_030","私有题库背诵题不存在",null);
+        }
+        return questionRecitationForLib;
+    }
+
+    @Override
+    public List<QuestionRecitationForLib> findAll() {
+        return repository.findAll();
+    }
+
+    @Transactional
+    @Override
+    public QuestionRecitationForLib create(QuestionRecitationForLib questionRecitationForLib) throws ErrorInfo {
+        if(questionRecitationForLib==null){
+            throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_030","私有题库背诵题为空",null);
+        }
+        return repository.save(questionRecitationForLib);
+    }
+
+    @Transactional
+    @Override
+    public boolean deleteQuestionRecitationForLibByQuestionForLibId(String questionForLibId) throws ErrorInfo {
+       QuestionRecitationForLib questionRecitationForLib=repository.findByQuestionForLibId(questionForLibId);
+        if(questionRecitationForLib==null)
+        {
+            throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_031","私有题库背诵题不存在",null);
+        }
+        questionRecitationForLib.setIsValid(Byte.valueOf("0"));
+        repository.save(questionRecitationForLib);
+        return true;
+    }
+
+    @Transactional
+    @Override
+    public QuestionRecitationForLib update(QuestionRecitationForLib updateQuestionRecitationForLib) throws ErrorInfo {
+        if(updateQuestionRecitationForLib==null)
+        {throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_030","私有题库多选题背诵题为空",null);
+        }
+        QuestionRecitationForLib questionRecitationForLib=repository.findByQuestionForLibId(updateQuestionRecitationForLib.getQuestionForLibId());
+        if(questionRecitationForLib==null){
+            throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_031","私有题库背诵题不存在",null);
+        }
+        UpdateUtil.copyProperties(updateQuestionRecitationForLib, questionRecitationForLib);
+        return  repository.save(questionRecitationForLib);
+    }
+}

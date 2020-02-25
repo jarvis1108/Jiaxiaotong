@@ -1,0 +1,174 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.entity;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
+
+/**
+ * @auther: shenhao
+ * @descripition: 题库表
+ * @date 2018\8\15 0015
+ */
+@Entity
+@Table(name = "t_QST_QuestionLib")
+public class QuestionLib {
+    private String questionLibId;//私有题库ID
+    private String questionLibNo;//题库编码
+    private String questionLibCode;//题库编号
+    private String UserId;//所属用户ID
+    private Byte isDefaultQuestionLib;//是否默认题库:每个用户最多只能有一个默认题库，1：是默认题库，否则：不是默认题库，默认0
+    private Byte isPublic;//是否公开：1：公开，0：不公开，默认0
+    private String questionLibDes;//题库名称
+    private String questionLibTitle;//题库标题
+    private Timestamp createTime;
+    private String createUser;
+    private Timestamp lastUpdTime;
+    private String lastUpdUser;
+    private Byte isValid;//是否有效，1表示有效，0表示无效
+    private String remark;//备注说明
+    @Id
+    @Column(name = "QuestionLibId")
+    public String getQuestionLibId() {
+        return questionLibId;
+    }
+
+    public void setQuestionLibId(String questionLibId) {
+        this.questionLibId = questionLibId;
+    }
+    @Basic
+    @Column(name = "QuestionLibNo")
+    public String getQuestionLibNo() {
+        return questionLibNo;
+    }
+
+    public void setQuestionLibNo(String questionLibNo) {
+        this.questionLibNo = questionLibNo;
+    }
+    @Basic
+    @Column(name = "QuestionLibCode")
+    public String getQuestionLibCode() {
+        return questionLibCode;
+    }
+
+    public void setQuestionLibCode(String questionLibCode) {
+        this.questionLibCode = questionLibCode;
+    }
+    @Basic
+    @Column(name = "UserId")
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String userId) {
+        UserId = userId;
+    }
+    @Basic
+    @Column(name = "IsDefaultQuestionLib")
+    public Byte getIsDefaultQuestionLib() {
+        return isDefaultQuestionLib;
+    }
+
+    public void setIsDefaultQuestionLib(Byte isDefaultQuestionLib) {
+        this.isDefaultQuestionLib = isDefaultQuestionLib;
+    }
+    @Basic
+    @Column(name = "IsPublic")
+    public Byte getIsPublic() {
+        return isPublic;
+    }
+
+    public void setIsPublic(Byte isPublic) {
+        this.isPublic = isPublic;
+    }
+    @Basic
+    @Column(name = "QuestionLibDes")
+    public String getQuestionLibDes() {
+        return questionLibDes;
+    }
+
+    public void setQuestionLibDes(String questionLibDes) {
+        this.questionLibDes = questionLibDes;
+    }
+    @Basic
+    @Column(name = "QuestionLibTitle")
+    public String getQuestionLibTitle() {
+        return questionLibTitle;
+    }
+
+    public void setQuestionLibTitle(String questionLibTitle) {
+        this.questionLibTitle = questionLibTitle;
+    }
+    @Basic
+    @Column(name = "CreateTime")
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+    @Basic
+    @Column(name = "CreateUser")
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
+    }
+    @Basic
+    @Column(name = "LastUpdTime")
+    public Timestamp getLastUpdTime() {
+        return lastUpdTime;
+    }
+
+    public void setLastUpdTime(Timestamp lastUpdTime) {
+        this.lastUpdTime = lastUpdTime;
+    }
+    @Basic
+    @Column(name = "LastUpdUser")
+    public String getLastUpdUser() {
+        return lastUpdUser;
+    }
+
+    public void setLastUpdUser(String lastUpdUser) {
+        this.lastUpdUser = lastUpdUser;
+    }
+    @Basic
+    @Column(name = "IsValid")
+    public Byte getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(Byte isValid) {
+        this.isValid = isValid;
+    }
+    @Basic
+    @Column(name = "Remark")
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionLib{" +
+                "questionLibId='" + questionLibId + '\'' +
+                ", questionLibNo='" + questionLibNo + '\'' +
+                ", questionLibCode='" + questionLibCode + '\'' +
+                ", UserID='" + UserId + '\'' +
+                ", isDefaultQuestionLib=" + isDefaultQuestionLib +
+                ", isPublic=" + isPublic +
+                ", questionLibDes='" + questionLibDes + '\'' +
+                ", questionLibTitle='" + questionLibTitle + '\'' +
+                ", createTime=" + createTime +
+                ", createUser='" + createUser + '\'' +
+                ", lastUpdTime=" + lastUpdTime +
+                ", lastUpdUser='" + lastUpdUser + '\'' +
+                ", isValid=" + isValid +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
+}

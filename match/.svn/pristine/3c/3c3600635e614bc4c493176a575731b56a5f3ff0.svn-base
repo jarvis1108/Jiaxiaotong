@@ -1,0 +1,311 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+import { api } from './config'
+import { request, getUserInfo, login } from "./utils/wx";
+import RequestObj from "./utils/RequestObj"
+
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  state: {
+    userInfo: {},
+    userId: "",
+    token: "",
+  },
+  actions: {
+
+    /**
+     * 获取年级类型列表
+     * @param {*} param0 
+     */
+    async gradePhaseInfoList({ commit }) {
+      let gradePhaseInfoList = [];
+      //拿到类型列表
+      const gradePhaseRes = await request({
+        url: `${api}/gradePhaseInfo`,
+        data: new RequestObj({
+          reqType: 'INX_VWE_000_GetGradePhaseInfoType',
+          reqParam: {}
+        })
+      });
+      //扩充类型列表，遍历并获取到每个类型对应的年级列表
+      gradePhaseInfoList = gradePhaseRes.resResult.curData.gradePhaseInfoList;
+      for (let i = 0; i < gradePhaseInfoList.length; ++i) {
+        gradePhaseInfoList[i]['select'] = false;
+        const gradeRes = await request({
+          url: `${api}/gradeInfo`,
+          reqType: 'INX_VWE_000_GetGradeByGradeType',
+          reqParam: { gradePhaseId: gradePhaseInfoList[i].gradePhaseID }
+        })
+        switch (i) {
+          case 0:
+            gradePhaseInfoList[i]['gradeList'] = gradeRes.resResult.curData.primary.gradeInfoList;
+            break;
+          case 1:
+            gradePhaseInfoList[i]['gradeList'] = gradeRes.resResult.curData.junior.gradeInfoList;
+            break;
+          case 2:
+            gradePhaseInfoList[i]['gradeList'] = gradeRes.resResult.curData.senior.gradeInfoList;
+            break;
+          case 3:
+            gradePhaseInfoList[i]['gradeList'] = [];
+            break;
+        }
+      }
+
+      return gradePhaseInfoList;
+    },
+
+    /**
+     * 获取登陆信息并保存在store中[首次登录,需提交用户信息至后台]
+     * @param {*} param0 
+     */
+    async firstLogin({ commit, state }, gradeId) {
+      //拿到用户微信信息传递给后台创建用户
+      const infoResult = await getUserInfo({
+        withCredentials: false
+      });
+      const res = await request({
+        url: `${api}/user`,
+        method: 'POST',
+        data: new RequestObj({
+          reqType: 'INX_VWE_000_firstLogin',
+          reqParam: {
+            nickName: infoResult.userInfo.nickName,
+            avatarUrl: infoResult.userInfo.avatarUrl,
+            gender: infoResult.userInfo.gender,
+            city: infoResult.userInfo.city,
+            gradeId: gradeId
+          }
+        })
+      });
+      //将用户信息保存在全局
+      state.userId = res.resResult.curData.user.userId;
+      state.token = res.resResult.curData.token;
+      state.userInfo = res.resResult.curData.user;
+
+      //拿到用户登陆code传递给后台
+      const logResult = await login();
+      const result = await request({
+        url: `${api}/login`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_GetOpenId',
+          reqParam: {
+            userId: state.userId,
+            code: logResult.code
+          }
+        }),
+      });
+    },
+
+    /**
+     * 获取登陆信息并保存在store中[非首次登陆，直接请求用户信息]
+     * @param commit
+     * @returns {Promise<void>}
+     */
+    async login({ commit, state }) {
+      const logResult = await login();
+      console.log(logResult.code);
+      const res = await request({
+        url: `${api}/userInfo`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_login',
+          reqParam: { code: logResult.code }
+        })
+      });
+      state.userId = res.resResult.curData.user.userId;
+      state.token = res.resResult.curData.token;
+      state.userInfo = res.resResult.curData.user;
+    },
+
+    /**
+     * 获取知识练兵场学科列表
+     * @param {*} param0 
+     */
+    async getExerciseObjectList({commit}){
+      const res = await request({
+        url:`${api}/exercise`,
+        data:new RequestObj({
+          reqType:'SYS_PRE_000_getExerciseObjectList',
+          reqParam:{}
+        })
+      });
+      return res.objectList.resResult.curData.data;
+    },
+
+    /**
+     * 获取问题列表
+     * @param commit
+     * @param listSize 问题列表的大小
+     * @returns {Promise<*>}
+     */
+    async getQuestionList({ commit }, listSize) {
+      const res = await request({
+        url: `${api}/exercise`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_GetQuestionList',
+          reqParam: { listSize: listSize }
+        })
+      });
+      return res.questionList.resResult.curData.data;
+    },
+
+    /**
+     * 获取对抗赛结果信息
+     * @param commit
+     * @param state
+     * @returns {Promise<*>}
+     */
+    async getResultInfo({ commit }, battleId) {
+      const res = await request({
+        url: `${api}/battleResult`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_getResultInfo',
+          reqParam: { battleId: battleId }
+        })
+      });
+      return res.resResult.curData.result;
+    },
+
+    /**
+     *根据战局Id获取群比赛玩家列表
+     * @param {*} param0 
+     * @param {*} battleId 
+     */
+    async getPlayerListByBattleId({ commit }, battleId) {
+      const res = await request({
+        url: `${api}/groupBattle`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_GetPlyerListById',
+          reqParam: { battleId: battleId }
+        })
+      });
+      return res.playerList.resResult.curData.data;
+    },
+
+    /**
+     * 获取兑换页面的商品列表
+     */
+    async getProductList({ commit }) {
+      const res = await request({
+        url: `${api}/topup`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_GetProductList',
+          reqParam: {}
+        })
+      });
+      return res.productList.resResult.curData.productList;
+    },
+
+    /**
+     * 获取金币商城页面商品列表
+     * @param {*} param0 
+     */
+    async getProductListOfMall({ commit }) {
+      const res = await request({
+        url: `${api}/goldMall`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_GetProductListOfMall',
+          reqParam: {}
+        })
+      });
+      return res.productList.resResult.curData.data;
+    },
+
+    /**
+     * 获取我的物品页面的物品列表
+     * @param {*} param0 
+     */
+    async getProductListOfMine({ commit }) {
+      const res = await request({
+        url: `${api}/myItems`,
+        data: new RequestObj({
+          reqType: 'MAL_000_getProductListOfMine'
+        })
+      });
+      return res.productList.resResult.curData.data;
+    },
+
+    /**
+ * 获取奖学金页面的物品列表
+ * @param {*} param0 
+ */
+    async getProductListOfScholarship({ commit }) {
+      const res = await request({
+        url: `${api}/scholarship`,
+        data: new RequestObj({
+          reqType: 'MAL_000_getProductListOfScholarship'
+        })
+      });
+      return res.productList.resResult.curData.data;
+    },
+
+    /**
+     * 获取排行榜界面好友排行
+     * @param {*} param0 
+     * @param {*} type 0-好友排行，1-全国排行 
+     */
+    async getRankList({ commit }, type) {
+      const res = await request({
+        url: `${api}/rank`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_getRankList',
+          reqParam: { type: type }
+        })
+      });
+      if (type === 0) {
+        return res.rankList.resResult.curData.data;
+      } else {
+        return res.worldRankList.resResult.curData.data;
+      }
+    },
+
+    /**
+     * 获取用户的充值记录
+     * @param {*} param0 
+     */
+    async getTopupRecords({ commit }) {
+      const res = await request({
+        url: `${api}/topupRecord`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_getTopupRecords',
+          reqParam: {}
+        })
+      });
+      return res.recordList.resResult.curData.data;
+    },
+
+    /**
+     * 获取用户的兑换记录
+     * @param {*} param0 
+     */
+    async getExchangeRecords({ commit }) {
+      const res = await request({
+        url: `${api}/exchangeRecords`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_getExchangeRecords',
+          reqParam: {}
+        })
+      });
+      return res.recordList.resResult.curData.data;
+    },
+
+    /**
+     * 获取用户训练营信息
+     * @param {*} param0 
+     */
+    async getMyCampInfo({ commit }) {
+      const res = await request({
+        url: `${api}/myCamp`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_getMyCampInfo',
+          reqParam: {}
+        })
+      });
+      return res.campInfo.resResult.curData.data;
+    }
+
+  },
+})

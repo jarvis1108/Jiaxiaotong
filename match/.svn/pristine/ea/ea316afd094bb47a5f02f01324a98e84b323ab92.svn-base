@@ -1,0 +1,49 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserLPDetail;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 用户学点流水明细服务接口
+ * <p>
+ * Created by Devin
+ * 2018-07-03 上午 10:28
+ */
+public interface UserLPDetailService {
+    /**
+     * 分页获取某一用户学点流水明细
+     * @param userId
+     * @param pageSize
+     * @param currentPage
+     * @return
+     * @throws ErrorInfo
+     */
+    List<UserLPDetail> getUserLPDetailList(String userId, Integer pageSize, Integer currentPage) throws ErrorInfo;
+
+    /**
+     * 获取某一用户所有学点流水明细
+     * @param userId
+     * @return
+     * @throws ErrorInfo
+     */
+    List<UserLPDetail> getAllUserLPDetails(String userId) throws ErrorInfo;
+
+    /**
+     * 创建一条学点流水明细
+     * @param newUserLPDetail
+     * @return
+     * @throws ErrorInfo
+     */
+    UserLPDetail create(UserLPDetail newUserLPDetail) throws ErrorInfo;
+
+    /**
+     * 更新用户的学点
+     * @param matchId
+     * @param userId
+     * @param learningPoint
+     * @return
+     */
+    UserLPDetail save(String matchId, String userId, Integer learningPoint);
+}

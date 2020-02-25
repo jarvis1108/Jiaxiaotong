@@ -1,0 +1,52 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.Knowledge;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.KnowledgeService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.junit.Assert.*;
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class KnowledgeServiceImplTest {
+
+    @Autowired
+    private KnowledgeService service;
+    @Test
+    public void getAllKnowledges() {
+    }
+
+    @Test
+    public void getKnowledgeBySubjectId() {
+    }
+
+    @Test
+    public void getKnowledgeByKnowledgeId() {
+    }
+
+    @Test
+    public void create()throws ErrorInfo {
+        Knowledge knowledge=new Knowledge();
+        knowledge.setKnowledgeId("234");
+        knowledge.setSubjectId("32");
+        Knowledge result=service.create(knowledge);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void updateKnowledge() {
+    }
+
+    @Test
+    public void deleteKnowledgeByKnowledgeId() {
+    }
+
+    @Test
+    public void getKnowledgeList() {
+    }
+}

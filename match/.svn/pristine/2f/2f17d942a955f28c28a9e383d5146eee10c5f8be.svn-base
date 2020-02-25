@@ -1,0 +1,61 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserCoinDetail;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 用户金币流水明细服务单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 05:16
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserCoinDetailServiceTest {
+
+    @Autowired
+    private UserCoinDetailService userCoinDetailService;
+
+    @Test
+    public void getUserCoinDetailList() throws ErrorInfo {
+        String userId = "1";
+        List<UserCoinDetail> userCoinDetailList = userCoinDetailService.getUserCoinDetailList(userId, 2, 1);
+
+        assertNotEquals(0, userCoinDetailList.size());
+        userCoinDetailList.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void getAllUserCoinDetails() throws ErrorInfo {
+        String userId = "1";
+        List<UserCoinDetail> userCoinDetailList = userCoinDetailService.getAllUserCoinDetails(userId);
+
+        assertNotEquals(0, userCoinDetailList.size());
+        userCoinDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        UserCoinDetail userCoinDetail = new UserCoinDetail();
+        userCoinDetail.setUserCoinDetailId("4");
+        userCoinDetail.setUserCoinDetailNo("4");
+        userCoinDetail.setUserId("1");
+        userCoinDetail.setUserNo("1");
+        userCoinDetail.setAcquiredAmount(100);
+
+        UserCoinDetail result = userCoinDetailService.create(userCoinDetail);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+}

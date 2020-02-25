@@ -1,0 +1,84 @@
+package com.dxtwangxiao.strongestsuperscholar.web.util;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import org.springframework.web.client.RestTemplate;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+/**
+ * Created by Devin
+ * 2018-06-28 下午 04:08
+ */
+public class WebUtil {
+
+    private static RestTemplate restTemplate = new RestTemplate();
+
+    public static RestTemplate getRestTemplate() {
+        return restTemplate;
+    }
+
+    /**
+     * 解析HTTP请求，获取RequestInfo实例，针对GET请求
+     *
+     * @param request
+     * @return
+     */
+    public static RequestInfo parseGetRequest(HttpServletRequest request) {
+        RequestInfo requestInfo = new RequestInfo();
+
+        String reqId = request.getParameter("reqID");
+        String reqType = request.getParameter("reqType");
+        String reqUserInfo = request.getParameter("reqUserInfo");
+        String reqParam = request.getParameter("reqParam");
+        String pageInfo = request.getParameter("pageInfo");
+        String reqRefData = request.getParameter("reqRefData");
+
+        requestInfo.setReqID(reqId);
+        requestInfo.setReqType(reqType);
+        requestInfo.setReqUserInfo(JSONObject.parseObject(reqUserInfo));
+        requestInfo.setReqParam(JSONObject.parseObject(reqParam));
+        requestInfo.setPageInfo(JSONObject.parseObject(pageInfo));
+        requestInfo.setReqRefData(JSONObject.parseObject(reqRefData));
+
+        return requestInfo;
+    }
+
+    /**
+     * 解析HTTP请求，获取RequestInfo实例，针对POST请求
+     *
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    public static RequestInfo parsePostRequest(HttpServletRequest request) throws Exception {
+        StringBuffer sb = new StringBuffer();
+
+        InputStream is = request.getInputStream();
+        BufferedReader br = new BufferedReader(new InputStreamReader(is, "utf-8"));
+        String s = "";
+        while ((s = br.readLine()) != null) {
+            sb.append(s);
+        }
+
+        JSONObject jsonObject = JSON.parseObject(sb.toString());
+        String reqId = jsonObject.get("reqID").toString();
+        String reqType = jsonObject.get("reqType").toString();
+        String reqUserInfo = jsonObject.get("reqUserInfo").toString();
+        String reqParam = jsonObject.get("reqParam").toString();
+        String reqRefData = jsonObject.get("reqRefData").toString();
+
+        RequestInfo requestInfo = new RequestInfo();
+        requestInfo.setReqID(reqId);
+        requestInfo.setReqType(reqType);
+        requestInfo.setReqUserInfo(JSONObject.parseObject(reqUserInfo));
+        requestInfo.setReqParam(JSONObject.parseObject(reqParam));
+        requestInfo.setReqRefData(JSONObject.parseObject(reqRefData));
+
+        return requestInfo;
+    }
+}

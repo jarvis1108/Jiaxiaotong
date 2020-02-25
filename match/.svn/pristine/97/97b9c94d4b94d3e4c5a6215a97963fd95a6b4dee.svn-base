@@ -1,0 +1,50 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserSelectedCourse;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition: 用户课程选择表数据访问层
+ * @date 2018\7\27 0027
+ */
+@Repository
+public interface UserSelectedCourseRepository extends CrudRepository<UserSelectedCourse, String> {
+    /**
+     * 获取所有用户课程选择列表
+     * @return
+     */
+    List<UserSelectedCourse> findAll();
+
+    /**
+     * 创建、更新用户课程选择表
+     * @param userSelectedCourse
+     * @return
+     */
+    UserSelectedCourse save(UserSelectedCourse userSelectedCourse);
+
+    /**
+     * 根据用户选课ID获取用户课程选择表
+     * @param userSelectedId
+     * @return
+     */
+    UserSelectedCourse findByUserSelectedId(String userSelectedId);
+
+    /**
+     * 根据用户ID、选课类型获取用户课程选择列表
+     * @param userId
+     * @param selectedType
+     * @return
+     */
+    List<UserSelectedCourse> findByUserIdAndSelectedType(String userId,String selectedType);
+
+    /**
+     * 根据用户选课ID获取用户课程选择列表
+     * @param userId
+     * @return
+     */
+    List<UserSelectedCourse> findByUserId(String userId);
+}

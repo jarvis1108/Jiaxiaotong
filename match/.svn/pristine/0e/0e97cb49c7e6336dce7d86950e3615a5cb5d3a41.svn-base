@@ -1,0 +1,177 @@
+@import "/static/css/vendor.wxss";
+
+.bs-container-competition-div.data-v-1d4d36a3 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.bs-bg-img.data-v-1d4d36a3 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.bs-text1.data-v-1d4d36a3 {
+  text-align: center;
+  font-family: "PingFang-SC-Medium";
+  color: #ffffff;
+}
+.bs-text2.data-v-1d4d36a3 {
+  text-align: center;
+  font-family: "PingFang-SC-Bold";
+}
+.bs-user-div.data-v-1d4d36a3 {
+  height: 13.01%;
+  width: 21.86%;
+  left: 5.33%;
+  top: 2.85%;
+  position: absolute;
+  border-radius: 50%;
+}
+.bs-opponent-div.data-v-1d4d36a3 {
+  height: 13.01%;
+  width: 21.86%;
+  right: 5.33%;
+  top: 2.85%;
+  position: absolute;
+  border-radius: 50%;
+}
+.bs-score_hoop-img.data-v-1d4d36a3 {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+.bs-photo-div.data-v-1d4d36a3 {
+  width: 79.26%;
+  height: 79.26%;
+  border-radius: 50%;
+  left: 10.36%;
+  top: 10.36%;
+  position: absolute;
+}
+.user_photo.data-v-1d4d36a3 {
+  height: 92.31%;
+  width: 92.31%;
+  top: 3.85%;
+  left: 3.85%;
+  position: absolute;
+  border-radius: 50%;
+}
+.photo_hoop.data-v-1d4d36a3 {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.bs-pName-div.data-v-1d4d36a3 {
+  top: 16.98%;
+  left: 5.33%;
+  width: 21.87%;
+  height: 2.86%;
+  font-size: 36rpx;
+  position: absolute;
+}
+.bs-eName-div.data-v-1d4d36a3 {
+  top: 16.98%;
+  right: 5.33%;
+  width: 21.87%;
+  height: 2.86%;
+  font-size: 36rpx;
+  position: absolute;
+}
+.bs-p_score_photo.data-v-1d4d36a3 {
+  height: 3.49%;
+  width: 28.53%;
+  top: 12.38%;
+  left: 23.07%;
+  position: absolute;
+}
+.bs-e_score_photo.data-v-1d4d36a3 {
+  height: 3.02%;
+  width: 28.53%;
+  top: 12.54%;
+  right: 23.07%;
+  position: absolute;
+}
+.bs-pScore-div.data-v-1d4d36a3 {
+  top: 7.14%;
+  left: 31.47%;
+  position: absolute;
+  font-size: 48rpx;
+  color: #ffffff;
+}
+.bs-eScore-div.data-v-1d4d36a3 {
+  top: 7.14%;
+  right: 31.47%;
+  position: absolute;
+  font-size: 48rpx;
+  color: #ffffff;
+}
+.bs-question-card-div.data-v-1d4d36a3 {
+  width: 85.33%;
+  height: 70.79%;
+  top: 22.86%;
+  left: 7.33%;
+  position: absolute;
+}
+.topBox.data-v-1d4d36a3 {
+  height: 50%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.topCircle.data-v-1d4d36a3 {
+  margin: 0;
+  padding: 0;
+  height: 208%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+.bottomBox.data-v-1d4d36a3 {
+  margin: 0;
+  padding: 0;
+  height: 50%;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+}
+.bottomCircle.data-v-1d4d36a3 {
+  margin: 0;
+  padding: 0;
+  height: 208%;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+.c1.data-v-1d4d36a3 {
+  height: 50%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.c2.data-v-1d4d36a3 {
+  height: 50%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.bs-cut-down-div.data-v-1d4d36a3 {
+  height: 8.89%;
+  width: 14.4%;
+  left: 42.8%;
+  top: 18.89%;
+  position: absolute;
+}

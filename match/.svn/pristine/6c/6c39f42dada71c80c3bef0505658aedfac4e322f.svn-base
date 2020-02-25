@@ -1,0 +1,105 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.question;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionType;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionTypeService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResultData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * 试题类型控制器
+ * @author miaoyu
+ * @date 2018/6/29 16:32
+ */
+@RestController
+@RequestMapping("/qst/QuestionType")
+public class QuestionTypeController {
+    @Autowired
+    private QuestionTypeService questionTypeService;
+
+    @GetMapping("/list")
+    public ResponseInfo GetQuestionTypeList(Integer pageSize, Integer currentPage, HttpServletRequest request) throws ErrorInfo {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<QuestionType> retList;
+        if(pageSize == null&&currentPage == null){
+            retList = questionTypeService.findAll();
+        }else if(pageSize == null || currentPage == null){
+            return new ResponseInfo(requestInfo,
+                    "E_" + DateUtil.stampToDate(DateUtil.getCurrentTimeStamp()) + "_002",
+                    "请求参数异常", null);
+        }else {
+            if (pageSize <= 0 || currentPage <= 0) {
+                return new ResponseInfo(requestInfo,
+                        "E_" + DateUtil.stampToDate(DateUtil.getCurrentTimeStamp()) + "_002",
+                        "请求参数异常", null);
+            }
+            retList = questionTypeService.getQuestionTypeList(pageSize,currentPage);
+        }
+        if(retList == null){
+            return new ResponseInfo(requestInfo,
+                    "E_"+ DateUtil.stampToDate(DateUtil.getCurrentTimeStamp())+"_10_025",
+                    "查询试题类型失败",null);
+        }
+        ResponseInfo responseInfo = new ResponseInfo(requestInfo.getReqID(),requestInfo.getReqType(),retList);
+        return responseInfo;
+    }
+
+    @PostMapping("/edit")
+    public ResponseInfo editQuestionType(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParams = requestInfo.getReqParam();
+        QuestionType toUpdate = JSON.parseObject(reqParams.toJSONString(),QuestionType.class);
+        if(toUpdate.getQuestionTypeId() == null || "".equals(toUpdate.getQuestionTypeId())){
+            return new ResponseInfo(requestInfo,
+                    "E_" + DateUtil.stampToDate(DateUtil.getCurrentTimeStamp()) + "_002",
+                    "请求参数异常", null);
+        }
+        QuestionType questionType = questionTypeService.update(toUpdate);
+        if(questionType == null){
+            return new ResponseInfo(requestInfo,
+                    "E_"+ DateUtil.stampToDate(DateUtil.getCurrentTimeStamp())+"_10_026",
+                    "更新试题类型失败",null);
+        }
+        return new ResponseInfo(requestInfo.getReqID(),requestInfo.getReqType(),new ResultData(null));
+    }
+
+    @PostMapping("/add")
+    public ResponseInfo addQuestionType(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParams = requestInfo.getReqParam();
+        QuestionType toAdd = JSON.parseObject(reqParams.toJSONString(),QuestionType.class);
+        QuestionType questionType = questionTypeService.create(toAdd);
+        if(questionType == null){
+            return new ResponseInfo(requestInfo,
+                    "E_"+ DateUtil.stampToDate(DateUtil.getCurrentTimeStamp())+"_10_027",
+                    "新建试题类型失败",null);
+        }
+        return new ResponseInfo(requestInfo.getReqID(),requestInfo.getReqType(),new ResultData(null));
+    }
+
+    @PostMapping("/rmQuestionType")
+    public ResponseInfo deleteQuestionType(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParams = requestInfo.getReqParam();
+        QuestionType toDelete = JSON.parseObject(reqParams.toJSONString(),QuestionType.class);
+        String questionTypeId = toDelete.getQuestionTypeId();
+        if(questionTypeId == null || "".equals(questionTypeId)){
+            return new ResponseInfo(requestInfo,
+                    "E_" + DateUtil.stampToDate(DateUtil.getCurrentTimeStamp()) + "_002",
+                    "请求参数异常", null);
+        }
+        if(!questionTypeService.deleteQuestionTypeById(questionTypeId)){
+            return new ResponseInfo(requestInfo,
+                    "E_"+ DateUtil.stampToDate(DateUtil.getCurrentTimeStamp())+"_10_028",
+                    "删除试题类型失败",null);
+        }
+        return new ResponseInfo(requestInfo.getReqID(),requestInfo.getReqType(),new ResultData(null));
+    }
+}

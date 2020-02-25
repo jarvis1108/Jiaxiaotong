@@ -1,0 +1,69 @@
+/** @file
+    @description <br/> //  ******************************************************************
+                  <br/> //  * 功能说明：统计_获得世界排行榜用例
+                  <br/> //  * 创建标志：张洪波   2018年07月10日创建
+                  <br/> //  * 修改标志：
+                  <br/> //  *             标志编号：001   张洪波  2018年07月10日
+                  <br/> //  *             标志描述：
+                  <br/> //  * 附注说明：(1)目前世界排行榜和好友排行榜均在该文件中
+                  <br/> //  *           （2）本文件的接口清单如下：
+                  <br/> //  *              （a）GetMyRank：获得排行榜（含好友排行和世界排行榜）
+                  <br/> //  * 当前状态：【编码中】【编码完成】【测试完】【可以试用】【正式使用√】【作废停用】
+                  <br/> //  ******************************************************************
+ @author 暂
+ @copyright 暂无
+ **/
+
+/**
+ * @class
+ * @summary 实现功能:统计_获得世界排行榜用例
+ * @memberOf STA
+ * @description 附注说明:存在问题暂无(1)GetRankInWorld中需要用户来自的地区，数据库中需要该字段
+ */
+function STA_RNK_010()
+{
+    /**
+     @summary 实现功能:得到世界排行榜
+     @description **GET** /index/GetRankInWorld
+     @function
+     @param  {object} objParam                                        要传入的参数
+     @param  {string} objParam.reqID                                  要传入的参数.请求的ID    Example: 565656565656
+     @param  {string} objParam.reqType                                要传入的参数.请求类型，为STA_RNK_010_GetMyRank
+     @param  {object} objParam.reqUserInfo                            要传入的参数.当前用户信息
+     @param  {string} objParam.reqUserInfo.userId                     要传入的参数.当前用户信息.用户Id
+
+     @param  {object} objParam.reqParam                               要传入的参数.请求的业务数据
+     @param  {string} objParam.reqParam.userId                        要传入的参数.请求的业务数据.当前的用户ID
+     @param  {boolean} objParam.reqParam.isFriends                     要传入的参数.请求的业务数据.是否好友排行榜，真：好友排行榜，假：世界排行榜
+     @param  {number} objParam.reqParam.maxRecordCount                要传入的参数.请求的业务数据.排行榜的最大记录
+     @param  {boolean} objParam.reqParam.isAsc                         要传入的参数.请求的业务数据.是否升序，真：升序，假：降序,缺省降序
+
+     @param  {object} objParam.reqRefData                             要传入的参数.存放业务以外的其它信息 default: {}
+     @param  {object} objParam.pageInfo                               要传入的参数.分页信息(无)
+     @param  {object} objResult                                       返回结果
+     @param  {string} objResult.resID                                 返回结果.响应ID
+     @param  {string} objResult.reqID                                 返回结果.请求的ID    Example: 565656565656
+     @param  {string} objResult.reqType                               返回结果.请求类型，为STA_RNK_010_GetMyRank
+     @param  {Object} objResult.resResult                             返回结果.响应返回的业务数据
+
+     @param  {object} objResult.resResult.curData                     返回结果.响应返回的业务数据.当前业务结果 default: {}
+     @param  {array} objResult.resResult.curData.arrDataList          返回结果.响应返回的业务数据.当前业务结果.排行榜列表
+     @param  {object} objResult.resResult.curData.arrDataList【i】    返回结果.响应返回的业务数据.当前业务结果.排行榜列表.第i条记录
+     @param  {string} objResult.resResult.curData.arrDataList【i】.userID             返回结果.响应返回的业务数据.当前业务结果.排行榜列表【i】.年级类型ID
+     @param  {string} objResult.resResult.curData.arrDataList【i】.userNo             返回结果.响应返回的业务数据.当前业务结果.排行榜列表【i】.年级类型编码
+     @param  {string} objResult.resResult.curData.arrDataList【i】.userCode           返回结果.响应返回的业务数据.当前业务结果.排行榜列表【i】.年级类型编号
+     @param  {string} objResult.resResult.curData.arrDataList【i】.externalLevel       返回结果.响应返回的业务数据.当前业务结果.排行榜列表【i】.年级类型名称
+     @param  {string} objResult.resResult.curData.arrDataList【i】.wechatName          返回结果.响应返回的业务数据.当前业务结果.排行榜列表【i】.年级类型UI中显示文本
+
+     @param  {object} objResult.resResult.errorInfo                   返回结果.响应返回的业务数据.当前业务结果.出错信息(具体结构框架统一定义)
+     @param  {object} objResult.resRefData                            返回结果.存放业务以外的其它信息 (预留扩展，一般情况下不用),default: {}
+     @example  暂无
+     @version 1.0
+     **/
+    function GetMyRank(objParam)
+    {
+        var objResult = {};
+        return objResult;
+    }
+}
+

@@ -1,0 +1,59 @@
+<template name="battle-result$6d8d2674">
+  <view class="_div data-v-564cbbd6 result">
+    <image id="bg" src="/static/images/bg.png" class="_img data-v-564cbbd6"></image>
+    <image class="_img data-v-564cbbd6 winImg" wx:if="{{isUserWin}}" src="/static/images/battleResult/Challengesuccess.png"></image>
+    <image class="_img data-v-564cbbd6 winImg" wx:if="{{!isUserWin}}" src="/static/images/battleResult/Challengefailure.png"></image>
+    <view class="_div data-v-564cbbd6 info">
+      <view id="userInfo" class="_div data-v-564cbbd6" style=" {{'width:' + userWidth + '%'}}">
+        <image id="userIcon" src="{{userInfo.headImage}}" class="_img data-v-564cbbd6"></image>
+        <label id="userName" class="_span data-v-564cbbd6">{{userInfo.wechatName}}</label>
+        <label id="userAnswerNum" style="font-weight: bold;" class="_span data-v-564cbbd6">答对{{userAnswerNum}}题</label>
+        <view class="_div data-v-564cbbd6 mark" id="userScore">
+          <label class="_span data-v-564cbbd6">{{animatedUserMark}}</label>
+          <label style="font-size: 16px" class="_span data-v-564cbbd6">分</label>
+          <view class="_div data-v-564cbbd6">
+            <label class="_span data-v-564cbbd6 flag">—</label>
+          </view>
+        </view>
+      </view>
+      <view id="opponentInfo" class="_div data-v-564cbbd6" style=" {{'width:' + opponentWidth + '%'}}">
+        <image id="opponentIcon" src="{{opponentInfo.headImage}}" class="_img data-v-564cbbd6"></image>
+        <label id="opponentName" class="_span data-v-564cbbd6">{{opponentInfo.wechatName}}</label>
+        <label id="opponentAnswerNum" style="font-weight: bold;" class="_span data-v-564cbbd6">答对{{opponentAnswerNum}}题</label>
+        <view class="_div data-v-564cbbd6 mark" id="opponentScore">
+          <label class="_span data-v-564cbbd6">{{animatedOpponentMark}}</label>
+          <label style="font-size: 18px" class="_span data-v-564cbbd6">分</label>
+          <view class="_div data-v-564cbbd6">
+            <label class="_span data-v-564cbbd6 flag">—</label>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-564cbbd6 table">
+      <view style="display: table-row" class="_div data-v-564cbbd6">
+        <view style="display: table-cell;width: 50%" class="_div data-v-564cbbd6">金币：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-564cbbd6">+{{isUserWin?100:0}}</view>
+      </view>
+      <view style="display: table-row" class="_div data-v-564cbbd6">
+        <view style="display: table-cell;width: 50%" class="_div data-v-564cbbd6">绩点：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-564cbbd6">+{{userCorrectNum}}</view>
+      </view>
+      <view style="display: table-row" class="_div data-v-564cbbd6">
+        <view style="display: table-cell;width: 50%" class="_div data-v-564cbbd6">学点：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-564cbbd6">-{{userLearningPoit}}</view>
+      </view>
+      <view style="display: table-row" class="_div data-v-564cbbd6">
+        <view style="display: table-cell;width: 50%" class="_div data-v-564cbbd6">经验：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-564cbbd6">+{{isUserWin?10:5}}</view>
+      </view>
+    </view>
+    <image bindtap="handleProxy" class="_img data-v-564cbbd6 btn" id="continue" src="/static/images/battleResult/1.1Continue-btn.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+    <button wx:if="{{isUserWin}}" class="_button data-v-564cbbd6 btn" id="showoff" open-type="share">
+      <image class="_img data-v-564cbbd6 btn_img" src="/static/images/battleResult/1.1Showoff-btn.png"></image>
+    </button>
+    <button wx:if="{{!isUserWin}}" class="_button data-v-564cbbd6 btn" id="share" open-type="share">
+      <image class="_img data-v-564cbbd6 btn_img" src="/static/images/battleResult/Shareresults-btn.png"></image>
+    </button>
+    <label id="tip" class="_span data-v-564cbbd6">分享到微信群可获得50金币奖励</label>
+  </view>
+</template>

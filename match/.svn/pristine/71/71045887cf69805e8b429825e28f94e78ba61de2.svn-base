@@ -1,0 +1,71 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordUser;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 对战记录参与用户测试
+ * @author meiyu
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+
+public class MatchRecordUserRepositoryTest {
+    @Autowired
+    private MatchRecordUserRepository matchRecordUserRepository;
+
+    @Test
+    public void save() {
+        MatchRecordUser matchRecordUser = new MatchRecordUser();
+        matchRecordUser.setAcquiredGradeCoin(1);
+        matchRecordUser.setAcquiredGradePoint(12);
+        matchRecordUser.setAcquiredLearningPoint(13);
+        matchRecordUser.setCreateTime(Timestamp.valueOf("2018-06-27 12:00:02"));
+        matchRecordUser.setCreateUser("test");
+        matchRecordUser.setIsCreator(Byte.valueOf("1"));
+        matchRecordUser.setIsValid(Byte.valueOf("0"));
+        matchRecordUser.setLastUpdTime(Timestamp.valueOf("2018-06-27 12:00:02"));
+        matchRecordUser.setLastUpdUser("test");
+        matchRecordUser.setMatchRecordId("1111");
+        matchRecordUser.setMatchRecordNo("123456");
+        matchRecordUser.setMatchRecordUserId("1");
+        matchRecordUser.setUserNo("1");
+        matchRecordUser.setUserId("1");
+        matchRecordUser.setRemark("1");
+        matchRecordUser.setOriginalLearningPoint(1);
+        matchRecordUser.setOriginalGradePoint(1);
+        matchRecordUser.setOriginalGradeCoin(1);
+        MatchRecordUser result = matchRecordUserRepository.save(matchRecordUser);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void findAll() {
+        List<MatchRecordUser> matchRecordUserList = matchRecordUserRepository.findAll();
+        assertNotEquals(0, matchRecordUserList.size());
+        matchRecordUserList.forEach(System.out::println);
+
+    }
+    @Test
+    public void findAll1() {
+        PageRequest pageable = PageRequest.of(1, 1);
+        Page<MatchRecordUser> matchRecordUserPage = matchRecordUserRepository.findAll(pageable);
+        List<MatchRecordUser> matchRecordUserList = matchRecordUserPage.getContent();
+        assertNotEquals(0, matchRecordUserList.size());
+        matchRecordUserList.forEach(System.out::println);
+    }
+
+
+}

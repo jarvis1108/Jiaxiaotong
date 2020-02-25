@@ -1,0 +1,116 @@
+package com.dxtwangxiao.strongestsuperscholar.web.util;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\7\25 0025
+ */
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.Result;
+import com.yunpian.sdk.YunpianException;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.yunpian.sdk.util.HttpUtil.post;
+//        第一，传给你手机号，然后你生成随机6位验证码，然后通过一定规则把这手机号和验证码加密，使用日期相关（和token一样一天变一次）的秘钥。
+//        然后你调用发短信api把验证码发出去，这个接口返回一个上面加密后的结果。这个时候除了认证服务谁也不知道验证码是什么。
+//        然后用户这边如果填写了验证码，那么我们就把手机号和验证码以及接口拿到的密文发给你，你的接口使用同样的加密算法对用户输入的手机号和验证码加密，与密文比对，
+//        通过后发送token我的手机
+//        然后你做两个接口，一个是发短信，一个是短信验证码登录，还有一个是短信验证码注册
+
+
+public class CodeRes {
+
+    // 发送短信智能匹配模板发送接口的http地址
+    private static final String URI_SEND_SMS =
+            "https://sms.yunpian.com/v2/sms/single_send.json";
+
+    // 发送短信所需要的api-key
+    private static final String apikey="5062c8ec074ecc62f41b3150ee4623ef";
+
+    // 短信前缀
+    private static final String sign="【思播学堂】您的验证码是";
+
+
+
+
+    public static Result sentCode(String phoneNumber){
+        try{
+
+            /**
+             * 获取时间戳
+             */
+            String timestamp = getTimestamp();
+                String code = getRanCode();
+                String msg = sendSms(apikey, sign+code, phoneNumber);
+                JSONObject jsonObject = JSON.parseObject(msg);
+                UserCode userCode=new UserCode();
+                userCode.setCode(code);
+                userCode.setPhoneNumber(phoneNumber);
+                userCode.setTimeStamp(timestamp);
+                if(jsonObject.getIntValue("code")==0)
+                    return new Result(200 ,userCode);
+                if(jsonObject.getIntValue("code")==400)//验证码类短信1小时内同一手机号发送次数不能超过3次
+                    return new Result(406,"please do not get code too often ! please wait an hour.");
+                String detail = jsonObject.getString("detail");
+                return new Result(400,detail);
+
+        }catch (YunpianException e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    /**
+     *
+     * @Title:getTimestamp
+     * @Description:获取时间戳
+     * @param:
+     * @return:String
+     */
+    public static String getTimestamp() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String date = sdf.format(new Date());
+        return date;
+    }
+
+
+
+
+    /*
+     * 智能匹配模板接口发短信
+     *
+     * @param apikey apikey
+     * @param text   　短信内容
+     * @param mobile 　接受的手机号
+     * @return json格式字符串
+     * @throws YunpianException y
+    */
+    private static String sendSms(String apikey, String text,
+                                  String mobile) throws YunpianException{
+        Map< String, String > params = new HashMap<String, String>(){
+            {
+                put("apikey", apikey);
+                put("text", text);
+                put("mobile", mobile);
+            }
+        };
+        return post(URI_SEND_SMS, params);
+    }
+
+    /*
+     * 得到5位随机码
+     *  @return
+     */
+
+    private static String getRanCode(){
+        return String.valueOf((int)((Math.random()*9+1)*100000));
+    }
+}
+

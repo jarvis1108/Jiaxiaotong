@@ -1,0 +1,197 @@
+<template>
+	<div class="bs-container-topup-div">
+		<img class="bs-bg-img" src="/static/images/bg.png">
+		
+		<div class="bs-productList-div">
+			<div class="bs-flex-div">
+				<div class="box" v-for="item in productList" :key="item">
+					<div class="bs-goodname-div">
+						{{ item.ProductName }}
+					</div>
+					<!-- <a :href=" url + '?name=' + item.ProductName + '&price=' + item.Price " > -->
+						<!-- <img class="bs-goodPhoto-img" :src="item.Photo" @click='pay(item.productId)'/> -->
+            <img class="bs-goodPhoto-img" :src="item.Photo" @click="showPayF(item.productId,item.ProductName,item.Price)"/>
+					<!-- </a> -->
+					
+					<div class="bs-goodprice-div">
+						{{ item.Price }}
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="bs-memory-div">
+			<a style="position:absolute;width:20%;left:40%" href="../topup-record/main">充值记录</a>
+		</div>
+    <!-- <payTip v-if="showPay" @listenCloseDialog="showPay = false"></payTip> -->
+    <payTip v-if="showPay" @listenCloseDialog="showPay = false" :ProId= "productId" :ProName = "productName" :ProPrice= "productPrice"></payTip>
+	</div>
+</template>
+
+<script>
+import payTip from "../../components/payTip";
+import wxs from "../../utils/wx";
+export default {
+  components: { payTip  },
+  data() {
+    return {
+      productId:"",
+      productName:"",
+      productPrice:"",
+      showPay: false,
+      showSetting: false, //是否显示设置弹窗
+      productList: [],
+      // productList:[{
+      // 	ProductName:"学点月卡",
+      // 	Price:"10元/月",
+      // 	Photo:"/static/images/topup/mooncard_icon@3x.png"
+      // },
+      // {
+      // 	ProductName:"学点年卡",
+      // 	Price:"70元/年",
+      // 	Photo:"/static/images/topup/yearcard_icon@3x.png"
+      // },
+      // {
+      // 	ProductName:"学点日卡",
+      // 	Price:"2元/日",
+      // 	Photo:"/static/images/topup/daycard_icon@3x.png"
+      // },
+      // {
+      // 	ProductName:"学点1000",
+      // 	Price:"1元",
+      // 	Photo:"/static/images/topup/Learnsomethinglittle_icon@3x.png"
+      // },
+      // {
+      // 	ProductName:"学点3000",
+      // 	Price:"3元",
+      // 	Photo:"/static/images/topup/Learnsomething_icon@3x.png"
+      // },
+      // {
+      // 	ProductName:"学点5000",
+      // 	Price:"5元",
+      // 	Photo:"/static/images/topup/Learnsomethingmore_icon@3x.png"
+      // },
+      // {
+      // 	ProductName:"金币1000",
+      // 	Price:"1元",
+      // 	Photo:"/static/images/topup/Lessgold_icon@3x.png"
+      // },
+      // {
+      // 	ProductName:"金币3000",
+      // 	Price:"3元",
+      // 	Photo:"/static/images/topup/Goldcoin_icon@3x.png"
+      // },
+      // {
+      // 	ProductName:"金币5000",
+      // 	Price:"5元",
+      // 	Photo:"/static/images/topup/manygoldcoins_icon@3x.png"
+      // }],
+      url: "/pages/payment/main"
+    };
+  },
+  methods: {
+    showPayF(productId,productName,productPrice){
+      console.log(productId);
+      this.productId = productId;
+      this.productName = productName;
+      this.productPrice = productPrice;
+      this.showPay = true;
+      console.log(this.productId);
+      console.log(this.showPay);
+    }
+  },
+  async onLoad(){
+	  this.productList = await this.$store.dispatch('getProductList');
+  }
+};
+</script>
+
+<style scoped>
+.bs-bg-img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.bs-container-topup-div {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.bs-productList-div {
+  top: 3vh;
+  width: 90.66vw;
+  height: 73.01vh;
+  left: 4.67vw;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.bs-flex-div {
+  width: 88%;
+  left: 6%;
+  top: 6.52%;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+}
+
+.box {
+  flex: 0 0 auto;
+  height: 14.29vh;
+  width: 21vw;
+  margin-bottom: 3.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bs-goodname-div {
+  flex: 0 0 auto;
+  width: 20.26vw;
+  height: 2.22vh;
+  border-radius: 14rpx;
+  background-color: rgb(79, 111, 198);
+  color: #ffffff;
+  text-align: center;
+  font-size: 20rpx;
+  font-family: "PingFang-SC-Bold";
+  margin-bottom: 0.63vh;
+}
+
+.bs-goodPhoto-img {
+  flex: 0 0 auto;
+  width: 14.4vw;
+  height: 14.4vw;
+}
+
+.bs-goodprice-div {
+  flex: 0 0 auto;
+  width: 20.26vw;
+  height: 1.9vh;
+  color: rgb(70, 82, 159);
+  text-align: center;
+  font-size: 1.9vh;
+  font-family: "PingFang-SC-Bold";
+}
+
+.bs-memory-div {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: rgb(158, 200, 252);
+  margin: auto;
+  top: 77vh;
+  position: relative;
+  text-decoration: underline;
+  font-family: "PingFang-SC-Bold";
+}
+</style>

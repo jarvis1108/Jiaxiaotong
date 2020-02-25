@@ -1,0 +1,60 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.dao.CouponDetailRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.CouponDetail;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.service.CouponDetailService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+/**
+*@author: meiyu
+*@Date: 2018/7/5 11:34
+*@description 优惠券使用明细列表实现
+*/
+@Service
+
+public class CouponDetailServiceImpl implements CouponDetailService {
+
+    @Autowired
+    private CouponDetailRepository couponDetailRepository;
+
+    /**
+     * 查询所有优惠券使用明细
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    @Override
+    public List<CouponDetail> getCouponDetailList(Integer pageSize, Integer currentPage) {
+        if(pageSize == null || currentPage == null || pageSize<=0 || currentPage<=0){
+            return null;
+        }else {
+            Pageable pageable = PageRequest.of(currentPage,pageSize);
+            Page<CouponDetail> page = couponDetailRepository.findAll(pageable);
+            return page.getContent();
+        }
+    }
+
+    /**
+     * 新增优惠券使用明细
+     * @param newCouponDetail
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public CouponDetail create(CouponDetail newCouponDetail) throws ErrorInfo {
+        if (newCouponDetail == null)
+            throw new ErrorInfo("E_201807300855_01_009","优惠券信息为空",null);
+        return couponDetailRepository.save(newCouponDetail);
+
+    }
+}

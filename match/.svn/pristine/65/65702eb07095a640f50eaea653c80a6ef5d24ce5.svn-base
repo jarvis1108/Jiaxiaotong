@@ -1,0 +1,47 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.OrderRecord;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @Author: meiyu
+ * @Date: 2018/7/5 11:45
+ * @Description 订单记录服务层
+ */
+public interface OrderRecordService {
+
+    /**
+     * 分页查询所有订单记录
+     *
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<OrderRecord> getOrderRecordList(Integer pageSize, Integer currentPage);
+
+    /**
+     * 新增一条订单记录
+     *
+     * @param orderRecord
+     * @return
+     * @throws ErrorInfo
+     */
+    OrderRecord create(OrderRecord orderRecord) throws ErrorInfo;
+
+    /**
+     * 根据用户ID查询订单记录
+     *
+     * @param userId
+     * @return
+     */
+    List<OrderRecord> findAllByUserId(String userId) throws ErrorInfo;
+    /**
+     * 根据用户ID查询订单记录
+     *
+     * @param userId
+     * @return
+     */
+    List<OrderRecord> getByUserIdAndPurchaseWay(String userId, Byte purchaseWay, Integer curPage, Integer pageSize) throws ErrorInfo;
+}

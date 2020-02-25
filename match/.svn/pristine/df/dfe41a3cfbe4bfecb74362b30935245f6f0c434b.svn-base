@@ -1,0 +1,235 @@
+<template>
+	<div class="st-battle-main-container">
+		<groupBattleWaiting v-if="step == '0'" 
+		  :playerList="playerList" 
+		  :playerNumber="playerNumber" 
+		  :user="userInfo" 
+		  :close="step == '0'" 
+		  :matchId="matchId" 
+		  :isCreator="isCreator"
+		  @playerList="changePlayer"
+		  @giveUpBattle="giveUpBattle"
+          @beginBattle="startBattle">
+		</groupBattleWaiting>
+
+		<groupBattle 
+		  v-else-if="questionIndex < 6" 
+		  :userInfo="userInfo" 
+	  	  :playerList="playerList" 
+		  :question="question" 
+		  :questionIndex="questionIndex" 
+		  :nextQuestion="sendMessage" 
+		  :waitUser="waitUser" 
+		  @userAnswered="changeUserAnswer">
+		</groupBattle>
+
+		<groupBattleResult 
+		  :userInfo="userInfo" 
+		  :playerList="playerList" 
+		  :userScore="userScore" 
+		  :userCorrectNum="userCorrectNum" 
+		  :userLearningPoit="userLearningPoit" 
+		  :Score="Score" 
+		  :matchId="matchId" v-else>
+		</groupBattleResult>
+	</div>
+</template>
+
+<script>
+import groupBattleWaiting from "../../components/group-battle-waiting.vue";
+import groupBattle from "../../components/group-battle.vue";
+import groupBattleResult from "../../components/group-battle-result.vue";
+import wxs from "../../utils/wx";
+import { socketUrl } from "../../config";
+import { getuuid } from "../../utils/RequestObj";
+export default {
+  components: {
+    groupBattleWaiting, //加载页
+    groupBattle, //准备页
+    groupBattleResult //对战页
+  },
+  data() {
+    return {
+      isCreator: true, //是否为创建者
+      userInfo: {}, //用户信息
+      playerList: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}], //对手信息
+      playerNumber: 0, //玩家人数
+      Score: [], //所有成绩
+      matchId: "", //战局id
+      step: "A", //标明战局状态，与返回消息类型匹配
+      questionIndex: 0, //题目序号
+      question: {}, //试题
+      userScore: 0, //用户分数
+      userCorrectNum: 0, //用户答对题数
+      userLearningPoit: 0, //用户消耗学点数
+      userAnswer: {
+        //用户单题的答案信息
+        answer: "",
+        timeLeft: ""
+      },
+      waitUser: true, //等待用户答题
+      waitPlayer: true, //等待其他用户
+      socket: null //网络连接
+    };
+  },
+  async onLoad(option) {
+    this.step = "0";
+    //进入该页面则创建一个战局，又客户端生成战局Id
+    this.userInfo = this.$store.state.userInfo;
+    this.isCreator = parseInt(option.isCreator) === 1 ? true : false;
+    console.log("参数传递的战局id是：" + option.matchId);
+    if (option.matchId) {
+      this.matchId = option.matchId;
+      console.log("拿到参数传递的战局id是：" + this.matchId);
+    } else {
+      this.matchId = await this.$store.dispatch("createBattle", {
+        battleType: 2
+      });
+      console.log("创建的战局id是：" + this.matchId);
+    }
+    console.log("战局Id是：" + this.matchId);
+    //建立webSocket
+    this.startMatch();
+  },
+  watch: {
+    questionIndex() {
+      this.opponentAnswer = {
+        score: 0,
+        answer: ""
+      };
+    }
+  },
+  methods: {
+    startBattle() {
+      this.questionIndex += 1;
+      wx.sendSocketMessage({
+        data: JSON.stringify({
+          msgID: getuuid(),
+          msgType: "A-0",
+          msgData: {
+            matchId: this.matchId
+          },
+          msgDesc: "请求开始对战"
+        })
+      });
+    },
+    giveUpBattle() {
+      wx.closeSocket();
+      wxs.navigateBack(0);
+    },
+    changePlayer(data) {
+      //修改数组长度
+      this.playerList.splice(data);
+    },
+    changeUserAnswer(data) {
+      this.userAnswer = data;
+      this.userLearningPoit += 10 - data.timeLeft;
+      this.waitUser = false;
+      this.sendMessage();
+    },
+    startMatch() {
+      let that = this;
+      wx.connectSocket({
+        url: `${socketUrl}/group?userId=${this.userInfo.userId}&matchId=${
+          this.matchId
+        }`
+      });
+
+      wx.onSocketOpen(res => {
+        console.log("连接已建立");
+      });
+
+      wx.onSocketMessage(res => {
+        this.receiveMessage(res);
+      });
+
+      wx.onSocketClose(function(res) {
+        console.log("Websocket关闭");
+      });
+    },
+    receiveMessage(res) {
+      console.log("结果:" + JSON.parse(res));
+      var result = JSON.parse(res.data);
+      this.step = result.msgType;
+      if (result.msgType === "A" && this.playerNumber < 10) {
+        console.log(JSON.parse(result.msgData.curData.userList));
+        this.playerList = result.msgData.curData.userList;
+        this.playerList.push(result.msgData.curData.user);
+        this.playerNumber = this.playerList.length;
+        this.matchId = result.msgData.curData.matchId;
+      } else if (result.msgType === "A-0") {
+        console.log("开始对战");
+      } else if (result.msgType === "B") {
+        console.log("拿到题目");
+        this.question = result.msgData.curData.question;
+      } else if (result.msgType === "D") {
+        this.waitPlayer = false;
+        sendMessage();
+        //用户答对
+        if (this.userAnswer.answer === this.question.answer) {
+          this.userCorrectNum += 1;
+        }
+      } else if (result.msgType === "E") {
+        this.Score = result.msgData.curData.matchScoreMap;
+        for (let key of this.Score.keys()) {
+          if (key === this.UserInfo.userId) {
+            this.userScore = this.Score.get(key);
+          }
+        }
+      }
+    },
+    sendMessage() {
+      if (!this.waitUser && !this.waitPlayer) {
+        this.waitPlayer = true;
+        this.questionIndex += 1;
+        wx.sendSocketMessage({
+          data: JSON.stringify({
+            msgID: getuuid(),
+            msgType: "A",
+            msgData: {
+              matchId: this.matchId,
+              no: this.questionIndex
+            },
+            msgDesc: "请求出题"
+          })
+        });
+      }
+      //用户答题完毕，计算分数
+      if (this.waitUser === false) {
+        wx.sendSocketMessage({
+          data: JSON.stringify({
+            msgID: getuuid(),
+            msgType: "B",
+            msgData: {
+              matchId: this.matchId,
+              correctAnswer: this.question.answer,
+              userAnswer: this.userAnswer.answer,
+              timeLeft: this.userAnswer.timeLeft,
+              no: this.questionIndex
+            },
+            msgDesc: "请求计算当前分数和返回结果"
+          })
+        });
+      }
+    }
+  },
+  onShareAppMessage(res) {
+    console.log("分享的战局id是：" + this.matchId);
+    let that = this;
+    if (res.from === "button") {
+      console.log(res.target);
+    }
+    return {
+      title: "最强学霸分享",
+      desc: this.userInfo.wechatName + "向你发出了智商pk，点击应战！",
+      path: `/pages/index/main?matchId=${
+        this.matchId
+      }&isCreator=0&isGroup=true`,
+      imageUrl: "/static/images/friendPk/share-bg.png"
+    };
+  }
+};
+</script>
+
+<style scoped>
+</style>

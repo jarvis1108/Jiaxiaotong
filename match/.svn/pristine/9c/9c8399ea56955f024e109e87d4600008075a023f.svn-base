@@ -1,0 +1,52 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminRole;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 管理员角色接口
+ * <p>
+ * Created by Devin
+ * 2018-07-02 上午 11:23
+ */
+public interface AdminRoleService {
+    /**
+     * 分页获取管理员角色信息列表
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<AdminRole> getAdminRoleList(Integer pageSize, Integer currentPage);
+
+    /**
+     * 获取管理员角色信息列表
+     * @return
+     */
+    List<AdminRole> getAdminRoles();
+
+    /**
+     * 新建管理员角色信息
+     * @param newAdminRole
+     * @return
+     * @throws ErrorInfo
+     */
+    AdminRole create(AdminRole newAdminRole) throws ErrorInfo;
+
+    /**
+     * 更新管理员角色信息
+     * @param updatedAdminRole
+     * @return
+     * @throws ErrorInfo
+     */
+    AdminRole update(AdminRole updatedAdminRole) throws ErrorInfo;
+
+    /**
+     * 根据管理员角色ID删除管理员角色
+     * @param adminRoleId
+     * @return
+     * @throws ErrorInfo
+     */
+    boolean deleteByAdminRoleId(String adminRoleId) throws ErrorInfo;
+}

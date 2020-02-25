@@ -1,0 +1,282 @@
+<template>
+  <div>
+    <div class="header">
+      <div class="left">
+        <img class="left-img" src="/static/images/judy.jpg"/>
+        <div class="left-name">judy&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class="left-mark">{{animatedMark}}</div>
+      </div>
+
+      <div class="right">
+        <img class="right-img" src="/static/images/nick.jpg"/>
+        <div class="right-name">nick&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class="right-mark">{{opponentMark}}</div>
+      </div>
+
+      <div class="clock">
+        <div class="time">{{time}}</div>
+      </div>
+    </div>
+    <img class="question_bg" src="/static/images/question_bg.png"/>
+    <div class="question">
+      <div class="question">以下描述正确的是：</div>
+      <ul class="res-list">
+        <li :class="item.style"
+            v-for="item in options"
+            @click="handleClick(item)" :key="item">
+          <div>{{item.value}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script>
+  import {TweenLite} from "../assests/js/TweenMax.min"
+
+  export default {
+    name: "competing-select",
+    props: {
+      data: {  //题目及选项信息
+        type: Object,
+        require: true
+      },
+      self: {    //用户信息
+        type: Object,
+        require: true
+      },        //对手信息
+      opponent: {
+        type: Object,
+        require: true
+      }
+    },
+    data() {
+      return {
+        time: 20,           //倒计时数字
+        options: [
+          {
+            label: 'A',
+            style: 'ordinary',
+            value: '巴拉拉'
+          },
+          {
+            label: 'B',
+            style: 'ordinary',
+            value: '小魔仙'
+          },
+          {
+            label: 'C',
+            style: 'ordinary',
+            value: '哆啦A梦'
+          },
+          {
+            label: 'D',
+            style: 'ordinary',
+            value: '超级赛亚人'
+          },
+        ],     //选项信息
+        allowClick: true,    //选项是否可选
+        waitSelect: true,    //等待玩家选择
+        waitOpponent: true,  //等待对手选择
+        timer: null,         //timeout对象，用于判别答题时间是否截至
+        userAnswer: '',      //用户选择的答案
+        opponentAnswer:'',   //对手选择的答案
+        rightAnswer: 'B',    //正确答案
+        userMark: 0,         //用户分数
+        opponentMark: 0,     //对手分数
+        Mark:0,
+      }
+    },
+    watch: {
+      userMark(newVal) {
+        TweenLite.to(this.$data, 0.5, {Mark: newVal});
+      }
+    },
+    mounted() {
+      this.clock();
+    },
+    computed:{
+      animatedMark(){
+        return this.Mark.toFixed(0);
+      }
+    },
+    methods: {
+      clock() {  // 倒计时
+        this.timer = setTimeout(() => {
+          if (this.time > 0) {
+            this.time -= 1;
+            this.clock();
+          } else {
+            this.clearClock();
+          }
+        }, 1000)
+      },
+      handleClick(item) {
+        if (this.allowClick) {
+          this.allowClick = false;
+          this.userAnswer = item.label;
+          this.waitSelect = false;
+          this.selectResult();  //即时处理用户选择并设置样式
+        }
+      },
+      clearClock() {   //时间到
+        clearTimeout(this.timer);
+        this.timer = null;
+        this.allowClick = false;
+      },
+      selectResult() {
+        if (this.waitOpponent && this.time > 0) {
+          this.options.forEach((item) => {
+            if (this.userAnswer == item.label) {
+              if (this.userAnswer == this.rightAnswer) {
+                this.userMark += 200 * (this.time / 20);
+                this.$set(item, 'style', 'left-success');
+              } else {
+                this.$set(item, 'style', 'left-error');
+              }
+            }
+          })
+        }
+      },
+      questionResult(){   //单次答题结束后(时间到/双方答题完毕)显示结果
+        this.options.forEach((item)=>{
+          if(this.rightAnswer == item.label){   //该选项为正确选项
+            if(this.userAnswer == item.label && this.opponentAnswer == item.label){
+              this.$set(item,'style','left-success right-success');
+            }else if(this.userAnswer != item.label && this.opponentAnswer == item.label){
+              this.$set(item,'style','right-success');
+            }else if(this.userAnswer == item.label && this.opponentAnswer != item.label){
+              this.$set(item,'style','left-success');
+            }else{
+              this.$set(item,'style','success');
+            }
+          }else {   //该选项不是正确选项
+            if(this.userAnswer == item.label && this.opponentAnswer == item.label){
+              this.$set(item,'style','left-error right-error');
+            }else if(this.userAnswer != item.label && this.opponentAnswer == item.label){
+              this.$set(item,'style','right-error');
+            }else if(this.userAnswer == item.label && this.opponentAnswer != item.label){
+              this.$set(item,'style','left-error');
+            }else{}
+          }
+        })
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .left-success, .right-success, .both-success {
+    line-height: 70px;
+    border-radius: 20px;
+    text-align: center;
+    background: #9bc736;
+    color: #fff;
+  }
+
+  .left-success:before {
+    left: .15rem;
+  }
+
+  .right-success:after {
+    right: .15rem;
+  }
+
+  .left-error, .right-error {
+    line-height: 70px;
+    border-radius: 20px;
+    text-align: center;
+    background: #ea6c5f;
+    color: #fff;
+  }
+
+  .left-error:before {
+    left: 10%;
+  }
+
+  .right-error:after {
+    right: .15rem;
+  }
+
+  .success {
+    background: #4f8dff;
+    color: #fff;
+  }
+
+  .clock {
+    position: absolute;
+    top: 2%;
+    left: 45%;
+    font-size: 36px;
+    color: darkgrey;
+  }
+
+  .right-name, .left-name, .right-mark, .left-mark {
+    color: white;
+    font-size: 18px;
+  }
+
+  .res-list {
+    color: rebeccapurple;
+    background: white;
+    font-size: 18px;
+    position: absolute;
+    top: 100px;
+    width: 150%;
+    left: -12%;
+    line-height: 70px;
+    height: 60%;
+  }
+
+  .ordinary {
+    line-height: 70px;
+    text-align: center;
+    border-top: 1px solid #000;
+  }
+
+  .question_bg {
+    position: absolute;
+    top: 15%;
+    left: 2%;
+    height: 80%;
+    width: 95%;
+  }
+
+  .question {
+    position: absolute;
+    top: 18%;
+    left: 15%;
+    width: 200px;
+    color: white;
+  }
+
+  .left, .right {
+    position: absolute;
+    top: 2%;
+    width: 30%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+  }
+
+  .left-img, .right-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+  }
+
+  .left {
+    left: 5%;
+    background: #477fe6;
+  }
+
+  .right {
+    right: 5%;
+    background: #e64756;
+  }
+
+</style>

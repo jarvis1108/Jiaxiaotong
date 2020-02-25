@@ -1,0 +1,131 @@
+<template>
+	<div class="bs-container-groupCompetition-div">
+		<img class="bs-bg-img" src="/static/images/bg.png">
+		<span v-if="!waitPlayer" class="bs-text-span">等待群成员完成答题</span>
+    <!-- waitPlayer = false -->
+    
+		<div class="bs-questionCard-component" @click="waitPlayer = false">
+			<questionCard :showQuestion="showQuestion" :order="order" :question="question"></questionCard>
+		</div>
+		
+		<div class="bs-cutDown-component" >
+			<cutDown :showQuestion="showQuestion" :order="order" :showOrder="true"></cutDown>
+		</div>
+		
+	</div>
+</template>
+
+<script>
+import cutDown from "@/components/cut_down";
+import questionCard from "@/components/questioncard";
+import wxs from '../../utils/wx';
+export default {
+  components: {
+    cutDown,
+    questionCard
+  },
+  data() {
+    return {
+      order: 0,
+      interval:null,  //计时器
+      showQuestion: false, //控制题目的显示
+      waitPlayer:true,  //用户是否答题完毕
+      question: {
+        type: 1,
+        rightAnswer: "B",
+        title: "选择题",
+        content: "题干"
+      },
+      playerList:[],
+      battleId:'', //战局Id
+    };
+  },
+  methods: {
+    change(flag) {
+      if (flag) {
+        this.order++;
+        clearInterval(this.interval);
+        this.waitPlayer = true;
+        this.setInterval();
+        if (this.order > 5) {
+          //答满5题，显示结果
+          clearInterval(this.interval);
+          wxs.redirectTo(`../group-battle-result/main?playerList=${JSON.stringify(this.playerList)}&battleId=${this.battleId}`);
+          this.order = 0;
+        }
+        //测试用，切换题目类型
+        if (this.question.type == 1) {
+          this.question.type = 2;
+        } else {
+          this.question.type = 1;
+        }
+        //修改题目显示状态
+        this.showQuestion = false;
+        console.log("order is change" + this.order);
+        setTimeout(() => {
+          this.showQuestion = true;
+          console.log("显示题目");
+        }, 2000);
+      }
+    },
+    setInterval() {
+      //设置定时：2500ms-倒计时前动画时间，10000ms=10s-倒计时时间
+      this.interval = setInterval(() => {
+        this.change(this.showQuestion);
+      }, 12500);
+    }
+  },
+  onLoad(option){
+    this.playerList = JSON.parse(option.playerList);
+    this.battleId = option.battleId;
+    this.interval = null;
+    this.waitPlayer = true;
+    this.change(true);
+  }
+};
+</script>
+
+<style scoped>
+.bs-container-groupCompetition-div {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.bs-bg-img {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.bs-cutDown-component {
+  height: 8.89%;
+  width: 14.4%;
+  top: 18.1%;
+  left: 42.8%;
+  position: absolute;
+}
+
+.bs-questionCard-component {
+  width: 85.33%;
+  height: 70.79%; /**/
+  top: 22%;
+  left: 7.33%;
+  position: absolute;
+}
+
+.bs-text-span {
+  text-align: center;
+  width: 100%;
+  top: 10.79%;
+  height: 36rpx;
+  left: 0;
+  font-size: 36rpx;
+  font-family: "PingFang-SC-Bold";
+  position: absolute;
+  color: #ffffff;
+  animation: zoomOut .5s;
+}
+</style>

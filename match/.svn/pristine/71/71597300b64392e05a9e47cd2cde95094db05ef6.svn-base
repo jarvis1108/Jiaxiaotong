@@ -1,0 +1,62 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserGPDetail;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
+/**
+ * 用户绩点流水明细服务单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 05:24
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserGPDetailServiceTest {
+
+    @Autowired
+    private UserGPDetailService userGPDetailService;
+
+    @Test
+    public void getUserGPDetailList() throws ErrorInfo {
+        String userId = "1";
+        List<UserGPDetail> userGPDetailList = userGPDetailService.getUserGPDetailList(userId, 2, 1);
+
+        assertNotEquals(0, userGPDetailList.size());
+        userGPDetailList.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void getAllUserGPDetails() throws ErrorInfo {
+        String userId = "1";
+        List<UserGPDetail> userGPDetailList = userGPDetailService.getAllUserGPDetails(userId);
+
+        assertNotEquals(0, userGPDetailList.size());
+        userGPDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        UserGPDetail userGPDetail = new UserGPDetail();
+        userGPDetail.setUserGpDetailId("4");
+        userGPDetail.setUserGpDetailNo("4");
+        userGPDetail.setUserId("1");
+        userGPDetail.setUserNo("1");
+        userGPDetail.setAcquiredAmount(100);
+
+        UserGPDetail result = userGPDetailService.create(userGPDetail);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+}

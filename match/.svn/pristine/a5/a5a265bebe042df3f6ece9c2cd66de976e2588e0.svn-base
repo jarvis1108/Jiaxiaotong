@@ -1,0 +1,26 @@
+<template name="index$296b7eab">
+  <view class="_div data-v-2f5818a0 st-battle-object-select-container">
+    <image class="_img data-v-2f5818a0 st-battle-object-select-bg" src="/static/images/bg@2x.png"></image>
+    <view class="_div data-v-2f5818a0 st-battle-object-select-header">
+      <image class="_img data-v-2f5818a0 st-battle-object-select-header-bg" src="/static/images/battleObjectSelect/Selectdiscipline_bg@2x.png"></image>
+      <label class="_span data-v-2f5818a0 st-battle-object-select-header-span">选择对战学科</label>
+      <image bindtap="handleProxy" class="_img data-v-2f5818a0 st-battle-object-select-header-btn" src="/static/images/battleObjectSelect/Selectall_btn@2x.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+    </view>
+    <view class="_div data-v-2f5818a0 st-battle-object-select-content">
+      <view class="_div data-v-2f5818a0 st-battle-object-select-flex-div">
+        <view class="_div data-v-2f5818a0 st-battle-object-select-box" wx:key="item" key="{{item}}" wx:for="{{objectList}}" wx:for-index="index" wx:for-item="item">
+          <view class="_div data-v-2f5818a0 st-battle-object-select-photo-img-div">
+            <image class="_img data-v-2f5818a0 st-battle-object-select-photo-img" src="{{item.photo}}"></image>
+          </view>
+          <view class="_div data-v-2f5818a0 st-battle-object-select-objectname-div"> {{ item.name }} </view>
+        </view>
+        <view class="_div data-v-2f5818a0 st-battle-object-select-box">
+          <view bindtap="handleProxy" class="_div data-v-2f5818a0 st-battle-object-select-addphoto-img-div" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+            <image class="_img data-v-2f5818a0 st-battle-object-select-photo-img" src="/static/images/battleObjectSelect/Plussign_icon@2x.png"></image>
+          </view>
+          <view class="_div data-v-2f5818a0 st-battle-object-select-objectname-div" style="color:rgb(214,214,214);"> 添加 </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

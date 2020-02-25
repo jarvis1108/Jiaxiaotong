@@ -1,0 +1,80 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.CourseInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.CourseInfoService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * @Author: meiyu
+ * @Date: 2018/7/13 16:49
+ */
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class CourseInfoServiceImplTest {
+    @Autowired
+    private CourseInfoService courseInfoService;
+
+    @Test
+    public void getCourseInfoList() throws ErrorInfo {
+        List<CourseInfo> courseInfoList = courseInfoService.getCourseInfoList(1,1);
+        assertNotEquals(0, courseInfoList.size());
+        courseInfoList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll() {
+        List<CourseInfo> courseInfos = courseInfoService.findAll();
+        assertNotEquals(0,courseInfos.size());
+        courseInfos.forEach(System.out::println);
+    }
+
+    @Test
+    public void create() throws ErrorInfo{
+        CourseInfo courseInfo = new CourseInfo();
+        courseInfo.setCreateUser("1");
+        courseInfo.setCourseName("test");
+        courseInfo.setCourseId("1");
+        courseInfo.setIsValid(Byte.valueOf("1"));
+        courseInfo.setCourseCode("11");
+        courseInfo.setCourseNo("2");
+        courseInfo.setCourseShortName("t");
+        courseInfo.setCreateTime(Timestamp.valueOf("2018-07-16 12:22:11"));
+        courseInfo.setLastUpdTime(Timestamp.valueOf("2018-07-16 12:22:11"));
+        courseInfo.setLastUpdUser("my");
+        courseInfo.setRemark("this is test");
+        CourseInfo result = courseInfoService.create(courseInfo);
+        Assert.assertNotNull(result);
+        System.out.println(result);
+
+
+    }
+
+    @Test
+    public void update() throws ErrorInfo{
+        CourseInfo courseInfo = new CourseInfo();
+        courseInfo.setRemark("update");
+        courseInfo.setCourseId("1");
+        CourseInfo result = courseInfoService.update(courseInfo);
+
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteByCourseId() throws ErrorInfo{
+        String courseId = "1";
+        boolean result = courseInfoService.deleteByCourseId(courseId);
+        assertTrue(result);
+    }
+}

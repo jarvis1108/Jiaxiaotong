@@ -1,0 +1,71 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionMultipleChoiceForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionMultipleChoiceForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionMultipleChoiceForLibService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:    私有题库多选题服务实现类
+ * @date 2018\8\15 0015
+ */
+@Service
+public class QuestionMultipleChoiceForLibServiceImpl implements QuestionMultipleChoiceForLibService {
+    @Autowired
+    private QuestionMultipleChoiceForLibRepository repository;
+    @Override
+    public QuestionMultipleChoiceForLib getQuestionMultipleChoiceForLibByQuestionForLibId(String questionForLibId) throws ErrorInfo {
+        QuestionMultipleChoiceForLib questionMultipleChoiceForLib=repository.findByQuestionForLibId(questionForLibId);
+        if(questionMultipleChoiceForLib==null)
+        {
+            throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_028","私有题库多选题不存在",null);
+        }
+        return questionMultipleChoiceForLib;
+    }
+
+    @Override
+    public List<QuestionMultipleChoiceForLib> findAll() {
+        return repository.findAll();
+    }
+
+    @Transactional
+    @Override
+    public QuestionMultipleChoiceForLib create(QuestionMultipleChoiceForLib questionMultipleChoiceForLib) throws ErrorInfo {
+        if(questionMultipleChoiceForLib==null){
+            throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_029","私有题库多选题为空",null);
+        }
+        return repository.save(questionMultipleChoiceForLib);
+    }
+    @Transactional
+    @Override
+    public boolean deleteQuestionMultipleChoiceForLibByQuestionForLibId(String questionForLibId) throws ErrorInfo {
+       QuestionMultipleChoiceForLib questionMultipleChoiceForLib=repository.findByQuestionForLibId(questionForLibId);
+       if(questionMultipleChoiceForLib==null)
+       {
+           throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_028","私有题库多选题不存在",null);
+       }
+       questionMultipleChoiceForLib.setIsValid(Byte.valueOf("0"));
+        repository.save(questionMultipleChoiceForLib);
+        return true;
+    }
+    @Transactional
+    @Override
+    public QuestionMultipleChoiceForLib update(QuestionMultipleChoiceForLib updateQuestionMultipleChoiceForLib) throws ErrorInfo {
+        if(updateQuestionMultipleChoiceForLib==null)
+        {throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_028","私有题库多选题为空",null);
+        }
+       QuestionMultipleChoiceForLib questionMultipleChoiceForLib=repository.findByQuestionForLibId(updateQuestionMultipleChoiceForLib.getQuestionForLibId());
+        if(questionMultipleChoiceForLib==null){
+            throw new ErrorInfo("E"+"2018-08-15 14:26:00"+"_57_029","私有题库多选题不存在",null);
+        }
+        UpdateUtil.copyProperties(updateQuestionMultipleChoiceForLib, questionMultipleChoiceForLib);
+        return  repository.save(questionMultipleChoiceForLib);
+    }
+}

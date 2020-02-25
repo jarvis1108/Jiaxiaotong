@@ -1,0 +1,184 @@
+<template>
+	<div class="st-container-goldMall-div">
+		<img class="st-bg-img" src="/static/images/bg.png">
+		
+		<div class="st-productList-div">
+			<div class="st-flex-div">
+				<div class="box" v-for="(item,index) in productList" :key="item">
+					<div class="st-goodname-div">
+						{{ item.productName }}
+					</div>
+
+          <div v-if="index%3 === 0" class="st-goodPhoto-blue-div">
+            <img class="st-goodPhoto-img" :src="item.productImage" @click='showDialog(item,index)' />
+          </div>
+          <div v-else-if="index%3 === 1" class="st-goodPhoto-green-div">
+            <img class="st-goodPhoto-img" :src="item.productImage" @click='showDialog(item,index)' />
+          </div>
+          <div v-else class="st-goodPhoto-cyan-div">
+            <img class="st-goodPhoto-img" :src="item.productImage" @click='showDialog(item,index)' />
+          </div>                    
+				
+					<div class="st-goodNum-div">
+            <img class="st-coinIcon" src="/static/images/index/Goldcoin.png"/>
+						{{ item.productPrice }}
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+    <div class="st-memory-div">
+			<a style="position:absolute;width:20%;left:40%" href="../exchange-record/main">兑换记录</a>
+		</div>
+
+    <payTip v-if="showPay" @listenCloseDialog="showPay = false" :product="selectedProduct" :index="productIndex"></payTip>
+	</div>
+</template>
+
+<script>
+import payTip from "../../components/payTip";
+export default {
+  components: {
+    payTip
+  },
+  data() {
+    return {
+      selectedProduct: null, //弹窗对应的商品
+      productIndex: 0, //弹窗对应的物品的索引，用于背景颜色的显示
+      productList: [],
+      showPay: false, //是否显示弹窗
+      url: "/pages/payment/main"
+    };
+  },
+  async onLoad() {
+    this.showPay = false;
+    if (this.productList.length === 0) {
+      this.productList = await this.$store.dispatch("getProductList", 1);
+    }
+  },
+  methods: {
+    //点击商品，显示弹窗
+    showDialog(item, index) {
+      this.showPay = true;
+      this.productIndex = index;
+      this.selectedProduct = item;
+    }
+  }
+};
+</script>
+
+<style scoped>
+.st-container-goldMall-div {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.st-bg-img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.st-productList-div {
+  top: 3vh;
+  width: 90.66vw;
+  height: 73.01vh;
+  left: 4.67vw;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+}
+
+.st-flex-div {
+  width: 100%;
+  left: 6%;
+  top: 6.52%;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.box {
+  flex: 0 0 auto;
+  height: 14.29vh;
+  width: 21vw;
+  margin-bottom: 3.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10%;
+}
+
+.st-coinIcon{
+  height: 10px;
+  width: 10px;
+}
+.st-goodname-div {
+  flex: 0 0 auto;
+  width: 20.26vw;
+  height: 2.22vh;
+  border-radius: 14rpx;
+  background-color: rgb(79, 111, 198);
+  color: #ffffff;
+  text-align: center;
+  font-size: 20rpx;
+  font-family: "PingFang-SC-Bold";
+  margin-bottom: 0.63vh;
+}
+
+.st-goodPhoto-blue-div {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 14.4vw;
+  background: rgb(61, 138, 218);
+  border-radius: 50%;
+  position: relative;
+}
+.st-goodPhoto-green-div {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 14.4vw;
+  background: rgb(121, 181, 61);
+  border-radius: 50%;
+  position: relative;
+}
+.st-goodPhoto-cyan-div {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 14.4vw;
+  background: rgb(32, 196, 163);
+  border-radius: 50%;
+  position: relative;
+}
+.st-goodPhoto-img {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+}
+.st-goodNum-div {
+  flex: 0 0 auto;
+  width: 20.26vw;
+  height: 1.9vh;
+  color: rgb(70, 82, 159);
+  text-align: center;
+  font-size: 1.9vh;
+  font-family: "PingFang-SC-Bold";
+}
+
+.st-memory-div {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: rgb(158, 200, 252);
+  margin: auto;
+  top: 77vh;
+  position: relative;
+  text-decoration: underline;
+  font-family: "PingFang-SC-Bold";
+}
+</style>

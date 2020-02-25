@@ -1,0 +1,159 @@
+<template>
+	<div class="bs-container-myItems-div">
+		<img class="bs-bg-img" src="/static/images/bg@2x.png">
+		
+		<div class="bs-productList-div">
+			<div class="bs-flex-div">
+				<div class="box" v-for="(item,index) in productList" :key="item">
+					<div class="bs-goodname-div">
+						{{ item.ProductName }}
+					</div>
+
+          <div v-if="index%3 === 0" class="bs-goodPhoto-blue-div">
+            <img class="bs-goodPhoto-img" :src="item.Photo" />
+          </div>
+          <div v-else-if="index%3 === 1" class="bs-goodPhoto-green-div">
+            <img class="bs-goodPhoto-img" :src="item.Photo" />
+          </div>
+          <div v-else class="bs-goodPhoto-cyan-div">
+            <img class="bs-goodPhoto-img" :src="item.Photo" />
+          </div>                    
+					
+					<div class="bs-goodNum-div">
+						X{{ item.Number }}
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="bs-memory-div">
+			<a style="position:absolute;width:20%;left:40%" href="../exchange-record/main">兑换记录</a>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      productList: [],
+      url: "/pages/payment/main"
+    };
+  },
+  async onLoad() {
+    this.productList = await this.$store.dispatch("getProductListOfMine");
+  }
+};
+</script>
+
+<style scoped>
+.bs-bg-img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.bs-container-myItems-div {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.bs-productList-div {
+  top: 3vh;
+  width: 90.66vw;
+  height: 73.01vh;
+  left: 4.67vw;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+}
+
+.bs-flex-div {
+  width: 100%;
+  left: 6%;
+  top: 6.52%;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.box {
+  flex: 0 0 auto;
+  height: 14.29vh;
+  width: 21vw;
+  margin-bottom: 3.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10%;
+}
+
+.bs-goodname-div {
+  flex: 0 0 auto;
+  width: 20.26vw;
+  height: 2.22vh;
+  border-radius: 14rpx;
+  background-color: rgb(79, 111, 198);
+  color: #ffffff;
+  text-align: center;
+  font-size: 20rpx;
+  font-family: "PingFang-SC-Bold";
+  margin-bottom: 0.63vh;
+}
+
+.bs-goodPhoto-blue-div {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 14.4vw;
+  background: rgb(61, 138, 218);
+  border-radius: 50%;
+  position: relative;
+}
+.bs-goodPhoto-green-div {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 14.4vw;
+  background: rgb(121, 181, 61);
+  border-radius: 50%;
+  position: relative;
+}
+.bs-goodPhoto-cyan-div {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 14.4vw;
+  background: rgb(32, 196, 163);
+  border-radius: 50%;
+  position: relative;
+}
+.bs-goodPhoto-img{
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: 20%;
+  left: 15%;
+}
+.bs-goodNum-div {
+  flex: 0 0 auto;
+  width: 20.26vw;
+  height: 1.9vh;
+  color: rgb(70, 82, 159);
+  text-align: center;
+  font-size: 1.9vh;
+  font-family: "PingFang-SC-Bold";
+}
+
+.bs-memory-div {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: rgb(158, 200, 252);
+  margin: auto;
+  top: 77vh;
+  position: relative;
+  text-decoration: underline;
+  font-family: "PingFang-SC-Bold";
+}
+</style>

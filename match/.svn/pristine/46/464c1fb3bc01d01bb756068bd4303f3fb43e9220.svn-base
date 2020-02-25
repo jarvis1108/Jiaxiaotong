@@ -1,0 +1,189 @@
+<template>
+<div>
+  <img class="st-rank-bg" src="/static/images/bg@2x.png"/>
+  <img class="st-rank-ul-bg" src="/static/images/rank/Head_bg@2x.png" />
+  <!-- select bar -->
+  <ul class="st-rank_opinion-ul">
+    <li><a v-bind:class="{li_change:isClicked}" @click="clickOpinion">好友排行</a></li>
+    <li style="width:5%;margin-top:1%">|</li>
+    <li><a v-bind:class="{li_change:!isClicked}" @click="clickOpinion">世界排行</a></li>
+  </ul>
+
+  <!-- rankList -->
+  <ul class="rank-list">
+    <li v-for="item in rankList" :key="item">
+      <img v-if="item.rank === 1" class="st-rank-board-bg" src="/static/images/rank/Leaderboard_bg(green)@2x.png" />
+      <img v-else class="st-rank-board-bg" src="/static/images/rank/Leaderboard_bg(blue)@2x.png" />
+      <span class="st-rank-num">{{item.rank}}</span>
+      <img class="st-rank-user-icon" :src="item.avatarUrl" />
+      <span class="st-rank-user-name">{{item.userName}}</span>
+      <span class="st-rank-from">来自：{{item.location}}</span>
+      <hr class="st-rank-hr"/>
+      <img class="st-rank-level-bg" src="/static/images/rank/Grade_icon@2x.png" />
+      <span class="st-rank-level">{{item.level}}</span>
+    </li>
+  </ul>
+
+<p class="st-rank-tip" v-show="isClicked">榜内为游戏好友，非微信好友。当前好友:5/100</p>
+<p class="st-rank-tip" v-show="!isClicked">当前我的世界排行10090</p>
+</div>
+</template>
+<script>
+export default {
+  data() {
+    // 选项 数据
+    return {
+      isClicked: true, //true-好友排行，false-全国排行
+      rankList: [] //排行列表
+    };
+  },
+  async onLoad() {
+    //初始化数据
+    this.isClicked = true; //默认显示好友排行
+    this.rankList = await this.$store.dispatch("getRankList", 0);
+  },
+  methods: {
+    // 事件处理方法
+    async clickOpinion() {
+      this.isClicked = !this.isClicked;
+      if (this.isClicked) {
+        this.rankList = [];
+        this.rankList = await this.$store.dispatch("getRankList", 0);
+      } else {
+        this.rankList = [];
+        this.rankList = await this.$store.dispatch("getRankList", 1);
+      }
+    }
+  },
+  created() {
+    // 生命周期函数
+  },
+  mounted() {}
+};
+</script>
+<style scoped>
+.st-rank-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -99;
+}
+.st-rank-ul-bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 25%;
+  z-index: -1;
+}
+.st-rank_opinion-ul {
+  width: 90%;
+  position: absolute;
+  top: 7%;
+  left: 15%;
+  display: flex;
+}
+.st-rank_opinion-ul li {
+  float: left;
+  color: rgb(200, 182, 255);
+  width: 35%;
+  height: 100%;
+  text-align: center;
+}
+.li_change {
+  color: #fff;
+}
+.st-rank_opinion-ul li a {
+  display: block;
+  text-align: center;
+  padding: 5px 15px;
+  font-size: 15px;
+  font-size: 18px;
+  text-decoration: none;
+}
+.rank-list {
+  position: absolute;
+  top: 15%;
+  width: 80%;
+  left: 10%;
+  height: 75%;
+  overflow: auto;
+}
+.rank-list li {
+  position: relative;
+  margin-bottom: 2%;
+  width: 100%;
+  height: 20%;
+}
+.st-rank-num {
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  font-size: 22px;
+  color: #fff;
+}
+.st-rank-user-icon {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+.st-rank-user-name {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  font-size: 17px;
+  color: #fff;
+}
+.st-rank-from {
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  font-size: 12px;
+  color: #fff;
+}
+.st-rank-hr {
+  position: absolute;
+  top: 55%;
+  left: 35%;
+  width: 65%;
+  height: 2px;
+  background: #fff;
+}
+.st-rank-level-bg {
+  position: absolute;
+  right: 5%;
+  bottom: 8%;
+  width: 60px;
+  height: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+}
+.st-rank-level {
+  position: absolute;
+  right: 5%;
+  bottom: 7%;
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+}
+.st-rank-board-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.st-rank-tip {
+  position: absolute;
+  bottom: 5%;
+  width: 70%;
+  left: 15%;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+}
+</style>

@@ -1,0 +1,80 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionForLibService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition: 题库题目表实现类
+ * @date 2018\8\15 0015
+ */
+@Service
+public class QuestionForLibServiceImpl implements QuestionForLibService {
+
+    @Autowired
+    private QuestionForLibRepository repository;
+    @Override
+    public QuestionForLib getQuestionForLibByQuestionForLibId(String questionForLibId) throws ErrorInfo {
+        QuestionForLib questionForLib=repository.findByQuestionForLibId(questionForLibId);
+        if(questionForLib==null){
+            throw new ErrorInfo("E_" + "2018-08-15 14:26:00" + "_57_024", "私有题库题目表不存在", null);
+        }
+        return questionForLib;
+    }
+
+    @Override
+    public List<QuestionForLib> getQuestionForLibByQuestionLibId(String questionLibId) throws ErrorInfo {
+       List<QuestionForLib>  questionForLibs=repository.findByQuestionLibId(questionLibId);
+        if(questionForLibs.size()==0){
+            throw new ErrorInfo("E_" + "2018-08-15 14:26:00" + "_57_032", "私有题库题目表不存在", null);
+        }
+        return questionForLibs;
+    }
+
+    @Override
+    public List<QuestionForLib> findAll() {
+        return repository.findAll();
+    }
+
+    @Transactional
+    @Override
+    public QuestionForLib create(QuestionForLib questionForLib) throws ErrorInfo {
+        if(questionForLib==null){
+            throw new ErrorInfo("E_" + "2018-08-15 14:26:00" + "_57_025", "私有题库题目表为空", null);
+        }
+        return repository.save(questionForLib);
+    }
+    @Transactional
+    @Override
+    public boolean deleteQuestionForLibByQuestionForLibId(String questionForLibId) throws ErrorInfo {
+        QuestionForLib questionForLib=repository.findByQuestionForLibId(questionForLibId);
+        if(questionForLib==null){
+            throw new ErrorInfo("E_" + "2018-08-15 14:26:00" + "_57_024", "私有题库题目表不存在", null);
+        }
+        questionForLib.setIsValid(Byte.valueOf("0"));
+        repository.save(questionForLib);
+        return true;
+    }
+    @Transactional
+    @Override
+    public QuestionForLib update(QuestionForLib updateQuestionForLib) throws ErrorInfo {
+        if (updateQuestionForLib == null) {
+            throw new ErrorInfo("E_" + "2018-08-15 14:26:00" + "_57_025", "私有题库题目表为空", null);
+        }
+       QuestionForLib questionForLib = repository.findByQuestionForLibId(updateQuestionForLib.getQuestionForLibId());
+        if (questionForLib == null) {
+            throw new ErrorInfo("E_" + "2018-08-15 14:26:00" + "_57_024", "私有题库题目表不存在", null);
+        }
+        UpdateUtil.copyProperties(updateQuestionForLib, questionForLib);
+        return  repository.save(questionForLib);
+
+    }
+}

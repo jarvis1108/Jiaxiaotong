@@ -1,0 +1,436 @@
+<template>
+	<div class="bs-container-competition-div">
+		<img class="bs-bg-img" src="/static/images/bg@2x.png">
+		<img class="bs-e_score_photo" src="/static/images/battle/Scorethelabel2@2x.png">
+		<img class="bs-p_score_photo" src="/static/images/battle/Scorethelabel1@2x.png">
+
+		<!--
+        	时间：2018-07-18
+        	描述：环形动画
+       -->		
+		<div class="bs-user-div">
+			<img class="bs-score_hoop-img" src="/static/images/battle/Scorecircle@2x.png">
+			<div class="topBox">
+				<div class="topCircle"  :style="{transform: 'rotate('+eTopRotation+'deg);'}">
+					<img class="c1" src="/static/images/battle/Answerprogresstopcircle-bg@2x.png">
+				</div>
+			</div>
+			<div class="bottomBox">
+				<div class="bottomCircle" :style="{transform: 'rotate('+eBottomRotation+'deg);'}">
+					<img class="c2" src="/static/images/battle/Answerprogressbottomcircle-bg@2x.png">
+				</div>
+			</div>
+			<div class="bs-photo-div">
+				<img class="photo_hoop" src="/static/images/battle/Pictureframe@2x.png">
+				<img class="user_photo" :src="userIcon">
+			</div>
+		</div>
+		<div class="bs-pName-div bs-text1">{{ userName }}</div>
+		<div class="bs-pScore-div bs-text2">{{ userScore }}</div>								
+		
+		<div class="bs-opponent-div">
+			<img class="bs-score_hoop-img" src="/static/images/battle/Scorecircle@2x.png">
+			<div class="topBox">
+				<div class="topCircle"  :style="{transform: 'rotate('+eTopRotation+'deg);'}">
+					<img class="c1" src="/static/images/battle/Answerprogresstopcircle-bg@2x.png">
+				</div>
+			</div>
+			<div class="bottomBox">
+				<div class="bottomCircle" :style="{transform: 'rotate('+eBottomRotation+'deg);'}">
+					<img class="c2" src="/static/images/battle/Answerprogressbottomcircle-bg@2x.png">
+				</div>
+			</div>
+			<div class="bs-photo-div">
+				<img class="photo_hoop" src="/static/images/battle/Pictureframe@2x.png">
+				<img class="user_photo" :src="opponentIcon">
+			</div>
+		</div>
+		<div class="bs-eName-div bs-text1">{{ opponentName }}</div>		
+		<span class="bs-eScore-div bs-text2">{{ opponentScore }}</span>	
+		
+		<!--
+        	时间：2018-07-20
+        	描述：题目的卡片
+        -->
+        <div class="bs-question-card-div" @click="change(showQuestion)">
+       		<questioncard :showQuestion="showQuestion" :question="question" :order="order"></questioncard>
+        </div>
+		
+		<!--
+        	时间：2018-07-18
+        	描述：六角形的变大动画和倒计时动画
+       -->
+        <div class="bs-cut-down-div">
+			<cutdown :order="order" :showOrder="true"></cutdown>
+		</div>
+        
+		
+		
+	</div>
+</template>
+
+<script>
+import cutdown from "@/components/cut_down";
+import questioncard from "@/components/questioncard";
+import Global from "@/App";
+import wxs from "../../utils/wx";
+//	const recorderManager = wx.getRecorderManager();
+export default {
+  components: {
+    cutdown,
+    questioncard
+  },
+  data() {
+    return {
+      battleId:'001', //TODO:从系统获取
+	  type:0,	//进入类型，0-常规对抗赛，1-好友对抗赛
+      userName: "st.ku",
+      userScore: 0, //用于显示的分数
+      pRealScore: 0, //玩家真实的分数
+      userIcon: "",
+
+      opponentName: "st.ku",
+      opponentScore: 500, //用于显示的分数
+      eRealScore: 500, //对手真实的分数
+      opponentIcon: "", //对手头像
+      rder: 0, //题号
+      interval: null, //定时器
+      showQuestion: false, //是否显示题目【保证倒计时开始的那一刻才显示题目】
+      question: {
+        type: 2, //题目类型
+        title: "题目标题",
+        content: "题目内容",
+        rightAnswer: "A"
+      }
+    };
+  },
+  computed: {
+    pBottomRotation: function() {
+      if (this.userScore < 250) {
+        return this.userScore * 360 / 500;
+      } else {
+        return 180;
+      }
+    },
+    pTopRotation: function() {
+      if (this.userScore < 250) {
+        return;
+      } else {
+        return this.userScore * 360 / 500 - 180;
+      }
+    },
+    eBottomRotation: function() {
+      if (this.opponentScore < 250) {
+        return this.opponentScore * 360 / 500;
+      } else {
+        return 180;
+      }
+    },
+    eTopRotation: function() {
+      if (this.opponentScore < 250) {
+        return;
+      } else {
+        return this.opponentScore * 360 / 500 - 180;
+      }
+    }
+  },
+  methods: {
+    change(flag) {
+      if (flag) {
+        this.order++;
+        clearInterval(this.interval);
+        this.setInterval();
+        //测试用，切换题目类型
+        if (this.question.type == 1) {
+          this.question.type = 2;
+        } else {
+          this.question.type = 1;
+        }
+        //修改题目显示状态
+        this.showQuestion = false;
+        console.log("order is change" + this.order);
+        if (this.order === 6) { 	//答满5题，显示结果
+		  clearInterval(this.interval);
+		  const url = this.type === 1?`../battle-result/main?type=${this.type}&battleId=${this.battleId}`:`../battle-result/main?battleId=${this.battleId}`;
+          wxs.redirectTo(url);
+        }
+        setTimeout(() => {
+          this.showQuestion = true;
+          console.log("显示题目");
+        }, 2000);
+      }
+    },
+    //创造分数圆环和显示分数增长的动画
+    userScoreIncrease(value) {
+      this.userScore += value;
+      var _this = this;
+      setTimeout(() => {
+        if (this.pRealScore > this.userScore) {
+          _this.userScoreIncrease(value);
+        }
+      }, 50);
+    },
+
+    getuserScore() {
+      if (this.pRealScore > this.userScore) {
+        var value = (this.pRealScore - this.userScore) / 10;
+        this.userScoreIncrease(value);
+      }
+    },
+
+    opponentScoreIncrease(value) {
+      this.opponentScore += value;
+      var _this = this;
+      setTimeout(() => {
+        if (this.eRealScore > this.opponentScore) {
+          _this.opponentScoreIncrease(value);
+        }
+      }, 50);
+    },
+    getopponentScore() {
+      if (this.eRealScore > this.opponentScore) {
+        var value = (this.eRealScore - this.opponentScore) / 10;
+        this.opponentScoreIncrease(value);
+      }
+    },
+    setInterval() {
+      //设置定时：2500ms-倒计时前动画时间，10000ms=10s-倒计时时间
+      this.interval = setInterval(() => {
+        this.change(this.showQuestion);
+      }, 12500);
+    }
+  },
+  onLoad(option) {
+    //初始化数据
+    if (option.userInfo && option.opponentInfo) {
+      this.userName = JSON.parse(option.userInfo).wechatName;
+      this.userIcon = JSON.parse(option.userInfo).headImage;
+      this.opponentName = JSON.parse(option.opponentInfo).wechatName;
+      this.opponentIcon = JSON.parse(option.opponentInfo).headImage;
+	}else{
+		//没有取到用户信息，使用默认值代替
+		this.userName = '玩家1';
+		this.userIcon = '';
+		this.opponentName = '玩家2';
+		this.opponentIcon = '';
+	}
+	if(option.type){
+		this.type = parseInt(option.type);
+	}else{
+		this.type = 0;
+	}
+    this.userScore = 0;
+    this.pRealScore = 0;
+    //TODO：tip-分数条的显示好像还有些问题
+    this.opponentScore = 500;
+    this.eRealScore = 500;
+    this.order = 0;
+    this.interval = null;
+    this.showQuestion = false;
+    //TODO:获取用户、对手信息和题目列表
+    this.change(true);
+  }
+};
+</script>
+
+<style scoped>
+.bs-container-competition-div {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.bs-bg-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.bs-text1 {
+  text-align: center;
+  font-family: "PingFang-SC-Medium";
+  color: #ffffff;
+}
+
+.bs-text2 {
+  text-align: center;
+  font-family: "PingFang-SC-Bold";
+}
+.bs-user-div {
+  height: 13.01%;
+  width: 21.86%;
+  left: 5.33%;
+  top: 2.85%;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.bs-opponent-div {
+  height: 13.01%;
+  width: 21.86%;
+  right: 5.33%;
+  top: 2.85%;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.bs-score_hoop-img {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+
+.bs-photo-div {
+  width: 79.26%;
+  height: 79.26%;
+  border-radius: 50%;
+  left: 10.36%;
+  top: 10.36%;
+  position: absolute;
+}
+
+.user_photo {
+  height: 92.31%;
+  width: 92.31%;
+  top: 3.85%;
+  left: 3.85%;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.photo_hoop {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.bs-pName-div {
+  top: 16.98%;
+  left: 5.33%;
+  width: 21.87%;
+  height: 2.86%;
+  font-size: 36rpx;
+  position: absolute;
+}
+
+.bs-eName-div {
+  top: 16.98%;
+  right: 5.33%;
+  width: 21.87%;
+  height: 2.86%;
+  font-size: 36rpx;
+  position: absolute;
+}
+.bs-p_score_photo {
+  height: 3.49%;
+  width: 28.53%;
+  top: 12.38%;
+  left: 23.07%;
+  position: absolute;
+}
+
+.bs-e_score_photo {
+  height: 3.02%;
+  width: 28.53%;
+  top: 12.54%;
+  right: 23.07%;
+  position: absolute;
+}
+.bs-pScore-div {
+  top: 7.14%;
+  left: 31.47%;
+  position: absolute;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.bs-eScore-div {
+  top: 7.14%;
+  right: 31.47%;
+  position: absolute;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.bs-question-card-div {
+  width: 85.33%;
+  height: 70.79%; /**/
+  top: 22.86%;
+  left: 7.33%;
+  position: absolute;
+}
+
+/*
+ * 分数环的效果
+ */
+.topBox {
+  height: 50%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.topCircle {
+  margin: 0;
+  padding: 0;
+  height: 208%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  position: absolute;
+  /*border-radius: 50%;
+	border: 7rpx solid transparent;
+	border-top: 7rpx solid #FFFFFF;
+	border-left: 7rpx solid #FFFFFF;*/
+}
+.bottomBox {
+  margin: 0;
+  padding: 0;
+  height: 50%;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+}
+.bottomCircle {
+  margin: 0;
+  padding: 0;
+  height: 208%;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  /*border-radius: 50%;
+	border: 7rpx solid transparent;	
+	border-bottom: 7rpx solid #FFFFFF;
+	border-right: 7rpx solid #FFFFFF;*/
+}
+.c1 {
+  height: 50%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.c2 {
+  height: 50%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.bs-cut-down-div {
+  height: 8.89%;
+  width: 14.4%;
+  left: 42.8%;
+  top: 18.89%;
+  position: absolute;
+}
+</style>

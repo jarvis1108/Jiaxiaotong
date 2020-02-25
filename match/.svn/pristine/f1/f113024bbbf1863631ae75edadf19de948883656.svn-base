@@ -1,0 +1,62 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserLPDetail;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
+/**
+ * 用户学点流水明细服务单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 05:24
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserLPDetailServiceTest {
+
+    @Autowired
+    private UserLPDetailService userLPDetailService;
+
+    @Test
+    public void getUserLPDetailList() throws ErrorInfo {
+        String userId = "1";
+        List<UserLPDetail> userLPDetailList = userLPDetailService.getUserLPDetailList(userId, 2, 1);
+
+        assertNotEquals(0, userLPDetailList.size());
+        userLPDetailList.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void getAllUserLPDetails() throws ErrorInfo {
+        String userId = "1";
+        List<UserLPDetail> userLPDetailList = userLPDetailService.getAllUserLPDetails(userId);
+
+        assertNotEquals(0, userLPDetailList.size());
+        userLPDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        UserLPDetail userLPDetail = new UserLPDetail();
+        userLPDetail.setUserLpDetailId("4");
+        userLPDetail.setUserLpDetailNo("4");
+        userLPDetail.setUserId("1");
+        userLPDetail.setUserNo("1");
+        userLPDetail.setAcquiredAmount(100);
+
+        UserLPDetail result = userLPDetailService.create(userLPDetail);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+}

@@ -1,0 +1,26 @@
+<template name="index$e6fe435e">
+  <view class="_div data-v-581475c0 st-exercise-object-select-container">
+    <view class="_div data-v-581475c0 st-exercise-object-select-gradelist">
+      <view class="_ul data-v-581475c0">
+        <view bindtap="handleProxy" wx:key="item" key="{{item}}" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" wx:for="{{gradeList}}" wx:for-index="index" wx:for-item="item" class="_li data-v-581475c0 {{[item.select ? 'select' : '', !item.select ? 'unselect' : '']}}">
+        {{item.text}} </view>
+      </view>
+    </view>
+    <view class="_div data-v-581475c0 st-exercise-object-select-board">
+      <view class="_div data-v-581475c0 st-exercise-object-select-gradeicon-div">
+        <image class="_img data-v-581475c0 st-exercise-object-select-gradeicon" src="{{selectGradeIconImage}}"></image>
+      </view>
+      <view class="_div data-v-581475c0 st-exercise-object-select-objectlist">
+        <view class="_div data-v-581475c0 st-exercise-object-select-flex-div">
+          <view bindtap="handleProxy" class="_div data-v-581475c0 st-exercise-object-select-box {{[item.select ? 'selectObject' : '', !item.select ? 'unselectObject' : '']}}" wx:key="item" key="{{item}}" data-eventid="{{'1-'+index}}" data-comkey="{{$k}}"
+            wx:for="{{gradeList[listIndex].objectList}}" wx:for-index="index" wx:for-item="item" style=" {{'animation:' + animation + ' 1s'}}">
+            <view class="_div data-v-581475c0 st-exercise-object-select-objectname-div"> {{ item.name }} </view>
+            <view class="_div data-v-581475c0 st-exercise-object-select-objectphoto-img-div {{[item.select ? 'selectImage' : '', !item.select ? 'unselectImage' : '']}}">
+              <image class="_img data-v-581475c0 st-exercise-object-select-objectphoto-img" src="{{item.photo}}"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

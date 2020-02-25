@@ -1,0 +1,132 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.system;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.LPConsumeRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.LPConsumeRecordService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.Question;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionService;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.User;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.CodeRes;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UserCode;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.Result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\7\24 0024
+ */
+@RestController
+@RequestMapping("/api/v1/sys")
+public class SysController {
+
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private LPConsumeRecordService lpConsumeRecordService;
+    @Autowired
+    private QuestionService questionService;
+    /**
+     * 根据用户ID获取用户基本信息
+     * @return
+     * @throws ErrorInfo
+     */
+    @GetMapping("/getUserInfoByUserId")
+    public ResponseInfo getUserInfoById(String userId,HttpServletRequest request) throws ErrorInfo {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        User user= userService.findUserByUserId(userId);
+        System.out.println(user);
+        return new ResponseInfo(requestInfo,user);
+    }
+
+    /**
+     * 根据用户ID获取用户的错题集
+     * @return
+     * @throws ErrorInfo
+     */
+    @GetMapping("/getUserWrongQuestions")
+    public ResponseInfo getUserWrongQuestions(String userId,HttpServletRequest request)throws ErrorInfo{
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<LPConsumeRecord> lpConsumeRecordList=lpConsumeRecordService.findByUserId(userId);
+        if(lpConsumeRecordList.size()==0){
+            throw new ErrorInfo("E_" + DateUtil.getCurrentTime() + "_57_017","该用户学点消费记录为空",null);
+        }
+        List<LPConsumeRecord> lpConsumeRecords=new ArrayList<>();
+        for(LPConsumeRecord lpConsumeRecord:lpConsumeRecordList ){
+           if(lpConsumeRecord.getIsTrue()==0){
+               lpConsumeRecords.add(lpConsumeRecord);
+           }
+
+        }
+        List<Question> wrongQuestions=new ArrayList<>();
+        for(int i=0;i<lpConsumeRecords.size();i++){
+            Question question=questionService.getQuestionByQuestionId(lpConsumeRecords.get(i).getQuestionId());
+            wrongQuestions.add(question);
+        }
+
+        return new ResponseInfo(requestInfo,wrongQuestions);
+    }
+
+    /**
+     * 绑定上手机号
+     * @param userId
+     * @param telephone
+     * @param verCode
+     * @param request
+     * @return
+     * @throws ErrorInfo
+     */
+    @GetMapping("/bindTelephone")
+    public ResponseInfo bindTelephone(String userId,String telephone,String verCode, HttpServletRequest request)throws ErrorInfo{
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        User user = userService.findUserByUserId(userId);
+        if (user== null){
+            String currentTime = DateUtil.getCurrentTime();
+            throw new ErrorInfo("E_" + currentTime + "_57_018","用户不存在",null);
+        }
+        user.setTelephone(telephone);
+        userService.update(user);
+        return new ResponseInfo(requestInfo,"success");
+    }
+
+    /**
+     * 发送验证码
+     * @param telephone
+     * @param telephone
+     * @param request
+     * @return userCode
+     * @throws ErrorInfo
+     */
+
+    @GetMapping("/getTelVerificationCode")
+    public ResponseInfo getTelVerificationCode (String telephone,HttpServletRequest request)throws ErrorInfo{
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        Result result= CodeRes.sentCode(telephone);
+        if(result.getStatus()==200){
+            UserCode userCode=(UserCode) result.getMsg();
+            return new ResponseInfo(requestInfo,userCode);
+        }if(result.getStatus()==406){
+            throw new ErrorInfo("E_" + DateUtil.getCurrentTime() + "_57_019","1小时内同一手机号发送次数不能超过3次",null);
+        }
+
+        if(result.getStatus()==400){
+
+            throw new ErrorInfo("E_" + DateUtil.getCurrentTime() + "_57_020","获取验证码失败",null);
+        }
+        return null;
+
+
+    }
+
+
+}

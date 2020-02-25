@@ -1,0 +1,26 @@
+package com.dxtwangxiao.strongestsuperscholar.web.websocket.group;
+
+import com.dxtwangxiao.strongestsuperscholar.web.websocket.common.WebSocketInterceptor;
+import com.dxtwangxiao.strongestsuperscholar.web.websocket.pk.PkWebSocketHandler;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+
+/**
+ * 群PK，WebSocket配置类，绑定前端连接端点url及其他信息
+ * <p>
+ * Created By Devin
+ * 2018-08-29 上午 09:03
+ */
+@Configuration
+@EnableWebSocket
+public class GroupWebSocketConfig implements WebSocketConfigurer {
+
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        registry.addHandler(new PkWebSocketHandler(), "/websocket/group")
+                .setAllowedOrigins("*")
+                .addInterceptors(new WebSocketInterceptor());
+    }
+}

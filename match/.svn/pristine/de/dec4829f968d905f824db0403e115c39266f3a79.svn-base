@@ -1,0 +1,1564 @@
+global.webpackJsonp([1],{
+
+/***/ 217:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(218);
+
+
+
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__index__["a" /* default */]);
+app.$mount();
+/* harmony default export */ __webpack_exports__["default"] = ({
+  config: {
+    navigationBarTitleText: '群比赛'
+  }
+});
+
+/***/ }),
+
+/***/ 218:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_2b4f5831_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(252);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(219)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-2b4f5831"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_2b4f5831_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\pages\\group-battle\\index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2b4f5831", Component.options)
+  } else {
+    hotAPI.reload("data-v-2b4f5831", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 219:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 220:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_group_battle_waiting_vue__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_group_battle_vue__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_group_battle_result_vue__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_wx__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__config__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__utils_RequestObj__ = __webpack_require__(29);
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  components: {
+    groupBattleWaiting: __WEBPACK_IMPORTED_MODULE_3__components_group_battle_waiting_vue__["a" /* default */], //加载页
+    groupBattle: __WEBPACK_IMPORTED_MODULE_4__components_group_battle_vue__["a" /* default */], //对战页
+    groupBattleResult: __WEBPACK_IMPORTED_MODULE_5__components_group_battle_result_vue__["a" /* default */] //结果页
+  },
+  data: function data() {
+    return {
+      creator: null, //战局创建者id
+      userInfo: {}, //用户信息
+      playerList: [], //所有用户信息，包括用户自己
+      playerMap: {},
+      scoreMap: [], //所有成绩
+      matchId: "", //战局id
+      step: "A", //标明战局状态，与返回消息类型匹配
+      questionIndex: 0, //题目序号
+      question: {}, //试题
+      userScore: 0, //用户分数
+      userCorrectNum: 0, //用户答对题数
+      userLearningPoit: 0, //用户消耗学点数
+      userAnswer: {
+        //用户单题的答案信息
+        answer: "",
+        timeLeft: ""
+      },
+      waitUser: true, //等待用户答题
+      waitOtherPlayer: true, //等待其他用户
+      socket: false //网络是否连接
+    };
+  },
+
+  computed: {
+    playerNumber: function playerNumber() {
+      return this.playerList ? this.playerList.length : 0;
+    },
+    isCreator: function isCreator() {
+      return this.creator ? this.creator.userId === this.userInfo.userId : false;
+    }
+  },
+  onLoad: function onLoad(option) {
+    var _this = this;
+
+    return __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.mark(function _callee() {
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this.init();
+              //进入该页面则创建一个战局，又客户端生成战局Id
+              _this.userInfo = _this.$store.state.userInfo;
+              console.log("参数传递的战局id是：" + option.matchId);
+
+              if (!option.matchId) {
+                _context.next = 8;
+                break;
+              }
+
+              //当前用户不是创建者
+              _this.matchId = option.matchId;
+              console.log("拿到参数传递的战局id是：" + _this.matchId);
+              _context.next = 14;
+              break;
+
+            case 8:
+              _context.next = 10;
+              return _this.$store.dispatch("createBattle", {
+                battleType: 2
+              });
+
+            case 10:
+              _this.matchId = _context.sent;
+
+              _this.creator = _this.userInfo;
+              _this.playerList.push(_this.creator);
+              console.log("创建的战局id是：" + _this.matchId);
+
+            case 14:
+              console.log("战局Id是：" + _this.matchId);
+              //建立webSocket
+              _this.startMatch();
+
+            case 16:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, _this);
+    }))();
+  },
+  onUnload: function onUnload() {
+    if (this.socket) wx.closeSocket();
+  },
+
+  watch: {
+    questionIndex: function questionIndex() {
+      this.opponentAnswer = {
+        score: 0,
+        answer: ""
+      };
+    },
+    waitUser: function waitUser() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        // 所有用户都答完题目，则将状态重置
+        if (!_this2.waitUser && !_this2.waitOtherPlayer) {
+          console.log("等待用户改变，重置数据，发送请求");
+          _this2.waitUser = true;
+          _this2.waitOtherPlayer = true;
+          _this2.sendMessage();
+        }
+      }, 1000);
+    },
+    waitOtherPlayer: function waitOtherPlayer() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        //所有用户都答完题目，则将状态重置
+        if (!_this3.waitUser && !_this3.waitOtherPlayer) {
+          console.log("等待其他玩家改变，重置数据，发送请求");
+          _this3.waitUser = true;
+          _this3.waitOtherPlayer = true;
+          _this3.sendMessage();
+        }
+      }, 1000);
+    }
+  },
+  methods: {
+    //初始化数据
+    init: function init() {
+      this.step = "A";
+      this.playerList = [];
+      this.questionIndex = 0;
+      this.creator = {};
+      this.userInfo = {};
+      this.matchId = "";
+      this.userScore = 0;
+      this.userCorrectNum = 0;
+      this.userLearningPoit = 0;
+      this.waitUser = true;
+      this.waitOtherPlayer = true;
+      this.socket = false;
+    },
+    startBattle: function startBattle() {
+      console.log("房主点击开始");
+      this.sendMessage();
+    },
+    giveUpBattle: function giveUpBattle() {
+      wx.closeSocket();
+      __WEBPACK_IMPORTED_MODULE_6__utils_wx__["b" /* default */].navigateBack(0);
+    },
+
+    // changePlayer(data) {
+    //   //修改数组长度
+    //   this.playerList.splice(data);
+    // },
+    changeUserAnswer: function changeUserAnswer(data) {
+      this.userAnswer = data;
+      console.log("当前剩余时间是：" + data.timeLeft);
+      this.userLearningPoit += 10 - data.timeLeft;
+      console.log("该局消耗学点：" + (10 - data.timeLeft));
+      this.waitUser = false;
+      this.sendMessage();
+    },
+    startMatch: function startMatch() {
+      var _this4 = this;
+
+      var that = this;
+      wx.connectSocket({
+        url: __WEBPACK_IMPORTED_MODULE_7__config__["b" /* socketUrl */] + "/group?userId=" + this.userInfo.userId + "&matchId=" + this.matchId
+      });
+
+      wx.onSocketOpen(function (res) {
+        that.socket = true;
+        console.log("连接已建立");
+      });
+
+      wx.onSocketMessage(function (res) {
+        _this4.receiveMessage(res);
+      });
+
+      wx.onSocketClose(function (res) {
+        that.socket = false;
+        console.log("Websocket关闭");
+      });
+    },
+    receiveMessage: function receiveMessage(res) {
+      var result = JSON.parse(res.data);
+      console.log("接受到消息：" + res.data);
+      this.step = result.msgType;
+      console.log("当前战局状态是：" + this.step);
+      if (result.msgType === "A-1") {
+        //新用户加入战局，其他用户拿到新用户信息
+        this.playerList.push(result.msgData.curData.user);
+      } else if (result.msgType === "A-2") {
+        //新用户加入战局，新用户拿到战局中其他用户的列表
+        this.playerList = result.msgData.curData.userList;
+        this.creator = result.msgData.curData.creator;
+        //将自己添加到列表中
+        this.playerList.push(this.userInfo);
+      } else if (result.msgType === "A-0") {
+        console.log("开始对战");
+        //发送消息，请求出题
+        this.sendMessage();
+      } else if (result.msgType === "B") {
+        console.log("拿到题目");
+        this.question = result.msgData.curData.question;
+        console.log("题目是：" + this.question);
+      } else if (result.msgType === "C") {
+        //拿到自己答题的结果,此处不需累加用户分数在最后取出即可
+        if (result.msgData.curData.score > 0) {
+          //用户答对
+          this.userCorrectNum += 1;
+          console.log("用户累计答对" + this.userCorrectNum + "题");
+        }
+      } else if (result.msgType === "D") {
+        //表示所有用户都答完题目
+        this.waitOtherPlayer = false;
+        // this.sendMessage();
+        //用户答对
+      } else if (result.msgType === "E") {
+        //返回对战结果
+        this.playerMap = result.msgData.curData.matchUserMap;
+        this.scoreMap = result.msgData.curData.matchScoreMap;
+        for (var key in this.scoreMap) {
+          if (key === this.userInfo.userId) {
+            this.userScore = this.scoreMap[key];
+          }
+        }
+      } else if (result.msgData === "Z-1") {
+        //当前战局人数达到最大值
+        __WEBPACK_IMPORTED_MODULE_6__utils_wx__["b" /* default */].showTip("当前战局人数已满");
+        __WEBPACK_IMPORTED_MODULE_6__utils_wx__["b" /* default */].navigateBack(0);
+      }
+    },
+    sendMessage: function sendMessage() {
+      if (this.step == "A" || this.step == "A-1" || this.step == "A-2") {
+        //当前战局处于等待开始状态，且房主点击开始对战
+        wx.sendSocketMessage({
+          data: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()({
+            msgID: Object(__WEBPACK_IMPORTED_MODULE_8__utils_RequestObj__["b" /* getuuid */])(),
+            msgType: "A-0",
+            msgData: {
+              matchId: this.matchId
+            },
+            msgDesc: "请求开始对战"
+          })
+        });
+      } else if (this.questionIndex < 5 && this.waitUser && this.waitOtherPlayer) {
+        this.questionIndex += 1;
+        wx.sendSocketMessage({
+          data: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()({
+            msgID: Object(__WEBPACK_IMPORTED_MODULE_8__utils_RequestObj__["b" /* getuuid */])(),
+            msgType: "A",
+            msgData: {
+              matchId: this.matchId,
+              no: this.questionIndex
+            },
+            msgDesc: "请求出题"
+          })
+        });
+      } else if (!this.waitUser) {
+        //用户答题完毕，计算分数
+        wx.sendSocketMessage({
+          data: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()({
+            msgID: Object(__WEBPACK_IMPORTED_MODULE_8__utils_RequestObj__["b" /* getuuid */])(),
+            msgType: "B",
+            msgData: {
+              matchId: this.matchId,
+              correctAnswer: this.question.answer,
+              userAnswer: this.userAnswer.answer,
+              timeLeft: this.userAnswer.timeLeft,
+              no: this.questionIndex
+            },
+            msgDesc: "请求计算当前分数和返回结果"
+          })
+        });
+      } else {
+        wx.sendSocketMessage({
+          data: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()({
+            msgID: Object(__WEBPACK_IMPORTED_MODULE_8__utils_RequestObj__["b" /* getuuid */])(),
+            msgType: "C",
+            msgData: {
+              matchId: this.matchId
+            },
+            msgDesc: "请求对战结果"
+          })
+        });
+      }
+    }
+  },
+  onShareAppMessage: function onShareAppMessage(res) {
+    console.log("分享的战局id是：" + this.matchId);
+    var that = this;
+    if (res.from === "button") {
+      console.log(res.target);
+    }
+    return {
+      title: "最强学霸分享",
+      desc: this.userInfo.wechatName + "向你发出了智商pk，点击应战！",
+      path: "/pages/index/main?matchId=" + this.matchId + "&isGroup=true",
+      imageUrl: "/static/images/friendPk/share-bg.png"
+    };
+  }
+});
+
+/***/ }),
+
+/***/ 221:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_group_battle_waiting_vue__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_72f0ac1c_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_group_battle_waiting_vue__ = __webpack_require__(224);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(222)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-72f0ac1c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_group_battle_waiting_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_72f0ac1c_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_group_battle_waiting_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\components\\group-battle-waiting.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] group-battle-waiting.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-72f0ac1c", Component.options)
+  } else {
+    hotAPI.reload("data-v-72f0ac1c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 222:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 223:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_wx__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    creator: {
+      type: Object,
+      required: true
+    },
+    playerList: {
+      type: Array,
+      required: true
+    },
+    playerNumber: {
+      type: Number,
+      required: true
+    },
+    matchId: {
+      required: true
+    },
+    isCreator: {
+      type: Boolean,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      selectPage: 1, //选中的页码
+      touchDot: 0, //触摸起点
+      touchDirection: 0 //滑屏方向，-1左滑，1右滑
+    };
+  },
+
+  computed: {
+    //玩家列表的前十位玩家[考虑到页面显示，切分为两个列表]
+    firstTenPlayerList: function firstTenPlayerList() {
+      console.log("玩家列表为：" + this.playerList);
+      return this.playerList.slice(0, 10);
+    },
+
+    //玩家列表的后十位玩家
+    lastTenPlayerList: function lastTenPlayerList() {
+      console.log("玩家列表为：" + this.playerList);
+      if (this.playerList.length >= 10) return this.playerList.slice(10, this.playerNumber.length);else return [];
+    },
+    isShareable: function isShareable() {
+      return this.playerNumber < 10 ? "share" : "";
+    }
+  },
+  onLoad: function onLoad() {
+    //初始化数据
+    this.selectPage = 1;
+    this.touchDot = 0;
+    this.touchDirection = 0;
+  },
+
+  methods: {
+    on_startBattle: function on_startBattle() {
+      this.$emit("beginBattle");
+      // this.$emit("playerList", this.playerNumber);
+    },
+    on_giveUp: function on_giveUp() {
+      if (this.isCreator) clearInterval(this.interval);
+      this.$emit("giveUpBattle");
+    },
+
+    //手指触摸滑动开始
+    touchStart: function touchStart(e) {
+      this.touchDot = e.touches[0].pageX;
+    },
+    touchMove: function touchMove(e) {
+      var touchMove = e.touches[0].pageX;
+      if (touchMove - this.touchDot <= -40) {
+        this.touchDirection = 1;
+      } else if (touchMove - this.touchDot >= 40) {
+        this.touchDirection = -1;
+      }
+    },
+    touchEnd: function touchEnd() {
+      if (this.playerList.length > 10) {
+        if (this.touchDirection === -1 && this.selectPage === 2) {
+          this.selectPage = 1;
+        } else if (this.touchDirection === 1 && this.selectPage === 1) {
+          this.selectPage = 2;
+        }
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 224:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "st-background-base-div"
+  }, [_c('img', {
+    staticClass: "st-background-bg-div",
+    attrs: {
+      "src": "/static/images/bg.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.isCreator),
+      expression: "isCreator"
+    }],
+    attrs: {
+      "id": "st-status-text-div"
+    }
+  }, [_vm._v("等待成员加入...")]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.isCreator),
+      expression: "!isCreator"
+    }],
+    attrs: {
+      "id": "st-status-text-div"
+    }
+  }, [_vm._v("等待房主开局...")]), _vm._v(" "), _c('div', {
+    staticClass: "st-players-div"
+  }, [_c('div', {
+    staticClass: "st-players-flex-div",
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "touchstart": _vm.touchStart,
+      "touchmove": _vm.touchMove,
+      "touchend": _vm.touchEnd
+    }
+  }, [_vm._l((_vm.firstTenPlayerList), function(player, index) {
+    return (_vm.selectPage === 1) ? _c('div', {
+      key: index,
+      staticClass: "st-player-image-box"
+    }, [(_vm.creator.userId === player.userId) ? _c('img', {
+      staticClass: "st-owner-icon",
+      attrs: {
+        "src": "/static/images/groupBattleWaiting/Owner_icon.png"
+      }
+    }) : _vm._e(), _vm._v(" "), (_vm.playerList.length <= 3) ? _c('img', {
+      staticClass: "st-bigger-headImage-bg",
+      attrs: {
+        "src": player.headImage
+      }
+    }) : _c('img', {
+      staticClass: "st-headImage-bg",
+      attrs: {
+        "src": player.headImage
+      }
+    })]) : _vm._e()
+  }), _vm._v(" "), _vm._l((_vm.lastTenPlayerList), function(player, index) {
+    return (_vm.selectPage === 2) ? _c('div', {
+      key: index,
+      staticClass: "st-player-image-box"
+    }, [_c('img', {
+      staticClass: "st-headImage-bg",
+      attrs: {
+        "src": player.headImage
+      }
+    })]) : _vm._e()
+  })], 2), _vm._v(" "), (_vm.playerList.length > 10) ? _c('div', {
+    staticClass: "st-page-point-div"
+  }, [(_vm.selectPage === 1) ? _c('div', {
+    staticClass: "st-page-select-point"
+  }) : _vm._e(), _vm._v(" "), (_vm.selectPage === 2) ? _c('div', {
+    staticClass: "st-page-point"
+  }) : _vm._e(), _vm._v(" "), (_vm.selectPage === 1) ? _c('div', {
+    staticClass: "st-page-point"
+  }) : _vm._e(), _vm._v(" "), (_vm.selectPage === 2) ? _c('div', {
+    staticClass: "st-page-select-point"
+  }) : _vm._e()]) : _vm._e()]), _vm._v(" "), (_vm.playerNumber > 1) ? _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.isCreator),
+      expression: "isCreator"
+    }],
+    attrs: {
+      "id": "st-game-start-div"
+    }
+  }, [_c('img', {
+    staticClass: "st-background-bg-div",
+    attrs: {
+      "src": "/static/images/groupBattleWaiting/Startthecompetition_btn.png",
+      "eventid": '1'
+    },
+    on: {
+      "click": _vm.on_startBattle
+    }
+  })]) : _vm._e(), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "icons"
+    }
+  }, [_c('div', {
+    attrs: {
+      "id": "giveup-div"
+    }
+  }, [_c('img', {
+    staticClass: "giveUp",
+    attrs: {
+      "src": "/static/images/groupBattleWaiting/Giveup_icon.png",
+      "eventid": '2'
+    },
+    on: {
+      "click": _vm.on_giveUp
+    }
+  }), _vm._v(" "), _c('span', {
+    attrs: {
+      "id": "giveup-text"
+    }
+  }, [_vm._v("放弃")])]), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "invite-div"
+    }
+  }, [_c('button', {
+    staticClass: "invite",
+    attrs: {
+      "open-type": _vm.isShareable
+    }
+  }, [_c('img', {
+    staticClass: "invite_img",
+    attrs: {
+      "src": "/static/images/groupBattleWaiting/Invitation_icon.png"
+    }
+  })]), _vm._v(" "), _c('span', {
+    attrs: {
+      "id": "invite-text"
+    }
+  }, [_vm._v("邀请")])], 1)])])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-72f0ac1c", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 225:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_group_battle_vue__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_44bb2b1c_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_group_battle_vue__ = __webpack_require__(228);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(226)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-44bb2b1c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_group_battle_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_44bb2b1c_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_group_battle_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\components\\group-battle.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] group-battle.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-44bb2b1c", Component.options)
+  } else {
+    hotAPI.reload("data-v-44bb2b1c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 226:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 227:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_cut_down__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_questioncard__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_wx__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    question: {
+      type: Object,
+      required: true
+    },
+    questionIndex: {
+      required: true
+    },
+    nextQuestion: {
+      type: Function,
+      required: true
+    },
+    waitUser: {
+      type: Boolean,
+      required: true
+    }
+  },
+  components: {
+    cutDown: __WEBPACK_IMPORTED_MODULE_0__components_cut_down__["a" /* default */],
+    questionCard: __WEBPACK_IMPORTED_MODULE_1__components_questioncard__["a" /* default */]
+  },
+  data: function data() {
+    return {
+      choiceLabelList: ["A", "B", "C", "D"], //选项标签列表
+      isClickable: true, //是否可以点击
+      interval: null, //定时器
+      cd: 10, //倒计时
+      userWrong: "", //用户答错的选项
+      showQuestion: false //是否显示题目【适应动画时间、保证倒计时开始的那一刻才显示题目】
+    };
+  },
+
+  watch: {
+    //当前进入下一题，重置数据
+    questionIndex: function questionIndex() {
+      var _this = this;
+
+      this.showQuestion = false;
+      this.isClickable = true;
+      this.interval = null;
+      this.cd = 10;
+      this.userWrong = "";
+      //倒计时开始时才显示选项
+      setTimeout(function () {
+        _this.showQuestion = true;
+      }, 2500);
+    }
+  },
+  methods: {
+    //监听倒计时数字，绑定给cd
+    cutdownd: function cutdownd(data) {
+      //有1s延迟
+      this.cd = data - 1;
+    },
+    optionClick: function optionClick(label) {
+      if (this.isClickable) {
+        this.isClickable = false;
+        //若用户答错，修改userWrong值
+        if (label != this.question.answer) {
+          this.userWrong = label;
+        }
+        //将用户输入返回
+        console.log("用户选择选项：" + label);
+        this.$emit("userAnswered", {
+          answer: label,
+          timeLeft: this.cd
+        });
+      }
+    },
+
+    //时间到
+    cutDownOut: function cutDownOut() {
+      this.$emit("userAnswered", {
+        answer: "",
+        timeLeft: this.cd
+      });
+    }
+  },
+  onLoad: function onLoad() {
+    var _this2 = this;
+
+    this.interval = null;
+    this.showQuestion = false;
+    //倒计时开始时才显示选项
+    setTimeout(function () {
+      _this2.showQuestion = true;
+    }, 2500);
+  }
+});
+
+/***/ }),
+
+/***/ 228:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "bs-container-groupCompetition-div"
+  }, [_c('img', {
+    staticClass: "bs-bg-img",
+    attrs: {
+      "src": "/static/images/bg.png"
+    }
+  }), _vm._v(" "), (!_vm.waitUser) ? _c('span', {
+    staticClass: "bs-text-span"
+  }, [_vm._v("等待群成员完成答题")]) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "bs-questionCard-component"
+  }, [_c('img', {
+    staticClass: "st-bg",
+    attrs: {
+      "src": "/static/images/battle/subject-bg.png",
+      "alt": ""
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-questionTitle-div"
+  }, [_c('span', [_vm._v("\n                    " + _vm._s(_vm.question.question) + "\n                ")])]), _vm._v(" "), _c('div', {
+    staticClass: "st-questionOption-div",
+    attrs: {
+      "id": "choiceList"
+    }
+  }, _vm._l((_vm.choiceLabelList), function(label, index) {
+    return (_vm.showQuestion) ? _c('div', {
+      key: label,
+      staticClass: "choice",
+      attrs: {
+        "eventid": '0-' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.optionClick(label)
+        }
+      }
+    }, [(_vm.userWrong === label || (_vm.opponentWrong === label && !_vm.waitUser)) ? _c('img', {
+      staticClass: "choice_img",
+      attrs: {
+        "src": "/static/images/battle/Erroroption-bg.png"
+      }
+    }) : (_vm.question.answer === label && !_vm.waitUser) ? _c('img', {
+      staticClass: "choice_img",
+      attrs: {
+        "src": "/static/images/battle/Checktheoptionbox.png"
+      }
+    }) : _c('img', {
+      staticClass: "choice_img",
+      attrs: {
+        "src": "/static/images/battle/Optionbox.png"
+      }
+    }), _vm._v(" "), (label === 'A') ? _c('span', {
+      staticClass: "choice_content"
+    }, [_vm._v(_vm._s(_vm.question.choiceA))]) : _vm._e(), _vm._v(" "), (label === 'B') ? _c('span', {
+      staticClass: "choice_content"
+    }, [_vm._v(_vm._s(_vm.question.choiceB))]) : _vm._e(), _vm._v(" "), (label === 'C') ? _c('span', {
+      staticClass: "choice_content"
+    }, [_vm._v(_vm._s(_vm.question.choiceC))]) : _vm._e(), _vm._v(" "), (label === 'D') ? _c('span', {
+      staticClass: "choice_content"
+    }, [_vm._v(_vm._s(_vm.question.choiceD))]) : _vm._e(), _vm._v(" "), (_vm.userWrong === label) ? _c('img', {
+      staticClass: "errorIcon",
+      attrs: {
+        "src": "/static/images/battle/Errorlabel.png"
+      }
+    }) : _vm._e(), _vm._v(" "), ((_vm.cd === 0) || _vm.question.answer === label && !_vm.waitUser) ? _c('img', {
+      staticClass: "correctIcon",
+      attrs: {
+        "src": "/static/images/battle/Correctlabel.png"
+      }
+    }) : _vm._e()]) : _vm._e()
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "bs-cutDown-component"
+  }, [_c('cutDown', {
+    attrs: {
+      "order": _vm.questionIndex,
+      "showOrder": "true",
+      "eventid": '1',
+      "mpcomid": '0'
+    },
+    on: {
+      "cutdownd": _vm.cutdownd,
+      "cutdownout": _vm.cutDownOut
+    }
+  })], 1)])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-44bb2b1c", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 229:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_group_battle_result_vue__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_56f52f08_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_group_battle_result_vue__ = __webpack_require__(251);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(230)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-56f52f08"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_group_battle_result_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_56f52f08_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_group_battle_result_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\components\\group-battle-result.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] group-battle-result.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-56f52f08", Component.options)
+  } else {
+    hotAPI.reload("data-v-56f52f08", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 230:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 231:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_keys__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_keys__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_regenerator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_asyncToGenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_core_js_map__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_core_js_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_babel_runtime_core_js_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__assests_js_TweenMax_min__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_wx__ = __webpack_require__(2);
+
+
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: "result",
+  props: {
+    userInfo: {
+      type: Object,
+      required: true
+    },
+    playerList: {
+      required: true
+    },
+    playerMap: {
+      type: __WEBPACK_IMPORTED_MODULE_4_babel_runtime_core_js_map___default.a,
+      required: true
+    },
+    userScore: {
+      required: true
+    },
+    userCorrectNum: {
+      required: true
+    },
+    userLearningPoit: {
+      required: true
+    },
+    scoreMap: {
+      type: __WEBPACK_IMPORTED_MODULE_4_babel_runtime_core_js_map___default.a,
+      required: true
+    },
+    matchId: {
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      aUserMark: 0, //用户分数--动画
+      userMark: 0
+    };
+  },
+  onLoad: function onLoad() {
+    var _this = this;
+
+    return __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_2_babel_runtime_regenerator___default.a.mark(function _callee() {
+      var learningPoint, coin, experience, res;
+      return __WEBPACK_IMPORTED_MODULE_2_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this.userMark = _this.userScore;
+              _this.opponentMark = _this.opponentScore;
+              //答题结束，将结果返回给后台
+              learningPoint = 0 - _this.userLearningPoit;
+
+              console.log("该用户对战是否胜利：" + _this.isUserWin);
+              coin = _this.isUserWin ? 50 : -50;
+              experience = _this.isUserWin ? 10 : 5;
+              _context.next = 8;
+              return _this.$store.dispatch("saveBattleResult", {
+                matchId: _this.matchId,
+                userId: _this.userInfo.userId,
+                coin: coin,
+                gradePoint: _this.userCorrectNum,
+                learningPoint: learningPoint,
+                experience: experience,
+                isWin: _this.isUserWin
+              });
+
+            case 8:
+              res = _context.sent;
+
+              __WEBPACK_IMPORTED_MODULE_6__utils_wx__["b" /* default */].showShareMenu(true);
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, _this);
+    }))();
+  },
+
+  computed: {
+    isUserWin: function isUserWin() {
+      //平均分前50%算赢
+      var sum = 0;
+      var playerNum = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_keys___default()(this.playerMap).length;
+      for (var key in this.scoreMap) {
+        sum += this.scoreMap[key];
+      }
+      var average = sum / playerNum;
+      return this.userScore >= average ? true : false;
+    },
+    animatedUserMark: function animatedUserMark() {
+      return this.aUserMark.toFixed(0);
+    },
+    userAnswerNum: function userAnswerNum() {
+      switch (this.userCorrectNum) {
+        case 0:
+          return "零";
+        case 1:
+          return "一";
+        case 2:
+          return "二";
+        case 3:
+          return "三";
+        case 4:
+          return "四";
+        case 5:
+          return "五";
+      }
+    },
+    playerIdArray: function playerIdArray() {
+      var playerIdArray = [];
+      for (var key in this.scoreMap) {
+        playerIdArray.push(key);
+      }
+      return playerIdArray;
+    }
+  },
+  watch: {
+    userMark: function userMark(newVal) {
+      __WEBPACK_IMPORTED_MODULE_5__assests_js_TweenMax_min__["TweenLite"].to(this.$data, 1.5, { aUserMark: newVal, delay: 0.5 });
+    }
+  },
+  methods: {
+    again: function again() {
+      __WEBPACK_IMPORTED_MODULE_6__utils_wx__["b" /* default */].redirectTo("../battle/main?playerList=" + __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()(this.playerList) + "&matchId=" + this.matchId);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 251:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "st-background-base-div"
+  }, [_c('img', {
+    staticClass: "st-background-bg-div",
+    attrs: {
+      "src": "/static/images/bg.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-result-detail-div"
+  }, [_c('img', {
+    staticClass: "st-background-bg-div",
+    attrs: {
+      "src": "/static/images/groupBattleResult/Performancedisplay_bg.png"
+    }
+  }), _vm._v(" "), _c('p', {
+    attrs: {
+      "id": "st-total-grade-p"
+    }
+  }, [_vm._v(_vm._s(_vm.animatedUserMark) + "分")]), _vm._v(" "), _c('p', {
+    attrs: {
+      "id": "st-total-correct-p"
+    }
+  }, [_vm._v("答对" + _vm._s(_vm.userAnswerNum) + "题")]), _vm._v(" "), _c('p', {
+    staticClass: "st-detail-text-p",
+    attrs: {
+      "id": "st-coin-change-p"
+    }
+  }, [_vm._v("金币：    +" + _vm._s(_vm.isUserWin ? 100 : 0))]), _vm._v(" "), _c('p', {
+    staticClass: "st-detail-text-p",
+    attrs: {
+      "id": "st-gradepoint-change-p"
+    }
+  }, [_vm._v("绩点：    +" + _vm._s(_vm.userCorrectNum))]), _vm._v(" "), _c('p', {
+    staticClass: "st-detail-text-p",
+    attrs: {
+      "id": "st-studypoint-change-p"
+    }
+  }, [_vm._v("学点：    -" + _vm._s(_vm.userLearningPoit))]), _vm._v(" "), _c('p', {
+    staticClass: "st-detail-text-p",
+    attrs: {
+      "id": "st-expression-change-p"
+    }
+  }, [_vm._v("经验：    +" + _vm._s(_vm.isUserWin ? 10 : 5))])], 1), _vm._v(" "), _c('div', {
+    staticClass: "st-player-range-div"
+  }, [_c('div', {
+    staticClass: "st-player-range-container"
+  }, _vm._l((_vm.playerIdArray), function(playerId, index) {
+    return _c('div', {
+      key: index,
+      staticClass: "st-player-detail-div"
+    }, [_c('div', {
+      staticClass: "st-player-img-div"
+    }, [_c('img', {
+      staticClass: "st-background-bg-div user-icon",
+      attrs: {
+        "src": _vm.playerMap[playerId].headImage
+      }
+    })]), _vm._v(" "), _c('p', [_vm._v("第" + _vm._s(index + 1) + "名")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.scoreMap[playerId]) + "分")]), _vm._v(" "), _c('div', {
+      staticClass: "st-player-cup-div"
+    }, [(index === 0) ? _c('img', {
+      staticClass: "st-background-bg-div",
+      attrs: {
+        "src": "/static/images/groupBattleResult/Goldtrophy_icon.png"
+      }
+    }) : _vm._e(), _vm._v(" "), (index === 1) ? _c('img', {
+      staticClass: "st-background-bg-div",
+      attrs: {
+        "src": "/static/images/groupBattleResult/Silvertrophy_icon.png"
+      }
+    }) : _vm._e(), _vm._v(" "), (index === 2) ? _c('img', {
+      staticClass: "st-background-bg-div",
+      attrs: {
+        "src": "/static/images/groupBattleResult/Bronzetrophy_icon.png"
+      }
+    }) : _vm._e()])], 1)
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "st-continue-game-div"
+  }, [_c('img', {
+    staticClass: "st-background-bg-div",
+    attrs: {
+      "src": "/static/images/groupBattleResult/1.1Continue-btn.png",
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.again
+    }
+  })]), _vm._v(" "), _c('button', {
+    staticClass: "st-share-result-div",
+    attrs: {
+      "id": "showoff",
+      "open-type": "share"
+    }
+  }, [_c('img', {
+    staticClass: "btn_img",
+    attrs: {
+      "src": "/static/images/groupBattleResult/1.1Showoff-btn.png"
+    }
+  })])], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-56f52f08", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 252:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "st-battle-main-container"
+  }, [(_vm.step == 'A' || _vm.step == 'A-1' || _vm.step == 'A-2') ? _c('groupBattleWaiting', {
+    attrs: {
+      "playerList": _vm.playerList,
+      "playerNumber": _vm.playerNumber,
+      "creator": _vm.creator,
+      "matchId": _vm.matchId,
+      "isCreator": _vm.isCreator,
+      "eventid": '1',
+      "mpcomid": '2'
+    },
+    on: {
+      "playerList": _vm.changePlayer,
+      "giveUpBattle": _vm.giveUpBattle,
+      "beginBattle": _vm.startBattle
+    }
+  }) : (_vm.step == 'A-0' || _vm.step == 'B' || _vm.step == 'C' || _vm.step == 'D') ? _c('groupBattle', {
+    attrs: {
+      "question": _vm.question,
+      "questionIndex": _vm.questionIndex,
+      "nextQuestion": _vm.sendMessage,
+      "waitUser": _vm.waitUser,
+      "eventid": '0',
+      "mpcomid": '0'
+    },
+    on: {
+      "userAnswered": _vm.changeUserAnswer
+    }
+  }) : (_vm.step === 'E') ? _c('groupBattleResult', {
+    attrs: {
+      "userInfo": _vm.userInfo,
+      "playerList": _vm.playerList,
+      "playerMap": _vm.playerMap,
+      "userScore": _vm.userScore,
+      "userCorrectNum": _vm.userCorrectNum,
+      "userLearningPoit": _vm.userLearningPoit,
+      "scoreMap": _vm.scoreMap,
+      "matchId": _vm.matchId,
+      "mpcomid": '1'
+    }
+  }) : _vm._e()], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2b4f5831", esExports)
+  }
+}
+
+/***/ })
+
+},[217]);
+//# sourceMappingURL=main.js.map

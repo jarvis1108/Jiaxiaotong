@@ -1,0 +1,45 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.MatchSetting;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 匹配设置数据访问层
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:25
+ */
+@Repository
+public interface MatchSettingRepository extends CrudRepository<MatchSetting, String> {
+    /**
+     * 查询所有匹配设置信息表
+     * @return
+     */
+    List<MatchSetting> findAll();
+
+    /**
+     * 根据匹配设置ID查询匹配设置表
+     * @param matchSettingId
+     * @return
+     */
+    MatchSetting findMatchSettingByMatchSettingId(String matchSettingId);
+
+    /**
+     * 创建、更新匹配设置表
+     * @param matchSetting
+     * @return
+     */
+    MatchSetting save(MatchSetting matchSetting);
+
+    /**
+     * 分页查询所有匹配设置信息表
+     * @param pageable
+     * @return
+     */
+    Page<MatchSetting> findAll(Pageable pageable);
+}

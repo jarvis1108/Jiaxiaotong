@@ -1,0 +1,81 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.dao.LPConsumeRecordRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.LPConsumeRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.LPConsumeRecordService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
+import javax.transaction.Transactional;
+
+import java.util.List;
+
+/**
+ * @author meiyu
+ * 学点消费记录
+ */
+@Service
+public class LPConsumeRecordServiceImpl implements LPConsumeRecordService {
+
+    @Autowired
+    private LPConsumeRecordRepository lpConsumeRecordRepository;
+
+
+    /**
+     * 提交新消费学点记录
+     *
+     * @param lpConsumeRecord
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public LPConsumeRecord create(LPConsumeRecord lpConsumeRecord) throws ErrorInfo {
+        if (lpConsumeRecord == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_01_004", "新建消费学点为空", null);
+        return lpConsumeRecordRepository.save(lpConsumeRecord);
+    }
+
+    /**
+     * 获取所有学点消费记录
+     *
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    @Transactional
+    @Override
+    public List<LPConsumeRecord> getLPConsumeRecordList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null || pageSize <= 0 || currentPage <= 0) {
+            return null;
+        } else {
+            Pageable pageable = PageRequest.of(currentPage, pageSize);
+            Page<LPConsumeRecord> page = lpConsumeRecordRepository.findAll(pageable);
+            return page.getContent();
+        }
+    }
+
+    @Override
+    public List<LPConsumeRecord> findByUserId(String userId) throws ErrorInfo {
+        List<LPConsumeRecord> lpConsumeRecords = lpConsumeRecordRepository.findByUserId(userId);
+        if (lpConsumeRecords.size() == 0) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_017", "该用户学点消费记录为空", null);
+        }
+        return lpConsumeRecords;
+    }
+
+    @Override
+    public LPConsumeRecord save(LPConsumeRecord lpConsumeRecord) {
+        return lpConsumeRecordRepository.save(lpConsumeRecord);
+    }
+
+}

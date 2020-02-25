@@ -1,0 +1,225 @@
+package com.dxtwangxiao.strongestsuperscholar.web.websocket.group;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.User;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserRelInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserRelInfoService;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserService;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.MatchRecordDTO;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.UserDTO;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestion;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResultData;
+import com.dxtwangxiao.strongestsuperscholar.web.websocket.common.MatchManagement;
+import com.dxtwangxiao.strongestsuperscholar.web.websocket.common.Message;
+import org.springframework.beans.BeanUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.socket.*;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * 群PK WebSocket处理类，真正的匹配及出题业务逻辑在此
+ * <p>
+ * Created By Devin
+ * 2018-08-29 上午 09:05
+ */
+public class GroupWebSocketHandler implements WebSocketHandler {
+
+    // 启动类set方法注入，解决无法注入Bean的问题
+    private static ApplicationContext applicationContext;
+
+    public static void setApplicationContext(ApplicationContext context) {
+        applicationContext = context;
+    }
+
+    private static final Map<String, WebSocketSession> users;    // 用户列表
+
+
+    static {
+        users = new ConcurrentHashMap<>();
+    }
+    //建立连接后触发的回调
+    @Override
+    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+        // 1.从session中获取当前用户ID和对战id
+        String userId= (String) session.getAttributes().get("userId");
+        String matchId = (String) session.getAttributes().get("MATCH_ID");
+        // 2.根据用户ID获取其信息
+        UserService userService=applicationContext.getBean(UserService.class);
+        UserRelInfoService userRelInfoService = applicationContext.getBean(UserRelInfoService.class);
+        User user = userService.findUserByUserId(userId);
+
+        // 3. 如果用户存在，则将其加入到在线用户列表
+        if (user != null) {
+            users.put(userId, session);
+        } else {
+            return;
+        }
+        // 4.获取UserDTO实例，并设置相关属性
+        UserRelInfo userRelInfo = userRelInfoService.findByUserId(userId);
+        UserDTO userDTO = new UserDTO();
+        BeanUtils.copyProperties(user, userDTO);
+        BeanUtils.copyProperties(userRelInfo, userDTO);
+
+        //5将用户添加到群pk集合中(小于10人的时候)
+
+        // 6.更新战局信息
+        MatchRecordDTO matchRecordDTO = MatchManagement.getInstance().getMatchByMatchId(matchId);
+        List<UserDTO> userList=matchRecordDTO.getUserList();
+        if(userList.size()<10){
+           userList.add(userDTO);
+            Message result = new Message();
+            result.setMsgType("A");
+            result.setMsgDesc("群pk信息");
+            result.setMsgID(UUID.randomUUID().toString());
+            Map<String, Object> curData = new HashMap<>();
+            curData.put("matchId", matchRecordDTO.getMatchRecordId());
+
+
+            if (matchRecordDTO.getUserId().equals(userId)) {
+                //isCreator 是否是战局创建者，1表示是，0表示不是
+                MatchManagement.getInstance().addUser(matchId, userDTO, Byte.valueOf("1"));
+            } else {
+                MatchManagement.getInstance().addUser(matchId, userDTO, Byte.valueOf("0"));
+                matchRecordDTO.setFightStatus(Byte.valueOf("1"));
+
+                // 向群发送客户端信息
+                curData.put("group", userDTO);
+                result.setMsgData(new ResultData(curData));
+                for(UserDTO userDTO1:userList){
+                    sendMessageToUser(userDTO1.getUserId(), new TextMessage(JSON.toJSONString(result)));
+                }
+
+
+                // 向客户端发送群信息
+                User group = userService.findUserByUserId(userId);
+                UserRelInfo groupRelInfo = userRelInfoService.findByUserId(userId);
+                UserDTO groupDTO = new UserDTO();
+                BeanUtils.copyProperties(group, groupDTO);
+                BeanUtils.copyProperties(groupRelInfo, groupDTO);
+                curData.replace("group", groupDTO);
+                result.setMsgData(new ResultData(curData));
+                sendMessageToUser(userId, new TextMessage(JSON.toJSONString(result)));
+            }
+
+        }else{
+            Message result = new Message();
+            result.setMsgType("D");
+            result.setMsgDesc("对战人数已满，请关闭连接");
+            result.setMsgID(UUID.randomUUID().toString());
+            Map<String, String> curData = new HashMap<>();
+            curData.put("error", "pk人数已满");
+
+        }
+
+
+
+
+
+
+    }
+    // 收到消息时触发的回调
+    @Override
+    public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
+        String userId = (String) session.getAttributes().get("MATCH_USER_ID");
+
+        JSONObject jsonObject = JSON.parseObject(message.getPayload().toString());
+        String msgType = jsonObject.getString("msgType");
+        JSONObject msgData = jsonObject.getJSONObject("msgData");
+
+        if (msgType.equals("A")) {
+            String matchId = msgData.getString("matchId");
+            Integer no = msgData.getInteger("no");
+
+            // (1)根据战局ID获取战局记录，进而获取战局题目
+            MatchRecordDTO match = MatchManagement.getInstance().getMatchByMatchId(matchId);
+            MultipleQuestion multipleQuestion = match.getQuestionList().get(no - 1);
+
+            // (2)向客户端发送消息，表明出题成功
+            Message result = new Message();
+            result.setMsgID(UUID.randomUUID().toString());
+            result.setMsgType("B");
+            result.setMsgData(new ResultData(multipleQuestion));
+            result.setMsgDesc("出题成功");
+            sendMessageToUser(userId, new TextMessage(JSON.toJSONString(result)));
+        }
+
+        if (msgType.equals("B")) {
+            String matchId = msgData.getString("matchId");
+            String correctAnswer = msgData.getString("correctAnswer");
+            String userAnswer = msgData.getString("userAnswer");
+            Integer timeLeft = msgData.getInteger("timeLeft");
+            Integer questionIndex = msgData.getInteger("no");
+
+            // 存储用户学点消耗到数据库
+            Integer amount = 10 - timeLeft;
+            Byte isTrue;
+            if (userAnswer.equals(correctAnswer)) {
+                isTrue = Byte.valueOf("1");
+            } else {
+                isTrue = Byte.valueOf("0");
+            }
+            MatchManagement.getInstance().saveLpConsumeRecord(matchId, userId, questionIndex, userAnswer, amount, isTrue);
+
+            // 计算分数
+            Integer score;
+            if (correctAnswer.equals(userAnswer)) {
+                // TODO 分数计算算法
+                score = timeLeft * (200 / 10);
+            } else {
+                score = 0;
+            }
+
+            // 向客户端发送消息
+            Message result = new Message();
+            result.setMsgID(UUID.randomUUID().toString());
+            result.setMsgType("C-1");
+            Map<String, Object> curData = new HashMap<>();
+            curData.put("score", score);
+            result.setMsgData(new ResultData(curData));
+            result.setMsgDesc("发送给客户端的成绩");
+            sendMessageToUser(userId, new TextMessage(JSON.toJSONString(result)));
+
+
+        }
+    }
+    //传输消息出错时触发的回调
+    @Override
+    public void handleTransportError(WebSocketSession webSocketSession, Throwable throwable) throws Exception {
+
+    }
+    //断开连接后触发的回调
+    @Override
+    public void afterConnectionClosed(WebSocketSession webSocketSession, CloseStatus closeStatus) throws Exception {
+
+    }
+
+    @Override
+    public boolean supportsPartialMessages() {
+        return false;
+    }
+
+    private boolean sendMessageToUser(String userID, TextMessage message) {
+        if (users.get(userID) == null)
+            return false;
+
+        WebSocketSession session = users.get(userID);
+        if (!session.isOpen())
+            return false;
+
+        try {
+            session.sendMessage(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+}

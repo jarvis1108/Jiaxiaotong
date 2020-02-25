@@ -1,0 +1,364 @@
+<template>
+  <div class="result">
+    <img id="bg" src="/static/images/bg.png"/>
+    <img class="winImg" v-if="isUserWin" src="/static/images/battleResult/Challengesuccess.png"/>
+    <img class="winImg" v-if="!isUserWin" src="/static/images/battleResult/Challengefailure.png"/>
+
+    <div class="info">
+      <div id="userInfo" :style="'width:'+ userWidth+'%'">
+        <img id="userIcon" :src="userInfo.headImage"/>
+        <span id="userName">{{userInfo.wechatName}}</span>
+        <span id="userAnswerNum" style="font-weight: bold;">答对{{userAnswerNum}}题</span>
+        <div class="mark" id="userScore">
+          <span>{{animatedUserMark}}</span>
+          <span style="font-size: 16px">分</span>
+          <div><span class="flag">—</span></div>
+        </div>
+      </div>
+      <div id="opponentInfo" :style="'width:'+opponentWidth+'%'">
+        <img id="opponentIcon" :src="opponentInfo.headImage"/>
+        <span id="opponentName">{{opponentInfo.wechatName}}</span>
+        <span id="opponentAnswerNum" style="font-weight: bold;">答对{{opponentAnswerNum}}题</span>
+        <div class="mark" id="opponentScore">
+          <span>{{animatedOpponentMark}}</span>
+          <span style="font-size: 18px">分</span>
+          <div><span class="flag">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+      <div style="display: table-row">
+        <div style="display: table-cell;width: 50%">金币：</div>
+        <div style="display: table-cell;width: 50%">+{{isUserWin?100:0}}</div>
+      </div>
+      <div style="display: table-row">
+        <div style="display: table-cell;width: 50%">绩点：</div>
+        <div style="display: table-cell;width: 50%">+{{userCorrectNum}}</div>
+      </div>
+      <div style="display: table-row">
+        <div style="display: table-cell;width: 50%">学点：</div>
+        <div style="display: table-cell;width: 50%">-{{userLearningPoit}}</div>
+      </div>
+      <div style="display: table-row">
+        <div style="display: table-cell;width: 50%">经验：</div>
+        <div style="display: table-cell;width: 50%">+{{isUserWin?10:5}}</div>
+      </div>
+    </div>
+
+    <img @click="on_continue" class="btn" id="continue" src="/static/images/battleResult/1.1Continue-btn.png"/>
+    <button v-if="isUserWin" class="btn" id="showoff" open-type="share">
+      <img class="btn_img" src="/static/images/battleResult/1.1Showoff-btn.png"/>
+    </button>
+    <button v-if="!isUserWin" class="btn" id="share" open-type="share">
+      <img class="btn_img" src="/static/images/battleResult/Shareresults-btn.png"/>
+    </button>
+    <span id="tip">分享到微信群可获得50金币奖励</span>
+
+  </div>
+</template>
+<script>
+import { TweenLite } from "../assests/js/TweenMax.min";
+import wxs from "../utils/wx";
+
+export default {
+  name: "result",
+  props: {
+    userInfo: {
+      type: Object,
+      required: true
+    },
+    opponentInfo: {
+      type: Object,
+      required: true
+    },
+    userScore: {
+      required: true
+    },
+    opponentScore: {
+      required: true
+    },
+    userCorrectNum: {
+      required: true
+    },
+    opponentCorrectNum: {
+      required: true
+    },
+    userLearningPoit: {
+      required: true
+    },
+    battleId: {
+      required: true
+    },
+    resultType: {
+      type: Boolean,
+      required: false
+    }
+  },
+  data() {
+    return {
+      aUserMark: 0, //用户分数--动画
+      aOpponentMark: 0,
+      userMark: 0,
+      opponentMark: 0
+    };
+  },
+  methods: {
+    on_continue: function() {
+      if (this.resultType) {
+        //好友对战，继续挑战则回退
+        wxs.redirectTo("../friend-pk/main");
+      } else {
+        //匹配对战，继续挑战则跳转到匹配页
+        wxs.redirectTo("../battle/main");
+      }
+    }
+  },
+  computed: {
+    isUserWin() {
+      return this.userScore >= this.opponentScore ? true : false;
+    },
+    userWidth() {
+      return this.isUserWin ? 59 : 39;
+    },
+    opponentWidth() {
+      return this.isUserWin ? 39 : 59;
+    },
+    animatedUserMark() {
+      return this.aUserMark.toFixed(0);
+    },
+    animatedOpponentMark() {
+      return this.aOpponentMark.toFixed(0);
+    },
+    userAnswerNum() {
+      switch (this.userCorrectNum) {
+        case 0:
+          return "零";
+        case 1:
+          return "一";
+        case 2:
+          return "二";
+        case 3:
+          return "三";
+        case 4:
+          return "四";
+        case 5:
+          return "五";
+      }
+    },
+    opponentAnswerNum() {
+      switch (this.opponentCorrectNum) {
+        case 0:
+          return "零";
+        case 1:
+          return "一";
+        case 2:
+          return "二";
+        case 3:
+          return "三";
+        case 4:
+          return "四";
+        case 5:
+          return "五";
+      }
+    }
+  },
+  watch: {
+    userMark(newVal) {
+      TweenLite.to(this.$data, 1.5, { aUserMark: newVal, delay: 0.5 });
+    },
+    opponentMark(newVal) {
+      TweenLite.to(this.$data, 1.5, { aOpponentMark: newVal, delay: 0.5 });
+    }
+  },
+  async onLoad() {
+    this.userMark = this.userScore;
+    this.opponentMark = this.opponentScore;
+    //答题结束，将结果返回给后台
+    let learningPoint = 0 - this.userLearningPoit;
+    let coin = this.isUserWin ? 50 : -50;
+    let experience = this.isUserWin ? 10 : 5;
+    const res = await this.$store.dispatch("saveBattleResult", {
+      matchId: this.battleId,
+      userId: this.userInfo.userId,
+      coin: coin,
+      gradePoint: this.userCorrectNum,
+      learningPoint: learningPoint,
+      experience: experience,
+      isWin: this.isUserWin
+    });
+    //关闭webSocket
+    wx.closeSocket();
+    wxs.showShareMenu(true);
+  },
+  onShareAppMessage() {
+    return {
+      title: "我的记录在此，谁敢来比，输了的发红包",
+      path: "/pages/index/main"
+    };
+  }
+};
+</script>
+<style scoped>
+#tip {
+  position: absolute;
+  top: 89%;
+  left: 28%;
+  width: 48%;
+  font-size: 12px;
+  color: rgb(255, 252, 209);
+}
+
+.btn {
+  position: absolute;
+  left: 20%;
+  width: 60%;
+  height: 9%;
+}
+
+.btn_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#continue {
+  top: 67%;
+}
+
+#showoff,
+#share {
+  top: 78%;
+  border: none;
+  background: transparent;
+}
+#showoff::after,
+#share::after {
+  border: none;
+}
+
+.table {
+  position: absolute;
+  top: 45%;
+  left: 30%;
+  width: 40%;
+  height: 20%;
+  display: table;
+  font-size: 18px;
+  color: white;
+}
+
+.mark {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mark div {
+  position: absolute;
+  top: 80%;
+  left: 48%;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+#userInfo {
+  position: relative;
+  float: left;
+  height: 80%;
+  width: 100%;
+  background: rgb(59, 202, 255);
+  border-bottom-right-radius: 60px;
+  border-top-right-radius: 60px;
+  z-index: -1;
+  animation: slideFromLeft 1s;
+}
+
+#opponentInfo {
+  position: relative;
+  float: right;
+  height: 80%;
+  width: 100%;
+  background: rgb(255, 78, 86);
+  border-bottom-left-radius: 60px;
+  border-top-left-radius: 60px;
+  z-index: -1;
+  animation: slideFromRight 1s;
+}
+
+#userIcon,
+#opponentIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgb(115, 115, 115);
+  border: 3px solid white;
+}
+
+#userIcon {
+  position: absolute;
+  right: 10px;
+  top: 12%;
+}
+
+#opponentIcon {
+  position: absolute;
+  left: 10px;
+  top: 12%;
+}
+
+#userName,
+#opponentName {
+  position: absolute;
+  top: 8px;
+}
+
+#userName,
+#userAnswerNum {
+  text-align: right;
+  right: 70px;
+}
+
+#opponentName,
+#opponentAnswerNum {
+  text-align: left;
+  left: 70px;
+}
+
+#userAnswerNum,
+#opponentAnswerNum {
+  position: absolute;
+  top: 30px;
+}
+
+.info {
+  position: absolute;
+  width: 100%;
+  top: 22%;
+  height: 15%;
+  font-size: 18px;
+  color: white;
+}
+
+.winImg {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  width: 80%;
+  height: 15%;
+  animation: zoom 1s;
+}
+
+#bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -2;
+}
+</style>

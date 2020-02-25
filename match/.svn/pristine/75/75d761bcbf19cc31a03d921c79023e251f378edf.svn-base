@@ -1,0 +1,52 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestion;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * Created By Devin
+ * 2018-08-30 下午 02:43
+ */
+@Repository
+public interface MultipleQuestionRepository extends CrudRepository<MultipleQuestion, String> {
+
+    /**
+     * 根据科目id获取选择题列表
+     *
+     * @param subjectId 科目id
+     * @return 试题列表
+     */
+    List<MultipleQuestion> findBySubjectId(String subjectId);
+
+    /**
+     * 根据知识点id获取选择题列表
+     *
+     * @param knowledgeId 知识点id
+     * @return 试题列表
+     */
+    List<MultipleQuestion> findByKnowledgeId(String knowledgeId);
+
+    /**
+     * 根据科目id随机选择一定数量的题目
+     *
+     * @param subjectId 科目id
+     * @param number    题目数量
+     * @return 试题列表
+     */
+    @Query(nativeQuery = true, value = "select * from V_MultipleChoice where QuestionID >= ((select max(QuestionID) from V_MultipleChoice) - (select min(QuestionID) from V_MultipleChoice)) * rand() + (select min(QuestionID) from V_MultipleChoice) and SubjectID = ?1 limit ?2")
+    List<MultipleQuestion> findBySubjectIdRandom(String subjectId, Integer number);
+
+    /**
+     * 根据知识点id随机选择一定数量的题目
+     *
+     * @param knowledgeId 知识点id
+     * @param number      题目数量
+     * @return 试题列表
+     */
+    @Query(nativeQuery = true, value = "select * from V_MultipleChoice where QuestionID >= ((select max(QuestionID) from V_MultipleChoice) - (select min(QuestionID) from V_MultipleChoice)) * rand() + (select min(QuestionID) from V_MultipleChoice) and KnowledgeID = ?1 limit ?2")
+    List<MultipleQuestion> findByKnowledgeIdRandom(String knowledgeId, Integer number);
+}

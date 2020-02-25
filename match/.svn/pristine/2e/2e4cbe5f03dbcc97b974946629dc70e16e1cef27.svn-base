@@ -1,0 +1,24 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecord;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @author meiyu
+ * 对战记录
+ */
+
+public interface MatchRecordService {
+
+    MatchRecord create(MatchRecord matchRecord) throws ErrorInfo;
+
+    List<MatchRecord> getMatchRecordList(Integer currentPage, Integer pageSize);
+
+    MatchRecord createMatchRecord(MatchRecord matchRecord);
+
+    MatchRecord getById(String matchId);
+
+    MatchRecord update(MatchRecord matchRecord);
+}

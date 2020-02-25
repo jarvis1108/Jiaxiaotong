@@ -1,0 +1,15 @@
+package com.dxtwangxiao.strongestsuperscholar.module.community.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.community.entity.CommunityRole;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+public interface CommunityRoleService {
+    CommunityRole create(CommunityRole communityRole)throws ErrorInfo;
+    List<CommunityRole> findAll()throws ErrorInfo;
+    List<CommunityRole> findAll(Integer currentPage, Integer pageSize);
+    CommunityRole findById(String communityRoleId)throws ErrorInfo;
+    CommunityRole update(CommunityRole communityRole)throws ErrorInfo;
+    boolean deleteById(String communityRoleId)throws ErrorInfo;
+}

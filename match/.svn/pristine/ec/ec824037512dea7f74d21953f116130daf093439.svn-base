@@ -1,0 +1,27 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.GradePhaseInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 年级阶段基本信息 服务接口
+ * <p>
+ * Created by shenhao
+ * 2018\7\13 0013
+ */
+public interface GradePhaseInfoService {
+
+    /**
+     * 获取所有年级阶段信息
+     *
+     * @return 所有年级阶段信息
+     */
+    List<GradePhaseInfo> findAll();
+
+    GradePhaseInfo create(GradePhaseInfo newGradePhaseInfo) throws ErrorInfo;
+
+    GradePhaseInfo update(GradePhaseInfo updatedGradePhaseInfo) throws ErrorInfo;
+
+}

@@ -1,0 +1,162 @@
+<template>
+ <!-- 设置界面 -->
+ <div class="payTip">
+    <div class="dialog-mask"></div>
+    <!-- <img @click="closeDialog" class="st-setting-dialog-close-icon" src="/static/images/settingDialog/close_icon@2x.png"/> -->
+  
+    <img class="st-setting-dialog-bg" src="/static/images/payTip/Springwindow_bg.png"/>
+    <div v-if="index % 3 === 0" class="st-setting-dialog-icon-div" id="blue">
+      <img class="st-setting-dialog-icon-img" :src="product.productImage"/>
+    </div>
+    <div v-else-if="index % 3 === 1" class="st-setting-dialog-icon-div" id="green">
+      <img class="st-setting-dialog-icon-img" :src="product.productImage"/>
+    </div>
+    <div v-else class="st-setting-dialog-icon-div" id="cyan">
+      <img class="st-setting-dialog-icon-img" :src="product.productImage"/>
+    </div>
+    <img @click="closeDialog" class="st-setting-dialog-close-icon" src="/static/images/payTip/Close_1_icon.png"/>
+    <div class="st-setting-dialog-line">{{product.productName}}</div>
+    <!-- <span class="st-setting-dialog-setup-text">购买后，可获得一整个月的学点，方便学习。</span> -->
+    <span class="st-setting-dialog-setup-text">{{product.productDesc}}</span>
+  
+    <button class="st-setting-dialog-button" @click="to_payPage" >确认购买</button>
+ </div>
+</template>
+
+<script>
+import wxs, { showSuccess } from "../utils/wx";
+export default {
+  props: [ "product", "index"],
+  data() {
+    return {
+    };
+  },
+  methods: {
+    //关闭设置窗口
+    closeDialog() {
+      //告知父组件关闭当前设置弹窗
+      this.$emit("listenCloseDialog");
+    },
+    async to_payPage() {
+      if (this.product.paymentType === 0) {
+        //充值，跳转至支付页面
+        wxs.navigateTo(
+          "../pay/main?productObj=" + JSON.stringify(this.product)
+        );
+      } else {
+        //金币商城，调用兑换接口
+        //1、先进行简单判断是否可以购买
+        if (this.$store.state.userInfo.coin < this.product.productPrice) {
+          wxs.showTip("您的金币不足");
+        } else {
+          let isSuccess = await this.$store.dispatch("exchangeGold", {
+            productId: this.product.productId,
+            amount: 1 //商品数量，默认为1
+          });
+          if (isSuccess) wxs.showSuccess("兑换成功");
+          else wxs.showTip("兑换失败");
+          this.closeDialog();
+        }
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+.st-setting-dialog-bg {
+  position: absolute;
+  height: 58%;
+  width: 60%;
+  top: 12%;
+  left: 20%;
+  animation: zoomOut 1s;
+}
+.st-setting-dialog-icon-div {
+  position: absolute;
+  top: 12.5%;
+  left: 41.25%;
+  flex: 0 0 auto;
+  width: 18vw;
+  height: 18vw;
+  border-radius: 50%;
+  animation: zoomOutDelay 1s;
+}
+#blue {
+  background: rgb(61, 138, 218);
+}
+#green {
+  background: rgb(121, 181, 61);
+}
+#cyan {
+  background: rgb(32, 196, 163);
+}
+.st-setting-dialog-icon-img {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  height: 75%;
+  width: 75%;
+}
+.st-setting-dialog-close-icon {
+  position: absolute;
+  top: 20%;
+  right: 22%;
+  width: 4%;
+  height: 2.5%;
+  animation: zoomOutDelay 1s;
+}
+.st-setting-dialog-line {
+  position: absolute;
+  top: 27%;
+  left: 20%;
+  width: 40%;
+  height: 5%;
+  padding-top: 3px;
+  padding-left: 20%;
+  background-color: rgb(95, 55, 219);
+  color: white;
+  font-size: 18px;
+  font-family: "PingFang-SC-Bold";
+  animation: zoomOutDelay 1s;
+}
+.st-setting-dialog-setup-text {
+  position: absolute;
+  top: 37%;
+  left: 27%;
+  width: 49%;
+  height: 3%;
+  font-size: 17px;
+  font-family: "PingFang-SC-Bold";
+  color: rgb(65, 63, 68);
+  animation: zoomOutDelay 1s;
+}
+.st-setting-dialog-button {
+  position: absolute;
+  top: 54%;
+  left: 32%;
+  width: 36%;
+  height: 6%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2px;
+  background-color: rgb(9, 187, 7);
+  font-family: "PingFang-SC-Bold";
+  font-weight: normal;
+  font-size: 15px;
+  color: white;
+  animation: zoomOutDelay 1s;
+}
+.dialog-mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 0;
+}
+</style>

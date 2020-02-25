@@ -1,0 +1,16 @@
+<template name="user_info$21e54bc3">
+  <view id="usr_information" class="_div data-v-804f0af8">
+    <image class="_img data-v-804f0af8 bg" src="/copy-asset/static/img/Personalinformation-bg.png"></image>
+    <image class="_img data-v-804f0af8 bg" id="usr_pho" wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <label class="_span data-v-804f0af8 text" id="usr_name">st.Ku</label>
+    <view class="_div data-v-804f0af8 text" id="usr_level">{{ level }}级</view>
+    <image class="_img data-v-804f0af8 bg" id="level-img1" src="/copy-asset/dist/static/img/Experiencebarframe@2x.png"></image>
+    <image class="_img data-v-804f0af8 bg" id="level-img2" src="/copy-asset/dist/static/img/Ruleofthumb@2x.png" style=" {{('width:' + (myWidth + 'px') + ';')}}"></image>
+    <view id="mney_img" class="_div data-v-804f0af8">
+      <image class="_img data-v-804f0af8 bg" src="/copy-asset/dist/static/img/Goldcoin@2x.png"></image>
+    </view>
+    <label id="usr_m_num" class="_span data-v-804f0af8 text">{{ money }}</label>
+    <label id="GPA" class="_span data-v-804f0af8 text">绩点 {{ gpa }}</label>
+    <label id="XPA" class="_span data-v-804f0af8 text">学点 {{ xpa }}</label>
+  </view>
+</template>

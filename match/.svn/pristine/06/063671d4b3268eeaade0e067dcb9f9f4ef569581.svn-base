@@ -1,0 +1,48 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserGPDetail;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 用户绩点流水明细数据访问层
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:15
+ */
+@Repository
+public interface UserGPDetailRepository extends CrudRepository<UserGPDetail, String> {
+    /**
+     * 查询用户绩点流水明细列表
+     * @return
+     */
+    List<UserGPDetail> findAll();
+
+    /**
+     * 根据userId查询用户绩点流水明细列表
+     * @param userId
+     * @return
+     */
+    List<UserGPDetail> findAllByUserId(String userId);
+
+    /**
+     * 创建、更新用户绩点流水明细表
+     * @param userGPDetail
+     * @return
+     */
+    UserGPDetail save(UserGPDetail userGPDetail);
+
+    /**
+     * 分页查询用户绩点流水明细列表
+     * @param userId
+     * @param pageable
+     * @return
+     */
+    @Query("select u from UserGPDetail u where u.userId = ?1")
+    Page<UserGPDetail> findByUserId(String userId, Pageable pageable);
+}

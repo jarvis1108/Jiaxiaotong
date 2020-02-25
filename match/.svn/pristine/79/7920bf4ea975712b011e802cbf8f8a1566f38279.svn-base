@@ -1,0 +1,61 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionMultipleChoiceForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionMultipleChoiceForLibVORepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionMultipleChoiceForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionForLibService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.QuestionMultipleChoiceForLibVO;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @Author lh
+ * @Date 2018.09.07
+ */
+@Service
+public class QuestionForLibServiceImpl implements QuestionForLibService {
+
+    @Autowired
+    private QuestionForLibRepository questionForLibRepository;
+    @Autowired
+    private QuestionMultipleChoiceForLibRepository questionMultipleChoiceForLibRepository;
+    @Autowired
+    private QuestionMultipleChoiceForLibVORepository questionMultipleChoiceForLibVORepository;
+
+    @Transactional
+    @Override
+    public boolean addChoice(QuestionForLib questionForLib, QuestionMultipleChoiceForLib questionMultipleChoiceForLib) throws ErrorInfo{
+        //设置id
+        String questionForLibId = UUIDUtil.getUUID();
+        questionForLib.setQuestionForLibId(questionForLibId);
+        questionForLib.setQuestionForLibNo(questionForLibId);
+        questionForLib.setQuestionForLibCode(questionForLibId);
+        questionMultipleChoiceForLib.setQuestionForLibId(questionForLibId);
+        questionMultipleChoiceForLib.setQuestionForLibNo(questionForLibId);
+
+        //添加
+        questionForLibRepository.save(questionForLib);
+        questionMultipleChoiceForLibRepository.save(questionMultipleChoiceForLib);
+
+        return true;
+    }
+
+    @Transactional
+    @Override
+    public void deleteChoice(String questionForLibId) throws ErrorInfo {
+        questionForLibRepository.deleteById(questionForLibId);
+        questionMultipleChoiceForLibRepository.deleteById(questionForLibId);
+    }
+
+    @Override
+    public List<QuestionMultipleChoiceForLibVO> listChoiceByQuestionLibId(String questionLibId) {
+        return questionMultipleChoiceForLibVORepository.findAllByQuestionLibIdOrderByCreateTimeAsc(questionLibId);
+    }
+}

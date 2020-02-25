@@ -1,0 +1,213 @@
+<template>
+  <div class="st-battle-main-container">
+    <battleLoading
+      v-if="step == '0'"
+      :user="userInfo"
+      :close="step == '0'">
+    </battleLoading>
+    
+    <battleReady
+      v-else-if="step == 'A'"
+      :userInfo="userInfo"
+      :opponentInfo="opponentInfo"
+      :close="sendMessage">
+    </battleReady>
+
+    <battle
+      v-else-if="questionIndex < 6"
+      :userInfo="userInfo"
+      :userScore="userScore"
+      :opponentAnswer="opponentAnswer" 
+      :opponentInfo="opponentInfo"
+      :question="question"
+      :questionIndex="questionIndex"
+      :nextQuestion="sendMessage"
+      :waitUser="waitUser"
+      :waitOpponent="waitOpponent"
+      @userAnswered="changeUserAnswer"
+      @cutdownout="cutDownOut">
+    </battle>
+
+    <battleResult
+      :userInfo="userInfo"
+      :opponentInfo="opponentInfo"
+      :battleId="battleId"
+      :userScore="userScore"
+      :opponentScore="opponentScore"
+      :userCorrectNum="userCorrectNum"
+      :opponentCorrectNum="opponentCorrectNum"
+      :userLearningPoit="userLearningPoit"
+      v-else>
+    </battleResult>
+  </div>
+</template>
+
+<script>
+import battleLoading from "../../components/battle-loading.vue";
+import battleReady from "../../components/battle-ready.vue";
+import battle from "../../components/battle.vue";
+import battleResult from "../../components/battle-result.vue";
+import wxs from "../../utils/wx";
+import { socketUrl } from "../../config";
+import {getuuid} from "../../utils/RequestObj"
+export default {
+  components: {
+    battleLoading, //加载页
+    battleReady, //准备页
+    battle, //对战页
+    battleResult //结果页
+  },
+  data() {
+    return {
+      userInfo: {}, //用户信息
+      opponentInfo: {}, //对手信息
+      battleId: "", //战局id
+      step: "", //标明战局状态，与返回消息类型匹配
+      questionIndex: 0, //题目序号
+      question: {}, //试题
+      userScore: 0, //用户分数
+      opponentScore: 0, //对手分数
+      userCorrectNum: 0, //用户答对题数
+      opponentCorrectNum: 0, //对手答对题数
+      userLearningPoit: 0, //用户消耗学点数
+      userAnswer: {
+        //用户单题的答案信息
+        answer: "",
+        timeLeft: ""
+      },
+      opponentAnswer: {
+        score: 0,
+        answer: ""
+      }, //对手单题的答案信息
+      waitUser: true, //等待用户答题
+      waitOpponent: true, //等待对手答题
+      socket: null //网络连接
+    };
+  },
+  onLoad() {
+    this.userInfo = this.$store.state.userInfo;
+    this.opponentInfo = {};
+    this.step = "0";
+    this.startMatch();
+  },
+  watch: {
+    questionIndex() {
+      this.opponentAnswer = {
+        score: 0,
+        answer: ""
+      };
+    },
+    waitUser() {
+      setTimeout(() => {
+        if (!this.waitUser && !this.waitOpponent) {
+          this.waitUser = true;
+          this.waitOpponent = true;
+          this.sendMessage();
+        }
+      }, 1000);
+    },
+    waitOpponent() {
+      setTimeout(() => {
+        if (!this.waitUser && !this.waitOpponent) {
+          this.waitUser = true;
+          this.waitOpponent = true;
+          this.sendMessage();
+        }
+      }, 1000);
+    }
+  },
+  methods: {
+    changeUserAnswer(data) {
+      this.userAnswer = data;
+      this.userLearningPoit += 10 - data.timeLeft;
+      this.waitUser = false;
+      this.sendMessage();
+    },
+    startMatch() {
+      let that = this;
+      wx.connectSocket({
+        url: `${socketUrl}/match?userId=${this.userInfo.userId}`
+      });
+
+      wx.onSocketOpen(res => {
+        console.log("连接已建立");
+      });
+
+      wx.onSocketMessage(res => {
+        this.receiveMessage(res);
+      });
+
+      wx.onSocketClose(function(res) {
+        // 监听WebSocket关闭。
+        // if (this.questionIndex < 6) {
+          // this.startMatch();
+        // } else {
+          console.log("Websocket关闭");
+        // }
+      });
+    },
+    receiveMessage(res) {
+      var result = JSON.parse(res.data);
+      this.step = result.msgType;
+      if (result.msgType === "A") {
+        // 服务器返回消息类型为A，表示服务器已经匹配到对手，此时可以进行页面跳转，并请求服务器发送题目
+        console.log("匹配成功");
+        this.opponentInfo = result.msgData.curData.opponent;
+        this.battleId = result.msgData.curData.matchId;
+      } else if (result.msgType === "B") {
+        this.question = result.msgData.curData.question;
+      } else if (result.msgType === "C-1") {
+        this.userScore += result.msgData.curData.score;
+        if (result.msgData.curData.score > 0) {
+          //用户答对
+          this.userCorrectNum += 1;
+        }
+      } else if (result.msgType === "C-2") {
+        this.opponentAnswer = {
+          score: result.msgData.curData.score,
+          answer: result.msgData.curData.answer
+        };
+        this.opponentScore += this.opponentAnswer.score;
+        if (this.opponentAnswer.score > 0) this.opponentCorrectNum += 1;
+        this.waitOpponent = false;
+      }
+    },
+    sendMessage() {
+      //用户和对手都未答题时发送信息为请求题目
+      if (this.waitUser && this.waitOpponent) {
+        this.questionIndex += 1;
+        wx.sendSocketMessage({
+          data: JSON.stringify({
+            msgID: getuuid(),
+            msgType: "A",
+            msgData: {
+              matchId: this.battleId,
+              no: this.questionIndex
+            },
+            msgDesc: "请求出题"
+          })
+        });
+      } else if (!this.waitUser) {
+        //用户答题完毕，计算分数
+        wx.sendSocketMessage({
+          data: JSON.stringify({
+            msgID: getuuid(),
+            msgType: "B",
+            msgData: {
+              matchId: this.battleId,
+              correctAnswer: this.question.answer,
+              userAnswer: this.userAnswer.answer,
+              timeLeft: this.userAnswer.timeLeft,
+              no: this.questionIndex
+            },
+            msgDesc: "请求计算当前分数和返回结果"
+          })
+        });
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+</style>

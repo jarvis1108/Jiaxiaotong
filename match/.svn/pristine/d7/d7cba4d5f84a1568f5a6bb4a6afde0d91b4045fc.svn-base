@@ -1,0 +1,67 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.community;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.community.entity.CommunityRole;
+import com.dxtwangxiao.strongestsuperscholar.module.community.service.CommunityRoleService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@RestController
+@RequestMapping("/com/communityRole")
+public class CommunityRoleController {
+    @Autowired
+    private CommunityRoleService communityRoleService;
+
+    @GetMapping("/list")
+    public ResponseInfo getCommunityRoleList(Integer pageSize, Integer currentPage, HttpServletRequest request) throws ErrorInfo {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<CommunityRole> retList;
+        if (pageSize == null || currentPage == null) {
+            retList = communityRoleService.findAll();
+        } else if (pageSize <= 0 || currentPage <= 0) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+
+        } else {
+            retList = communityRoleService.findAll(currentPage, pageSize);
+        }
+
+        return new ResponseInfo(requestInfo, retList);
+
+    }
+
+    @PostMapping("/add")
+    public ResponseInfo addSpecialTraining(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject jsonObject = requestInfo.getReqParam();
+
+        CommunityRole communityRole = JSON.toJavaObject(jsonObject, CommunityRole.class);
+        communityRoleService.create(communityRole);
+        return new ResponseInfo(requestInfo, null);
+    }
+
+    @PostMapping("/edit")
+    public ResponseInfo editCommunityRole(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject jsonObject = requestInfo.getReqParam();
+
+        CommunityRole communityRole = JSON.toJavaObject(jsonObject, CommunityRole.class);
+        if (communityRole.getCommunityRoleId() == null) {
+            // 必须传入用户ID
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+        return new ResponseInfo(requestInfo, null);
+    }
+
+    @PostMapping("/rmCommunityRole")
+    public ResponseInfo deleteCommunityRole(String communityRoleID, @RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        communityRoleService.deleteById(communityRoleID);
+        return new ResponseInfo(requestInfo, CommConst.ERR_SUCCESS.getCode(), CommConst.ERR_SUCCESS.getMessage(), null);
+    }
+}

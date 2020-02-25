@@ -1,0 +1,29 @@
+<import src="cut_down$d439ad8a" />
+<template name="group-battle$16678f02">
+  <view class="_div data-v-44bb2b1c bs-container-groupCompetition-div">
+    <image class="_img data-v-44bb2b1c bs-bg-img" src="/static/images/bg.png"></image>
+    <label wx:if="{{!waitUser}}" class="_span data-v-44bb2b1c bs-text-span">等待群成员完成答题</label>
+    <view class="_div data-v-44bb2b1c bs-questionCard-component">
+      <image class="_img data-v-44bb2b1c st-bg" src="/static/images/battle/subject-bg.png" alt></image>
+      <view class="_div data-v-44bb2b1c st-questionTitle-div">
+        <label class="_span data-v-44bb2b1c"> {{question.question}} </label>
+      </view>
+      <view class="_div data-v-44bb2b1c st-questionOption-div" id="choiceList">
+        <view wx:if="{{showQuestion}}" class="_div data-v-44bb2b1c choice" bindtap="handleProxy" wx:key="label" key="{{label}}" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" wx:for="{{choiceLabelList}}" wx:for-index="index" wx:for-item="label">
+          <image wx:if="{{userWrong === label || (opponentWrong === label && !waitUser)}}" class="_img data-v-44bb2b1c choice_img" src="/static/images/battle/Erroroption-bg.png"></image>
+          <image wx:elif="{{question.answer === label && !waitUser}}" class="_img data-v-44bb2b1c choice_img" src="/static/images/battle/Checktheoptionbox.png"></image>
+          <image wx:else class="_img data-v-44bb2b1c choice_img" src="/static/images/battle/Optionbox.png"></image>
+          <label wx:if="{{label === 'A'}}" class="_span data-v-44bb2b1c choice_content">{{question.choiceA}}</label>
+          <label wx:if="{{label === 'B'}}" class="_span data-v-44bb2b1c choice_content">{{question.choiceB}}</label>
+          <label wx:if="{{label === 'C'}}" class="_span data-v-44bb2b1c choice_content">{{question.choiceC}}</label>
+          <label wx:if="{{label === 'D'}}" class="_span data-v-44bb2b1c choice_content">{{question.choiceD}}</label>
+          <image class="_img data-v-44bb2b1c errorIcon" wx:if="{{userWrong === label}}" src="/static/images/battle/Errorlabel.png"></image>
+          <image class="_img data-v-44bb2b1c correctIcon" wx:if="{{(cd === 0) ||question.answer === label && !waitUser}}" src="/static/images/battle/Correctlabel.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-44bb2b1c bs-cutDown-component">
+      <template showOrder="true" bindcutdownd="handleProxy" bindcutdownout="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="cut_down$d439ad8a"></template>
+    </view>
+  </view>
+</template>

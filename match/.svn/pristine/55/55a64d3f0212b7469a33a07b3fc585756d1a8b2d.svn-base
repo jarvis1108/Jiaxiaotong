@@ -1,0 +1,97 @@
+/** @file
+ @description <br/> //  ******************************************************************
+              <br/> //  * 功能说明：最强学霸接口设计_绑定手机部分
+              <br/> //  * 创建标志：韩晓峰   2018年07月11日创建
+              <br/> //  * 修改标志：
+              <br/> //  * 标志编号：013	韩晓峰	2018年07月11日
+              <br/> //  * 标志描述：
+              <br/> //  * 附注说明：(1)个人基本信息用例接口设计
+              <br/> //  *         (2)本文件接口清单如下：
+              <br/> //  *             (a)GetTelVerificationCode : 获取手机短信验证码
+              <br/> //  *             (b)BindTelephone : 用户绑定手机号
+              <br/> //  * 当前状态：【编码中√】【编码完成】【测试完】【可以试用】【正式使用】【作废停用】
+              <br/> //  ******************************************************************
+ @author 韩晓峰
+ @copyright 暂无
+ */
+
+/**
+ * @class
+ * @summary 绑定手机用例中接口定义
+ * @memberOf SYS
+ * @description 附注说明：存在问题 (1)缺少手机短信提供商（问题不存在）
+ */
+function SYS_PER_020() {
+
+    /**
+     * @summary 实现功能：获取手机验证码
+     * @description GET /sys/getTelVerificationCode
+     * @param {object} objParam                                        要传入的参数
+     * @param {string} objParam.reqID                                  要传入的参数.请求的ID
+     * @param {string} objParam.reqType                                要传入的参数.请求类型 固定值为: SYS_PER_020_GetTelVerificationCode
+     * @param {object} objParam.reqUserInfo                            要传入的参数.当前用户信息
+     * @param {string} objParam.reqUserInfo.userId                     要传入的参数.当前用户信息.用户Id
+     *
+     * @param {object} objParam.reqParam                               要传入的参数.请求的业务参数
+     * @param {string} objParam.reqParam.telephone                     要传入的参数.请求的业务参数.用户手机号
+     *
+     * @param {object} objParam.reqRefData                             要传入的参数.存放业务以外的其它信息 default: {}
+     * @param {object} objParam.pageInfo                               要传入的参数.分页信息 default: {}
+     * @param {object} objParam.pageInfo.pageSize                      要传入的参数.分页信息.页面大小
+     * @param {object} objParam.pageInfo.curPage                       要传入的参数.分页信息.页码
+     *
+     * @param {object} objResult                                       返回结果
+     * @param {string} objResult.resID                                 返回结果.响应ID
+     * @param {string} objResult.reqID                                 返回结果.请求的ID
+     * @param {string} objResult.reqType                               返回结果.请求类型
+     * @param {Object} objResult.resResult                             返回结果.响应返回的业务数据
+     *
+     * @param {object} objResult.resResult.curData                     返回结果.响应返回的业务数据.当前业务结果 字符串形式，"success"表示验证码发送成功，"failure"表示验证码发送失败
+     *
+     * @param {object} objResult.resResult.errorInfo                   返回结果.响应返回的业务数据.当前业务结果.出错信息(具体结构框架统一定义)
+     * @param {object} objResult.resRefData                            返回结果.存放业务以外的其它信息(预留扩展，一般情况下不用) default: {}
+     * @version 1.0
+     * @example 暂无
+     */
+    function GetTelVerificationCode(objParam) {
+        var objResult = {};
+        return objResult;
+    }
+    
+    /**
+     * @summary 实现功能：绑定手机号
+     * @description GET /sys/bindTelephone
+     * @param {object} objParam                                        要传入的参数
+     * @param {string} objParam.reqID                                  要传入的参数.请求的ID
+     * @param {string} objParam.reqType                                要传入的参数.请求类型 固定值为: SYS_PER_020_GetTelVerificationCode
+     * @param {object} objParam.reqUserInfo                            要传入的参数.当前用户信息
+     * @param {string} objParam.reqUserInfo.userId                     要传入的参数.当前用户信息.用户Id
+     *
+     * @param {object} objParam.reqParam                               要传入的参数.请求的业务参数
+     * @param {string} objParam.reqParam.telephone                     要传入的参数.请求的业务参数.用户手机号
+     * @param {string} objParam.reqParam.userId                        要传入的参数.请求的业务参数.用户ID
+     * @param {string} objParam.reqParam.verCode                       要传入的参数.请求的业务参数.验证码
+     *
+     * @param {object} objParam.reqRefData                             要传入的参数.存放业务以外的其它信息 default: {}
+     * @param {object} objParam.pageInfo                               要传入的参数.分页信息 default: {}
+     * @param {object} objParam.pageInfo.pageSize                      要传入的参数.分页信息.页面大小
+     * @param {object} objParam.pageInfo.curPage                       要传入的参数.分页信息.页码
+     *
+     * @param {object} objResult                                       返回结果
+     * @param {string} objResult.resID                                 返回结果.响应ID
+     * @param {string} objResult.reqID                                 返回结果.请求的ID
+     * @param {string} objResult.reqType                               返回结果.请求类型
+     * @param {Object} objResult.resResult                             返回结果.响应返回的业务数据
+     *
+     * @param {object} objResult.resResult.curData                     返回结果.响应返回的业务数据.当前业务结果 字符串形式，"success"表示绑定成功，"failure"表示绑定失败
+     *
+     * @param {object} objResult.resResult.errorInfo                   返回结果.响应返回的业务数据.当前业务结果.出错信息(具体结构框架统一定义)
+     * @param {object} objResult.resRefData                            返回结果.存放业务以外的其它信息(预留扩展，一般情况下不用) default: {}
+     * @version 1.0
+     * @example 暂无
+     */
+    function BindTelephone() {
+    	var objResult = {};
+        return objResult;
+    }
+}

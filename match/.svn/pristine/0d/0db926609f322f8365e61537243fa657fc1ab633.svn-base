@@ -1,0 +1,310 @@
+@import "/static/css/vendor.wxss";
+
+.base.data-v-045d173c {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.bg.data-v-045d173c {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.text1.data-v-045d173c {
+  text-align: center;
+  font-family: "PingFang-SC-Medium";
+  color: #ffffff;
+}
+.text2.data-v-045d173c {
+  text-align: center;
+  font-family: "PingFang-SC-Bold";
+}
+.player.data-v-045d173c {
+  height: 164rpx;
+  width: 164rpx;
+  left: 40rpx;
+  top: 36rpx;
+  position: absolute;
+  border-radius: 50%;
+}
+.enemy.data-v-045d173c {
+  height: 164rpx;
+  width: 164rpx;
+  right: 40rpx;
+  top: 36rpx;
+  position: absolute;
+  border-radius: 50%;
+}
+.score_hoop.data-v-045d173c {
+  width: 164rpx;
+  height: 164rpx;
+  left: 0rpx;
+  top: 0rpx;
+  position: absolute;
+}
+.photo.data-v-045d173c {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  left: 17rpx;
+  top: 17rpx;
+  position: absolute;
+}
+.user_photo.data-v-045d173c {
+  height: 120rpx;
+  width: 120rpx;
+  top: 5rpx;
+  left: 5rpx;
+  position: absolute;
+  border-radius: 50%;
+}
+.photo_hoop.data-v-045d173c {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.pName.data-v-045d173c {
+  top: 214rpx;
+  left: 40rpx;
+  width: 164rpx;
+  height: 36rpx;
+  font-size: 36rpx;
+  position: absolute;
+}
+.eName.data-v-045d173c {
+  top: 214rpx;
+  right: 40rpx;
+  width: 164rpx;
+  height: 36rpx;
+  font-size: 36rpx;
+  position: absolute;
+}
+.pscore_photo.data-v-045d173c {
+  height: 45rpx;
+  width: 214rpx;
+  top: 156rpx;
+  left: 173rpx;
+  position: absolute;
+}
+.escore_photo.data-v-045d173c {
+  height: 38rpx;
+  width: 214rpx;
+  top: 158rpx;
+  right: 173rpx;
+  position: absolute;
+}
+.pScore.data-v-045d173c {
+  top: 90rpx;
+  left: 236rpx;
+  position: absolute;
+  font-size: 48rpx;
+  color: #FFFFFF;
+}
+.eScore.data-v-045d173c {
+  top: 90rpx;
+  right: 236rpx;
+  position: absolute;
+  font-size: 48rpx;
+  color: #FFFFFF;
+}
+.question-card.data-v-045d173c {
+  width: 640rpx;
+  height: 832rpx;
+  top: 288rpx;
+  left: 55rpx;
+  position: absolute;
+}
+.topBox.data-v-045d173c {
+  height: 82rpx;
+  width: 100%;
+  top: 2rpx;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.topCircle.data-v-045d173c {
+  margin: 0;
+  padding: 0;
+  height: 150rpx;
+  width: 150rpx;
+  right: 0;
+  top: 0;
+  position: absolute;
+  border-radius: 50%;
+  border: 7rpx solid transparent;
+  border-top: 7rpx solid #FFFFFF;
+  border-left: 7rpx solid #FFFFFF;
+}
+.bottomBox.data-v-045d173c {
+  margin: 0;
+  padding: 0;
+  height: 82rpx;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+}
+.bottomCircle.data-v-045d173c {
+  margin: 0;
+  padding: 0;
+  height: 150rpx;
+  width: 150rpx;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  border-radius: 50%;
+  border: 7rpx solid transparent;
+  border-bottom: 7rpx solid #FFFFFF;
+  border-right: 7rpx solid #FFFFFF;
+}
+.cut-down.data-v-045d173c {
+  height: 112rpx;
+  width: 108rpx;
+  left: 321rpx;
+  top: 238rpx;
+  position: absolute;
+}
+.bs-bg-img.data-v-6d24899d {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.bs-text1.data-v-6d24899d {
+  text-align: center;
+  font-family: "PingFang-SC-Medium";
+  color: #ffffff;
+}
+.bs-text2.data-v-6d24899d {
+  text-align: center;
+  font-family: "PingFang-SC-Bold";
+}
+.bs-hexagon-div.data-v-6d24899d {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+.bs-big-animation.data-v-6d24899d {
+  animation: big-data-v-6d24899d 1.2s linear 0.2s forwards;
+}
+.timu.data-v-6d24899d {
+  top: 39.29%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  font-size: 24rpx;
+}
+.timuxuhao.data-v-6d24899d {
+  top: 29.46%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  font-size: 36rpx;
+}
+.bs-cdtext-animation.data-v-6d24899d {
+  font-size: 50rpx;
+  top: 19.64%;
+  width: 100%;
+  left: 0;
+  position: absolute;
+  color: #FFFFFF;
+  font-family: "PingFang-SC-Bold";
+  text-align: center;
+  animation: cutDown-data-v-6d24899d 1s 11 forwards;
+}
+@keyframes big-data-v-6d24899d {
+0% {
+    transform: scale(0) translateY(0);
+    opacity: 1;
+}
+35%, 65% {
+    transform: scale(5) translateY(60rpx);
+    opacity: 1;
+}
+100% {
+    transform: scale(0) translateY(0);
+    opacity: 0;
+}
+}
+@keyframes cutDown-data-v-6d24899d {
+0% {
+    transform: translateY(-40rpx);
+    opacity: 0;
+}
+50%, 85% {
+    transform: translateY(0);
+    opacity: 1;
+}
+100% {
+    transform: translateY(0);
+    opacity: 0;
+}
+}
+.bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.text1 {
+  text-align: center;
+  font-family: "PingFang-SC-Medium";
+  color: #ffffff;
+}
+.text2 {
+  text-align: left;
+  font-family: "PingFang-SC-Bold";
+}
+.questioncard {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.Question {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.divider {
+  top: 210rpx;
+  width: 576rpx;
+  height: 2rpx;
+  left: 32rpx;
+  position: absolute;
+}
+.title {
+  top: 116rpx;
+  width: 568rpx;
+  left: 36rpx;
+  height: 36rpx;
+  font-size: 36rpx;
+  color: #495567;
+  position: absolute;
+}
+.content {
+  width: 568rpx;
+  top: 260rpx;
+  left: 36rpx;
+  position: absolute;
+  height: auto;
+  font-size: 30rpx;
+  color: #495567;
+}
+.recordButton {
+  height: 80rpx;
+  width: 80rpx;
+  bottom: 80rpx;
+  left: 280rpx;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #F6F6F6;
+}

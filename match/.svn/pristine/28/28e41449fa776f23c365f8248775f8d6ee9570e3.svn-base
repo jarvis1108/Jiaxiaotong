@@ -1,0 +1,19 @@
+<import src="payTip$1670d7db" />
+<template name="index$a7b140e0">
+  <view class="_div data-v-5f05bafb bs-container-topup-div">
+    <image class="_img data-v-5f05bafb bs-bg-img" src="/static/images/bg.png"></image>
+    <view class="_div data-v-5f05bafb bs-productList-div">
+      <view class="_div data-v-5f05bafb bs-flex-div">
+        <view class="_div data-v-5f05bafb box" wx:key="item" key="{{item}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="item">
+          <view class="_div data-v-5f05bafb bs-goodname-div"> {{ item.ProductName }} </view>
+          <image class="_img data-v-5f05bafb bs-goodPhoto-img" src="{{item.Photo}}" bindtap="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}"></image>
+          <view class="_div data-v-5f05bafb bs-goodprice-div"> {{ item.Price }} </view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-5f05bafb bs-memory-div">
+      <navigator style="position:absolute;width:20%;left:40%" url="../topup-record/main" class="_a data-v-5f05bafb">充值记录</navigator>
+    </view>
+    <template wx:if="{{showPay}}" bindlistenCloseDialog="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="payTip$1670d7db"></template>
+  </view>
+</template>

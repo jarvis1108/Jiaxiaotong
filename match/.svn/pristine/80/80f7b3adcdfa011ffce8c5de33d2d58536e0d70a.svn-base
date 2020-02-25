@@ -1,0 +1,26 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service;
+
+import com.dxtwangxiao.strongestsuperscholar.web.dto.UserDTO;
+
+/**
+ * 战局服务接口
+ * <p>
+ * Created By Devin
+ * 2018-09-04 下午 03:08
+ */
+public interface MatchService {
+
+    /**
+     * 对战结束后更新用户及战局信息
+     *
+     * @param matchId       战局Id
+     * @param userId        用户Id
+     * @param coin          金币数
+     * @param learningPoint 学点
+     * @param gradePoint    绩点
+     * @param experience    经验值
+     * @param isWin         是否获胜
+     * @return
+     */
+    UserDTO finish(String matchId, String userId, Integer coin, Integer learningPoint, Integer gradePoint, Integer experience, Integer isWin);
+}

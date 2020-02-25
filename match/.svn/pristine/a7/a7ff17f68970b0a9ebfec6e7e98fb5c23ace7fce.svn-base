@@ -1,0 +1,24 @@
+package com.dxtwangxiao.strongestsuperscholar.web.websocket.match;
+
+import com.dxtwangxiao.strongestsuperscholar.web.websocket.common.WebSocketInterceptor;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+
+/**
+ * 匹配对战，WebSocket配置类，绑定前端连接端点url及其他信息
+ * <p>
+ * Created by Devin
+ * 2018-07-25 下午 03:04
+ */
+@Configuration
+@EnableWebSocket
+public class MatchWebSocketConfig implements WebSocketConfigurer {
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        registry.addHandler(new MatchWebSocketHandler(), "/websocket/match")
+                .setAllowedOrigins("*")
+                .addInterceptors(new WebSocketInterceptor());
+    }
+}

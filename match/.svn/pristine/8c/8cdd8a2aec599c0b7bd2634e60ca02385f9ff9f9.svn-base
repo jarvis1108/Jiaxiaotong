@@ -1,0 +1,18 @@
+<template name="setting-dialog$0bf94eb3">
+  <view class="_div data-v-3b2c6591 settingDialog">
+    <view class="_div data-v-3b2c6591 dialog-mask"></view>
+    <image bindtap="handleProxy" class="_img data-v-3b2c6591 st-setting-dialog-close-icon" src="/static/images/settingDialog/close_icon@2x.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+    <view class="_div data-v-3b2c6591 st-setting-dialog-vertical-line"></view>
+    <image class="_img data-v-3b2c6591 st-setting-dialog-bg" src="/static/images/settingDialog/Setup_bg@2x.png"></image>
+    <image class="_img data-v-3b2c6591 st-setting-dialog-icon" src="/static/images/settingDialog/Setup_icon@2x.png"></image>
+    <label class="_span data-v-3b2c6591 st-setting-dialog-setup-text">设置</label>
+    <view class="_div data-v-3b2c6591 st-setting-dialog-sound-effect-div">
+      <label class="_span data-v-3b2c6591 st-setting-dialog-sound-effect-text">音效</label>
+      <switch checked="soundEffect" bindchange="handleProxy" color="#5F37DB" class="_switch data-v-3b2c6591 st-setting-dialog-sound-effect-switch" data-eventid="{{'1'}}" data-comkey="{{$k}}" />
+    </view>
+    <view class="_div data-v-3b2c6591 st-setting-dialog-music-div">
+      <label class="_span data-v-3b2c6591 st-setting-dialog-music-text">音乐</label>
+      <switch checked="music" bindchange="handleProxy" color="#5F37DB" class="_switch data-v-3b2c6591 st-setting-dialog-music-switch" data-eventid="{{'2'}}" data-comkey="{{$k}}" />
+    </view>
+  </view>
+</template>

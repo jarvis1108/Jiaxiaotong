@@ -1,0 +1,20 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.ErrorQuestion;
+import com.sun.xml.internal.bind.v2.model.core.ID;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 错题收藏 数据访问层
+ * <p>
+ * Created By Xiaohe
+ * 2018-09-09 上午 09:40
+ */
+@Repository
+public interface ErrorQuestionRepository extends JpaRepository<ErrorQuestion, String> {
+    List<ErrorQuestion> findAll();
+    List<ErrorQuestion> findByUserId(String userId);
+}

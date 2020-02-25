@@ -1,0 +1,144 @@
+@import "/static/css/vendor.wxss";
+
+#tip.data-v-58b59c9d {
+  position: absolute;
+  top: 89%;
+  left: 28%;
+  width: 48%;
+  font-size: 24rpx;
+  color: rgb(255, 252, 209);
+}
+.btn.data-v-58b59c9d {
+  position: absolute;
+  left: 20%;
+  width: 60%;
+  height: 9%;
+}
+.btn_img.data-v-58b59c9d {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+#continue.data-v-58b59c9d {
+  top: 67%;
+}
+#showoff.data-v-58b59c9d,
+#share.data-v-58b59c9d {
+  top: 78%;
+  border: none;
+  background: transparent;
+}
+#showoff.data-v-58b59c9d::after,
+#share.data-v-58b59c9d::after {
+  border: none;
+}
+.table.data-v-58b59c9d {
+  position: absolute;
+  top: 45%;
+  left: 30%;
+  width: 40%;
+  height: 20%;
+  display: table;
+  font-size: 36rpx;
+  color: white;
+}
+.mark.data-v-58b59c9d {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  font-size: 48rpx;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+.mark ._div.data-v-58b59c9d {
+  position: absolute;
+  top: 80%;
+  left: 48%;
+  font-size: 28rpx;
+  font-weight: normal;
+}
+#user.data-v-58b59c9d {
+  position: relative;
+  float: left;
+  height: 80%;
+  width: 100%;
+  background: rgb(59, 202, 255);
+  border-bottom-right-radius: 120rpx;
+  border-top-right-radius: 120rpx;
+  z-index: -1;
+  animation: slideFromLeft 1s;
+}
+#opponent.data-v-58b59c9d {
+  position: relative;
+  float: right;
+  height: 80%;
+  width: 100%;
+  background: rgb(255, 78, 86);
+  border-bottom-left-radius: 120rpx;
+  border-top-left-radius: 120rpx;
+  z-index: -1;
+  animation: slideFromRight 1s;
+}
+#userIcon.data-v-58b59c9d,
+#opponentIcon.data-v-58b59c9d {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: rgb(115, 115, 115);
+  border: 6rpx solid white;
+}
+#userIcon.data-v-58b59c9d {
+  position: absolute;
+  right: 20rpx;
+  top: 12%;
+}
+#opponentIcon.data-v-58b59c9d {
+  position: absolute;
+  left: 20rpx;
+  top: 12%;
+}
+#userName.data-v-58b59c9d,
+#opponentName.data-v-58b59c9d {
+  position: absolute;
+  top: 16rpx;
+}
+#userName.data-v-58b59c9d,
+#userAnswerNum.data-v-58b59c9d {
+  text-align: right;
+  right: 140rpx;
+}
+#opponentName.data-v-58b59c9d,
+#opponentAnswerNum.data-v-58b59c9d {
+  text-align: left;
+  left: 140rpx;
+}
+#userAnswerNum.data-v-58b59c9d,
+#opponentAnswerNum.data-v-58b59c9d {
+  position: absolute;
+  top: 60rpx;
+}
+.info.data-v-58b59c9d {
+  position: absolute;
+  width: 100%;
+  top: 22%;
+  height: 15%;
+  font-size: 36rpx;
+  color: white;
+}
+.winImg.data-v-58b59c9d {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  width: 80%;
+  height: 15%;
+  animation: zoom 1s;
+}
+#bg.data-v-58b59c9d {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -2;
+}

@@ -1,0 +1,16 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class MatchRecordServiceTest {
+
+    @Test
+    public void create() {
+    }
+
+    @Test
+    public void getMatchRecordList() {
+    }
+}

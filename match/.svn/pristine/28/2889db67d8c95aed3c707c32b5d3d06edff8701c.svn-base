@@ -1,0 +1,64 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionRecitation;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 背诵题数据访问
+ * @author shenhao
+ */
+@Repository
+public interface QuestionRecitationRepository extends CrudRepository<QuestionRecitation,String> {
+    /**
+     * 保存或者更新背诵题信息
+     *
+     * @param questionRecitation 背诵题对象
+     * @return 创建或更新后的对象
+     */
+    @Override
+    QuestionRecitation save(QuestionRecitation questionRecitation);
+
+
+
+    /**
+     * 分页查询背诵题
+     * @param pageable
+     * @return
+     */
+    Page<QuestionRecitation> findAll(Pageable pageable);
+
+    /**
+     * 查询所有背诵题记录
+     *
+     * @return 包含全部背诵题记录的序列
+     */
+    List<QuestionRecitation> findAll();
+
+    /**
+     * 根据题目编号查询背诵题，结果按级别、难度升序排序
+     * @param questionId 题目编号
+     * @return 对应题目的背诵题
+     */
+    QuestionRecitation findQuestionRecitationByQuestionId( String questionId);
+
+    /**
+     * 根据试题编码查询背诵题，结果按级别、难度升序排序
+     * @param questionNo 试题编码
+     * @return 对应题目的背诵题
+     */
+    QuestionRecitation findQuestionRecitationByQuestionNo( String questionNo);
+
+    /**
+     * 根据录入者ID查询背诵题，根据录入时间倒序排序
+     *
+     * @param createUser 背诵题录入者ID
+     * @return 该录入者创建的背诵题序列
+     */
+
+    List<QuestionRecitation> findAllByCreateUser( String createUser);
+}

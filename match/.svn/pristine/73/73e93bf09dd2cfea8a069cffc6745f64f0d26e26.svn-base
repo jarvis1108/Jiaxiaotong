@@ -1,0 +1,89 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.User;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 用户数据访问层单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 02:04
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserRepositoryTest {
+
+    @Autowired
+    private UserRepository userRepository;
+
+
+    @Test
+    public void findAll() {
+        List<User> userList = userRepository.findAll();
+        assertNotEquals(0, userList.size());
+
+        userList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll1() {
+        PageRequest pageable = PageRequest.of(0, 1);
+        Page<User> userPage = userRepository.findAll(pageable);
+
+        List<User> users = userPage.getContent();
+        assertEquals(1, users.size());
+
+        users.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        User user = new User();
+        user.setUserId("3");
+        user.setCity("devin-3");
+
+        User result = userRepository.save(user);
+        assertNotNull(result);
+
+        System.out.println(user);
+    }
+
+    @Test
+    public void findUserByUserId() {
+        String userId = "1";
+        User user = userRepository.findUserByUserId(userId);
+
+        assertNotNull(user);
+        System.out.println(user);
+    }
+    @Test
+    public void findUserByOpenId() {
+        String openId = "2";
+        User user = userRepository.findUserByUserId(openId);
+
+        assertNotNull(user);
+        System.out.println(user);
+    }
+    @Test
+    public void save1(){
+        String userId = "3";
+        User user = userRepository.findUserByUserId(userId);
+        user.setTelephone("111111111");
+
+        assertNotNull(user);
+        System.out.println(user);
+
+
+
+    }
+}

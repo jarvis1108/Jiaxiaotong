@@ -1,0 +1,29 @@
+<template name="group-battle-waiting$7ae23081">
+  <view class="_div data-v-72f0ac1c st-background-base-div">
+    <image class="_img data-v-72f0ac1c st-background-bg-div" src="/static/images/bg.png"></image>
+    <view id="st-status-text-div" hidden="{{!(isCreator)}}" class="_div data-v-72f0ac1c">等待成员加入...</view>
+    <view id="st-status-text-div" hidden="{{!(!isCreator)}}" class="_div data-v-72f0ac1c">等待房主开局...</view>
+    <view id="st-players-list2-div" class="_div data-v-72f0ac1c">
+      <image src="/static/images/groupBattleWaiting/Headportrait_bg.png" class="_img data-v-72f0ac1c st-background-bg-div {{bgStyle}}"></image>
+      <view id="st-triangel-button2-div" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_div data-v-72f0ac1c">
+        <image src="/static/images/groupBattleWaiting/Rightarrow_icon.png" class="_img data-v-72f0ac1c st-background-bg-div {{[!fold ? 'right' : '', fold ? 'bottom' : '']}}"></image>
+      </view>
+      <view id="st-player-image2-div" wx:if="{{!fold || (fold&&index<5)}}" wx:key="b" key="{{b}}" wx:for="{{playerList}}" wx:for-index="index" wx:for-item="b" class="_div data-v-72f0ac1c {{[index >= 5 && !fold ? 'slideIn' : '', index >= 5 && fold ? 'slideOut' : '']}}">
+        <image wx:if="{{index===0}}" class="_img data-v-72f0ac1c st-background-bg-div" src="{{user.headImage}}"></image>
+        <image wx:else class="_img data-v-72f0ac1c st-background-bg-div" src="{{b.headImage}}"></image>
+      </view>
+    </view>
+    <view id="st-host-logo-div" class="_div data-v-72f0ac1c">
+      <image src="/static/images/groupBattleWaiting/Owner_icon.png" class="_img data-v-72f0ac1c st-background-bg-div"></image>
+    </view>
+    <view id="st-game-start-div" hidden="{{!(isCreator)}}" wx:if="{{playerNumber > 1}}" class="_div data-v-72f0ac1c">
+      <image bindtap="handleProxy" src="/static/images/groupBattleWaiting/Startthecompetition_btn.png" class="_img data-v-72f0ac1c st-background-bg-div" data-eventid="{{'1'}}" data-comkey="{{$k}}"></image>
+    </view>
+    <view id="invite-div" class="_div data-v-72f0ac1c">
+      <button open-type="{{isShareable}}" class="_button data-v-72f0ac1c invite">
+        <image src="/static/images/groupBattleWaiting/Invitation_icon.png" class="_img data-v-72f0ac1c invite_img"></image>
+      </button>
+      <label id="invite-text" class="_span data-v-72f0ac1c">邀请</label>
+    </view>
+  </view>
+</template>

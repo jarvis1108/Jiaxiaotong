@@ -1,0 +1,110 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.AdminPurviewRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminPurview;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.AdminPurviewService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * 管理员角色设置设置服务接口实现类
+ * <p>
+ * Created by Devin
+ * 2018-07-02 上午 11:25
+ */
+@Service
+public class AdminPurviewServiceImpl implements AdminPurviewService {
+
+    @Autowired
+    private AdminPurviewRepository adminPurviewRepository;
+
+    /**
+     * 获取管理员角色设置信息列表
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页，从1开始
+     * @return
+     */
+    @Override
+    public List<AdminPurview> getAdminPurviewList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null) {
+            return adminPurviewRepository.findAll();
+        } else {
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<AdminPurview> adminPurviewPage = adminPurviewRepository.findAll(pageable);
+            return adminPurviewPage.getContent();
+        }
+    }
+
+    /**
+     * 获取所有管理员角色设置信息
+     *
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public List<AdminPurview> getAdminPurviewList() {
+        return adminPurviewRepository.findAll();
+    }
+
+    /**
+     * 创建管理员角色设置
+     *
+     * @param newAdminPurview
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public AdminPurview create(AdminPurview newAdminPurview) throws ErrorInfo {
+        if (newAdminPurview == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_007", "管理员角色设置信息为空", null);
+        return adminPurviewRepository.save(newAdminPurview);
+    }
+
+    /**
+     * 更新管理员角色设置
+     *
+     * @param updatedAdminPurview
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public AdminPurview update(AdminPurview updatedAdminPurview) throws ErrorInfo {
+        if (updatedAdminPurview == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_007", "管理员角色设置信息为空", null);
+        }
+        AdminPurview adminPurview = adminPurviewRepository.findAdminPurviewByAdminPurviewId(updatedAdminPurview.getAdminPurviewId());
+        if (adminPurview == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_008", "管理员角色设置不存在", null);
+        }
+        UpdateUtil.copyProperties(updatedAdminPurview, adminPurview);
+
+        return adminPurviewRepository.save(adminPurview);
+    }
+
+    /**
+     * 根据id删除管理员角色设置信息，逻辑删除
+     *
+     * @param adminPurviewID 待删除管理员角色设置id
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public boolean deleteByAdminPurviewId(String adminPurviewID) throws ErrorInfo {
+        AdminPurview adminPurview = adminPurviewRepository.findAdminPurviewByAdminPurviewId(adminPurviewID);
+        if (adminPurview == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_008", "管理员角色设置不存在", null);
+        }
+        adminPurview.setIsValid(Byte.valueOf("0"));
+        adminPurviewRepository.save(adminPurview);
+        return true;
+    }
+}

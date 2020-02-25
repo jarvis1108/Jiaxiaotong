@@ -1,0 +1,127 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionMultipleChoiceForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionMultipleChoiceForLibVORepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionMultipleChoiceForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionForLibService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.QuestionMultipleChoiceForLibVO;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+
+/**
+ * Created by 孙伟浩 on 2018/9/6.
+ */
+@Service
+public class QuestionForLibServiceImpl implements QuestionForLibService {
+
+    @Autowired
+    private QuestionForLibRepository questionForLibRepository;
+    @Autowired
+    private QuestionMultipleChoiceForLibRepository questionMultipleChoiceForLibRepository;
+    @Autowired
+    private QuestionMultipleChoiceForLibVORepository questionMultipleChoiceForLibVORepository;
+
+
+    @Transactional
+    @Override
+    public String addChoice(QuestionForLib questionForLib, QuestionMultipleChoiceForLib questionMultipleChoiceForLib) throws ErrorInfo{
+        //设置id
+        String questionForLibId = UUIDUtil.getUUID();
+        questionForLib.setQuestionForLibId(questionForLibId);
+        questionForLib.setQuestionForLibNo(questionForLibId);
+        questionForLib.setQuestionForLibCode(questionForLibId);
+        questionMultipleChoiceForLib.setQuestionForLibId(questionForLibId);
+        questionMultipleChoiceForLib.setQuestionForLibNo(questionForLibId);
+
+        //添加
+        questionForLibRepository.save(questionForLib);
+        questionMultipleChoiceForLibRepository.save(questionMultipleChoiceForLib);
+
+        return questionForLibId;
+    }
+
+    @Transactional
+    @Override
+    public void deleteChoice(String questionForLibId) throws ErrorInfo {
+        questionForLibRepository.deleteById(questionForLibId);
+        questionMultipleChoiceForLibRepository.deleteById(questionForLibId);
+    }
+
+    @Override
+    public List<QuestionMultipleChoiceForLibVO> listChoiceByQuestionLibId(String questionLibId) {
+        return questionMultipleChoiceForLibVORepository.findAllByQuestionLibIdOrderByCreateTimeAsc(questionLibId);
+    }
+
+    @Override
+    public void updateChoice(QuestionForLib questionForLib, QuestionMultipleChoiceForLib questionMultipleChoiceForLib) throws ErrorInfo {
+        questionForLibRepository.save(questionForLib);
+        questionMultipleChoiceForLibRepository.save(questionMultipleChoiceForLib);
+    }
+
+    @Override
+    public QuestionForLib findByQuestionForLibId(String questionForLibId) {
+        return questionForLibRepository.findById(questionForLibId).orElse(null);
+    }
+
+    @Override
+    public QuestionMultipleChoiceForLib findQustionMultipleForLibByQuestionForLibId(String questionForLibId) {
+        return questionMultipleChoiceForLibRepository.findByQuestionForLibId(questionForLibId);
+    }
+
+    @Override
+    public QuestionMultipleChoiceForLibVO findQuestionMultipleChoiceForLibVOByQuestionForLibId(String questionForLibId) {
+        return questionMultipleChoiceForLibVORepository.findByQuestionForLibId(questionForLibId);
+    }
+
+    /**
+     * 存储题库题目
+     *
+     * @param questionForLib 上传的题目
+     * @return
+     */
+    @Override
+    public void saveQuestionForLib(QuestionForLib questionForLib){
+
+        questionForLibRepository.saveAndFlush(questionForLib);
+    }
+
+    /**
+     * 删除题库题目
+     *
+     * @param questionForLibId 要删除的题目Id
+     * @return
+     */
+    @Override
+    public void deleteQuestionForLib(String questionForLibId){
+        questionForLibRepository.deleteById(questionForLibId);
+    }
+
+    /**
+     * 更新题库题目
+     *
+     * @param  questionForLib 更新的题目
+     * @return
+     */
+    @Override
+    public void updateQuestionForLib(QuestionForLib questionForLib){
+        questionForLibRepository.saveAndFlush(questionForLib);
+    }
+
+
+    /**
+     * 根据Id查找题库题目
+     *
+     * @param  questionForLibId 题目Id
+     * @return  存在返回题目,否则返回null
+     */
+    @Override
+    public QuestionForLib findQuestionForLibById(String questionForLibId){
+        return questionForLibRepository.findById(questionForLibId).orElse(null);
+    }
+}

@@ -1,0 +1,673 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>对战前选学科</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/对战前选学科/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/对战前选学科/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u110" class="ax_default box_1">
+        <div id="u110_div" class=""></div>
+      </div>
+
+      <!-- 切换栏面板 (Dynamic Panel) -->
+      <div id="u111" class="ax_default" data-label="切换栏面板">
+        <div id="u111_state0" class="panel_state" data-label="切换栏" style="">
+          <div id="u111_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u112" class="ax_default refs-design-apple1">
+              <img id="u112_img" class="img " src="images/比一比首页改版/u28.png"/>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u113" class="ax_default" data-left="38" data-top="0" data-width="48" data-height="49">
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u114" class="ax_default refs-design-apple1">
+                <div id="u114_div" class=""></div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u115" class="ax_default refs-design-apple1">
+                <div id="u115_div" class=""></div>
+                <div id="u115_text" class="text ">
+                  <p><span>★</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u116" class="ax_default refs-design-apple1">
+                <div id="u116_div" class=""></div>
+                <div id="u116_text" class="text ">
+                  <p><span>答题</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u117" class="ax_default" data-left="164" data-top="0" data-width="48" data-height="49">
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u118" class="ax_default refs-design-apple1">
+                <div id="u118_div" class=""></div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u119" class="ax_default refs-design-apple1">
+                <div id="u119_div" class=""></div>
+                <div id="u119_text" class="text ">
+                  <p><span>★</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u120" class="ax_default refs-design-apple1">
+                <div id="u120_div" class=""></div>
+                <div id="u120_text" class="text ">
+                  <p><span>社区</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u121" class="ax_default" data-left="291" data-top="0" data-width="48" data-height="49">
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u122" class="ax_default refs-design-apple1">
+                <div id="u122_div" class=""></div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u123" class="ax_default refs-design-apple1">
+                <div id="u123_div" class=""></div>
+                <div id="u123_text" class="text ">
+                  <p><span>★</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u124" class="ax_default refs-design-apple1">
+                <div id="u124_div" class=""></div>
+                <div id="u124_text" class="text ">
+                  <p><span>我的</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u125" class="ax_default" data-left="32" data-top="14" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u126" class="ax_default" data-left="32" data-top="14" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u127" class="ax_default box_2">
+            <div id="u127_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u128" class="ax_default image1">
+          <img id="u128_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u129" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u129_div" class=""></div>
+          <div id="u129_text" class="text ">
+            <p><span>对战</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u130" class="ax_default image2">
+          <img id="u130_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u131" class="ax_default image">
+          <img id="u131_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+
+        <!-- Unnamed (Hot Spot) -->
+        <div id="u132" class="ax_default">
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u133" class="ax_default" data-left="51" data-top="96" data-width="338" data-height="105">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u134" class="ax_default box_2">
+          <div id="u134_div" class=""></div>
+          <div id="u134_text" class="text ">
+            <p><span>全部已选学科</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u135" class="ax_default" data-left="51" data-top="223" data-width="101" data-height="83">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u136" class="ax_default box_2">
+          <div id="u136_div" class=""></div>
+          <div id="u136_text" class="text ">
+            <p><span>语文</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u137" class="ax_default" data-left="170" data-top="226" data-width="99" data-height="77">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u138" class="ax_default box_2">
+          <div id="u138_div" class=""></div>
+          <div id="u138_text" class="text ">
+            <p><span>数学</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u139" class="ax_default" data-left="285" data-top="226" data-width="99" data-height="77">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u140" class="ax_default box_2">
+          <div id="u140_div" class=""></div>
+          <div id="u140_text" class="text ">
+            <p><span>英语</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u141" class="ax_default" data-left="51" data-top="316" data-width="101" data-height="83">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u142" class="ax_default box_2">
+          <div id="u142_div" class=""></div>
+          <div id="u142_text" class="text ">
+            <p><span>物理</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u143" class="ax_default" data-left="168" data-top="315" data-width="101" data-height="83">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u144" class="ax_default box_2">
+          <div id="u144_div" class=""></div>
+          <div id="u144_text" class="text ">
+            <p><span>化学</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u145" class="ax_default" data-left="288" data-top="316" data-width="101" data-height="83">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u146" class="ax_default box_2">
+          <div id="u146_div" class=""></div>
+          <div id="u146_text" class="text ">
+            <p><span>生物</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u147" class="ax_default" data-left="51" data-top="409" data-width="338" data-height="176">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u148" class="ax_default box_2">
+          <div id="u148_div" class=""></div>
+          <div id="u148_text" class="text ">
+            <p><span>政治</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u149" class="ax_default box_2">
+          <div id="u149_div" class=""></div>
+          <div id="u149_text" class="text ">
+            <p><span>四级</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u150" class="ax_default box_2">
+          <div id="u150_div" class=""></div>
+          <div id="u150_text" class="text ">
+            <p><span>六级</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u151" class="ax_default box_2">
+          <div id="u151_div" class=""></div>
+          <div id="u151_text" class="text ">
+            <p><span>+</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u152" class="ax_default" data-left="170" data-top="409" data-width="101" data-height="83">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u153" class="ax_default box_2">
+          <div id="u153_div" class=""></div>
+          <div id="u153_text" class="text ">
+            <p><span>历史</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u154" class="ax_default" data-left="288" data-top="409" data-width="101" data-height="83">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u155" class="ax_default box_2">
+          <div id="u155_div" class=""></div>
+          <div id="u155_text" class="text ">
+            <p><span>地理</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u156" class="ax_default box_2">
+        <div id="u156_div" class=""></div>
+        <div id="u156_text" class="text ">
+          <p><span>后台根据用户选择的年级智能为用户</span></p><p><span>推荐该学段所匹配的学科，用户</span></p><p><span><br></span></p><p><span>可自由添加删除</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u157" class="ax_default" data-left="69" data-top="679" data-width="48" data-height="49">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u158" class="ax_default refs-design-apple1">
+          <div id="u158_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u159" class="ax_default refs-design-apple1">
+          <div id="u159_div" class=""></div>
+          <div id="u159_text" class="text ">
+            <p><span>★</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u160" class="ax_default refs-design-apple1">
+          <div id="u160_div" class=""></div>
+          <div id="u160_text" class="text ">
+            <p><span>答题</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u161" class="ax_default box_1">
+        <div id="u161_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u162" class="ax_default" data-left="748" data-top="1" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u163" class="ax_default" data-left="748" data-top="1" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u164" class="ax_default box_2">
+            <div id="u164_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u165" class="ax_default image1">
+          <img id="u165_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u166" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u166_div" class=""></div>
+          <div id="u166_text" class="text ">
+            <p><span>对战</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u167" class="ax_default image2">
+          <img id="u167_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u168" class="ax_default image">
+          <img id="u168_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+
+        <!-- Unnamed (Hot Spot) -->
+        <div id="u169" class="ax_default">
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u170" class="ax_default" data-left="767" data-top="83" data-width="338" data-height="25">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u171" class="ax_default box_2">
+          <div id="u171_div" class=""></div>
+          <div id="u171_text" class="text ">
+            <p><span>我的栏目</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u172" class="ax_default" data-left="767" data-top="117" data-width="101" data-height="43">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u173" class="ax_default box_2">
+          <div id="u173_div" class=""></div>
+          <div id="u173_text" class="text ">
+            <p><span>语文</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u174" class="ax_default" data-left="885" data-top="117" data-width="99" data-height="43">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u175" class="ax_default box_2">
+          <div id="u175_div" class=""></div>
+          <div id="u175_text" class="text ">
+            <p><span>数学</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u176" class="ax_default" data-left="1004" data-top="118" data-width="99" data-height="42">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u177" class="ax_default box_2">
+          <div id="u177_div" class=""></div>
+          <div id="u177_text" class="text ">
+            <p><span>英语</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u178" class="ax_default" data-left="767" data-top="172" data-width="101" data-height="43">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u179" class="ax_default box_2">
+          <div id="u179_div" class=""></div>
+          <div id="u179_text" class="text ">
+            <p><span>物理</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u180" class="ax_default" data-left="886" data-top="172" data-width="101" data-height="43">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u181" class="ax_default box_2">
+          <div id="u181_div" class=""></div>
+          <div id="u181_text" class="text ">
+            <p><span>化学</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u182" class="ax_default" data-left="1003" data-top="171" data-width="101" data-height="43">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u183" class="ax_default box_2">
+          <div id="u183_div" class=""></div>
+          <div id="u183_text" class="text ">
+            <p><span>生物</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u184" class="ax_default" data-left="767" data-top="224" data-width="220" data-height="103">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u185" class="ax_default box_2">
+          <div id="u185_div" class=""></div>
+          <div id="u185_text" class="text ">
+            <p><span>政治</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u186" class="ax_default box_2">
+          <div id="u186_div" class=""></div>
+          <div id="u186_text" class="text ">
+            <p><span>四级</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u187" class="ax_default box_2">
+          <div id="u187_div" class=""></div>
+          <div id="u187_text" class="text ">
+            <p><span>六级</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u188" class="ax_default" data-left="886" data-top="225" data-width="101" data-height="44">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u189" class="ax_default box_2">
+          <div id="u189_div" class=""></div>
+          <div id="u189_text" class="text ">
+            <p><span>历史</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u190" class="ax_default" data-left="1004" data-top="225" data-width="101" data-height="43">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u191" class="ax_default box_2">
+          <div id="u191_div" class=""></div>
+          <div id="u191_text" class="text ">
+            <p><span>地理</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 切换栏面板 (Dynamic Panel) -->
+      <div id="u192" class="ax_default" data-label="切换栏面板">
+        <div id="u192_state0" class="panel_state" data-label="切换栏" style="">
+          <div id="u192_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u193" class="ax_default refs-design-apple1">
+              <img id="u193_img" class="img " src="images/比一比首页改版/u28.png"/>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u194" class="ax_default" data-left="66" data-top="0" data-width="48" data-height="49">
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u195" class="ax_default refs-design-apple1">
+                <div id="u195_div" class=""></div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u196" class="ax_default refs-design-apple1">
+                <div id="u196_div" class=""></div>
+                <div id="u196_text" class="text ">
+                  <p><span>★</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u197" class="ax_default refs-design-apple1">
+                <div id="u197_div" class=""></div>
+                <div id="u197_text" class="text ">
+                  <p><span>答题</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u198" class="ax_default" data-left="270" data-top="0" data-width="48" data-height="49">
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u199" class="ax_default refs-design-apple1">
+                <div id="u199_div" class=""></div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u200" class="ax_default refs-design-apple1">
+                <div id="u200_div" class=""></div>
+                <div id="u200_text" class="text ">
+                  <p><span>★</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u201" class="ax_default refs-design-apple1">
+                <div id="u201_div" class=""></div>
+                <div id="u201_text" class="text ">
+                  <p><span>我的</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u202" class="ax_default" data-left="814" data-top="666" data-width="48" data-height="49">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u203" class="ax_default refs-design-apple1">
+          <div id="u203_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u204" class="ax_default refs-design-apple1">
+          <div id="u204_div" class=""></div>
+          <div id="u204_text" class="text ">
+            <p><span>★</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u205" class="ax_default refs-design-apple1">
+          <div id="u205_div" class=""></div>
+          <div id="u205_text" class="text ">
+            <p><span>答题</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u206" class="ax_default" data-left="767" data-top="346" data-width="338" data-height="25">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u207" class="ax_default box_2">
+          <div id="u207_div" class=""></div>
+          <div id="u207_text" class="text ">
+            <p><span>更多栏目</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u208" class="ax_default" data-left="767" data-top="392" data-width="101" data-height="43">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u209" class="ax_default box_2">
+          <div id="u209_div" class=""></div>
+          <div id="u209_text" class="text ">
+            <p><span>科学</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u210" class="ax_default" data-left="886" data-top="392" data-width="101" data-height="43">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u211" class="ax_default box_2">
+          <div id="u211_div" class=""></div>
+          <div id="u211_text" class="text ">
+            <p><span>高数</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u212" class="ax_default" data-left="1004" data-top="392" data-width="101" data-height="43">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u213" class="ax_default box_2">
+          <div id="u213_div" class=""></div>
+          <div id="u213_text" class="text ">
+            <p><span>电力</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Horizontal Line) -->
+      <div id="u214" class="ax_default line">
+        <img id="u214_img" class="img " src="images/对战前选学科/u214.png"/>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u215" class="ax_default box_2">
+        <div id="u215_div" class=""></div>
+        <div id="u215_text" class="text ">
+          <p><span>点击上方栏目将移动到下方（也可拖动）</span></p><p><span>将该栏目从所选项目中移除</span></p><p><span>点击下方栏目将添加到上面，</span></p><p><span>并添加到我的栏目中去</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Horizontal Line) -->
+      <div id="u216" class="ax_default line">
+        <img id="u216_img" class="img " src="images/对战前选学科/u214.png"/>
+      </div>
+    </div>
+  </body>
+</html>

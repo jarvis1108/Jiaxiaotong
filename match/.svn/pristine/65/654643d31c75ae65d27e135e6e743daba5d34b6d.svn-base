@@ -1,0 +1,49 @@
+<import src="cut_down$72afb166" />
+<template name="index$7b3f15ce">
+  <view class="_div data-v-6915e87a st-content-div">
+    <image class="_img data-v-6915e87a st-img" src="/static/images/bg.png" alt></image>
+    <view class="_ul data-v-6915e87a st-numberConternt-ul">
+      <view class="_li data-v-6915e87a st-numberList-li" wx:key="item.index" key="{{item.index}}" wx:for="{{indexList}}" wx:for-index="index" wx:for-item="item">
+        <view wx:if="{{item.isRight === 1}}" class="_div data-v-6915e87a st-right-number-div"> {{item.index}} </view>
+        <view wx:elif="{{item.isRight === -1}}" class="_div data-v-6915e87a st-false-number-div"> {{item.index}} </view>
+        <view wx:else class="_div data-v-6915e87a st-number-div"> {{item.index}} </view>
+      </view>
+    </view>
+    <view class="_div data-v-6915e87a st-questionCard-div {{contentAni}}" id="content" bindtouchstart="handleProxy" bindtouchmove="handleProxy" bindtouchend="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}">
+      <image class="_img data-v-6915e87a st-bg" src="/static/images/exercise/subject-bg.png" alt></image>
+      <view class="_div data-v-6915e87a st-time-div">
+        <template bindcutdownout="handleProxy" bindtimekeeping="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="cut_down$72afb166"></template>
+      </view>
+      <view class="_div data-v-6915e87a st-questionTitle-div">
+        <label class="_span data-v-6915e87a"> {{questionList[questionIndex-1].question}} </label>
+      </view>
+      <view id="hr" class="_hr data-v-6915e87a"></view>
+      <view class="_div data-v-6915e87a st-questionOption-div" id="choiceList">
+        <view class="_div data-v-6915e87a choice" bindtap="handleProxy" id="{{choiceA}}" key="{{choice}}" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+          <image class="_img data-v-6915e87a choice_img" src="{{indexList[questionIndex-1].choiceList[0].img}}" key="{{choice}}"></image>
+          <label id="{{indexList[questionIndex-1].choiceList[0].style}}" class="_span data-v-6915e87a choice_content" key="{{choice}}">{{questionList[questionIndex - 1].choiceA}}</label>
+          <image class="_img data-v-6915e87a errorIcon" wx:if="{{indexList[questionIndex-1].choiceList[0].isRight === -1}}" src="/static/images/exercise/Errorlabel.png"></image>
+          <image class="_img data-v-6915e87a correctIcon" wx:if="{{indexList[questionIndex-1].choiceList[0].isRight === 1}}" src="/static/images/exercise/Correctlabel.png"></image>
+        </view>
+        <view class="_div data-v-6915e87a choice" bindtap="handleProxy" id="{{choiceA}}" key="{{choice}}" data-eventid="{{'2'}}" data-comkey="{{$k}}">
+          <image class="_img data-v-6915e87a choice_img" src="{{indexList[questionIndex-1].choiceList[1].img}}" key="{{choice}}"></image>
+          <label id="{{indexList[questionIndex-1].choiceList[1].style}}" class="_span data-v-6915e87a choice_content" key="{{choice}}">{{questionList[questionIndex - 1].choiceB}}</label>
+          <image class="_img data-v-6915e87a errorIcon" wx:if="{{indexList[questionIndex-1].choiceList[1].isRight === -1}}" src="/static/images/exercise/Errorlabel.png"></image>
+          <image class="_img data-v-6915e87a correctIcon" wx:if="{{indexList[questionIndex-1].choiceList[1].isRight === 1}}" src="/static/images/exercise/Correctlabel.png"></image>
+        </view>
+        <view class="_div data-v-6915e87a choice" bindtap="handleProxy" id="{{choiceA}}" key="{{choice}}" data-eventid="{{'3'}}" data-comkey="{{$k}}">
+          <image class="_img data-v-6915e87a choice_img" src="{{indexList[questionIndex-1].choiceList[2].img}}" key="{{choice}}"></image>
+          <label id="{{indexList[questionIndex-1].choiceList[2].style}}" class="_span data-v-6915e87a choice_content" key="{{choice}}">{{questionList[questionIndex - 1].choiceC}}</label>
+          <image class="_img data-v-6915e87a errorIcon" wx:if="{{indexList[questionIndex-1].choiceList[2].isRight === -1}}" src="/static/images/exercise/Errorlabel.png"></image>
+          <image class="_img data-v-6915e87a correctIcon" wx:if="{{indexList[questionIndex-1].choiceList[2].isRight === 1}}" src="/static/images/exercise/Correctlabel.png"></image>
+        </view>
+        <view class="_div data-v-6915e87a choice" bindtap="handleProxy" id="{{choiceA}}" key="{{choice}}" data-eventid="{{'4'}}" data-comkey="{{$k}}">
+          <image class="_img data-v-6915e87a choice_img" src="{{indexList[questionIndex-1].choiceList[3].img}}" key="{{choice}}"></image>
+          <label id="{{indexList[questionIndex-1].choiceList[3].style}}" class="_span data-v-6915e87a choice_content" key="{{choice}}">{{questionList[questionIndex - 1].choiceD}}</label>
+          <image class="_img data-v-6915e87a errorIcon" wx:if="{{indexList[questionIndex-1].choiceList[3].isRight === -1}}" src="/static/images/exercise/Errorlabel.png"></image>
+          <image class="_img data-v-6915e87a correctIcon" wx:if="{{indexList[questionIndex-1].choiceList[3].isRight === 1}}" src="/static/images/exercise/Correctlabel.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

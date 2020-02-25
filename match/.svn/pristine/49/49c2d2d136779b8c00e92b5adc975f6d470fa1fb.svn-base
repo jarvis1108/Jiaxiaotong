@@ -1,0 +1,67 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.scholarship;
+
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.scholarship.service.ScholarshipService;
+import com.dxtwangxiao.strongestsuperscholar.module.wechat.service.WechatService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by 孙伟浩 on 2018/9/18.
+ */
+@RestController
+@RequestMapping("/api/v1/scholarship")
+public class ScholarshipController {
+
+    @Autowired
+    private WechatService wechatService;
+
+    @Autowired
+    private ScholarshipService scholarshipService;
+
+    /**
+      * 发放奖学金
+      *
+      * @param   requestInfo
+      * @param   request
+      * @return
+      */
+    @PostMapping
+    public ResponseInfo saveScholarshipRecord(@RequestBody RequestInfo requestInfo, HttpServletRequest request) throws Exception{
+
+        JSONObject reqParam = requestInfo.getReqParam();
+        String openid = reqParam.getString("openid");
+        String userId = reqParam.getString("userId");
+        int amount = reqParam.getInteger("amount");
+        int consumedGP = reqParam.getInteger("consumedGP");
+        String clientIp = WebUtil.getClientIp(request);
+
+        Boolean result = wechatService.wxCorporatePay(openid, userId, clientIp, amount, consumedGP);
+        if (result){
+            return new ResponseInfo(requestInfo,new JSONObject());
+        }
+        return new ResponseInfo(requestInfo,"企业付款失败!");
+    }
+
+    /**
+     * 获取奖学金列表
+     *
+     * @param   requestInfo
+     * @return
+     */
+    @GetMapping(value = "/list")
+    public ResponseInfo listScholarship(@RequestBody RequestInfo requestInfo){
+
+        Map<String, Object> curData = new HashMap<>();
+        curData.put("scholarshipList",scholarshipService.listScholarship() );
+
+        return new ResponseInfo(requestInfo, curData);
+    }
+}

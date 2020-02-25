@@ -1,0 +1,307 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.entity;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Objects;
+
+/**
+ * Created by Devin
+ * 2018-06-25 上午 10:39
+ */
+@Entity
+@Table(name = "t_QST_Question")
+public class Question {
+    private String questionId;
+    private String questionNo;
+    private String questionCode;
+    private String questionTypeId;
+    private String knowledgeId;
+    private String question;
+    private String provider;
+    private String personInCharge;
+    private String reference;
+    private Integer questionLevel;
+    private Double difficulty;
+    private Double coinWeight;
+    private Double gpWeight;
+    private String questionAnalyze;
+    private Integer recommendTime;
+    private Timestamp createTime;
+    private String createUser;
+    private Timestamp lastUpdTime;
+    private String lastUpdUser;
+    private Byte isValid;
+    private String remark;
+
+    @Id
+    @Column(name = "QuestionID")
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
+    }
+
+    @Basic
+    @Column(name = "QuestionNo")
+    public String getQuestionNo() {
+        return questionNo;
+    }
+
+    public void setQuestionNo(String questionNo) {
+        this.questionNo = questionNo;
+    }
+
+    @Basic
+    @Column(name = "QuestionCode")
+    public String getQuestionCode() {
+        return questionCode;
+    }
+
+    public void setQuestionCode(String questionCode) {
+        this.questionCode = questionCode;
+    }
+
+    @Basic
+    @Column(name = "QuestionTypeID")
+    public String getQuestionTypeId() {
+        return questionTypeId;
+    }
+
+    public void setQuestionTypeId(String questionTypeId) {
+        this.questionTypeId = questionTypeId;
+    }
+
+    @Basic
+    @Column(name = "KnowledgeID")
+    public String getKnowledgeId() {
+        return knowledgeId;
+    }
+
+    public void setKnowledgeId(String knowledgeId) {
+        this.knowledgeId = knowledgeId;
+    }
+
+
+    @Basic
+    @Column(name = "Question")
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    @Basic
+    @Column(name = "Provider")
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
+
+    @Basic
+    @Column(name = "PersonInCharge")
+    public String getPersonInCharge() {
+        return personInCharge;
+    }
+
+    public void setPersonInCharge(String personInCharge) {
+        this.personInCharge = personInCharge;
+    }
+
+    @Basic
+    @Column(name = "Reference")
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    @Basic
+    @Column(name = "QuestionLevel")
+    public Integer getQuestionLevel() {
+        return questionLevel;
+    }
+
+    public void setQuestionLevel(Integer questionLevel) {
+        this.questionLevel = questionLevel;
+    }
+
+    @Basic
+    @Column(name = "Difficulty")
+    public Double getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Double difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    @Basic
+    @Column(name = "CoinWeight")
+    public Double getCoinWeight() {
+        return coinWeight;
+    }
+
+    public void setCoinWeight(Double coinWeight) {
+        this.coinWeight = coinWeight;
+    }
+
+    @Basic
+    @Column(name = "GPWeight")
+    public Double getGpWeight() {
+        return gpWeight;
+    }
+
+    public void setGpWeight(Double gpWeight) {
+        this.gpWeight = gpWeight;
+    }
+
+    @Basic
+    @Column(name = "QuestionAnalyze")
+    public String getQuestionAnalyze() {
+        return questionAnalyze;
+    }
+
+    public void setQuestionAnalyze(String questionAnalyze) {
+        this.questionAnalyze = questionAnalyze;
+    }
+
+    @Basic
+    @Column(name = "RecommendTime")
+    public Integer getRecommendTime() {
+        return recommendTime;
+    }
+
+    public void setRecommendTime(Integer recommendTime) {
+        this.recommendTime = recommendTime;
+    }
+
+    @Basic
+    @Column(name = "CreateTime")
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    @Basic
+    @Column(name = "CreateUser")
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
+    }
+
+    @Basic
+    @Column(name = "LastUpdTime")
+    public Timestamp getLastUpdTime() {
+        return lastUpdTime;
+    }
+
+    public void setLastUpdTime(Timestamp lastUpdTime) {
+        this.lastUpdTime = lastUpdTime;
+    }
+
+    @Basic
+    @Column(name = "LastUpdUser")
+    public String getLastUpdUser() {
+        return lastUpdUser;
+    }
+
+    public void setLastUpdUser(String lastUpdUser) {
+        this.lastUpdUser = lastUpdUser;
+    }
+
+    @Basic
+    @Column(name = "IsValid")
+    public Byte getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(Byte isValid) {
+        this.isValid = isValid;
+    }
+
+    @Basic
+    @Column(name = "Remark")
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Question question1 = (Question) o;
+        return Objects.equals(questionId, question1.questionId) &&
+                Objects.equals(questionNo, question1.questionNo) &&
+                Objects.equals(questionCode, question1.questionCode) &&
+                Objects.equals(questionTypeId, question1.questionTypeId) &&
+                Objects.equals(knowledgeId, question1.knowledgeId) &&
+                Objects.equals(question, question1.question) &&
+                Objects.equals(provider, question1.provider) &&
+                Objects.equals(personInCharge, question1.personInCharge) &&
+                Objects.equals(reference, question1.reference) &&
+                Objects.equals(questionLevel, question1.questionLevel) &&
+                Objects.equals(difficulty, question1.difficulty) &&
+                Objects.equals(coinWeight, question1.coinWeight) &&
+                Objects.equals(gpWeight, question1.gpWeight) &&
+                Objects.equals(questionAnalyze, question1.questionAnalyze) &&
+                Objects.equals(recommendTime, question1.recommendTime) &&
+                Objects.equals(createTime, question1.createTime) &&
+                Objects.equals(createUser, question1.createUser) &&
+                Objects.equals(lastUpdTime, question1.lastUpdTime) &&
+                Objects.equals(lastUpdUser, question1.lastUpdUser) &&
+                Objects.equals(isValid, question1.isValid) &&
+                Objects.equals(remark, question1.remark);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(questionId, questionNo, questionCode, questionTypeId, knowledgeId,  question, provider, personInCharge, reference, questionLevel, difficulty, coinWeight, gpWeight, questionAnalyze, recommendTime, createTime, createUser, lastUpdTime, lastUpdUser, isValid, remark);
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "questionId='" + questionId + '\'' +
+                ", questionNo='" + questionNo + '\'' +
+                ", questionCode='" + questionCode + '\'' +
+                ", questionTypeId='" + questionTypeId + '\'' +
+                ", knowledgeId='" + knowledgeId + '\'' +
+                ", question='" + question + '\'' +
+                ", provider='" + provider + '\'' +
+                ", personInCharge='" + personInCharge + '\'' +
+                ", reference='" + reference + '\'' +
+                ", questionLevel=" + questionLevel +
+                ", difficulty=" + difficulty +
+                ", coinWeight=" + coinWeight +
+                ", gpWeight=" + gpWeight +
+                ", questionAnalyze='" + questionAnalyze + '\'' +
+                ", recommendTime=" + recommendTime +
+                ", createTime=" + createTime +
+                ", createUser='" + createUser + '\'' +
+                ", lastUpdTime=" + lastUpdTime +
+                ", lastUpdUser='" + lastUpdUser + '\'' +
+                ", isValid=" + isValid +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
+}

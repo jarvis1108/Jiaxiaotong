@@ -1,0 +1,138 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionMultipleChoiceRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionMultipleChoice;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionMultipleChoiceService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\6\26 0026
+ */
+@Slf4j
+@Service
+public class QuestionMultipleChoiceServiceImpl implements QuestionMultipleChoiceService {
+
+    @Autowired
+    private QuestionMultipleChoiceRepository questionMultipleChoiceRepository;
+    /**
+     * 获取所有多选题信息
+     *
+     * @return 多选题列表
+     */
+    @Transactional(readOnly = true)
+    @Override
+    public List<QuestionMultipleChoice> getAllQuestionMultipleChoice() {
+        List<QuestionMultipleChoice> questionMultipleChoices = questionMultipleChoiceRepository.findAll();
+        return questionMultipleChoices;
+
+    }
+    /**
+     * 根据题目编号获取多选题信息
+     *
+     * @return 多选题
+     */
+    @Transactional(readOnly = true)
+    @Override
+    public QuestionMultipleChoice getQuestionMultipleChoiceByQuestionId(String questionId)throws ErrorInfo {
+        QuestionMultipleChoice questionMultipleChoice=questionMultipleChoiceRepository.findQuestionMultipleChoiceByQuestionId(questionId);
+        if(questionMultipleChoice==null){
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00"+ "_57_005", "多选题不存在", null);
+        }
+        return questionMultipleChoice;
+
+    }
+    @Transactional(readOnly = true)
+    @Override
+    public QuestionMultipleChoice getQuestionMultipleChoiceByQuestionNo(String questionNo)throws ErrorInfo {
+        QuestionMultipleChoice questionMultipleChoice=questionMultipleChoiceRepository.findQuestionMultipleChoiceByQuestionNo(questionNo);
+        if(questionMultipleChoice==null){
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_005", "多选题不存在", null);
+        }
+        return questionMultipleChoice;
+    }
+    @Transactional(readOnly = true)
+    @Override
+    public List<QuestionMultipleChoice> findQuestionMultipleChoiceByCreateUser(String createUser)throws  ErrorInfo {
+        List<QuestionMultipleChoice> questionMultipleChoices=questionMultipleChoiceRepository.findQuestionMultipleChoiceByCreateUser(createUser);
+        if(questionMultipleChoices==null){
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_005", "多选题不存在", null);
+        }
+        return questionMultipleChoices;
+    }
+
+    /**
+     * 创建多项选择题
+     * @param newQuestionMultipleChoice 多项选择题基本信息
+     * @return
+     */
+    @Transactional
+    @Override
+    public QuestionMultipleChoice create(QuestionMultipleChoice newQuestionMultipleChoice) throws ErrorInfo{
+        if (newQuestionMultipleChoice == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_006", "多项选择题为空", null);
+        }
+        return questionMultipleChoiceRepository.save(newQuestionMultipleChoice);
+
+    }
+
+    /**
+     * 更新多项选择题
+     * @param updatedQuestionMultipleChoice 待更新多项选择题
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public QuestionMultipleChoice updateQuestionMultipleChoice(QuestionMultipleChoice updatedQuestionMultipleChoice)throws  ErrorInfo {
+        if (updatedQuestionMultipleChoice == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_006", "多项选择题为空", null);
+        }
+        QuestionMultipleChoice questionMultipleChoice = questionMultipleChoiceRepository.findQuestionMultipleChoiceByQuestionId(updatedQuestionMultipleChoice.getQuestionId());
+        if (questionMultipleChoice == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_005", "多项选择题不存在", null);
+        }
+        UpdateUtil.copyProperties(updatedQuestionMultipleChoice, questionMultipleChoice);
+        return  questionMultipleChoiceRepository.save(questionMultipleChoice);
+
+
+    }
+    @Transactional
+    @Override
+    public boolean deleteQuestionMultipleChoiceByQuestionId(String questionId) throws ErrorInfo{
+            QuestionMultipleChoice questionMultipleChoice = questionMultipleChoiceRepository.findQuestionMultipleChoiceByQuestionId(questionId);
+            if (questionMultipleChoice == null) {
+                throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_005", "多项选择题不存在", null);
+
+            }
+            questionMultipleChoice.setIsValid(Byte.valueOf("0"));
+            questionMultipleChoiceRepository.save(questionMultipleChoice);
+            return true;
+
+    }
+    @Transactional
+    @Override
+    public List<QuestionMultipleChoice> getQuestionMultipleChoiceList(Integer pageSize, Integer currentPage)throws ErrorInfo {
+        if(pageSize == null || currentPage == null || pageSize<=0 || currentPage<=0){
+            return null;
+        }
+        Pageable pageable = PageRequest.of(currentPage,pageSize);
+        Page<QuestionMultipleChoice> page = questionMultipleChoiceRepository.findAll(pageable);
+        if(page == null){
+            return null;
+        }
+        return page.getContent();
+    }
+}

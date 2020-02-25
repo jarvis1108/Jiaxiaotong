@@ -1,0 +1,137 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.dao.KnowledgeRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.Knowledge;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.KnowledgeService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\6\26 0026
+ */
+@Service
+@Slf4j
+public class KnowledgeServiceImpl implements KnowledgeService {
+    @Autowired
+    private KnowledgeRepository knowledgeRepository;
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Knowledge> getAllKnowledges() throws ErrorInfo {
+        List<Knowledge> ret = knowledgeRepository.findAll();
+        if(ret == null || ret.isEmpty()){
+            throw new ErrorInfo("E_201807300855_10_029", "未查询到知识点", null);
+        }
+        return ret;
+    }
+
+
+    @Override
+    public List<Knowledge> getKnowledgeBySubjectId(String subjectId) throws ErrorInfo {
+        if(subjectId == null || "".equals(subjectId.trim())){
+            throw new ErrorInfo("E_201807300855_10_030", "传入学科Id为空", null);
+        }
+        List<Knowledge> ret = knowledgeRepository.findKnowledgeBySubjectId(subjectId);
+        if(ret == null || ret.isEmpty()){
+            throw new ErrorInfo("E_201807300855_10_031", "未查询到知识点", null);
+        }
+        return ret;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Knowledge getKnowledgeByKnowledgeId(String knowledgeId) throws ErrorInfo {
+        if(knowledgeId == null || "".equals(knowledgeId.trim())){
+            throw new ErrorInfo("E_201807300855_10_037", "传入知识点Id为空", null);
+        }
+        Knowledge ret = knowledgeRepository.findKnowledgeByKnowledgeId(knowledgeId);
+        if(ret == null){
+            throw new ErrorInfo("E_201807300855_10_032", "未查询到对应知识点", null);
+        }
+        return ret;
+    }
+    @Transactional
+    @Override
+    public Knowledge create(Knowledge newKnowledge) throws ErrorInfo {
+        if (newKnowledge == null) {
+            log.error("The given updated Knowledge is null");
+            throw new ErrorInfo("E_201807300855_10_033", "传入的待创建知识点为空", null);
+        }
+        Knowledge ret = knowledgeRepository.save(newKnowledge);
+        if(ret == null){
+            throw new ErrorInfo("E_201807300855_10_034", "更新知识点失败", null);
+        }
+        return ret;
+    }
+    @Transactional
+    @Override
+    public Knowledge updateKnowledge(Knowledge updatedKnowledge) throws ErrorInfo {
+        if (updatedKnowledge == null) {
+            log.error("The given updated Knowledge is null");
+            throw new ErrorInfo("E_201807300855_10_035", "传入的待更新知识点为空", null);
+        }
+
+            Knowledge knowledge = knowledgeRepository.findKnowledgeByKnowledgeId(updatedKnowledge.getKnowledgeId());
+            if (knowledge == null) {
+                log.error("Error on getting the Knowledge entity with informaiton: {}", updatedKnowledge);
+                throw new ErrorInfo("E_201807300855_10_032", "未查询到对应知识点", null);
+            }
+            UpdateUtil.copyProperties(updatedKnowledge, knowledge);
+            Knowledge ret = knowledgeRepository.save(knowledge);
+            if(ret == null){
+                throw new ErrorInfo("E_201807300855_10_036", "更新知识点失败", null);
+
+            }
+            return knowledge;
+
+    }
+    
+    @Transactional
+    @Override
+    public boolean deleteKnowledgeByKnowledgeId(String knowledgeId) throws ErrorInfo {
+        if (knowledgeId == null || "".equals(knowledgeId)) {
+            log.error("The given id is empty");
+            throw new ErrorInfo("E_201807300855_10_037", "传入知识点Id为空", null);
+        }
+
+        log.info("Deleting a Knowledge entity with id: {}", knowledgeId);
+
+            Knowledge knowledge = knowledgeRepository.findKnowledgeByKnowledgeId(knowledgeId);
+            if (knowledge == null) {
+                log.error("The Knowledge entity is null with id: {}", knowledgeId);
+                throw new ErrorInfo("E_201807300855_10_032", "未查询到对应知识点", null);
+            }
+            knowledge.setIsValid(Byte.valueOf("0"));
+            Knowledge result = knowledgeRepository.save(knowledge);
+            if (result != null) {
+                log.info("Deleted a Knowledge entity with id: {}", knowledgeId);
+                return true;
+            }
+            throw new ErrorInfo("E_201807300855_10_038", "删除知识点失败", null);
+        }
+
+    @Override
+    public List<Knowledge> getKnowledgeList(Integer pageSize, Integer currentPage) throws ErrorInfo {
+        if(pageSize == null || currentPage == null || pageSize<=0 || currentPage<=0){
+            throw new ErrorInfo("E_201807300855_10_039", "传入的知识点分页信息为空或错误", null);
+        }
+        Pageable pageable = PageRequest.of(currentPage,pageSize);
+        Page<Knowledge> page = knowledgeRepository.findAll(pageable);
+        if(page == null || page.getContent().isEmpty()){
+            throw new ErrorInfo("E_201807300855_10_040", "查询的知识点分页为空", null);
+
+        }
+        return page.getContent();
+    }
+}

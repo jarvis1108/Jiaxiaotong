@@ -1,0 +1,30 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.vo.GradeInfoVO;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created By Devin
+ * 2018-09-03 下午 05:02
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class GradeInfoVORepositoryTest {
+
+    @Autowired
+    private GradeInfoVORepository gradeInfoVORepository;
+
+    @Test
+    public void findAll() {
+        List<GradeInfoVO> gradeInfoVOList = gradeInfoVORepository.findAll();
+        gradeInfoVOList.forEach(System.out::println);
+    }
+}

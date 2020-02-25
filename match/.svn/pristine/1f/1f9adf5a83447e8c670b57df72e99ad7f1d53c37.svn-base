@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/battle-loading/main",
+    "pages/battle-object-modify/main",
+    "pages/battle-object-select/main",
+    "pages/battle-ready/main",
+    "pages/battle-result/main",
+    "pages/battle/main",
+    "pages/exchange-record/main",
+    "pages/exercise-object-select/main",
+    "pages/exercise-result/main",
+    "pages/exercise-review/main",
+    "pages/exercise/main",
+    "pages/friend-pk/main",
+    "pages/gold-mall/main",
+    "pages/group-battle-result/main",
+    "pages/group-battle-waiting/main",
+    "pages/group-battle/main",
+    "pages/home/main",
+    "pages/my-camp/main",
+    "pages/my-items/main",
+    "pages/personal-center/main",
+    "pages/rank/main",
+    "pages/scholarship/main",
+    "pages/topup-record/main",
+    "pages/topup/main",
+    "pages/wrong-topic/main",
+    "pages/my-question/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#5F37DB",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "color": "rgb(58,70,97)",
+    "selectedColor": "orange",
+    "list": [
+      {
+        "selectedIconPath": "/static/images/Answer-icon@2x.png",
+        "iconPath": "static/images/Answer-icon-Notselected@2x.png",
+        "pagePath": "pages/index/main",
+        "text": "答题"
+      },
+      {
+        "selectedIconPath": "static/images/Community-icon@2x.png",
+        "iconPath": "static/images/Community-icon-Notselected@2x.png",
+        "pagePath": "pages/my-camp/main",
+        "text": "社区"
+      },
+      {
+        "selectedIconPath": "static/images/My.icon@2x.png",
+        "iconPath": "static/images/My.iconNotselected@2x.png",
+        "pagePath": "pages/home/main",
+        "text": "我的"
+      }
+    ]
+  }
+}

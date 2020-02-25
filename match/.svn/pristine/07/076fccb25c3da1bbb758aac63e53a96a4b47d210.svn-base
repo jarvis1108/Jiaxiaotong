@@ -1,0 +1,32 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.dao.GradeInfoVORepository;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.GradeInfoVOService;
+import com.dxtwangxiao.strongestsuperscholar.module.base.vo.GradeInfoVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * 年级信息视图 服务实现
+ * <p>
+ * Created By Devin
+ * 2018-08-31 上午 10:37
+ */
+@Service
+public class GradeInfoVOServiceImpl implements GradeInfoVOService {
+
+    @Autowired
+    private GradeInfoVORepository gradeInfoVORepository;
+
+    @Override
+    public List<GradeInfoVO> getByGradePhaseId(String gradePhaseId) {
+        return gradeInfoVORepository.findByGradePhaseId(gradePhaseId);
+    }
+
+    @Override
+    public List<GradeInfoVO> getAll() {
+        return gradeInfoVORepository.findAll();
+    }
+}

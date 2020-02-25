@@ -1,0 +1,10 @@
+package com.dxtwangxiao.strongestsuperscholar.module.scholarship.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.scholarship.entity.Scholarship;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+/**
+ * Created by 孙伟浩 on 2018/9/26.
+ */
+public interface ScholarshipRepository extends JpaRepository<Scholarship, String> {
+}

@@ -1,0 +1,29 @@
+<template name="index$34c00b9c">
+  <view class="_div data-v-132946de st-battle-object-modify-container">
+    <image class="_img data-v-132946de st-battle-object-modify-bg" src="/static/images/bg.png"></image>
+    <view class="_div data-v-132946de st-battle-object-modify-selectedlist-div" style=" {{'height:' + selectedHeight}}">
+      <view class="_div data-v-132946de st-battle-object-modify-title">我的科目</view>
+      <view class="_div data-v-132946de st-battle-object-modify-flex-div">
+        <view class="_div data-v-132946de st-battle-object-modify-box" wx:key="index" key="{{index}}" wx:for="{{selectedObjectList}}" wx:for-index="index" wx:for-item="item">
+          <view bindtap="handleProxy" class="_div data-v-132946de st-battle-object-modify-photo-img-div" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}">
+            <image class="_img data-v-132946de st-battle-object-modify-photo-img" src="{{item.photo}}"></image>
+            <image class="_img data-v-132946de st-battle-object-modify-icon" src="/static/images/battleObjectModify/Delete_icon.png"></image>
+          </view>
+          <view class="_div data-v-132946de st-battle-object-modify-objectname-div"> {{ item.name }} </view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-132946de st-battle-object-modify-selectedlist-div" style=" {{'height:' + unselectedHeight}}">
+      <view class="_div data-v-132946de st-battle-object-modify-title">更多科目</view>
+      <view class="_div data-v-132946de st-battle-object-modify-flex-div">
+        <view class="_div data-v-132946de st-battle-object-modify-box" wx:key="index" key="{{index}}" wx:for="{{unselectedObjectList}}" wx:for-index="index" wx:for-item="item">
+          <view bindtap="handleProxy" class="_div data-v-132946de st-battle-object-modify-photo-img-div" data-eventid="{{'1-'+index}}" data-comkey="{{$k}}">
+            <image class="_img data-v-132946de st-battle-object-modify-photo-img" src="{{item.photo}}"></image>
+            <image class="_img data-v-132946de st-battle-object-modify-icon" src="/static/images/battleObjectModify/Increase_icon.png"></image>
+          </view>
+          <view class="_div data-v-132946de st-battle-object-modify-objectname-div"> {{ item.name }} </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

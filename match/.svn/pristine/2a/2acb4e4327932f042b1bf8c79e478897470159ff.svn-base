@@ -1,0 +1,134 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.dao.LevelExperienceRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.LevelExperience;
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.UserRelInfoRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserRelInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserRelInfoService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+/**
+ * 用户相关信息接口实现类
+ * <p>
+ * Created by shenhao
+ * 2018\7\24 0024
+ */
+@Service
+public class UserRelInfoServiceImpl implements UserRelInfoService {
+
+    @Autowired
+    private UserRelInfoRepository userRelInfoRepository;
+
+    @Autowired
+    private LevelExperienceRepository levelExperienceRepository;
+
+    /**
+     * 查询所有用户相关信息表
+     *
+     * @return
+     */
+    @Override
+    public List<UserRelInfo> findAll() {
+        return userRelInfoRepository.findAll();
+    }
+
+    /**
+     * 创建用户信息附表
+     *
+     * @param newUserRelInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public UserRelInfo create(UserRelInfo newUserRelInfo) throws ErrorInfo {
+        return userRelInfoRepository.save(newUserRelInfo);
+    }
+
+    /**
+     * 更新用户信息附表
+     *
+     * @param updatedUserRelInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public UserRelInfo update(UserRelInfo updatedUserRelInfo) throws ErrorInfo {
+        if (updatedUserRelInfo == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_01_025", "用户附表信息为空", null);
+        }
+        UserRelInfo userRelInfo = userRelInfoRepository.findByUserId(updatedUserRelInfo.getUserId());
+        if (userRelInfo == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_01_026", "用户不存在", null);
+        }
+        UpdateUtil.copyProperties(updatedUserRelInfo, userRelInfo);
+        return userRelInfoRepository.save(userRelInfo);
+
+    }
+
+    /**
+     * 根据用户ID删除用户相关信息表
+     *
+     * @param userID
+     * @return
+     * @throws ErrorInfo
+     */
+
+    @Override
+    public boolean deleteByUserId(String userID) throws ErrorInfo {
+        UserRelInfo userRelInfo = userRelInfoRepository.findByUserId(userID);
+        if (userRelInfo == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_017", "用户相关信息不存在", null);
+        }
+        userRelInfo.setIsValid(Byte.valueOf("0"));
+        userRelInfoRepository.save(userRelInfo);
+        return true;
+    }
+
+    /**
+     * 根据用户ID查询用户相关信息
+     *
+     * @param userID
+     * @return
+     */
+    @Override
+    public UserRelInfo findByUserId(String userID) {
+        return userRelInfoRepository.findByUserId(userID);
+    }
+
+    /**
+     * 更新用户相关信息的经验值
+     *
+     * @param userId
+     * @param experience
+     * @return
+     */
+    @Override
+    @Transactional
+    public UserRelInfo addExperience(String userId, Integer experience) {
+        UserRelInfo userRelInfo = userRelInfoRepository.findByUserId(userId);
+
+        Integer curExperience = userRelInfo.getExperience() + experience;
+        LevelExperience levelExperience = levelExperienceRepository.findByMinExperienceLessThanEqualAndMaxExperienceGreaterThan(curExperience, curExperience);
+        userRelInfo.setExperience(curExperience);
+        userRelInfo.setExternalLevel(levelExperience.getLevel());
+
+        return userRelInfoRepository.save(userRelInfo);
+    }
+
+    @Override
+    public UserRelInfo getByUserId(String userId) {
+        return userRelInfoRepository.findByUserId(userId);
+    }
+
+    @Override
+    public UserRelInfo updateUser(UserRelInfo userRelInfo) {
+        return userRelInfoRepository.save(userRelInfo);
+    }
+}

@@ -1,0 +1,99 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.RecitationQuestionForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.RecitationQuestionForLibService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.RecitationQuestionForLib;
+import com.google.gson.JsonObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by 孙伟浩 on 2018/9/7.
+ */
+@Service
+public class RecitationQuestionForLibServiceImpl implements RecitationQuestionForLibService {
+
+    @Autowired
+    private RecitationQuestionForLibRepository recitationQuestionForLibRepository;
+
+
+    /**
+     *
+     *
+     * @param  reqParam 搜索参数
+     * @return 背诵题表现层实体列表
+     */
+    @Override
+    public List<RecitationQuestionForLib> search(JsonObject reqParam){
+
+        List<RecitationQuestionForLib> recitationQuestionForLibList =
+                recitationQuestionForLibRepository.findAll(new Specification<RecitationQuestionForLib>() {
+                    @Override
+                    public Predicate toPredicate(Root<RecitationQuestionForLib> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                        List<Predicate> predicates = new ArrayList<Predicate>();
+
+                        //私有题库限定
+                        if (reqParam.get("questionLibId") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("questionLibID").as(String.class),reqParam.get("questionLibId")));
+                        }
+
+                        //知识点限定
+                        if (reqParam.get("knowledgeId") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("knowledgeID").as(String.class),reqParam.get("knowledgeId")));
+                        }
+
+                        //学科限定
+                        if (reqParam.get("subjectId") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("subjectID").as(String.class), reqParam.get("subjectId")));
+                        }
+
+                        //年级限定
+                        if (reqParam.get("gradeId") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("gradeID").as(String.class), reqParam.get("gradeId")));
+                        }
+
+                        //课程限定
+                        if (reqParam.get("courseId") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("courseID").as(String.class), reqParam.get("courseId")));
+                        }
+
+                        //问题级别限定
+                        if (reqParam.get("minQuestionLevel") != null && reqParam.get("maxQuestionLevel") == null){
+                            predicates.add(criteriaBuilder.greaterThan(root.get("questionLevel").as(Integer.class), reqParam.get("minQuestionLevel").getAsInt()));
+                        }
+                        if (reqParam.get("minQuestionLevel") == null && reqParam.get("maxQuestionLevel") != null){
+                            predicates.add(criteriaBuilder.lessThan(root.get("questionLevel").as(Integer.class), reqParam.get("maxQuestionLevel").getAsInt()));
+                        }
+                        if (reqParam.get("minQuestionLevel") != null && reqParam.get("maxQuestionLevel") != null){
+                            predicates.add(criteriaBuilder.between(root.get("questionLevel").as(Integer.class), reqParam.get("minQuestionLevel").getAsInt(), reqParam.get("maxQuestionLevel").getAsInt()));
+                        }
+
+                        //难度系数限定
+                        if (reqParam.get("minDifficulty") != null && reqParam.get("maxDifficulty") == null){
+                            predicates.add(criteriaBuilder.greaterThan(root.get("difficulty").as(Double.class), reqParam.get("minDifficulty").getAsDouble()));
+                        }
+                        if (reqParam.get("minDifficulty") == null && reqParam.get("maxDifficulty") != null){
+                            predicates.add(criteriaBuilder.lessThan(root.get("difficulty").as(Double.class), reqParam.get("maxDifficulty").getAsDouble()));
+                        }
+                        if (reqParam.get("minDifficulty") != null && reqParam.get("maxDifficulty") != null){
+                            predicates.add(criteriaBuilder.between(root.get("difficulty").as(Double.class), reqParam.get("minDifficulty").getAsDouble(), reqParam.get("maxDifficulty").getAsDouble()));
+                        }
+
+
+
+                        Predicate[] p = new Predicate[predicates.size()];
+                        return criteriaBuilder.and(predicates.toArray(p));
+                    }
+                });
+
+        return recitationQuestionForLibList;
+    }
+}

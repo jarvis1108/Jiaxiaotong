@@ -1,0 +1,58 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.dao.GradePhaseInfoRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.GradePhaseInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.GradePhaseInfoService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * 年级阶段基本信息 服务实现类
+ * <p>
+ * Created by shenhao
+ * 2018\7\13 0013
+ */
+@Service
+public class GradePhaseInfoServiceImpl implements GradePhaseInfoService {
+
+    @Autowired
+    private GradePhaseInfoRepository gradePhaseInfoRepository;
+
+    /**
+     * 获取所有年级阶段基本信息
+     *
+     * @return 年级阶段信息
+     */
+    @Override
+    public List<GradePhaseInfo> findAll() {
+        return gradePhaseInfoRepository.findAll();
+    }
+
+
+    /**
+     * 创建年级阶段基本信息
+     *
+     * @param newGradePhaseInfo 待创建的年级基本信息
+     * @return 创建后的年级基本信息
+     * @throws ErrorInfo
+     */
+    @Override
+    public GradePhaseInfo create(GradePhaseInfo newGradePhaseInfo) throws ErrorInfo {
+        return gradePhaseInfoRepository.save(newGradePhaseInfo);
+    }
+
+    /**
+     * 更新年级基本信息
+     *
+     * @param updatedGradePhaseInfo 待更新的年级基本信息
+     * @return 更新后的年级基本信息
+     * @throws ErrorInfo
+     */
+    @Override
+    public GradePhaseInfo update(GradePhaseInfo updatedGradePhaseInfo) throws ErrorInfo {
+        return gradePhaseInfoRepository.save(updatedGradePhaseInfo);
+    }
+}

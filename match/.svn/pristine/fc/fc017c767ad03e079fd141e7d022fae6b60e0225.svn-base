@@ -1,0 +1,52 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionForLib;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:       题库题目表服务层
+ * @date 2018\8\15 0015
+ */
+
+public interface QuestionForLibService {
+    /**
+     * 根据试题ID获取题库提目表
+     * @param questionForLibId
+     * @return
+     */
+   QuestionForLib getQuestionForLibByQuestionForLibId(String questionForLibId)throws ErrorInfo;
+
+    /**
+     * 根据私有题库ID获取题库提目表
+     * @param questionLibId
+     * @return
+     */
+    List<QuestionForLib> getQuestionForLibByQuestionLibId(String questionLibId)throws ErrorInfo;
+
+    /**
+     * 获取所有题库提目表
+     * @return 包含所有题库提目表的序列
+     */
+    List<QuestionForLib> findAll();
+
+    /**
+     * 新增题库提目表
+     * @paramQuestionForLib
+     */
+   QuestionForLib create(QuestionForLib questionForLib)throws ErrorInfo;
+    /**
+     * 删除题目
+     * @paramQuestionForLibId
+     */
+    boolean deleteQuestionForLibByQuestionForLibId(String QuestionForLibId)throws ErrorInfo;
+    /**
+     * 修改题目
+     * @param updateQuestionForLib
+     */
+   QuestionForLib update(QuestionForLib updateQuestionForLib)throws ErrorInfo;
+
+
+}

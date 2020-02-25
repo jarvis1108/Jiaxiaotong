@@ -1,0 +1,1743 @@
+{
+  "gradePhaseInfo": {
+    "resResult": {
+      "curData": {
+        "gradePhaseInfoList": [
+          {
+            "gradePhaseID": "100383729394",
+            "gradePhaseNo": "001",
+            "gradePhaseCode": "30bjdBDKM568N39N",
+            "gradePhaseName": "小学",
+            "gradePhaseText": "入门题目夯实基础"
+          },
+          {
+            "gradePhaseID": "208782479290",
+            "gradePhaseNo": "002",
+            "gradePhaseCode": "30bjBJDNIK568N39N",
+            "gradePhaseName": "初中",
+            "gradePhaseText": "精选题目整理疏导"
+          },
+          {
+            "gradePhaseID": "300383729394",
+            "gradePhaseNo": "003",
+            "gradePhaseCode": "30bjdBDvfwefw3559N",
+            "gradePhaseName": "高中",
+            "gradePhaseText": "提高题目战斗演练"
+          },
+          {
+            "gradePhaseID": "408782479290",
+            "gradePhaseNo": "004",
+            "gradePhaseCode": "30djhjdKM568N39N",
+            "gradePhaseName": "大学",
+            "gradePhaseText": "热门题目丰富学识"
+          }
+        ]
+      }
+    }
+  },
+  "gradeInfo": {
+    "resResult": {
+      "curData": {
+        "primary": {
+          "gradeInfoList": [
+            {
+              "gradeID": "100383729394",
+              "gradeNo": "001",
+              "gradeCode": "30bjdBDKM568N39N",
+              "gradeName": "一年级"
+            },
+            {
+              "gradeID": "208782479290",
+              "gradeNo": "002",
+              "gradeCode": "30bjBJDNIK568N39N",
+              "gradeName": "二年级"
+            },
+            {
+              "gradeID": "300383729394",
+              "gradeNo": "003",
+              "gradeCode": "30bjdBDvfwefw3559N",
+              "gradeName": "三年级"
+            },
+            {
+              "gradeID": "408782479290",
+              "gradeNo": "004",
+              "gradeCode": "30djhjdKM568N39N",
+              "gradeName": "四年级"
+            },
+            {
+              "gradeID": "300383729394",
+              "gradeNo": "003",
+              "gradeCode": "30bjdBDvfwefw3559N",
+              "gradeName": "五年级"
+            },
+            {
+              "gradeID": "408782479290",
+              "gradeNo": "004",
+              "gradeCode": "30djhjdKM568N39N",
+              "gradeName": "六年级"
+            }
+          ]
+        },
+        "junior": {
+          "gradeInfoList": [
+            {
+              "gradeID": "100383729394",
+              "gradeNo": "001",
+              "gradeCode": "30bjdBDKM568N39N",
+              "gradeName": "一年级"
+            },
+            {
+              "gradeID": "208782479290",
+              "gradeNo": "002",
+              "gradeCode": "30bjBJDNIK568N39N",
+              "gradeName": "二年级"
+            },
+            {
+              "gradeID": "300383729394",
+              "gradeNo": "003",
+              "gradeCode": "30bjdBDvfwefw3559N",
+              "gradeName": "三年级"
+            }
+          ]
+        },
+        "senior": {
+          "gradeInfoList": [
+            {
+              "gradeID": "100383729394",
+              "gradeNo": "001",
+              "gradeCode": "30bjdBDKM568N39N",
+              "gradeName": "高一"
+            },
+            {
+              "gradeID": "208782479290",
+              "gradeNo": "002",
+              "gradeCode": "30bjBJDNIK568N39N",
+              "gradeName": "高二"
+            },
+            {
+              "gradeID": "300383729394",
+              "gradeNo": "003",
+              "gradeCode": "30bjdBDvfwefw3559N",
+              "gradeName": "高三"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "user": {
+    "resResult": {
+      "curData": {
+        "token": "ASDFGHJKLUHGVTY5678HVDFGH",
+        "user": {
+          "userId": "GDK_AJUdja37767sgg593ttSVH",
+          "userNo": "001",
+          "wechatName": "petrel.",
+          "sex": "女",
+          "headImage": "/static/images/judy.jpg",
+          "telephone": "",
+          "coin": 2050,
+          "externalLevel": 5,
+          "gradePoint": 100,
+          "learningPoint": 500,
+          "experience": 440,
+          "matchSumCount": 300,
+          "matchWinCount": 90,
+          "matchLoseCount": 200,
+          "matchDogFallCount": 10
+        }
+      }
+    }
+  },
+  "userInfo": {
+    "resResult": {
+      "curData": {
+        "token": "ASDFGHJKLUHGVTY5678HVDFGH",
+        "user": {
+          "userId": "GDK_AJUdja37767sgg593ttSVH",
+          "userNo": "001",
+          "wechatName": "petrel.",
+          "sex": "女",
+          "headImage": "/static/images/judy.jpg",
+          "city": "十堰",
+          "telephone": "",
+          "coin": 2050,
+          "externalLevel": 5,
+          "gradePoint": 100,
+          "learningPoint": 500,
+          "experience": 440,
+          "matchSumCount": 300,
+          "matchWinCount": 90,
+          "matchLoseCount": 200,
+          "matchDogFallCount": 10
+        }
+      }
+    }
+  },
+  "login": {
+    "resResult": {
+      "curData": {
+        "openId": "GDK_AJUdja37767sgg593ttSVH",
+        "token": "ASDFGHJKLUHGVTY5678HVDFGH",
+        "userInfo": {
+          "nickName": "petrel.",
+          "avatarUrl": "/static/images/judy.jpg",
+          "userId": "001",
+          "userCoin": 2050,
+          "grade": 5,
+          "gpa": 100,
+          "learnPoint": 500,
+          "progress": 0.8,
+          "level": "五年级"
+        }
+      }
+    }
+  },
+  "exercise": {
+    "questionList": {
+      "resResult": {
+        "curData": {
+          "data": [
+            {
+              "questionIndex": 1,
+              "analysis": "押解（jiè）",
+              "source": "人教版语文三年级上册第三单元",
+              "knowledge": "字音",
+              "questionTitle": "下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是",
+              "questionType": 1,
+              "choiceList": [
+                {
+                  "label": "A",
+                  "img": "",
+                  "content": "珍稀动物 北雁南飞",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "B",
+                  "img": "",
+                  "content": "悠然见南山 参商",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "C",
+                  "img": "",
+                  "content": "果汁 依然自得",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "D",
+                  "img": "",
+                  "content": "五彩斑斓 烟雾缭绕",
+                  "isRight": 0,
+                  "style": ""
+                }
+              ],
+              "userAnswer": "B",
+              "rightAnswer": "A"
+            },
+            {
+              "questionIndex": 2,
+              "analysis": "押解多拉阿梦和我一起让生活发光，巴拉拉小魔仙变身押解多拉阿梦和我一起让生活发光，巴拉拉小魔仙变身押解多拉阿梦和我一起让生活发光，巴拉拉小魔仙变身押解多拉阿梦和我一起让（jiè）",
+              "source": "人教版语文三年级上册第三单元",
+              "knowledge": "字音",
+              "questionTitle": "下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是",
+              "questionType": 1,
+              "choiceList": [
+                {
+                  "label": "A",
+                  "img": "",
+                  "content": "珍稀动物 北雁南飞",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "B",
+                  "img": "",
+                  "content": "悠然见南山 参商",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "C",
+                  "img": "",
+                  "content": "果汁 依然自得",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "D",
+                  "img": "",
+                  "content": "五彩斑斓 烟雾缭绕",
+                  "isRight": 0,
+                  "style": ""
+                }
+              ],
+              "userAnswer": "A",
+              "rightAnswer": "D"
+            },
+            {
+              "questionIndex": 3,
+              "analysis": "押解（jiè）",
+              "source": "人教版语文三年级上册第三单元",
+              "knowledge": "字音",
+              "questionTitle": "下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是",
+              "questionType": 1,
+              "choiceList": [
+                {
+                  "label": "A",
+                  "img": "",
+                  "content": "珍稀动物 北雁南飞",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "B",
+                  "img": "",
+                  "content": "悠然见南山 参商",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "C",
+                  "img": "",
+                  "content": "果汁 依然自得",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "D",
+                  "img": "",
+                  "content": "五彩斑斓 烟雾缭绕",
+                  "isRight": 0,
+                  "style": ""
+                }
+              ],
+              "userAnswer": "B",
+              "rightAnswer": "B"
+            },
+            {
+              "questionIndex": 4,
+              "analysis": "押解（jiè）",
+              "source": "人教版语文三年级上册第三单元",
+              "knowledge": "字音",
+              "questionTitle": "下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是",
+              "questionType": 1,
+              "choiceList": [
+                {
+                  "label": "A",
+                  "img": "",
+                  "content": "珍稀动物 北雁南飞",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "B",
+                  "img": "",
+                  "content": "悠然见南山 参商",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "C",
+                  "img": "",
+                  "content": "果汁 依然自得",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "D",
+                  "img": "",
+                  "content": "五彩斑斓 烟雾缭绕",
+                  "isRight": 0,
+                  "style": ""
+                }
+              ],
+              "userAnswer": "B",
+              "rightAnswer": "B"
+            },
+            {
+              "questionIndex": 5,
+              "analysis": "押解（jiè）",
+              "source": "人教版语文三年级上册第三单元",
+              "knowledge": "字音",
+              "questionTitle": "下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是",
+              "questionType": 1,
+              "choiceList": [
+                {
+                  "label": "A",
+                  "img": "",
+                  "content": "珍稀动物 北雁南飞",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "B",
+                  "img": "",
+                  "content": "悠然见南山 参商",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "C",
+                  "img": "",
+                  "content": "果汁 依然自得",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "D",
+                  "img": "",
+                  "content": "五彩斑斓 烟雾缭绕",
+                  "isRight": 0,
+                  "style": ""
+                }
+              ],
+              "userAnswer": "B",
+              "rightAnswer": "B"
+            },
+            {
+              "questionIndex": 1,
+              "analysis": "押解（jiè）",
+              "source": "人教版语文三年级上册第三单元",
+              "knowledge": "字音",
+              "questionTitle": "下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是",
+              "questionType": 1,
+              "choiceList": [
+                {
+                  "label": "A",
+                  "img": "",
+                  "content": "珍稀动物 北雁南飞",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "B",
+                  "img": "",
+                  "content": "悠然见南山 参商",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "C",
+                  "img": "",
+                  "content": "果汁 依然自得",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "D",
+                  "img": "",
+                  "content": "五彩斑斓 烟雾缭绕",
+                  "isRight": 0,
+                  "style": ""
+                }
+              ],
+              "userAnswer": "B",
+              "rightAnswer": "A"
+            },
+            {
+              "questionIndex": 2,
+              "analysis": "押解多拉阿梦和我一起让生活发光，巴拉拉小魔仙变身押解多拉阿梦和我一起让生活发光，巴拉拉小魔仙变身押解多拉阿梦和我一起让生活发光，巴拉拉小魔仙变身押解多拉阿梦和我一起让（jiè）",
+              "source": "人教版语文三年级上册第三单元",
+              "knowledge": "字音",
+              "questionTitle": "下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是",
+              "questionType": 1,
+              "choiceList": [
+                {
+                  "label": "A",
+                  "img": "",
+                  "content": "珍稀动物 北雁南飞",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "B",
+                  "img": "",
+                  "content": "悠然见南山 参商",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "C",
+                  "img": "",
+                  "content": "果汁 依然自得",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "D",
+                  "img": "",
+                  "content": "五彩斑斓 烟雾缭绕",
+                  "isRight": 0,
+                  "style": ""
+                }
+              ],
+              "userAnswer": "A",
+              "rightAnswer": "D"
+            },
+            {
+              "questionIndex": 3,
+              "analysis": "押解（jiè）",
+              "source": "人教版语文三年级上册第三单元",
+              "knowledge": "字音",
+              "questionTitle": "下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是",
+              "questionType": 1,
+              "choiceList": [
+                {
+                  "label": "A",
+                  "img": "",
+                  "content": "珍稀动物 北雁南飞",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "B",
+                  "img": "",
+                  "content": "悠然见南山 参商",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "C",
+                  "img": "",
+                  "content": "果汁 依然自得",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "D",
+                  "img": "",
+                  "content": "五彩斑斓 烟雾缭绕",
+                  "isRight": 0,
+                  "style": ""
+                }
+              ],
+              "userAnswer": "B",
+              "rightAnswer": "B"
+            },
+            {
+              "questionIndex": 4,
+              "analysis": "押解（jiè）",
+              "source": "人教版语文三年级上册第三单元",
+              "knowledge": "字音",
+              "questionTitle": "下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是",
+              "questionType": 1,
+              "choiceList": [
+                {
+                  "label": "A",
+                  "img": "",
+                  "content": "珍稀动物 北雁南飞",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "B",
+                  "img": "",
+                  "content": "悠然见南山 参商",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "C",
+                  "img": "",
+                  "content": "果汁 依然自得",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "D",
+                  "img": "",
+                  "content": "五彩斑斓 烟雾缭绕",
+                  "isRight": 0,
+                  "style": ""
+                }
+              ],
+              "userAnswer": "B",
+              "rightAnswer": "B"
+            },
+            {
+              "questionIndex": 5,
+              "analysis": "押解（jiè）",
+              "source": "人教版语文三年级上册第三单元",
+              "knowledge": "字音",
+              "questionTitle": "下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是下列词中有两个错别字的一项是",
+              "questionType": 1,
+              "choiceList": [
+                {
+                  "label": "A",
+                  "img": "",
+                  "content": "珍稀动物 北雁南飞",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "B",
+                  "img": "",
+                  "content": "悠然见南山 参商",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "C",
+                  "img": "",
+                  "content": "果汁 依然自得",
+                  "isRight": 0,
+                  "style": ""
+                },
+                {
+                  "label": "D",
+                  "img": "",
+                  "content": "五彩斑斓 烟雾缭绕",
+                  "isRight": 0,
+                  "style": ""
+                }
+              ],
+              "userAnswer": "B",
+              "rightAnswer": "B"
+            }
+          ]
+        }
+      }
+    },
+    "objectList":{
+      "resResult":{
+        "curData":{
+          "data":[
+            {
+              "text": "一年级",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "语文（上）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "语文（下）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "数学（上）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "数学（下）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "英语（上）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "英语（下）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": true
+            },
+            {
+              "text": "二年级",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [],
+              "select": false
+            },
+            {
+              "text": "三年级",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "语文（上）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "语文（下）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "数学（上）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "数学（下）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "objectId":"567fbesf5678BJJD",
+                  "name": "英语（下）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            },
+            {
+              "text": "四年级",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "name": "语文（上）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "语文（下）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（上）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（下）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（上）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（下）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            },
+            {
+              "text": "五年级",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "name": "语文（上）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "语文（下）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（上）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（下）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（上）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（下）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            },
+            {
+              "text": "六年级",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "name": "语文（上）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "语文（下）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（上）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（下）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（上）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（下）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            },
+            {
+              "text": "初一",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "name": "语文（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "语文（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修五）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修四）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "物理（必修一）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "物理（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "化学（选修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "化学（选修五）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            },
+            {
+              "text": "初二",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "name": "语文（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "语文（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修五）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修四）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "物理（必修一）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "物理（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "化学（选修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "化学（选修五）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            },
+            {
+              "text": "初三",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "name": "语文（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "语文（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修五）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修四）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "物理（必修一）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "物理（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "化学（选修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "化学（选修五）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            },
+            {
+              "text": "高一",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "name": "语文（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "语文（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修五）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修四）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "物理（必修一）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "物理（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "化学（选修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "化学（选修五）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            },
+            {
+              "text": "高二",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "name": "语文（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "语文（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修五）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修四）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "物理（必修一）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "物理（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "化学（选修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "化学（选修五）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            },
+            {
+              "text": "高三",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "name": "语文（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "语文（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "数学（必修五）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修一）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修二）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "英语（必修四）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "政治（必修一）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "政治（必修二）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "历史（选修三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "历史（选修五）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            },
+            {
+              "text": "大学",
+              "iconImage": "/static/images/exerciseObjectSelect/Gradeone_icon@2x.png",
+              "objectList": [
+                {
+                  "name": "高数B（上）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "高数B（下）",
+                  "photo": "/static/images/exerciseObjectSelect/Chinese_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "大物B（上）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "大物B（下）",
+                  "photo":
+                    "/static/images/exerciseObjectSelect/Mathematics_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "大英（一）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "大英（二）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "大英（三）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                },
+                {
+                  "name": "大英（四）",
+                  "photo": "/static/images/exerciseObjectSelect/english_icon@2x.png",
+                  "select": false
+                }
+              ],
+              "select": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  "battleResult": {
+    "resResult": {
+      "curData": {
+        "result": {
+          "win": true,
+          "user": {
+            "icon": "/static/images/judy.jpg",
+            "name": "st.ku",
+            "mark": 1010,
+            "num": 5
+          },
+          "opponent": {
+            "icon": "/static/images/nick.jpg",
+            "name": "st.ku",
+            "mark": 202,
+            "num": 1
+          },
+          "coin": 100,
+          "gpa": 5,
+          "lp": 30,
+          "experience": 2
+        }
+      }
+    }
+  },
+  "groupBattle": {
+    "playerList": {
+      "resResult": {
+        "curData": {
+          "data": [
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            },
+            {
+              "playerIndex": 1,
+              "name": "1",
+              "img": "/static/images/judy.jpg"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "topup": {
+    "productList": {
+      "resResult": {
+        "curData": {
+          "productList": [
+            {
+              "ProductName": "学点月卡",
+              "Price": "10元/月",
+              "Photo": "/static/images/topup/mooncard_icon@2x.png"
+            },
+            {
+              "ProductName": "学点年卡",
+              "Price": "70元/年",
+              "Photo": "/static/images/topup/yearcard_icon@2x.png"
+            },
+            {
+              "ProductName": "学点日卡",
+              "Price": "2元/日",
+              "Photo": "/static/images/topup/daycard_icon@2x.png"
+            },
+            {
+              "ProductName": "学点1000",
+              "Price": "1元",
+              "Photo": "/static/images/topup/Learnsomethinglittle_icon@2x.png"
+            },
+            {
+              "ProductName": "学点3000",
+              "Price": "3元",
+              "Photo": "/static/images/topup/Learnsomething_icon@2x.png"
+            },
+            {
+              "ProductName": "学点5000",
+              "Price": "5元",
+              "Photo": "/static/images/topup/Learnsomethingmore_icon@2x.png"
+            },
+            {
+              "ProductName": "金币1000",
+              "Price": "1元",
+              "Photo": "/static/images/topup/Lessgold_icon@2x.png"
+            },
+            {
+              "ProductName": "金币3000",
+              "Price": "3元",
+              "Photo": "/static/images/topup/Goldcoin_icon@2x.png"
+            },
+            {
+              "ProductName": "金币5000",
+              "Price": "5元",
+              "Photo": "/static/images/topup/manygoldcoins_icon@2x.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "goldMall": {
+    "productList": {
+      "resResult": {
+        "curData": {
+          "data": [
+            {
+              "ProductName": "学点1000",
+              "Price": "1000金币",
+              "Photo": "/static/images/goldMall/1000learnpoint_icon@2x.png"
+            },
+            {
+              "ProductName": "学点3000",
+              "Price": "3000金币",
+              "Photo": "/static/images/goldMall/3000learnpoint_icon@2x.png"
+            },
+            {
+              "ProductName": "学点5000",
+              "Price": "5000金币",
+              "Photo": "/static/images/goldMall/5000learnpoint_icon@2x.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "myItems": {
+    "productList": {
+      "resResult": {
+        "curData": {
+          "data": [
+            {
+              "ProductName": "单场加分卡",
+              "Number": "3",
+              "Photo": "/static/images/myItems/Addpoint_icon@2x.png"
+            },
+            {
+              "ProductName": "金币+10%",
+              "Number": "1",
+              "Photo": "/static/images/myItems/Increaseingoldcoins10_icon@2x.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "scholarship": {
+    "productList": {
+      "resResult": {
+        "curData": {
+          "data": [
+            {
+              "ProductName": "1元",
+              "Price": "50绩点",
+              "Photo": "/static/images/scholarship/Oneyuan_icon@2x.png"
+            },
+            {
+              "ProductName": "2元",
+              "Price": "98绩点",
+              "Photo": "/static/images/scholarship/2yuan_icon@2x.png"
+            },
+            {
+              "ProductName": "5元",
+              "Price": "450绩点",
+              "Photo": "/static/images/scholarship/5yuan_icon@2x.png"
+            },
+            {
+              "ProductName": "2000元",
+              "Price": "5000绩点",
+              "Photo": "/static/images/scholarship/2000yuan_icon@2x.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "topupRecord": {
+    "recordList": {
+      "resResult": {
+        "curData": {
+          "data": [
+            {
+              "goodsName": "学点月卡",
+              "goodsIcon": "/static/images/topupRecord/Mooncard-1_icon@2x.png",
+              "price": "10元",
+              "dataTime": "2018.08.06 15:38:00"
+            },
+            {
+              "goodsName": "学点年卡",
+              "goodsIcon": "/static/images/topupRecord/Yearcard-1_icon@2x.png",
+              "price": "70元",
+              "dataTime": "2018.08.06 15:38:00"
+            },
+            {
+              "goodsName": "学点日卡",
+              "goodsIcon": "/static/images/topupRecord/daycard-1_icon@2x.png",
+              "price": "2元",
+              "dataTime": "2018.08.06 15:38:00"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "exchangeRecords": {
+    "recordList": {
+      "resResult": {
+        "curData": {
+          "data": [
+            {
+              "goodsName": "1000学点",
+              "goodsIcon": "/static/images/exchangeRecord/1000learnPoint_icon@2x.png",
+              "price": "1000",
+              "dataTime": "2018.08.06 15:38:00"
+            },
+            {
+              "goodsName": "3000学点",
+              "goodsIcon": "/static/images/exchangeRecord/3000learnPoint_icon@2x.png",
+              "price": "3000",
+              "dataTime": "2018.08.06 15:38:00"
+            },
+            {
+              "goodsName": "5000学点",
+              "goodsIcon": "/static/images/exchangeRecord/5000learnPoint_icon@2x.png",
+              "price": "5000",
+              "dataTime": "2018.08.06 15:38:00"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "rank": {
+    "rankList": {
+      "resResult": {
+        "curData": {
+          "data": [
+            {
+              "rank": 1,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            },
+            {
+              "rank": 2,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            },
+            {
+              "rank": 3,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            },
+            {
+              "rank": 4,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            },
+            {
+              "rank": 5,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            },
+            {
+              "rank": 6,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            },
+            {
+              "rank": 7,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            },
+            {
+              "rank": 8,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            }
+          ]
+        }
+      }
+    },
+    "worldRankList": {
+      "resResult": {
+        "curData": {
+          "data": [
+            {
+              "rank": 1,
+              "userName": "小王子",
+              "avatarUrl": "/static/images/nick.jpg",
+              "location": "青岛",
+              "level": 55
+            },
+            {
+              "rank": 2,
+              "userName": "小王子",
+              "avatarUrl": "/static/images/nick.jpg",
+              "location": "青岛",
+              "level": 55
+            },
+            {
+              "rank": 3,
+              "userName": "小王子",
+              "avatarUrl": "/static/images/nick.jpg",
+              "location": "青岛",
+              "level": 55
+            },
+            {
+              "rank": 4,
+              "userName": "小王子",
+              "avatarUrl": "/static/images/nick.jpg",
+              "location": "青岛",
+              "level": 55
+            },
+            {
+              "rank": 5,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            },
+            {
+              "rank": 6,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/nick.jpg",
+              "location": "十堰",
+              "level": 55
+            },
+            {
+              "rank": 7,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            },
+            {
+              "rank": 8,
+              "userName": "Petrel。",
+              "avatarUrl": "/static/images/judy.jpg",
+              "location": "十堰",
+              "level": 55
+            }
+          ]
+        }
+      }
+    }
+  },
+  "myCamp": {
+    "campInfo": {
+      "resResult": {
+        "curData": {
+          "data": {
+            "myTitle": "新兵",
+            "myLevel": 13,
+            "myMemberNum": 3,
+            "memberList": [
+              {
+                "name": "营员1",
+                "avatarUrl": "/static/images/nick.jpg",
+                "title": "排长",
+                "level": 12,
+                "memberNum": 50
+              },
+              {
+                "name": "营员2",
+                "avatarUrl": "/static/images/nick.jpg",
+                "title": "新兵",
+                "level": 1,
+                "memberNum": 0
+              },
+              {
+                "name": "营员3",
+                "avatarUrl": "/static/images/nick.jpg",
+                "title": "团长",
+                "level": 8,
+                "memberNum": 500
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

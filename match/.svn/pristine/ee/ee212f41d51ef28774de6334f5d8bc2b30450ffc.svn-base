@@ -1,0 +1,70 @@
+<import src="cut_down$72afb166" />
+<template name="battle$96ca96f4">
+  <view class="_div data-v-72898964 battle">
+    <image class="_img data-v-72898964 bs-bg-img" src="/static/images/bg.png"></image>
+    <image class="_img data-v-72898964 bs-e_score_photo" src="/static/images/battle/Scorethelabel2.png"></image>
+    <image class="_img data-v-72898964 bs-p_score_photo" src="/static/images/battle/Scorethelabel1.png"></image>
+    <view class="_div data-v-72898964 bs-user-div">
+      <image class="_img data-v-72898964 bs-score_hoop-img" src="/static/images/battle/Scorecircle.png"></image>
+      <view class="_div data-v-72898964 topBox">
+        <view class="_div data-v-72898964 topCircle" style=" {{('transform:' + ('rotate(' + eTopRotation + 'deg);') + ';')}}">
+          <image class="_img data-v-72898964 c1" src="/static/images/battle/Answerprogresstopcircle-bg.png"></image>
+        </view>
+      </view>
+      <view class="_div data-v-72898964 bottomBox">
+        <view class="_div data-v-72898964 bottomCircle" style=" {{('transform:' + ('rotate(' + eBottomRotation + 'deg);') + ';')}}">
+          <image class="_img data-v-72898964 c2" src="/static/images/battle/Answerprogressbottomcircle-bg.png"></image>
+        </view>
+      </view>
+      <view class="_div data-v-72898964 bs-photo-div">
+        <image class="_img data-v-72898964 photo_hoop" src="/static/images/battle/Pictureframe.png"></image>
+        <image class="_img data-v-72898964 user_photo" src="{{userInfo.headImage}}"></image>
+      </view>
+    </view>
+    <view class="_div data-v-72898964 bs-pName-div bs-text1">{{ userInfo.wechatName }}</view>
+    <view class="_div data-v-72898964 bs-pScore-div bs-text2">{{ animatedUserScore }}</view>
+    <view class="_div data-v-72898964 bs-opponent-div">
+      <image class="_img data-v-72898964 bs-score_hoop-img" src="/static/images/battle/Scorecircle.png"></image>
+      <view class="_div data-v-72898964 topBox">
+        <view class="_div data-v-72898964 topCircle" style=" {{('transform:' + ('rotate(' + eTopRotation + 'deg);') + ';')}}">
+          <image class="_img data-v-72898964 c1" src="/static/images/battle/Answerprogresstopcircle-bg.png"></image>
+        </view>
+      </view>
+      <view class="_div data-v-72898964 bottomBox">
+        <view class="_div data-v-72898964 bottomCircle" style=" {{('transform:' + ('rotate(' + eBottomRotation + 'deg);') + ';')}}">
+          <image class="_img data-v-72898964 c2" src="/static/images/battle/Answerprogressbottomcircle-bg.png"></image>
+        </view>
+      </view>
+      <view class="_div data-v-72898964 bs-photo-div">
+        <image class="_img data-v-72898964 photo_hoop" src="/static/images/battle/Pictureframe.png"></image>
+        <image class="_img data-v-72898964 user_photo" src="{{opponentInfo.headImage}}"></image>
+      </view>
+    </view>
+    <view class="_div data-v-72898964 bs-eName-div bs-text1">{{ opponentInfo.wechatName }}</view>
+    <label class="_span data-v-72898964 bs-eScore-div bs-text2">{{ animatedOpponentScore }}</label>
+    <view class="_div data-v-72898964 st-questionCard-div">
+      <image class="_img data-v-72898964 st-bg" src="/static/images/battle/subject-bg.png" alt></image>
+      <view class="_div data-v-72898964 st-questionTitle-div">
+        <label class="_span data-v-72898964"> {{question.question}} </label>
+      </view>
+      <view class="_div data-v-72898964 st-questionOption-div" id="choiceList">
+        <view class="_div data-v-72898964 choice" bindtap="handleProxy" wx:key="label" key="{{label}}" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" wx:for="{{choiceLabelList}}" wx:for-index="index" wx:for-item="label">
+          <image wx:if="{{userWrong === label || (opponentWrong === label && !waitUser)}}" class="_img data-v-72898964 choice_img" src="/static/images/battle/Erroroption-bg.png"></image>
+          <image wx:elif="{{question.answer === label && !waitUser}}" class="_img data-v-72898964 choice_img" src="/static/images/battle/Checktheoptionbox.png"></image>
+          <image wx:else class="_img data-v-72898964 choice_img" src="/static/images/battle/Optionbox.png"></image>
+          <label wx:if="{{label === 'A'}}" class="_span data-v-72898964 choice_content">{{question.choiceA}}</label>
+          <label wx:if="{{label === 'B'}}" class="_span data-v-72898964 choice_content">{{question.choiceB}}</label>
+          <label wx:if="{{label === 'C'}}" class="_span data-v-72898964 choice_content">{{question.choiceC}}</label>
+          <label wx:if="{{label === 'D'}}" class="_span data-v-72898964 choice_content">{{question.choiceD}}</label>
+          <image class="_img data-v-72898964 errorIcon" wx:if="{{userWrong === label}}" src="/static/images/battle/Errorlabel.png"></image>
+          <image class="_img data-v-72898964 correctIcon" wx:if="{{(cd === 0) ||question.answer === label && !waitUser}}" src="/static/images/battle/Correctlabel.png"></image>
+          <image class="_img data-v-72898964 opponent-errorIcon" wx:if="{{opponentWrong === label && !waitUser}}" src="/static/images/battle/Errorlabel.png"></image>
+          <image class="_img data-v-72898964 opponent-correctIcon" wx:if="{{(cd === 0) ||question.answer === label && !waitUser && !waitOpponent}}" src="/static/images/battle/Correctlabel.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-72898964 bs-cut-down-div">
+      <template showOrder="true" bindcutdownd="handleProxy" bindcutdownout="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="cut_down$72afb166"></template>
+    </view>
+  </view>
+</template>

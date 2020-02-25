@@ -1,0 +1,113 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.UserSelectedCourseRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserSelectedCourse;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserSelectedCourseService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:   用户课程选择表服务实现类
+ * @date 2018\7\27 0027
+ */
+@Service
+public class UserSelectedCourseServiceImpl implements UserSelectedCourseService {
+
+    @Autowired
+    private UserSelectedCourseRepository repository;
+
+    /**
+     * 获取所有用户课程选择列表
+     * @return
+     */
+    @Override
+    public List<UserSelectedCourse> findAll() {
+        return repository.findAll();
+    }
+
+    /**
+     * 创建用户课程选择表
+     * @param newUserSelectedCourse
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public UserSelectedCourse create(UserSelectedCourse newUserSelectedCourse) throws ErrorInfo {
+        return repository.save(newUserSelectedCourse);
+    }
+
+    /**
+     * 更新用户课程选择列表
+     * @param updatedUserSelectedCourse
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public UserSelectedCourse update(UserSelectedCourse updatedUserSelectedCourse) throws ErrorInfo {
+        return repository.save(updatedUserSelectedCourse);
+    }
+
+    /**
+     * 根据userSelectedId删除用户课程选择表
+     * @param userSelectedId
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public boolean deleteByUserSelectedId(String userSelectedId) throws ErrorInfo {
+        UserSelectedCourse userSelectedCourse=repository.findByUserSelectedId(userSelectedId);
+        if (userSelectedCourse == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_21", "用户不存在", null);
+        }
+        userSelectedCourse.setIsValid(Byte.valueOf("0"));
+        repository.save(userSelectedCourse);
+        return true;
+    }
+
+    /**
+     * 根据userSelectedId查找用户课程选择表
+     * @param userSelectedId
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public UserSelectedCourse findByUserSelectedId(String userSelectedId) throws ErrorInfo {
+        return repository.findByUserSelectedId(userSelectedId);
+    }
+
+    /**
+     * 根据userSelectedId、selectedType查找用户课程选择列表
+     * @param userId
+     * @param selectedType
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public List<UserSelectedCourse> findByUserIdAndSelectedType(String userId,String selectedType) throws ErrorInfo {
+        List<UserSelectedCourse> userSelectedCourseList=repository.findByUserIdAndSelectedType(userId,selectedType);
+        if(userSelectedCourseList.size()==0){
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00"+ "_57_23", "该用户选择类型的课程不存在", null);
+        }
+        return userSelectedCourseList;
+    }
+
+    /**
+     * 根据userSelectedId查找用户课程选择列表
+     * @param userId
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public List<UserSelectedCourse> findByUserId(String userId) throws ErrorInfo {
+        List<UserSelectedCourse> userSelectedCourseList=repository.findByUserId(userId);
+        if(userSelectedCourseList.size()==0){
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_22", "该用户选择的课程不存在", null);
+        }
+        return userSelectedCourseList;
+    }
+}

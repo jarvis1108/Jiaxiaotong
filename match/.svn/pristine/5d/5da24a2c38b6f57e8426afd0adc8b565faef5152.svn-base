@@ -1,0 +1,243 @@
+<template>
+<!-- 首次登陆-年级选择弹窗 -->
+  <div class="st-grade-dialog-container">
+    <ul class="st-grade-dialog-list">
+        <li v-for="(item,index) in gradePhaseInfoList" :key="index" @click="select(item)" :style="'animation-delay:' + 0.3*index +'s'">
+          <picker v-if="index < 2" mode="selector" :value="listIndex" :range="item.gradeList" range-key="gradeName" @change="bindDateChange">
+          <!-- 背景 -->
+          <img v-if="index%4 === 0" class="st-grade-dialog-li-bg" src="/static/images/gradeDialog/Primaryschool_bg.png"/>
+          <img v-else-if="index%4 === 1" class="st-grade-dialog-li-bg" src="/static/images/gradeDialog/Juniorhighschool_bg.png"/>
+          <img v-else-if="index%4 === 2" class="st-grade-dialog-li-bg" src="/static/images/gradeDialog/Highschool_bg.png"/>
+          <img v-else class="st-grade-dialog-li-bg" src="/static/images/gradeDialog/University_bg.png"/>
+          <!-- 图标 -->
+          <img v-if="index%4 === 0" class="st-grade-dialog-li-icon" src="/static/images/gradeDialog/Primaryschool_icon.png">
+          <img v-else-if="index%4 === 1" class="st-grade-dialog-li-icon" src="/static/images/gradeDialog/Juniorhighschool.png">    
+          <img v-else-if="index%4 === 2" class="st-grade-dialog-li-icon" src="/static/images/gradeDialog/Highschool_icon.png">
+          <img v-else class="st-grade-dialog-li-icon" src="/static/images/gradeDialog/University_icon.png">
+          <!-- 名称 -->
+          <span class="st-grade-dialog-li-name">{{item.gradePhaseName}}</span>
+          <!-- 解释文字 -->
+          <span class="st-grade-dialog-li-text">{{item.description}}</span>
+          <!-- 选中图标 -->
+          <img v-if="item.select" class="st-grade-dialog-li-select-icon" src="/static/images/gradeDialog/Selectedlevel_icon.png"/>
+          </picker>
+          <div v-else>
+            <!-- 背景 -->
+            <img v-if="index%4 === 0" class="st-grade-dialog-li-bg" src="/static/images/gradeDialog/Primaryschool_bg.png"/>
+            <img v-else-if="index%4 === 1" class="st-grade-dialog-li-bg" src="/static/images/gradeDialog/Juniorhighschool_bg.png"/>
+            <img v-else-if="index%4 === 2" class="st-grade-dialog-li-bg" src="/static/images/gradeDialog/Highschool_bg.png"/>
+            <img v-else class="st-grade-dialog-li-bg" src="/static/images/gradeDialog/University_bg.png"/>
+            <!-- 图标 -->
+            <img v-if="index%4 === 0" class="st-grade-dialog-li-icon" src="/static/images/gradeDialog/Primaryschool_icon.png">
+            <img v-else-if="index%4 === 1" class="st-grade-dialog-li-icon" src="/static/images/gradeDialog/Juniorhighschool.png">    
+            <img v-else-if="index%4 === 2" class="st-grade-dialog-li-icon" src="/static/images/gradeDialog/Highschool_icon.png">
+            <img v-else class="st-grade-dialog-li-icon" src="/static/images/gradeDialog/University_icon.png">
+            <!-- 名称 -->
+            <span class="st-grade-dialog-li-name">{{item.gradePhaseName}}</span>
+            <!-- 解释文字 -->
+            <span class="st-grade-dialog-li-text">{{item.description}}</span>
+            <!-- 选中图标 -->
+            <img v-if="item.select" class="st-grade-dialog-li-select-icon" src="/static/images/gradeDialog/Selectedlevel_icon.png"/>
+          </div>                          
+        </li>
+    </ul>
+    <span v-if="selectedGrade.length > 0" class="st-grade-dialog-selected-tip">已选择：{{selectedGrade}}</span>
+    <button @getuserinfo="bindGetUserInfo" open-type="getUserInfo" v-if="selectedGrade.length > 0" class="st-grade-dialog-selected-btn">确定</button>
+  </div>
+</template>
+
+<script>
+import wxs from "../utils/wx";
+
+export default {
+  name: "class-dialog",
+  data() {
+    return {
+      listIndex: 0, //子列表被选项的索引
+      gradePhaseInfoList: [],
+      selectedGrade: "", //用户选择的年级
+      selectedGradePhaseId: null, //用户选择的年级阶段Id
+      selectedGradeId: null, //用户选择的年级Id
+      Authorization: false //是否授权成功
+    };
+  },
+  async onLoad() {
+    this.listIndex = 0;
+    this.selectedGrade = "";
+    this.Authorization = false;
+    this.gradePhaseInfoList = await this.$store.dispatch("gradePhaseInfoList");
+  },
+  watch: {
+    listIndex() {
+      this.gradePhaseInfoList.forEach(grade => {
+        if (grade.select === true) {
+          if (grade.gradePhaseCode === "D" || grade.gradePhaseCode === "C") {
+            //若选中大学直接将该信息
+            this.selectedGrade = grade.gradePhaseName;
+          } else {
+            this.selectedGrade =
+              grade.gradePhaseName +
+              " " +
+              grade.gradeList[this.listIndex].gradeName;
+          }
+        }
+      });
+    }
+  },
+  methods: {
+    //监听选择框改变事件
+    bindDateChange(e) {
+      this.listIndex = e.mp.detail.value;
+    },
+    //选择年级类型
+    select(item) {
+      //重置数据
+      this.selectedGrade = "";
+      this.listIndex = 0;
+      this.selectedGradePhaseId = item.gradePhaseId;
+      this.selectedGradeId = null;
+      //若选择‘大学’或”高中“直接提交数据
+      if (item.gradePhaseCode === "D" || item.gradePhaseCode === "C") {
+        this.selectedGrade = item.gradePhaseName;
+      } else {
+        this.selectedGrade =
+          item.gradePhaseName + " " + item.gradeList[this.listIndex].gradeName;
+        this.selectedGradeId = item.gradeList[this.listIndex].gradeId;
+      }
+      this.gradePhaseInfoList.forEach(grade => {
+        grade.select = false;
+      });
+      item.select = true;
+    },
+    async definite() {
+      let that = this;
+      if (this.Authorization) {
+        const res = await wxs.showModal({
+          title: "确认",
+          content: `您选择了年级"${
+            that.selectedGrade
+          }",\n我们会根据年级为您匹配同等级对手，是否确定选择?`
+        });
+        // if (res.confirm) {
+        //   const result = await wxs.showModal({
+        //     title: "新手大礼包",
+        //     content: "这里是送您的新手大礼包！"
+        //   });
+        if (res.confirm) {
+          //告知父组件年级选择操作完毕
+          that.$emit("listenToChildEvent", {
+            gradePhaseId: that.selectedGradePhaseId,
+            gradeId: that.selectedGradeId
+          });
+        }
+      } else if (res.cancel) {
+        console.log("用户点击取消");
+      }
+      // }
+    },
+    async bindGetUserInfo(e) {
+      let that = this;
+      if (e.mp.detail.rawData) {
+        //用户点击授权按钮，授权成功
+        this.Authorization = true;
+        await wxs.showToast({
+          title: "授权成功",
+          icon: "sucess",
+          duration: 1000
+        });
+        setTimeout(() => {
+          that.definite();
+        }, 1000);
+      } else {
+        //用户拒绝授权
+        await wxs.showModal({
+          title: "警告通知",
+          content: "您拒绝了授权，将无法展示个人信息和参与游戏"
+        });
+        wxs.navigateTo("../index/main");
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+.st-grade-dialog-container {
+  position: fixed;
+  width: 100%;
+  height: 120vh;
+  background: rgb(207, 235, 255);
+  z-index: 0;
+}
+.st-grade-dialog-list {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  width: 90%;
+  height: 70%;
+}
+.st-grade-dialog-list li {
+  position: relative;
+  height: 18%;
+  width: 100%;
+  margin-bottom: 5%;
+  opacity: 0;
+  animation: slideFromBottom 1s forwards;
+}
+.st-grade-dialog-li-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.st-grade-dialog-li-icon {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  height: 70%;
+  width: 17%;
+}
+.st-grade-dialog-li-name {
+  position: absolute;
+  top: 15%;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  left: 28%;
+}
+.st-grade-dialog-li-text {
+  position: absolute;
+  top: 55%;
+  font-size: 12px;
+  color: rgb(203, 255, 232);
+  font-weight: bold;
+  left: 28%;
+}
+.st-grade-dialog-li-select-icon {
+  position: absolute;
+  right: 5%;
+  height: 40%;
+  top: 30%;
+  width: 12%;
+  animation: zoomOut 0.5s;
+}
+.st-grade-dialog-selected-tip {
+  position: absolute;
+  top: 75%;
+  width: 50%;
+  left: 25%;
+  font-size: 16px;
+  color: green;
+  text-align: center;
+  animation: opacity 0.5s;
+}
+.st-grade-dialog-selected-btn {
+  position: absolute;
+  top: 82%;
+  width: 30%;
+  left: 35%;
+  height: 8%;
+  color: #fff;
+  background: green;
+  animation: opacity 0.5s;
+}
+</style>

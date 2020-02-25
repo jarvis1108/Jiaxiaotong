@@ -1,0 +1,124 @@
+<template>
+  <div class="st-topup-record-container">
+    <ul class="st-topup-record-ul">
+      <li class="st-topup-record-li" v-for="(item,index) in recordList" :key="index">
+        <!-- 记录条目背景 -->
+        <img class="st-topup-record-li-bg" v-if="(index%3) === 0" src="/static/images/topupRecord/Blue_bg@2x.png"/>
+        <img class="st-topup-record-li-bg" v-else-if="(index%3) === 1" src="/static/images/topupRecord/Green_bg@2x.png"/>
+        <img class="st-topup-record-li-bg" v-else src="/static/images/topupRecord/Cyan_bg@2x.png"/>
+
+        <!-- 记录条目的图标和名称-->
+        <img class="st-topup-record-li-icon" :src="item.goodsIcon" />
+        <div class="st-topup-record-li-name-div">
+          <span v-if="(index%3) === 0" class="st-topup-record-li-blue-name">{{item.goodsName}}</span>
+          <span v-else-if="(index%3) === 1" class="st-topup-record-li-green-name">{{item.goodsName}}</span>
+          <span v-else class="st-topup-record-li-cyan-name">{{item.goodsName}}</span>
+        </div>
+
+        <!-- 记录条目的价格 -->
+        <span class="st-topup-record-li-price">{{item.price}}</span>
+
+        <!-- 记录条目的交易时间 -->
+        <div class="st-topup-record-li-datatime">
+          <span v-if="(index%3) === 0" class="st-topup-record-li-blue-datatime">{{item.dataTime}}</span>
+          <span v-else-if="(index%3) === 1" class="st-topup-record-li-green-datatime">{{item.dataTime}}</span>
+          <span v-else class="st-topup-record-li-cyan-datatime">{{item.dataTime}}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      recordList: [] //充值记录列表
+    };
+  },
+  async onLoad() {
+    this.recordList = await this.$store.dispatch("getTopupRecords");
+  }
+};
+</script>
+
+<style scoped>
+.st-topup-record-container{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(207, 235, 255);
+}
+.st-topup-record-ul {
+  position: absolute;
+  height: 80%;
+  top: 5%;
+  width: 90%;
+  left: 5%;
+  overflow: auto;
+}
+.st-topup-record-li {
+  position: relative;
+  height: 100px;
+  width: 100%;
+  margin-bottom: 2%;
+}
+.st-topup-record-li-bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  z-index: 0;
+}
+.st-topup-record-li-icon {
+  position: absolute;
+  width: 56.5px;
+  height: 56.5px;
+  top: 10%;
+  left: 5%;
+}
+.st-topup-record-li-name-div {
+  position: absolute;
+  width: 76px;
+  height: 14px;
+  top: 70%;
+  left: 5%;
+  background: #fff;
+  border-radius: 7px;
+  text-align: center;
+  font-size: 10px;
+}
+.st-topup-record-li-blue-name {
+  color: rgb(61, 138, 218);
+}
+.st-topup-record-li-green-name {
+  color: rgb(121, 181, 61);
+}
+.st-topup-record-li-cyan-name {
+  color: rgb(32, 196, 163);
+}
+.st-topup-record-li-blue-datatime {
+  color: rgb(254 , 254, 255);
+}
+.st-topup-record-li-green-datatime {
+  color: rgb(182, 223, 142);
+}
+.st-topup-record-li-cyan-datatime {
+  color: rgb(146, 232, 215);
+}
+.st-topup-record-li-price {
+  position: absolute;
+  top: 25%;
+  right: 10%;
+  font-size: 18px;
+  color: #fff;
+}
+.st-topup-record-li-datatime {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  font-size: 10px;
+  color: #fff;
+}
+</style>

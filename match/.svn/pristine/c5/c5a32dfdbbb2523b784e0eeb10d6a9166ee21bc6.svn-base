@@ -1,0 +1,234 @@
+package com.dxtwangxiao.strongestsuperscholar.web.websocket.common;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.LPConsumeRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordQuestion;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordUser;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.LPConsumeRecordService;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordQuestionService;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordService;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordUserService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionService;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.MatchRecordDTO;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestion;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.UserDTO;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import org.springframework.beans.BeanUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * 战局管理，单例模式
+ * <p>
+ * Created by Devin
+ * 2018-08-11 下午 03:58
+ */
+public class MatchManagement {
+
+    // 启动类set方法注入，解决无法注入Bean的问题
+    private static ApplicationContext applicationContext;
+
+    public static void setApplicationContext(ApplicationContext context) {
+        applicationContext = context;
+    }
+
+    /**
+     * volatile关键字，解决由于指令重排而可能出现的在内部调用多次new的问题
+     */
+    private volatile static MatchManagement instance = null;
+
+    /**
+     * 私有构造函数防止new出多个实例
+     */
+    private MatchManagement() {
+    }
+
+    /**
+     * Double-Check + synchronized同步锁，解决多线程并发访问可能导致的在内部调用多次new的问题。
+     *
+     * @return 单例实例
+     */
+    public static MatchManagement getInstance() {
+        if (instance == null) {
+            synchronized (MatchManagement.class) {
+                if (instance == null)
+                    instance = new MatchManagement();
+            }
+        }
+
+        return instance;
+    }
+
+    private Map<String, MatchRecordDTO> matchList = new ConcurrentHashMap<>();
+
+    /**
+     * 根据战局ID获取某一战局记录
+     *
+     * @param matchId 战局ID
+     * @return 战局记录
+     */
+    public synchronized MatchRecordDTO getMatchByMatchId(String matchId) {
+        return matchList.get(matchId);
+    }
+
+    /**
+     * 创建战局
+     *
+     * @param userId    创建者Id
+     * @param matchType 战局类型，0：匹配对战；1：好友对战；2：群PK
+     * @return
+     */
+    @Transactional
+    public synchronized MatchRecordDTO createMatchRecord(String userId, Byte matchType) {
+        // 1.创建MatchRecord实例
+        MatchRecordDTO matchRecordDTO = new MatchRecordDTO();
+        matchRecordDTO.setMatchRecordId(UUIDUtil.getUUID());
+        matchRecordDTO.setMatchRecordNo(matchRecordDTO.getMatchRecordId());
+        matchRecordDTO.setUserId(userId);
+        matchRecordDTO.setFightType(matchType);
+        if (matchType == 0) {                         // 匹配对战
+            matchRecordDTO.setUserMaxCount(2);
+            matchRecordDTO.setUserFactCount(2);
+        } else if (matchType == 1) {                  // 好友PK
+            matchRecordDTO.setUserMaxCount(2);
+            matchRecordDTO.setUserFactCount(1);
+        } else if (matchType == 2) {                  // 群PK
+            matchRecordDTO.setUserMaxCount(10);
+            matchRecordDTO.setUserFactCount(1);
+        }
+        matchRecordDTO.setFightStatus(Byte.valueOf("0"));
+        matchRecordDTO.setCreateUser(userId);
+        matchRecordDTO.setCreateTime(new Timestamp(new Date().getTime()));
+        matchRecordDTO.setBeginTime(new Timestamp(new Date().getTime()));
+
+        // 2.保存战局信息到数据库
+        MatchRecord matchRecord = new MatchRecord();
+        BeanUtils.copyProperties(matchRecordDTO, matchRecord);
+        MatchRecordService matchRecordService = applicationContext.getBean(MatchRecordService.class);
+        matchRecordService.createMatchRecord(matchRecord);
+
+        // 3.根据出题设置从数据库中获取相应的题目，并保存到数据库（目前只有选择题）
+        MatchRecordQuestionService matchRecordQuestionService = applicationContext.getBean(MatchRecordQuestionService.class);
+        QuestionService questionService = applicationContext.getBean(QuestionService.class);
+        List<MultipleQuestion> multipleQuestionList = questionService.getRandomQuestions();
+        for (int i = 0; i < multipleQuestionList.size(); i++) {
+            MultipleQuestion multipleQuestion = multipleQuestionList.get(i);
+
+            MatchRecordQuestion matchRecordQuestion = new MatchRecordQuestion();
+            matchRecordQuestion.setMatchRecordQuestionId(UUIDUtil.getUUID());
+            matchRecordQuestion.setMatchRecordId(matchRecordDTO.getMatchRecordId());
+            matchRecordQuestion.setMatchRecordNo(matchRecordDTO.getMatchRecordNo());
+            matchRecordQuestion.setQuestionIndex(i + 1);
+            matchRecordQuestion.setQuestionId(multipleQuestion.getQuestionId());
+            matchRecordQuestion.setQuestionNo(multipleQuestion.getQuestionNo());
+            matchRecordQuestion.setCreateTime(new Timestamp(new Date().getTime()));
+            matchRecordQuestion.setCreateUser(userId);
+            matchRecordQuestion.setLastUpdUser(userId);
+            matchRecordQuestion.setIsValid(Byte.valueOf("1"));
+
+            matchRecordQuestionService.save(matchRecordQuestion);
+            matchRecordDTO.getQuestionList().add(multipleQuestion);
+            matchRecordDTO.getMatchRecordQuestionMap().put(i + 1, matchRecordQuestion);
+        }
+        matchList.put(matchRecordDTO.getMatchRecordId(), matchRecordDTO);
+        return matchRecordDTO;
+    }
+
+    /**
+     * 为指定战局添加用户
+     *
+     * @param matchId   战局ID
+     * @param userDTO   用户信息
+     * @param isCreator 是否是战局创建者，1表示是，0表示不是
+     */
+    public synchronized void addUser(String matchId, UserDTO userDTO, Byte isCreator) {
+        MatchRecordDTO matchRecordDTO = matchList.get(matchId);
+        matchRecordDTO.getUserList().add(userDTO);
+
+        Integer userCount = matchRecordDTO.getUserFactCount() + 1;
+        matchRecordDTO.setUserFactCount(userCount);
+
+        MatchRecordUserService matchRecordUserService = applicationContext.getBean(MatchRecordUserService.class);
+        MatchRecordUser matchRecordUser = new MatchRecordUser();
+        matchRecordUser.setMatchRecordUserId(UUIDUtil.getUUID());
+        matchRecordUser.setMatchRecordId(matchRecordDTO.getMatchRecordId());
+        matchRecordUser.setMatchRecordNo(matchRecordDTO.getMatchRecordNo());
+        matchRecordUser.setUserId(userDTO.getUserId());
+        matchRecordUser.setUserNo(userDTO.getUserNo());
+        matchRecordUser.setOriginalGradeCoin(userDTO.getCoin());
+        matchRecordUser.setOriginalGradePoint(userDTO.getGradePoint());
+        matchRecordUser.setOriginalLearningPoint(userDTO.getLearningPoint());
+        matchRecordUser.setAcquiredGradeCoin(0);
+        matchRecordUser.setAcquiredGradePoint(0);
+        matchRecordUser.setAcquiredLearningPoint(0);
+        matchRecordUser.setIsCreator(isCreator);
+        matchRecordUser.setCreateTime(new Timestamp(new Date().getTime()));
+        matchRecordUser.setCreateUser(userDTO.getUserId());
+        matchRecordUser.setLastUpdUser(userDTO.getUserId());
+        matchRecordUser.setIsValid(Byte.valueOf("1"));
+
+        matchRecordUserService.save(matchRecordUser);
+        matchRecordDTO.getMatchRecordUserMap().put(userDTO.getUserId(), matchRecordUser);
+        matchList.replace(matchId, matchRecordDTO);
+    }
+
+    /**
+     * 为战局添加学点消耗记录
+     *
+     * @param matchId       战局ID
+     * @param userId        用户ID
+     * @param questionIndex 试题在当前战局中的序号
+     * @param userAnswer    用户答案
+     * @param amount        学点消耗数量
+     * @param isTrue        用户答案是否正确
+     */
+    public synchronized void saveLpConsumeRecord(String matchId, String userId, Integer questionIndex, String userAnswer, Integer amount, Byte isTrue) {
+        MatchRecordDTO matchRecordDTO = matchList.get(matchId);
+        MatchRecordQuestion matchRecordQuestion = matchRecordDTO.getMatchRecordQuestionMap().get(questionIndex);
+        MatchRecordUser matchRecordUser = matchRecordDTO.getMatchRecordUserMap().get(userId);
+        LPConsumeRecordService lpConsumeRecordService = applicationContext.getBean(LPConsumeRecordService.class);
+
+        LPConsumeRecord lpConsumeRecord = new LPConsumeRecord();
+        lpConsumeRecord.setLpConsumeRecordId(UUIDUtil.getUUID());
+        lpConsumeRecord.setMatchRecordQuestionId(matchRecordQuestion.getMatchRecordQuestionId());
+        lpConsumeRecord.setMatchRecordId(matchRecordDTO.getMatchRecordId());
+        lpConsumeRecord.setMatchRecordNo(matchRecordDTO.getMatchRecordNo());
+        lpConsumeRecord.setMatchRecordUserId(matchRecordUser.getMatchRecordUserId());
+        lpConsumeRecord.setQuestionId(matchRecordQuestion.getQuestionId());
+        lpConsumeRecord.setQuestionNo(matchRecordQuestion.getQuestionNo());
+        lpConsumeRecord.setUserId(matchRecordUser.getUserId());
+        lpConsumeRecord.setUserNo(matchRecordUser.getUserNo());
+        lpConsumeRecord.setUserAnswer(userAnswer);
+        lpConsumeRecord.setAmount(amount);
+        lpConsumeRecord.setIsTrue(isTrue);
+        lpConsumeRecord.setCreateTime(new Timestamp(new Date().getTime()));
+        lpConsumeRecord.setIsValid(Byte.valueOf("1"));
+
+        lpConsumeRecordService.save(lpConsumeRecord);
+    }
+
+    /**
+     * 根据用户id，删除其所在的战局
+     *
+     * @param userId 用户ID
+     */
+    public synchronized void removeMatchByUserId(String userId) {
+        Iterator<Map.Entry<String, MatchRecordDTO>> iterator = matchList.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, MatchRecordDTO> entry = iterator.next();
+            MatchRecordDTO matchRecordDTO = entry.getValue();
+            boolean result = matchRecordDTO.getUserList().remove(userId);
+            if (result) {
+                iterator.remove();
+            }
+        }
+    }
+
+}

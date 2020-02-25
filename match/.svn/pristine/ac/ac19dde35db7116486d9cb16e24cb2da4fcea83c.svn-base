@@ -1,0 +1,45 @@
+package com.dxtwangxiao.strongestsuperscholar.web.util;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\7\26 0026
+ */
+public class UserCode {
+    private String phoneNumber;
+    private String code;
+    private String timeStamp;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    @Override
+    public String toString() {
+        return "UserCode{" +
+                "phoneNumber='" + phoneNumber + '\'' +
+                ", code='" + code + '\'' +
+                ", timeStamp='" + timeStamp + '\'' +
+                '}';
+    }
+}

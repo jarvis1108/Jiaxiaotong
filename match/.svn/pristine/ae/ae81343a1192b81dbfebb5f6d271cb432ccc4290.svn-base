@@ -1,0 +1,69 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 用户数据访问层
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 02:47
+ */
+@Repository
+public interface UserRepository extends PagingAndSortingRepository<User, String> {
+
+    /**
+     * 查询所有用户
+     *
+     * @return 所有用户列表
+     */
+    List<User> findAll();
+
+    /**
+     * 根据Pageable对象进行分页查询
+     *
+     * @param pageable 请求分页参数
+     * @return Page对象，存储了分页的基本信息
+     */
+    @Query("select u from User u")
+    Page<User> findAll(Pageable pageable);
+
+    /**
+     * 保存或者更新用户基本信息
+     *
+     * @param user 用户实体类对象
+     * @return 新创建或者修改后的对象信息
+     */
+    User save(User user);
+
+    /**
+     * 根据用户id进行查询
+     *
+     * @param userId 带查找用户id
+     * @return 所要查询的用户信息
+     */
+    User findUserByUserId(String userId);
+
+    /*
+     * 用户绑定手机号
+     *
+     * @param telephone 用户手机号
+     * @return
+     */
+    User save(String telephone);
+
+    /**
+     * 根据用户openid获取用户基本信息。
+     *
+     * @param openId
+     * @return
+     */
+    User findUserByOpenid(String openId);
+}

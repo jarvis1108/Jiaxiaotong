@@ -1,0 +1,189 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionRecitationForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.RecitationQuestionForLibRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionRecitationForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionRecitationForLibService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.RecitationQuestionForLib;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.*;
+
+/**
+ * Created by 孙伟浩 on 2018/9/6.
+ */
+@Service
+public class QuestionRecitationForLibServiceImpl implements QuestionRecitationForLibService {
+
+    @Autowired
+    private QuestionRecitationForLibRepository questionRecitationForLibRepository;
+    
+    @Autowired
+    private RecitationQuestionForLibRepository recitationQuestionForLibRepository;
+
+    /**
+     * 存储上传题目
+     *
+     * @param questionRecitationForLib 上传的背诵题目
+     * @return
+     */
+    @Override
+    public void saveQuestionRecitationForLib(QuestionRecitationForLib questionRecitationForLib){
+        questionRecitationForLibRepository.saveAndFlush(questionRecitationForLib);
+    }
+
+    /**
+     * 删除背诵题目
+     *
+     * @param questionRecitationForLibId 要删除的背诵题目Id
+     * @return
+     */
+    @Override
+    public void deleteQuestionRecitationForLib(String questionRecitationForLibId){
+        questionRecitationForLibRepository.deleteById(questionRecitationForLibId);
+    }
+
+    /**
+     * 更新背诵题目
+     *
+     * @param  questionRecitationForLib 更新的背诵题目
+     * @return
+     */
+    @Override
+    public void updateQuestionRecitationForLib(QuestionRecitationForLib questionRecitationForLib){
+        questionRecitationForLibRepository.saveAndFlush(questionRecitationForLib);
+    }
+
+    /**
+     * 根据Id查找背诵题目
+     *
+     * @param  questionRecitationForLibId 背诵题目Id
+     * @return 存在时返回背诵题目,否则返回null
+     */
+    @Override
+    public QuestionRecitationForLib findQuestionRecitationForLibById(String questionRecitationForLibId){
+        return questionRecitationForLibRepository.findById(questionRecitationForLibId).orElse(null);
+    }
+
+    /**
+     *
+     *
+     * @param  reqParam 搜索参数
+     * @return 背诵题表现层实体列表
+     */
+    @Override
+    public List<RecitationQuestionForLib> search(JSONObject reqParam){
+
+
+        List<RecitationQuestionForLib> recitationQuestionForLibList =
+                recitationQuestionForLibRepository.findAll(new Specification<RecitationQuestionForLib>() {
+                    @Override
+                    public Predicate toPredicate(Root<RecitationQuestionForLib> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                        List<Predicate> predicates = new ArrayList<Predicate>();
+
+                        //私有题库限定
+                        if (reqParam.get("questionLibId") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("questionLibID").as(String.class),reqParam.getString("questionLibId")));
+                        }
+
+                        //知识点限定
+                        if (reqParam.get("knowledgeId") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("knowledgeID").as(String.class),reqParam.getString("knowledgeId")));
+                        }
+
+                        //学科限定
+                        if (reqParam.get("subjectId") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("subjectID").as(String.class), reqParam.getString("subjectId")));
+                        }
+
+                        //年级限定
+                        if (reqParam.get("gradeId") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("gradeID").as(String.class), reqParam.getString("gradeId")));
+                        }
+
+                        //课程限定
+                        if (reqParam.get("courseId") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("courseID").as(String.class), reqParam.getString("courseId")));
+                        }
+
+                        //是否节选
+                        if (reqParam.get("isPartial") != null){
+                            predicates.add(criteriaBuilder.equal(root.get("isPartial").as(Byte.class), reqParam.getByte("isPartial")));
+                        }
+
+                        //问题级别限定
+                        if (reqParam.get("minQuestionLevel") != null && reqParam.get("maxQuestionLevel") == null){
+                            predicates.add(criteriaBuilder.greaterThan(root.get("questionLevel").as(Integer.class), reqParam.getInteger("minQuestionLevel")));
+                        }
+                        if (reqParam.get("minQuestionLevel") == null && reqParam.get("maxQuestionLevel") != null){
+                            predicates.add(criteriaBuilder.lessThan(root.get("questionLevel").as(Integer.class), reqParam.getInteger("maxQuestionLevel")));
+                        }
+                        if (reqParam.get("minQuestionLevel") != null && reqParam.get("maxQuestionLevel") != null){
+                            predicates.add(criteriaBuilder.between(root.get("questionLevel").as(Integer.class), reqParam.getInteger("minQuestionLevel"), reqParam.getInteger("maxQuestionLevel")));
+                        }
+
+                        //难度系数限定
+                        if (reqParam.get("minDifficulty") != null && reqParam.get("maxDifficulty") == null){
+                            predicates.add(criteriaBuilder.greaterThan(root.get("difficulty").as(Double.class), reqParam.getDouble("minDifficulty")));
+                        }
+                        if (reqParam.get("minDifficulty") == null && reqParam.get("maxDifficulty") != null){
+                            predicates.add(criteriaBuilder.lessThan(root.get("difficulty").as(Double.class), reqParam.getDouble("maxDifficulty")));
+                        }
+                        if (reqParam.get("minDifficulty") != null && reqParam.get("maxDifficulty") != null){
+                            predicates.add(criteriaBuilder.between(root.get("difficulty").as(Double.class), reqParam.getDouble("minDifficulty"), reqParam.getDouble("maxDifficulty")));
+                        }
+
+                        if (predicates.size() == 0){
+                            return null;
+                        }
+
+                        Predicate[] p = new Predicate[predicates.size()];
+                        return criteriaBuilder.and(predicates.toArray(p));
+                    }
+                });
+
+        //随机获取一定数目
+        if (reqParam.get("count") != null){
+            Map<Integer,String> map = new HashMap<Integer, String>();
+            List<RecitationQuestionForLib> randomRecords = new ArrayList<>();
+            int count = reqParam.getInteger("count");
+
+            //返回全部数据
+            if (count >= recitationQuestionForLibList.size()){
+                return recitationQuestionForLibList;
+            }
+
+            //返回随机数目数据
+            while (map.size() < count){
+                int randInt = (int) (Math.random() * recitationQuestionForLibList.size());
+                if (! map.containsKey(randInt)){
+                    map.put(randInt,"");
+                    randomRecords.add(recitationQuestionForLibList.get(randInt));
+                }
+            }
+            return randomRecords;
+
+        }
+
+        return recitationQuestionForLibList;
+    }
+
+
+    /**
+     * 根据Id查询
+     *
+     * @param   recitationQuestionForLibId  id
+     * @return  背诵题表现层实体
+     */
+    @Override
+    public RecitationQuestionForLib findRecitationForLibById(String recitationQuestionForLibId){
+        return recitationQuestionForLibRepository.findById(recitationQuestionForLibId).orElse(null);
+    }
+}

@@ -1,0 +1,45 @@
+spring:
+  thymeleaf:
+      cache: false
+  datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://47.97.111.166:3306/StrongestScholar?useSSL=false&useUnicode=true&characterEncoding=utf-8
+      password: strongestscholar
+      username: strongestscholar
+  jpa:
+      database: MYSQL
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+          ddl-auto: update
+          naming:
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+server:
+  servlet:
+    context-path: /strongestscholar
+
+mp:
+  appid: wxcb5091163924072e
+  appSecret: f9fb05b14ef2a8ac474d7b3c6778f8e9
+  mch_id: 1493812802
+  key: 14F72CD2E7F194109A8EBDB2A2EA52A9
+  signType: MD5
+  tradeType: JSAPI
+  codeToOpenidUrl: https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
+  unifiedOrderUrl: https://api.mch.weixin.qq.com/pay/unifiedorder
+  notifyUrl: http://localhost:8089/strongestscholar/api/v1/wechat/notify
+  transfersUrl: https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers
+  certLocation: resources/certificate/apiclient_cert.p12
+  # 私有题库扫码登录
+  questionForLibAppid: wxb2443bb573c6db02
+  questionForLibAppSecret: af30d61327ccc136851d72beac26c9e4
+  authorizationUrl: https://open.weixin.qq.com/connect/qrconnect?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect
+  accessTokenUrl: https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
+  transfersUrl: https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers
+  certLocation: resources/certificate/apiclient_cert.p12
+
+jwt:
+  authOpen: true

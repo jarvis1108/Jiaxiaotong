@@ -1,0 +1,61 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionRecitation;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class QuestionRecitationRepositoryTest {
+    @Autowired
+    private QuestionRecitationRepository repository;
+    @Test
+    public void save() {
+       QuestionRecitation questionRecitation=new QuestionRecitation();
+       questionRecitation.setIsValid(Byte.valueOf("0"));
+       questionRecitation.setQuestionId("23");
+       questionRecitation.setQuestionNo("3");
+       QuestionRecitation result=repository.save(questionRecitation);
+       System.out.println(result);
+    }
+
+    @Test
+    public void findAll() {
+        PageRequest pageable=PageRequest.of(0,1);
+        Page<QuestionRecitation> questionRecitationsPage = repository.findAll(pageable);
+        List<QuestionRecitation> questionRecitations =questionRecitationsPage.getContent();
+        assertNotEquals(0, questionRecitations.size());
+        questionRecitations.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll1() {
+        List<QuestionRecitation> questionRecitations =repository.findAll();
+        assertNotEquals(0, questionRecitations.size());
+        questionRecitations.forEach(System.out::println);
+    }
+
+    @Test
+    public void findQuestionRecitationByQuestionId() {
+        String questionId="23";
+        QuestionRecitation questionRecitation=repository.findQuestionRecitationByQuestionId(questionId);
+        assertNotNull(questionRecitation);
+        System.out.println(questionRecitation);
+    }
+
+    @Test
+    public void findQuestionRecitationByQuestionNo() {
+    }
+
+    @Test
+    public void findAllByCreateUser() {
+    }
+}

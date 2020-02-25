@@ -1,0 +1,480 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>选择相应等级</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/选择相应等级/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/ie.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="files/选择相应等级/data.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (矩形) -->
+      <div id="u2690" class="ax_default box_3">
+        <div id="u2690_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u2691" class="text" style="visibility: visible;">
+          <p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">在第一次进入小程序之后，首页弹出</span><span style="font-family:'Arial Normal', 'Arial';"></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">提示框，让用户选择所在的级别。</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">选择小学、初中、高中、需要弹出二级菜单</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">选择大学不需要添加二级菜单</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';"><br></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2692" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2693" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2694" class="ax_default box_2">
+            <div id="u2694_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2695" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2696" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2696_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2697" class="text" style="visibility: visible;">
+              <p><span>小学</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2698" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2699" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2700" class="ax_default box_2">
+            <div id="u2700_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2701" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2702" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2702_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2703" class="text" style="visibility: visible;">
+              <p><span>初中</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2704" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2705" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2706" class="ax_default box_2">
+            <div id="u2706_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2707" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2708" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2708_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2709" class="text" style="visibility: visible;">
+              <p><span>高中</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2710" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2711" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2712" class="ax_default box_2">
+            <div id="u2712_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2713" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2714" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2714_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2715" class="text" style="visibility: visible;">
+              <p><span>大学</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2716" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2717" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2718" class="ax_default box_2">
+            <div id="u2718_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2719" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2720" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2720_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2721" class="text" style="visibility: visible;">
+              <p><span>一年级</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2722" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2723" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2724" class="ax_default box_2">
+            <div id="u2724_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2725" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2726" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2726_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2727" class="text" style="visibility: visible;">
+              <p><span>二年级</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2728" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2729" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2730" class="ax_default box_2">
+            <div id="u2730_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2731" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2732" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2732_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2733" class="text" style="visibility: visible;">
+              <p><span>三年级</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2734" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2735" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2736" class="ax_default box_2">
+            <div id="u2736_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2737" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2738" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2738_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2739" class="text" style="visibility: visible;">
+              <p><span>四年级</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2740" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2741" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2742" class="ax_default box_2">
+            <div id="u2742_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2743" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2744" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2744_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2745" class="text" style="visibility: visible;">
+              <p><span>五年级</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2746" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2747" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2748" class="ax_default box_2">
+            <div id="u2748_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2749" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2750" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2750_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2751" class="text" style="visibility: visible;">
+              <p><span>六年级</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2752" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2753" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2754" class="ax_default box_2">
+            <div id="u2754_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2755" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2756" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2756_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2757" class="text" style="visibility: visible;">
+              <p><span>七年级</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2758" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2759" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2760" class="ax_default box_2">
+            <div id="u2760_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2761" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2762" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2762_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2763" class="text" style="visibility: visible;">
+              <p><span>八年级</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2764" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2765" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2766" class="ax_default box_2">
+            <div id="u2766_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2767" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2768" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2768_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2769" class="text" style="visibility: visible;">
+              <p><span>九年级</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2770" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2771" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2772" class="ax_default box_2">
+            <div id="u2772_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2773" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2774" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2774_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2775" class="text" style="visibility: visible;">
+              <p><span>高一</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2776" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2777" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2778" class="ax_default box_2">
+            <div id="u2778_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2779" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2780" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2780_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2781" class="text" style="visibility: visible;">
+              <p><span>高二</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u2782" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u2783" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2784" class="ax_default box_2">
+            <div id="u2784_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2785" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (矩形) -->
+          <div id="u2786" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+            <div id="u2786_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u2787" class="text" style="visibility: visible;">
+              <p><span>高三</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

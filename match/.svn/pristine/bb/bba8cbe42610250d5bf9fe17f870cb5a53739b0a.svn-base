@@ -1,0 +1,67 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.match;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.LPConsumeRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.LPConsumeRecordService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@RequestMapping("/mth/LPConsumeRecord")
+@RestController
+
+public class LPConsumeRecordController {
+    private final LPConsumeRecordService lpConsumeRecordService;
+    @Autowired
+    public LPConsumeRecordController(LPConsumeRecordService lpConsumeRecordService){
+        this.lpConsumeRecordService = lpConsumeRecordService;
+    }
+
+    /**
+     * 获取对战记录学费消费记录列表
+     * @param pageSize
+     * @param currentPage
+     * @param request
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo getLPConsumeRecordList(Integer pageSize, Integer currentPage ,HttpServletRequest request){
+
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<LPConsumeRecord> lpConsumeRecordList;
+        if (pageSize == null || currentPage == null){
+            lpConsumeRecordList = lpConsumeRecordService.getLPConsumeRecordList(pageSize, currentPage);
+        }else if (pageSize <= 0 || currentPage <= 0){
+            return new ResponseInfo(requestInfo,CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }else {
+            lpConsumeRecordList = lpConsumeRecordService.getLPConsumeRecordList(pageSize,currentPage);
+        }
+        return new ResponseInfo(requestInfo,lpConsumeRecordList);
+    }
+
+    /**
+     * 提交对战记录学点消费记录
+     * @param requestInfo
+     * @return
+     * @throws ErrorInfo
+     */
+
+    @PostMapping("/add")
+    public ResponseInfo addMatchRecordUser(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParams = requestInfo.getReqParam();
+       if (reqParams.getString("lpConsumeRecordId") == null){
+           return new ResponseInfo(requestInfo,CommConst.ERR_REQ_PARAM.getCode(),CommConst.ERR_REQ_PARAM.getMessage(),null);
+
+       }LPConsumeRecord lpConsumeRecord = JSON.parseObject(reqParams.toJSONString(),LPConsumeRecord.class);
+       LPConsumeRecord result =lpConsumeRecordService.create(lpConsumeRecord);
+       return new ResponseInfo(requestInfo,result);
+    }
+
+}

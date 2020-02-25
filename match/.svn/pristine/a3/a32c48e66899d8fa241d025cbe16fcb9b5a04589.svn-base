@@ -1,0 +1,77 @@
+@import "/static/css/vendor.wxss";
+
+.bg.data-v-3c126320 {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+#base.data-v-3c126320 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.b1.data-v-3c126320 {
+  top: 360rpx;
+  left: 286rpx;
+  position: absolute;
+}
+#memory.data-v-3c126320 {
+  width: 100%;
+  text-align: center;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  margin: auto;
+  bottom: 60rpx;
+  position: absolute;
+  text-decoration: underline;
+}
+.fromRight.data-v-3c126320 {
+  animation: fromright 2s;
+}
+.fromLeft.data-v-3c126320 {
+  animation: fromleft-data-v-3c126320 0.3s linear;
+}
+.toLeft.data-v-3c126320 {
+  animation: toleft-data-v-3c126320 2s;
+}
+@keyframes fromleft-data-v-3c126320 {
+from {
+    transform: translateX(-100%);
+}
+to {
+    transform: translateX(0);
+}
+}
+@keyframes toleft-data-v-3c126320 {
+from {
+    transform: translateX(0);
+}
+to {
+    transform: translateX(-100%);
+}
+}
+.box.data-v-815820b8 {
+  height: 314rpx;
+  width: 180rpx;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.recharge.data-v-815820b8 {
+  width: 180rpx;
+  height: 240rpx;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: #CCCCCC;
+  color: #FFFFFF;
+}
+.price.data-v-815820b8 {
+  width: 180rpx;
+  height: 54rpx;
+  top: 260rpx;
+  left: 0;
+  position: absolute;
+  background-color: #CCCCCC;
+  color: #FFFFFF;
+}

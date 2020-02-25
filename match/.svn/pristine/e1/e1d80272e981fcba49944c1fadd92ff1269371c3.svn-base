@@ -1,0 +1,132 @@
+@import "/static/css/vendor.wxss";
+
+.st-exercise-object-select-container.data-v-581475c0 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(207, 235, 255);
+}
+.st-exercise-object-select-gradelist.data-v-581475c0 {
+  position: absolute;
+  width: 25%;
+  left: 2%;
+  top: 5%;
+  height: 90%;
+  border-radius: 20rpx;
+  background: rgb(83, 181, 247);
+}
+.st-exercise-object-select-board.data-v-581475c0 {
+  position: absolute;
+  width: 70%;
+  right: 2%;
+  top: 5%;
+  height: 90%;
+  border-radius: 20rpx;
+  background: rgb(83, 181, 247);
+}
+.st-exercise-object-select-gradeicon-div.data-v-581475c0 {
+  position: absolute;
+  width: 20%;
+  left: 3%;
+  top: 2%;
+  height: 90%;
+}
+.st-exercise-object-select-gradeicon.data-v-581475c0 {
+  position: absolute;
+  width: 98rpx;
+  height: 98rpx;
+}
+.st-exercise-object-select-objectlist.data-v-581475c0 {
+  position: absolute;
+  width: 70%;
+  right: 5%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.st-exercise-object-select-flex-div.data-v-581475c0 {
+  width: 88%;
+  left: 6%;
+  top: 6.52%;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  overflow: auto;
+  height: 90%;
+}
+.st-exercise-object-select-box.data-v-581475c0 {
+  flex: 0 0 auto;
+  height: 14.29vh;
+  width: 21vw;
+  margin-bottom: 3.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.selectObject.data-v-581475c0 {
+  color: green;
+}
+.selectImage.data-v-581475c0 {
+  background: green;
+}
+.unselectObject.data-v-581475c0 {
+  color: rgb(83, 181, 247);
+}
+.unselectImage.data-v-581475c0 {
+  background: rgb(22, 202, 217);
+}
+.st-exercise-object-select-objectname-div.data-v-581475c0 {
+  flex: 0 0 auto;
+  width: 20.26vw;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 0.63vh;
+}
+.st-exercise-object-select-objectphoto-img-div.data-v-581475c0 {
+  flex: 0 0 auto;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+}
+.st-exercise-object-select-objectphoto-img.data-v-581475c0 {
+  position: relative;
+  width: 50rpx;
+  height: 50rpx;
+  top: 20%;
+  left: 20%;
+}
+.st-exercise-object-select-gradelist ._ul.data-v-581475c0 {
+  position: absolute;
+  height: 100%;
+  width: 80%;
+  left: 10%;
+  top: 3%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.st-exercise-object-select-gradelist ._ul ._li.data-v-581475c0 {
+  position: relative;
+  height: 4%;
+  margin-bottom: 20%;
+  width: 100%;
+  font-size: 28rpx;
+  text-align: center;
+  padding-top: 5%;
+}
+.select.data-v-581475c0 {
+  border-radius: 25rpx;
+  color: rgb(109, 166, 255);
+  background: white;
+  animation: zoomOut 0.2s;
+}
+.unselect.data-v-581475c0 {
+  color: #fff;
+}

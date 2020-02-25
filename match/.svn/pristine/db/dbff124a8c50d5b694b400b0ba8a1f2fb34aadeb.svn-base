@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>知识练兵场结果页</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/知识练兵场结果页/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/知识练兵场结果页/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u460" class="ax_default box_1">
+        <div id="u460_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u461" class="ax_default" data-left="38" data-top="0" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u462" class="ax_default" data-left="38" data-top="0" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u463" class="ax_default box_2">
+            <div id="u463_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u464" class="ax_default image1">
+          <img id="u464_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u465" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u465_div" class=""></div>
+          <div id="u465_text" class="text ">
+            <p><span>知识练兵场</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u466" class="ax_default image2">
+          <img id="u466_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u467" class="ax_default image">
+          <img id="u467_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u468" class="ax_default label">
+        <div id="u468_div" class=""></div>
+        <div id="u468_text" class="text ">
+          <p><span><br></span></p><p><span>绩点：&nbsp; &nbsp; +30</span></p><p><span>学点：&nbsp; &nbsp; -30s</span></p><p><span>经验：&nbsp; &nbsp; +2</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u469" class="ax_default button">
+        <div id="u469_div" class=""></div>
+        <div id="u469_text" class="text ">
+          <p><span>再来一轮</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u470" class="ax_default button">
+        <div id="u470_div" class=""></div>
+        <div id="u470_text" class="text ">
+          <p><span>本轮回顾</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u471" class="ax_default" data-left="88" data-top="107" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u472" class="ax_default refs-design-apple1">
+          <img id="u472_img" class="img " src="images/知识练兵场（答题）/u446.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u473" class="ax_default refs-design-apple1">
+          <img id="u473_img" class="img " src="images/知识练兵场（答题）/u447.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u474" class="ax_default" data-left="120" data-top="107" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u475" class="ax_default refs-design-apple1">
+          <img id="u475_img" class="img " src="images/知识练兵场（答题）/u449.png"/>
+          <div id="u475_text" class="text ">
+            <p><span>X</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u476" class="ax_default" data-left="56" data-top="107" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u477" class="ax_default refs-design-apple1">
+          <img id="u477_img" class="img " src="images/知识练兵场（答题）/u446.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u478" class="ax_default refs-design-apple1">
+          <img id="u478_img" class="img " src="images/知识练兵场（答题）/u447.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u479" class="ax_default" data-left="184" data-top="107" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u480" class="ax_default refs-design-apple1">
+          <img id="u480_img" class="img " src="images/知识练兵场（答题）/u446.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u481" class="ax_default refs-design-apple1">
+          <img id="u481_img" class="img " src="images/知识练兵场（答题）/u447.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u482" class="ax_default" data-left="216" data-top="107" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u483" class="ax_default refs-design-apple1">
+          <img id="u483_img" class="img " src="images/知识练兵场（答题）/u449.png"/>
+          <div id="u483_text" class="text ">
+            <p><span>X</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u484" class="ax_default" data-left="152" data-top="107" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u485" class="ax_default refs-design-apple1">
+          <img id="u485_img" class="img " src="images/知识练兵场（答题）/u446.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u486" class="ax_default refs-design-apple1">
+          <img id="u486_img" class="img " src="images/知识练兵场（答题）/u447.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u487" class="ax_default" data-left="280" data-top="107" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u488" class="ax_default refs-design-apple1">
+          <img id="u488_img" class="img " src="images/知识练兵场（答题）/u446.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u489" class="ax_default refs-design-apple1">
+          <img id="u489_img" class="img " src="images/知识练兵场（答题）/u447.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u490" class="ax_default" data-left="312" data-top="107" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u491" class="ax_default refs-design-apple1">
+          <img id="u491_img" class="img " src="images/知识练兵场（答题）/u449.png"/>
+          <div id="u491_text" class="text ">
+            <p><span>X</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u492" class="ax_default" data-left="248" data-top="107" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u493" class="ax_default refs-design-apple1">
+          <img id="u493_img" class="img " src="images/知识练兵场（答题）/u446.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u494" class="ax_default refs-design-apple1">
+          <img id="u494_img" class="img " src="images/知识练兵场（答题）/u447.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u495" class="ax_default" data-left="344" data-top="107" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u496" class="ax_default refs-design-apple1">
+          <img id="u496_img" class="img " src="images/知识练兵场（答题）/u446.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u497" class="ax_default refs-design-apple1">
+          <img id="u497_img" class="img " src="images/知识练兵场（答题）/u447.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u498" class="ax_default refs-chart-data">
+        <div id="u498_div" class=""></div>
+        <div id="u498_text" class="text ">
+          <p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">答对</span><span style="font-family:'ArialMT', 'Arial';">7</span><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">题</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

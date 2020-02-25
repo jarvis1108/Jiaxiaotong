@@ -1,0 +1,160 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.vo;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
+
+/**
+ * Created by Xiaohe
+ * 2018-09-09 上午 09:30
+ */
+@Entity
+@Table(name = "V_ErrorMultipleQuestion")
+public class ErrorMultipleQuestion {
+    private String lpConsumeRecordId;
+    private String questionId;
+    private String questionNo;
+    private String choiceA;
+    private String choiceB;
+    private String choiceC;
+    private String choiceD;
+    private String answer;
+    private String userId;
+    private String userNo;
+    private String userAnswer;
+    private Timestamp createTime;
+
+    @Id
+    @Column(name = "LPConsumeRecordID")
+    private String getLpConsumeRecordId() {
+        return lpConsumeRecordId;
+    }
+
+    @Basic
+    @Column(name = "QuestionID")
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    @Basic
+    @Column(name = "QuestionNo")
+    public String getQuestionNo() {
+        return questionNo;
+    }
+
+    @Basic
+    @Column(name = "ChoiceA")
+    public String getChoiceA() {
+        return choiceA;
+    }
+
+    @Basic
+    @Column(name = "ChoiceB")
+    public String getChoiceB() {
+        return choiceB;
+    }
+
+    @Basic
+    @Column(name = "ChoiceC")
+    public String getChoiceC() {
+        return choiceC;
+    }
+
+    @Basic
+    @Column(name = "ChoiceD")
+    public String getChoiceD() {
+        return choiceD;
+    }
+
+    @Basic
+    @Column(name = "Answer")
+    public String getAnswer() {
+        return answer;
+    }
+
+    @Basic
+    @Column(name = "UserID")
+    public String getUserId() {
+        return userId;
+    }
+
+    @Basic
+    @Column(name = "UserNo")
+    private String getUserNo() {
+        return userNo;
+    }
+
+    @Basic
+    @Column(name = "UserAnswer")
+    public String getUserAnswer() {
+        return userAnswer;
+    }
+
+    @Basic
+    @Column(name = "CreateTime")
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setLpConsumeRecordId(String lpConsumeRecordId) {
+        this.lpConsumeRecordId = lpConsumeRecordId;
+    }
+
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
+    }
+
+    public void setQuestionNo(String questionNo) {
+        this.questionNo = questionNo;
+    }
+
+    public void setChoiceA(String choiceA) {
+        this.choiceA = choiceA;
+    }
+
+    public void setChoiceB(String choiceB) {
+        this.choiceB = choiceB;
+    }
+
+    public void setChoiceC(String choiceC) {
+        this.choiceC = choiceC;
+    }
+
+    public void setChoiceD(String choiceD) {
+        this.choiceD = choiceD;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
+    }
+
+    public void setUserAnswer(String userAnswer) {
+        this.userAnswer = userAnswer;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "ErrorMultipleQuestion{" +
+                "questionId='" + questionId + '\'' +
+                ", choiceA='" + choiceA + '\'' +
+                ", choiceB='" + choiceB + '\'' +
+                ", choiceC='" + choiceC + '\'' +
+                ", choiceD='" + choiceD + '\'' +
+                ", answer='" + answer + '\'' +
+                ", userId='" + userId + '\'' +
+                ", userAnswer='" + userAnswer + '\'' +
+                ", createTime=" + createTime +
+                '}';
+    }
+}

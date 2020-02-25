@@ -1,0 +1,70 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.match;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+
+import java.util.List;
+
+/**
+ * @author meiyu
+ * 对战记录
+ * */
+@RestController
+@RequestMapping("/mth/MatchRecord")
+public class MatchRecordController {
+
+    private  final MatchRecordService matchRecordService;
+    @Autowired
+    public MatchRecordController(MatchRecordService matchRecordService){
+        this.matchRecordService = matchRecordService;
+    }
+
+    /**
+     * 获取对战记录列表
+     * @param pageSize
+     * @param currentPage
+     * @param request
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo getMatchRecordList(Integer pageSize, Integer currentPage, HttpServletRequest request) {
+
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<MatchRecord> matchRecords;
+        if (pageSize == null || currentPage == null){
+            matchRecords = matchRecordService.getMatchRecordList(pageSize,currentPage);
+        }else if (pageSize <= 0 || currentPage <= 0){
+            String currentTime = DateUtil.getCurrentTime();
+            return new ResponseInfo(requestInfo,CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }else {
+            matchRecords = matchRecordService.getMatchRecordList(pageSize,currentPage);
+        }
+        return new ResponseInfo(requestInfo,matchRecords);
+    }
+
+    @PostMapping("/add")
+    public ResponseInfo addMatchRecord(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParams = requestInfo.getReqParam();
+        if ((reqParams.getString("matchRecordId") == null)){
+            return new ResponseInfo(requestInfo,CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+        MatchRecord matchRecord =JSON.parseObject(reqParams.toJSONString(),MatchRecord.class);
+        MatchRecord result = matchRecordService.create(matchRecord);
+        return new ResponseInfo(requestInfo,result);
+
+    }
+}

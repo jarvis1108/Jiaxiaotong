@@ -1,0 +1,21 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionMultipleChoiceForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.QuestionMultipleChoiceForLibVO;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @Author lh
+ * @Date 2018.09.07
+ */
+public interface QuestionForLibService {
+
+    boolean addChoice(QuestionForLib questionForLib, QuestionMultipleChoiceForLib questionMultipleChoiceForLib) throws ErrorInfo;
+
+    void deleteChoice(String questionForLibId) throws ErrorInfo;
+
+    List<QuestionMultipleChoiceForLibVO> listChoiceByQuestionLibId(String questionLibId);
+}

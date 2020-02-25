@@ -1,0 +1,112 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.system;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminRole;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.AdminRoleService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * 管理员角色控制器
+ * <p>
+ * Created by Devin
+ * 2018-07-02 上午 11:36
+ */
+@RestController
+@RequestMapping("/api/v1/sys/adminRole")
+public class AdminRoleController {
+
+    private final AdminRoleService adminRoleService;
+
+    @Autowired
+    public AdminRoleController(AdminRoleService adminRoleService) {
+        this.adminRoleService = adminRoleService;
+    }
+
+
+    /**
+     * 获取用户信息列表
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页数，从1开始
+     * @param request     Http请求
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo getAdminRoleList(Integer pageSize, Integer currentPage, HttpServletRequest request) {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<AdminRole> adminRoleList;
+        if (pageSize == null || currentPage == null) {
+            adminRoleList = adminRoleService.getAdminRoles();
+        } else if (pageSize <= 0 || currentPage <= 0) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        } else {
+            adminRoleList = adminRoleService.getAdminRoleList(pageSize, currentPage);
+        }
+
+        return new ResponseInfo(requestInfo, adminRoleList);
+    }
+
+    /**
+     * 编辑用户信息
+     *
+     * @param requestInfo 请求体中的请求信息
+     * @return
+     */
+    @PostMapping("/edit")
+    public ResponseInfo editAdminRole(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        // 获取请求参数，并进行封装
+        JSONObject reqParam = requestInfo.getReqParam();
+        if (reqParam.getString("adminId") == null) {
+            // 必须传入用户ID
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+
+        AdminRole adminRole = JSON.parseObject(reqParam.toJSONString(), AdminRole.class);
+        AdminRole result = adminRoleService.update(adminRole);
+
+        return new ResponseInfo(requestInfo, result);
+    }
+
+    /**
+     * 新增用户
+     *
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/add")
+    public ResponseInfo addAdminRole(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParam = requestInfo.getReqParam();
+        if (reqParam.getString("adminId") == null) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+
+        AdminRole adminRole = JSON.parseObject(reqParam.toJSONString(), AdminRole.class);
+        AdminRole result = adminRoleService.create(adminRole);
+
+        return new ResponseInfo(requestInfo, result);
+    }
+
+    /**
+     * 根据id删除某一用户（逻辑删除）
+     *
+     * @param adminID
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/rmadminrole")
+    public ResponseInfo deleteAdminRole(@RequestParam("AdminRoleID") String adminID, @RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        adminRoleService.deleteByAdminRoleId(adminID);
+        return new ResponseInfo(requestInfo, CommConst.ERR_SUCCESS.getCode(), CommConst.ERR_SUCCESS.getMessage(), null);
+    }
+
+}

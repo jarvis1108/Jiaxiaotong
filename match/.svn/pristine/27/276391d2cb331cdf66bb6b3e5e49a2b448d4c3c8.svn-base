@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>社区</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/社区/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/ie.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="files/社区/data.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4717" class="ax_default box_1">
+        <div id="u4717_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4718" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u4719" class="ax_default">
+
+        <!-- Unnamed (组合) -->
+        <div id="u4720" class="ax_default">
+
+          <!-- Unnamed (矩形) -->
+          <div id="u4721" class="ax_default box_2">
+            <div id="u4721_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u4722" class="text" style="display: none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unnamed (图片) -->
+        <div id="u4723" class="ax_default image1">
+          <img id="u4723_img" class="img " src="images/比一比首页改版/u2616.png"/>
+          <!-- Unnamed () -->
+          <div id="u4724" class="text" style="display: none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4725" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u4725_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4726" class="text" style="visibility: visible;">
+            <p><span>社区</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (图片) -->
+        <div id="u4727" class="ax_default image2">
+          <img id="u4727_img" class="img " src="images/比一比首页改版/u2620.png"/>
+          <!-- Unnamed () -->
+          <div id="u4728" class="text" style="display: none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (图片) -->
+        <div id="u4729" class="ax_default image">
+          <img id="u4729_img" class="img " src="images/比一比首页改版/u2622.png"/>
+          <!-- Unnamed () -->
+          <div id="u4730" class="text" style="display: none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (热区) -->
+        <div id="u4731" class="ax_default">
+        </div>
+      </div>
+
+      <!-- 切换栏面板 (动态面板) -->
+      <div id="u4732" class="ax_default" data-label="切换栏面板">
+        <div id="u4732_state0" class="panel_state" data-label="切换栏">
+          <div id="u4732_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (矩形) -->
+            <div id="u4733" class="ax_default refs-design-apple1">
+              <img id="u4733_img" class="img " src="images/比一比首页改版/u2660.png"/>
+              <!-- Unnamed () -->
+              <div id="u4734" class="text" style="display: none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合) -->
+            <div id="u4735" class="ax_default">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u4736" class="ax_default refs-design-apple1">
+                <div id="u4736_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u4737" class="text" style="display: none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u4738" class="ax_default refs-design-apple1">
+                <div id="u4738_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u4739" class="text" style="visibility: visible;">
+                  <p><span>★</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u4740" class="ax_default refs-design-apple1">
+                <div id="u4740_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u4741" class="text" style="visibility: visible;">
+                  <p><span>答题</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合) -->
+            <div id="u4742" class="ax_default">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u4743" class="ax_default refs-design-apple1">
+                <div id="u4743_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u4744" class="text" style="display: none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u4745" class="ax_default refs-design-apple1">
+                <div id="u4745_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u4746" class="text" style="visibility: visible;">
+                  <p><span>★</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u4747" class="ax_default refs-design-apple1">
+                <div id="u4747_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u4748" class="text" style="visibility: visible;">
+                  <p><span>社区</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合) -->
+            <div id="u4749" class="ax_default">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u4750" class="ax_default refs-design-apple1">
+                <div id="u4750_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u4751" class="text" style="display: none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u4752" class="ax_default refs-design-apple1">
+                <div id="u4752_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u4753" class="text" style="visibility: visible;">
+                  <p><span>★</span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u4754" class="ax_default refs-design-apple1">
+                <div id="u4754_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u4755" class="text" style="visibility: visible;">
+                  <p><span>我的</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u4756" class="ax_default">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4757" class="ax_default refs-design-apple1">
+          <div id="u4757_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4758" class="text" style="display: none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4759" class="ax_default refs-design-apple1">
+          <div id="u4759_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4760" class="text" style="visibility: visible;">
+            <p><span>★</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4761" class="ax_default refs-design-apple1">
+          <div id="u4761_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4762" class="text" style="visibility: visible;">
+            <p><span>社区</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4763" class="ax_default box_3">
+        <div id="u4763_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4764" class="text" style="visibility: visible;">
+          <p><span>我的训练营</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (水平线) -->
+      <div id="u4765" class="ax_default line">
+        <img id="u4765_img" class="img " src="images/社区/u4765.png"/>
+        <!-- Unnamed () -->
+        <div id="u4766" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4767" class="ax_default box_2">
+        <div id="u4767_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4768" class="text" style="visibility: visible;">
+          <p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">备注：训练营模块由首页模块移动到社区板块</span><span style="font-family:'Arial Normal', 'Arial';"></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">（见上）</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">此部分为后期提出的社区化学习预留板块</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">建议：可以加入应用内评论打卡及互动功能。</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

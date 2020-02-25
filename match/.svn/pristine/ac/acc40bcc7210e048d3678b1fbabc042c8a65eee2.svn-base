@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>私有题库</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="jquery-3.3.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- 扫码登陆 -->
+    <script>
+        function getCookie(c_name) {
+            if (Document.cookie && Document.cookie.length > 0) {
+                c_start = Document.cookie.indexOf(c_name + "=");
+                if (c_start != -1) {
+                    c_start = c_start + c_name.length + 1;
+                    c_end = Document.cookie.indexOf(";", c_start);
+                    if (c_end == -1) {
+                        c_end = Document.cookie.length;
+                    }
+                    return unescape(Document.cookie.substring(c_start, c_end));
+                }
+            }
+            return "";
+        }
+        function checkCookie(c_name) {
+            username = getCookie(c_name);
+            console.log("username");
+            if (username != null && username != "") {
+                // 如果cookie值存在，执行下面的操作。
+            } else {
+                // alert('你还没有登陆');
+                var authUrl = "";
+                $.ajax({
+                    url: 'http://strongestscholar.dxtwangxiao.com:8089/strongestscholar/api/v1/question/questionForLibLogin/getAuthUrl',
+                    type: 'get',
+                    data: {
+                        reqId: '1',
+                        reqType: 'QFL_LOG_010_getAuthUrl',
+                        reqUserInfo: JSON.stringify({
+                            userId: '1'
+                        }),
+                        reqParam: JSON.stringify({
+                        }),
+                        reqPageInfo: JSON.stringify({
+                            pageSize: 2,
+                            curPage: 1
+                        })
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        console.log("获取二维码成功");
+                        authUrl = res.resResult.curData.authUrl;
+                        window.location.href = authUrl;//跳转到二维码界面
+                    },
+                    error: function (res) {
+                        console.log("获取二维码失败");
+                        console.log(res);
+                    }
+                });
+            }
+        }
+        checkCookie('userId');
+    </script>
+</head>
+
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <ul class="layui-nav" style="padding-left: 48%">
+                <li class="layui-nav-item">
+                    <!--<a href="">控制台<span class="layui-badge">9</span></a>-->
+                    <span>私有题库</span>
+                </li>
+                <li class="layui-nav-item" style="margin-left: 75%">
+                    <a href=""><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
+                    <dl class="layui-nav-child">
+                        <!--<dd><a href="javascript:;">修改信息</a></dd>-->
+                        <!--<dd><a href="javascript:;">安全管理</a></dd>-->
+                        <dd><a href="javascript:;">退了</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree layui-nav-side" style="margin-top: 60px">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">题目录入</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" id="chooseQuestion">选择题</a></dd>
+                            <dd><a href="javascript:;" id="reciteQuestion">背诵题</a></dd>
+                            <!--<dd><a href="">跳转</a></dd>-->
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" id="questionManager">题目管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" id="questionManagerChoice">选择题</a></dd>
+                            <dd><a href="javascript:;" id="questionManagerRecite">背诵题</a></dd>
+                            <!--<dd><a href="">电商平台</a></dd>-->
+                        </dl>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="layui-body">
+
+            <div class="formArea" style="position: fixed;top: 60px;left: 200px;bottom: 0;width: 80%;overflow :auto;">
+
+                <!-------------------------------选择题form---------------------------->
+                <form class="layui-form" action="" style="padding-top: 50px;display: none" id="chooseContent">
+                    <div class="layui-form-item">
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">科目</label>
+                            <div class="layui-input-inline" style="width: 200px;">
+                                <select name="subject" class="Course">
+                                    <option value="语文">语文</option>
+                                    <option value="英语">英语</option>
+                                    <option value="数学">数学</option>
+                                    <option value="物理">物理</option>
+                                    <option value="化学">化学</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">年级</label>
+                            <div class="layui-input-inline" style="width: 200px;">
+                                <select name="Grade" class="Course">
+                                    <option value="一年级">一年级</option>
+                                    <option value="二年级">二年级</option>
+                                    <option value="三年级">三年级</option>
+                                    <option value="四年级">四年级</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">题目内容:</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="title" required lay-verify="required" placeholder="请输入题目"
+                                autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">选项:</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="optionA" required lay-verify="required" placeholder="请输入选项A"
+                                autocomplete="off" class="layui-input" style="margin-bottom: 5px">
+                        </div>
+                        <div class="layui-input-block">
+                            <input type="text" name="optionB" required lay-verify="required" placeholder="请输入选项B"
+                                autocomplete="off" class="layui-input" style="margin-bottom: 5px">
+                        </div>
+                        <div class="layui-input-block">
+                            <input type="text" name="optionC" required lay-verify="required" placeholder="请输入选项C"
+                                autocomplete="off" class="layui-input" style="margin-bottom: 5px">
+                        </div>
+                        <div class="layui-input-block">
+                            <input type="text" name="optionD" required lay-verify="required" placeholder="请输入选项D"
+                                autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">正确答案:</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="TrueOption" value="1" title="A" checked>
+                            <input type="radio" name="TrueOption" value="2" title="B">
+                            <input type="radio" name="TrueOption" value="3" title="C">
+                            <input type="radio" name="TrueOption" value="4" title="D">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">题目解析:</label>
+                        <div class="layui-input-block">
+                            <textarea name="desc" placeholder="请输入题目解析" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <!--<div class="layui-form-item">-->
+                    <!--<label class="layui-form-label">开关</label>-->
+                    <!--<div class="layui-input-block">-->
+                    <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">答题时间:</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="time" value="10" title="10" checked>
+                            <input type="radio" name="time" value="20" title="20">
+                            <input type="radio" name="time" value="30" title="30">
+                            <input type="radio" name="time" value="40" title="40">
+                            <input type="radio" name="time" value="50" title="50">
+                            <input type="radio" name="time" value="60" title="60">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formChoice">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <!--------------------------------背诵题form------------------------------------>
+
+
+                <form class="layui-form" action="" style="padding-top: 50px;display: none;" id="reciteContent">
+                    <div class="layui-form-item">
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">科目</label>
+                            <div class="layui-input-inline" style="width: 200px;">
+                                <select name="subject" class="Course" id="selectedCourse">
+                                    <option value="语文">语文</option>
+                                    <option value="英语">英语</option>
+                                    <option value="数学">数学</option>
+                                    <option value="物理">物理</option>
+                                    <option value="化学">化学</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">年级</label>
+                            <div class="layui-input-inline" style="width: 200px;">
+                                <select name="Grade" class="Course" id="selectedGrade">
+                                    <option value="一年级">一年级</option>
+                                    <option value="二年级">二年级</option>
+                                    <option value="三年级">三年级</option>
+                                    <option value="四年级">四年级</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">题目内容:</label>
+                        <div class="layui-input-block">
+                            <textarea name="title" placeholder="请输入题目内容" class="layui-textarea" required lay-verify="required"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">背诵部分答案:</label>
+                        <div class="layui-input-block">
+                            <textarea name="answer" placeholder="请输入答案" class="layui-textarea" required lay-verify="required"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">题目解析:</label>
+                        <div class="layui-input-block">
+                            <textarea name="desc" placeholder="请输入题目解析" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <!--<div class="layui-form-item">-->
+                    <!--<label class="layui-form-label">开关</label>-->
+                    <!--<div class="layui-input-block">-->
+                    <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">答题时间:</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="time" value="10" title="10" checked>
+                            <input type="radio" name="time" value="20" title="20">
+                            <input type="radio" name="time" value="30" title="30">
+                            <input type="radio" name="time" value="40" title="40">
+                            <input type="radio" name="time" value="50" title="50">
+                            <input type="radio" name="time" value="60" title="60">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formRecite">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <!-----------------------------------题目管理----------------------------------->
+
+
+                <script src="layui/layui.js" charset="utf-8"></script>
+                <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+
+                <div id="choiceManagerDiv" class="choiceManagerContent" style="display: none">
+                    <!--第一步：编写模版。你可以使用一个script标签存放模板，如：-->
+                    <script id="choiceModel" type="text/html">
+
+                    {{#  layui.each(d.choiceForLibList, function(index, item){ }}
+                    <tr>
+                        <td>{{ item.questionLibId }}</td>
+                        <td>{{ item.courseName }}</td>
+                        <td>{{ item.gradeName }}</td>
+                        <td>{{ item.question }}</td>
+                        <td>{{ item.recommendTime }}</td>
+                        <td>{{ item.choiceA }}</td>
+                        <td>{{ item.choiceB }}</td>
+                        <td>{{ item.choiceC }}</td>
+                        <td>{{ item.choiceD }}</td>
+                        <td>{{ item.answer }}</td>
+                        <td>
+                            <button>修改</button>
+                            <button style="margin-left: 5px">删除</button>
+                        </td>
+                    </tr>
+                    {{#  }); }}
+                    {{#  if(d.choiceForLibList.length === 0){ }}
+                    无数据
+                    {{#  } }}
+                </script>
+
+
+                    <!--第二步：建立视图。用于呈现渲染结果。-->
+                    <div id="choiceTableQuestion" style="width: 95%; margin: 0 auto;">
+
+                    </div>
+                </div>
+
+
+                <div class="reciteManagerContent" id="reciteManagerDiv" style="display: none">
+
+                    <!--第一步：编写模版。你可以使用一个script标签存放模板，如：-->
+                    <script id="reciteModel" type="text/html">
+
+                    {{#  layui.each(d, function(index, item){ }}
+                    <tr>
+                        <td>{{ item.questionForLibId }}</td>
+                        <td>{{ item.subjectName }}</td>
+                        <td>{{ item.gradeName }}</td>
+                        <td>{{ item.question }}</td>
+                        <td>{{ item.recommendTime }}</td>
+                        <td>{{ item.answer }}</td>
+                        <td>
+                            <button>修改</button>
+                            <button style="margin-left: 5px">删除</button>
+                        </td>
+                    </tr>
+                    {{#  }); }}
+                    {{#  if(d.length === 0){ }}
+                    无数据
+                    {{#  } }}
+                </script>
+
+                    <!--第二步：建立视图。用于呈现渲染结果。-->
+                    <div id="reciteTableQuestion" style="width: 95%; margin: 0 auto;">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+<script src="layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+<script>
+
+    // 第三步：渲染模版
+    layui.use('laytpl', function () {
+        var laytpl = layui.laytpl;
+        $.ajax({
+            url: 'http://120.77.148.123:8089/strongestscholar/api/v1/question/questionForLib/listPageChoice',
+            type: 'get',
+            data: {
+                reqId: '1',
+                reqType: 'QFL_CHO_030_listChoice',
+                reqUserInfo: JSON.stringify({
+                    userId: '1'
+                }),
+                reqParam: JSON.stringify({
+                    questionLibId: '1'
+                }),
+                reqPageInfo: JSON.stringify({
+                    pageSize: 2,
+                    curPage: 1
+                })
+            },
+            dataType: 'json',
+            success: function (res) {
+
+                console.log(res);
+                var resultData = res.resResult.curData;
+                var getTpl = choiceModel.innerHTML;
+                var choiceTableQuestion = my$("choiceTableQuestion");
+
+                var code = '<table class="layui-table">';
+                code += '<thead><tr><th>题目编号</th><th>科目</th><th>年级</th><th>题干</th><th>答题时间</th><th>选项A</th><th>选项B</th><th>选项C</th><th>选项D</th><th>答案</th><th>操作</th></tr></thead><tbody>';
+
+                laytpl(getTpl).render(resultData, function (html) {
+                    choiceTableQuestion.innerHTML = code + html + '</tbody></table>';
+                });
+
+            },
+            error: function (res) {
+                console.log(res)
+            }
+        });
+
+        $.ajax({
+            url: 'http://120.77.148.123:8089/strongestscholar/api/v1/qst/questionRecitationForLib/list',
+            type: 'get',
+            data: {
+                reqId: '1',
+                reqType: 'QST_RFL_010_GetRecitationQuestionForLibList',
+                reqUserInfo: JSON.stringify({
+                    userId: '1'
+                }),
+                reqParam: JSON.stringify({
+                    questionLibId: '1'
+                }),
+                reqPageInfo: JSON.stringify({
+                    pageSize: 2,
+                    curPage: 1
+                })
+            },
+            dataType: 'json',
+            // headers:{'Content-Type':'application/json; charset=utf-8'},
+            success: function (res) {
+
+                console.log(res);
+
+                var resultData = res.resResult.curData;
+                var getTpl = reciteModel.innerHTML;
+                var reciteTableQuestion = my$("reciteTableQuestion");
+
+                var code = '<table class="layui-table">';
+                code += '<thead><tr><th>题目编号</th><th>科目</th><th>年级</th><th>题干</th><th>答题时间</th><th>答案</th><th>操作</th></tr></thead><tbody>';
+
+                laytpl(getTpl).render(resultData, function (html) {
+                    reciteTableQuestion.innerHTML = code + html + '</tbody></table>';
+                });
+
+            },
+            error: function (res) {
+                console.log(res)
+            }
+        });
+
+    });
+
+    function my$(id) {
+        return typeof (id) === "string" ? document.getElementById(id) : id;
+    }
+
+    var chooseQueObj = my$("chooseQuestion");        //获取选择题按钮对象
+    var reciteQueObj = my$("reciteQuestion");        //获取背诵题按钮对象
+
+
+    var questionManagerChoice = my$("questionManagerChoice");  //获取"题目管理"——"选择题"按钮
+    var questionManagerRecite = my$("questionManagerRecite");  //获取"题目管理"——"背诵题"按钮
+
+
+    chooseQueObj.onclick = function () {               //选择题按钮的点击事件
+        my$("reciteManagerDiv").style.display = "none";
+        my$("choiceManagerDiv").style.display = "none";
+        my$("reciteContent").style.display = "none";
+        my$("chooseContent").style.display = "block";
+    };
+    reciteQueObj.onclick = function () {               //背诵题按钮的点击事件
+        my$("choiceManagerDiv").style.display = "none";
+        my$("reciteManagerDiv").style.display = "none"
+        my$("chooseContent").style.display = "none";
+        my$("reciteContent").style.display = "block";
+    };
+
+    questionManagerChoice.onclick = function () {                   //题目管理-选择题按钮的点击事件
+        my$("choiceManagerDiv").style.display = "block";
+        my$("reciteManagerDiv").style.display = "none";
+        my$("reciteContent").style.display = "none";
+        my$("chooseContent").style.display = "none";
+    };
+    questionManagerRecite.onclick = function () {                   //题目管理-背诵题按钮的点击
+        my$("choiceManagerDiv").style.display = "none";
+        my$("reciteManagerDiv").style.display = "block";
+        my$("reciteContent").style.display = "none";
+        my$("chooseContent").style.display = "none";
+    };
+
+
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function () {
+        var element = layui.element;
+
+        //…
+    });
+
+    //选择题表单
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formChoice)', function (data) {
+
+
+            console.log(data);
+
+            var chooseParam = {                                          //保存题目内容和答案等信息的array
+                reqId: "1",
+                reqType: "QFL_CHO_010_addChoice",
+                reqUserInfo: {
+                    userId: "1"
+                },
+                reqParam: {
+                    userId: "1",
+                    gradeId: data.field.Grade,
+                    courseId: data.field.subject,
+                    question: data.field.title,
+                    choiceA: data.field.optionA,
+                    choiceB: data.field.optionB,
+                    choiceC: data.field.optionC,
+                    choiceD: data.field.optionD,
+                    answer: data.field.TrueOption,
+                    time: data.field.time,
+                    questionLibId: ""
+                }
+            };
+            var chooseObjParam = JSON.stringify(chooseParam);                 //把array转成json
+            console.log(chooseObjParam);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://120.77.148.123:8089/strongestscholar/api/v1/question/questionForLib/addChoice');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(chooseObjParam);
+            xhr.onreadystatechange = function () {
+                console.log(xhr.readyState);
+                if (this.readyState == 4) {
+                    console.log(this.responseText);
+                    alert("提交成功")
+                } else {
+                    // console.log("失败了");
+                }
+            };
+
+            // layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+
+
+    //背诵题表单
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formRecite)', function (data) {
+
+            var reciteParam = {                                          //保存题目内容和答案等信息的array
+                reqId: "1",
+                reqType: "QST_RFL_010_SaveRecitationQuestionForLib",
+                reqUserInfo: {
+                    userId: "1"
+                },
+                reqParam: {
+                    userId: "1",
+                    gradeId: data.field.Grade,
+                    courseId: data.field.subject,
+                    question: data.field.title,
+                    answer: data.field.answer,
+                    questionLibId: ""
+                }
+            };
+            var reciteObjParam = JSON.stringify(reciteParam);                 //把array转成json
+
+            console.log(reciteObjParam);
+
+            console.log("按钮点击了");
+
+            var xhr = new XMLHttpRequest();
+            console.log(xhr.readyState);
+            xhr.open('POST', 'http://120.77.148.123:8089/strongestscholar/api/v1/qst/questionRecitationForLib');
+            console.log(xhr.readyState);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(reciteObjParam);
+            xhr.onreadystatechange = function () {
+                console.log(xhr.readyState);
+                if (this.readyState == 4) {
+                    console.log(this.responseText);
+                    alert("提交成功")
+                } else {
+
+                }
+            };
+            // layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+
+
+</script>
+
+
+</html>

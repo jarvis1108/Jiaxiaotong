@@ -1,0 +1,33 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.Coupon;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+*@author: meiyu
+*@Date: 2018/7/5 11:45
+*@description 优惠券服务层
+*/
+public interface CouponService {
+
+
+    /**
+     * 分页查询所有优惠券列表
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<Coupon> getCouponList(Integer pageSize,Integer currentPage);
+
+    /**
+     * 新增一条优惠券使用记录
+     * @param coupon
+     * @return
+     * @throws ErrorInfo
+     */
+
+    Coupon create(Coupon coupon) throws ErrorInfo;
+
+}

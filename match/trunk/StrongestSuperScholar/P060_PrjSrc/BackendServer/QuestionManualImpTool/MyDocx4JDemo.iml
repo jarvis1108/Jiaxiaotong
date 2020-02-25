@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="file://D:/MyTool/Docx4jLibRef/activation-1.1.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/antlr-2.7.7.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/antlr-runtime-3.5.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/avalon-framework-api-4.3.1.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/avalon-framework-impl-4.3.1.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-anim-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-awt-util-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-bridge-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-css-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-dom-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-ext-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-extension-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-gvt-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-parser-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-script-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-svg-dom-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-svggen-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-transcoder-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-util-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/batik-xml-1.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/commons-codec-1.10.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/commons-io-2.4.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/commons-lang3-3.4.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/commons-logging-1.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/docx4j-3.3.7.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/docx4j-export-fo-3.3.6.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/docx4j-ImportXHTML-3.3.6.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/docx4j-MOXy-JAXBContext-3.3.6.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/fop-2.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/guava-19.0.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/httpclient-4.5.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/httpcore-4.4.4.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/itext-2.1.7.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/jackson-annotations-2.7.0.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/jackson-core-2.7.3.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/jackson-databind-2.7.3.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/jaxb-svg11-1.0.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/jaxb-xslfo-1.0.1.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/lorem-2.0.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/mail-1.4.7.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/mbassador-1.2.4.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/org.eclipse.persistence.antlr-2.5.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/org.eclipse.persistence.asm-2.5.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/org.eclipse.persistence.core-2.5.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/org.eclipse.persistence.moxy-2.5.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/serializer-2.7.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/slf4j-api-1.7.21.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/stringtemplate-3.2.1.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/wmf2svg-0.9.8.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/xalan-2.7.2.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/xhtmlrenderer-3.0.0.jar" />
+    <libelement value="file://D:/MyTool/Docx4jLibRef/xmlgraphics-commons-2.1.jar" />
+    <src_description expected_position="1">
+      <src_folder value="file://$MODULE_DIR$/src" expected_position="1" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/Docx4jLibRef" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/Docx4jLibRef" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>

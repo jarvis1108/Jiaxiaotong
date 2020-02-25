@@ -1,0 +1,256 @@
+@keyframes zoomOut {
+  0% {
+    transform: scale(0);
+  }
+
+  90% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOutDelay {
+  0%, 50% {
+    transform: scale(0);
+  }
+
+  80% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateY(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateIn {
+  0% {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateY(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(15%);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(5);
+  }
+
+  95% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomDelay {
+  0%, 50% {
+    opacity: 0;
+    transform: scale(5);
+  }
+
+  90% {
+    transform: scale(0.6);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(12);
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-40rpx);
+    opacity: 0;
+  }
+}
+
+@keyframes slideFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromTop {
+  from {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes slideFromBottomDelay {
+  0%, 60% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  to {
+    transform: translateY(-40rpx);
+    opacity: 0;
+  }
+}
+
+@keyframes firstHide {
+  from {
+    height: 240rpx;
+  }
+
+  to {
+    height: 120rpx;
+  }
+}
+
+@keyframes secondHide {
+  from {
+    height: 360rpx;
+  }
+
+  to {
+    height: 120rpx;
+  }
+}
+
+@keyframes thirdHide {
+  from {
+    height: 480rpx;
+  }
+
+  to {
+    height: 120rpx;
+  }
+}
+
+@keyframes firstExtend {
+  to {
+    height: 240rpx;
+  }
+}
+
+@keyframes secondExtend {
+  to {
+    height: 360rpx;
+  }
+}
+
+@keyframes thirdExtend {
+  to {
+    height: 480rpx;
+  }
+}
+
+@keyframes opacity {
+  0%, 50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromLeftBottom {
+  from {
+    transform: translate(-100%, 100%);
+  }
+}
+
+@keyframes slideFromRightTop {
+  from {
+    transform: translate(100%, -100%);
+  }
+}

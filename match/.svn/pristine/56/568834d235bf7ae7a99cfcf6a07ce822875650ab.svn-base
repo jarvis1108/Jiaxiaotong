@@ -1,0 +1,48 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.GradeInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 年级基本信息 服务接口
+ * <p>
+ * Created by shenhao
+ * 2018\7\13 0013
+ */
+public interface GradeInfoService {
+
+    /**
+     * 获取所有年级列表
+     *
+     * @return 年级信息列表
+     */
+    List<GradeInfo> findAll();
+
+    /**
+     * 创建一条年级记录
+     *
+     * @param newGradeInfo 待创建年级信息
+     * @return 创建的年级信息
+     * @throws ErrorInfo
+     */
+    GradeInfo create(GradeInfo newGradeInfo) throws ErrorInfo;
+
+    /**
+     * 更新一条年级记录
+     *
+     * @param updatedGradeInfo 待更新年级信息
+     * @return 待更新年级信息
+     * @throws ErrorInfo
+     */
+    GradeInfo update(GradeInfo updatedGradeInfo) throws ErrorInfo;
+
+    /**
+     * 根据年级id得到年级信息
+     *
+     * @param gradeId 年级id
+     * @return 年级信息
+     */
+    GradeInfo findByGradeId(String gradeId);
+}

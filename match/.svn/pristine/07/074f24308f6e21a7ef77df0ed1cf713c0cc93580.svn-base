@@ -1,0 +1,78 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.system;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserLPDetail;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserLPDetailService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * 用户学点流水明细控制器
+ * <p>
+ * Created by Devin
+ * 2018-07-03 上午 10:34
+ */
+@RestController
+@RequestMapping("/api/v1/sys/UserLPDetail")
+public class UserLPDetailController {
+
+    private final UserLPDetailService userLPDetailService;
+
+    @Autowired
+    public UserLPDetailController(UserLPDetailService userLPDetailService) {
+        this.userLPDetailService = userLPDetailService;
+    }
+
+    /**
+     * 分页查询某一用户学点流水明细
+     *
+     * @param userId      用户id
+     * @param pageSize    页大小
+     * @param currentPage 当前页
+     * @param request
+     * @return
+     * @throws ErrorInfo
+     */
+    @GetMapping("/list")
+    public ResponseInfo getUserCoinList(String userId, Integer pageSize, Integer currentPage, HttpServletRequest request) throws ErrorInfo {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+
+        List<UserLPDetail> userLPDetailList;
+        if (pageSize <= 0 || currentPage <= 0) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        } else {
+            userLPDetailList = userLPDetailService.getUserLPDetailList(userId, null, null);
+        }
+
+        return new ResponseInfo(requestInfo, userLPDetailList);
+    }
+
+    /**
+     * 添加一条用户学点流水明细
+     *
+     * @param requestInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @PostMapping("/add")
+    public ResponseInfo addUserCoinList(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParam = requestInfo.getReqParam();
+        if (reqParam.getString("userLPDetailId") == null) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+
+        UserLPDetail userLPDetail = JSON.parseObject(reqParam.toJSONString(), UserLPDetail.class);
+        UserLPDetail result = userLPDetailService.create(userLPDetail);
+
+        return new ResponseInfo(requestInfo, result);
+    }
+}

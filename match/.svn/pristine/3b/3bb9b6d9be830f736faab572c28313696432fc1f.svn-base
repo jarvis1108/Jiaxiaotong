@@ -1,0 +1,60 @@
+<template name="index$143c365a">
+  <view class="_div data-v-177164f8">
+    <image id="bg" src="/static/images/bg@2x.png" class="_img data-v-177164f8"></image>
+    <image id="question_bg" src="/static/images/exerciseReview/subject-bg@2x.png" class="_img data-v-177164f8"></image>
+    <view id="content" bindtouchstart="handleProxy" bindtouchmove="handleProxy" bindtouchend="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_div data-v-177164f8 {{contentAni}}">
+      <view id="bar" class="_div data-v-177164f8">
+        <image wx:if="{{questionIndex>1}}" bindtap="handleProxy" class="_img data-v-177164f8 arrow" id="leftArrow" src="/static/images/exerciseReview/leftArrow@2x.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+        <view class="_div data-v-177164f8 questionId">
+          <label class="_span data-v-177164f8">第</label>
+          <label id="questionIndex" class="_span data-v-177164f8">{{questionIndex}}</label>
+          <label class="_span data-v-177164f8">题</label>
+        </view>
+        <image wx:if="{{questionIndex<questionList.length}}" bindtap="handleProxy" class="_img data-v-177164f8 arrow" id="rightArrow" src="/static/images/exerciseReview/rightArrow@2x.png" data-eventid="{{'1'}}" data-comkey="{{$k}}"></image>
+      </view>
+      <view id="questionContent" class="_div data-v-177164f8">
+        <label class="_span data-v-177164f8"> {{questionList[questionIndex-1].questionTitle}} </label>
+      </view>
+      <view id="hr" class="_hr data-v-177164f8"></view>
+      <view id="result" class="_div data-v-177164f8 {{resultColor}}">{{result}}</view>
+      <view id="choiceList" class="_div data-v-177164f8">
+        <view class="_div data-v-177164f8 choice" id="{{'choice'+choice.label}}" wx:key="choice" key="{{choice}}" wx:for="{{questionList[questionIndex-1].choiceList}}" wx:for-index="index" wx:for-item="choice">
+          <image class="_img data-v-177164f8 choice_img" src="{{choice.img}}"></image>
+          <label id="{{choice.style}}" class="_span data-v-177164f8 choice_content">{{choice.label}}.{{choice.content}}</label>
+          <image class="_img data-v-177164f8 errorIcon" wx:if="{{choice.isRight === -1}}" src="/static/images/exerciseReview/Errorlabel@2x.png"></image>
+          <image class="_img data-v-177164f8 correctIcon" wx:if="{{choice.isRight === 1}}" src="/static/images/exerciseReview/Correctlabel@2x.png"></image>
+        </view>
+      </view>
+    </view>
+    <view id="iconList" class="_div data-v-177164f8">
+      <view id="collect" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_div data-v-177164f8">
+        <image class="_img data-v-177164f8 icon" id="collectIcon" src="/static/images/exerciseReview/Collection-icon@2x.png"></image>
+        <label class="_span data-v-177164f8 text_12">收藏</label>
+      </view>
+      <view id="correct" bindtap="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_div data-v-177164f8">
+        <image class="_img data-v-177164f8 icon" id="correctIcon" src="/static/images/exerciseReview/Errorcorrection-icon@2x.png"></image>
+        <label class="_span data-v-177164f8 text_12">纠错</label>
+      </view>
+      <view class="_div data-v-177164f8">
+        <button id="share" open-type="share" class="_button data-v-177164f8">
+          <view class="_div data-v-177164f8">
+            <image class="_img data-v-177164f8 icon" id="shareIcon" src="/static/images/exerciseReview/Share-icon@2x.png"></image>
+            <label class="_span data-v-177164f8 text_12" style="top: 50%">分享</label>
+          </view>
+        </button>
+      </view>
+    </view>
+    <image id="halo" src="/static/images/exerciseReview/Halo@2x.png" class="_img data-v-177164f8"></image>
+    <view id="details" class="_div data-v-177164f8">
+      <view id="analysis" class="_div data-v-177164f8">
+        <label class="_span data-v-177164f8">解析:{{questionList[questionIndex-1].analysis}}</label>
+      </view>
+      <view id="source" class="_div data-v-177164f8">
+        <label class="_span data-v-177164f8">出处：{{questionList[questionIndex-1].source}}</label>
+      </view>
+      <view id="knowledge" class="_div data-v-177164f8">
+        <label class="_span data-v-177164f8">考点:{{questionList[questionIndex-1].knowledge}}</label>
+      </view>
+    </view>
+  </view>
+</template>

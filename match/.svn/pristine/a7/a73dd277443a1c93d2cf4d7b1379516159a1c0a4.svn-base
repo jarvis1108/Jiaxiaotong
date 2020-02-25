@@ -1,0 +1,67 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.Knowledge;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ *@auther: shenhao
+ *@descripition: 知识点服务器
+ *@date  2018\6\26
+ */
+
+public interface KnowledgeService {
+    /**
+     * 获取所有知识点信息
+     *
+     * @return 知识点列表
+     */
+    List<Knowledge> getAllKnowledges() throws ErrorInfo;
+
+    /**
+     * 根据knowledgeId获取知识点信息
+     *
+     * @param subjectId 知识点Id
+     * @return 待查询知识点信息
+     */
+    List<Knowledge> getKnowledgeBySubjectId(String subjectId) throws ErrorInfo;
+    /**
+     * 根据knowledgeId获取知识点信息
+     *
+     * @param knowledgeId 知识点Id
+     * @return 待查询知识点信息
+     */
+    Knowledge getKnowledgeByKnowledgeId(String knowledgeId) throws ErrorInfo;
+
+    /**
+     * 创建新知识点
+     *
+     * @param newKnowledge 知识点基本信息
+     * @return 新创建知识点
+     */
+    Knowledge create(Knowledge newKnowledge) throws ErrorInfo;
+
+    /**
+     * 更新知识点基本信息
+     *
+     * @param updatedKnowledge 待更新知识点
+     * @return 更新后的知识点信息
+     */
+    Knowledge updateKnowledge(Knowledge updatedKnowledge) throws ErrorInfo;
+
+    /**
+     * 根据id删除知识点
+     *
+     * @param knowledgeId 知识点id
+     */
+    boolean deleteKnowledgeByKnowledgeId(String knowledgeId) throws ErrorInfo;
+
+    /**
+     * 分页查询知识点
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<Knowledge> getKnowledgeList(Integer pageSize, Integer currentPage) throws ErrorInfo;
+}

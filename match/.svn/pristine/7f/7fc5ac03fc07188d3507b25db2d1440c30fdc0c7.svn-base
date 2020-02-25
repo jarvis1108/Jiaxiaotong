@@ -1,0 +1,68 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminRole;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 管理员角色单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 02:24
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class AdminRoleRepositoryTest {
+
+    @Autowired
+    private AdminRoleRepository adminRoleRepository;
+
+    @Test
+    public void findAll() {
+        List<AdminRole> adminRoles = adminRoleRepository.findAll();
+        assertNotEquals(0, adminRoles.size());
+
+        adminRoles.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        AdminRole adminRole = new AdminRole();
+        adminRole.setAdminRoleId("3");
+        adminRole.setAdminRoleNo("3");
+        adminRole.setAdminRoleName("业务员");
+        adminRole.setIsValid(Byte.valueOf("1"));
+
+        AdminRole result = adminRoleRepository.save(adminRole);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void findAll1() {
+        PageRequest pageable = PageRequest.of(1, 1);
+        Page<AdminRole> adminRolePage = adminRoleRepository.findAll(pageable);
+
+        List<AdminRole> adminRoleList = adminRolePage.getContent();
+        assertEquals(1, adminRoleList.size());
+        adminRoleList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAdminRoleByAdminRoleId() {
+        String adminRoleId = "1";
+        AdminRole adminRole = adminRoleRepository.findAdminRoleByAdminRoleId(adminRoleId);
+        assertNotNull(adminRole);
+
+        System.out.println(adminRole);
+    }
+}

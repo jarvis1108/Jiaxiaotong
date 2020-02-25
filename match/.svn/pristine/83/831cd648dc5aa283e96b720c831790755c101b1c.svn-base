@@ -1,0 +1,177 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.question;
+
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.personal.QuestionMultipleChoiceForLib;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionForLibService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.QuestionMultipleChoiceForLibVO;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.error.StrongestScholarException;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * @Author lh
+ * @Date 2018.09.07
+ * 私有题库控制器
+ */
+@RestController
+@CrossOrigin
+@RequestMapping("/api/v1/question/questionForLib")
+public class QuestionForLibController {
+
+    @Autowired
+    private QuestionForLibService questionForLibService;
+
+    @PostMapping("/addChoice")
+    public ResponseInfo addChoice(@RequestBody RequestInfo requestInfo) throws StrongestScholarException {
+        JSONObject reqParam = requestInfo.getReqParam();
+
+        QuestionForLib questionForLib = parse2Qfl(reqParam);
+        QuestionMultipleChoiceForLib questionMultipleChoiceForLib = parse2Qmcl(reqParam);
+
+        String questionForLibId = questionForLibService.addChoice(questionForLib, questionMultipleChoiceForLib);
+        QuestionMultipleChoiceForLibVO curData = questionForLibService.findQuestionMultipleChoiceForLibVOByQuestionForLibId(questionForLibId);
+
+        return new ResponseInfo(requestInfo, curData);
+    }
+
+    @DeleteMapping("/deleteChoice/{questionForLibId}")
+    public ResponseInfo deleteChoice(@PathVariable String questionForLibId, HttpServletRequest request) throws StrongestScholarException {
+        RequestInfo requestInfo = WebUtil.parseRequest(request);
+
+        questionForLibService.deleteChoice(questionForLibId);
+
+        return new ResponseInfo(requestInfo, null);
+    }
+
+    /**
+     * 得到某一题库的所有选择题
+     * @param request
+     * @return
+     */
+    @GetMapping("/listChoice")
+    public ResponseInfo listChoice(HttpServletRequest request) {
+        RequestInfo requestInfo = WebUtil.parseRequest(request);
+        String questionLibId = requestInfo.getReqParam().getString("questionLibId");
+
+        List<QuestionMultipleChoiceForLibVO> choiceForLibList = questionForLibService.listChoiceByQuestionLibId(questionLibId);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("choiceForLibList", choiceForLibList);
+
+        return new ResponseInfo(requestInfo, jsonObject);
+    }
+
+    /**
+     * 私有题库修改选择题
+     *
+     */
+    @PutMapping("/updateChoice/{questionForLibId}")
+    public ResponseInfo updateChoice(@PathVariable String questionForLibId, @RequestBody RequestInfo requestInfo) throws StrongestScholarException {
+        JSONObject reqParam = requestInfo.getReqParam();
+
+        QuestionForLib targetQfb = questionForLibService.findByQuestionForLibId(questionForLibId);
+        QuestionMultipleChoiceForLib targetQmcl = questionForLibService.findQustionMultipleForLibByQuestionForLibId(questionForLibId);
+        QuestionForLib srcQfb = parse2Qfl(reqParam);
+        QuestionMultipleChoiceForLib srcQmcl = parse2Qmcl(reqParam);
+
+        UpdateUtil.copyProperties(srcQfb, targetQfb);
+        UpdateUtil.copyProperties(srcQmcl, targetQmcl);
+
+        questionForLibService.updateChoice(targetQfb, targetQmcl);
+        QuestionMultipleChoiceForLibVO curData = questionForLibService.findQuestionMultipleChoiceForLibVOByQuestionForLibId(questionForLibId);
+
+        return new ResponseInfo(requestInfo, curData);
+    }
+
+    private QuestionForLib parse2Qfl(JSONObject reqParam) {
+        String userId = reqParam.getString("userId");
+        String gradeId = reqParam.getString("gradeId");
+        String courseId = reqParam.getString("courseId");
+        String question = reqParam.getString("question");
+        Integer time = reqParam.getInteger("time");
+        String questionLibId = reqParam.getString("questionLibId");
+        Byte isPublic = reqParam.getByte("isPublic");
+        String provider = reqParam.getString("getString");
+        String personInCharge = reqParam.getString("personInCharge");
+        String reference = reqParam.getString("reference");
+        Integer questionLevel = reqParam.getInteger("questionLevel");
+        Double difficulty = reqParam.getDouble("difficulty");
+        Double coinWeight = reqParam.getDouble("coinWeight");
+        Double gpWeight = reqParam.getDouble("gpWeight");
+        String questionAnalyze = reqParam.getString("questionAnalyze");
+        String fromQuestionId = reqParam.getString("fromQuestionId");
+        String fromQuestionNo = reqParam.getString("fromQuestionNo");
+        String remark = reqParam.getString("remark");
+        Byte isFromQuestion = reqParam.getByte("isFromQuestion");
+
+        QuestionForLib questionForLib = new QuestionForLib();
+        questionForLib.setQuestionLibId(questionLibId);
+        questionForLib.setQuestionLibNo(questionLibId);
+        questionForLib.setQuestion(question);
+        questionForLib.setProvider(userId);
+        questionForLib.setRecommendTime(time);
+        questionForLib.setIsPublic(isPublic);
+        questionForLib.setProvider(provider);
+        questionForLib.setPersonInCharge(personInCharge);
+        questionForLib.setReference(reference);
+        questionForLib.setQuestionLevel(questionLevel);
+        questionForLib.setDifficulty(difficulty);
+        questionForLib.setCoinWeight(coinWeight);
+        questionForLib.setGpWeight(gpWeight);
+        questionForLib.setQuestionAnalyze(questionAnalyze);
+        questionForLib.setFromQuestionId(fromQuestionId);
+        questionForLib.setFromQuestionNo(fromQuestionNo);
+        questionForLib.setRemark(remark);
+        questionForLib.setIsFromQuestion(isFromQuestion);
+        questionForLib.setCreateUser(userId);
+        questionForLib.setLastUpdUser(userId);
+        questionForLib.setCreateUser(userId);
+        questionForLib.setLastUpdUser(userId);
+        questionForLib.setCreateTime(new Timestamp(new Date().getTime()));
+        questionForLib.setLastUpdTime(new Timestamp(new Date().getTime()));
+        questionForLib.setCourseId(courseId);
+        questionForLib.setGradeId(gradeId);
+
+        return questionForLib;
+    }
+
+    private QuestionMultipleChoiceForLib parse2Qmcl(JSONObject reqParam) {
+        String userId = reqParam.getString("userId");
+        String questionLibId = reqParam.getString("questionLibId");
+        String fromQuestionId = reqParam.getString("fromQuestionId");
+        String fromQuestionNo = reqParam.getString("fromQuestionNo");
+        String remark = reqParam.getString("remark");
+        String choiceA = reqParam.getString("choiceA");
+        String choiceB = reqParam.getString("choiceB");
+        String choiceC = reqParam.getString("choiceC");
+        String choiceD = reqParam.getString("choiceD");
+        String answer = reqParam.getString("answer");
+
+        QuestionMultipleChoiceForLib questionMultipleChoiceForLib = new QuestionMultipleChoiceForLib();
+        questionMultipleChoiceForLib.setQuestionLibId(questionLibId);
+        questionMultipleChoiceForLib.setQuestionLibNo(questionLibId);
+        questionMultipleChoiceForLib.setFromQuestionId(fromQuestionId);
+        questionMultipleChoiceForLib.setFromQuestionNo(fromQuestionNo);
+        questionMultipleChoiceForLib.setChoiceA(choiceA);
+        questionMultipleChoiceForLib.setChoiceB(choiceB);
+        questionMultipleChoiceForLib.setChoiceC(choiceC);
+        questionMultipleChoiceForLib.setChoiceD(choiceD);
+        questionMultipleChoiceForLib.setAnswer(answer);
+        questionMultipleChoiceForLib.setRemark(remark);
+        questionMultipleChoiceForLib.setCreateUser(userId);
+        questionMultipleChoiceForLib.setLastUpdUser(userId);
+        questionMultipleChoiceForLib.setCreateTime(new Timestamp(new Date().getTime()));
+        questionMultipleChoiceForLib.setLastUpdTime(new Timestamp(new Date().getTime()));
+
+        return questionMultipleChoiceForLib;
+    }
+}

@@ -1,0 +1,128 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.MultipleQuestionCollectionRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.MultipleQuestionRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionCollectionRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionCollection;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestion;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestionCollection;
+import com.dxtwangxiao.strongestsuperscholar.web.util.MathUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * 试题服务实现
+ * <p>
+ * Created By Devin
+ * 2018-09-04 上午 10:58
+ */
+@Service
+public class QuestionServiceImpl implements QuestionService {
+
+    @Autowired
+    private MultipleQuestionCollectionRepository multipleQuestionCollectionRepository;
+
+    @Autowired
+    private QuestionCollectionRepository questionCollectionRepository;
+
+    @Autowired
+    private MultipleQuestionRepository multipleQuestionRepository;
+
+    /**
+     * 根据用户Id获取其所收藏的选择题
+     *
+     * @param userId 用户Id
+     * @return 题目列表
+     */
+    @Override
+    public List<MultipleQuestionCollection> getCollectionsByUserId(String userId) {
+        return multipleQuestionCollectionRepository.findByUserId(userId);
+    }
+
+    /**
+     * 用户收藏题目
+     *
+     * @param userId     用户Id
+     * @param questionId 试题Id
+     * @return
+     */
+    @Override
+    public MultipleQuestionCollection collectQuestion(String userId, String questionId) {
+        QuestionCollection questionCollection = new QuestionCollection();
+        questionCollection.setQuestionCollectionId(UUIDUtil.getUUID());
+        questionCollection.setQuestionCollectionNo(questionCollection.getQuestionCollectionId());
+        questionCollection.setUserId(userId);
+        questionCollection.setQuestionId(questionId);
+        questionCollection.setCreateTime(new Date());
+        questionCollection.setIsValid(Byte.valueOf("1"));
+
+        QuestionCollection result = questionCollectionRepository.save(questionCollection);
+        if (result != null) {
+            return multipleQuestionCollectionRepository.findByQuestionCollectionId(result.getQuestionCollectionId());
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 用户取消收藏题目
+     *
+     * @param questionCollectionId 收藏题目Id
+     * @return
+     */
+    @Override
+    public Boolean cancelCollection(String questionCollectionId) {
+        QuestionCollection questionCollection = questionCollectionRepository.findByQuestionCollectionId(questionCollectionId);
+        questionCollection.setIsValid(Byte.valueOf("0"));
+        QuestionCollection result = questionCollectionRepository.save(questionCollection);
+        return result != null;
+    }
+
+    /**
+     * 随机获取5道选择题，用户匹配对战等。
+     *
+     * @return 题目列表
+     */
+    @Override
+    public List<MultipleQuestion> getRandomQuestions() {
+        List<MultipleQuestion> result = new ArrayList<>();
+        long rows = multipleQuestionRepository.count();
+        int[] index = MathUtil.getRandomNumbers(rows, 5);
+        for (int no : index) {
+            Pageable pageable = PageRequest.of(no, 1);
+            Page<MultipleQuestion> multipleQuestionPage = multipleQuestionRepository.findAll(pageable);
+            List<MultipleQuestion> pageContent = multipleQuestionPage.getContent();
+            result.addAll(pageContent);
+        }
+        return result;
+    }
+
+    /**
+     * 根据科目Id获取10道题目，用于知识练兵场
+     *
+     * @param subjectId 战局Id
+     * @return
+     */
+    @Override
+    public List<MultipleQuestion> getQuestionsBySubjectId(String subjectId) {
+        List<MultipleQuestion> result = new ArrayList<>();
+        long rows = multipleQuestionRepository.countAllBySubjectId(subjectId);
+        int[] index = MathUtil.getRandomNumbers(rows, 5);
+        for (int no : index) {
+            Pageable pageable = PageRequest.of(no, 1);
+            Page<MultipleQuestion> multipleQuestionPage = multipleQuestionRepository.findAll(pageable);
+            List<MultipleQuestion> pageContent = multipleQuestionPage.getContent();
+            result.addAll(pageContent);
+        }
+        return result;
+    }
+}

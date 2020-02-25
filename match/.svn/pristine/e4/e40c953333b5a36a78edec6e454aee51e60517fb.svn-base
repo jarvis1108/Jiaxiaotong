@@ -1,0 +1,63 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.dao.CouponRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.Coupon;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.CouponDetail;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.service.CouponService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+/**
+*@author: meiyu
+*@Date: 2018/7/5 11:40
+*@description 优惠券记录实现
+*/
+@Service
+
+public class CouponServiceImpl implements CouponService {
+
+    @Autowired
+    private CouponRepository couponRepository;
+
+
+    /**
+     * 分页查询优惠券
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    @Override
+    public List<Coupon> getCouponList(Integer pageSize, Integer currentPage) {
+        if(pageSize == null || currentPage == null || pageSize<=0 || currentPage<=0){
+            return null;
+        }else {
+            Pageable pageable = PageRequest.of(currentPage,pageSize);
+            Page<Coupon> page = couponRepository.findAll(pageable);
+            return page.getContent();
+        }
+    }
+
+    /**
+     * 新增优惠券信息
+     * @param coupon
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public Coupon create(Coupon coupon) throws ErrorInfo {
+        if (coupon == null)
+            throw new ErrorInfo("E_201807300855_01_010","优惠券信息为空",null);
+        return couponRepository.save(coupon);
+    }
+}

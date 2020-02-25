@@ -1,0 +1,236 @@
+<template>
+  <div class="st-personal-center-container-div">
+    <img class="st-personal-center-usericon" :src="userInfo.headImage"/>
+    <span class="st-personal-center-username">{{userInfo.wechatName}}</span>
+
+    <div v-if="!authenticate" class="st-personal-center-authenticate-tip" >
+      认证可获得大量学点金币奖励哦,<span @click="showAuthenticateDialog = true">去认证</span>
+    </div>
+    <div v-if="authenticate" class="st-personal-center-authenticated-tip">
+      <img class="st-personal-center-authenticate-icon" src="/static/images/personalCenter/Certified_icon.png"/>
+      <span>&nbsp;&nbsp;已认证</span>
+    </div>
+
+
+    <div class="st-personal-center-level-div">
+      <span>等级{{userInfo.externalLevel}}</span>
+      <div class="st-personal-center-level-outer">
+        <div class="st-personal-center-level-inner" :style="'width:'+progress+'%'"></div>
+      </div>
+      <span class="st-personal-center-level-span">{{userInfo.experience}}/{{userInfo.upgradeExperience}}</span>
+    </div>
+
+    <div class="st-personal-center-infolist">
+      <ul>
+        <li>
+          <div class="st-personal-center-infoList-green">性别：{{userSex}}</div>
+          <div class="st-personal-center-infoList-blue">来自：{{userInfo.city}}</div>
+        </li>
+        <li>
+          <div class="st-personal-center-infoList-green">绩点：{{userInfo.gradePoint}}</div>
+          <div class="st-personal-center-infoList-blue">总场次：{{userInfo.matchSumCount}}</div>
+        </li>
+        <li>
+          <div class="st-personal-center-infoList-green">胜率：{{winRate}}%</div>
+          <div class="st-personal-center-infoList-blue">胜场：{{userInfo.matchWinCount}}</div>
+        </li>
+        <li>
+          <div class="st-personal-center-infoList-green">学点：{{userInfo.learningPoint}}</div>
+          <div class="st-personal-center-infoList-blue">金币：{{userInfo.coin}}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="st-personal-center-record-div">
+      <a href="../exchange-record/main">兑换记录</a>
+      <a href="../topup-record/main">充值记录</a>
+    </div>
+
+    <authenticateDialog v-if="showAuthenticateDialog" @listenAuthenticateSuccess="authenticateSuccess" @listenCloseDialog="showAuthenticateDialog = false"></authenticateDialog>
+  </div>
+</template>
+
+<script>
+import authenticateDialog from "../../components/authenticate-dialog";
+export default {
+  components: {
+    authenticateDialog
+  },
+  data() {
+    return {
+      showAuthenticateDialog: false, //是否显示认证弹窗
+      userInfo: {},
+      authenticate: false //是否认证
+    };
+  },
+  onLoad() {
+    this.userInfo = this.$store.state.userInfo;
+    console.log(JSON.stringify(this.userInfo));
+    this.authenticate = this.userInfo.telephone ? true : false;
+  },
+  computed: {
+    progress(){
+      return this.userInfo.experience/this.userInfo.upgradeExperience * 100;
+    },
+    winRate() {
+      if (parseInt(this.userInfo.matchSumCount) != 0) {
+        return (
+          (parseInt(this.userInfo.matchWinCount) /
+          parseInt(this.userInfo.matchSumCount) *
+          100).toFixed(1)
+        );
+      } else {
+        return 0;
+      }
+    },
+    userSex() {
+      switch (parseInt(this.userInfo.sex)) {
+        case 1:
+          return "男";
+        case 2:
+          return "女";
+      }
+    }
+  },
+  methods: {
+    authenticateSuccess() {
+      this.showAuthenticateDialog = false;
+      setTimeout(() => {
+        this.authenticate = true;
+      }, 500);
+    }
+  }
+};
+</script>
+
+<style>
+.st-personal-center-container-div {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(95, 55, 219);
+}
+.st-personal-center-usericon {
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  height: 63px;
+  width: 63px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: rgb(181, 181, 181);
+}
+.st-personal-center-username {
+  position: absolute;
+  top: 18%;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+.st-personal-center-authenticate-tip {
+  position: absolute;
+  top: 23%;
+  width: 100%;
+  text-align: center;
+  font-size: 9px;
+  color: #fff;
+}
+.st-personal-center-authenticated-tip {
+  position: absolute;
+  top: 23%;
+  width: 100%;
+  text-align: center;
+  font-size: 9px;
+  color: rgb(239, 199, 41);
+  animation: rotateIn 1s;
+}
+.st-personal-center-authenticate-icon {
+  top: 1px;
+  width: 7px;
+  height: 9px;
+}
+.st-personal-center-level-div {
+  position: absolute;
+  top: 28%;
+  width: 70%;
+  left: 15%;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+.st-personal-center-level-span {
+  position: absolute;
+  left: 65%;
+  font-size: 12px;
+  font-weight: normal;
+}
+.st-personal-center-level-outer {
+  position: absolute;
+  left: 20%;
+  height: 80%;
+  top: 5%;
+  width: 40%;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+.st-personal-center-level-inner {
+  position: absolute;
+  height: 100%;
+  background: rgb(121, 181, 61);
+  border-radius: 10px;
+}
+.st-personal-center-infolist {
+  position: absolute;
+  top: 35%;
+  height: 30%;
+  left: 15%;
+  width: 70%;
+}
+.st-personal-center-infolist ul {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.st-personal-center-infolist ul li {
+  position: relative;
+  height: 16%;
+  margin-bottom: 10%;
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+}
+.st-personal-center-infoList-green,
+.st-personal-center-infoList-blue {
+  position: absolute;
+  font-weight: bold;
+  width: 40%;
+  float: left;
+  font-size: 12px;
+  top: 15%;
+}
+.st-personal-center-infoList-green {
+  left: 10%;
+  color: rgb(121, 181, 61);
+}
+.st-personal-center-infoList-blue {
+  left: 60%;
+  color: rgb(61, 138, 218);
+}
+.st-personal-center-record-div {
+  position: absolute;
+  top: 80%;
+  width: 70%;
+  left: 15%;
+  display: flex;
+}
+.st-personal-center-record-div a {
+  width: 50%;
+  float: left;
+  font-size: 17px;
+  color: rgb(158, 200, 252);
+  text-align: center;
+}
+</style>

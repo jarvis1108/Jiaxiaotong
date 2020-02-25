@@ -1,0 +1,39 @@
+package com.dxtwangxiao.strongestsuperscholar.config;
+
+import com.dxtwangxiao.strongestsuperscholar.web.interceptor.CorsInterceptor;
+import com.dxtwangxiao.strongestsuperscholar.web.interceptor.JwtAuthInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+/**
+ * Web相关配置
+ * <p>
+ * Created By Devin
+ * 2018-10-08 上午 12:30
+ */
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private JwtConfiguration jwtConfiguration;
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry){
+        registry.addViewController("/hello").setViewName("index");
+    }
+
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        //String[] excludes = new String[]{"/static/**","/templates/**"};
+
+        registry.addInterceptor(new CorsInterceptor()).addPathPatterns("/**");
+
+        // 测试接口时可关闭权限验证
+        if(jwtConfiguration.isAuthOpen())
+            registry.addInterceptor(new JwtAuthInterceptor()).addPathPatterns("/**");
+    }
+}

@@ -1,0 +1,263 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.question;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.CourseInfoService;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.GradeInfoService;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.KnowledgeService;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.SubjectService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.*;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.*;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.QuestionMultipleChoiceForLibDTO;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.QuestionRecitationForLibDTO;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\8\16 0016
+ */
+@RestController
+@RequestMapping("/qst/questionLib")
+public class PrivateQuestionLibController {
+
+
+    @Autowired
+    private QuestionLibService questionLibService;//私有题库
+    @Autowired
+    private QuestionForLibService questionForLibService;//私有题库题目表
+    @Autowired
+    private QuestionRecitationForLibService questionRecitationForLibService;//私有题库背诵题
+    @Autowired
+    private QuestionMultipleChoiceForLibService questionMultipleChoiceForLibService;//私有题库多选题
+    @Autowired
+    private QuestionTypeService questionTypeService;
+    @Autowired
+    private QuestionService questionService;
+    @Autowired
+    private SubjectService subjectService;
+    @Autowired
+    private GradeInfoService gradeInfoService;
+    @Autowired
+    private KnowledgeService knowledgeService;
+    @Autowired
+    private CourseInfoService courseInfoService;
+
+    @PostMapping("/uploadQuestionMultipleChoice")
+    public ResponseInfo uploadQuestionMultipleChoice(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParam = requestInfo.getReqParam();
+        QuestionMultipleChoiceForLibDTO reqQuestion = JSON.parseObject(reqParam.toJSONString(), QuestionMultipleChoiceForLibDTO.class);
+
+        if (reqQuestion.getUserId() == null) {
+            // 必须传入题目提供者ID
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+        String questionForLibId = UUIDUtil.getUUID();
+        String questionLibId = UUIDUtil.getUUID();
+       // String knowledgeId = UUIDUtil.getUUID();
+       // String subjectId = subjectService.getSubjectBySubjectName(reqQuestion.getGradeName() + reqQuestion.getSubjectName()).getSubjectId();
+        String questionId = UUIDUtil.getUUID();
+        String questionTypeId = questionTypeService.getQuestionTypeByQuestionTypeName(reqQuestion.getQuestionTypeName()).getQuestionTypeId();
+
+        QuestionLib questionLibDefault=questionLibService.getQuestionLibByUserIdAndIsDefaultQuestionLib(reqQuestion.getUserId(),Byte.valueOf("1"));
+        if(questionLibDefault==null){
+            //添加题库
+            QuestionLib questionLib=new QuestionLib();
+            questionLib.setQuestionLibId(questionLibId);
+            questionLib.setIsDefaultQuestionLib(Byte.valueOf("1"));
+            questionLib.setUserId(reqQuestion.getUserId());
+            questionLibService.create(questionLib);
+        }
+
+        //添加到私有题库题目表中
+        QuestionForLib questionForLib = new QuestionForLib();
+        //questionForLib.setKnowledgeId(knowledgeId);
+        questionForLib.setProvider(reqQuestion.getUserId());
+        questionForLib.setQuestionLibId(questionLibId);
+        questionForLib.setQuestionLibNo(questionLibId);
+        questionForLib.setQuestionForLibId(questionForLibId);
+        questionForLib.setQuestionForLibNo(questionForLibId);
+        questionForLib.setFromQuestionId(questionId);
+
+        questionForLib.setQuestionTypeID(questionTypeId);
+        questionForLib.setQuestion(reqQuestion.getQuestion());
+        questionForLib.setRecommendTime(reqQuestion.getRecommendTime());
+        questionForLib.setIsValid(Byte.valueOf("1"));
+        questionForLibService.create(questionForLib);
+
+        //添加到私有题库多选题表中
+        QuestionMultipleChoiceForLib questionMultipleChoiceForLib = new QuestionMultipleChoiceForLib();
+        questionMultipleChoiceForLib.setChoiceA(reqQuestion.getChoiceA());
+        questionMultipleChoiceForLib.setChoiceB(reqQuestion.getChoiceB());
+        questionMultipleChoiceForLib.setChoiceC(reqQuestion.getChoiceC());
+        questionMultipleChoiceForLib.setChoiceD(reqQuestion.getChoiceD());
+        questionMultipleChoiceForLib.setQuestionForLibId(questionForLibId);
+        questionMultipleChoiceForLib.setQuestionForLibNo(questionForLibId);
+        questionMultipleChoiceForLib.setQuestionLibId(questionLibId);
+        questionMultipleChoiceForLib.setQuestionLibNo(questionLibId);
+        questionMultipleChoiceForLib.setFromQuestionId(questionLibId);//修改数据库结构后不需要
+        questionMultipleChoiceForLib.setAnswer(reqQuestion.getAnswer());
+        questionMultipleChoiceForLib.setIsValid(Byte.valueOf("1"));
+        questionMultipleChoiceForLibService.create(questionMultipleChoiceForLib);
+
+//        //添加到知识点表
+//        Knowledge knowledge = new Knowledge();
+//        knowledge.setKnowledgeId(knowledgeId);
+//        knowledge.setSubjectId(subjectId);
+//        knowledge.setCreateUser(reqQuestion.getUserId());
+//        knowledge.setIsValid(Byte.valueOf("1"));
+//        knowledgeService.create(knowledge);
+
+        return new ResponseInfo(requestInfo, "success");
+
+    }
+
+
+    @PostMapping("/uploadQuestionRecitation")
+    public ResponseInfo uploadQuestionRecitation(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParam = requestInfo.getReqParam();
+        QuestionRecitationForLibDTO reqQuestion = JSON.parseObject(reqParam.toJSONString(), QuestionRecitationForLibDTO.class);
+
+        if (reqQuestion.getUserId() == null) {
+              // 必须传入题目提供者ID
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+        String questionForLibId = UUIDUtil.getUUID();
+        String questionLibId = UUIDUtil.getUUID();
+       // String knowledgeId = UUIDUtil.getUUID();
+        // String subjectId = subjectService.getSubjectBySubjectName(reqQuestion.getGradeName() + reqQuestion.getSubjectName()).getSubjectId();
+        String questionTypeId = questionTypeService.getQuestionTypeByQuestionTypeName(reqQuestion.getQuestionTypeName()).getQuestionTypeId();
+
+        QuestionLib questionLibDefault=questionLibService.getQuestionLibByUserIdAndIsDefaultQuestionLib(reqQuestion.getUserId(),Byte.valueOf("1"));
+        if(questionLibDefault==null){
+            //添加题库
+            QuestionLib questionLib=new QuestionLib();
+            questionLib.setQuestionLibId(questionLibId);
+            questionLib.setIsDefaultQuestionLib(Byte.valueOf("1"));
+            questionLib.setUserId(reqQuestion.getUserId());
+            questionLibService.create(questionLib);
+        }
+
+
+        //添加到私有题库题目表中
+        QuestionForLib questionForLib = new QuestionForLib();
+        //questionForLib.setKnowledgeId(knowledgeId);
+        questionForLib.setProvider(reqQuestion.getUserId());
+        questionForLib.setQuestionLibId(questionLibId);
+        questionForLib.setQuestionLibNo(questionLibId);
+        questionForLib.setQuestionForLibId(questionForLibId);
+        questionForLib.setQuestionForLibNo(questionForLibId);
+
+        questionForLib.setQuestionTypeID(questionTypeId);
+        questionForLib.setQuestion(reqQuestion.getQuestion());
+        questionForLib.setRecommendTime(reqQuestion.getRecommendTime());
+        questionForLibService.create(questionForLib);
+
+        //添加到私有题库背诵题表中
+        QuestionRecitationForLib questionRecitationForLib = new QuestionRecitationForLib();
+        questionRecitationForLib.setQuestionForLibId(questionForLibId);
+        questionRecitationForLib.setQuestionForLibNo(questionForLibId);
+        questionRecitationForLib.setQuestionLibId(questionLibId);
+        questionRecitationForLib.setQuestionLibNo(questionLibId);
+        questionRecitationForLib.setFromQuestionId(questionLibId);//修改数据库结构后不需要
+        questionRecitationForLib.setAnswer(reqQuestion.getAnswer());
+        questionRecitationForLibService.create(questionRecitationForLib);
+
+        return new ResponseInfo(requestInfo, "success");
+
+    }
+
+    /**
+     *  获得我的题库
+     * @param userId
+     * @param request
+     * @return
+     * @throws ErrorInfo
+     */
+   private  String  questionLibId ;
+    @GetMapping("/getQuestionLib")
+    public ResponseInfo getQuestionLib(String userId,HttpServletRequest request)throws ErrorInfo{
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<QuestionLib> questionLibs=questionLibService.getQuestionLibByUserId(userId);
+
+        for(QuestionLib questionLib:questionLibs){
+
+            if((int)questionLib.getIsDefaultQuestionLib()==1){
+                questionLibId=questionLib.getQuestionLibId();
+            }
+        }
+        List<QuestionForLib> questionForLibs=questionForLibService.getQuestionForLibByQuestionLibId(questionLibId);
+        List<QuestionMultipleChoiceForLib> questionMultipleChoiceForLibs=new ArrayList<>();
+        List<QuestionRecitationForLib> questionRecitationForLibs=new ArrayList<>();
+        for(QuestionForLib questionForLib:questionForLibs){
+            if(questionForLib.getQuestionTypeID().equals("4")){
+                QuestionMultipleChoiceForLib questionMultipleChoiceForLib=questionMultipleChoiceForLibService.getQuestionMultipleChoiceForLibByQuestionForLibId(questionForLib.getQuestionForLibId());
+                questionMultipleChoiceForLibs.add(questionMultipleChoiceForLib);
+            }else{
+                QuestionRecitationForLib questionRecitationForLib=questionRecitationForLibService.getQuestionRecitationForLibByQuestionForLibId(questionForLib.getQuestionForLibId());
+                questionRecitationForLibs.add(questionRecitationForLib);
+            }
+        }
+        Map<String ,List> questionForLib=new HashMap<>();
+        questionForLib.put("questionMultipleChoiceForLib",questionMultipleChoiceForLibs);
+        questionForLib.put("questionRecitationForLib",questionRecitationForLibs);
+        return new ResponseInfo(requestInfo,questionForLib);
+    }
+
+
+    /**
+     *  获得搜索我的题库
+     * @param userId
+     * @param request
+     * @return
+     * @throws ErrorInfo
+     */
+    private  String  questionLibId1 ;
+    @GetMapping("/searchQuestionLib")
+    public ResponseInfo searchQuestionLib(String userId,String searchName,HttpServletRequest request)throws ErrorInfo{
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<QuestionLib> questionLibs=questionLibService.getQuestionLibByUserId(userId);
+
+        for(QuestionLib questionLib:questionLibs){
+
+            if((int)questionLib.getIsDefaultQuestionLib()==1){
+                questionLibId1=questionLib.getQuestionLibId();
+            }
+        }
+        List<QuestionForLib> questionForLibs=questionForLibService.getQuestionForLibByQuestionLibId(questionLibId1);
+        List<QuestionMultipleChoiceForLib> questionMultipleChoiceForLibs=new ArrayList<>();
+        List<QuestionRecitationForLib> questionRecitationForLibs=new ArrayList<>();
+        for(QuestionForLib questionForLib:questionForLibs){
+            if(questionForLib.getQuestion().contains(searchName)){
+            if(questionForLib.getQuestionTypeID().equals("4")){
+                QuestionMultipleChoiceForLib questionMultipleChoiceForLib=questionMultipleChoiceForLibService.getQuestionMultipleChoiceForLibByQuestionForLibId(questionForLib.getQuestionForLibId());
+                questionMultipleChoiceForLibs.add(questionMultipleChoiceForLib);
+            }else{
+                QuestionRecitationForLib questionRecitationForLib=questionRecitationForLibService.getQuestionRecitationForLibByQuestionForLibId(questionForLib.getQuestionForLibId());
+                questionRecitationForLibs.add(questionRecitationForLib);
+            }
+        }
+        }
+        Map<String ,List> questionForLib=new HashMap<>();
+        questionForLib.put("questionMultipleChoiceForLib",questionMultipleChoiceForLibs);
+        questionForLib.put("questionRecitationForLib",questionRecitationForLibs);
+
+
+        return new ResponseInfo(requestInfo,questionForLib);
+    }
+
+
+}

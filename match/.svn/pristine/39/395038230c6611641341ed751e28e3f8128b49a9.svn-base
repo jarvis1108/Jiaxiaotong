@@ -1,0 +1,103 @@
+package com.dxtwangxiao.strongestsuperscholar.web.util;
+
+import com.alibaba.fastjson.JSONObject;
+
+/**
+ * 类库应用示例及单元
+ */
+public class UtilAppExample {
+    /**
+     * 针对NetStreamUtil工具的应用示例
+     */
+    public void NetStreamUtilDemo() {
+        ExampleEntity objExampleEntity = new ExampleEntity();
+        objExampleEntity.setStrUserName("ZhangSan");
+        objExampleEntity.setnAge(9);
+        objExampleEntity.setStrSex("F");
+
+        String strResult = "";
+
+        //Object的Json序列化
+        strResult = NetStreamUtil.ObjectToJSONExpr(objExampleEntity);
+        System.out.printf("当前实例序列化后的对象为:%s", strResult);
+
+        //Json反序列化为JSON对象
+        JSONObject objJsonData = NetStreamUtil.JSONExprToJSONObject(strResult);
+
+        //Json对象序列化为字符串
+        strResult = NetStreamUtil.ObjectToJSONExpr(objJsonData);
+
+        //son反序列化为ExampleEntity对象
+        ExampleEntity objExampleTmp = (ExampleEntity) NetStreamUtil.JSONExprToObject(strResult, ExampleEntity.class);
+    }
+
+    /**
+     * 框架类库示例的应用程序
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        UtilAppExample objCurExample = new UtilAppExample();
+
+        if (true) {
+            objCurExample.NetStreamUtilDemo();
+        }
+    }
+
+    /**
+     * 示例涉及实体类
+     */
+    class ExampleEntity {
+        /**
+         * 姓名
+         */
+        private String strUserName;
+
+        /**
+         * 年纪
+         */
+        private int nAge;
+
+        /**
+         * 性别
+         */
+        private String strSex;
+
+        /**
+         * 备注
+         */
+        private String strRemarkg;
+
+        public String getStrUserName() {
+            return strUserName;
+        }
+
+        public void setStrUserName(String strUserName) {
+            this.strUserName = strUserName;
+        }
+
+        public int getnAge() {
+            return nAge;
+        }
+
+        public void setnAge(int nAge) {
+            this.nAge = nAge;
+        }
+
+        public String getStrSex() {
+            return strSex;
+        }
+
+        public void setStrSex(String strSex) {
+            this.strSex = strSex;
+        }
+
+        public String getStrRemarkg() {
+            return strRemarkg;
+        }
+
+        public void setStrRemarkg(String strRemarkg) {
+            this.strRemarkg = strRemarkg;
+        }
+    }
+}

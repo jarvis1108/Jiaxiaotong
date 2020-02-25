@@ -1,0 +1,43 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminPurview;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+
+/**
+ * 管理员角色设置
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:03
+ */
+public interface AdminPurviewRepository extends CrudRepository<AdminPurview, String> {
+    /**
+     * 查询所有管理员权限表
+     * @return
+     */
+    List<AdminPurview> findAll();
+
+    /**
+     * 分页查询所有管理员权限表
+     * @param pageable
+     * @return
+     */
+    Page<AdminPurview> findAll(Pageable pageable);
+
+    /**
+     * 根据管理员权限ID查询管理员权限表
+     * @param adminId
+     * @return
+     */
+    AdminPurview findAdminPurviewByAdminPurviewId(String adminId);
+
+    /**
+     *存储或更新管理员权限表
+     * @param adminPurview
+     * @return
+     */
+    AdminPurview save(AdminPurview adminPurview);
+}

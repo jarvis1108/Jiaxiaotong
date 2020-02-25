@@ -1,0 +1,102 @@
+package com.dxtwangxiao.strongestsuperscholar.module.community.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.community.dao.SpecialTrainingRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.community.entity.SpecialTraining;
+import com.dxtwangxiao.strongestsuperscholar.module.community.service.SpecialTrainingService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+@Service
+@Slf4j
+public class SpecialTrainingServiceImpl implements SpecialTrainingService {
+
+    @Autowired
+    private SpecialTrainingRepository specialTrainingRepository;
+
+    @Transactional
+    @Override
+    public SpecialTraining create(SpecialTraining specialTraining)throws ErrorInfo {
+        if(specialTraining==null) {
+            throw new ErrorInfo("E_201807300855_57_013", "特训营为空", null);
+        }
+
+        return specialTrainingRepository.save(specialTraining);
+    }
+
+    @Transactional
+    @Override
+    public List<SpecialTraining> findAll() {
+        return specialTrainingRepository.findAll();
+    }
+
+    @Transactional
+    @Override
+    public List<SpecialTraining> findAll(Integer currentPage, Integer pageSize) {
+        if(currentPage == null || pageSize == null){
+            return specialTrainingRepository.findAll();
+        }else{
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<SpecialTraining> specialTrainings = specialTrainingRepository.findAll(pageable);
+            return specialTrainings.getContent();
+        }
+    }
+
+    @Transactional
+    @Override
+    public SpecialTraining findById(String specialTrainingId) throws  ErrorInfo{
+        SpecialTraining specialTraining=specialTrainingRepository.findBySpecialTrainingId(specialTrainingId);
+        if(specialTraining==null){
+            throw new ErrorInfo("E_201807300855_57_013", "特训营为空", null);
+        }
+        return  specialTraining;
+    }
+
+    @Transactional
+    @Override
+    public SpecialTraining update(SpecialTraining specialTraining) throws  ErrorInfo{
+        if(specialTraining==null){
+            throw new ErrorInfo("E_201807300855_57_013", "特训营为空", null);
+        }
+        SpecialTraining specialTraining1=specialTrainingRepository.findBySpecialTrainingId(specialTraining.getSpecialTrainingId());
+        if(specialTraining1==null){
+            throw new ErrorInfo("E_201807300855_57_014", "特训营不存在", null);
+        }
+        UpdateUtil.copyProperties(specialTraining, specialTraining1);
+        return  specialTrainingRepository.save(specialTraining1);
+    }
+
+    @Transactional
+    @Override
+    public boolean deleteById(String specialTrainingId)throws ErrorInfo {
+        SpecialTraining specialTraining = specialTrainingRepository.findBySpecialTrainingId(specialTrainingId);
+        if (specialTraining== null) {
+            String currentTime = DateUtil.getCurrentTime();
+            throw new ErrorInfo("E_201807300855_57_014", "特训营不存在", null);
+        }
+        specialTraining.setIsValid(Byte.valueOf("0"));
+        specialTrainingRepository.save(specialTraining);
+        return true;
+    }
+    @Transactional
+    @Override
+    public List<SpecialTraining>  getSpecialTrainingUserInfo(String userId) throws ErrorInfo{
+        if(userId == null || "".equals(userId.trim())){
+            throw new ErrorInfo("E_201807300855_01_012", "输入用户Id为空", null);
+        }
+        List<SpecialTraining> ret = specialTrainingRepository.findByUserId(userId);
+        if(ret == null || ret.isEmpty()){
+            throw new ErrorInfo("E_201807300855_01_013", "未查询到用户", null);
+        }
+        return ret;
+    }
+}

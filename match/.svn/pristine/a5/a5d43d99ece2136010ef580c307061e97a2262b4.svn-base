@@ -1,0 +1,1158 @@
+﻿/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     2018/8/14 星期二 20:43:47                       */
+/*==============================================================*/
+
+
+drop table if exists MyTmpTable_123;
+
+drop table if exists MyTmpTable_124;
+
+drop table if exists MyTmpTable_125;
+
+drop table if exists MyTmpTable_126;
+
+drop table if exists MyTmpTable_127;
+
+drop table if exists Tmp_Tb_Question;
+
+drop table if exists hibernate_sequence;
+
+drop table if exists t_BSD_BookVerInfo;
+
+drop table if exists t_BSD_CourseInfo;
+
+drop table if exists t_BSD_GradeInfo;
+
+drop table if exists t_BSD_GradePhaseInfo;
+
+drop table if exists t_BSD_GradePhaseInfoRel;
+
+drop table if exists t_BSD_Knowledge;
+
+drop table if exists t_BSD_Subject;
+
+drop table if exists t_COM_CommunityRole;
+
+drop table if exists t_COM_SpecialTraining;
+
+drop table if exists t_MAL_Coupon;
+
+drop table if exists t_MAL_CouponDetail;
+
+drop table if exists t_MAL_OrderRecord;
+
+drop table if exists t_MAL_ProductInfo;
+
+drop table if exists t_MTH_LPConsumeRecord;
+
+drop table if exists t_MTH_MatchRecord;
+
+drop table if exists t_MTH_MatchRecordQuestion;
+
+drop table if exists t_MTH_MatchRecordUser;
+
+drop table if exists t_QST_Question;
+
+drop table if exists t_QST_QuestionForLib;
+
+drop table if exists t_QST_QuestionLib;
+
+drop table if exists t_QST_QuestionMultipleChoice;
+
+drop table if exists t_QST_QuestionMultipleChoiceForLib;
+
+drop table if exists t_QST_QuestionRecitation;
+
+drop table if exists t_QST_QuestionRecitationForLib;
+
+drop table if exists t_QST_QuestionType;
+
+drop table if exists t_SYS_Admin;
+
+drop table if exists t_SYS_AdminPurview;
+
+drop table if exists t_SYS_AdminRole;
+
+drop table if exists t_SYS_MatchSetting;
+
+drop table if exists t_SYS_QuestionSetting;
+
+drop table if exists t_SYS_SerialNo;
+
+drop table if exists t_SYS_User;
+
+drop table if exists t_SYS_UserCoinDetail;
+
+drop table if exists t_SYS_UserGPDetail;
+
+drop table if exists t_SYS_UserLPDetail;
+
+drop table if exists t_SYS_UserLoginRecord;
+
+drop table if exists t_SYS_UserRelInfo;
+
+drop table if exists t_SYS_UserSelectedCourse;
+
+/*==============================================================*/
+/* Table: MyTmpTable_123                                        */
+/*==============================================================*/
+create temporary table MyTmpTable_123
+(
+   F_A                  VARCHAR(36) not null,
+   F_B                  VARCHAR(20),
+   F_C                  VARCHAR(20),
+   primary key (F_A)
+)
+ENGINE = InnoDB  COMMENT = '示例临时表' ROW_FORMAT = Compact;
+
+/*==============================================================*/
+/* Table: MyTmpTable_124                                        */
+/*==============================================================*/
+create temporary table MyTmpTable_124
+(
+   F_A                  VARCHAR(36) not null,
+   F_B                  VARCHAR(20),
+   F_C                  VARCHAR(20),
+   primary key (F_A)
+)
+ENGINE = InnoDB  COMMENT = '示例临时表' ROW_FORMAT = Compact;
+
+/*==============================================================*/
+/* Table: MyTmpTable_125                                        */
+/*==============================================================*/
+create temporary table MyTmpTable_125
+(
+   F_A                  VARCHAR(36) not null,
+   F_B                  VARCHAR(20),
+   F_C                  VARCHAR(20),
+   primary key (F_A)
+)
+ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '示例临时表' ROW_FORMAT = Compact;
+
+/*==============================================================*/
+/* Table: MyTmpTable_126                                        */
+/*==============================================================*/
+create temporary table MyTmpTable_126
+(
+   F_A                  VARCHAR(36) not null,
+   F_B                  VARCHAR(20),
+   F_C                  VARCHAR(20),
+   primary key (F_A)
+)
+ENGINE = InnoDB  COMMENT = '示例临时表' ROW_FORMAT = Compact;
+
+/*==============================================================*/
+/* Table: MyTmpTable_127                                        */
+/*==============================================================*/
+create temporary table MyTmpTable_127
+(
+   F_A                  VARCHAR(36) not null,
+   F_B                  VARCHAR(20),
+   F_C                  VARCHAR(20),
+   primary key (F_A)
+)
+ENGINE = InnoDB  COMMENT = '示例临时表' ROW_FORMAT = Compact;
+
+/*==============================================================*/
+/* Table: Tmp_Tb_Question                                       */
+/*==============================================================*/
+create temporary table Tmp_Tb_Question
+(
+   QuestionID           varchar(36) not null default '',
+   InitID               varchar(36) not null,
+   InitNo               varchar(36) default NULL,
+   KnowledgeID          varchar(36) default NULL,
+   Question             text,
+   QuestionTxt          text,
+   ChoiceA              text,
+   ChoiceB              text,
+   ChoiceC              text,
+   ChoiceD              text,
+   Answer               text,
+   QuestionAnalyze      text,
+   Difficulty           float(3, 2) default NULL,
+   FromQuestionID       varchar(36) default NULL,
+   FromInitID           varchar(36) default NULL,
+   primary key (InitID, QuestionID)
+)
+ENGINE = InnoDB  ROW_FORMAT = Compact;
+
+/*==============================================================*/
+/* Table: hibernate_sequence                                    */
+/*==============================================================*/
+create table hibernate_sequence
+(
+   next_val             bigint(20) default NULL comment '下一值'
+)
+ENGINE = MyISAM  COMMENT = '序列号表' ROW_FORMAT = Fixed;
+
+alter table hibernate_sequence comment '序列号表';
+
+/*==============================================================*/
+/* Table: t_BSD_BookVerInfo                                     */
+/*==============================================================*/
+create table t_BSD_BookVerInfo
+(
+   BookVerID            varchar(36) not null comment '书本版本ID',
+   BookVerNo            varchar(36) default NULL comment '书本版本编码',
+   BookVerCode          varchar(36) default NULL comment '书本版本编号',
+   BookVerName          varchar(10) default NULL comment '书本版本名称',
+   BookVerShortName     varchar(64) default NULL comment '书本版本简称',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (BookVerID)
+)
+ENGINE = InnoDB  COMMENT = '书版本基本信息' ROW_FORMAT = Compact;
+
+alter table t_BSD_BookVerInfo comment '书版本基本信息';
+
+/*==============================================================*/
+/* Table: t_BSD_CourseInfo                                      */
+/*==============================================================*/
+create table t_BSD_CourseInfo
+(
+   CourseID             varchar(36) not null comment '课程ID',
+   CourseNo             varchar(36) default NULL comment '年级编码',
+   CourseCode           varchar(36) default NULL comment '年级编号',
+   CourseName           varchar(10) default NULL comment '年级名称',
+   CourseShortName      varchar(64) default NULL comment '年级简称',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (CourseID)
+)
+ENGINE = InnoDB  COMMENT = '课程基本信息表' ROW_FORMAT = Compact;
+
+alter table t_BSD_CourseInfo comment '课程基本信息表';
+
+/*==============================================================*/
+/* Table: t_BSD_GradeInfo                                       */
+/*==============================================================*/
+create table t_BSD_GradeInfo
+(
+   GradeID              varchar(36) not null comment '年级ID',
+   GradeNo              varchar(36) default NULL comment '年级编码',
+   GradeCode            varchar(36) default NULL comment '年级编号',
+   GradeName            varchar(10) default NULL comment '年级名称',
+   GradeShortName       varchar(64) default NULL comment '年级简称',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (GradeID)
+)
+ENGINE = InnoDB  COMMENT = '年级基本信息表' ROW_FORMAT = Compact;
+
+alter table t_BSD_GradeInfo comment '年级基本信息表';
+
+/*==============================================================*/
+/* Table: t_BSD_GradePhaseInfo                                  */
+/*==============================================================*/
+create table t_BSD_GradePhaseInfo
+(
+   GradePhaseID         varchar(36) not null comment '年级ID',
+   GradePhaseNo         varchar(36) default NULL comment '年级编码',
+   GradePhaseCode       varchar(36) default NULL comment '年级编号',
+   GradePhaseName       varchar(10) default NULL comment '年级名称',
+   GradePhaseShortName  varchar(64) default NULL comment '年级简称',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (GradePhaseID)
+)
+ENGINE = InnoDB  COMMENT = '年级阶段基本信息表' ROW_FORMAT = Compact;
+
+alter table t_BSD_GradePhaseInfo comment '年级阶段基本信息表';
+
+/*==============================================================*/
+/* Table: t_BSD_GradePhaseInfoRel                               */
+/*==============================================================*/
+create table t_BSD_GradePhaseInfoRel
+(
+   GradePhaseRelID      varchar(36) not null comment '科目阶段相关ID',
+   GradePhaseID         varchar(36) not null comment '阶段ID',
+   GradeID              varchar(36) default NULL comment '阶段编码',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (GradePhaseRelID)
+)
+ENGINE = InnoDB  COMMENT = '年级阶段相关信息' ROW_FORMAT = Compact;
+
+alter table t_BSD_GradePhaseInfoRel comment '年级阶段相关信息表';
+
+/*==============================================================*/
+/* Table: t_BSD_Knowledge                                       */
+/*==============================================================*/
+create table t_BSD_Knowledge
+(
+   KnowledgeID          varchar(36) not null comment '知识点ID',
+   KnowledgeParentID    varchar(36) default NULL comment '知识点父类ID',
+   SubjectID            varchar(36) default NULL comment '学科ID',
+   Content              varchar(255) default NULL comment '知识点内容',
+   TreeNodeNo           varchar(64) default NULL comment '树形编码',
+   NodeLevel            int(11) default NULL comment '级别，根节点是0',
+   IsLeaf               tinyint(4) default 0 comment '是否是叶子结点，1表示是，0表示不是，缺省是0',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   primary key (KnowledgeID)
+)
+ENGINE = InnoDB  COMMENT = '知识点' ROW_FORMAT = Compact;
+
+alter table t_BSD_Knowledge comment '知识点表';
+
+/*==============================================================*/
+/* Table: t_BSD_Subject                                         */
+/*==============================================================*/
+create table t_BSD_Subject
+(
+   SubjectID            varchar(36) not null comment '学科ID',
+   SubjectNo            varchar(36) default NULL comment '学科编码',
+   SubjectName          varchar(72) default NULL comment '学科名称',
+   SubjectShortName     varchar(36) default NULL comment '学科简称',
+   GradePhaseID         varchar(36) default NULL comment '年级阶段ID',
+   BookVerID            varchar(36) default NULL comment '教材版本',
+   GradeID              varchar(36) not null comment '年级ID',
+   CourseID             varchar(36) not null comment '课程ID',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   SubjectGrade         int(11) default NULL comment '科目所属年级',
+   SubjectGradeType     varchar(255) default NULL comment '科目年级类型',
+   SubjectType          varchar(255) default NULL comment '科目类型',
+   primary key (SubjectID)
+)
+ENGINE = InnoDB  COMMENT = '学科表' ROW_FORMAT = Compact;
+
+alter table t_BSD_Subject comment '科目表';
+
+/*==============================================================*/
+/* Table: t_COM_CommunityRole                                   */
+/*==============================================================*/
+create table t_COM_CommunityRole
+(
+   CommunityRoleID      varchar(36) not null comment '社区角色ID',
+   CommunityRoleName    varchar(255) default NULL comment '社区角色名',
+   Level                varchar(255) default NULL comment '社区角色级别',
+   Description          varchar(255) default NULL comment '社区角色名称',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (CommunityRoleID)
+)
+ENGINE = InnoDB  COMMENT = '社区角色表' ROW_FORMAT = Compact;
+
+alter table t_COM_CommunityRole comment '社区角色表';
+
+/*==============================================================*/
+/* Table: t_COM_SpecialTraining                                 */
+/*==============================================================*/
+create table t_COM_SpecialTraining
+(
+   SpecialTrainingID    varchar(36) not null comment '集训营ID',
+   SpecialTrainingName  varchar(255) default NULL comment '集训营名称',
+   UserID               varchar(36) default NULL comment '用户ID',
+   UserNo               varchar(36) default NULL comment '用户编码',
+   LastUserID           varchar(36) default NULL comment '最近更新用户',
+   CommunityRoleID      varchar(36) default NULL comment '社区角色ID',
+   TreeNodeCode         varchar(64) default NULL comment '树形编号',
+   IsLeafNode           tinyint(4) default NULL comment '是否是叶子结点，1表示是；0表示不是',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (SpecialTrainingID)
+)
+ENGINE = InnoDB  COMMENT = '集训营表' ROW_FORMAT = Compact;
+
+alter table t_COM_SpecialTraining comment '集训营表';
+
+/*==============================================================*/
+/* Table: t_MAL_Coupon                                          */
+/*==============================================================*/
+create table t_MAL_Coupon
+(
+   CouponID             varchar(36) not null comment '优惠卷ID',
+   CouponNo             varchar(36) default NULL comment '优惠券编码',
+   CouponType           tinyint(4) not null comment '优惠券类型，0：代现金；1：代金币',
+   Amount               int(11) default NULL comment '优惠券金额',
+   BeginTime            datetime comment '开始时间',
+   EndTime              datetime comment '结束时间',
+   PeriodAmount         int(11) default NULL comment '有效期，以秒为单位',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (CouponID)
+)
+ENGINE = InnoDB  COMMENT = '优惠券表' ROW_FORMAT = Compact;
+
+alter table t_MAL_Coupon comment '优惠券表';
+
+/*==============================================================*/
+/* Table: t_MAL_CouponDetail                                    */
+/*==============================================================*/
+create table t_MAL_CouponDetail
+(
+   CouponExchangeID     varchar(36) not null comment '优惠券兑换ID',
+   CouponExchangeNo     varchar(36) default NULL comment '优惠券兑换编码',
+   CouponID             varchar(36) default NULL comment '优惠卷ID',
+   CouponNo             varchar(36) default NULL comment '优惠券编码',
+   UserID               varchar(36) default NULL comment '用户ID',
+   BeginTime            datetime comment '开始时间',
+   EndTime              datetime comment '结束时间',
+   CouponStatus         varchar(16) default NULL comment '优惠券状态',
+   OrderRecordId        varchar(36) default NULL comment '订单ID',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (CouponExchangeID)
+)
+ENGINE = InnoDB  COMMENT = '优惠券明细表' ROW_FORMAT = Compact;
+
+alter table t_MAL_CouponDetail comment '优惠券明细表';
+
+/*==============================================================*/
+/* Table: t_MAL_OrderRecord                                     */
+/*==============================================================*/
+create table t_MAL_OrderRecord
+(
+   OrderRecordID        varchar(36) not null comment '订单ID',
+   OrderRecordNo        varchar(36) default NULL comment '订单编码',
+   UserID               varchar(36) default NULL comment '用户ID',
+   ProductID            varchar(36) default NULL comment '商品ID',
+   ProductNo            varchar(36) default NULL comment '商品 编码',
+   ProductAmount        int(11) default NULL comment '商品数量',
+   Unit                 varchar(64) default NULL comment '单位',
+   SumPrice             decimal(14, 2) default NULL comment '总价',
+   ActualSumPrice       decimal(14, 2) default NULL comment '实际金额',
+   PurchaseWay          tinyint(4) default NULL comment '购买方式，0：人民币；1：金币',
+   Status               varchar(16) default NULL comment '订单表',
+   Instruction          varchar(255) default NULL comment '订单介绍',
+   SubscribeTime        datetime comment '订阅时间',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (OrderRecordID)
+)
+ENGINE = InnoDB  COMMENT = '订单表' ROW_FORMAT = Compact;
+
+alter table t_MAL_OrderRecord comment '订单表';
+
+/*==============================================================*/
+/* Table: t_MAL_ProductInfo                                     */
+/*==============================================================*/
+create table t_MAL_ProductInfo
+(
+   ProductID            varchar(36) not null comment '商品ID',
+   ProductNo            varchar(36) default NULL comment '商品 编码',
+   ProductName          varchar(10) default NULL comment '产品名称',
+   Specification        varchar(64) default NULL comment '产品信息表',
+   UnitOfNumerator      varchar(16) default NULL comment '计量单位的分子部分（即总价单位）',
+   UnitOfDenominator    varchar(16) default NULL comment '计量单位的分母部分（即数量单位）',
+   ProductPrice         double(14, 2) default NULL comment '商品单价',
+   ProductSort          varchar(8) default NULL comment '商品类型，A1:现金买金币,A2:现金买学点-普通学点,A3:现金买学点-日卡,A4:现金买学点-月卡,A5:现金买学点-年卡,B1:金币兑学点,B2:金币兑实物（礼品）,B3:金币兑虚拟物品（指道具，如双倍金币卡）',
+   PaymentType          tinyint(4) default NULL comment '支付方式，0：人民币；1：金币；2：都支持',
+   BeginTime            datetime comment '开始时间',
+   EndTime              datetime comment '结束时间',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (ProductID)
+)
+ENGINE = InnoDB  COMMENT = '产品信息表' ROW_FORMAT = Compact;
+
+alter table t_MAL_ProductInfo comment '产品信息表';
+
+/*==============================================================*/
+/* Table: t_MTH_LPConsumeRecord                                 */
+/*==============================================================*/
+create table t_MTH_LPConsumeRecord
+(
+   LPConsumeRecordID    varchar(36) not null comment '学点消费记录ID',
+   MatchRecordQuestionID varchar(36) default NULL comment '战局题目ID',
+   MatchRecordID        varchar(36) default NULL comment '战局ID',
+   MatchRecordNo        varchar(36) default NULL comment '战局编码',
+   MatchRecordUserID    varchar(36) default NULL comment '战局用户ID',
+   QuestionID           varchar(36) default NULL comment '试题ID',
+   QuestionNo           varchar(36) default NULL comment '试题',
+   UserID               varchar(36) default NULL comment '用户ID',
+   UserNo               varchar(36) default NULL comment '用户编码',
+   BeginTime            datetime comment '开始时间',
+   EndTime              datetime comment '结束时间',
+   Amount               int(11) default NULL comment '消费金额，也就是学点消费数量',
+   IsTrue               tinyint(4) default NULL comment '是否正确，1表示正确，0表示错误',
+   CreateTime           datetime comment '创建时间',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   primary key (LPConsumeRecordID)
+)
+ENGINE = InnoDB  COMMENT = '学点消费记录' ROW_FORMAT = Compact;
+
+alter table t_MTH_LPConsumeRecord comment '学点消费记录';
+
+/*==============================================================*/
+/* Table: t_MTH_MatchRecord                                     */
+/*==============================================================*/
+create table t_MTH_MatchRecord
+(
+   MatchRecordID        varchar(36) not null comment '战局ID',
+   MatchRecordNo        varchar(36) default NULL comment '战局编码',
+   FightType            tinyint(4) default NULL comment '战局类型，0：匹配对战；1：好友对战；2：群PK；3：知识练兵场。',
+   BeginTime            datetime comment '开始时间',
+   EndTime              datetime comment '结束时间',
+   MatchPeriod          int(11) default NULL comment '对战时长，以秒为单位',
+   UserID               varchar(36) default NULL comment '用户ID',
+   FightStatus          tinyint(4) default 1 comment '战局状态，0：创建，1：坐下，2：准备，3：开始，4：游戏中，5：游戏结束。',
+   UserMaxCount         int(11) default NULL comment '用户最大数量',
+   UserFactCount        int(11) default NULL comment '用户实际数量',
+   MatchRule            varchar(255) default NULL comment '匹配规则',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (MatchRecordID)
+)
+ENGINE = InnoDB  COMMENT = '战局表' ROW_FORMAT = Compact;
+
+alter table t_MTH_MatchRecord comment '战局表';
+
+/*==============================================================*/
+/* Table: t_MTH_MatchRecordQuestion                             */
+/*==============================================================*/
+create table t_MTH_MatchRecordQuestion
+(
+   MatchRecordQuestionID varchar(36) not null comment '战局题目ID',
+   MatchRecordID        varchar(36) default NULL comment '战局ID',
+   MatchRecordNo        varchar(36) default NULL comment '战局编码',
+   QuestionIndex        int(11) default NULL comment '试题序号，从1开始',
+   QuestionID           varchar(36) default NULL comment '试题ID',
+   QuestionNo           varchar(36) default NULL comment '试题',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (MatchRecordQuestionID)
+)
+ENGINE = InnoDB  COMMENT = '战局试题表' ROW_FORMAT = Compact;
+
+alter table t_MTH_MatchRecordQuestion comment '战局试题表';
+
+/*==============================================================*/
+/* Table: t_MTH_MatchRecordUser                                 */
+/*==============================================================*/
+create table t_MTH_MatchRecordUser
+(
+   MatchRecordUserID    varchar(36) not null comment '战局用户ID',
+   MatchRecordID        varchar(36) default NULL comment '战局ID',
+   MatchRecordNo        varchar(36) default NULL comment '战局编码',
+   UserID               varchar(36) default NULL comment '用户ID',
+   UserNo               varchar(36) default NULL comment '用户编码',
+   OriginalGradePoint   int(11) default NULL comment '初始绩点',
+   AcquiredGradePoint   int(11) not null comment '用户本场比赛获取的绩点，自然数',
+   OriginalGradeCoin    int(11) default NULL comment '初始金币',
+   AcquiredGradeCoin    int(11) not null comment '用户本场比赛获取的金币，可正可负可零',
+   OriginalLearningPoint int(11) default NULL comment '初始学点',
+   AcquiredLearningPoint int(11) not null comment '用户本场比赛获取的学点，可正可负可零',
+   IsCreator            tinyint(4) default 1 comment '是否为创建者。1：创建者；0：非创建者',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (MatchRecordUserID)
+)
+ENGINE = InnoDB  COMMENT = '战局用户表' ROW_FORMAT = Compact;
+
+alter table t_MTH_MatchRecordUser comment '战局用户表';
+
+/*==============================================================*/
+/* Table: t_QST_Question                                        */
+/*==============================================================*/
+create table t_QST_Question
+(
+   QuestionID           varchar(36) not null comment '试题ID',
+   QuestionNo           varchar(36) default NULL comment '试题你',
+   QuestionCode         varchar(36) default NULL comment '题目编号',
+   QuestionTypeID       varchar(36) default NULL comment '试题类型ID',
+   KnowledgeID          varchar(36) default NULL comment '知识点ID',
+   Question             text comment '问题',
+   Provider             varchar(36) default NULL comment '提供者',
+   PersonInCharge       varchar(36) default NULL comment '负责人',
+   Reference            varchar(255) default NULL comment '引用出处',
+   QuestionLevel        int(11) default NULL comment '级别',
+   Difficulty           double default NULL comment '难度系数',
+   CoinWeight           double default NULL comment '金币权值',
+   GPWeight             double default NULL comment '绩点权值',
+   QuestionAnalyze      varchar(512) default NULL comment '解析',
+   RecommendTime        int(11) default NULL comment '推荐答题时间，以秒为单位',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (QuestionID)
+)
+ENGINE = InnoDB  COMMENT = '题目基本信息' ROW_FORMAT = Compact;
+
+alter table t_QST_Question comment '题目基本信息';
+
+/*==============================================================*/
+/* Table: t_QST_QuestionForLib                                  */
+/*==============================================================*/
+create table t_QST_QuestionForLib
+(
+   QuestionForLibID     varchar(36) not null comment '试题ID',
+   QuestionForLibNo     varchar(36) default NULL comment '试题',
+   QuestionForLibCode   varchar(36) default NULL comment '题目编号',
+   QuestionLibID        varchar(36) not null comment '私有题库ID',
+   QuestionLibNo        varchar(36) default NULL comment '题库编码',
+   IsPublic             varchar(36) default '0' comment '是否公开：1：公开，0：不公开，默认0',
+   QuestionTypeID       varchar(36) default NULL comment '试题类型ID',
+   KnowledgeID          varchar(36) default NULL comment '知识点ID',
+   Question             varchar(255) default NULL comment '问题',
+   Provider             varchar(36) default NULL comment '提供者',
+   PersonInCharge       varchar(36) default NULL comment '负责人',
+   Reference            varchar(255) default NULL comment '引用出处',
+   QuestionLevel        int(11) default NULL comment '级别',
+   Difficulty           double default NULL comment '难度系数',
+   CoinWeight           double default NULL comment '金币权值',
+   GPWeight             double default NULL comment '绩点权值',
+   QuestionAnalyze      varchar(512) default NULL comment '解析',
+   RecommendTime        int(11) default NULL comment '推荐答题时间，以秒为单位',
+   FromQuestionID       varchar(36) default NULL comment '来自试题ID',
+   FromQuestionNo       varchar(36) default NULL comment '来自试题编码',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsFromQuestion       tinyint(4) default 0 comment '是否来自试题：1：来自试题，0：不是来自试题，默认0',
+   primary key (QuestionForLibID)
+)
+ENGINE = InnoDB  COMMENT = '题库题目表' ROW_FORMAT = Compact;
+
+alter table t_QST_QuestionForLib comment '题库题目表';
+
+/*==============================================================*/
+/* Table: t_QST_QuestionLib                                     */
+/*==============================================================*/
+create table t_QST_QuestionLib
+(
+   QuestionLibID        varchar(36) not null comment '私有题库ID',
+   QuestionLibNo        varchar(36) default NULL comment '题库编码',
+   QuestionLibCode      varchar(36) default NULL comment '题库编号',
+   UserID               varchar(36) default NULL comment '所属用户ID',
+   IsDefaultQustionLib  tinyint(4) default NULL comment '是否默认题库:每个用户最多只能有一个默认题库，1：是默认题库，否则：不是默认题库，默认0',
+   IsPublic             varchar(36) default '0' comment '是否公开：1：公开，0：不公开，默认0',
+   QuestionLibDes       varchar(100) default NULL comment '题库名称',
+   QuestionLibTitle     varchar(100) default NULL comment '题库标题',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近修改时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (QuestionLibID)
+)
+ENGINE = InnoDB  COMMENT = '题库表' ROW_FORMAT = Compact;
+
+alter table t_QST_QuestionLib comment '题库表';
+
+/*==============================================================*/
+/* Table: t_QST_QuestionMultipleChoice                          */
+/*==============================================================*/
+create table t_QST_QuestionMultipleChoice
+(
+   QuestionID           varchar(36) not null comment '试题ID',
+   QuestionNo           varchar(36) default NULL comment '试题你',
+   ChoiceA              varchar(255) default NULL comment '选项A',
+   ChoiceB              varchar(255) default NULL comment '选项B',
+   ChoiceC              varchar(255) default NULL comment '选项C',
+   ChoiceD              varchar(255) default NULL comment '选项D',
+   Answer               tinyint(4) default NULL comment '答案：0:A; 1B; 2:C; 3:D',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   primary key (QuestionID)
+)
+ENGINE = InnoDB  COMMENT = '题目选择题表' ROW_FORMAT = Compact;
+
+alter table t_QST_QuestionMultipleChoice comment '题目选择题表';
+
+/*==============================================================*/
+/* Table: t_QST_QuestionMultipleChoiceForLib                    */
+/*==============================================================*/
+create table t_QST_QuestionMultipleChoiceForLib
+(
+   QuestionForLibID     varchar(36) not null comment '试题ID',
+   QuestionForLibNo     varchar(36) default NULL comment '试题',
+   QuestionLibID        varchar(36) not null comment '私有题库ID',
+   QuestionLibNo        varchar(36) default NULL comment '题库编码',
+   FromQuestionID       varchar(36) not null comment '来自试题ID',
+   FromQuestionNo       varchar(36) default NULL comment '来自试题编码',
+   ChoiceA              varchar(255) default NULL comment '选项A',
+   ChoiceB              varchar(255) default NULL comment '选项B',
+   ChoiceC              varchar(255) default NULL comment '选项C',
+   ChoiceD              varchar(255) default NULL comment '选项D',
+   Answer               tinyint(4) default NULL comment '答案：0:A; 1B; 2:C; 3:D',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   primary key (QuestionForLibID)
+)
+ENGINE = InnoDB  COMMENT = '题目库选择题题目表' ROW_FORMAT = Compact;
+
+alter table t_QST_QuestionMultipleChoiceForLib comment '题目库选择题题目表';
+
+/*==============================================================*/
+/* Table: t_QST_QuestionRecitation                              */
+/*==============================================================*/
+create table t_QST_QuestionRecitation
+(
+   QuestionID           varchar(36) not null comment '试题ID',
+   QuestionNo           varchar(36) default NULL comment '试题你',
+   Answer               varchar(255) default NULL comment '基本计量单位',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   primary key (QuestionID)
+)
+ENGINE = InnoDB  COMMENT = '题目背诵表' ROW_FORMAT = Compact;
+
+alter table t_QST_QuestionRecitation comment '题目背诵表';
+
+/*==============================================================*/
+/* Table: t_QST_QuestionRecitationForLib                        */
+/*==============================================================*/
+create table t_QST_QuestionRecitationForLib
+(
+   QuestionForLibID     varchar(36) not null comment '试题ID',
+   QuestionForLibNo     varchar(36) default NULL comment '试题',
+   QuestionLibID        varchar(36) not null comment '私有题库ID',
+   QuestionLibNo        varchar(36) default NULL comment '题库编码',
+   FromQuestionID       varchar(36) not null comment '来自试题ID',
+   FromQuestionNo       varchar(36) default NULL comment '来自试题编码',
+   Answer               varchar(255) default NULL comment '基本计量单位',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   primary key (QuestionForLibID)
+)
+ENGINE = InnoDB  COMMENT = '题库题目背诵表' ROW_FORMAT = Compact;
+
+alter table t_QST_QuestionRecitationForLib comment '题库题目背诵表';
+
+/*==============================================================*/
+/* Table: t_QST_QuestionType                                    */
+/*==============================================================*/
+create table t_QST_QuestionType
+(
+   QuestionTypeID       varchar(36) not null comment '试题类型ID',
+   QusetionTypeID       varchar(36) not null comment '试题类型ID',
+   QuestionTypeNo       varchar(36) default NULL comment '题目类型编码',
+   QuestionTypeName     varchar(255) default NULL comment '题目类型名称',
+   QusetionTypeName     varchar(255) default NULL comment '名称',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (QuestionTypeID, QusetionTypeID)
+)
+ENGINE = InnoDB  COMMENT = '题目类型表' ROW_FORMAT = Compact;
+
+alter table t_QST_QuestionType comment '题目类型表';
+
+/*==============================================================*/
+/* Table: t_SYS_Admin                                           */
+/*==============================================================*/
+create table t_SYS_Admin
+(
+   AdminID              varchar(36) not null comment '管理员ID',
+   AdminNo              varchar(36) default NULL comment '管理员编码',
+   AdminName            varchar(255) default NULL comment '管理员名',
+   Account              varchar(255) default NULL comment '帐户',
+   AdminPsw             varchar(255) default NULL comment '密码',
+   UserLevel            tinyint(4) default 1 comment '用户级别：0：超级管理员，1：一般管理员，2：业务员，3：题库贡献者',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，0表示无效，1表示有效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (AdminID)
+)
+ENGINE = InnoDB  COMMENT = '管理员表' ROW_FORMAT = Compact;
+
+alter table t_SYS_Admin comment '管理员表';
+
+/*==============================================================*/
+/* Table: t_SYS_AdminPurview                                    */
+/*==============================================================*/
+create table t_SYS_AdminPurview
+(
+   AdminPurviewID       varchar(36) not null comment '管理员角色名',
+   AdminID              varchar(36) default NULL comment '管理员ID',
+   AdminNo              varchar(36) default NULL comment '管理员编码',
+   AdminRoleID          varchar(36) default NULL comment '管理员角色ID',
+   AdminRoleNo          varchar(36) default NULL comment '管理员角色编码',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (AdminPurviewID)
+)
+ENGINE = InnoDB  COMMENT = '管理员权限表' ROW_FORMAT = Compact;
+
+alter table t_SYS_AdminPurview comment '管理员权限表';
+
+/*==============================================================*/
+/* Table: t_SYS_AdminRole                                       */
+/*==============================================================*/
+create table t_SYS_AdminRole
+(
+   AdminRoleID          varchar(36) not null comment '管理员角色ID',
+   AdminRoleNo          varchar(36) default NULL comment '管理员角色编码',
+   AdminRoleName        varchar(255) default NULL comment '答案 ',
+   PurviewCode          varchar(255) default NULL comment '权限编码',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (AdminRoleID)
+)
+ENGINE = InnoDB  COMMENT = '管理员角色表' ROW_FORMAT = Compact;
+
+alter table t_SYS_AdminRole comment '管理员角色表';
+
+/*==============================================================*/
+/* Table: t_SYS_MatchSetting                                    */
+/*==============================================================*/
+create table t_SYS_MatchSetting
+(
+   MatchSettingID       varchar(36) not null comment '匹配设置ID',
+   MaxMatchCount        int(11) default NULL comment '最长匹配次数',
+   MatchTime            int(11) default NULL comment '单次匹配时长，以秒为单位',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   IsValid              tinyint(4) default NULL comment '是否有效，1表示有效，0表示无效',
+   Remark               varchar(255) default NULL comment '备注说明',
+   primary key (MatchSettingID)
+)
+ENGINE = InnoDB  COMMENT = '匹配设置表' ROW_FORMAT = Compact;
+
+alter table t_SYS_MatchSetting comment '匹配设置表';
+
+/*==============================================================*/
+/* Table: t_SYS_QuestionSetting                                 */
+/*==============================================================*/
+create table t_SYS_QuestionSetting
+(
+   QuestionSettingID    varchar(36) not null comment '题目设置ID',
+   MatchType            varchar(8) default NULL comment '匹配类型',
+   QuestiontTypeID      varchar(36) default NULL comment '试题类型ID',
+   QuestionNumber       int(11) default NULL comment '试题数量',
+   QuestionTime         int(11) default NULL comment '答题时间，以秒为单位',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，0表示无效，1表示有效',
+   QuestionTypeID       varchar(255) default NULL comment '试题类型ID',
+   primary key (QuestionSettingID)
+)
+ENGINE = InnoDB  COMMENT = '试题题目表' ROW_FORMAT = Compact;
+
+alter table t_SYS_QuestionSetting comment '试题题目表';
+
+/*==============================================================*/
+/* Table: t_SYS_SerialNo                                        */
+/*==============================================================*/
+create table t_SYS_SerialNo
+(
+   Id                   varchar(8) not null comment '流水码编码',
+   ProgramRefNo         varchar(8) default NULL comment '程序引用编码',
+   Prefix               varchar(4) default NULL comment '前缀',
+   YearFlag             varchar(4) default NULL comment '年标志',
+   MonthFlag            varchar(2) default NULL comment '小时标志',
+   DayFlag              varchar(2) default NULL comment '日期的标志',
+   HourFlag             varchar(2) default NULL comment '小时标志你',
+   MinuteFlag           varchar(2) default NULL comment '分钟标志',
+   SecondFlag           varchar(2) default NULL comment '秒标志',
+   CurrentPosition      int(4) not null default 0 comment '当前位置',
+   LengthOfSerialNumber int(4) not null comment '流水号的长度',
+   StepLength           int(4) not null comment '步长',
+   Direction            tinyint(4) default 1 comment '方向 （1 为正向，0为反方向）',
+   IsEnableLoop         tinyint(4) default 0 comment '是否支持循环 （1支持循环  0不支持循环）',
+   LastTimePart         varchar(45) default NULL comment '最近更新时间',
+   Suffix               varchar(45) default NULL comment '后缀',
+   LastUpdateTime       timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   primary key (Id),
+   unique key ProgramRefNo_UNIQUE (ProgramRefNo)
+)
+ENGINE = InnoDB  COMMENT = '流水码表' ROW_FORMAT = Compact;
+
+alter table t_SYS_SerialNo comment '流水码表';
+
+/*==============================================================*/
+/* Table: t_SYS_User                                            */
+/*==============================================================*/
+create table t_SYS_User
+(
+   UserID               varchar(36) not null comment '用户ID',
+   UserNo               varchar(36) default NULL comment '用户编码',
+   UserName             varchar(10) default NULL comment '用户名',
+   Sex                  char(1) default NULL comment '性别',
+   Openid               varchar(255) default NULL comment 'OpenID',
+   WechatName           varchar(255) default NULL comment '微信呢称',
+   Telephone            varchar(11) default NULL comment '电话',
+   HeadImage            varchar(255) default NULL comment '用户头像',
+   OtherInfo            varchar(255) default NULL comment '其它信息',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，0表示无效，1表示有效',
+   primary key (UserID)
+)
+ENGINE = InnoDB  COMMENT = '用户信息表' ROW_FORMAT = Compact;
+
+alter table t_SYS_User comment '用户信息表';
+
+/*==============================================================*/
+/* Table: t_SYS_UserCoinDetail                                  */
+/*==============================================================*/
+create table t_SYS_UserCoinDetail
+(
+   UserCoinDetailID     varchar(36) not null comment '用户金币明细ID',
+   UserCoinDetailNo     varchar(36) default NULL comment '用户金币明细编码',
+   UserID               varchar(36) default NULL comment '用户ID',
+   UserNo               varchar(36) default NULL comment '用户编码',
+   OccurTime            datetime comment '业务发生时间',
+   OriginalAmount       int(11) default NULL comment '初始金币数量',
+   AcquiredAmount       int(11) default NULL comment '获取金币数量',
+   LossAmount           int(11) default NULL comment '损失金币数量',
+   CurrentAmount        int(11) default NULL comment '当前金币数量',
+   ReasonType           varchar(8) default NULL comment '原因类型',
+   MatchRecordID        varchar(36) default NULL comment '战局ID',
+   MatchRecordNo        varchar(36) default NULL comment '战局编码',
+   OrderRecordID        varchar(36) default NULL comment '订单ID',
+   OrderRecordNo        varchar(36) default NULL comment '订单编码',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，0表示无效，1表示有效',
+   primary key (UserCoinDetailID)
+)
+ENGINE = InnoDB  COMMENT = '用户金币明细表' ROW_FORMAT = Compact;
+
+alter table t_SYS_UserCoinDetail comment '用户金币明细表';
+
+/*==============================================================*/
+/* Table: t_SYS_UserGPDetail                                    */
+/*==============================================================*/
+create table t_SYS_UserGPDetail
+(
+   UserGPDetailID       varchar(36) not null comment '用户绩点明细ID',
+   UserGPDetailNo       varchar(36) default NULL comment '用户绩点明细编码',
+   UserID               varchar(36) default NULL comment '用户ID',
+   UserNo               varchar(36) default NULL comment '用户编码',
+   OccurTime            datetime comment '业务发生时间',
+   OriginalAmount       int(11) default NULL comment '初始绩点数量',
+   AcquiredAmount       int(11) default NULL comment '获取绩点数量',
+   LossAmount           int(11) default NULL comment '损失绩点数量',
+   CurrentAmount        int(11) default NULL comment '当前绩点数量',
+   ReasonType           varchar(8) default NULL comment '原因类型',
+   MatchRecordID        varchar(36) default NULL comment '战局ID',
+   MatchRecordNo        varchar(36) default NULL comment '战局编码',
+   OrderRecordID        varchar(36) default NULL comment '订单ID',
+   OrderRecordNo        varchar(36) default NULL comment '订单编码',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，0表示无效，1表示有效',
+   primary key (UserGPDetailID)
+)
+ENGINE = InnoDB  COMMENT = '用户绩点明细表' ROW_FORMAT = Compact;
+
+alter table t_SYS_UserGPDetail comment '用户绩点明细表';
+
+/*==============================================================*/
+/* Table: t_SYS_UserLPDetail                                    */
+/*==============================================================*/
+create table t_SYS_UserLPDetail
+(
+   UserLPDetailID       varchar(36) not null comment '用户学点明细ID',
+   UserLPDetailNo       varchar(36) default NULL comment '用户学点明细编码',
+   UserID               varchar(36) default NULL comment '用户ID',
+   UserNo               varchar(36) default NULL comment '用户编码',
+   OccurTime            datetime comment '业务发生时间',
+   OriginalAmount       int(11) default NULL comment '初始学点数量',
+   AcquiredAmount       int(11) default NULL comment '获取学点数量',
+   LossAmount           int(11) default NULL comment '损失学点数量',
+   CurrentAmount        int(11) default NULL comment '当前学点数量',
+   ReasonType           varchar(8) default NULL comment '原因类型',
+   MatchRecordID        varchar(36) default NULL comment '战局ID',
+   MatchRecordNo        varchar(36) default NULL comment '战局编码',
+   OrderRecordID        varchar(36) default NULL comment '订单ID',
+   OrderRecordNo        varchar(36) default NULL comment '订单编码',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，0表示无效，1表示有效',
+   primary key (UserLPDetailID)
+)
+ENGINE = InnoDB  COMMENT = '用户学点明细表' ROW_FORMAT = Compact;
+
+alter table t_SYS_UserLPDetail comment '用户学点明细表';
+
+/*==============================================================*/
+/* Table: t_SYS_UserLoginRecord                                 */
+/*==============================================================*/
+create table t_SYS_UserLoginRecord
+(
+   UserLoginID          varchar(36) not null comment '用户登陆ID',
+   UserID               varchar(36) default NULL comment '用户ID',
+   UserNo               varchar(36) default NULL comment '用户编码',
+   LoginTime            datetime comment '登陆时间',
+   LogoutTime           datetime comment '注销时间',
+   Period               int(11) default NULL comment '登陆时长，以秒为单位',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，0表示无效，1表示有效',
+   primary key (UserLoginID)
+)
+ENGINE = InnoDB  COMMENT = '用户登陆记录表' ROW_FORMAT = Compact;
+
+alter table t_SYS_UserLoginRecord comment '用户登陆记录表';
+
+/*==============================================================*/
+/* Table: t_SYS_UserRelInfo                                     */
+/*==============================================================*/
+create table t_SYS_UserRelInfo
+(
+   UserID               varchar(36) not null comment '用户ID',
+   UserNo               varchar(36) default NULL comment '用户编码',
+   Coin                 int(11) default NULL comment '用户金币',
+   GradePoint           int(11) default NULL comment '用户绩点',
+   LearningPoint        int(11) default NULL comment '用户学点',
+   InternalLevel        int(11) default NULL comment '用户内部等级，系统内部评级',
+   MatchSumCount        int(11) default NULL comment '比赛总次数',
+   MatchWinCount        int(11) default NULL comment '比赛赢的次数',
+   MatchLoseCount       int(11) default NULL comment '比赛输的次数',
+   MatchDogFallCount    int(11) default NULL comment '比赛输平局的次数',
+   Experience           int(11) default NULL comment '用户经验值',
+   ExternalLevel        int(11) default NULL comment '用户外部等级，展示给客户端',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，0表示无效，1表示有效',
+   primary key (UserID)
+)
+ENGINE = InnoDB  COMMENT = '用户信息_相关信息部分（主要记录比赛及财富信息）' ROW_FORMAT = Compact;
+
+alter table t_SYS_UserRelInfo comment '用户信息_相关信息部分（主要记录比赛及财富信息）';
+
+/*==============================================================*/
+/* Table: t_SYS_UserSelectedCourse                              */
+/*==============================================================*/
+create table t_SYS_UserSelectedCourse
+(
+   UserSelectedID       varchar(36) not null comment '用户已选学科ID',
+   UserSelectedNo       varchar(36) default NULL comment '用户已选学科编码',
+   UserID               varchar(36) default NULL comment '用户ID',
+   UserNo               varchar(36) default NULL comment '用户编码',
+   CourseID             varchar(36) default NULL comment '课程ID',
+   SubjectID            varchar(36) default NULL comment '科目ID',
+   SelectedType         varchar(8) default NULL comment '选择类型,具体A:具体到课程,B:具体到学科',
+   CreateTime           datetime comment '创建时间',
+   CreateUser           varchar(36) default NULL comment '创建用户',
+   LastUpdTime          timestamp(0) not null default CURRENT_TIMESTAMP comment '最近更新时间',
+   LastUpdUser          varchar(36) default NULL comment '最近更新用户ID',
+   Remark               varchar(255) default NULL comment '备注说明',
+   IsValid              tinyint(4) default NULL comment '是否有效，0表示无效，1表示有效',
+   primary key (UserSelectedID)
+)
+ENGINE = InnoDB  COMMENT = '用户选择课程' ROW_FORMAT = Compact;
+
+alter table t_SYS_UserSelectedCourse comment '用户选择课程';
+

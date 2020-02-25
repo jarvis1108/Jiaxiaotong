@@ -1,0 +1,22 @@
+<template name="index$3dcfb9fc">
+  <view class="_div data-v-1e7c1fed st-container-scholarship-div">
+    <image class="_img data-v-1e7c1fed st-bg-img" src="/static/images/bg.png"></image>
+    <view class="_div data-v-1e7c1fed st-productList-div">
+      <view class="_div data-v-1e7c1fed st-flex-div">
+        <view class="_div data-v-1e7c1fed box" wx:key="item" key="{{item}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="item">
+          <view class="_div data-v-1e7c1fed st-goodname-div"> {{ item.scholarshipName }} </view>
+          <view wx:if="{{index%3 === 0}}" class="_div data-v-1e7c1fed st-goodPhoto-blue-div">
+            <image class="_img data-v-1e7c1fed st-goodPhoto-img" src="{{item.scholarshipImage}}" bindtap="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}"></image>
+          </view>
+          <view wx:elif="{{index%3 === 1}}" class="_div data-v-1e7c1fed st-goodPhoto-green-div">
+            <image class="_img data-v-1e7c1fed st-goodPhoto-img" src="{{item.scholarshipImage}}" bindtap="handleProxy" data-eventid="{{'1-'+index}}" data-comkey="{{$k}}"></image>
+          </view>
+          <view wx:else class="_div data-v-1e7c1fed st-goodPhoto-cyan-div">
+            <image class="_img data-v-1e7c1fed st-goodPhoto-img" src="{{item.scholarshipImage}}" bindtap="handleProxy" data-eventid="{{'2-'+index}}" data-comkey="{{$k}}"></image>
+          </view>
+          <view class="_div data-v-1e7c1fed st-goodNum-div"> {{ item.amount }}绩点 </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

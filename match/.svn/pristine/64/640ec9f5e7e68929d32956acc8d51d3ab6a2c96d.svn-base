@@ -1,0 +1,211 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.BackendAdmin.question;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.Question;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionMultipleChoice;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionRecitation;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionService;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.QuestionMultipleChoiceVO;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.QuestionRecitationVO;
+import com.dxtwangxiao.strongestsuperscholar.web.error.CommonError;
+import com.dxtwangxiao.strongestsuperscholar.web.error.StrongestScholarException;
+import com.dxtwangxiao.strongestsuperscholar.web.util.Constants;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResultData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
+import java.util.List;
+
+/**
+ * Created by 孙伟浩 on 2018/10/11.
+ */
+@RestController
+@RequestMapping("api/v1/bam/qst/questionRecitation")
+@Transactional
+public class QuestionRecitationController {
+
+    @Autowired
+    private QuestionService questionService;
+
+    /**
+      * 存储背诵题
+      *
+      * @param  requestInfo 请求信息
+      * @return
+      */
+    @PostMapping
+    public ResponseInfo save(@RequestBody RequestInfo requestInfo) throws Exception{
+        JSONObject reqParam = requestInfo.getReqParam();
+        JSONObject reqUserInfo = requestInfo.getReqUserInfo();
+        String questionId = UUIDUtil.getUUID();
+        String knowledgeId = reqParam.getString("knowledgeId");
+        String gradeId = reqParam.getString("gradeId");
+        String courseId = reqParam.getString("courseId");
+        String questionContent = reqParam.getString("question");
+        String provider = reqParam.getString("provider");
+        String personInCharge = reqParam.getString("personInCharge");
+        String reference = reqParam.getString("reference");
+        Integer questionLevel = reqParam.getInteger("questionLevel");
+        Double difficulty = reqParam.getDouble("difficulty");
+        Double coinWeight = reqParam.getDouble("coinWeight");
+        Double gpWeight = reqParam.getDouble("gpWeight");
+        String questionAnalyze = reqParam.getString("questionAnalyze");
+        Integer recommendTime = reqParam.getInteger("recommendTime");
+        Timestamp createTime = new Timestamp(System.currentTimeMillis());
+        Timestamp lastUpdTime = new Timestamp(System.currentTimeMillis());
+        String createUser = reqUserInfo.getString("userId");
+        String lastUpdUser = reqUserInfo.getString("userId");
+        Byte isValid = reqParam.getByte("isValid");
+        String remark = reqParam.getString("remark");
+        String part = reqParam.getString("part");
+        Byte isPartial = reqParam.getByte("isPartial");
+        String answer = reqParam.getString("answer");
+
+        try {
+            // 1.存储Question
+            Question question = new Question(questionId, questionId, questionId, "4", knowledgeId, gradeId,
+                    courseId, questionContent, provider, personInCharge, reference, questionLevel,
+                    difficulty, coinWeight, gpWeight, questionAnalyze, recommendTime,createTime,
+                    createUser, lastUpdTime, lastUpdUser, isValid, remark);
+            questionService.saveQuestion(question);
+
+            // 2.存储QuestionRecitation
+            QuestionRecitation questionRecitation = new QuestionRecitation(questionId, questionId,answer,
+                    part, isPartial, createTime, createUser, lastUpdTime, lastUpdUser,remark, isValid);
+            questionService.saveQuestionRecitation(questionRecitation);
+        }
+        catch (Exception e){
+            throw new StrongestScholarException(CommonError.INNER_ERR.getCode(), e.getMessage());
+        }
+        QuestionRecitationVO questionRecitationVO = questionService.findQuestionRecitationVOById(questionId);
+        return new ResponseInfo(requestInfo, questionRecitationVO);
+    }
+
+    /**
+      * 删除背诵题
+      *
+      * @param questionId 试题Id
+      * @return
+      */
+    @DeleteMapping("/{questionId}")
+    public ResponseInfo delete(@PathVariable("questionId") String questionId, @RequestBody RequestInfo requestInfo) throws Exception{
+        try {
+            questionService.deleteQuestion(questionId);
+            questionService.deleteQuestionRecitation(questionId);
+        }
+        catch (Exception e){
+            throw new StrongestScholarException(CommonError.INNER_ERR.getCode(), e.getMessage());
+        }
+
+        return new ResponseInfo(requestInfo, new JSONObject());
+    }
+
+    /**
+      * 更新背诵题
+      *
+      * @param  questionId 试题Id
+      * @param  requestInfo 请求信息
+      * @return
+      */
+    @PostMapping("/{questionId}")
+    public ResponseInfo update(@PathVariable("questionId") String questionId, @RequestBody RequestInfo requestInfo)
+        throws Exception{
+
+        JSONObject reqParam = requestInfo.getReqParam();
+        JSONObject reqUserInfo = requestInfo.getReqUserInfo();
+
+        // 1.获取请求信息
+        String knowledgeId = reqParam.getString("knowledgeId");
+        String gradeId = reqParam.getString("gradeId");
+        String courseId = reqParam.getString("courseId");
+        String questionContent = reqParam.getString("question");
+        String provider = reqParam.getString("provider");
+        String personInCharge = reqParam.getString("personInCharge");
+        String reference = reqParam.getString("reference");
+        Integer questionLevel = reqParam.getInteger("questionLevel");
+        Double difficulty = reqParam.getDouble("difficulty");
+        Double coinWeight = reqParam.getDouble("coinWeight");
+        Double gpWeight = reqParam.getDouble("gpWeight");
+        String questionAnalyze = reqParam.getString("questionAnalyze");
+        Integer recommendTime = reqParam.getInteger("recommendTime");
+        Timestamp lastUpdTime = new Timestamp(System.currentTimeMillis());
+        String lastUpdUser = reqUserInfo.getString("userId");
+        Byte isValid = reqParam.getByte("isValid");
+        String remark = reqParam.getString("remark");
+        String part = reqParam.getString("part");
+        Byte isPartial = reqParam.getByte("isPartial");
+        String answer = reqParam.getString("answer");
+
+        try {
+            Question newQuestion = new Question(questionId, questionId, questionId, null, knowledgeId, gradeId,
+                    courseId, questionContent, provider, personInCharge, reference, questionLevel,
+                    difficulty, coinWeight, gpWeight, questionAnalyze, recommendTime,null,
+                    null, lastUpdTime, lastUpdUser, isValid, remark);
+
+            Question question = questionService.findQuestionById(questionId);
+            // 2.Question不存在
+            if (question == null){
+                return new ResponseInfo(requestInfo, "试题不存在!");
+            }
+
+            // 3.填充空属性
+            UpdateUtil.copyProperties(newQuestion, question);
+
+            // 4.更新试题
+            questionService.updateQuestion(question);
+
+            // 5.更新QuestionRecitation
+            QuestionRecitation newQuestionRecitation = new QuestionRecitation(questionId, questionId, answer, part, isPartial, null, null, lastUpdTime, lastUpdUser,remark, isValid);
+            QuestionRecitation questionRecitation = questionService.findQuestionRecitationById(questionId);
+            UpdateUtil.copyProperties(newQuestionRecitation, questionRecitation);
+            questionService.updateQuestionRecitation(questionRecitation);
+        }
+        catch (Exception e){
+            throw new StrongestScholarException(CommonError.INNER_ERR.getCode(), e.getMessage());
+        }
+        return new ResponseInfo(requestInfo, questionService.findQuestionRecitationVOById(questionId));
+
+    }
+
+
+    /**
+      * 获取背诵题列表
+      *
+      * @param  request 请求
+      * @return
+      */
+    @GetMapping("/list")
+    public ResponseInfo list(HttpServletRequest request) throws Exception{
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        JSONObject reqParam = requestInfo.getReqParam();
+        JSONObject reqPageInfo = requestInfo.getReqPageInfo();
+
+        Integer pageSize = reqPageInfo.getInteger("pageSize");
+        Integer pageNum = reqPageInfo.getInteger("pageNum");
+        Pageable pageable = new PageRequest(pageNum - 1, pageSize == null ? Constants.PAGE_SIZE : pageSize);
+        // TODO: 2018/10/11 增加排序 
+        Page<QuestionRecitationVO> questionRecitationVOS = null;
+        try {
+            questionRecitationVOS = questionService.listQuestionRecitation(pageable, reqParam);
+        }
+        catch (Exception e){
+            throw new StrongestScholarException(CommonError.INNER_ERR.getCode(), e.getMessage());
+        }
+
+        return new ResponseInfo(requestInfo, questionRecitationVOS);
+
+    }
+
+}

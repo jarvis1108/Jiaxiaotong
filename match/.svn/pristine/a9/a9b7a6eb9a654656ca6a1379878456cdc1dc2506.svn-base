@@ -1,0 +1,23 @@
+<template name="index$77f7a932">
+  <view class="_div data-v-07d634ec st-container-myItems-div">
+    <image class="_img data-v-07d634ec st-bg-img" src="/static/images/bg.png"></image>
+    <view wx:if="{{productList.length === 0}}" class="_div data-v-07d634ec st-myItems-noProduct-span">暂时还没有物品</view>
+    <view class="_div data-v-07d634ec st-productList-div">
+      <view class="_div data-v-07d634ec st-flex-div">
+        <view class="_div data-v-07d634ec box" wx:key="item" key="{{item}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="item">
+          <view class="_div data-v-07d634ec st-goodname-div"> {{ item.ProductName }} </view>
+          <view wx:if="{{index%3 === 0}}" class="_div data-v-07d634ec st-goodPhoto-blue-div">
+            <image class="_img data-v-07d634ec st-goodPhoto-img" src="{{item.Photo}}"></image>
+          </view>
+          <view wx:elif="{{index%3 === 1}}" class="_div data-v-07d634ec st-goodPhoto-green-div">
+            <image class="_img data-v-07d634ec st-goodPhoto-img" src="{{item.Photo}}"></image>
+          </view>
+          <view wx:else class="_div data-v-07d634ec st-goodPhoto-cyan-div">
+            <image class="_img data-v-07d634ec st-goodPhoto-img" src="{{item.Photo}}"></image>
+          </view>
+          <view class="_div data-v-07d634ec st-goodNum-div"> X{{ item.Number }} </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

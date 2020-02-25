@@ -1,0 +1,78 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.dao.MatchRecordRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @author meiyu
+ * 对战记录实现
+ */
+@Service
+public class MatchRecordServiceImpl implements MatchRecordService {
+
+    @Autowired
+    private MatchRecordRepository matchRecordRepository;
+
+
+    /**
+     * 获取全部比赛记录
+     *
+     * @param currentPage
+     * @param pageSize
+     * @return 比赛记录列表
+     */
+    @Override
+    public List<MatchRecord> getMatchRecordList(Integer currentPage, Integer pageSize) {
+        if (pageSize == null || currentPage == null || pageSize <= 0 || currentPage <= 0) {
+            return null;
+        } else {
+            Pageable pageable = PageRequest.of(currentPage, pageSize);
+            Page<MatchRecord> page = matchRecordRepository.findAll(pageable);
+            return page.getContent();
+        }
+    }
+
+    /**
+     * 新增对战记录
+     *
+     * @param matchRecord
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public MatchRecord create(MatchRecord matchRecord) throws ErrorInfo {
+        if (matchRecord == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_01_001", "新增记录为空", null);
+        return matchRecordRepository.save(matchRecord);
+    }
+
+    /**
+     * 创建新的战局记录
+     *
+     * @param matchRecord 待创建战局记录
+     * @return matchRecord
+     */
+    @Override
+    public MatchRecord createMatchRecord(MatchRecord matchRecord) {
+        return matchRecordRepository.save(matchRecord);
+    }
+
+    @Override
+    public MatchRecord getById(String matchId) {
+        return matchRecordRepository.findByMatchRecordId(matchId);
+    }
+
+    @Override
+    public MatchRecord update(MatchRecord matchRecord) {
+        return matchRecordRepository.save(matchRecord);
+    }
+}

@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>充值兑换记录</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/充值兑换记录/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/充值兑换记录/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u939" class="ax_default box_1">
+        <div id="u939_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u940" class="ax_default" data-left="43" data-top="8" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u941" class="ax_default" data-left="43" data-top="8" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u942" class="ax_default box_2">
+            <div id="u942_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u943" class="ax_default image1">
+          <img id="u943_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u944" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u944_div" class=""></div>
+          <div id="u944_text" class="text ">
+            <p><span>充值记录</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u945" class="ax_default image2">
+          <img id="u945_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u946" class="ax_default image">
+          <img id="u946_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u947" class="ax_default" data-left="60" data-top="98" data-width="341" data-height="110">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u948" class="ax_default _形状1">
+          <img id="u948_img" class="img " src="images/充值兑换记录/u948.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u949" class="ax_default label">
+          <div id="u949_div" class=""></div>
+          <div id="u949_text" class="text ">
+            <p><span>学点月卡</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u950" class="ax_default label">
+          <div id="u950_div" class=""></div>
+          <div id="u950_text" class="text ">
+            <p><span>10元</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u951" class="ax_default label">
+          <div id="u951_div" class=""></div>
+          <div id="u951_text" class="text ">
+            <p><span>2018.08.06&nbsp;&nbsp; 15:38:00</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u952" class="ax_default box_1">
+        <div id="u952_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u953" class="ax_default" data-left="467" data-top="8" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u954" class="ax_default" data-left="467" data-top="8" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u955" class="ax_default box_2">
+            <div id="u955_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u956" class="ax_default image1">
+          <img id="u956_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u957" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u957_div" class=""></div>
+          <div id="u957_text" class="text ">
+            <p><span>兑换记录</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u958" class="ax_default image2">
+          <img id="u958_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u959" class="ax_default image">
+          <img id="u959_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u960" class="ax_default" data-left="484" data-top="98" data-width="341" data-height="110">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u961" class="ax_default _形状1">
+          <img id="u961_img" class="img " src="images/充值兑换记录/u948.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u962" class="ax_default label">
+          <div id="u962_div" class=""></div>
+          <div id="u962_text" class="text ">
+            <p><span>兑换100学点</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u963" class="ax_default label">
+          <div id="u963_div" class=""></div>
+          <div id="u963_text" class="text ">
+            <p><span>1000金币</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u964" class="ax_default label">
+          <div id="u964_div" class=""></div>
+          <div id="u964_text" class="text ">
+            <p><span>2018.08.06&nbsp;&nbsp; 15:38:00</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u965" class="ax_default" data-left="484" data-top="251" data-width="341" data-height="110">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u966" class="ax_default _形状1">
+          <img id="u966_img" class="img " src="images/充值兑换记录/u948.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u967" class="ax_default label">
+          <div id="u967_div" class=""></div>
+          <div id="u967_text" class="text ">
+            <p><span>乐高积木</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u968" class="ax_default label">
+          <div id="u968_div" class=""></div>
+          <div id="u968_text" class="text ">
+            <p><span>1000000金币</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u969" class="ax_default label">
+          <div id="u969_div" class=""></div>
+          <div id="u969_text" class="text ">
+            <p><span>2018.08.06&nbsp;&nbsp; 15:38:00</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u970" class="ax_default label">
+          <div id="u970_div" class=""></div>
+          <div id="u970_text" class="text ">
+            <p><span>&nbsp;待发货</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

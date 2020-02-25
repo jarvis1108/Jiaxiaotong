@@ -1,0 +1,74 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserLPDetail;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
+/**
+ * 用户学点流水明细单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 03:20
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserLPDetailRepositoryTest {
+
+    @Autowired
+    private UserLPDetailRepository userLPDetailRepository;
+
+    @Test
+    public void findByUserId() {
+        String userId = "1";
+        Pageable pageable = PageRequest.of(1, 1);
+        Page<UserLPDetail> userLPDetailPage = userLPDetailRepository.findByUserId(userId, pageable);
+        List<UserLPDetail> userLPDetailList = userLPDetailPage.getContent();
+        assertNotEquals(0, userLPDetailList.size());
+
+        userLPDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll() {
+        List<UserLPDetail> userLPDetailList = userLPDetailRepository.findAll();
+        assertNotEquals(0, userLPDetailList.size());
+
+        userLPDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAllByUserId() {
+        String userId = "1";
+        List<UserLPDetail> userLPDetailList = userLPDetailRepository.findAllByUserId(userId);
+        assertNotEquals(0, userLPDetailList.size());
+
+        userLPDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        UserLPDetail userLPDetail = new UserLPDetail();
+        userLPDetail.setUserLpDetailId("3");
+        userLPDetail.setUserLpDetailNo("3");
+        userLPDetail.setUserId("1");
+        userLPDetail.setUserNo("1");
+        userLPDetail.setCurrentAmount(100);
+
+        UserLPDetail result = userLPDetailRepository.save(userLPDetail);
+        assertNotNull(result);
+
+        System.out.println(result);
+
+    }
+}

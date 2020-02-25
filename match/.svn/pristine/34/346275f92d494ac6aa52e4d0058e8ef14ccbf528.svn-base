@@ -1,0 +1,80 @@
+@import "/static/css/vendor.wxss";
+
+.st-grade-dialog-container.data-v-3389c91d {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(207, 235, 255);
+  z-index: 0;
+}
+.st-grade-dialog-list.data-v-3389c91d {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  width: 90%;
+  height: 70%;
+}
+.st-grade-dialog-list ._li.data-v-3389c91d {
+  position: relative;
+  height: 18%;
+  width: 100%;
+  margin-bottom: 5%;
+  opacity: 0;
+  animation: slideFromBottom 1s forwards;
+}
+.st-grade-dialog-li-bg.data-v-3389c91d {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.st-grade-dialog-li-icon.data-v-3389c91d {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  height: 70%;
+  width: 17%;
+}
+.st-grade-dialog-li-name.data-v-3389c91d {
+  position: absolute;
+  top: 15%;
+  font-size: 40rpx;
+  color: white;
+  font-weight: bold;
+  left: 28%;
+}
+.st-grade-dialog-li-text.data-v-3389c91d {
+  position: absolute;
+  top: 55%;
+  font-size: 24rpx;
+  color: rgb(203, 255, 232);
+  font-weight: bold;
+  left: 28%;
+}
+.st-grade-dialog-li-select-icon.data-v-3389c91d {
+  position: absolute;
+  right: 5%;
+  height: 40%;
+  top: 30%;
+  width: 12%;
+  animation: zoomOut 0.5s;
+}
+.st-grade-dialog-selected-tip.data-v-3389c91d {
+  position: absolute;
+  top: 75%;
+  width: 50%;
+  left: 25%;
+  font-size: 32rpx;
+  color: green;
+  text-align: center;
+  animation: opacity 0.5s;
+}
+.st-grade-dialog-selected-btn.data-v-3389c91d {
+  position: absolute;
+  top: 82%;
+  width: 30%;
+  left: 35%;
+  height: 8%;
+  color: #fff;
+  background: green;
+  animation: opacity 0.5s;
+}

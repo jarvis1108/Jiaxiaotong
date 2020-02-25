@@ -1,0 +1,23 @@
+<template name="index$5d7edae3">
+  <view class="_div data-v-70537452 st-battle-loading-container">
+    <view class="_div data-v-70537452 st-battle-loading-bg">
+      <image class="_img data-v-70537452 st-battle-loading-bg-img" src="/static/images/battleLoading/Earth_bg@2x.png"></image>
+      <view class="_div data-v-70537452 st-battle-loading-astronaut">
+        <image class="_img data-v-70537452 st-battle-loading-astronaut-bg" src="/static/images/battleLoading/Astronaut@2x.png"></image>
+        <image class="_img data-v-70537452 st-battle-loading-astronaut-head" src="/static/images/battleLoading/Highlight@2x.png"></image>
+        <image class="_img data-v-70537452 st-battle-loading-astronaut-headimage" src="{{userInfo.headImage}}"></image>
+      </view>
+      <image class="_img data-v-70537452 st-battle-loading-planet1" src="/static/images/battleLoading/Planet1@2x.png"></image>
+      <image class="_img data-v-70537452 st-battle-loading-planet2" src="/static/images/battleLoading/Planet2@2x.png"></image>
+      <image class="_img data-v-70537452 st-battle-loading-planet3" src="/static/images/battleLoading/Planet3@2x.png"></image>
+      <image class="_img data-v-70537452 st-battle-loading-planet4" src="/static/images/battleLoading/Planet4@2x.png"></image>
+      <image class="_img data-v-70537452 st-battle-loading-planet5" src="/static/images/battleLoading/Planet5@2x.png"></image>
+    </view>
+    <label class="_span data-v-70537452 st-battle-loading-username">{{userInfo.wechatName}}同学</label>
+    <label class="_span data-v-70537452 st-battle-loading-level">{{level}}</label>
+    <label class="_span data-v-70537452 st-battle-loading-timing-tip" wx:if="{{timing%3 === 0}}">匹配中.</label>
+    <label class="_span data-v-70537452 st-battle-loading-timing-tip" wx:if="{{timing%3 === 1}}">匹配中..</label>
+    <label class="_span data-v-70537452 st-battle-loading-timing-tip" wx:if="{{timing%3 === 2}}">匹配中...</label>
+    <label class="_span data-v-70537452 st-battle-loading-timing" wx:if="{{timing >= 3}}">{{timing}}秒</label>
+  </view>
+</template>

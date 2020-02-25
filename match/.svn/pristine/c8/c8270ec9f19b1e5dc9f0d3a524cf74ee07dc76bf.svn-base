@@ -1,0 +1,28 @@
+<template name="index$273ef4d4">
+  <view class="_div data-v-eda5c866 st-my-camp-container">
+    <image class="_img data-v-eda5c866 st-my-camp-header-img" src="/static/images/myCamp/Trainingcamp_banner.png"></image>
+    <view class="_div data-v-eda5c866 st-my-camp-mine-div">
+      <image class="_img data-v-eda5c866 st-my-camp-board-bg" src="/static/images/myCamp/Mymessage_bg.png"></image>
+      <image class="_img data-v-eda5c866 st-my-camp-usericon" src="{{avatarUrl}}"></image>
+      <label class="_span data-v-eda5c866 st-my-camp-username">我</label>
+      <label class="_span data-v-eda5c866 st-my-camp-usertitle">{{title}}</label>
+      <view class="_hr data-v-eda5c866 st-my-camp-hr"></view>
+      <label class="_span data-v-eda5c866 st-my-camp-userlevel">等级{{level}}</label>
+      <label class="_span data-v-eda5c866 st-my-camp-memberNum">成员{{memberNum}}</label>
+    </view>
+    <view class="_div data-v-eda5c866 st-my-camp-memberList-div">
+      <view class="_ul data-v-eda5c866">
+        <view wx:key="item" key="{{item}}" wx:for="{{memberList}}" wx:for-index="index" wx:for-item="item" class="_li data-v-eda5c866">
+          <image class="_img data-v-eda5c866 st-my-camp-board-bg" src="/static/images/myCamp/Battalioninformation_bg.png"></image>
+          <image class="_img data-v-eda5c866 st-my-camp-usericon" src="{{item.avatarUrl}}"></image>
+          <label class="_span data-v-eda5c866 st-my-camp-username">{{item.name}}</label>
+          <label class="_span data-v-eda5c866 st-my-camp-usertitle">{{item.title}}</label>
+          <view class="_hr data-v-eda5c866 st-my-camp-hr"></view>
+          <label class="_span data-v-eda5c866 st-my-camp-userlevel">等级{{item.level}}</label>
+          <label class="_span data-v-eda5c866 st-my-camp-memberNum">成员{{item.memberNum}}</label>
+        </view>
+      </view>
+    </view>
+    <image class="_img data-v-eda5c866 st-my-camp-invite-btn" src="/static/images/myCamp/Invite_btn.png" style=" {{'top:' + inviteBtnTop + '%'}}"></image>
+  </view>
+</template>

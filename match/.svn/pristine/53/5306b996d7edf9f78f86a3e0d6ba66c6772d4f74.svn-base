@@ -1,0 +1,14 @@
+<import src="questioncard$cc6caf78" />
+<import src="cut_down$72afb166" />
+<template name="index$9ee85388">
+  <view class="_div data-v-2b4f5831 bs-container-groupCompetition-div">
+    <image class="_img data-v-2b4f5831 bs-bg-img" src="/static/images/bg@2x.png"></image>
+    <label wx:if="{{!waitPlayer}}" class="_span data-v-2b4f5831 bs-text-span">等待群成员完成答题</label>
+    <view class="_div data-v-2b4f5831 bs-questionCard-component" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+      <template data="{{...$root[$kk+'0'], $root}}" is="questioncard$cc6caf78"></template>
+    </view>
+    <view class="_div data-v-2b4f5831 bs-cutDown-component">
+      <template data="{{...$root[$kk+'1'], $root}}" is="cut_down$72afb166"></template>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,65 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.CouponDetail;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.awt.*;
+import java.awt.print.Pageable;
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+*@author: meiyu
+*@Date: 2018/7/5 11:58
+*@description 优惠券使用明细单元测试
+*/
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class CouponDetailRepositoryTest {
+
+    @Autowired
+    private CouponDetailRepository couponDetailRepository;
+
+    @Test
+    public void findAll() {
+        PageRequest pageable = PageRequest.of(1,1);
+        Page<CouponDetail> couponDetailPage = couponDetailRepository.findAll(pageable);
+
+        List<CouponDetail> couponDetailList = couponDetailPage.getContent();
+        assertEquals(0,couponDetailList.size());
+        couponDetailList.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        CouponDetail couponDetail = new CouponDetail();
+        couponDetail.setBeginTime(Timestamp.valueOf("2018-06-05 12:12:12"));
+        couponDetail.setCouponExchangeId("1");
+        couponDetail.setCouponExchangeNo("1");
+        couponDetail.setCouponId("1");
+        couponDetail.setCouponNo("1");
+        couponDetail.setCouponStatus("100");
+        couponDetail.setEndTime(Timestamp.valueOf("2018-07-05 12:12:12"));
+        couponDetail.setOrderRecordId("1");
+        couponDetail.setUserId("1");
+        couponDetail.setCreateTime(Timestamp.valueOf("2018-07-05 12:12:12"));
+        couponDetail.setCreateUser("1");
+        couponDetail.setIsValid(Byte.valueOf("1"));
+        couponDetail.setLastUpdTime(Timestamp.valueOf("2018-07-06 12:12:12"));
+        couponDetail.setLastUpdUser("test");
+        couponDetail.setRemark("test");
+
+        CouponDetail result = couponDetailRepository.save(couponDetail);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+}

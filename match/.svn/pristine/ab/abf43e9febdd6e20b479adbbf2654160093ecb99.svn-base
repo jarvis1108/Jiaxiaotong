@@ -1,0 +1,54 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.Question;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\6\26 0026
+ */
+public interface QuestionService {
+ /**
+  * 根据questionId获取题目信息
+  *
+  * @param questionId 用户id
+  * @return 待查询用户信息
+  */
+ Question  getQuestionByQuestionId(String questionId)throws ErrorInfo;;
+
+ /**
+  * 获取所有题目
+  * @return 包含所有题目的序列
+  */
+ List<Question> findAll();
+
+ /**
+  * 新增题目
+  * @param question
+  */
+ Question create(Question question)throws ErrorInfo;
+ /**
+  * 删除题目
+  * @param questionId
+  */
+ boolean deleteQuestionById(String questionId)throws ErrorInfo;
+ /**
+  * 修改题目
+  * @param updateQuestion
+  */
+ Question update(Question updateQuestion)throws ErrorInfo;
+
+ /**
+  * 分页查询题目
+  * @param pageSize
+  * @param currentPage
+  * @return
+  */
+ List<Question> getQuestionList(Integer pageSize, Integer currentPage)throws ErrorInfo;
+
+
+
+}

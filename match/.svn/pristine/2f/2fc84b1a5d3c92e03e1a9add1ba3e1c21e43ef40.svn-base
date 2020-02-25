@@ -1,0 +1,77 @@
+/** @file
+ @description <br/>  //  ******************************************************************
+              <br/> //  * 功能说明：最强学霸接口设计_我的错题本部分
+              <br/> //  * 创建标志：韩晓峰   2018年07月10日创建
+              <br/> //  * 修改标志：
+              <br/> //  * 标志编号：013	韩晓峰	2018年07月10日
+              <br/> //  * 标志描述：
+              <br/> //  * 附注说明：(1)我的错题本用例接口设计
+              <br/> //  *         (2)本文件接口清单如下：
+              <br/> //  *             (a)GetUserWrongQuestions : 获取用户错题列表
+              <br/> //  * 当前状态：【编码中√】【编码完成】【测试完】【可以试用】【正式使用】【作废停用】
+              <br/> //  ******************************************************************
+ @author 韩晓峰
+ @copyright 暂无
+ */
+
+/**
+ * @class
+ * @summary 我的错题本用例中接口定义
+ * @memberOf SYS
+ * @description 附注说明：存在问题    (1)后台数据库部分缺乏信息记录用户错题（已有）。
+ *                                     (2)考虑新增一个表记录用户错题信息（也有）。
+ *                                     (3)考虑修改后台数据库试题表等部分字段（不用了）。
+ */
+function SYS_PER_080() {
+
+    /**
+     * @summary 实现功能：根据用户ID获取用户基本信息
+     * @description GET /sys/getUserWrongQuestions
+     * @param {object} objParam                                        要传入的参数
+     * @param {string} objParam.reqID                                  要传入的参数.请求的ID
+     * @param {string} objParam.reqType                                要传入的参数.请求类型 固定值为: SYS_PER_080_GetUserWrongQuestions
+     * @param {object} objParam.reqUserInfo                            要传入的参数.当前用户信息
+     * @param {string} objParam.reqUserInfo.userId                     要传入的参数.当前用户信息.用户Id
+     *
+     * @param {object} objParam.reqParam                               要传入的参数.请求的业务参数
+     * @param {string} objParam.reqParam.userId                        要传入的参数.请求的业务参数.用户ID
+     *
+     * @param {object} objParam.reqRefData                             要传入的参数.存放业务以外的其它信息 default: {}
+     * @param {object} objParam.pageInfo                               要传入的参数.分页信息 default: {}
+     * @param {object} objParam.pageInfo.pageSize                      要传入的参数.分页信息.页面大小
+     * @param {object} objParam.pageInfo.curPage                       要传入的参数.分页信息.页码
+     *
+     * @param {object} objResult                                       返回结果
+     * @param {string} objResult.resID                                 返回结果.响应ID
+     * @param {string} objResult.reqID                                 返回结果.请求的ID
+     * @param {string} objResult.reqType                               返回结果.请求类型
+     * @param {Object} objResult.resResult                             返回结果.响应返回的业务数据
+     *
+     * @param {object} objResult.resResult.curData                     返回结果.响应返回的业务数据.当前业务结果 default: {}
+     * @param {array}  objResult.resResult.curData.wrongQuestions      返回结果.响应返回的业务数据.当前业务结果.返回的错误列表
+     * @param {array}  objResult.resResult.curData.wrongQuestions[i]   返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].questionId          返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.试题ID
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].questionNo          返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.试题编码
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].QuestionCode        返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.试题编号
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].QuestionType        返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.试题类型
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].reference           返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.引用出处
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].question            返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.题干
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].choiceA             返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.选项A，如果试题类型为选择题，则为空
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].choiceB             返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.选项B，如果试题类型为选择题，则为空
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].choiceC             返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.选项C，如果试题类型为选择题，则为空
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].choiceD             返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.选项D，如果试题类型为选择题，则为空
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].correctAnswer       返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.正确答案
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].wrongAnswer         返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.错误答案
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].questionAnalyze     返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.试题解析
+     * @param {string} objResult.resResult.curData.wrongQuestions[i].subject             返回结果.响应返回的业务数据.当前业务结果.返回的错误列表.第i条记录.科目
+     *
+     * @param {object} objResult.resResult.errorInfo                   返回结果.响应返回的业务数据.当前业务结果.出错信息(具体结构框架统一定义)
+     * @param {object} objResult.resRefData                            返回结果.存放业务以外的其它信息(预留扩展，一般情况下不用) default: {}
+     * @version 1.0
+     * @example 暂无
+     */
+    function GetUserWrongQuestions(objParam) {
+        var objResult = {};
+        return objResult;
+    }
+}

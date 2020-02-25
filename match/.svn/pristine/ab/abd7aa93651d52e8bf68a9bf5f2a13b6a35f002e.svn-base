@@ -1,0 +1,408 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>对抗赛（选择题）</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/对抗赛（选择题）/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/对抗赛（选择题）/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u217" class="ax_default box_1">
+        <div id="u217_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u218" class="ax_default" data-left="137" data-top="20" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u219" class="ax_default" data-left="137" data-top="20" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u220" class="ax_default box_2">
+            <div id="u220_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u221" class="ax_default image1">
+          <img id="u221_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u222" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u222_div" class=""></div>
+          <div id="u222_text" class="text ">
+            <p><span>对抗赛</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u223" class="ax_default image2">
+          <img id="u223_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u224" class="ax_default image">
+          <img id="u224_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u225" class="ax_default" data-left="291" data-top="114" data-width="67" data-height="67">
+
+        <!-- Unnamed (Group) -->
+        <div id="u226" class="ax_default" data-left="291" data-top="114" data-width="67" data-height="67">
+
+          <!-- Unnamed (Pie Chart) -->
+          <div id="u227" class="ax_default refs-chart-data">
+            <img id="u227_img" class="img " src="images/对抗赛（选择题）/u227.png"/>
+          </div>
+
+          <!-- Unnamed (Pie Chart) -->
+          <div id="u228" class="ax_default refs-chart-data">
+            <img id="u228_img" class="img " src="images/对抗赛（选择题）/u228.png"/>
+          </div>
+
+          <!-- Unnamed (Ellipse) -->
+          <div id="u229" class="ax_default ellipse">
+            <img id="u229_img" class="img " src="images/对抗赛（选择题）/u229.png"/>
+            <div id="u229_text" class="text ">
+              <p><span>9</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u230" class="ax_default" data-left="148" data-top="119" data-width="138" data-height="58">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u231" class="ax_default box_1">
+          <div id="u231_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u232" class="ax_default image1">
+          <img id="u232_img" class="img " src="images/对抗赛（选择题）/u232.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u233" class="ax_default label">
+          <div id="u233_div" class=""></div>
+          <div id="u233_text" class="text ">
+            <p><span>sk.tu</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u234" class="ax_default label">
+          <div id="u234_div" class=""></div>
+          <div id="u234_text" class="text ">
+            <p><span>120</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u235" class="ax_default" data-left="368" data-top="119" data-width="138" data-height="58">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u236" class="ax_default box_1">
+          <div id="u236_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u237" class="ax_default image1">
+          <img id="u237_img" class="img " src="images/对抗赛（选择题）/u232.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u238" class="ax_default label">
+          <div id="u238_div" class=""></div>
+          <div id="u238_text" class="text ">
+            <p><span>sk.tu</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u239" class="ax_default label">
+          <div id="u239_div" class=""></div>
+          <div id="u239_text" class="text ">
+            <p><span>120</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u240" class="ax_default box_1">
+        <div id="u240_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u241" class="ax_default box_1">
+        <div id="u241_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u242" class="ax_default box_1">
+        <div id="u242_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u243" class="ax_default box_1">
+        <div id="u243_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u244" class="ax_default label">
+        <div id="u244_div" class=""></div>
+        <div id="u244_text" class="text ">
+          <p><span>9的3次方等于多少？</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u245" class="ax_default" data-left="230" data-top="319" data-width="189" data-height="247">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u246" class="ax_default button">
+          <div id="u246_div" class=""></div>
+          <div id="u246_text" class="text ">
+            <p><span>81</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u247" class="ax_default button">
+          <div id="u247_div" class=""></div>
+          <div id="u247_text" class="text ">
+            <p><span>243</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u248" class="ax_default button">
+          <div id="u248_div" class=""></div>
+          <div id="u248_text" class="text ">
+            <p><span>729</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u249" class="ax_default button">
+          <div id="u249_div" class=""></div>
+          <div id="u249_text" class="text ">
+            <p><span>2187</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u250" class="ax_default box_1">
+        <div id="u250_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u251" class="ax_default" data-left="522" data-top="20" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u252" class="ax_default" data-left="522" data-top="20" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u253" class="ax_default box_2">
+            <div id="u253_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u254" class="ax_default image1">
+          <img id="u254_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u255" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u255_div" class=""></div>
+          <div id="u255_text" class="text ">
+            <p><span>对抗赛</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u256" class="ax_default image2">
+          <img id="u256_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u257" class="ax_default image">
+          <img id="u257_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u258" class="ax_default" data-left="676" data-top="114" data-width="67" data-height="67">
+
+        <!-- Unnamed (Group) -->
+        <div id="u259" class="ax_default" data-left="676" data-top="114" data-width="67" data-height="67">
+
+          <!-- Unnamed (Pie Chart) -->
+          <div id="u260" class="ax_default refs-chart-data">
+            <img id="u260_img" class="img " src="images/对抗赛（选择题）/u227.png"/>
+          </div>
+
+          <!-- Unnamed (Pie Chart) -->
+          <div id="u261" class="ax_default refs-chart-data">
+            <img id="u261_img" class="img " src="images/对抗赛（选择题）/u228.png"/>
+          </div>
+
+          <!-- Unnamed (Ellipse) -->
+          <div id="u262" class="ax_default ellipse">
+            <img id="u262_img" class="img " src="images/对抗赛（选择题）/u229.png"/>
+            <div id="u262_text" class="text ">
+              <p><span>9</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u263" class="ax_default" data-left="533" data-top="119" data-width="138" data-height="58">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u264" class="ax_default box_1">
+          <div id="u264_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u265" class="ax_default image1">
+          <img id="u265_img" class="img " src="images/对抗赛（选择题）/u232.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u266" class="ax_default label">
+          <div id="u266_div" class=""></div>
+          <div id="u266_text" class="text ">
+            <p><span>sk.tu</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u267" class="ax_default label">
+          <div id="u267_div" class=""></div>
+          <div id="u267_text" class="text ">
+            <p><span>120</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u268" class="ax_default" data-left="753" data-top="119" data-width="138" data-height="58">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u269" class="ax_default box_1">
+          <div id="u269_div" class=""></div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u270" class="ax_default image1">
+          <img id="u270_img" class="img " src="images/对抗赛（选择题）/u232.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u271" class="ax_default label">
+          <div id="u271_div" class=""></div>
+          <div id="u271_text" class="text ">
+            <p><span>sk.tu</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u272" class="ax_default label">
+          <div id="u272_div" class=""></div>
+          <div id="u272_text" class="text ">
+            <p><span>120</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u273" class="ax_default box_1">
+        <div id="u273_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u274" class="ax_default box_1">
+        <div id="u274_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u275" class="ax_default box_1">
+        <div id="u275_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u276" class="ax_default box_1">
+        <div id="u276_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u277" class="ax_default paragraph">
+        <div id="u277_div" class=""></div>
+        <div id="u277_text" class="text ">
+          <p><span style="font-family:'ArialMT', 'Arial';"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">江城子</span><span style="font-family:'ArialMT', 'Arial';">·</span><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">密州出猎</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">宋代：苏轼</span></p><p><span style="font-family:'ArialMT', 'Arial';"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">______________，______，_______，</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">锦帽貂裘，千骑卷平冈。</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">为报倾城随太守，亲射虎，看孙郎。</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">酒酣胸胆尚开张，鬓微霜，又何妨！</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">持节云中，何日遣冯唐？</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">会挽雕弓如满月，西北望，射天狼</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u278" class="ax_default label">
+        <div id="u278_div" class=""></div>
+        <div id="u278_text" class="text ">
+          <p><span>请背诵下面横线中的句子</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u279" class="ax_default icon">
+        <img id="u279_img" class="img " src="images/对抗赛（选择题）/u279.png"/>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u280" class="ax_default label">
+        <div id="u280_div" class=""></div>
+        <div id="u280_text" class="text ">
+          <p><span>正在录音</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u281" class="ax_default box_1">
+        <div id="u281_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u282" class="ax_default label">
+        <div id="u282_div" class=""></div>
+        <div id="u282_text" class="text ">
+          <p><span>批注：选择题等待双方都答完题目后，跳转进下一题</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 背诵题先进行一段3秒的语音倒计时，提示用户开始背诵，自动开始录音，用户背诵完成后可手动点击结束录音，双方均结束录音或者时间终止后自动结束，后台计算判定成绩。</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

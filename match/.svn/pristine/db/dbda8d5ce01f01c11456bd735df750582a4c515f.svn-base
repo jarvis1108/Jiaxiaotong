@@ -1,0 +1,17 @@
+<template name="index$529f1201">
+  <view class="_div data-v-31cf4e6c st-container-goldMall-div">
+    <image class="_img data-v-31cf4e6c st-bg-img" src="/static/images/bg@2x.png"></image>
+    <view class="_div data-v-31cf4e6c st-productList-div">
+      <view class="_div data-v-31cf4e6c st-flex-div">
+        <view class="_div data-v-31cf4e6c box" wx:key="item" key="{{item}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="item">
+          <view class="_div data-v-31cf4e6c st-goodname-div"> {{ item.ProductName }} </view>
+          <image class="_img data-v-31cf4e6c st-goodPhoto-img" src="{{item.Photo}}"></image>
+          <view class="_div data-v-31cf4e6c st-goodprice-div"> {{ item.Price }} </view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-31cf4e6c st-memory-div">
+      <navigator style="position:absolute;width:20%;left:40%" url="../exchange-record/main" class="_a data-v-31cf4e6c">兑换记录</navigator>
+    </view>
+  </view>
+</template>

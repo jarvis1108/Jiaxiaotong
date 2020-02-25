@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dxtwangxiao.questionchecktool.dao.MainMapper">
+    <resultMap id="BaseResultMap" type="com.dxtwangxiao.questionchecktool.entity.Main">
+        <id column="InitID" jdbcType="VARCHAR" property="initID"/>
+        <result column="InitNo" jdbcType="VARCHAR" property="initNo"/>
+        <result column="InitUserCode" jdbcType="VARCHAR" property="initUserCode"/>
+        <result column="InitUserName" jdbcType="VARCHAR" property="initUserName"/>
+        <result column="InitName" jdbcType="VARCHAR" property="initName"/>
+        <result column="InitDes" jdbcType="VARCHAR" property="initDes"/>
+        <result column="FromType" jdbcType="VARCHAR" property="fromType"/>
+        <result column="FromDBName" jdbcType="VARCHAR" property="fromDBName"/>
+        <result column="FromInitID" jdbcType="VARCHAR" property="fromInitID"/>
+        <result column="FromInitNo" jdbcType="VARCHAR" property="fromInitNo"/>
+        <result column="InitTime" jdbcType="TIMESTAMP" property="initTime"/>
+        <result column="Remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="PrsStatus" jdbcType="BIT" property="prsStatus"/>
+        <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="LastUpdTime" jdbcType="TIMESTAMP" property="lastUpdTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    InitID, InitNo, InitUserCode, InitUserName, InitName, InitDes, FromType, FromDBName, 
+    FromInitID, FromInitNo, InitTime, Remark, PrsStatus, CreateTime, LastUpdTime
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_ITN_Main
+        where InitID = #{initID,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_ITN_Main
+    where InitID = #{initID,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.dxtwangxiao.questionchecktool.entity.Main">
+    insert into t_ITN_Main (InitID, InitNo, InitUserCode, 
+      InitUserName, InitName, InitDes, 
+      FromType, FromDBName, FromInitID, 
+      FromInitNo, InitTime, Remark, 
+      PrsStatus, CreateTime, LastUpdTime
+      )
+    values (#{initID,jdbcType=VARCHAR}, #{initNo,jdbcType=VARCHAR}, #{initUserCode,jdbcType=VARCHAR}, 
+      #{initUserName,jdbcType=VARCHAR}, #{initName,jdbcType=VARCHAR}, #{initDes,jdbcType=VARCHAR}, 
+      #{fromType,jdbcType=VARCHAR}, #{fromDBName,jdbcType=VARCHAR}, #{fromInitID,jdbcType=VARCHAR}, 
+      #{fromInitNo,jdbcType=VARCHAR}, #{initTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{prsStatus,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.dxtwangxiao.questionchecktool.entity.Main">
+        insert into t_ITN_Main
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="initID != null">
+                InitID,
+            </if>
+            <if test="initNo != null">
+                InitNo,
+            </if>
+            <if test="initUserCode != null">
+                InitUserCode,
+            </if>
+            <if test="initUserName != null">
+                InitUserName,
+            </if>
+            <if test="initName != null">
+                InitName,
+            </if>
+            <if test="initDes != null">
+                InitDes,
+            </if>
+            <if test="fromType != null">
+                FromType,
+            </if>
+            <if test="fromDBName != null">
+                FromDBName,
+            </if>
+            <if test="fromInitID != null">
+                FromInitID,
+            </if>
+            <if test="fromInitNo != null">
+                FromInitNo,
+            </if>
+            <if test="initTime != null">
+                InitTime,
+            </if>
+            <if test="remark != null">
+                Remark,
+            </if>
+            <if test="prsStatus != null">
+                PrsStatus,
+            </if>
+            <if test="createTime != null">
+                CreateTime,
+            </if>
+            <if test="lastUpdTime != null">
+                LastUpdTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="initID != null">
+                #{initID,jdbcType=VARCHAR},
+            </if>
+            <if test="initNo != null">
+                #{initNo,jdbcType=VARCHAR},
+            </if>
+            <if test="initUserCode != null">
+                #{initUserCode,jdbcType=VARCHAR},
+            </if>
+            <if test="initUserName != null">
+                #{initUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="initName != null">
+                #{initName,jdbcType=VARCHAR},
+            </if>
+            <if test="initDes != null">
+                #{initDes,jdbcType=VARCHAR},
+            </if>
+            <if test="fromType != null">
+                #{fromType,jdbcType=VARCHAR},
+            </if>
+            <if test="fromDBName != null">
+                #{fromDBName,jdbcType=VARCHAR},
+            </if>
+            <if test="fromInitID != null">
+                #{fromInitID,jdbcType=VARCHAR},
+            </if>
+            <if test="fromInitNo != null">
+                #{fromInitNo,jdbcType=VARCHAR},
+            </if>
+            <if test="initTime != null">
+                #{initTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="prsStatus != null">
+                #{prsStatus,jdbcType=BIT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdTime != null">
+                #{lastUpdTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dxtwangxiao.questionchecktool.entity.Main">
+        update t_ITN_Main
+        <set>
+            <if test="initNo != null">
+                InitNo = #{initNo,jdbcType=VARCHAR},
+            </if>
+            <if test="initUserCode != null">
+                InitUserCode = #{initUserCode,jdbcType=VARCHAR},
+            </if>
+            <if test="initUserName != null">
+                InitUserName = #{initUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="initName != null">
+                InitName = #{initName,jdbcType=VARCHAR},
+            </if>
+            <if test="initDes != null">
+                InitDes = #{initDes,jdbcType=VARCHAR},
+            </if>
+            <if test="fromType != null">
+                FromType = #{fromType,jdbcType=VARCHAR},
+            </if>
+            <if test="fromDBName != null">
+                FromDBName = #{fromDBName,jdbcType=VARCHAR},
+            </if>
+            <if test="fromInitID != null">
+                FromInitID = #{fromInitID,jdbcType=VARCHAR},
+            </if>
+            <if test="fromInitNo != null">
+                FromInitNo = #{fromInitNo,jdbcType=VARCHAR},
+            </if>
+            <if test="initTime != null">
+                InitTime = #{initTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null">
+                Remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="prsStatus != null">
+                PrsStatus = #{prsStatus,jdbcType=BIT},
+            </if>
+            <if test="createTime != null">
+                CreateTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdTime != null">
+                LastUpdTime = #{lastUpdTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where InitID = #{initID,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dxtwangxiao.questionchecktool.entity.Main">
+    update t_ITN_Main
+    set InitNo = #{initNo,jdbcType=VARCHAR},
+      InitUserCode = #{initUserCode,jdbcType=VARCHAR},
+      InitUserName = #{initUserName,jdbcType=VARCHAR},
+      InitName = #{initName,jdbcType=VARCHAR},
+      InitDes = #{initDes,jdbcType=VARCHAR},
+      FromType = #{fromType,jdbcType=VARCHAR},
+      FromDBName = #{fromDBName,jdbcType=VARCHAR},
+      FromInitID = #{fromInitID,jdbcType=VARCHAR},
+      FromInitNo = #{fromInitNo,jdbcType=VARCHAR},
+      InitTime = #{initTime,jdbcType=TIMESTAMP},
+      Remark = #{remark,jdbcType=VARCHAR},
+      PrsStatus = #{prsStatus,jdbcType=BIT},
+      CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      LastUpdTime = #{lastUpdTime,jdbcType=TIMESTAMP}
+    where InitID = #{initID,jdbcType=VARCHAR}
+  </update>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from t_ITN_Main;
+    </select>
+
+</mapper>

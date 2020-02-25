@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <!-- 文件输出格式 -->
+    <property name="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss:SSS}) |-%-5level [%thread] %c [%L] -| %msg%n"/>
+
+    <!-- test文件路径 -->
+    <property name="TEST_FILE_PATH" value="./log/test"/>
+
+    <!-- prod文件路径 -->
+    <property name="PROD_FILE_PATH" value="./log/prod"/>
+
+    <!-- 开发环境，只在控制台打印日志信息 -->
+    <springProfile name="dev">
+        <!-- 控制台日志配置 -->
+        <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>
+        </appender>
+
+        <root level="info">
+            <appender-ref ref="consoleLog"/>
+        </root>
+    </springProfile>
+
+
+    <!-- 测试环境，只输出日志文件，而不在控制台打印 -->
+    <springProfile name="test">
+
+        <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- 忽略ERROR级别的日志 -->
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>ERROR</level>
+                <onMatch>DENY</onMatch>
+                <onMismatch>ACCEPT</onMismatch>
+            </filter>
+
+            <encoder>
+                <pattern>${PATTERN}</pattern>
+            </encoder>
+
+            <!-- 滚动策略 -->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- 路径 -->
+                <fileNamePattern>${TEST_FILE_PATH}/info.%d.log</fileNamePattern>
+            </rollingPolicy>
+        </appender>
+
+        <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- 只拦截ERROR级别及其以上的日志 -->
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>ERROR</level>
+            </filter>
+
+            <encoder>
+                <pattern>${PATTERN}</pattern>
+            </encoder>
+
+            <!-- 滚动策略 -->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- 路径 -->
+                <fileNamePattern>${TEST_FILE_PATH}/error.%d.log</fileNamePattern>
+            </rollingPolicy>
+        </appender>
+
+        <root>
+            <appender-ref ref="fileInfoLog"/>
+            <appender-ref ref="fileErrorLog"/>
+        </root>
+    </springProfile>
+
+
+    <!-- 生产环境，与测试环境基本一致 -->
+    <springProfile name="prod">
+        <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- 忽略ERROR级别的日志 -->
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>ERROR</level>
+                <onMatch>DENY</onMatch>
+                <onMismatch>ACCEPT</onMismatch>
+            </filter>
+
+            <encoder>
+                <pattern>${PATTERN}</pattern>
+            </encoder>
+
+            <!-- 滚动策略 -->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- 路径 -->
+                <fileNamePattern>${PROD_FILE_PATH}/info.%d.log</fileNamePattern>
+            </rollingPolicy>
+        </appender>
+
+        <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- 只拦截ERROR级别及其以上的日志 -->
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>ERROR</level>
+            </filter>
+
+            <encoder>
+                <pattern>${PATTERN}</pattern>
+            </encoder>
+
+            <!-- 滚动策略 -->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- 路径 -->
+                <fileNamePattern>${PROD_FILE_PATH}/error.%d.log</fileNamePattern>
+            </rollingPolicy>
+        </appender>
+
+        <root>
+            <appender-ref ref="fileInfoLog"/>
+            <appender-ref ref="fileErrorLog"/>
+        </root>
+    </springProfile>
+</configuration>

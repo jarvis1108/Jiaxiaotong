@@ -1,0 +1,37 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.CouponDetail;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+*@author: meiyu
+*@Date: 2018/7/5 11:44
+*@description 优惠券明细服务层
+*/
+public interface CouponDetailService {
+
+
+    /**
+     * 分页查看所有优惠券使用明细
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+
+    List<CouponDetail> getCouponDetailList(Integer pageSize,Integer currentPage);
+
+    /**
+     * 增加一条优惠券使用明细记录
+     * @param newCouponDetail
+     * @return
+     * @throws ErrorInfo
+     */
+
+    CouponDetail create(CouponDetail newCouponDetail) throws ErrorInfo;
+
+
+
+
+}

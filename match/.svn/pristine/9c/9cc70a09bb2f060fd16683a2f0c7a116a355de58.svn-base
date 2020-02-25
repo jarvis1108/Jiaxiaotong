@@ -1,0 +1,27 @@
+<import src="payTip$404d7264" />
+<template name="index$4380cf74">
+  <view class="_div data-v-31cf4e6c st-container-goldMall-div">
+    <image class="_img data-v-31cf4e6c st-bg-img" src="/static/images/bg.png"></image>
+    <view class="_div data-v-31cf4e6c st-productList-div">
+      <view class="_div data-v-31cf4e6c st-flex-div">
+        <view class="_div data-v-31cf4e6c box" wx:key="item" key="{{item}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="item">
+          <view class="_div data-v-31cf4e6c st-goodname-div"> {{ item.productName }} </view>
+          <view wx:if="{{index%3 === 0}}" class="_div data-v-31cf4e6c st-goodPhoto-blue-div">
+            <image class="_img data-v-31cf4e6c st-goodPhoto-img" src="{{item.productImage}}" bindtap="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}"></image>
+          </view>
+          <view wx:elif="{{index%3 === 1}}" class="_div data-v-31cf4e6c st-goodPhoto-green-div">
+            <image class="_img data-v-31cf4e6c st-goodPhoto-img" src="{{item.productImage}}" bindtap="handleProxy" data-eventid="{{'1-'+index}}" data-comkey="{{$k}}"></image>
+          </view>
+          <view wx:else class="_div data-v-31cf4e6c st-goodPhoto-cyan-div">
+            <image class="_img data-v-31cf4e6c st-goodPhoto-img" src="{{item.productImage}}" bindtap="handleProxy" data-eventid="{{'2-'+index}}" data-comkey="{{$k}}"></image>
+          </view>
+          <view class="_div data-v-31cf4e6c st-goodNum-div"> {{ item.productPrice }} </view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-31cf4e6c st-memory-div">
+      <navigator style="position:absolute;width:20%;left:40%" url="../exchange-record/main" class="_a data-v-31cf4e6c">兑换记录</navigator>
+    </view>
+    <template wx:if="{{showPay}}" bindlistenCloseDialog="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="payTip$404d7264"></template>
+  </view>
+</template>

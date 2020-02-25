@@ -1,0 +1,77 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.Admin;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 管理员服务单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 04:26
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class AdminServiceTest {
+
+    @Autowired
+    private AdminService adminService;
+
+    @Test
+    public void getAllAdmin() {
+        List<Admin> adminList = adminService.getAllAdmin();
+        assertNotEquals(0, adminList.size());
+
+        adminList.forEach(System.out::println);
+    }
+
+    @Test
+    public void getAdminList() {
+        List<Admin> adminList = adminService.getAdminList(1, 2);
+        assertNotEquals(0, adminList.size());
+
+        adminList.forEach(System.out::println);
+    }
+
+    @Test
+    public void updateAdmin() throws ErrorInfo {
+        Admin admin = new Admin();
+        admin.setAdminId("4");
+        admin.setAdminNo("4");
+        admin.setAdminName("韩晓峰-1-1");
+
+        Admin result = adminService.updateAdmin(admin);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        Admin admin = new Admin();
+        admin.setAdminId("4");
+        admin.setAdminNo("4");
+        admin.setAdminName("韩晓峰");
+
+        Admin result = adminService.create(admin);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteByAdminId() throws ErrorInfo {
+        String adminId = "4";
+        boolean result = adminService.deleteByAdminId(adminId);
+
+        assertTrue(result);
+    }
+}

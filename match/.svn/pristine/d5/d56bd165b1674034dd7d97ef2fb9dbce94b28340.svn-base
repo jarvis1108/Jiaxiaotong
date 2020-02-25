@@ -1,0 +1,57 @@
+<template name="friend-pk-waiting$b2ecbca8">
+  <view class="_div data-v-50dbb60e">
+    <image id="bg" src="/static/images/bg.png" class="_img data-v-50dbb60e"></image>
+    <view class="_div data-v-50dbb60e head">
+      <view id="user" class="_div data-v-50dbb60e" style=" {{'z-index:' + userIndex}}">
+        <image class="_img data-v-50dbb60e headImage-frame" src="/static/images/friendPk/Pictureframe.png"></image>
+        <image class="_img data-v-50dbb60e outer-frame-bg" src="/static/images/friendPk/Answerprogresscircle-bg.png"></image>
+        <view class="_div data-v-50dbb60e inner">
+          <image id="top" src="/static/images/friendPk/Answerprogresscircle.png" class="_img data-v-50dbb60e"></image>
+          <image id="bottom" src="/static/images/friendPk/Answerprogresscircle.png" class="_img data-v-50dbb60e"></image>
+        </view>
+        <image class="_img data-v-50dbb60e headImage" id="userIcon" src="{{user.headImage}}"></image>
+        <label id="userName" class="_span data-v-50dbb60e">{{user.wechatName}}</label>
+        <view class="_div data-v-50dbb60e user-label">
+          <image wx:if="{{isCreator}}" class="_img data-v-50dbb60e user-label-img" src="/static/images/friendPk/Scorethelabel1.png"></image>
+          <image wx:if="{{!isCreator}}" class="_img data-v-50dbb60e user-label-img" id="isNotUser" src="/static/images/friendPk/Scorethelabel2.png"></image>
+          <label wx:if="{{isCreator}}" class="_span data-v-50dbb60e user-label-text">发 起 者</label>
+          <label wx:if="{{!isCreator}}" class="_span data-v-50dbb60e user-label-text">挑 战 者</label>
+        </view>
+      </view>
+      <view id="friend" class="_div data-v-50dbb60e" style=" {{'z-index:' + opponentIndex}}">
+        <image class="_img data-v-50dbb60e headImage-frame" src="/static/images/friendPk/Pictureframe.png"></image>
+        <image class="_img data-v-50dbb60e outer-frame-bg" src="/static/images/friendPk/Answerprogresscircle-bg.png"></image>
+        <view class="_div data-v-50dbb60e friend-inner">
+          <view id="friend-outer-frame" class="_div data-v-50dbb60e">
+            <image id="friend-outer-frame-img" src="/static/images/friendPk/Answerprogresscircle.png" class="_img data-v-50dbb60e"></image>
+          </view>
+        </view>
+        <image id="opponentIcon" wx:if="{{!waitFriend}}" src="{{friend.headImage}}" class="_img data-v-50dbb60e"></image>
+        <label id="opponentName" wx:if="{{!waitFriend}}" class="_span data-v-50dbb60e">{{friend.wechatName}}</label>
+        <view class="_div data-v-50dbb60e friend-label">
+          <label class="_span data-v-50dbb60e friend-label-text" wx:if="{{!waitFriend && isCreator}}">挑 战 者</label>
+          <label class="_span data-v-50dbb60e friend-label-text" wx:if="{{!waitFriend && !isCreator}}">发 起 者</label>
+          <image wx:if="{{isCreator}}" class="_img data-v-50dbb60e friend-label-img" src="/static/images/friendPk/Scorethelabel2.png"></image>
+          <image wx:if="{{!isCreator}}" class="_img data-v-50dbb60e friend-label-img" id="isNotOpponent" src="/static/images/friendPk/Scorethelabel1.png"></image>
+        </view>
+      </view>
+    </view>
+    <image id="clock-headImage" src="/static/images/friendPk/Clock_icon.png" class="_img data-v-50dbb60e"></image>
+    <label id="time" class="_span data-v-50dbb60e">{{minute}}:{{second}}</label>
+    <label class="_span data-v-50dbb60e desc" wx:if="{{waitFriend}}">等待对手加入....</label>
+    <label class="_span data-v-50dbb60e desc" wx:if="{{!waitFriend}}">等待比赛开始....</label>
+    <view id="icons" class="_div data-v-50dbb60e">
+      <view id="giveup-div" class="_div data-v-50dbb60e">
+        <image bindtap="handleProxy" class="_img data-v-50dbb60e giveUp" src="/static/images/friendPk/Giveup_icon.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+        <label id="giveup-text" class="_span data-v-50dbb60e">放弃</label>
+      </view>
+      <view id="invite-div" class="_div data-v-50dbb60e">
+        <button open-type="{{isShareable}}" class="_button data-v-50dbb60e invite">
+          <image src="/static/images/friendPk/Invitation_icon.png" class="_img data-v-50dbb60e invite_img"></image>
+        </button>
+        <label id="invite-text" class="_span data-v-50dbb60e">邀请</label>
+      </view>
+    </view>
+    <image wx:if="{{!waitFriend && isCreator}}" bindtap="handleProxy" class="_img data-v-50dbb60e startBtn" src="/static/images/friendPk/Startfighting_btn.png" data-eventid="{{'1'}}" data-comkey="{{$k}}"></image>
+  </view>
+</template>

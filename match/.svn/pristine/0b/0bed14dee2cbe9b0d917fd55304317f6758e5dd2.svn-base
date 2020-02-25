@@ -1,0 +1,68 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecord;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 对战记录测试
+ * @author meiyu
+ */
+@SpringBootTest
+@RunWith(SpringRunner.class)
+
+public class MatchRecordRepositoryTest {
+    @Autowired
+    private MatchRecordRepository matchRecordRepository;
+
+    @Test
+    public void save() throws ErrorInfo {
+        MatchRecord matchRecord = new MatchRecord();
+        matchRecord.setBeginTime(Timestamp.valueOf("2018-06-26 12:02:02"));
+        matchRecord.setCreateTime(Timestamp.valueOf("2018-06-26 12:02:02"));
+        matchRecord.setEndTime(Timestamp.valueOf("2018-06-26 12:02:02"));
+        matchRecord.setFightStatus(Byte.valueOf("1"));
+        matchRecord.setFightType(Byte.valueOf("1"));
+        matchRecord.setCreateUser("test");
+        matchRecord.setIsValid(Byte.valueOf("1"));
+        matchRecord.setLastUpdTime(Timestamp.valueOf("2018-06-26 12:02:02"));
+        matchRecord.setLastUpdUser("test");
+        matchRecord.setMatchRecordId("1");
+        matchRecord.setMatchPeriod(1);
+        matchRecord.setUserMaxCount(4);
+        matchRecord.setUserId("1");
+        matchRecord.setUserFactCount(11);
+        matchRecord.setRemark("1");
+        matchRecord.setMatchRule("this is test");
+        MatchRecord result = matchRecordRepository.save(matchRecord);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void findAll() {
+        List<MatchRecord> matchRecordList = matchRecordRepository.findAll();
+        assertNotEquals(0, matchRecordList.size());
+        matchRecordList.forEach(System.out::println);
+    }
+    @Test
+    public void findAll1() {
+        PageRequest pageable = PageRequest.of(1, 1);
+        Page<MatchRecord> matchRecordPage = matchRecordRepository.findAll(pageable);
+        List<MatchRecord> matchRecordList = matchRecordPage.getContent();
+        assertNotEquals(0, matchRecordList.size());
+        matchRecordList.forEach(System.out::println);
+    }
+
+}

@@ -1,0 +1,111 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.AdminRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.Admin;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.AdminService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * 用户服务接口实现类
+ * <p>
+ * Created by Devin
+ * 2018-06-29 下午 04:56
+ */
+@Service
+public class AdminServiceImpl implements AdminService {
+
+    @Autowired
+    private AdminRepository adminRepository;
+
+    /**
+     * 获取所有管理员列表
+     *
+     * @return
+     */
+    @Override
+    public List<Admin> getAllAdmin() {
+        return adminRepository.findAll();
+    }
+
+    /**
+     * 获取管理员信息
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页，从1开始
+     * @return
+     */
+    @Override
+    @Transactional
+    public List<Admin> getAdminList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null) {
+            return adminRepository.findAll();
+        } else {
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<Admin> adminPage = adminRepository.findAll(pageable);
+            return adminPage.getContent();
+        }
+    }
+
+    /**
+     * 更新管理员信息
+     *
+     * @param updatedAdmin 待更新管理员信息
+     * @return
+     */
+    @Override
+    @Transactional
+    public Admin updateAdmin(Admin updatedAdmin) throws ErrorInfo {
+        if (updatedAdmin == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_003", "管理员信息为空", null);
+        }
+
+        Admin admin = adminRepository.findAdminByAdminId(updatedAdmin.getAdminId());
+        if (admin == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_004", "管理员不存在", null);
+        }
+        UpdateUtil.copyProperties(updatedAdmin, admin);
+        return adminRepository.save(admin);
+    }
+
+    /**
+     * 创建管理员
+     *
+     * @param admin
+     * @return
+     */
+    @Override
+    @Transactional
+    public Admin create(Admin admin) throws ErrorInfo {
+        if (admin == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_003", "管理员信息为空", null);
+        return adminRepository.save(admin);
+    }
+
+    /**
+     * 根据id删除管理员，逻辑删除
+     *
+     * @param adminID
+     * @return
+     */
+    @Override
+    @Transactional
+    public boolean deleteByAdminId(String adminID) throws ErrorInfo {
+        Admin admin = adminRepository.findAdminByAdminId(adminID);
+        if (admin == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_004", "管理员不存在", null);
+        }
+        admin.setIsValid(Byte.valueOf("0"));
+        adminRepository.save(admin);
+        return true;
+    }
+}

@@ -1,0 +1,36 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserRelInfo;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:  用户相关信息表数据访问层
+ * @date 2018\7\24 0024
+ */
+public interface UserRelInfoRepository extends PagingAndSortingRepository<UserRelInfo, String> {
+
+
+    /**
+     *查询所有用户相关信息表
+     * @return
+     */
+    List<UserRelInfo> findAll();
+
+    /**
+     * 创建、更新用户相关信息表
+     * @param userRelInfo
+     * @return
+     */
+    UserRelInfo save(UserRelInfo userRelInfo);
+
+    /**
+     *根据用户ID查询用户相关信息表
+     * @param userID
+     * @return
+     */
+    UserRelInfo findByUserId(String userID);
+
+}

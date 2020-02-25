@@ -1,0 +1,131 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.Question;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\6\26 0026
+ */
+@Service
+@Slf4j
+public class QuestionServiceImpl implements QuestionService {
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
+    /**
+     * 获取所有题目信息
+     * @return
+     */
+    @Transactional(readOnly = true)
+    @Override
+    public List<Question> findAll() {
+        return questionRepository.findAll();
+    }
+
+
+
+    @Transactional(readOnly=true)
+    @Override
+    public Question getQuestionByQuestionId(String questionId)throws ErrorInfo {
+        Question question= questionRepository.findQuestionByQuestionId(questionId);
+        if(question==null){
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_002", "题目不存在", null);
+        }
+        return question;
+
+    }
+
+    /**
+     * 创建新题目
+     * @param newQuestion
+     * @return  question
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public Question create(Question newQuestion)throws ErrorInfo {
+        if (newQuestion == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_001", "题目信息为空", null);
+        return  questionRepository.save(newQuestion);
+    }
+
+    /**
+     * 根据题目Id删除题目
+     * @param questionId
+     * @return TRUE or false
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public boolean deleteQuestionById(String questionId) throws ErrorInfo{
+        Question question = questionRepository.findQuestionByQuestionId(questionId);
+        if (question== null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_002", "题目不存在", null);
+        }
+        question.setIsValid(Byte.valueOf("0"));
+        questionRepository.save(question);
+        return true;
+    }
+
+    /**
+     * 更新题目信息
+     * @param updatedQuestion
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public Question update(Question updatedQuestion) throws ErrorInfo{
+        if (updatedQuestion == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_001", "题目信息为空", null);
+        }
+        Question question = questionRepository.findQuestionByQuestionId(updatedQuestion.getQuestionId());
+        if (question == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_57_002", "题目不存在", null);
+        }
+        UpdateUtil.copyProperties(updatedQuestion, question);
+        return  questionRepository.save(question);
+
+
+    }
+
+    /**
+     * 获取题目信息列表
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页
+     * @return 题目信息列表
+     */
+    @Transactional
+    @Override
+    public List<Question> getQuestionList(Integer pageSize, Integer currentPage) {
+        if(pageSize == null || currentPage == null || pageSize<=0 || currentPage<=0){
+            return null;
+        }
+        Pageable pageable = PageRequest.of(currentPage,pageSize);
+        Page<Question> page = questionRepository.findAll(pageable);
+        if(page == null){
+            return null;
+        }
+        return page.getContent();
+    }
+
+
+
+}

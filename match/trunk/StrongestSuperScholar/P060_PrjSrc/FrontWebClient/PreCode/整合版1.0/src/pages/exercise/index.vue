@@ -1,0 +1,446 @@
+<template>
+    <div class="st-content-div">
+        <img class="st-img" src="/static/images/bg.png" alt="">
+        <ul class="st-numberConternt-ul">
+            <li v-for="item in indexList" class="st-numberList-li" :key="item.index">
+                <div v-if="item.isRight === 1" class="st-right-number-div">
+                {{item.index}}    
+                </div>
+                <div v-else-if="item.isRight === -1" class="st-false-number-div">
+                {{item.index}}    
+                </div>
+                <div v-else class="st-number-div">
+                {{item.index}}    
+                </div>
+            </li>
+        </ul>
+
+    <div class="st-questionCard-div" id="content" :class="contentAni" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
+            <img class="st-bg" src="/static/images/exercise/subject-bg.png" alt="">
+            <div class="st-time-div">
+                <cutdown class="st-bg" :destroy="destroyCutdown" :order="questionIndex" :showOrder="false" :start="start" @cutdownout="cutDownOut" @timekeeping="timeKeeping"></cutdown>
+            </div>
+            <div class="st-questionTitle-div">
+                <span>
+                    {{questionList[questionIndex-1].question}}
+                </span>
+            </div>
+            <hr id="hr">
+            <div class="st-questionOption-div" id="choiceList">
+                <!-- <div class="choice" @click="optionClick(choice)" v-for="choice in questionList[questionIndex-1].choiceList" :id="'choice'+choice.label" :key="choice">
+                  <img class="choice_img" :src="choice.img" :key="choice"/>
+                  <span :id="choice.style" class="choice_content" :key="choice">{{choice.label}}.{{choice.content}}</span>
+                  <img class="errorIcon" v-if="choice.isRight === -1" src="/static/images/exercise/Errorlabel@2x.png"/>
+                  <img class="correctIcon" v-if="choice.isRight === 1" src="/static/images/exercise/Correctlabel@2x.png"/>
+              </div> -->
+               <div class="choice" @click="optionClick(indexList[questionIndex-1].choiceList[0])" :id="choiceA" :key="choice">
+                  <img class="choice_img" :src="indexList[questionIndex-1].choiceList[0].img" :key="choice"/>
+                  <span :id="indexList[questionIndex-1].choiceList[0].style" class="choice_content" :key="choice">{{questionList[questionIndex - 1].choiceA}}</span>
+                  <img class="errorIcon" v-if="indexList[questionIndex-1].choiceList[0].isRight === -1" src="/static/images/exercise/Errorlabel.png"/>
+                  <img class="correctIcon" v-if="indexList[questionIndex-1].choiceList[0].isRight === 1" src="/static/images/exercise/Correctlabel.png"/>
+              </div>
+                <div class="choice" @click="optionClick(indexList[questionIndex-1].choiceList[1])" :id="choiceA" :key="choice">
+                  <img class="choice_img" :src="indexList[questionIndex-1].choiceList[1].img" :key="choice"/>
+                  <span :id="indexList[questionIndex-1].choiceList[1].style" class="choice_content" :key="choice">{{questionList[questionIndex - 1].choiceB}}</span>
+                  <img class="errorIcon" v-if="indexList[questionIndex-1].choiceList[1].isRight === -1" src="/static/images/exercise/Errorlabel.png"/>
+                  <img class="correctIcon" v-if="indexList[questionIndex-1].choiceList[1].isRight === 1" src="/static/images/exercise/Correctlabel.png"/>
+              </div>
+                <div class="choice" @click="optionClick(indexList[questionIndex-1].choiceList[2])" :id="choiceA" :key="choice">
+                  <img class="choice_img" :src="indexList[questionIndex-1].choiceList[2].img" :key="choice"/>
+                  <span :id="indexList[questionIndex-1].choiceList[2].style" class="choice_content" :key="choice">{{questionList[questionIndex - 1].choiceC}}</span>
+                  <img class="errorIcon" v-if="indexList[questionIndex-1].choiceList[2].isRight === -1" src="/static/images/exercise/Errorlabel.png"/>
+                  <img class="correctIcon" v-if="indexList[questionIndex-1].choiceList[2].isRight === 1" src="/static/images/exercise/Correctlabel.png"/>
+              </div>
+                <div class="choice" @click="optionClick(indexList[questionIndex-1].choiceList[3])" :id="choiceA" :key="choice">
+                  <img class="choice_img" :src="indexList[questionIndex-1].choiceList[3].img" :key="choice"/>
+                  <span :id="indexList[questionIndex-1].choiceList[3].style" class="choice_content" :key="choice">{{questionList[questionIndex - 1].choiceD}}</span>
+                  <img class="errorIcon" v-if="indexList[questionIndex-1].choiceList[3].isRight === -1" src="/static/images/exercise/Errorlabel.png"/>
+                  <img class="correctIcon" v-if="indexList[questionIndex-1].choiceList[3].isRight === 1" src="/static/images/exercise/Correctlabel.png"/>
+              </div>
+            </div>
+    </div>
+
+
+    </div>
+</template>
+
+<script>
+import wxs from "../../utils/wx";
+import cutdown from "@/components/cut_down";
+
+export default {
+  components: {
+    cutdown
+  },
+  name: "index.vue",
+  data() {
+    return {
+      indexList: [
+        { index: 1, isRight: 0, userAnswer: "", choiceList: [] }, //isRight标记该题是否答对，0-未答，-1答错，1-答对
+        { index: 2, isRight: 0, userAnswer: "", choiceList: [] },
+        { index: 3, isRight: 0, userAnswer: "", choiceList: [] },
+        { index: 4, isRight: 0, userAnswer: "", choiceList: [] },
+        { index: 5, isRight: 0, userAnswer: "", choiceList: [] },
+        { index: 6, isRight: 0, userAnswer: "", choiceList: [] },
+        { index: 7, isRight: 0, userAnswer: "", choiceList: [] },
+        { index: 8, isRight: 0, userAnswer: "", choiceList: [] },
+        { index: 9, isRight: 0, userAnswer: "", choiceList: [] },
+        { index: 10, isRight: 0, userAnswer: "", choiceList: [] }
+      ], //题号列表
+      choiceList: [],
+      questionList: [
+        {
+          question: "",
+          choiceA: "",
+          choiceB: "",
+          choiceC: "",
+          choiceD: "",
+          answer: "",
+          reference: "",
+          questionAnalyze: "",
+          content: ""
+        }
+      ], //问题列表
+      questionIndex: 1, //题号
+      questionIndex1: 1,
+      userAnswer: "", //用户选择选项
+      rightAnswer: "", //正确选项
+      contentAni: "", //为题目卡片增加动画
+      anserResult: [], //记录答题结果作为参数传递给结果页，回答正确压入1，错误压入-1，同时压入用户答案
+      destroyCutdown: false, //是否销毁计时器，传递给子组件
+      start: false, //是否开始计时，传递给子组件
+      subjectId: "", //学科id
+      matchId: "", //战局id
+      exerciseInfo: {}, //保存战局id和题目列表
+      usedTime: "", //答完10道题共需时间
+      isTrue: 0 ,//1表示答对，0表示答错和未答
+    };
+  },
+  async onLoad(option) {
+    //初始化数据
+     
+    this.questionIndex = 1;
+    this.userAnswer = "";
+    this.rightAnswer = "";
+    this.contentAni = "";
+    this.subjectId = option.subjectId;
+    this.anserResult = [];
+    this.usedTime = 0;
+    this.start = false;
+    if(this.start === false)
+    {
+      wxs.showToast({ title: "加载中", icon: "loading", duration: 5000 });
+    }
+    for (let i = 0; i < 10; ++i) {
+      this.indexList[i] = {
+        index: i + 1,
+        isRight: 0,
+        choiceList: [
+          {
+            label: "A",
+            img: "",
+            isRight: 0,
+            style: ""
+          },
+          {
+            label: "B",
+            img: "",
+            isRight: 0,
+            style: ""
+          },
+          {
+            label: "C",
+            img: "",
+            isRight: 0,
+            style: ""
+          },
+          {
+            label: "D",
+            img: "",
+            isRight: 0,
+            style: ""
+          }
+        ]
+      };
+    }
+    this.exerciseInfo = await this.$store.dispatch("getExerciseMatchInfo", {
+      userId: this.$store.state.userId,
+      subjectId: this.subjectId
+    });
+
+    this.matchId = this.exerciseInfo.matchId;
+    this.questionList = this.exerciseInfo.questionList;
+    this.setDefaultChoiceStyle();
+    wxs.showShareMenu(true);
+    
+  },
+  watch: {
+    questionList() {
+      if (this.questionList.length === 10) {
+        this.start = true;
+        wxs.hideToast();
+        // wxs.showToast({ title: "加载中", icon: "loading", duration: 1200 });
+      }
+    }
+  },
+  methods: {
+    //选项的点击事件
+    optionClick(selected) {
+      this.userAnswer = selected.label;
+      this.indexList[this.questionIndex - 1].userAnswer = selected.label;
+      this.rightAnswer = this.questionList[this.questionIndex - 1].answer;
+      this.setChoiceStyle(selected);
+    },
+
+    // 默认的选项样式
+    setDefaultChoiceStyle() {
+      this.indexList[this.questionIndex - 1].choiceList.forEach(item => {
+        item.img = "/static/images/exercise/Optionbox.png";
+      });
+    },
+
+    //根据用户选择设置选项样式
+    setChoiceStyle(selected) {
+      //判断用户选择是否正确并显示效果
+      if (this.userAnswer === this.rightAnswer) {
+        //用户答对
+        selected.isRight = 1;
+        selected.img = "/static/images/exercise/Checktheoptionbox.png";
+        selected.style = "correctChoice";
+        //将该题标为答对，并压入结果数组
+        this.indexList[this.questionIndex - 1].isRight = 1;
+        this.anserResult.push(1);
+        this.isTrue = 1;
+      } else {
+        //用户答错
+
+        if (selected) {
+          //selected不为空，说明用户选错
+          selected.isRight = -1;
+          selected.img = "/static/images/exercise/Erroroption-bg.png";
+          selected.style = "errorChoice";
+        }
+        this.indexList[this.questionIndex - 1].choiceList.forEach(item => {
+          if (item.label === this.rightAnswer) {
+            item.isRight = 1;
+            item.img = "/static/images/exercise/Checktheoptionbox.png";
+          }
+        });
+        //将该题标为答错，并压入结果数组
+        this.indexList[this.questionIndex - 1].isRight = -1;
+        this.anserResult.push(-1);
+        this.isTrue = 0;
+      }
+      //进入下一题，设置一个延迟时间来显示选项
+      setTimeout(() => {
+        if (this.questionIndex < this.questionList.length) {
+          this.nextQuestion();
+        } else {
+          this.destroyCutdown = true;
+          setTimeout(() => {
+            wxs.redirectTo(
+              `../exercise-result/main?answerResult=${JSON.stringify(
+                this.anserResult
+              )}&questionList=${JSON.stringify(this.questionList)}
+            &indexList=${JSON.stringify(this.indexList)}
+            &usedTime=${this.usedTime}&subjectId=${this.subjectId}
+            &matchId=${this.matchId}`
+            );
+          }, 1000); //设置延时使得最后一次时间加上后再跳转到结果页面
+        }
+      }, 1000);
+    },
+
+    //下一题
+    nextQuestion() {
+      this.questionIndex += 1;
+      this.contentAni = "rotate";
+      setTimeout(() => {
+        this.setDefaultChoiceStyle();
+      }, 500);
+      setTimeout(() => {
+        this.contentAni = "";
+      }, 1000);
+    },
+
+    //倒计时时间到
+    cutDownOut() {
+      //触发到时间到，表明用户未完成答题，直接标为答错
+      //显示正确答案
+      this.userAnswer = "";
+      this.indexList[this.questionIndex - 1].userAnswer = "selected.label";
+      this.rightAnswer = this.questionList[this.questionIndex - 1].answer;
+      this.setChoiceStyle();
+    },
+    async timeKeeping(time) {
+      this.usedTime += time;
+      if (this.destroyCutdown) {
+        //this.destroyCutDown为true，说明到了最后一题
+        this.questionIndex1 = this.questionIndex;
+      } else {
+        this.questionIndex1 = this.questionIndex - 1;
+      }
+
+      await this.$store.dispatch("SaveLpConsumeRecord", {
+        matchId: this.matchId,
+        userId: this.$store.state.userId,
+        questionIndex: this.questionIndex1,
+        userAnswer: this.userAnswer,
+        amount: time,
+        isTrue: this.isTrue
+      });
+    }
+  },
+  onShareAppMessage() {
+    return {
+      title: "只有学霸才能征服的题目，快来看看吧！",
+      path: "/page/index/main"
+    };
+  }
+};
+</script>
+
+
+<style scoped>
+.st-content-div {
+  height: 100%;
+  width: 100%;
+}
+.st-img {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+.st-bg {
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+.st-numberConternt-ul {
+  position: absolute;
+  width: 100%;
+}
+.st-numberList-li {
+  float: left;
+  margin-top: 15%;
+  margin-left: 3%;
+}
+.st-number-div {
+  height: 23px;
+  width: 23px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 23px;
+  color: #ffffff;
+  font-size: 15px;
+}
+.st-right-number-div {
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 23px;
+  border: 1px solid rgb(59, 202, 255);
+  background: rgb(59, 202, 255);
+  color: #ffffff;
+  font-size: 15px;
+}
+.st-false-number-div {
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  text-align: center;
+  border: 1px solid rgb(255, 78, 86);
+  background: rgb(255, 78, 86);
+  line-height: 23px;
+  color: #ffffff;
+  font-size: 15px;
+}
+.st-questionCard-div {
+  position: absolute;
+  top: 23%;
+  left: 5%;
+  height: 70%;
+  width: 90%;
+}
+.st-time-div {
+  height: 45px;
+  width: 40px;
+  position: absolute;
+  top: -4%;
+  left: 46%;
+}
+
+.st-questionTitle-div {
+  position: absolute;
+  top: 8%;
+  width: 80%;
+  height: 20%;
+  left: 11%;
+  font-size: 12px;
+}
+#hr {
+  position: absolute;
+  top: 25%;
+  width: 90%;
+  left: 5%;
+  height: 0;
+  border-bottom: 0.1px dashed rgb(162, 162, 162);
+}
+#errorChoice,
+#correctChoice {
+  color: white;
+}
+.st-questionOption-div {
+  position: absolute;
+  top: 28%;
+  left: 7%;
+  width: 85%;
+}
+.choice {
+  position: relative;
+  width: 100%;
+  height: 45px;
+  margin-top: 8%;
+  font-size: 18px;
+  animation: choiceZoomOut 0.5s;
+}
+.choice_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.choice_content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 5%;
+  top: 20%;
+  z-index: 1;
+}
+.correctIcon {
+  width: 19px;
+  height: 19px;
+  position: absolute;
+  right: 10%;
+  top: 25%;
+  animation: zoomOut 0.5s;
+}
+
+.errorIcon {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 10%;
+  top: 30%;
+  animation: zoomOut 0.5s;
+}
+
+.rotate {
+  animation: rotate 1s;
+}
+</style>
+
+

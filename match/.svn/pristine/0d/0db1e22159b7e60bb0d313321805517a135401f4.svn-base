@@ -1,0 +1,112 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.dao.CourseInfoRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.CourseInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.CourseInfoService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+/**
+ *@author: meiyu
+ *@Date: 2018/7/13 16:33
+ *@description 课程信息表服务层实现
+ */
+
+@Service
+public class CourseInfoServiceImpl implements CourseInfoService {
+    @Autowired
+    private CourseInfoRepository courseInfoRepository;
+
+    /**
+     * 分页获取课程信息表
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    @Transactional
+    @Override
+    public List<CourseInfo> getCourseInfoList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null) {
+            return courseInfoRepository.findAll();
+        } else {
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<CourseInfo> courseInfoPage = courseInfoRepository.findAll(pageable);
+            return courseInfoPage.getContent();
+        }
+    }
+
+    /**
+     * 查看所有课程信息
+     * @return
+     */
+    @Override
+    @Transactional
+    public List<CourseInfo> findAll() {
+        return courseInfoRepository.findAll();
+    }
+
+    /**
+     * 新建课程信息
+     * @param newCourseInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public CourseInfo create(CourseInfo newCourseInfo) throws ErrorInfo {
+        if (newCourseInfo == null)
+            throw new ErrorInfo("E_201807300855_01_018", "新建课程信息为空", null);
+        return courseInfoRepository.save(newCourseInfo);
+    }
+
+    /**
+     * 更新课程信息
+     * @param updatedCourseInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public CourseInfo update(CourseInfo updatedCourseInfo) throws ErrorInfo {
+        if (updatedCourseInfo == null) {
+            throw new ErrorInfo("E_201807300855_01_019", "课程信息为空", null);
+        }
+        CourseInfo courseInfo = courseInfoRepository.findCourseInfoByCourseId(updatedCourseInfo.getCourseId());
+        if (courseInfo == null) {
+            throw new ErrorInfo("E_201807300855_01_020", "课程信息不存在", null);
+        }
+        UpdateUtil.copyProperties(updatedCourseInfo, courseInfo);
+
+        return courseInfoRepository.save(updatedCourseInfo);
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteByCourseId(String courseId) throws ErrorInfo {
+        CourseInfo courseInfo = courseInfoRepository.findCourseInfoByCourseId(courseId);
+        if (courseInfo == null) {
+            throw new ErrorInfo("E_201807300855_01_021", "删除失败", null);
+        }
+        courseInfo.setIsValid(Byte.valueOf("0"));
+        courseInfoRepository.save(courseInfo);
+        return true;
+    }
+
+    @Override
+    public CourseInfo findByCourseName(String courseName) throws ErrorInfo {
+        CourseInfo courseInfo=courseInfoRepository.findByCourseName(courseName);
+        if(courseInfo==null){
+            throw new ErrorInfo("E_201807300855_057_033", "没有改名字的课程", null);
+        }
+        return courseInfo;
+    }
+}

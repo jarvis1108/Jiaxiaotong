@@ -1,0 +1,45 @@
+<import src="questioncard$6d650304" />
+<import src="cut_down$a297aaf2" />
+<template name="index$2a8cdd5f">
+  <view class="_div data-v-045d173c base">
+    <image class="_img data-v-045d173c bg" src="/copy-asset/static/img/bg.png"></image>
+    <image class="_img data-v-045d173c escore_photo" src="/copy-asset/dist/static/img/Scorethelabel2.png"></image>
+    <image class="_img data-v-045d173c pscore_photo" src="/copy-asset/static/img/Scorethelabel1.png"></image>
+    <view class="_div data-v-045d173c player">
+      <image class="_img data-v-045d173c score_hoop" src="/copy-asset/dist/static/img/Scorecircle@2x.png"></image>
+      <view class="_div data-v-045d173c topBox">
+        <view class="_div data-v-045d173c topCircle" style=" {{('transform:' + ('rotate(' + pTopRotation + 'deg);') + ';')}}"></view>
+      </view>
+      <view class="_div data-v-045d173c bottomBox">
+        <view class="_div data-v-045d173c bottomCircle" style=" {{('transform:' + ('rotate(' + pBottomRotation + 'deg);') + ';')}}"></view>
+      </view>
+      <view class="_div data-v-045d173c photo">
+        <image class="_img data-v-045d173c photo_hoop" src="/copy-asset/static/img/Pictureframe.png"></image>
+        <image class="_img data-v-045d173c user_photo" src="/copy-asset/static/img/Wechatavatar1.png"></image>
+      </view>
+    </view>
+    <view class="_div data-v-045d173c pName text1">{{ playerName }}</view>
+    <label class="_span data-v-045d173c pScore text2">{{ playerScore }}</label>
+    <view class="_div data-v-045d173c enemy">
+      <image class="_img data-v-045d173c score_hoop" src="/copy-asset/dist/static/img/Scorecircle@2x.png"></image>
+      <view class="_div data-v-045d173c topBox">
+        <view class="_div data-v-045d173c topCircle" style=" {{('transform:' + ('rotate(' + eTopRotation + 'deg);') + ';')}}"></view>
+      </view>
+      <view class="_div data-v-045d173c bottomBox">
+        <view class="_div data-v-045d173c bottomCircle" style=" {{('transform:' + ('rotate(' + eBottomRotation + 'deg);') + ';')}}"></view>
+      </view>
+      <view class="_div data-v-045d173c photo">
+        <image class="_img data-v-045d173c photo_hoop" src="/copy-asset/static/img/Pictureframe.png"></image>
+        <image class="_img data-v-045d173c user_photo" src="/copy-asset/dist/static/img/Wechatavatar2.png"></image>
+      </view>
+    </view>
+    <view class="_div data-v-045d173c eName text1">{{ enemyName }}</view>
+    <label class="_span data-v-045d173c eScore text2">{{ enemyScore }}</label>
+    <view class="_div data-v-045d173c question-card">
+      <template data="{{...$root[$kk+'0'], $root}}" is="questioncard$6d650304"></template>
+    </view>
+    <view class="_div data-v-045d173c cut-down">
+      <template data="{{...$root[$kk+'1'], $root}}" is="cut_down$a297aaf2"></template>
+    </view>
+  </view>
+</template>

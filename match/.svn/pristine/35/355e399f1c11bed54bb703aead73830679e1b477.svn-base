@@ -1,0 +1,660 @@
+global.webpackJsonp([5],{
+
+/***/ 133:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(134);
+
+
+
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__index__["a" /* default */]);
+app.$mount();
+
+/***/ }),
+
+/***/ 134:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_1d4d36a3_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(169);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(135)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1d4d36a3"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_1d4d36a3_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\pages\\battle\\index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1d4d36a3", Component.options)
+  } else {
+    hotAPI.reload("data-v-1d4d36a3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 135:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 136:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_battle_loading_vue__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_battle_ready_vue__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_battle_vue__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_battle_result_vue__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_wx__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__utils_RequestObj__ = __webpack_require__(28);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  components: {
+    battleLoading: __WEBPACK_IMPORTED_MODULE_1__components_battle_loading_vue__["a" /* default */], //加载页
+    battleReady: __WEBPACK_IMPORTED_MODULE_2__components_battle_ready_vue__["a" /* default */], //准备页
+    battle: __WEBPACK_IMPORTED_MODULE_3__components_battle_vue__["a" /* default */], //对战页
+    battleResult: __WEBPACK_IMPORTED_MODULE_4__components_battle_result_vue__["a" /* default */] //结果页
+  },
+  data: function data() {
+    return {
+      userInfo: {}, //用户信息
+      opponentInfo: {}, //对手信息
+      battleId: "", //战局id
+      step: "", //标明战局状态，与返回消息类型匹配
+      questionIndex: 0, //题目序号
+      question: {}, //试题
+      userScore: 0, //用户分数
+      opponentScore: 0, //对手分数
+      userCorrectNum: 0, //用户答对题数
+      opponentCorrectNum: 0, //对手答对题数
+      userLearningPoit: 0, //用户消耗学点数
+      userAnswer: {
+        //用户单题的答案信息
+        answer: "",
+        timeLeft: ""
+      },
+      opponentAnswer: {
+        score: 0,
+        answer: ""
+      }, //对手单题的答案信息
+      waitUser: true, //等待用户答题
+      waitOpponent: true, //等待对手答题
+      socket: null //网络连接
+    };
+  },
+  onLoad: function onLoad() {
+    this.userInfo = this.$store.state.userInfo;
+    this.opponentInfo = {};
+    this.step = "0";
+    this.startMatch();
+  },
+
+  watch: {
+    //进入下一题，重置对手答题结果
+    questionIndex: function questionIndex() {
+      this.opponentAnswer = {
+        score: 0,
+        answer: ""
+      };
+    },
+    waitUser: function waitUser() {
+      var _this = this;
+
+      setTimeout(function () {
+        //若用户对手都答题完成，重置答题情况，重置完毕后请求下一题
+        if (!_this.waitUser && !_this.waitOpponent) {
+          _this.waitUser = true;
+          _this.waitOpponent = true;
+          _this.sendMessage();
+        }
+      }, 1000);
+    },
+    waitOpponent: function waitOpponent() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        //若用户对手都答题完成，重置答题情况，重置完毕后请求下一题
+        if (!_this2.waitUser && !_this2.waitOpponent) {
+          _this2.waitUser = true;
+          _this2.waitOpponent = true;
+          _this2.sendMessage();
+        }
+      }, 1000);
+    }
+  },
+  methods: {
+    /**
+     * 监听battle组件触发的用户答题完毕事件
+     * data -- 用户的答题信息
+     */
+    changeUserAnswer: function changeUserAnswer(data) {
+      this.userAnswer = data;
+      this.userLearningPoit += 10 - data.timeLeft;
+      //将等待用户答题字段标为false
+      this.waitUser = false;
+      //向服务器发送用户答完题目的消息
+      this.sendMessage();
+    },
+
+    //监听匹配超时事件，返回到首页
+    matchTimeOut: function matchTimeOut() {
+      console.log("超时时对手信息是：" + this.opponentInfo);
+      if (!this.opponentInfo) {
+        console.log('匹配超时');
+        __WEBPACK_IMPORTED_MODULE_5__utils_wx__["b" /* default */].navigateBack(0);
+      }
+    },
+
+    //开始匹配，建立websocket并保持监听
+    startMatch: function startMatch() {
+      var _this3 = this;
+
+      var that = this;
+      //连接webSocket
+      wx.connectSocket({
+        url: __WEBPACK_IMPORTED_MODULE_6__config__["b" /* socketUrl */] + "/match?userId=" + this.userInfo.userId
+      });
+
+      //监听服务器打开
+      wx.onSocketOpen(function (res) {
+        console.log("连接已建立");
+      });
+
+      //接收到服务器端的消息执行receiveMessage方法
+      wx.onSocketMessage(function (res) {
+        _this3.receiveMessage(res);
+      });
+
+      //webSocket关闭
+      wx.onSocketClose(function (res) {
+        console.log("Websocket关闭");
+      });
+    },
+
+    //接收服务器端的消息
+    receiveMessage: function receiveMessage(res) {
+      var result = JSON.parse(res.data);
+      //拿到消息类型来对应当前战局状态
+      this.step = result.msgType;
+      if (result.msgType === "A") {
+        // 服务器返回消息类型为A，表示服务器已经匹配到对手，此时可以进行页面跳转，并请求服务器发送题目
+        console.log("匹配成功");
+        this.opponentInfo = result.msgData.curData.opponent;
+        this.battleId = result.msgData.curData.matchId;
+      } else if (result.msgType === "B") {
+        //服务器消息类型为B，表示拿到服务器返回的题目
+        this.question = result.msgData.curData.question;
+      } else if (result.msgType === "C-1") {
+        //服务器消息类型为C-1,表示拿到用户的答题计算结果
+        this.userScore += result.msgData.curData.score;
+        if (result.msgData.curData.score > 0) {
+          //用户答对
+          this.userCorrectNum += 1;
+        }
+      } else if (result.msgType === "C-2") {
+        //服务器消息类型为C-2,表示拿到对手的答题结果
+        this.opponentAnswer = {
+          score: result.msgData.curData.score,
+          answer: result.msgData.curData.answer
+        };
+        this.opponentScore += this.opponentAnswer.score;
+        if (this.opponentAnswer.score > 0) this.opponentCorrectNum += 1;
+        //将等待对手答题字段标为false
+        this.waitOpponent = false;
+      }
+    },
+
+    //向服务器端发送消息
+    sendMessage: function sendMessage() {
+      //用户和对手都未答题时发送信息为请求题目
+      if (this.waitUser && this.waitOpponent) {
+        this.questionIndex += 1;
+        wx.sendSocketMessage({
+          data: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()({
+            msgID: Object(__WEBPACK_IMPORTED_MODULE_7__utils_RequestObj__["b" /* getuuid */])(),
+            msgType: "A",
+            msgData: {
+              matchId: this.battleId,
+              no: this.questionIndex
+            },
+            msgDesc: "请求出题"
+          })
+        });
+      } else if (!this.waitUser) {
+        //用户答题完毕，计算分数
+        wx.sendSocketMessage({
+          data: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()({
+            msgID: Object(__WEBPACK_IMPORTED_MODULE_7__utils_RequestObj__["b" /* getuuid */])(),
+            msgType: "B",
+            msgData: {
+              matchId: this.battleId,
+              correctAnswer: this.question.answer,
+              userAnswer: this.userAnswer.answer,
+              timeLeft: this.userAnswer.timeLeft,
+              no: this.questionIndex
+            },
+            msgDesc: "请求计算当前分数和返回结果"
+          })
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 137:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_battle_loading_vue__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_efc81b5a_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_battle_loading_vue__ = __webpack_require__(140);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(138)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-efc81b5a"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_battle_loading_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_efc81b5a_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_battle_loading_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\components\\battle-loading.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] battle-loading.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-efc81b5a", Component.options)
+  } else {
+    hotAPI.reload("data-v-efc81b5a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 138:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 139:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_wx_js__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    user: {
+      type: Object,
+      required: true
+    },
+    close: {
+      type: Boolean,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      opponentInfo: {
+        headImage: "/static/images/nick.jpg",
+        wechatName: "皮皮虾",
+        city: "西安",
+        externalLevel: 15
+      },
+      interval: null,
+      timing: 0 //匹配时间计时
+    };
+  },
+  onLoad: function onLoad() {
+    var _this = this;
+
+    this.timing = 0;
+    this.interval = setInterval(function () {
+      if (_this.timing < 30) {
+        _this.timing += 1;
+      } else {
+        clearInterval(_this.interval);
+        _this.$emit("matchTimeOut");
+      }
+    }, 1000);
+  },
+
+  watch: {
+    close: function close() {
+      console.log("loading:" + this.close);
+      if (!this.close) {
+        clearInterval(this.interval);
+      }
+    }
+  },
+  computed: {
+    level: function level() {
+      var level = parseInt(this.user.externalLevel / 5);
+      switch (level) {
+        case 0:
+          return "新手";
+          break;
+        case 1:
+          return "熟手";
+          break;
+        case 2:
+          return "优秀";
+          break;
+        case 3:
+          return "课代表";
+          break;
+        case 4:
+          return "学霸";
+          break;
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 140:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "loading"
+  }, [_c('div', {
+    staticClass: "st-battle-loading-bg"
+  }, [_c('img', {
+    staticClass: "st-battle-loading-bg-img",
+    attrs: {
+      "src": "/static/images/battleLoading/Earth_bg.png"
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "st-battle-loading-astronaut"
+  }, [_c('img', {
+    staticClass: "st-battle-loading-astronaut-bg",
+    attrs: {
+      "src": "/static/images/battleLoading/Astronaut.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-astronaut-head",
+    attrs: {
+      "src": "/static/images/battleLoading/Highlight.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-astronaut-headimage",
+    attrs: {
+      "src": _vm.user.headImage
+    }
+  })]), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-planet1",
+    attrs: {
+      "src": "/static/images/battleLoading/Planet1.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-planet2",
+    attrs: {
+      "src": "/static/images/battleLoading/Planet2.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-planet3",
+    attrs: {
+      "src": "/static/images/battleLoading/Planet3.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-planet4",
+    attrs: {
+      "src": "/static/images/battleLoading/Planet4.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    staticClass: "st-battle-loading-planet5",
+    attrs: {
+      "src": "/static/images/battleLoading/Planet5.png"
+    }
+  })]), _vm._v(" "), _c('span', {
+    staticClass: "st-battle-loading-username"
+  }, [_vm._v(_vm._s(_vm.user.wechatName) + "同学")]), _vm._v(" "), _c('span', {
+    staticClass: "st-battle-loading-level"
+  }, [_vm._v(_vm._s(_vm.level))]), _vm._v(" "), (_vm.timing % 3 === 0) ? _c('span', {
+    staticClass: "st-battle-loading-timing-tip"
+  }, [_vm._v("匹配中.")]) : _vm._e(), _vm._v(" "), (_vm.timing % 3 === 1) ? _c('span', {
+    staticClass: "st-battle-loading-timing-tip"
+  }, [_vm._v("匹配中..")]) : _vm._e(), _vm._v(" "), (_vm.timing % 3 === 2) ? _c('span', {
+    staticClass: "st-battle-loading-timing-tip"
+  }, [_vm._v("匹配中...")]) : _vm._e(), _vm._v(" "), (_vm.timing >= 3) ? _c('span', {
+    staticClass: "st-battle-loading-timing"
+  }, [_vm._v(_vm._s(_vm.timing) + "秒")]) : _vm._e()])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-efc81b5a", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 169:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "st-battle-main-container"
+  }, [(_vm.step == '0') ? _c('battleLoading', {
+    attrs: {
+      "user": _vm.userInfo,
+      "close": _vm.step == '0',
+      "mpcomid": '3'
+    }
+  }) : (_vm.step == 'A') ? _c('battleReady', {
+    attrs: {
+      "userInfo": _vm.userInfo,
+      "opponentInfo": _vm.opponentInfo,
+      "close": _vm.sendMessage,
+      "eventid": '0',
+      "mpcomid": '0'
+    },
+    on: {
+      "matchTimeOut": _vm.matchTimeOut
+    }
+  }) : (_vm.questionIndex < 6) ? _c('battle', {
+    attrs: {
+      "userInfo": _vm.userInfo,
+      "userScore": _vm.userScore,
+      "opponentAnswer": _vm.opponentAnswer,
+      "opponentInfo": _vm.opponentInfo,
+      "question": _vm.question,
+      "questionIndex": _vm.questionIndex,
+      "nextQuestion": _vm.sendMessage,
+      "waitUser": _vm.waitUser,
+      "waitOpponent": _vm.waitOpponent,
+      "eventid": '1',
+      "mpcomid": '1'
+    },
+    on: {
+      "userAnswered": _vm.changeUserAnswer,
+      "cutdownout": _vm.cutDownOut
+    }
+  }) : _c('battleResult', {
+    attrs: {
+      "userInfo": _vm.userInfo,
+      "opponentInfo": _vm.opponentInfo,
+      "battleId": _vm.battleId,
+      "userScore": _vm.userScore,
+      "opponentScore": _vm.opponentScore,
+      "userCorrectNum": _vm.userCorrectNum,
+      "opponentCorrectNum": _vm.opponentCorrectNum,
+      "userLearningPoit": _vm.userLearningPoit,
+      "mpcomid": '2'
+    }
+  })], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1d4d36a3", esExports)
+  }
+}
+
+/***/ })
+
+},[133]);
+//# sourceMappingURL=main.js.map

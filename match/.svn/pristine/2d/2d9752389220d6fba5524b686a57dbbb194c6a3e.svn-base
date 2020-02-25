@@ -1,0 +1,25 @@
+<template name="index$a84220d6">
+  <view class="_div data-v-07d634ec bs-container-myItems-div">
+    <image class="_img data-v-07d634ec bs-bg-img" src="/static/images/bg.png"></image>
+    <view class="_div data-v-07d634ec bs-productList-div">
+      <view class="_div data-v-07d634ec bs-flex-div">
+        <view class="_div data-v-07d634ec box" wx:key="item" key="{{item}}" wx:for="{{productList}}" wx:for-index="index" wx:for-item="item">
+          <view class="_div data-v-07d634ec bs-goodname-div"> {{ item.ProductName }} </view>
+          <view wx:if="{{index%3 === 0}}" class="_div data-v-07d634ec bs-goodPhoto-blue-div">
+            <image class="_img data-v-07d634ec bs-goodPhoto-img" src="{{item.Photo}}"></image>
+          </view>
+          <view wx:elif="{{index%3 === 1}}" class="_div data-v-07d634ec bs-goodPhoto-green-div">
+            <image class="_img data-v-07d634ec bs-goodPhoto-img" src="{{item.Photo}}"></image>
+          </view>
+          <view wx:else class="_div data-v-07d634ec bs-goodPhoto-cyan-div">
+            <image class="_img data-v-07d634ec bs-goodPhoto-img" src="{{item.Photo}}"></image>
+          </view>
+          <view class="_div data-v-07d634ec bs-goodNum-div"> X{{ item.Number }} </view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-07d634ec bs-memory-div">
+      <navigator style="position:absolute;width:20%;left:40%" url="../exchange-record/main" class="_a data-v-07d634ec">兑换记录</navigator>
+    </view>
+  </view>
+</template>

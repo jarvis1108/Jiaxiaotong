@@ -1,0 +1,23 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserCoinDetail;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ * 用户金币流水明细数据访问层
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:09
+ */
+@Repository
+public interface UserCoinDetailRepository extends CrudRepository<UserCoinDetail, String> {
+
+    /**
+     * 创建、更新用户金币明细表
+     *
+     * @param userCoinDetail 用户金币明细
+     * @return
+     */
+    UserCoinDetail save(UserCoinDetail userCoinDetail);
+}

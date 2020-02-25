@@ -1,0 +1,60 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.dao;
+
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.Knowledge;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+
+/**
+ * 知识点访问
+ * @author shenhao
+ */
+@Repository
+public interface KnowledgeRepository extends CrudRepository<Knowledge,String> {
+
+    /**
+     * 根据所属科目编号查看知识点
+     * @param subjectId
+     * @return 返回相关知识点
+     */
+
+    List<Knowledge> findKnowledgeBySubjectId(String subjectId);
+
+    /**
+     * 根据id查询知识点
+     * @param knowledgeId
+     * @return 返回知识点
+     */
+
+    Knowledge findKnowledgeByKnowledgeId(String knowledgeId);
+
+    /**
+     * 根据录入人查询知识点
+     * @param createUser
+     * @return 返回知识点
+     */
+    Knowledge findKnowledgeByCreateUser(String createUser);
+
+    /**
+     * 查看所有知识点
+     * @return 返回知识点列表
+     */
+
+    List<Knowledge> findAll();
+
+    /**
+     * 分页查询知识点
+     * @param pageable
+     * @return
+     */
+    Page<Knowledge> findAll(Pageable pageable);
+
+    Knowledge save(Knowledge knowledge);
+
+
+}

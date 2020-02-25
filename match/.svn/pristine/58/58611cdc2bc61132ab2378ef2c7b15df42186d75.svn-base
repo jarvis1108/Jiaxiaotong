@@ -1,0 +1,446 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+import { api, testApi } from './config'
+import { request, getUserInfo, login } from "./utils/wx";
+import { RequestObj } from "./utils/RequestObj"
+
+
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  state: {
+    userInfo: {},
+    userId: "",
+    token: "",
+  },
+  actions: {
+
+    /**
+     * 获取年级类型列表
+     * @param {*} param0 
+     */
+    async gradePhaseInfoList({ commit }) {
+      let gradePhaseInfoList = [];
+      //拿到类型列表
+      const gradePhaseRes = await request({
+        url: `${testApi}/base/gradePhaseInfo/list`,
+        data: new RequestObj({
+          reqType: 'INX_VWE_000_GetGradePhaseList',
+          reqParam: {}
+        })
+      });
+      //扩充类型列表，遍历并获取到每个类型对应的年级列表
+      gradePhaseInfoList = gradePhaseRes.resResult.curData.gradePhaseInfoList;
+      for (let i = 0; i < gradePhaseInfoList.length; ++i) {
+        gradePhaseInfoList[i]['select'] = false;
+        const gradeRes = await request({
+          url: `${testApi}/base/gradeInfo/list/${gradePhaseInfoList[i].gradePhaseId}`,
+          reqType: 'INX_VWE_000_GetGradeByGradePhaseId',
+          reqParam: {}
+        });
+        gradePhaseInfoList[i]['gradeList'] = gradeRes.resResult.curData.gradeInfoList;
+      }
+      console.log("拿到的结果是：" + gradePhaseInfoList);
+      return gradePhaseInfoList;
+    },
+
+    /**
+     * 获取登陆信息并保存在store中[首次登录,需提交用户信息至后台]
+     * @param {*} param0 
+     */
+    async firstLogin({ commit, state }, { data }) {
+      console.log("data是：" + data.gradeId + "  " + data.gradePhaseId);
+      //拿到用户微信信息传递给后台创建用户
+      const infoResult = await getUserInfo({
+        withCredentials: false
+      });
+      const res = await request({
+        url: `${testApi}/sys/user`,
+        method: 'POST',
+        header: { 'content-type': 'application/json' },
+        data: new RequestObj({
+          reqType: 'INX_VWE_000_CreateNewUser',
+          reqParam: {
+            nickName: infoResult.userInfo.nickName,
+            avatarUrl: infoResult.userInfo.avatarUrl,
+            gender: infoResult.userInfo.gender,
+            city: infoResult.userInfo.city,
+            gradePhaseId: data.gradePhaseId,
+            gradeId: data.gradeId
+          }
+        })
+      });
+      // 将用户信息保存在全局
+      state.userId = res.resResult.curData.user.userId;
+      // 第一版暂时不用token
+      // state.token = res.resResult.curData.token;
+      state.userInfo = res.resResult.curData.user;
+
+      //拿到用户登陆code传递给后台
+      const logResult = await login();
+      const result = await request({
+        url: `${testApi}/sys/user/code`,
+        method: 'POST',
+        header: { 'content-type': 'application/json' },
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_SaveUserOpenId',
+          reqParam: {
+            userId: state.userId,
+            code: logResult.code
+          }
+        }),
+      });
+      console.log(JSON.stringify(result));
+    },
+
+    /**
+     * 获取登陆信息并保存在store中[非首次登陆，直接请求用户信息]
+     * @param commit
+     * @returns {Promise<void>}
+     */
+    async login({ commit, state }) {
+      const logResult = await login();
+      const res = await request({
+        url: `${testApi}/sys/user/code`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_login',
+          reqParam: { code: logResult.code }
+        })
+      });
+      state.userId = res.resResult.curData.user.userId;
+      // state.token = res.resResult.curData.token;
+      state.userInfo = res.resResult.curData.user;
+    },
+
+    /**
+     * 获取知识练兵场学科列表
+     * @param {*} param0 
+     */
+    // async getExerciseObjectList({commit}){
+    //   const res = await request({
+    //     url:`${api}/exercise`,
+    //     data:new RequestObj({
+    //       reqType:'SYS_PRE_000_getExerciseObjectList',
+    //       reqParam:{}
+    //     })
+    //   });
+    //   return res.objectList.resResult.curData.data;
+    // },
+    /**
+     * 获取知识练兵场年级列表
+     * @param {*} param0 
+     */
+    async getExerciseGradetList({ commit }) {
+      const res = await request({
+        url: `${testApi}/base/gradeInfo/list`,
+        data: new RequestObj({
+          reqType: 'MTH_EXC_010_GetGradeList',
+          reqParam: {}
+        })
+      });
+      return res.resResult.curData.gradeInfoList;
+    },
+    /**
+         * 获取知识练兵场学科列表
+         * @param {*} gradePhaseId 年级阶段id
+         * * @param {*} gradeId 年级id
+         */
+    async getExercisesubjecttList({ commit }, { gradePhaseId, gradeId }) {
+      const res = await request({
+        url: `${testApi}/base/subject/list`,
+        data: new RequestObj({
+          reqType: 'MTH_EXC_010_GetGradeList',
+          reqParam: {
+            gradePhaseId: gradePhaseId,
+            gradeId: gradeId
+          }
+        })
+      });
+      return res.resResult.curData.subjectList;
+    },
+
+    /**
+     * 获取问题列表
+     * @param commit
+     * @param subjectId 学科id
+     * @returns {Promise<*>}
+     */
+    async getExerciseMatchInfo({ commit }, { userId, subjectId }) {
+      // var json2Form=require('./utils/json2Form')
+      console.log(subjectId + "subjectId");
+      console.log(userId + "用户id");
+      console.log(JSON.stringify({
+        userId: userId,
+        subjectId: subjectId
+      }));
+      const res = await request({
+      //  url: `${testApi}/match/exercise`,  
+        url: `${api}/exercise`,
+        method: 'POST',
+        header: {  'Content-Type': 'application/json'},
+        data: new RequestObj({
+          reqType: 'MTH_EXC_010_Exercise',
+          reqParam: {
+            userId: userId,
+            subjectId: subjectId
+          }
+        }),
+      });
+      console.log(JSON.stringify(res));
+      console.log("zhixingchenggong");
+      return res.resResult.curData;
+    },
+
+    async SaveLpConsumeRecord({ commit }, { matchId, userId, questionIndex, userAnswer, amount, isTrue }) {
+     
+      const res = await request({
+        url: `${testApi}/match/exercise/save`,
+        //  url:`${api}/exercise`,
+        method: 'POST',
+        header: { 'content-type': 'application/json' },
+        data: new RequestObj({
+          reqType: 'MTH_EXC_010_Exercise',
+          reqParam: {
+            matchId: matchId,
+            userId: userId,
+            questionIndex: questionIndex,
+            userAnswer: userAnswer,
+            amount: amount,
+            isTrue: isTrue
+          }
+        }),
+      });
+      console.log(amount+"调用了SaveLpConsumeRecord方法");
+    },
+
+    /**
+     * 获取对抗赛结果信息
+     * @param commit
+     * @param state
+     * @returns {Promise<*>}
+     */
+    async getResultInfo({ commit }, battleId) {
+      const res = await request({
+        url: `${api}/battleResult`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_getResultInfo',
+          reqParam: { battleId: battleId }
+        })
+      });
+      return res.resResult.curData.result;
+    },
+
+    /**
+     *根据战局Id获取群比赛玩家列表
+     * @param {*} param0 
+     * @param {*} battleId 
+     */
+    async getPlayerListByBattleId({ commit }, battleId) {
+      const res = await request({
+        url: `${api}/groupBattle`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_GetPlyerListById',
+          reqParam: { battleId: battleId }
+        })
+      });
+      return res.playerList.resResult.curData.data;
+    },
+
+    /**
+     * 获取兑换页面的商品列表
+     */
+    async getProductList({ commit }) {
+      const res = await request({
+        url: `${api}/topup`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_GetProductList',
+          reqParam: {}
+        })
+      });
+      return res.productList.resResult.curData.productList;
+    },
+
+    /**
+     * 获取金币商城页面商品列表
+     * @param {*} param0 
+     */
+    async getProductListOfMall({ commit }) {
+      const res = await request({
+        url: `${api}/goldMall`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_GetProductListOfMall',
+          reqParam: {}
+        })
+      });
+      return res.productList.resResult.curData.data;
+    },
+
+    /**
+     * 获取我的物品页面的物品列表
+     * @param {*} param0 
+     */
+    async getProductListOfMine({ commit }) {
+      const res = await request({
+        url: `${api}/myItems`,
+        data: new RequestObj({
+          reqType: 'MAL_000_getProductListOfMine'
+        })
+      });
+      return res.productList.resResult.curData.data;
+    },
+
+    /**
+ * 获取奖学金页面的物品列表
+ * @param {*} param0 
+ */
+    async getProductListOfScholarship({ commit }) {
+      const res = await request({
+        url: `${api}/scholarship`,
+        data: new RequestObj({
+          reqType: 'MAL_000_getProductListOfScholarship'
+        })
+      });
+      return res.productList.resResult.curData.data;
+    },
+
+    /**
+     * 获取排行榜界面好友排行
+     * @param {*} param0 
+     * @param {*} type 0-好友排行，1-全国排行 
+     */
+    async getRankList({ commit, state }) {
+      const res = await request({
+        url: `${testApi}/system/rank/getWorldRank`,
+        data: new RequestObj({
+          reqType: 'SYS_RAN_010_getRankList',
+          reqParam: { userId: state.userId }
+        })
+      });
+      return res.resResult.curData;
+    },
+
+    /**
+     * 获取用户的充值记录
+     * @param {*} param0 
+     */
+    async getTopupRecords({ commit }) {
+      const res = await request({
+        url: `${api}/topupRecord`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_getTopupRecords',
+          reqParam: {}
+        })
+      });
+      return res.recordList.resResult.curData.data;
+    },
+
+    /**
+     * 获取用户的兑换记录
+     * @param {*} param0 
+     */
+    async getExchangeRecords({ commit }) {
+      const res = await request({
+        url: `${api}/exchangeRecords`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_getExchangeRecords',
+          reqParam: {}
+        })
+      });
+      return res.recordList.resResult.curData.data;
+    },
+
+    /**
+     * 获取用户训练营信息
+     * @param {*} param0 
+     */
+    async getMyCampInfo({ commit }) {
+      const res = await request({
+        url: `${api}/myCamp`,
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_getMyCampInfo',
+          reqParam: {}
+        })
+      });
+      return res.campInfo.resResult.curData.data;
+    },
+
+    async saveBattleResult({ commit, state }, { matchId, userId, coin, gradePoint, learningPoint, experience, isWin }) {
+      const res = await request({
+        url: `${testApi}/match/save`,
+        method: 'POST',
+        header: { 'content-type': 'application/json' },
+        data: new RequestObj({
+          reqType: 'SYS_PRE_000_saveBattleResult',
+          reqParam: {
+            matchId: matchId,
+            userId: userId,
+            coin: coin,
+            learningPoint: learningPoint,
+            gradePoint: gradePoint,
+            experience: experience,
+            isWin: isWin
+          }
+        })
+      });
+      state.userInfo = res.resResult.curData;
+
+    },
+
+		/**
+		 * 收藏题目到题目收藏
+		 * @param {*} param0
+		 * @param {*} questionID 想添加到收藏的题目的id
+		 */
+    async collectQuestion({ commit }, questionID) {
+      console.log(questionID + "questionID");
+      const res = await request({
+        url: `${api}/qst/questionCollection`,
+        data: new RequestObj({
+          reqType: 'SYS_PER_080_CollectQuestion',
+          reqParam: {
+            userId: this.userId,
+            questionId: questionID
+          }
+        })
+      });
+      return res.resResult.isSuccess;
+    },
+
+    /**
+     * 获取题目收藏
+     * @param {*} param0
+     */
+    async getCollectList({ commit }) {
+      const res = await request({
+        url: `${api}/myQuestion`,
+        data: new RequestObj({
+          reqType: 'SYS_PER_080_GetCollectionsList',
+          reqParam: {
+            userId: this.userId
+          }
+        })
+      });
+      console.log(res.resResult.curData.questionList);
+      return res.resResult.curData.questionList;
+    },
+
+    /**
+     *  取消收藏
+     * @param {*} param0
+     * @param {*} questionID 取消收藏的题目的id
+     */
+    async cancelCollection({ commint }, questionCollectionID) {
+      const res = await request({
+        url: `${api}/qst/questionCollection/cancel`,
+        data: new RequestObj({
+          reqType: 'SYS_PER_080_CancelCollection',
+          reqParam: {
+            questionCollectionId: questionCollectionID
+          }
+        })
+      });
+      return res.resResult.isSuccess;
+    }
+  },
+})

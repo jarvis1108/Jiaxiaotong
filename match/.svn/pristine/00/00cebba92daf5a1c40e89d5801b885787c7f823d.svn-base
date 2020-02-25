@@ -1,0 +1,1044 @@
+global.webpackJsonp([3],{
+
+/***/ 237:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(238);
+
+
+
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__index__["a" /* default */]);
+app.$mount();
+
+/***/ }),
+
+/***/ 238:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_c2bd5ac6_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(245);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(239)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-c2bd5ac6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_c2bd5ac6_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\pages\\index\\index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c2bd5ac6", Component.options)
+  } else {
+    hotAPI.reload("data-v-c2bd5ac6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 239:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 240:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_wx__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_grade_dialog__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(27);
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  components: { gradeDialog: __WEBPACK_IMPORTED_MODULE_4__components_grade_dialog__["a" /* default */] },
+  name: "index.vue",
+  data: function data() {
+    return {
+      userInfo: {},
+      showGradeDialog: false, //是否显示年级选择弹窗
+      socket: null,
+      isGroup: false //是否是群内pk
+    };
+  },
+  onLoad: function onLoad() {
+    var _this = this;
+
+    return __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.mark(function _callee() {
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].getStorage("notFirstLogin");
+
+            case 3:
+              if (!_context.sent) {
+                _context.next = 8;
+                break;
+              }
+
+              console.log("不是首次登陆");
+              // 非第一次登陆，直接获取用户信息
+              _context.next = 7;
+              return _this.$store.dispatch("login");
+
+            case 7:
+              _this.userInfo = _this.$store.state.userInfo;
+
+            case 8:
+              _context.next = 15;
+              break;
+
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context["catch"](0);
+
+              //首次登陆选择年级信息
+              __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].setStorage("notFirstLogin", true);
+              console.log("首次登陆");
+              _this.showGradeDialog = true;
+
+            case 15:
+              __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].showShareMenu(true);
+
+            case 16:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, _this, [[0, 10]]);
+    }))();
+  },
+  onShareAppMessage: function onShareAppMessage(res) {
+    var _this2 = this;
+
+    var matchId = "001";
+    var Path = "pages/friend-pk/main?matchId=001&isCreator=false";
+    if (this.isGroup) {
+      Path = "pages/group-battle-waiting/main?matchId=001&isCreator=false";
+    }
+    console.log("matchId:" + matchId);
+    if (res.from === "button") {}
+    return {
+      title: this.userInfo.wechatName + "向你发出了智商pk，点击应战！",
+      path: Path,
+      success: function success(res) {
+        console.log("分享成功，本次对战编码为" + matchId);
+        if (_this2.isGroup) {
+          __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateTo("../group-battle-waiting/main?matchId=001&isCreator=true");
+        } else {
+          __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateTo("../friend-pk/main?matchId=001&isCreator=true");
+        }
+      },
+      fail: function fail(e) {
+        console.log("分享失败！" + e);
+      }
+    };
+  },
+
+  computed: {
+    progress: function progress() {
+      var progress = this.userInfo.experience / this.userInfo.upgradeExperience * 100;
+      return progress;
+    }
+  },
+  methods: {
+    //监听年级选择是否结束
+    //若结束将年级信息返回给后台同时获取到用户的登陆信息
+    getGradeInfoFromChild: function getGradeInfoFromChild(data) {
+      var _this3 = this;
+
+      return __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.mark(function _callee2() {
+        return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                console.log("年级阶段：" + data.gradePhaseId + " 年级：" + data.gradeId);
+                //data-就是用户选择的年级信息
+                _this3.showGradeDialog = false;
+                _context2.next = 4;
+                return _this3.$store.dispatch("firstLogin", { data: data });
+
+              case 4:
+                _this3.userInfo = _this3.$store.state.userInfo;
+                console.log("拿到的用户信息是:" + JSON.parse(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()(_this3.userInfo)));
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, _this3);
+      }))();
+    },
+
+    to_dualmeet: function to_dualmeet() {
+      __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateTo("../battle/main");
+    },
+    to_exercise: function to_exercise() {
+      __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateTo("../exercise-object-select/main");
+    },
+    to_pk: function to_pk() {
+      __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateTo("../friend-pk/main");
+    },
+    to_rank: function to_rank() {
+      __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateTo("../rank/main");
+    },
+    to_topup: function to_topup() {
+      __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateTo("../topup/main");
+    },
+    to_goldMall: function to_goldMall() {
+      __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateTo("../gold-mall/main");
+    },
+    to_groupBattle: function to_groupBattle() {
+      __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateTo("../group-battle-waiting/main");
+    },
+    to_personalCenter: function to_personalCenter() {
+      __WEBPACK_IMPORTED_MODULE_3__utils_wx__["a" /* default */].navigateTo("../personal-center/main");
+    },
+
+    change_group: function change_group() {
+      this.isGroup = true;
+    },
+    change_pk: function change_pk() {
+      this.isGroup = false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 241:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_grade_dialog_vue__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_e99682ac_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_grade_dialog_vue__ = __webpack_require__(244);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(242)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-e99682ac"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_grade_dialog_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_e99682ac_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_grade_dialog_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\components\\grade-dialog.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] grade-dialog.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e99682ac", Component.options)
+  } else {
+    hotAPI.reload("data-v-e99682ac", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ 242:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 243:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_wx__ = __webpack_require__(2);
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: "class-dialog",
+  data: function data() {
+    return {
+      listIndex: 0, //子列表被选项的索引
+      gradePhaseInfoList: [],
+      selectedGrade: "", //用户选择的年级
+      selectedGradePhaseId: null, //用户选择的年级阶段Id
+      selectedGradeId: null, //用户选择的年级Id
+      Authorization: false //是否授权成功
+    };
+  },
+  onLoad: function onLoad() {
+    var _this = this;
+
+    return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+      return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this.listIndex = 0;
+              _this.selectedGrade = "";
+              _this.Authorization = false;
+              _context.next = 5;
+              return _this.$store.dispatch("gradePhaseInfoList");
+
+            case 5:
+              _this.gradePhaseInfoList = _context.sent;
+
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, _this);
+    }))();
+  },
+
+  watch: {
+    listIndex: function listIndex() {
+      var _this2 = this;
+
+      this.gradePhaseInfoList.forEach(function (grade) {
+        if (grade.select === true) {
+          if (grade.gradePhaseCode === "D" || grade.gradePhaseCode === "C") {
+            //若选中大学直接将该信息
+            _this2.selectedGrade = grade.gradePhaseName;
+          } else {
+            _this2.selectedGrade = grade.gradePhaseName + " " + grade.gradeList[_this2.listIndex].gradeName;
+          }
+        }
+      });
+    }
+  },
+  methods: {
+    //监听选择框改变事件
+    bindDateChange: function bindDateChange(e) {
+      this.listIndex = e.mp.detail.value;
+    },
+
+    //选择年级类型
+    select: function select(item) {
+      //重置数据
+      this.selectedGrade = "";
+      this.listIndex = 0;
+      this.selectedGradePhaseId = item.gradePhaseId;
+      this.selectedGradeId = null;
+      //若选择‘大学’或”高中“直接提交数据
+      if (item.gradePhaseCode === "D" || item.gradePhaseCode === "C") {
+        this.selectedGrade = item.gradePhaseName;
+      } else {
+        this.selectedGrade = item.gradePhaseName + " " + item.gradeList[this.listIndex].gradeName;
+        this.selectedGradeId = item.gradeList[this.listIndex].gradeId;
+      }
+      this.gradePhaseInfoList.forEach(function (grade) {
+        grade.select = false;
+      });
+      item.select = true;
+    },
+    definite: function definite() {
+      var _this3 = this;
+
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+        var that, _res;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                that = _this3;
+
+                if (!_this3.Authorization) {
+                  _context2.next = 8;
+                  break;
+                }
+
+                _context2.next = 4;
+                return __WEBPACK_IMPORTED_MODULE_2__utils_wx__["a" /* default */].showModal({
+                  title: "确认",
+                  content: "\u60A8\u9009\u62E9\u4E86\u5E74\u7EA7\"" + that.selectedGrade + "\",\n\u6211\u4EEC\u4F1A\u6839\u636E\u5E74\u7EA7\u4E3A\u60A8\u5339\u914D\u540C\u7B49\u7EA7\u5BF9\u624B\uFF0C\u662F\u5426\u786E\u5B9A\u9009\u62E9?"
+                });
+
+              case 4:
+                _res = _context2.sent;
+
+                // if (res.confirm) {
+                //   const result = await wxs.showModal({
+                //     title: "新手大礼包",
+                //     content: "这里是送您的新手大礼包！"
+                //   });
+                if (_res.confirm) {
+                  //告知父组件年级选择操作完毕
+                  that.$emit("listenToChildEvent", {
+                    gradePhaseId: that.selectedGradePhaseId,
+                    gradeId: that.selectedGradeId
+                  });
+                }
+                _context2.next = 9;
+                break;
+
+              case 8:
+                if (res.cancel) {
+                  console.log("用户点击取消");
+                }
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, _this3);
+      }))();
+    },
+    bindGetUserInfo: function bindGetUserInfo(e) {
+      var _this4 = this;
+
+      return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
+        var that;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                that = _this4;
+
+                if (!e.mp.detail.rawData) {
+                  _context3.next = 8;
+                  break;
+                }
+
+                //用户点击授权按钮，授权成功
+                _this4.Authorization = true;
+                _context3.next = 5;
+                return __WEBPACK_IMPORTED_MODULE_2__utils_wx__["a" /* default */].showToast({
+                  title: "授权成功",
+                  icon: "sucess",
+                  duration: 1000
+                });
+
+              case 5:
+                setTimeout(function () {
+                  that.definite();
+                }, 1000);
+                _context3.next = 11;
+                break;
+
+              case 8:
+                _context3.next = 10;
+                return __WEBPACK_IMPORTED_MODULE_2__utils_wx__["a" /* default */].showModal({
+                  title: "警告通知",
+                  content: "您拒绝了授权，将无法展示个人信息和参与游戏"
+                });
+
+              case 10:
+                __WEBPACK_IMPORTED_MODULE_2__utils_wx__["a" /* default */].navigateTo("../index/main");
+
+              case 11:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, _this4);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 244:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "st-grade-dialog-container"
+  }, [_c('ul', {
+    staticClass: "st-grade-dialog-list"
+  }, _vm._l((_vm.gradePhaseInfoList), function(item, index) {
+    return _c('li', {
+      key: index,
+      style: ('animation-delay:' + 0.3 * index + 's'),
+      attrs: {
+        "eventid": '1-' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.select(item)
+        }
+      }
+    }, [(index < 2) ? _c('picker', {
+      attrs: {
+        "mode": "selector",
+        "value": _vm.listIndex,
+        "range": item.gradeList,
+        "range-key": "gradeName",
+        "eventid": '0-' + index
+      },
+      on: {
+        "change": _vm.bindDateChange
+      }
+    }, [(index % 4 === 0) ? _c('img', {
+      staticClass: "st-grade-dialog-li-bg",
+      attrs: {
+        "src": "/static/images/gradeDialog/Primaryschool_bg@2x.png"
+      }
+    }) : (index % 4 === 1) ? _c('img', {
+      staticClass: "st-grade-dialog-li-bg",
+      attrs: {
+        "src": "/static/images/gradeDialog/Juniorhighschool_bg@2x.png"
+      }
+    }) : (index % 4 === 2) ? _c('img', {
+      staticClass: "st-grade-dialog-li-bg",
+      attrs: {
+        "src": "/static/images/gradeDialog/Highschool_bg@2x.png"
+      }
+    }) : _c('img', {
+      staticClass: "st-grade-dialog-li-bg",
+      attrs: {
+        "src": "/static/images/gradeDialog/University_bg@2x.png"
+      }
+    }), _vm._v(" "), (index % 4 === 0) ? _c('img', {
+      staticClass: "st-grade-dialog-li-icon",
+      attrs: {
+        "src": "/static/images/gradeDialog/Primaryschool_icon@2x.png"
+      }
+    }) : (index % 4 === 1) ? _c('img', {
+      staticClass: "st-grade-dialog-li-icon",
+      attrs: {
+        "src": "/static/images/gradeDialog/Juniorhighschool@2x.png"
+      }
+    }) : (index % 4 === 2) ? _c('img', {
+      staticClass: "st-grade-dialog-li-icon",
+      attrs: {
+        "src": "/static/images/gradeDialog/Highschool_icon@2x.png"
+      }
+    }) : _c('img', {
+      staticClass: "st-grade-dialog-li-icon",
+      attrs: {
+        "src": "/static/images/gradeDialog/University_icon@2x.png"
+      }
+    }), _vm._v(" "), _c('span', {
+      staticClass: "st-grade-dialog-li-name"
+    }, [_vm._v(_vm._s(item.gradePhaseName))]), _vm._v(" "), _c('span', {
+      staticClass: "st-grade-dialog-li-text"
+    }, [_vm._v(_vm._s(item.description))]), _vm._v(" "), (item.select) ? _c('img', {
+      staticClass: "st-grade-dialog-li-select-icon",
+      attrs: {
+        "src": "/static/images/gradeDialog/Selectedlevel_icon@2x.png"
+      }
+    }) : _vm._e()]) : _c('div', [(index % 4 === 0) ? _c('img', {
+      staticClass: "st-grade-dialog-li-bg",
+      attrs: {
+        "src": "/static/images/gradeDialog/Primaryschool_bg@2x.png"
+      }
+    }) : (index % 4 === 1) ? _c('img', {
+      staticClass: "st-grade-dialog-li-bg",
+      attrs: {
+        "src": "/static/images/gradeDialog/Juniorhighschool_bg@2x.png"
+      }
+    }) : (index % 4 === 2) ? _c('img', {
+      staticClass: "st-grade-dialog-li-bg",
+      attrs: {
+        "src": "/static/images/gradeDialog/Highschool_bg@2x.png"
+      }
+    }) : _c('img', {
+      staticClass: "st-grade-dialog-li-bg",
+      attrs: {
+        "src": "/static/images/gradeDialog/University_bg@2x.png"
+      }
+    }), _vm._v(" "), (index % 4 === 0) ? _c('img', {
+      staticClass: "st-grade-dialog-li-icon",
+      attrs: {
+        "src": "/static/images/gradeDialog/Primaryschool_icon@2x.png"
+      }
+    }) : (index % 4 === 1) ? _c('img', {
+      staticClass: "st-grade-dialog-li-icon",
+      attrs: {
+        "src": "/static/images/gradeDialog/Juniorhighschool@2x.png"
+      }
+    }) : (index % 4 === 2) ? _c('img', {
+      staticClass: "st-grade-dialog-li-icon",
+      attrs: {
+        "src": "/static/images/gradeDialog/Highschool_icon@2x.png"
+      }
+    }) : _c('img', {
+      staticClass: "st-grade-dialog-li-icon",
+      attrs: {
+        "src": "/static/images/gradeDialog/University_icon@2x.png"
+      }
+    }), _vm._v(" "), _c('span', {
+      staticClass: "st-grade-dialog-li-name"
+    }, [_vm._v(_vm._s(item.gradePhaseName))]), _vm._v(" "), _c('span', {
+      staticClass: "st-grade-dialog-li-text"
+    }, [_vm._v(_vm._s(item.description))]), _vm._v(" "), (item.select) ? _c('img', {
+      staticClass: "st-grade-dialog-li-select-icon",
+      attrs: {
+        "src": "/static/images/gradeDialog/Selectedlevel_icon@2x.png"
+      }
+    }) : _vm._e()])], 1)
+  })), _vm._v(" "), (_vm.selectedGrade.length > 0) ? _c('span', {
+    staticClass: "st-grade-dialog-selected-tip"
+  }, [_vm._v("已选择：" + _vm._s(_vm.selectedGrade))]) : _vm._e(), _vm._v(" "), (_vm.selectedGrade.length > 0) ? _c('button', {
+    staticClass: "st-grade-dialog-selected-btn",
+    attrs: {
+      "open-type": "getUserInfo",
+      "eventid": '2'
+    },
+    on: {
+      "getuserinfo": _vm.bindGetUserInfo
+    }
+  }, [_vm._v("确定")]) : _vm._e()], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-e99682ac", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ 245:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "background"
+    }
+  }, [_c('div', [_c('img', {
+    attrs: {
+      "id": "bg",
+      "src": "/static/images/bg@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    attrs: {
+      "id": "person_info",
+      "src": "/static/images/index/Personalinformation-bg@2x.png"
+    }
+  }), _vm._v(" "), _c('img', {
+    attrs: {
+      "id": "user_icon",
+      "src": _vm.userInfo.headImage,
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.to_personalCenter
+    }
+  }), _vm._v(" "), _c('p', [_c('span', {
+    attrs: {
+      "id": "user_name"
+    }
+  }, [_vm._v(_vm._s(_vm.userInfo.wechatName))])]), _vm._v(" "), _c('img', {
+    attrs: {
+      "id": "coin_icon",
+      "src": "/static/images/index/Goldcoin@2x.png"
+    }
+  }), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "text_28",
+    attrs: {
+      "id": "user_coin"
+    }
+  }, [_vm._v(_vm._s(_vm.userInfo.coin))])]), _vm._v(" "), _c('p', [_c('span', {
+    staticStyle: {
+      "left": "10%"
+    },
+    attrs: {
+      "id": "grade"
+    }
+  }, [_vm._v(_vm._s(_vm.userInfo.externalLevel))]), _vm._v(" "), _c('span', {
+    staticClass: "text_24",
+    staticStyle: {
+      "left": "12%"
+    }
+  }, [_vm._v("级")])]), _vm._v(" "), _c('div', {
+    staticClass: "st-personal-center-level-outer"
+  }, [_c('div', {
+    staticClass: "st-personal-center-level-inner",
+    style: ('width:' + _vm.progress + '%')
+  })]), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "text_28",
+    staticStyle: {
+      "right": "38%"
+    }
+  }, [_vm._v("绩点")]), _vm._v(" "), _c('span', {
+    staticClass: "text_28",
+    staticStyle: {
+      "right": "30%"
+    },
+    attrs: {
+      "id": "gpa"
+    }
+  }, [_vm._v(_vm._s(_vm.userInfo.gradePoint))])]), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "text_28",
+    staticStyle: {
+      "right": "20%"
+    }
+  }, [_vm._v("学点")]), _vm._v(" "), _c('span', {
+    staticClass: "text_28",
+    staticStyle: {
+      "right": "12%"
+    },
+    attrs: {
+      "id": "lp"
+    }
+  }, [_vm._v(_vm._s(_vm.userInfo.learningPoint))])])], 1), _vm._v(" "), _c('div', [_c('img', {
+    attrs: {
+      "id": "dualmeet",
+      "src": "/static/images/index/dualmeet-bg@2x.png",
+      "eventid": '1'
+    },
+    on: {
+      "click": _vm.to_dualmeet
+    }
+  }), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "text_34",
+    staticStyle: {
+      "left": "9%",
+      "top": "50%"
+    }
+  }, [_vm._v("对抗赛")])]), _vm._v(" "), _c('img', {
+    attrs: {
+      "id": "exercise",
+      "src": "/static/images/index/paradeground-bg@2x.png",
+      "eventid": '2'
+    },
+    on: {
+      "click": _vm.to_exercise
+    }
+  }), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "text_34",
+    staticStyle: {
+      "left": "9%",
+      "top": "74%"
+    }
+  }, [_vm._v("知识练兵场")])]), _vm._v(" "), _c('img', {
+    attrs: {
+      "id": "goldMall",
+      "src": "/static/images/index/Gold_icon@2x.png",
+      "eventid": '3'
+    },
+    on: {
+      "click": _vm.to_goldMall
+    }
+  }), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "text_34",
+    staticStyle: {
+      "left": "9%",
+      "top": "90%"
+    }
+  }, [_vm._v("金币商城")])]), _vm._v(" "), _c('button', {
+    staticClass: "pk_btn",
+    attrs: {
+      "open-type": "share",
+      "eventid": '5'
+    },
+    on: {
+      "click": _vm.change_pk
+    }
+  }, [_c('img', {
+    attrs: {
+      "id": "pk",
+      "src": "/static/images/index/pk-bg@2x.png",
+      "eventid": '4'
+    },
+    on: {
+      "click": _vm.to_pk
+    }
+  })]), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "text_34",
+    staticStyle: {
+      "left": "55%",
+      "top": "42%"
+    }
+  }, [_vm._v("好友对战")])]), _vm._v(" "), _c('img', {
+    attrs: {
+      "id": "rank",
+      "src": "/static/images/index/Rankinglist-bg@2x.png",
+      "eventid": '6'
+    },
+    on: {
+      "click": _vm.to_rank
+    }
+  }), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "text_34",
+    staticStyle: {
+      "left": "55%",
+      "top": "58%"
+    }
+  }, [_vm._v("排行榜")])]), _vm._v(" "), _c('img', {
+    attrs: {
+      "id": "topup",
+      "src": "/static/images/index/top-ups-bg@2x.png",
+      "eventid": '7'
+    },
+    on: {
+      "click": _vm.to_topup
+    }
+  }), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "text_34",
+    staticStyle: {
+      "left": "55%",
+      "top": "74%"
+    }
+  }, [_vm._v("充值")])]), _vm._v(" "), _c('button', {
+    staticClass: "battle_btn",
+    attrs: {
+      "open-type": "share",
+      "eventid": '9'
+    },
+    on: {
+      "click": _vm.change_group
+    }
+  }, [_c('img', {
+    attrs: {
+      "id": "groupBattle",
+      "src": "/static/images/index/Groupgame_icon@2x.png",
+      "eventid": '8'
+    },
+    on: {
+      "click": _vm.to_groupBattle
+    }
+  })]), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "text_34",
+    staticStyle: {
+      "left": "55%",
+      "top": "90%"
+    }
+  }, [_vm._v("群比赛")])])], 1), _vm._v(" "), (_vm.showGradeDialog) ? _c('gradeDialog', {
+    attrs: {
+      "eventid": '10',
+      "mpcomid": '0'
+    },
+    on: {
+      "listenToChildEvent": _vm.getGradeInfoFromChild
+    }
+  }) : _vm._e()], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-c2bd5ac6", esExports)
+  }
+}
+
+/***/ })
+
+},[237]);
+//# sourceMappingURL=main.js.map

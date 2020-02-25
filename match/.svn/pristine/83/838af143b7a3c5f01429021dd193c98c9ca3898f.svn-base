@@ -1,0 +1,134 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordService;
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.UserGPDetailRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.UserRelInfoRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserGPDetail;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserRelInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserGPDetailService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * 用户绩点流水明细服务
+ * <p>
+ * Created by Devin
+ * 2018-07-03 上午 10:29
+ */
+@Service
+public class UserGPDetailServiceImpl implements UserGPDetailService {
+
+    @Autowired
+    private UserRelInfoRepository userRelInfoRepository;
+
+    @Autowired
+    private MatchRecordService matchRecordService;
+
+    @Autowired
+    private UserGPDetailRepository userGPDetailRepository;
+
+    /**
+     * 分页获取某一用户绩点流水明细
+     *
+     * @param userId      用户id，必填
+     * @param pageSize    页大小
+     * @param currentPage 当前页
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public List<UserGPDetail> getUserGPDetailList(String userId, Integer pageSize, Integer currentPage) throws ErrorInfo {
+        if (userId == null || userId.equals("")) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_015", "用户ID不能为空", null);
+        }
+
+        if (pageSize == null || currentPage == null) {
+            return userGPDetailRepository.findAllByUserId(userId);
+        } else {
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<UserGPDetail> userGPDetailPage = userGPDetailRepository.findByUserId(userId, pageable);
+            return userGPDetailPage.getContent();
+        }
+    }
+
+    /**
+     * 获取某一用户所有绩点流水明细
+     *
+     * @param userId
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public List<UserGPDetail> getAllUserGPDetails(String userId) throws ErrorInfo {
+        if (userId == null || userId.equals("")) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_015", "用户ID不能为空", null);
+        }
+        return userGPDetailRepository.findAllByUserId(userId);
+    }
+
+    /**
+     * 创建一条绩点流水明细
+     *
+     * @param newUserGPDetail
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public UserGPDetail create(UserGPDetail newUserGPDetail) throws ErrorInfo {
+        if (newUserGPDetail == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_017", "用户绩点流水明细信息为空", null);
+        return userGPDetailRepository.save(newUserGPDetail);
+    }
+
+    /**
+     * 更新用户绩点流水明细表中用户绩点信息
+     * @param matchId
+     * @param userId
+     * @param gradePoint
+     * @return
+     */
+    @Override
+    public UserGPDetail save(String matchId, String userId, Integer gradePoint) {
+        MatchRecord matchRecord = matchRecordService.getById(matchId);
+        UserRelInfo userRelInfo = userRelInfoRepository.findByUserId(userId);
+
+        UserGPDetail userGPDetail = new UserGPDetail();
+        userGPDetail.setUserGpDetailId(UUIDUtil.getUUID());
+        userGPDetail.setUserGpDetailNo(userGPDetail.getUserGpDetailId());
+        userGPDetail.setUserId(userId);
+        userGPDetail.setUserNo(userRelInfo.getUserNo());
+        userGPDetail.setOccurTime(new Timestamp(new Date().getTime()));
+        userGPDetail.setOriginalAmount(userRelInfo.getCoin());
+        if (gradePoint >= 0) {
+            userGPDetail.setAcquiredAmount(gradePoint);
+            userGPDetail.setLossAmount(0);
+        } else {
+            userGPDetail.setAcquiredAmount(0);
+            userGPDetail.setLossAmount(Math.abs(gradePoint));
+        }
+        Integer currentAmount = userRelInfo.getCoin() + gradePoint;
+        userGPDetail.setCurrentAmount(currentAmount);
+        userGPDetail.setReasonType("匹配对战");
+        userGPDetail.setMatchRecordId(matchId);
+        userGPDetail.setMatchRecordNo(matchRecord.getMatchRecordNo());
+        userGPDetail.setCreateTime(new Timestamp(new Date().getTime()));
+        userGPDetail.setCreateUser(userId);
+        userGPDetail.setLastUpdUser(userId);
+        userGPDetail.setIsValid(Byte.valueOf("1"));
+
+        return userGPDetailRepository.save(userGPDetail);
+    }
+}

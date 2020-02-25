@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dxtwangxiao.questionchecktool.dao.QuestionMultipleChoiceMapper">
+    <resultMap id="BaseResultMap" type="com.dxtwangxiao.questionchecktool.entity.QuestionMultipleChoice">
+        <id column="QuestionID" jdbcType="VARCHAR" property="questionID"/>
+        <result column="QuestionNo" jdbcType="VARCHAR" property="questionNo"/>
+        <result column="InitID" jdbcType="VARCHAR" property="initID"/>
+        <result column="InitNo" jdbcType="VARCHAR" property="initNo"/>
+        <result column="IsCorrect" jdbcType="TINYINT" property="isCorrect"/>
+        <result column="ChoiceA" jdbcType="VARCHAR" property="choiceA"/>
+        <result column="ChoiceB" jdbcType="VARCHAR" property="choiceB"/>
+        <result column="ChoiceC" jdbcType="VARCHAR" property="choiceC"/>
+        <result column="ChoiceD" jdbcType="VARCHAR" property="choiceD"/>
+        <result column="Answer" jdbcType="VARCHAR" property="answer"/>
+        <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="CreateUser" jdbcType="VARCHAR" property="createUser"/>
+        <result column="LastUpdTime" jdbcType="TIMESTAMP" property="lastUpdTime"/>
+        <result column="LastUpdUser" jdbcType="VARCHAR" property="lastUpdUser"/>
+        <result column="Remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="IsValid" jdbcType="TINYINT" property="isValid"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    QuestionID, QuestionNo, InitID, InitNo, IsCorrect, ChoiceA, ChoiceB, ChoiceC, ChoiceD, 
+    Answer, CreateTime, CreateUser, LastUpdTime, LastUpdUser, Remark, IsValid
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_ITN_QuestionMultipleChoice
+        where QuestionID = #{questionID,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_ITN_QuestionMultipleChoice
+    where QuestionID = #{questionID,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.dxtwangxiao.questionchecktool.entity.QuestionMultipleChoice">
+    insert into t_ITN_QuestionMultipleChoice (QuestionID, QuestionNo, InitID, 
+      InitNo, IsCorrect, ChoiceA, 
+      ChoiceB, ChoiceC, ChoiceD, 
+      Answer, CreateTime, CreateUser, 
+      LastUpdTime, LastUpdUser, Remark, 
+      IsValid)
+    values (#{questionID,jdbcType=VARCHAR}, #{questionNo,jdbcType=VARCHAR}, #{initID,jdbcType=VARCHAR}, 
+      #{initNo,jdbcType=VARCHAR}, #{isCorrect,jdbcType=TINYINT}, #{choiceA,jdbcType=VARCHAR}, 
+      #{choiceB,jdbcType=VARCHAR}, #{choiceC,jdbcType=VARCHAR}, #{choiceD,jdbcType=VARCHAR}, 
+      #{answer,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
+      #{lastUpdTime,jdbcType=TIMESTAMP}, #{lastUpdUser,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{isValid,jdbcType=TINYINT})
+  </insert>
+    <insert id="insertSelective" parameterType="com.dxtwangxiao.questionchecktool.entity.QuestionMultipleChoice">
+        insert into t_ITN_QuestionMultipleChoice
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="questionID != null">
+                QuestionID,
+            </if>
+            <if test="questionNo != null">
+                QuestionNo,
+            </if>
+            <if test="initID != null">
+                InitID,
+            </if>
+            <if test="initNo != null">
+                InitNo,
+            </if>
+            <if test="isCorrect != null">
+                IsCorrect,
+            </if>
+            <if test="choiceA != null">
+                ChoiceA,
+            </if>
+            <if test="choiceB != null">
+                ChoiceB,
+            </if>
+            <if test="choiceC != null">
+                ChoiceC,
+            </if>
+            <if test="choiceD != null">
+                ChoiceD,
+            </if>
+            <if test="answer != null">
+                Answer,
+            </if>
+            <if test="createTime != null">
+                CreateTime,
+            </if>
+            <if test="createUser != null">
+                CreateUser,
+            </if>
+            <if test="lastUpdTime != null">
+                LastUpdTime,
+            </if>
+            <if test="lastUpdUser != null">
+                LastUpdUser,
+            </if>
+            <if test="remark != null">
+                Remark,
+            </if>
+            <if test="isValid != null">
+                IsValid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="questionID != null">
+                #{questionID,jdbcType=VARCHAR},
+            </if>
+            <if test="questionNo != null">
+                #{questionNo,jdbcType=VARCHAR},
+            </if>
+            <if test="initID != null">
+                #{initID,jdbcType=VARCHAR},
+            </if>
+            <if test="initNo != null">
+                #{initNo,jdbcType=VARCHAR},
+            </if>
+            <if test="isCorrect != null">
+                #{isCorrect,jdbcType=TINYINT},
+            </if>
+            <if test="choiceA != null">
+                #{choiceA,jdbcType=VARCHAR},
+            </if>
+            <if test="choiceB != null">
+                #{choiceB,jdbcType=VARCHAR},
+            </if>
+            <if test="choiceC != null">
+                #{choiceC,jdbcType=VARCHAR},
+            </if>
+            <if test="choiceD != null">
+                #{choiceD,jdbcType=VARCHAR},
+            </if>
+            <if test="answer != null">
+                #{answer,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTime != null">
+                #{lastUpdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdUser != null">
+                #{lastUpdUser,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="isValid != null">
+                #{isValid,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.dxtwangxiao.questionchecktool.entity.QuestionMultipleChoice">
+        update t_ITN_QuestionMultipleChoice
+        <set>
+            <if test="questionNo != null">
+                QuestionNo = #{questionNo,jdbcType=VARCHAR},
+            </if>
+            <if test="initID != null">
+                InitID = #{initID,jdbcType=VARCHAR},
+            </if>
+            <if test="initNo != null">
+                InitNo = #{initNo,jdbcType=VARCHAR},
+            </if>
+            <if test="isCorrect != null">
+                IsCorrect = #{isCorrect,jdbcType=TINYINT},
+            </if>
+            <if test="choiceA != null">
+                ChoiceA = #{choiceA,jdbcType=VARCHAR},
+            </if>
+            <if test="choiceB != null">
+                ChoiceB = #{choiceB,jdbcType=VARCHAR},
+            </if>
+            <if test="choiceC != null">
+                ChoiceC = #{choiceC,jdbcType=VARCHAR},
+            </if>
+            <if test="choiceD != null">
+                ChoiceD = #{choiceD,jdbcType=VARCHAR},
+            </if>
+            <if test="answer != null">
+                Answer = #{answer,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                CreateTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null">
+                CreateUser = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdTime != null">
+                LastUpdTime = #{lastUpdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdUser != null">
+                LastUpdUser = #{lastUpdUser,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                Remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="isValid != null">
+                IsValid = #{isValid,jdbcType=TINYINT},
+            </if>
+        </set>
+        where QuestionID = #{questionID,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dxtwangxiao.questionchecktool.entity.QuestionMultipleChoice">
+    update t_ITN_QuestionMultipleChoice
+    set QuestionNo = #{questionNo,jdbcType=VARCHAR},
+      InitID = #{initID,jdbcType=VARCHAR},
+      InitNo = #{initNo,jdbcType=VARCHAR},
+      IsCorrect = #{isCorrect,jdbcType=TINYINT},
+      ChoiceA = #{choiceA,jdbcType=VARCHAR},
+      ChoiceB = #{choiceB,jdbcType=VARCHAR},
+      ChoiceC = #{choiceC,jdbcType=VARCHAR},
+      ChoiceD = #{choiceD,jdbcType=VARCHAR},
+      Answer = #{answer,jdbcType=TINYINT},
+      CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      CreateUser = #{createUser,jdbcType=VARCHAR},
+      LastUpdTime = #{lastUpdTime,jdbcType=TIMESTAMP},
+      LastUpdUser = #{lastUpdUser,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR},
+      IsValid = #{isValid,jdbcType=TINYINT}
+    where QuestionID = #{questionID,jdbcType=VARCHAR}
+  </update>
+
+
+    <update id="updateQuestionMultipleChoice">
+    update t_ITN_QuestionMultipleChoice
+    set ChoiceA = #{choiceA},
+        ChoiceB = #{choiceB},
+        ChoiceC = #{choiceC},
+        ChoiceD = #{choiceD}
+    where QuestionID = #{questionID}
+  </update>
+</mapper>

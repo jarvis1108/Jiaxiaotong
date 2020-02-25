@@ -1,0 +1,67 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserRelInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition: 用户相关信息服务类
+ * @date 2018\7\24 0024
+ */
+public interface UserRelInfoService {
+    /**
+     * 查询所有用户相关信息表
+     * @return 用户相关信息列表
+     */
+    List<UserRelInfo> findAll();
+
+    /**
+     * 创建用户相关信息表
+     * @param newUserRelInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    UserRelInfo create(UserRelInfo newUserRelInfo) throws ErrorInfo;
+
+    /**
+     * 更新用户相关信息表
+     * @param updatedUserRelInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    UserRelInfo update(UserRelInfo updatedUserRelInfo) throws ErrorInfo;
+
+
+
+    /**
+     * 根据userID删除用户相关信息表
+     * @param userId
+     * @return
+     * @throws ErrorInfo
+     */
+    boolean deleteByUserId(String userId) throws ErrorInfo;
+
+    /**
+     * 根据userID查询用户相关信息表
+     * @param userID
+     * @return
+     * @throws ErrorInfo
+     */
+    UserRelInfo findByUserId(String userID) throws ErrorInfo;
+
+
+
+    /**
+     * 更新用户相关信息表中用户的经验值
+     * @param userId
+     * @param experience
+     * @return
+     */
+    UserRelInfo addExperience(String userId, Integer experience);
+
+    UserRelInfo getByUserId(String userId);
+
+    UserRelInfo updateUser(UserRelInfo userRelInfo);
+}

@@ -1,0 +1,65 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.community;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.community.entity.SpecialTraining;
+import com.dxtwangxiao.strongestsuperscholar.module.community.service.SpecialTrainingService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
+import java.util.List;
+
+@RestController
+@RequestMapping("/com/SpecialTraining")
+public class SpecialTrainingController {
+    @Autowired
+    private SpecialTrainingService specialTrainingService;
+
+    @GetMapping("/list")
+    public ResponseInfo getSpecialTrainingList(Integer currentPage, Integer pageSize,HttpServletRequest request)throws ErrorInfo{
+        RequestInfo requestInfo=WebUtil.parseGetRequest(request);
+        List<SpecialTraining> specialTrainings;
+        if(pageSize == null||currentPage == null){
+            specialTrainings =specialTrainingService.findAll();
+        }else if(pageSize <=0 || currentPage <=0){
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+
+        }else {
+            specialTrainings = specialTrainingService.findAll(currentPage,pageSize);
+        }
+
+        return new ResponseInfo(requestInfo, specialTrainings);
+    }
+
+    @PostMapping("/add")
+    public ResponseInfo addSpecialTraining( @RequestBody RequestInfo requestInfo)throws ErrorInfo{
+        JSONObject jsonObject = requestInfo.getReqParam();
+
+        SpecialTraining specialTraining = JSON.toJavaObject(jsonObject, SpecialTraining.class);
+
+        specialTraining = specialTrainingService.create(specialTraining);
+
+        return new ResponseInfo(requestInfo, null);
+    }
+
+    @GetMapping("/getByUserId")
+    public ResponseInfo getByUserId(@PathParam("userId") String userId,HttpServletRequest request) throws ErrorInfo {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<SpecialTraining> specialTrainingList;
+        if (userId == null) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        } else {
+            specialTrainingList =specialTrainingService.getSpecialTrainingUserInfo(userId);
+
+        }
+        return new ResponseInfo(requestInfo, specialTrainingList);
+    }
+
+}

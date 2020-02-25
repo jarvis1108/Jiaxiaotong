@@ -1,0 +1,106 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.MatchSettingRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.MatchSetting;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.MatchSettingService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * 匹配设置服务接口实现类
+ * <p>
+ * Created by Devin
+ * 2018-07-02 下午 03:38
+ */
+@Service
+public class MatchSettingServiceImpl implements MatchSettingService {
+
+    @Autowired
+    private MatchSettingRepository matchSettingRepository;
+
+    /**
+     * 获取匹配设置信息
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页
+     * @return 用户信息列表
+     */
+    @Override
+    @Transactional
+    public List<MatchSetting> getMatchSettingList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null) {
+            return matchSettingRepository.findAll();
+        } else {
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<MatchSetting> matchSettingPage = matchSettingRepository.findAll(pageable);
+            return matchSettingPage.getContent();
+        }
+    }
+
+    /**
+     * 获取所有匹配设置信息
+     *
+     * @return
+     */
+    @Override
+    public List<MatchSetting> getAllMatchSettings() {
+        return matchSettingRepository.findAll();
+    }
+
+    @Override
+    public MatchSetting create(MatchSetting newMatchSetting) throws ErrorInfo {
+        if (newMatchSetting == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_011", "匹配设置信息为空", null);
+        return matchSettingRepository.save(newMatchSetting);
+    }
+
+    /**
+     * 更新某一匹配设置
+     *
+     * @param updatedMatchSetting
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public MatchSetting update(MatchSetting updatedMatchSetting) throws ErrorInfo {
+        if (updatedMatchSetting == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_011", "匹配设置信息为空", null);
+        }
+        MatchSetting matchSetting = matchSettingRepository.findMatchSettingByMatchSettingId(updatedMatchSetting.getMatchSettingId());
+        if (matchSetting == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_012", "匹配设置信息不存在", null);
+        }
+        UpdateUtil.copyProperties(updatedMatchSetting, matchSetting);
+
+        return matchSettingRepository.save(matchSetting);
+    }
+
+    /**
+     * 根据用户ID删除某一匹配设置信息
+     *
+     * @param matchSettingId 待删除用户ID
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public boolean deleteByMatchSettingId(String matchSettingId) throws ErrorInfo {
+        MatchSetting matchSetting = matchSettingRepository.findMatchSettingByMatchSettingId(matchSettingId);
+        if (matchSetting == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_012", "匹配设置信息不存在", null);
+        }
+        matchSetting.setIsValid(Byte.valueOf("0"));
+        matchSettingRepository.save(matchSetting);
+        return true;
+    }
+}

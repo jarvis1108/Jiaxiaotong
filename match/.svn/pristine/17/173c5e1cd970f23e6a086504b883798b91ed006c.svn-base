@@ -1,0 +1,248 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.dao.GradePhaseInfoRelRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.GradePhaseInfoRel;
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.UserRelInfoRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.dao.UserRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.User;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserRelInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserService;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.UserDTO;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UUIDUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * 用户服务接口实现类
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:46
+ */
+@Service
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserRelInfoRepository userRelInfoRepository;
+
+    @Autowired
+    private GradePhaseInfoRelRepository gradePhaseInfoRelRepository;
+
+    /**
+     * 获取用户信息
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页
+     * @return 用户信息列表
+     */
+    @Override
+    @Transactional
+    public List<User> getUserList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null) {
+            return userRepository.findAll();
+        } else {
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<User> userPage = userRepository.findAll(pageable);
+            return userPage.getContent();
+        }
+    }
+
+    /**
+     * 获取所有用户信息
+     *
+     * @return
+     */
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User create(User newUser) throws ErrorInfo {
+        if (newUser == null)
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_001", "用户为空", null);
+        return userRepository.save(newUser);
+    }
+
+    /**
+     * 更新某一用户信息
+     *
+     * @param updatedUser 待更新用户
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public User update(User updatedUser) {
+        return userRepository.save(updatedUser);
+    }
+
+    /**
+     * 根据用户ID删除某一用户
+     *
+     * @param userId 待删除用户ID
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public boolean deleteByUserId(String userId) throws ErrorInfo {
+        User user = userRepository.findUserByUserId(userId);
+        if (user == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_13_002", "用户不存在", null);
+        }
+        user.setIsValid(Byte.valueOf("0"));
+        userRepository.save(user);
+        return true;
+    }
+
+    /**
+     * 用户绑定手机号
+     *
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    @Transactional
+    public User save(String userId, String telephone) throws ErrorInfo {
+
+
+        User user = userRepository.findUserByUserId(userId);
+        if (user == null) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_01_016", "用户不存在", null);
+        }
+        user.setTelephone(telephone);
+        User result = userRepository.save(user);
+        return result;
+    }
+
+    @Override
+    public Page<User> findAll(Pageable pageable) throws ErrorInfo {
+        try {
+            Page<User> userPage = userRepository.findAll(pageable);
+            return userPage;
+        } catch (Exception e) {
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_01_017", "未找到排名", null);
+
+        }
+
+    }
+
+    @Transactional
+    @Override
+    public User findUserByUserId(String userID) {
+        return userRepository.findUserByUserId(userID);
+    }
+
+    @Override
+    public User getUserById(String userId) {
+        return userRepository.findUserByUserId(userId);
+    }
+
+    /**
+     * 根据openid获取用户信息
+     *
+     * @param openid 用户id
+     * @return userDto
+     */
+    @Override
+    public UserDTO getUserByOpenid(String openid) {
+        if (openid == null || openid.equals(""))
+            return null;
+
+        User user = userRepository.findUserByOpenid(openid);
+        if (user != null) {
+            UserRelInfo userRelInfo = userRelInfoRepository.findByUserId(user.getUserId());
+            UserDTO userDTO = new UserDTO();
+
+            BeanUtils.copyProperties(userRelInfo, userDTO);
+            BeanUtils.copyProperties(user, userDTO);
+            return userDTO;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 根据用户Id获取用户信息
+     *
+     * @param userId 用户Id
+     * @return
+     */
+    @Override
+    public UserDTO getUserDTOById(String userId) {
+        User user = userRepository.findUserByUserId(userId);
+        if (user == null) {
+            return null;
+        } else {
+            UserRelInfo userRelInfo = userRelInfoRepository.findByUserId(userId);
+            UserDTO userDTO = new UserDTO();
+            BeanUtils.copyProperties(user, userDTO);
+            BeanUtils.copyProperties(userRelInfo, userDTO);
+
+            return userDTO;
+        }
+    }
+
+    /**
+     * 创建新用户
+     *
+     * @param nickName     用户昵称
+     * @param avatarUrl    用户头像地址
+     * @param gender       用户性别，1表示男，2表示女，0表示未知
+     * @param city         用户所在城市
+     * @param gradePhaseId 年纪阶段Id
+     * @param gradeId      年级Id
+     * @return 创建后的用户信息
+     */
+    @Override
+    @Transactional
+    public UserDTO createUser(String nickName, String avatarUrl, String gender, String city, String gradePhaseId, String gradeId) {
+        GradePhaseInfoRel gradePhaseInfoRel = gradePhaseInfoRelRepository.findByGradePhaseIdAndGradeId(gradePhaseId, gradeId);
+
+        User user = new User();
+        user.setUserId(UUIDUtil.getUUID());
+        user.setUserNo(user.getUserId());
+        user.setCity(city);
+        user.setSex(gender);
+        user.setWechatName(nickName);
+        user.setHeadImage(avatarUrl);
+        user.setCreateTime(new Timestamp(new Date().getTime()));
+        user.setIsValid(Byte.valueOf("1"));
+        userRepository.save(user);
+
+        UserRelInfo userRelInfo = new UserRelInfo();
+        userRelInfo.setUserId(user.getUserId());
+        userRelInfo.setUserNo(user.getUserNo());
+        userRelInfo.setCoin(0);
+        userRelInfo.setGradePoint(0);
+        userRelInfo.setLearningPoint(0);
+        userRelInfo.setInternalLevel(gradePhaseInfoRel.getInternalLevel());
+        userRelInfo.setMatchSumCount(0);
+        userRelInfo.setMatchWinCount(0);
+        userRelInfo.setMatchLoseCount(0);
+        userRelInfo.setMatchDogFallCount(0);
+        userRelInfo.setExperience(0);
+        userRelInfo.setExternalLevel(1);
+        userRelInfo.setCreateTime(user.getCreateTime());
+        userRelInfo.setIsValid(Byte.valueOf("1"));
+        userRelInfoRepository.save(userRelInfo);
+
+        UserDTO userDTO = new UserDTO();
+        BeanUtils.copyProperties(user, userDTO);
+        BeanUtils.copyProperties(userRelInfo, userDTO);
+
+        return userDTO;
+    }
+}

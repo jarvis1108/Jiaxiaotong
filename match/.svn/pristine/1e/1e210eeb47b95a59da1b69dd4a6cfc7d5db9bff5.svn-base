@@ -1,0 +1,55 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.CourseInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * @Author: meiyu
+ * @Date: 2018/7/13 16:09
+ */
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class CourseInfoRepositoryTest {
+    @Autowired
+    private CourseInfoRepository courseInfoRepository;
+
+    @Test
+    public void findAll() {
+        PageRequest pageable=PageRequest.of(1,1);
+        Page<CourseInfo> courseInfoPage=courseInfoRepository.findAll(pageable);
+
+        List<CourseInfo> courseInfoList=courseInfoPage.getContent();
+        assertNotEquals(1,courseInfoList.size());
+
+        courseInfoList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll1() {
+        List<CourseInfo> courseInfoList=courseInfoRepository.findAll();
+        assertNotEquals(1,courseInfoList.size());
+        courseInfoList.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        CourseInfo courseInfo=new CourseInfo();
+        courseInfo.setCourseId("1");
+        courseInfo.setCourseName("test");
+        courseInfo.setCreateUser("mei");
+
+        CourseInfo result=courseInfoRepository.save(courseInfo);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+}

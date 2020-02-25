@@ -1,0 +1,160 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.QuestionTypeRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionType;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionTypeService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.UpdateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\6\26 0026
+ */
+@Service
+@Slf4j
+public class QuestionTypeServiceImpl implements QuestionTypeService {
+
+    @Autowired
+    private QuestionTypeRepository questionTypeRepository;
+
+    @Transactional(readOnly = true)
+    @Override
+    public QuestionType getQuestionTypeByQuestionTypeId(String questionTypeId) throws ErrorInfo {
+        if(questionTypeId==null||"".equals(questionTypeId)){
+            log.info("The given questionTypeId is empty");
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_015", "传入试题类型Id为空", null);
+        }
+        log.info("Getting a questionType entity with questionTypeId: {}", questionTypeId);
+
+           QuestionType questionType=questionTypeRepository.findQuestionTypeByQuestionTypeId(questionTypeId);
+            log.info("Got  questionType entity with questionTypeId: {}, information: {}", questionTypeId, questionType);
+            if(questionType == null){
+                throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_016", "未找到对应试题类型", null);
+
+            }
+            return questionType;
+
+    }
+
+    @Override
+    public QuestionType getQuestionTypeByQuestionTypeName(String questionTypeName) throws ErrorInfo {
+        if(questionTypeName==null||"".equals(questionTypeName)){
+
+            throw new ErrorInfo("E_201808161616_57_032", "该题目类型名称不存在", null);
+        }
+
+
+        QuestionType questionType=questionTypeRepository.findQuestionTypeByQuestionTypeName(questionTypeName);
+
+        if(questionType == null){
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_016", "未找到对应试题类型", null);
+
+        }
+        return questionType;
+    }
+
+    @Transactional(readOnly =true)
+    @Override
+    public List<QuestionType> findAll() throws ErrorInfo {
+        log.info("Getting all questionType...");
+
+            List<QuestionType> questionTypes = questionTypeRepository.findAll();
+            if(questionTypes == null || questionTypes.isEmpty()){
+                throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_017", "未找到试题类型", null);
+
+            }
+            log.info("Gotten all questionType information");
+            return questionTypes;
+
+    }
+
+    @Transactional
+    @Override
+    public QuestionType create(QuestionType newQuestionType) throws ErrorInfo {
+        if (newQuestionType == null) {
+            log.error("The new questionType entity is null");
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_018", "传入的待创建试题类型为空", null);
+        }
+
+        log.info("Creating a new questionType entity with information: {}", newQuestionType);
+
+            QuestionType ret = questionTypeRepository.save(newQuestionType);
+            if(ret == null){
+                throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_019", "创建试题类型失败", null);
+            }
+            log.info("Created a new questionType entity with information: {}", newQuestionType);
+            return ret;
+
+    }
+
+    @Transactional
+    @Override
+    public boolean deleteQuestionTypeById(String questionTypeId) throws ErrorInfo {
+        if(questionTypeId==null||"".equals(questionTypeId)){
+            log.info("the give questionTypeId is empty");
+            throw new ErrorInfo("E_" +"2018-07-30 09:00:00" + "_10_015", "传入的试题类型Id为空", null);
+        }
+
+        log.info("Deleting a QuestionType entity with id: {}", questionTypeId);
+            QuestionType questionType =questionTypeRepository.findQuestionTypeByQuestionTypeId(questionTypeId);
+            if (questionType == null) {
+                log.error("The questionType entity is null with id: {}", questionTypeId);
+                throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_016", "未找到对应试题类型", null);
+            }
+            questionType.setIsValid(Byte.valueOf("0"));
+            QuestionType result = questionTypeRepository.save(questionType);
+            if (result != null) {
+                log.info("Deleted a questionType entity with id: {}", questionTypeId);
+                return true;
+            }
+        throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_020", "删除试题类型失败", null);
+
+    }
+
+    @Transactional
+    @Override
+    public QuestionType update(QuestionType updateQuestionType) throws ErrorInfo {
+        if (updateQuestionType == null) {
+            log.error("The given updated questionType is null");
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_021", "传入的待更新试题类型为空", null);
+        }
+
+            QuestionType questionType = questionTypeRepository.findQuestionTypeByQuestionTypeId(updateQuestionType.getQuestionTypeId());
+            if (questionType == null) {
+                log.error("Error on getting the questionType entity with informaiton: {}", updateQuestionType);
+                throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_016", "未找到对应试题类型", null);
+            }
+            UpdateUtil.copyProperties(updateQuestionType, questionType);
+            QuestionType ret = questionTypeRepository.save(questionType);
+            if(ret == null){
+                throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_022", "更新试题类型失败", null);
+            }
+            return questionType;
+
+    }
+
+    @Transactional
+    @Override
+    public List<QuestionType> getQuestionTypeList(Integer pageSize, Integer currentPage) throws ErrorInfo {
+        if(pageSize == null || currentPage == null || pageSize<=0 || currentPage<=0){
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_023", "传入的试题类型分页信息为空或错误", null);
+        }
+        Pageable pageable = PageRequest.of(currentPage,pageSize);
+        Page<QuestionType> page = questionTypeRepository.findAll(pageable);
+        if(page == null || page.getContent().isEmpty()){
+            throw new ErrorInfo("E_" + "2018-07-30 09:00:00" + "_10_024", "查询的试题类型分页为空", null);
+        }
+        return page.getContent();
+    }
+}

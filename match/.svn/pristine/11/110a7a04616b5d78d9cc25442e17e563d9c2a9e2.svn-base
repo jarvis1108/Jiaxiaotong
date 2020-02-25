@@ -1,0 +1,22 @@
+<template name="index$74b7e1bc">
+  <view class="_div data-v-7aa47bb1 st-background-base-div">
+    <image class="_img data-v-7aa47bb1 st-background-bg-div" src="/static/images/bg@2x.png"></image>
+    <view id="st-status-text-div" hidden="{{!(isHost)}}" class="_div data-v-7aa47bb1">等待成员加入...</view>
+    <view id="st-status-text-div" hidden="{{!(!isHost)}}" class="_div data-v-7aa47bb1">等待房主开局...</view>
+    <view id="st-players-list2-div" class="_div data-v-7aa47bb1">
+      <image src="/static/images/groupBattleWaiting/Headportrait_bg@2x.png" class="_img data-v-7aa47bb1 st-background-bg-div {{bgStyle}}"></image>
+      <view id="st-triangel-button2-div" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_div data-v-7aa47bb1">
+        <image src="/static/images/groupBattleWaiting/Rightarrow_icon@2x.png" class="_img data-v-7aa47bb1 st-background-bg-div {{[!fold ? 'right' : '', fold ? 'bottom' : '']}}"></image>
+      </view>
+      <view id="st-player-image2-div" wx:if="{{!fold || (fold&&index<5)}}" wx:key="b" key="{{b}}" wx:for="{{playerList}}" wx:for-index="index" wx:for-item="b" class="_div data-v-7aa47bb1 {{[index >= 5 && !fold ? 'slideIn' : '', index >= 5 && fold ? 'slideOut' : '']}}">
+        <view class="_div data-v-7aa47bb1 st-background-bg-div">{{b.name}}</view>
+      </view>
+    </view>
+    <view id="st-host-logo-div" class="_div data-v-7aa47bb1">
+      <image src="/static/images/groupBattleWaiting/Owner_icon@2x.png" class="_img data-v-7aa47bb1 st-background-bg-div"></image>
+    </view>
+    <view id="st-game-start-div" hidden="{{!(isHost)}}" wx:if="{{nums > 1}}" class="_div data-v-7aa47bb1">
+      <image bindtap="handleProxy" src="/static/images/groupBattleWaiting/Startthecompetition_btn@2x.png" class="_img data-v-7aa47bb1 st-background-bg-div" data-eventid="{{'1'}}" data-comkey="{{$k}}"></image>
+    </view>
+  </view>
+</template>

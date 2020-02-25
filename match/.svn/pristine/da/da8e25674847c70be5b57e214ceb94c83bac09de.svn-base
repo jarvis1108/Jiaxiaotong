@@ -1,0 +1,51 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.Admin;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 管理员服务接口
+ * <p>
+ * Created by Devin
+ * 2018-06-29 下午 04:55
+ */
+public interface AdminService {
+    /**
+     * 查询所有管理员记录
+     *
+     * @return 管理员列表
+     */
+    List<Admin> getAllAdmin();
+    /**
+     * 分页查询所有管理员记录
+     *
+     * @return 管理员列表
+     */
+    List<Admin> getAdminList(Integer pageSize, Integer currentPage);
+
+    /**
+     * 更新管理员信息
+     * @param admin
+     * @return
+     * @throws ErrorInfo
+     */
+    Admin updateAdmin(Admin admin) throws ErrorInfo;
+
+    /**
+     * 新增管理员
+     * @param admin
+     * @return
+     * @throws ErrorInfo
+     */
+    Admin create(Admin admin) throws ErrorInfo;
+
+    /**
+     * 根据管理员ID删除管理员信息
+     * @param adminID
+     * @return
+     * @throws ErrorInfo
+     */
+    boolean deleteByAdminId(String adminId) throws ErrorInfo;
+}

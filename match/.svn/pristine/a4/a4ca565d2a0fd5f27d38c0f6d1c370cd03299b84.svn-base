@@ -1,0 +1,56 @@
+<import src="grade-dialog$e37302de" />
+<template name="index$a48f7b06">
+  <view id="background" class="_div data-v-990e3d20">
+    <view class="_div data-v-990e3d20">
+      <image id="bg" src="/static/images/bg@3x.png" class="_img data-v-990e3d20"></image>
+      <image id="person_info" src="/static/images/index/Personalinformation-bg@3x.png" class="_img data-v-990e3d20"></image>
+      <image id="user_icon" src="{{userInfo.avatarUrl}}" class="_img data-v-990e3d20"></image>
+      <view class="_p data-v-990e3d20">
+        <label id="user_name" class="_span data-v-990e3d20">{{userInfo.nickName}}</label>
+      </view>
+      <image id="coin_icon" src="/static/images/index/Goldcoin@3x.png" class="_img data-v-990e3d20"></image>
+      <view class="_p data-v-990e3d20">
+        <label id="user_coin" class="_span data-v-990e3d20 text_28">{{userInfo.userCoin}}</label>
+      </view>
+      <view class="_p data-v-990e3d20">
+        <label id="grade" style="left: 10%" class="_span data-v-990e3d20">{{userInfo.grade}}</label>
+        <label class="_span data-v-990e3d20 text_24" style="left: 12%">级</label>
+      </view>
+      <image id="progress" style="width: 25%" src="/static/images/index/Experiencebarframe@3x.png" class="_img data-v-990e3d20"></image>
+      <image id="bar" src="/static/images/index/Ruleofthumb@3x.png" class="_img data-v-990e3d20" style=" {{'width: ' + userInfo.progress * 25 + '%'}}"></image>
+      <view class="_p data-v-990e3d20">
+        <label class="_span data-v-990e3d20 text_28" style="right: 38%">绩点</label>
+        <label id="gpa" class="_span data-v-990e3d20 text_28" style="right: 30%">{{userInfo.gpa}}</label>
+      </view>
+      <view class="_p data-v-990e3d20">
+        <label class="_span data-v-990e3d20 text_28" style="right: 20%">学点</label>
+        <label id="lp" class="_span data-v-990e3d20 text_28" style="right: 12%">{{userInfo.learnPoint}}</label>
+      </view>
+    </view>
+    <view class="_div data-v-990e3d20">
+      <image id="dualmeet" bindtap="handleProxy" src="/static/images/index/dualmeet-bg@3x.png" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_img data-v-990e3d20"></image>
+      <view class="_p data-v-990e3d20">
+        <label class="_span data-v-990e3d20 text_34" style="left: 9%;top: 53%">对抗赛</label>
+      </view>
+      <image id="exercise" bindtap="handleProxy" src="/static/images/index/paradeground-bg@3x.png" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_img data-v-990e3d20"></image>
+      <view class="_p data-v-990e3d20">
+        <label class="_span data-v-990e3d20 text_34" style="left: 9%;top: 78%">知识练兵场</label>
+      </view>
+      <button open-type="share" class="_button data-v-990e3d20 pk_btn">
+        <image id="pk" bindtap="handleProxy" src="/static/images/index/pk-bg@3x.png" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_img data-v-990e3d20"></image>
+      </button>
+      <view class="_p data-v-990e3d20">
+        <label class="_span data-v-990e3d20 text_34" style="right: 26%;top: 44%">好友对战</label>
+      </view>
+      <image id="rank" bindtap="handleProxy" src="/static/images/index/Rankinglist-bg@3x.png" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_img data-v-990e3d20"></image>
+      <view class="_p data-v-990e3d20">
+        <label class="_span data-v-990e3d20 text_34" style="right: 31%;top: 62%">排行榜</label>
+      </view>
+      <image id="topup" bindtap="handleProxy" src="/static/images/index/top-ups-bg@3x.png" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_img data-v-990e3d20"></image>
+      <view class="_p data-v-990e3d20">
+        <label class="_span data-v-990e3d20 text_34" style="right: 36%;top: 78%">充值</label>
+      </view>
+    </view>
+    <template wx:if="{{showDialog}}" id="dialog" bindlistenToChildEvent="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="grade-dialog$e37302de"></template>
+  </view>
+</template>

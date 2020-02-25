@@ -1,0 +1,102 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.dao.OrderRecordRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.Coupon;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.OrderRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.service.OrderRecordService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.DateUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+/**
+ * @author: meiyu
+ * @Date: 2018/7/5 11:49
+ * @description 订单记录实现
+ */
+@Service
+@Slf4j
+public class OrderRecordServiceImpl implements OrderRecordService {
+
+    @Autowired
+    private OrderRecordRepository orderRecordRepository;
+
+
+    /**
+     * 分页查询订单记录
+     *
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    @Override
+    public List<OrderRecord> getOrderRecordList(Integer pageSize, Integer currentPage) {
+        if (pageSize == null || currentPage == null || pageSize <= 0 || currentPage <= 0) {
+            return null;
+        } else {
+            Pageable pageable = PageRequest.of(currentPage - 1, pageSize);
+            Page<OrderRecord> page = orderRecordRepository.findAll(pageable);
+            return page.getContent();
+        }
+    }
+
+    /**
+     * 新增订单记录
+     *
+     * @param orderRecord
+     * @return
+     * @throws ErrorInfo
+     */
+    @Transactional
+    @Override
+    public OrderRecord create(OrderRecord orderRecord) throws ErrorInfo {
+        if (orderRecord == null)
+            throw new ErrorInfo("E_201807300855_01_011", "订单信息为空", null);
+        return orderRecordRepository.save(orderRecord);
+    }
+
+    /**
+     * 根据用户id查询订单记录
+     *
+     * @param userId
+     * @return
+     * @throws ErrorInfo
+     */
+    @Override
+    public List<OrderRecord> findAllByUserId(String userId) throws ErrorInfo {
+        if (userId == null || "".equals(userId.trim())) {
+            throw new ErrorInfo("E_201807300855_01_014", "输入用户Id为空", null);
+        }
+        List<OrderRecord> ret = orderRecordRepository.findAllByUserId(userId);
+        if (ret == null || ret.isEmpty()) {
+            throw new ErrorInfo("E_201807300855_01_015", "未查询到订单记录", null);
+        }
+        return ret;
+    }
+
+    /**
+     * 根据用户id和购买方式查询订单记录
+     *
+     * @param userId      用户id
+     * @param purchaseWay 购买方式
+     * @param curPage     当前页
+     * @param pageSize    页大小
+     * @return 订单列表
+     */
+    @Override
+    public List<OrderRecord> getByUserIdAndPurchaseWay(String userId, Byte purchaseWay, Integer curPage, Integer pageSize) {
+        if (pageSize == null || curPage == null || pageSize <= 0 || curPage <= 0) {
+            return null;
+        }
+        Pageable pageable = PageRequest.of(curPage - 1, pageSize);
+        Page<OrderRecord> page = orderRecordRepository.findAllByUserIdAndPurchaseWay(userId, purchaseWay, pageable);
+        return page.getContent();
+    }
+}

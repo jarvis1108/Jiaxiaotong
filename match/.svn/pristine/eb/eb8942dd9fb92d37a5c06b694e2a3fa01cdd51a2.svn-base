@@ -1,0 +1,200 @@
+package com.dxtwangxiao.strongestsuperscholar.web.dto;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+/**
+ * @auther: shenhao
+ * @descripition:    上传试题的数据传输层
+ * @date 2018\8\15 0015
+ */
+public class QuestionRecitationForLibDTO implements Serializable {
+
+    private String questionForLibId;//试题ID
+    private String questionForLibNo;//试题
+    private String questionLibId;//私有题库ID
+    private String questionLibNo;//题库编码
+    private String fromQuestionId;//来自试题ID
+    private String fromQuestionNo;//来自试题编码
+    private String answer;//答案
+    private Timestamp createTime;
+    private String userId;
+    private Timestamp lastUpdTime;
+    private String lastUpdUser;
+    private Byte isValid;//是否有效，1表示有效，0表示无效
+    private String remark;//备注说明
+
+    private Integer recommendTime;//推荐答题时间
+    private String Question;//题目题干
+    private String questionTypeName;
+    private String subjectName;
+    private String gradeName;
+
+    public String getQuestionForLibId() {
+        return questionForLibId;
+    }
+
+    public void setQuestionForLibId(String questionForLibId) {
+        this.questionForLibId = questionForLibId;
+    }
+
+    public String getQuestionForLibNo() {
+        return questionForLibNo;
+    }
+
+    public void setQuestionForLibNo(String questionForLibNo) {
+        this.questionForLibNo = questionForLibNo;
+    }
+
+    public String getQuestionLibId() {
+        return questionLibId;
+    }
+
+    public void setQuestionLibId(String questionLibId) {
+        this.questionLibId = questionLibId;
+    }
+
+    public String getQuestionLibNo() {
+        return questionLibNo;
+    }
+
+    public void setQuestionLibNo(String questionLibNo) {
+        this.questionLibNo = questionLibNo;
+    }
+
+    public String getFromQuestionId() {
+        return fromQuestionId;
+    }
+
+    public void setFromQuestionId(String fromQuestionId) {
+        this.fromQuestionId = fromQuestionId;
+    }
+
+    public String getFromQuestionNo() {
+        return fromQuestionNo;
+    }
+
+    public void setFromQuestionNo(String fromQuestionNo) {
+        this.fromQuestionNo = fromQuestionNo;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setCreateUser(String userId) {
+        this.userId = userId;
+    }
+
+    public Timestamp getLastUpdTime() {
+        return lastUpdTime;
+    }
+
+    public void setLastUpdTime(Timestamp lastUpdTime) {
+        this.lastUpdTime = lastUpdTime;
+    }
+
+    public String getLastUpdUser() {
+        return lastUpdUser;
+    }
+
+    public void setLastUpdUser(String lastUpdUser) {
+        this.lastUpdUser = lastUpdUser;
+    }
+
+    public Byte getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(Byte isValid) {
+        this.isValid = isValid;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public Integer getRecommendTime() {
+        return recommendTime;
+    }
+
+    public void setRecommendTime(Integer recommendTime) {
+        this.recommendTime = recommendTime;
+    }
+
+    public String getQuestion() {
+        return Question;
+    }
+
+    public void setQuestion(String question) {
+        Question = question;
+    }
+
+    public String getQuestionTypeName() {
+        return questionTypeName;
+    }
+
+    public void setQuestionTypeName(String questionTypeName) {
+        this.questionTypeName = questionTypeName;
+    }
+
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
+    public String getGradeName() {
+        return gradeName;
+    }
+
+    public void setGradeName(String gradeName) {
+        this.gradeName = gradeName;
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionRecitationForLibDTO{" +
+                "questionForLibId='" + questionForLibId + '\'' +
+                ", questionForLibNo='" + questionForLibNo + '\'' +
+                ", questionLibId='" + questionLibId + '\'' +
+                ", questionLibNo='" + questionLibNo + '\'' +
+                ", fromQuestionId='" + fromQuestionId + '\'' +
+                ", fromQuestionNo='" + fromQuestionNo + '\'' +
+                ", answer='" + answer + '\'' +
+                ", createTime=" + createTime +
+                ", userId='" + userId + '\'' +
+                ", lastUpdTime=" + lastUpdTime +
+                ", lastUpdUser='" + lastUpdUser + '\'' +
+                ", isValid=" + isValid +
+                ", remark='" + remark + '\'' +
+                ", recommendTime=" + recommendTime +
+                ", Question='" + Question + '\'' +
+                ", questionTypeName='" + questionTypeName + '\'' +
+                ", subjectName='" + subjectName + '\'' +
+                ", gradeName='" + gradeName + '\'' +
+                '}';
+    }
+}

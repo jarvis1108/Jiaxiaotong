@@ -1,0 +1,21 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.BookVerInfo;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @Author: meiyu
+ * @Date: 2018/7/13 15:36
+ * 版本信息数据访问层
+ */
+@Repository
+public interface BookVerInfoRepository extends CrudRepository<BookVerInfo, String> {
+    List<BookVerInfo> findAll();
+
+    BookVerInfo save(BookVerInfo bookVerInfo);
+
+    BookVerInfo findByBookVerId(String bookVerId);
+}

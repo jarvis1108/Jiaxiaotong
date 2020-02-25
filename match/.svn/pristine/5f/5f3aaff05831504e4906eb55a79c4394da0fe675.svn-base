@@ -1,0 +1,123 @@
+@import "/static/css/vendor.wxss";
+
+.st-background-base-div.data-v-7aa47bb1 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.st-background-bg-div.data-v-7aa47bb1 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+#st-status-text-div.data-v-7aa47bb1 {
+  position: absolute;
+  width: 100%;
+  top: 11.77%;
+  text-align: center;
+  font-size: 36rpx;
+  font-family: "PingFang-SC-Bold";
+  color: rgb(255, 255, 255);
+}
+#st-players-list1-div.data-v-7aa47bb1 {
+  position: absolute;
+  left: 4.67%;
+  right: 4.67%;
+  top: 18.91%;
+  height: 10.28%;
+}
+#st-players-list2-div.data-v-7aa47bb1 {
+  position: absolute;
+  left: 4.67%;
+  right: 4.67%;
+  top: 18.91%;
+  height: 10.28%;
+}
+.firstHide.data-v-7aa47bb1 {
+  animation: firstHide 0.5s forwards;
+}
+.secondHide.data-v-7aa47bb1 {
+  animation: secondHide 0.5s forwards;
+}
+.thirdHide.data-v-7aa47bb1 {
+  animation: thirdHide 0.5s forwards;
+}
+.firstExtend.data-v-7aa47bb1 {
+  animation: firstExtend 0.5s forwards;
+}
+.secondExtend.data-v-7aa47bb1 {
+  animation: secondExtend 0.5s forwards;
+}
+.thirdExtend.data-v-7aa47bb1 {
+  animation: thirdExtend 0.5s forwards;
+}
+.right.data-v-7aa47bb1 {
+  transform: rotate(90deg);
+  transition: all .5s;
+}
+.bottom.data-v-7aa47bb1 {
+  transform: rotate(-90deg);
+  transition: all .5s;
+}
+#st-triangel-button1-div.data-v-7aa47bb1 {
+  position: absolute;
+  right: 4.71%;
+  top: 43.55%;
+  width: 4.51%;
+  height: 17.71%;
+}
+#st-triangel-button2-div.data-v-7aa47bb1 {
+  position: absolute;
+  right: 4.71%;
+  top: 33.32%;
+  width: 3.5%;
+  height: 16.71%;
+}
+#st-game-start-div.data-v-7aa47bb1 {
+  position: absolute;
+  top: 65.67%;
+  left: 20.67%;
+  right: 20.67%;
+  height: 9.45%;
+}
+#st-player-image1-div.data-v-7aa47bb1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 5.88%;
+  float: left;
+  top: 17.74%;
+  height: 64.52%;
+  width: 11.76%;
+  border-radius: 50%;
+  background-color: aqua;
+}
+#st-player-image2-div.data-v-7aa47bb1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 5.88%;
+  margin-bottom: 40rpx;
+  float: left;
+  top: 9.82%;
+  height: 80rpx;
+  width: 11.76%;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.slideIn.data-v-7aa47bb1 {
+  animation: slideIn 1s forwards;
+}
+.slideOut.data-v-7aa47bb1 {
+  animation: slideOut 1s forwards;
+}
+#st-host-logo-div.data-v-7aa47bb1 {
+  position: absolute;
+  left: 17.73%;
+  top: 20.23%;
+  width: 4%;
+  height: 2.49%;
+  border-radius: 50%;
+}

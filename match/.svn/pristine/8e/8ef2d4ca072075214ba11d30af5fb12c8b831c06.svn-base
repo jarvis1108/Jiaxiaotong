@@ -1,0 +1,15 @@
+<import src="battle-loading$d792f7a2" />
+<import src="battle-ready$084e6854" />
+<import src="battle$5451b740" />
+<import src="battle-result$3dea7e7a" />
+<import src="group-battle-waiting$96e73264" />
+<import src="group-battle$37afc34e" />
+<import src="group-battle-result$9d9132a8" />
+<import src="payTip$1670d7db" />
+<import src="setting-dialog$4746f76d" />
+<import src="authenticate-dialog$57347fe8" />
+<import src="friend-pk-waiting$4e60f29c" />
+<import src="battle-ready$084e6854" />
+<import src="battle$5451b740" />
+<import src="battle-result$3dea7e7a" />
+<import src="cut_down$54a96387" />

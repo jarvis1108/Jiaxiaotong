@@ -1,0 +1,232 @@
+<template>
+  <div class="st-background-base-div">
+    <img class="st-background-bg-div" src="/static/images/bg@2x.png" >
+    
+    <div class="st-result-detail-div">
+      <img class="st-background-bg-div" src="/static/images/groupBattleResult/Performancedisplay_bg@2x.png" />
+      <p id="st-total-grade-p">{{grade}}分</p>
+      <p id="st-total-correct-p">答对{{correct}}题</p>
+      <p id="st-coin-change-p" class="st-detail-text-p">金币：&nbsp;&nbsp;&nbsp;&nbsp;+{{coin}}</p>
+      <p id="st-gradepoint-change-p" class="st-detail-text-p">绩点：&nbsp;&nbsp;&nbsp;&nbsp;+{{gradepoint}}</p>
+      <p id="st-studypoint-change-p" class="st-detail-text-p">学点：&nbsp;&nbsp;&nbsp;&nbsp;-{{studypoint}}</p>      
+      <p id="st-expression-change-p" class="st-detail-text-p">经验：&nbsp;&nbsp;&nbsp;&nbsp;+{{expression}}</p>          
+    </div>
+    
+    <div class="st-player-range-div">
+      <div class="st-player-detail-div" v-for="player in playerList" :key="player">
+        <div class="st-player-img-div">
+          <img class="st-background-bg-div user-icon" :src='player.userIcon' />
+        </div>
+        <p>第{{player.rank}}名</p>
+      </div>
+    </div>
+    
+    <div class="st-continue-game-div">
+      <img @click="again" class="st-background-bg-div" src="/static/images/groupBattleResult/1.1Continue-btn@2x.png" />
+    </div>
+
+    <button class="st-share-result-div" id="showoff" open-type="share">
+      <img class="btn_img" src="/static/images/groupBattleResult/1.1Showoff-btn@2x.png"/>
+    </button>
+    
+  </div>
+</template>
+
+<script>
+// import waiting from '@/pages/waitinghost/index'
+import wxs from "../../utils/wx";
+export default {
+  data() {
+    return {
+      correct: 4,
+      grade: 960,
+      // nums: waiting.nums,
+      coin: 0,
+      gradepoint: 5,
+      studypoint: 30,
+      expression: 2,
+      battleId:'',
+      playerList: [] //用户列表
+    };
+  },
+  onLoad(option) {
+    this.battleId = option.battleId;
+    let playerList = JSON.parse(option.playerList);
+    //TODO:利用战局ID从后台获取战局结果
+    for (let i = 0; i < playerList.length; ++i) {
+      this.playerList[i] = {
+        name: playerList[i].name,
+        userIcon: playerList[i].img,
+        rank: i + 1,
+        mark: 600
+      };
+    }
+    if (this.correct === 1) {
+      this.correct = "一";
+    } else if (this.correct === 2) {
+      this.correct = "二";
+    } else if (this.correct === 3) {
+      this.correct = "三";
+    } else if (this.correct === 4) {
+      this.correct = "四";
+    } else {
+      this.correct = "五";
+    }
+
+    //TODO：获取到用户信息
+  },
+
+  methods: {
+    again() {
+      wxs.navigateBack(0);
+    }
+  },
+
+  created() {}
+};
+</script>
+
+<style scoped>
+.st-background-base-div {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.st-background-bg-div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.st-result-detail-div {
+  position: absolute;
+  top: 3.8%;
+  left: 3.8%;
+  right: 3.8%;
+  width: 92.4%;
+  height: 22.41%;
+}
+#st-total-grade-p {
+  position: relative;
+  top: 10.5%;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 13.3vw;
+  color: rgb(255, 255, 255);
+  font-family: "PingFang-SC-Bold";
+}
+#st-total-correct-p {
+  position: relative;
+  top: 7%;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 4.5vw;
+  color: rgb(255, 255, 255);
+  font-family: "PingFang-SC-Medium";
+}
+.st-detail-text-p {
+  font-size: 3.7vw;
+  font-family: "PingFang-SC-Medium";
+  color: rgb(255, 255, 255);
+}
+#st-coin-change-p {
+  position: absolute;
+  top: 65.34%;
+  left: 16.45%;
+  width: 30%;
+  margin: 0;
+  text-align: left;
+}
+#st-gradepoint-change-p {
+  position: absolute;
+  top: 77.34%;
+  left: 16.45%;
+  width: 30%;
+  margin: 0;
+  text-align: left;
+}
+#st-studypoint-change-p {
+  position: absolute;
+  top: 65.34%;
+  left: 60%;
+  width: 30%;
+  margin: 0;
+  text-align: left;
+}
+#st-expression-change-p {
+  position: absolute;
+  top: 77.34%;
+  left: 60%;
+  width: 30%;
+  margin: 0;
+  text-align: left;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+.st-player-range-div {
+  position: absolute;
+  height: 50.97%;
+  left: 6.67%;
+  right: 6.67%;
+  width: 86.66%;
+  top: 25%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.st-player-detail-div {
+  position: relative;
+  top: 0;
+  height: 25%;
+  width: 100%;
+  border-radius: 22rpx;
+  margin-bottom: 10rpx;
+  background-color: rgb(45, 201, 252);
+  color: white;
+  text-align: center;
+}
+.st-player-img-div {
+  position: absolute;
+  left: 3.69%;
+  top: 17.22%;
+  width: 18.15%;
+  height: 65.56%;
+  border-radius: 50%;
+  border: 4rpx solid white;
+  background-color: rgb(132, 132, 132);
+  overflow: hidden;
+}
+.st-continue-game-div {
+  position: absolute;
+  bottom: 12.5%;
+  left: 20.67%;
+  width: 58.67%;
+  height: 8.92%;
+}
+.st-share-result-div {
+  position: absolute;
+  bottom: 3%;
+  left: 20.67%;
+  width: 58.67%;
+  height: 8.92%;
+}
+.btn_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.user-icon{
+  left: 0;
+  border-radius: 50%;
+}
+#showoff {
+  border: none;
+  background: transparent;
+}
+#showoff::after {
+  border: none;
+}
+</style>

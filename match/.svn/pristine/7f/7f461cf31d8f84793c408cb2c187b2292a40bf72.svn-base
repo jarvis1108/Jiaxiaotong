@@ -1,0 +1,29 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.RecitationQuestionForLib;
+import java.util.List;
+
+/**
+ * Created by 孙伟浩 on 2018/9/7.
+ */
+public interface RecitationQuestionForLibService {
+
+
+    /**
+      *
+      *
+      * @param  reqParam 搜索参数
+      * @return 背诵题表现层实体列表
+      */
+    List<RecitationQuestionForLib> search(JSONObject reqParam);
+
+
+    /**
+      * 根据Id查询
+      *
+      * @param   recitationQuestionForLibId  id
+      * @return  背诵题表现层实体
+      */
+    RecitationQuestionForLib findRecitationForLibById(String recitationQuestionForLibId);
+}

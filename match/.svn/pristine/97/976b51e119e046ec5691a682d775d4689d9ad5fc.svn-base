@@ -1,0 +1,10 @@
+<import src="group-battle-waiting$96e73264" />
+<import src="group-battle$37afc34e" />
+<import src="group-battle-result$9d9132a8" />
+<template name="index$fe2da37c">
+  <view class="_div data-v-2b4f5831 st-battle-main-container">
+    <template wx:if="{{step == 'A' || step == 'A-1' || step == 'A-2'}}" bindplayerList="handleProxy" bindgiveUpBattle="handleProxy" bindbeginBattle="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'2'], $root}}" is="group-battle-waiting$96e73264"></template>
+    <template wx:elif="{{step == 'A-0' || step == 'B' || step == 'C' || step == 'D'}}" binduserAnswered="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="group-battle$37afc34e"></template>
+    <template wx:elif="{{step === 'E'}}" data="{{...$root[$kk+'1'], $root}}" is="group-battle-result$9d9132a8"></template>
+  </view>
+</template>

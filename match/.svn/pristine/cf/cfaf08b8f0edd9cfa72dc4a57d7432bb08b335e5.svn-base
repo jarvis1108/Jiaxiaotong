@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>训练营成员</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/训练营成员/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/训练营成员/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1062" class="ax_default box_1">
+        <div id="u1062_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u1063" class="ax_default" data-left="43" data-top="8" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u1064" class="ax_default" data-left="43" data-top="8" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u1065" class="ax_default box_2">
+            <div id="u1065_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u1066" class="ax_default image1">
+          <img id="u1066_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u1067" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u1067_div" class=""></div>
+          <div id="u1067_text" class="text ">
+            <p><span>我的营地</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u1068" class="ax_default image2">
+          <img id="u1068_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u1069" class="ax_default image">
+          <img id="u1069_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1070" class="ax_default refs-webm-wechat">
+        <div id="u1070_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1071" class="ax_default refs-webm-wechat">
+        <div id="u1071_div" class=""></div>
+        <div id="u1071_text" class="text ">
+          <p><span>&nbsp;&nbsp; &nbsp;&nbsp; 我&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 等级13&nbsp; &nbsp; &nbsp;&nbsp; 成员3&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 新兵&nbsp; &nbsp;&nbsp; </span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1072" class="ax_default refs-webm-wechat">
+        <div id="u1072_div" class=""></div>
+        <div id="u1072_text" class="text ">
+          <p><span>我的营地</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1073" class="ax_default refs-webm-wechat">
+        <div id="u1073_div" class=""></div>
+        <div id="u1073_text" class="text ">
+          <p><span>&nbsp;&nbsp; &nbsp; 营员1&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 等级12&nbsp; &nbsp; &nbsp; &nbsp; 成员50&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 排长&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1074" class="ax_default refs-webm-wechat">
+        <div id="u1074_div" class=""></div>
+        <div id="u1074_text" class="text ">
+          <p><span>&nbsp;&nbsp; &nbsp; 营员1&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 等级1&nbsp; &nbsp; &nbsp; &nbsp; 成员0&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 新兵&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1075" class="ax_default refs-webm-wechat">
+        <div id="u1075_div" class=""></div>
+        <div id="u1075_text" class="text ">
+          <p><span>&nbsp;&nbsp; &nbsp; 营员1&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 等级8&nbsp; &nbsp; &nbsp;&nbsp; 成员500&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 团长&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1076" class="ax_default refs-webm-wechat">
+        <div id="u1076_div" class=""></div>
+        <div id="u1076_text" class="text ">
+          <p><span>邀请新人</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u1077" class="ax_default box_1">
+        <div id="u1077_div" class=""></div>
+        <div id="u1077_text" class="text ">
+          <p><span>只有新人才会您的进入营地</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.User;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserRelInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.UserDTO;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+
+import java.util.List;
+
+/**
+ * 用户服务接口
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:40
+ */
+public interface UserService {
+    /**
+     * 分页查询用户信息列表
+     *
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<User> getUserList(Integer pageSize, Integer currentPage);
+
+    /**
+     * 查询用户信息列表
+     *
+     * @return
+     */
+    List<User> getAllUsers();
+
+    /**
+     * 创建用户信息表
+     *
+     * @param newUser
+     * @return
+     * @throws ErrorInfo
+     */
+    User create(User newUser) throws ErrorInfo;
+
+    /**
+     * 更新用户信息表
+     *
+     * @param updatedUser
+     * @return
+     * @throws ErrorInfo
+     */
+    User update(User updatedUser);
+
+    /**
+     * 根据用户ID删除用户信息表
+     *
+     * @param userId
+     * @return
+     * @throws ErrorInfo
+     */
+    boolean deleteByUserId(String userId) throws ErrorInfo;
+
+    /**
+     * 绑定用户手机号
+     *
+     * @param userId
+     * @param telephone
+     * @return
+     * @throws ErrorInfo
+     */
+    User save(String userId, String telephone) throws ErrorInfo;
+
+    /**
+     * @param pageable
+     * @return
+     * @throws ErrorInfo
+     */
+    Page<User> findAll(Pageable pageable) throws ErrorInfo;
+
+    /**
+     * 根据用户ID查询用户信息表
+     *
+     * @param userId
+     * @return
+     * @throws ErrorInfo
+     */
+    User findUserByUserId(String userId);
+
+    /**
+     * @param userId
+     * @return
+     */
+    User getUserById(String userId);
+
+    /**
+     * 根据用户openID查询用户信息表
+     *
+     * @param openid
+     * @return
+     */
+    UserDTO getUserByOpenid(String openid);
+
+    /**
+     * 根据用户Id获取用户信息
+     *
+     * @param userId
+     * @return
+     */
+    UserDTO getUserDTOById(String userId);
+
+    /**
+     * 创建新用户
+     *
+     * @param nickName     用户昵称
+     * @param avatarUrl    用户头像地址
+     * @param gender       用户性别，1表示男，2表示女，0表示未知
+     * @param city         用户所在城市
+     * @param gradePhaseId 年纪阶段Id
+     * @param gradeId      年级Id
+     * @return 创建后的用户信息
+     */
+    UserDTO createUser(String nickName, String avatarUrl, String gender, String city, String gradePhaseId, String gradeId);
+}

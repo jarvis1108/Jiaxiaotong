@@ -1,0 +1,55 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserCoinDetail;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * 用户金币流水明细数据访问层
+ * <p>
+ * Created by Devin
+ * 2018-06-25 下午 03:09
+ */
+@Repository
+public interface UserCoinDetailRepository extends CrudRepository<UserCoinDetail, String> {
+    /**
+     * 分页查询用户金币明细表
+     * @param userId
+     * @param pageable
+     * @return
+     */
+    @Query(value = "select u from UserCoinDetail u where u.userId = ?1")
+    Page<UserCoinDetail> findByUserId(String userId, Pageable pageable);
+
+    /**
+     * 查询用户金币明细表
+     * @return
+     */
+    List<UserCoinDetail> findAll();
+
+    /**
+     * 根据用户ID查询所有用户金币明细列表
+     * @param userId
+     * @return
+     */
+    List<UserCoinDetail> findAllByUserId(String userId);
+
+    /**
+     * 创建、更新用户金币明细表
+     * @param userCoinDetail
+     * @return
+     */
+    UserCoinDetail save(UserCoinDetail userCoinDetail);
+
+    /**
+     * 根据用户ID查询用户金币明细表
+     * @param userId
+     * @return
+     */
+    UserCoinDetail findByUserId(String userId);
+}

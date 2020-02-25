@@ -1,0 +1,72 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service.impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.Question;
+import com.dxtwangxiao.strongestsuperscholar.module.question.service.QuestionService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class QuestionServiceImplTest {
+    @Autowired
+    private QuestionService service;
+    @Test
+    public void findAll() {
+        List<Question> questions=service.findAll();
+        assertNotEquals(0,questions.size());
+        questions.forEach(System.out::println);
+
+    }
+    @Test
+    public void getQuestionList() throws ErrorInfo {
+        List<Question> questions = service.getQuestionList(1, 1);
+        assertNotEquals(0, questions.size());
+        questions.forEach(System.out::println);
+    }
+
+    @Test
+    public void getQuestionByQuestionId() throws ErrorInfo{
+        String questionId="3";
+        Question question=service.getQuestionByQuestionId(questionId);
+        assertNotNull(question);
+        System.out.println(question);
+
+    }
+
+    @Test
+    public void create()throws ErrorInfo {
+        Question question=new Question();
+        question.setQuestionId("123456789");
+        question.setCreateTime(Timestamp.valueOf("2018-08-03 15:32:23"));
+        Question result=service.create(question);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteQuestionById() throws ErrorInfo{
+        String questionId="3";
+        service.deleteQuestionById(questionId);
+    }
+
+    @Test
+    public void update() throws ErrorInfo{
+        Question question=new Question();
+        question.setQuestionId("3");
+        question.setIsValid(Byte.valueOf("0"));
+        Question result=service.update(question);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+
+
+}

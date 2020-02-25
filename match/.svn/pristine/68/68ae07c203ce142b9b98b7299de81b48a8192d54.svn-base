@@ -1,0 +1,23 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordQuestion;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+/**
+ * @author meiyu
+ * 战局题目记录
+ */
+
+public interface MatchRecordQuestionService {
+
+    MatchRecordQuestion create(MatchRecordQuestion matchRecordQuestion) throws ErrorInfo;
+
+    List<MatchRecordQuestion> getMatchRecordQuestionList(Integer pageSize, Integer currentPage);
+
+    List<MatchRecordQuestion> findAllByMatchRecordId(String matchRecordId) throws ErrorInfo;
+
+    MatchRecordQuestion save(MatchRecordQuestion matchRecordQuestion);
+}

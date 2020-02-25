@@ -1,0 +1,34 @@
+<template name="battle-ready$084e6854">
+  <view class="_div data-v-bc691a0c st-battle-ready-container">
+    <image class="_img data-v-bc691a0c st-battle-ready-bg" src="/static/images/battleReady/Matching_bg@2x.png"></image>
+    <view class="_div data-v-bc691a0c st-battle-ready-user-div">
+      <view class="_div data-v-bc691a0c st-battle-ready-user-img">
+        <image class="_img data-v-bc691a0c st-battle-ready-meteor" src="/static/images/battleReady/Meteor1_bg@2x.png"></image>
+        <image class="_img data-v-bc691a0c st-battle-ready-user-icon" src="{{userInfo.headImage}}"></image>
+      </view>
+      <image class="_img data-v-bc691a0c st-battle-ready-user-line" src="/static/images/battleReady/Dottedline2@2x.png"></image>
+      <view class="_div data-v-bc691a0c st-battle-ready-userinfo-div">
+        <label class="_span data-v-bc691a0c st-battle-ready-span">{{userInfo.wechatName}}同学</label>
+        <view class="_br data-v-bc691a0c"></view>
+        <label class="_span data-v-bc691a0c st-battle-ready-span">来自：{{userInfo.city}}</label>
+        <view class="_br data-v-bc691a0c"></view>
+        <label class="_span data-v-bc691a0c st-battle-ready-span">等级：{{userLevel}}</label>
+      </view>
+    </view>
+    <image class="_img data-v-bc691a0c st-battle-ready-vs" src="/static/images/battleReady/vs@2x.png"></image>
+    <view class="_div data-v-bc691a0c st-battle-ready-opponent-div">
+      <view class="_div data-v-bc691a0c st-battle-ready-opponent-img">
+        <image class="_img data-v-bc691a0c st-battle-ready-meteor" src="/static/images/battleReady/Meteor2_bg@2x.png"></image>
+        <image class="_img data-v-bc691a0c st-battle-ready-opponent-icon" src="{{opponentInfo.headImage}}"></image>
+      </view>
+      <image class="_img data-v-bc691a0c st-battle-ready-opponent-line" src="/static/images/battleReady/Dottedline1@2x.png"></image>
+      <view class="_div data-v-bc691a0c st-battle-ready-opponentInfo-div">
+        <label class="_span data-v-bc691a0c st-battle-ready-span">{{opponentInfo.wechatName}}同学</label>
+        <view class="_br data-v-bc691a0c"></view>
+        <label class="_span data-v-bc691a0c st-battle-ready-span">来自：{{opponentInfo.city}}</label>
+        <view class="_br data-v-bc691a0c"></view>
+        <label class="_span data-v-bc691a0c st-battle-ready-span">等级：{{opponentLevel}}</label>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,13 @@
+<template name="questioncard$71d2e165">
+  <view class="_div data-v-4040af04 questioncard">
+    <image class="_img data-v-4040af04 bg" src="/copy-asset/dist/static/img/subject-bg.png"></image>
+    <image class="_img data-v-4040af04 divider" src="/copy-asset/dist/static/img/line.png"></image>
+    <view class="_div data-v-4040af04 Question" hidden="{{!(typeChoose)}}"></view>
+    <view class="_div data-v-4040af04 Question" hidden="{{!(typeRecord)}}">
+      <view class="_div data-v-4040af04 text2 title"> {{ question.title }} </view>
+      <view class="_div data-v-4040af04 text2 content"> {{ question.content }} </view>
+      <image class="_img data-v-4040af04 recordButton" bindtap="handleProxy" hidden="{{!(!recording)}}" src="/copy-asset/static/img/Startrecording.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+      <image class="_img data-v-4040af04 recordButton" bindtap="handleProxy" hidden="{{!(recording)}}" src="/copy-asset/static/img/suspend.png" data-eventid="{{'1'}}" data-comkey="{{$k}}"></image>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,72 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.question.entity.QuestionMultipleChoice;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @auther: shenhao
+ * @descripition:
+ * @date 2018\6\26 0026
+ */
+public interface QuestionMultipleChoiceService {
+    /**
+     * 获取所有多项选择题
+     *
+     * @return 多选题列表
+     */
+    List<QuestionMultipleChoice> getAllQuestionMultipleChoice();
+
+    /**
+     *根据题目编号查询多项选择题，
+     * @param questionId 题目编号
+     * @return 该多项选择题
+     */
+    QuestionMultipleChoice getQuestionMultipleChoiceByQuestionId(String questionId)throws ErrorInfo;
+
+    /**
+     * 根据试题编码查询多项选择题
+    * @param questionNo 试题编码
+     * @return 该多项选择题
+    */
+    QuestionMultipleChoice getQuestionMultipleChoiceByQuestionNo(String questionNo)throws ErrorInfo;
+
+    /**
+    * 根据录入者ID查询选择题，根据录入时间倒序排序
+    * @param createUser 选择题录入
+    * @return 该录入者创建的选择题序列
+    */
+    List<QuestionMultipleChoice> findQuestionMultipleChoiceByCreateUser(String createUser)throws ErrorInfo;
+
+
+    /**
+     * 创建新多项选择题
+     *
+     * @param newQuestionMultipleChoice 多项选择题基本信息
+     * @return 新创建多项选择题
+     */
+    QuestionMultipleChoice create(QuestionMultipleChoice newQuestionMultipleChoice)throws ErrorInfo;
+
+    /**
+     * 更新多项选择题基本信息
+     *
+     * @param updatedQuestionMultipleChoice 待更新多项选择题
+     * @return 更新后的多项选择题信息
+     */
+    QuestionMultipleChoice updateQuestionMultipleChoice(QuestionMultipleChoice updatedQuestionMultipleChoice)throws ErrorInfo ;
+
+    /**
+     * 根据id删除多项选择题
+     *
+     * @param questionId 多项选择题id
+     */
+    boolean deleteQuestionMultipleChoiceByQuestionId(String questionId)throws ErrorInfo;
+    /**
+     * 分页查询多项选择题
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<QuestionMultipleChoice> getQuestionMultipleChoiceList(Integer pageSize, Integer currentPage)throws ErrorInfo;
+}

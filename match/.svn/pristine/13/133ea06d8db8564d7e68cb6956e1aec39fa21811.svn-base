@@ -1,0 +1,70 @@
+package com.dxtwangxiao.strongestsuperscholar.module.base.service.Impl;
+
+import com.dxtwangxiao.strongestsuperscholar.module.base.dao.GradeInfoRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.base.entity.GradeInfo;
+import com.dxtwangxiao.strongestsuperscholar.module.base.service.GradeInfoService;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * 年级基本信息 服务实现类
+ * <p>
+ * Created by shenhao
+ * 2018\7\13 0013
+ */
+
+@Service
+public class GradeInfoServiceImpl implements GradeInfoService {
+
+    @Autowired
+    private GradeInfoRepository gradeInfoRepository;
+
+    /**
+     * 获取所有年级基本信息
+     *
+     * @return 年级基本信息列表
+     */
+    @Override
+    public List<GradeInfo> findAll() {
+        return gradeInfoRepository.findAll();
+    }
+
+    /**
+     * 创建年级基本信息
+     *
+     * @param newGradeInfo 待创建年级信息
+     * @return 创建后的年级信息
+     * @throws ErrorInfo
+     */
+    @Override
+    public GradeInfo create(GradeInfo newGradeInfo) throws ErrorInfo {
+        return gradeInfoRepository.save(newGradeInfo);
+    }
+
+    /**
+     * 更新年级基本信息
+     *
+     * @param updatedGradeInfo 待更新年级信息
+     * @return 更新的年级信息
+     * @throws ErrorInfo
+     */
+    @Override
+    public GradeInfo update(GradeInfo updatedGradeInfo) throws ErrorInfo {
+        return gradeInfoRepository.save(updatedGradeInfo);
+    }
+
+    /**
+     * 根据年级id获取年级信息
+     *
+     * @param gradeId 年级id
+     * @return 年级信息
+     */
+    @Override
+    public GradeInfo findByGradeId(String gradeId) {
+        GradeInfo gradeInfo = gradeInfoRepository.findByGradeId(gradeId);
+        return gradeInfo;
+    }
+}

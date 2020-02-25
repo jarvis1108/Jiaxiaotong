@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dxtwangxiao.questionchecktool.dao.KnowledgeMapper">
+    <resultMap id="BaseResultMap" type="com.dxtwangxiao.questionchecktool.entity.Knowledge">
+        <id column="KnowledgeID" jdbcType="VARCHAR" property="knowledgeID"/>
+        <result column="TreeNodeNo" jdbcType="VARCHAR" property="treeNodeNo"/>
+        <result column="InitID" jdbcType="VARCHAR" property="initID"/>
+        <result column="InitNo" jdbcType="VARCHAR" property="initNo"/>
+        <result column="IsCorrect" jdbcType="TINYINT" property="isCorrect"/>
+        <result column="KnowledgeParentID" jdbcType="VARCHAR" property="knowledgeParentID"/>
+        <result column="SubjectID" jdbcType="VARCHAR" property="subjectID"/>
+        <result column="Content" jdbcType="VARCHAR" property="content"/>
+        <result column="NodeLevel" jdbcType="INTEGER" property="nodeLevel"/>
+        <result column="FromCrawlerID" jdbcType="VARCHAR" property="fromCrawlerID"/>
+        <result column="FromCrawlerKnowledgeID" jdbcType="VARCHAR" property="fromCrawlerKnowledgeID"/>
+        <result column="IsLeaf" jdbcType="TINYINT" property="isLeaf"/>
+        <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="CreateUser" jdbcType="VARCHAR" property="createUser"/>
+        <result column="LastUpdTime" jdbcType="TIMESTAMP" property="lastUpdTime"/>
+        <result column="LastUpdUser" jdbcType="VARCHAR" property="lastUpdUser"/>
+        <result column="Remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="IsValid" jdbcType="TINYINT" property="isValid"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from t_ITN_Knowledge
+    </select>
+
+    <select id="selectBySubjectID" resultMap="BaseResultMap">
+        select * from t_ITN_Knowledge where SubjectID = #{subjectID};
+    </select>
+</mapper>

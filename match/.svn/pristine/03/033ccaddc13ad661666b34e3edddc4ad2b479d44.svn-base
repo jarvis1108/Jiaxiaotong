@@ -1,0 +1,24 @@
+<template name="index$9b22684a">
+  <view class="_div data-v-3577e9c6 st-topup-record-container">
+    <view class="_ul data-v-3577e9c6 st-topup-record-ul">
+      <view class="_li data-v-3577e9c6 st-topup-record-li" wx:key="index" key="{{index}}" wx:for="{{recordList}}" wx:for-index="index" wx:for-item="item">
+        <image class="_img data-v-3577e9c6 st-topup-record-li-bg" wx:if="{{(index%3) === 0}}" src="/static/images/topupRecord/Blue_bg@2x.png"></image>
+        <image class="_img data-v-3577e9c6 st-topup-record-li-bg" wx:elif="{{(index%3) === 1}}" src="/static/images/topupRecord/Green_bg@2x.png"></image>
+        <image class="_img data-v-3577e9c6 st-topup-record-li-bg" wx:else src="/static/images/topupRecord/Cyan_bg@2x.png"></image>
+        <image class="_img data-v-3577e9c6 st-topup-record-li-icon" src="{{item.goodsIcon}}"></image>
+        <view class="_div data-v-3577e9c6 st-topup-record-li-name-div">
+          <label wx:if="{{(index%3) === 0}}" class="_span data-v-3577e9c6 st-topup-record-li-blue-name">{{item.goodsName}}</label>
+          <label wx:elif="{{(index%3) === 1}}" class="_span data-v-3577e9c6 st-topup-record-li-green-name">{{item.goodsName}}</label>
+          <label wx:else class="_span data-v-3577e9c6 st-topup-record-li-cyan-name">{{item.goodsName}}</label>
+        </view>
+        <label class="_span data-v-3577e9c6 st-topup-record-li-price">{{item.price}}</label>
+        <image class="_img data-v-3577e9c6 st-exchange-record-li-coin-img" src="/static/images/exchangeRecord/Goldcoin_icon@2x.png"></image>
+        <view class="_div data-v-3577e9c6 st-topup-record-li-datatime">
+          <label wx:if="{{(index%3) === 0}}" class="_span data-v-3577e9c6 st-topup-record-li-blue-datatime">{{item.dataTime}}</label>
+          <label wx:elif="{{(index%3) === 1}}" class="_span data-v-3577e9c6 st-topup-record-li-green-datatime">{{item.dataTime}}</label>
+          <label wx:else class="_span data-v-3577e9c6 st-topup-record-li-cyan-datatime">{{item.dataTime}}</label>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

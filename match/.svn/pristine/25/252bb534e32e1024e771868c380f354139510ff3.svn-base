@@ -1,0 +1,150 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.match;
+
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordUser;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordService;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordUserService;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.*;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.*;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.MatchRecordDTO;
+import com.dxtwangxiao.strongestsuperscholar.web.dto.UserDTO;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.module.question.dao.MultipleQuestionRepository;
+import com.dxtwangxiao.strongestsuperscholar.module.question.vo.MultipleQuestion;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.websocket.common.MatchManagement;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created By Devin
+ * 2018-08-27 下午 04:07
+ */
+@RestController
+@RequestMapping("/api/v1/match")
+public class MatchController {
+
+    @Autowired
+    private UserLPDetailService userLPDetailService;
+
+    @Autowired
+    private UserCoinDetailService userCoinDetailService;
+
+    @Autowired
+    private UserGPDetailService userGPDetailService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserRelInfoService userRelInfoService;
+
+    @Autowired
+    private MatchRecordService matchRecordService;
+
+    @Autowired
+    private MatchRecordUserService matchRecordUserService;
+
+    @Autowired
+    private MultipleQuestionRepository multipleQuestionRepository;
+
+    /**
+     * 用于对战结束后，更新用户信息
+     *
+     * @param requestInfo 请求信息
+     * @return 返回体
+     */
+    @PostMapping("/save")
+    public ResponseInfo save(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParam = requestInfo.getReqParam();
+
+        String matchId = reqParam.getString("matchId");
+        String userId = reqParam.getString("userId");
+        Integer coin = reqParam.getInteger("coin");
+        Integer learningPoint = reqParam.getInteger("learningPoint");
+        Integer gradePoint = reqParam.getInteger("gradePoint");
+        Integer experience = reqParam.getInteger("experience");
+        Integer isWin = reqParam.getInteger("isWin");
+
+        // （1）添加用户金币、学点、绩点明细信息
+        UserCoinDetail userCoinDetail = userCoinDetailService.save(matchId, userId, coin);
+        UserLPDetail userLPDetail = userLPDetailService.save(matchId, userId, learningPoint);
+        UserGPDetail userGPDetail = userGPDetailService.save(matchId, userId, gradePoint);
+
+        // （2）更新用户基本信息
+        UserRelInfo userRelInfo = userRelInfoService.findByUserId(userId);
+        userRelInfo.setCoin(userCoinDetail.getCurrentAmount());
+        userRelInfo.setLearningPoint(userLPDetail.getCurrentAmount());
+        userRelInfo.setGradePoint(userGPDetail.getCurrentAmount());
+        userRelInfo.setMatchSumCount(userRelInfo.getMatchSumCount() + 1);
+        if (isWin == 1) {
+            userRelInfo.setMatchWinCount(userRelInfo.getMatchWinCount() + 1);
+        } else if (isWin == 0) {
+            userRelInfo.setMatchLoseCount(userRelInfo.getMatchLoseCount() + 1);
+        } else if (isWin == -1) {
+            userRelInfo.setMatchDogFallCount(userRelInfo.getMatchDogFallCount() + 1);
+        }
+        userRelInfoService.update(userRelInfo);
+        userRelInfoService.addExperience(userId, experience);
+
+        // （3）更新战局信息
+        MatchRecord matchRecord = matchRecordService.getById(matchId);
+        matchRecord.setEndTime(new Timestamp(new Date().getTime()));
+        Integer matchPeriod = (int) (matchRecord.getEndTime().getTime() - matchRecord.getBeginTime().getTime()) / 1000;
+        matchRecord.setMatchPeriod(matchPeriod);
+        MatchRecord result = matchRecordService.update(matchRecord);
+
+        // (4) 更新战局用户信息
+        MatchRecordUser matchRecordUser = matchRecordUserService.getByMatchIdAndUserId(matchId, userId);
+        matchRecordUser.setAcquiredLearningPoint(learningPoint);
+        matchRecordUser.setAcquiredGradePoint(gradePoint);
+        matchRecordUser.setAcquiredGradeCoin(coin);
+        matchRecordUser.setLastUpdUser(userId);
+        matchRecordUserService.update(matchRecordUser);
+
+        // （5）获取用户信息，返回给客户端
+        User user = userService.getUserById(userId);
+        UserDTO userDTO = new UserDTO();
+        BeanUtils.copyProperties(user, userDTO);
+        BeanUtils.copyProperties(userRelInfo, userDTO);
+
+        return new ResponseInfo(requestInfo, userDTO);
+    }
+
+    /**
+     * 好友对战及群PK，用来生成战局信息，并返回给客户端
+     *
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/pk")
+    public ResponseInfo pk(@RequestBody RequestInfo requestInfo) {
+        JSONObject reqParam = requestInfo.getReqParam();
+        String userId = reqParam.getString("userId");
+
+        MatchRecordDTO matchRecordDTO = MatchManagement.getInstance().generatePk(userId);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("match", matchRecordDTO);
+        return new ResponseInfo(requestInfo, jsonObject);
+    }
+
+    @GetMapping("/exercise")
+    public ResponseInfo exercise(HttpServletRequest request) {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        JSONObject reqParam = requestInfo.getReqParam();
+        String subjectId = reqParam.getString("subjectId");
+
+        // TODO 根据科目id从数据库中取出一定数目的题目
+        List<MultipleQuestion> multipleQuestionList = multipleQuestionRepository.findBySubjectIdRandom(subjectId, 10);
+        return new ResponseInfo(requestInfo, multipleQuestionList);
+    }
+}

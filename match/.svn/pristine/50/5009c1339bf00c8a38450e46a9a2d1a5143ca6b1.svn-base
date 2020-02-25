@@ -1,0 +1,13 @@
+<template name="cut_down$54a96387">
+  <view class="_div data-v-779586aa bs-hexagon-div" hidden="{{!(cd)}}">
+    <view class="_div data-v-779586aa bs-hexagon-div bs-big-animation" hidden="{{!(big && showOrder)}}">
+      <image class="_img data-v-779586aa bs-bg-img" src="/static/images/battle/Hexagon@2x.png"></image>
+      <view class="_div data-v-779586aa bs-text1 timu">第     题</view>
+      <label class="_span data-v-779586aa bs-text1 timuxuhao">{{ order }}</label>
+    </view>
+    <view class="_div data-v-779586aa bs-hexagon-div" hidden="{{!(!big)}}">
+      <image class="_img data-v-779586aa bs-bg-img" src="/static/images/battle/Hexagon@2x.png"></image>
+      <view class="_div data-v-779586aa bs-cdtext-animation">{{ cd }}</view>
+    </view>
+  </view>
+</template>

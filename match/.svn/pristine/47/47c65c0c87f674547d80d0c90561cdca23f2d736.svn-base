@@ -1,0 +1,78 @@
+@import "/static/css/vendor.wxss";
+
+.bg.data-v-3d009cba {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+#base.data-v-3d009cba {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.name.data-v-3d009cba {
+  width: 100%;
+  height: 136rpx;
+  background: #FFFFFF;
+  top: 70rpx;
+  display: table-cell;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+}
+.price.data-v-3d009cba {
+  top: 342rpx;
+  width: 100%;
+  height: 80rpx;
+  position: absolute;
+  background-color: #FFFFFF;
+}
+.left.data-v-3d009cba {
+  left: 20rpx;
+  position: absolute;
+}
+.right.data-v-3d009cba {
+  right: 20rpx;
+  position: absolute;
+}
+.pay.data-v-3d009cba {
+  top: 442rpx;
+  width: 100%;
+  height: 80rpx;
+  position: absolute;
+  background-color: #FFFFFF;
+}
+.confirm.data-v-3d009cba {
+  background-color: royalblue;
+  border-radius: 10rpx;
+  width: 220rpx;
+  margin: auto;
+  height: 70rpx;
+  top: 610rpx;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  position: relative;
+  text-align: center;
+}
+.fromRight.data-v-3d009cba {
+  animation: fromright-data-v-3d009cba 0.5s;
+}
+.toRight.data-v-3d009cba {
+  animation: toright-data-v-3d009cba 0.5s;
+}
+@keyframes fromright-data-v-3d009cba {
+from {
+    transform: translateX(100%);
+}
+to {
+    transform: translateX(0);
+}
+}
+@keyframes toright-data-v-3d009cba {
+from {
+    transform: translateX(-100%);
+}
+to {
+    transform: translateX(0);
+}
+}

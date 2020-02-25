@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>知识练兵场（答题）</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/知识练兵场（答题）/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/知识练兵场（答题）/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u366" class="ax_default box_1">
+        <div id="u366_div" class=""></div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u367" class="ax_default" data-left="137" data-top="20" data-width="375" data-height="64">
+
+        <!-- Unnamed (Group) -->
+        <div id="u368" class="ax_default" data-left="137" data-top="20" data-width="375" data-height="64">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u369" class="ax_default box_2">
+            <div id="u369_div" class=""></div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u370" class="ax_default image1">
+          <img id="u370_img" class="img " src="images/比一比首页改版/u4.png"/>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u371" class="ax_default _36号字_顶部标题、大按钮、弹窗提示主标题_">
+          <div id="u371_div" class=""></div>
+          <div id="u371_text" class="text ">
+            <p><span>知识练兵场</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u372" class="ax_default image2">
+          <img id="u372_img" class="img " src="images/比一比首页改版/u6.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u373" class="ax_default image">
+          <img id="u373_img" class="img " src="images/比一比首页改版/u7.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u374" class="ax_default" data-left="291" data-top="170" data-width="67" data-height="67">
+
+        <!-- Unnamed (Group) -->
+        <div id="u375" class="ax_default" data-left="291" data-top="170" data-width="67" data-height="67">
+
+          <!-- Unnamed (Pie Chart) -->
+          <div id="u376" class="ax_default refs-chart-data">
+            <img id="u376_img" class="img " src="images/对抗赛（选择题）/u227.png"/>
+          </div>
+
+          <!-- Unnamed (Pie Chart) -->
+          <div id="u377" class="ax_default refs-chart-data">
+            <img id="u377_img" class="img " src="images/对抗赛（选择题）/u228.png"/>
+          </div>
+
+          <!-- Unnamed (Ellipse) -->
+          <div id="u378" class="ax_default ellipse">
+            <img id="u378_img" class="img " src="images/对抗赛（选择题）/u229.png"/>
+            <div id="u378_text" class="text ">
+              <p><span>9</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u379" class="ax_default label">
+        <div id="u379_div" class=""></div>
+        <div id="u379_text" class="text ">
+          <p><span>腾讯是家什么样的企业？</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u380" class="ax_default button">
+        <div id="u380_div" class=""></div>
+        <div id="u380_text" class="text ">
+          <p><span>氪金企业</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u381" class="ax_default button">
+        <div id="u381_div" class=""></div>
+        <div id="u381_text" class="text ">
+          <p><span>互联网企业</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u382" class="ax_default button">
+        <div id="u382_div" class=""></div>
+        <div id="u382_text" class="text ">
+          <p><span>有梦想的企业</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u383" class="ax_default button">
+        <div id="u383_div" class=""></div>
+        <div id="u383_text" class="text ">
+          <p><span>小学生喜爱的企业</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u384" class="ax_default" data-left="195" data-top="126" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u385" class="ax_default refs-design-apple1">
+          <img id="u385_img" class="img " src="images/知识练兵场（答题）/u385.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u386" class="ax_default refs-design-apple1">
+          <img id="u386_img" class="img " src="images/知识练兵场（答题）/u386.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u387" class="ax_default" data-left="227" data-top="126" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u388" class="ax_default refs-design-apple1">
+          <img id="u388_img" class="img " src="images/知识练兵场（答题）/u388.png"/>
+          <div id="u388_text" class="text ">
+            <p><span>X</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Ellipse) -->
+      <div id="u389" class="ax_default refs-design-apple1">
+        <img id="u389_img" class="img " src="images/知识练兵场（答题）/u389.png"/>
+        <div id="u389_text" class="text ">
+          <p><span>4</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u390" class="ax_default" data-left="163" data-top="126" data-width="22" data-height="22">
+
+        <!-- Unnamed (Ellipse) -->
+        <div id="u391" class="ax_default refs-design-apple1">
+          <img id="u391_img" class="img " src="images/知识练兵场（答题）/u385.png"/>
+        </div>
+
+        <!-- Unnamed (Image) -->
+        <div id="u392" class="ax_default refs-design-apple1">
+          <img id="u392_img" class="img " src="images/知识练兵场（答题）/u386.png"/>
+        </div>
+      </div>
+
+      <!-- Unnamed (Ellipse) -->
+      <div id="u393" class="ax_default refs-design-apple1">
+        <img id="u393_img" class="img " src="images/知识练兵场（答题）/u389.png"/>
+        <div id="u393_text" class="text ">
+          <p><span>5</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Ellipse) -->
+      <div id="u394" class="ax_default refs-design-apple1">
+        <img id="u394_img" class="img " src="images/知识练兵场（答题）/u389.png"/>
+        <div id="u394_text" class="text ">
+          <p><span>6</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Ellipse) -->
+      <div id="u395" class="ax_default refs-design-apple1">
+        <img id="u395_img" class="img " src="images/知识练兵场（答题）/u389.png"/>
+        <div id="u395_text" class="text ">
+          <p><span>7</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Ellipse) -->
+      <div id="u396" class="ax_default refs-design-apple1">
+        <img id="u396_img" class="img " src="images/知识练兵场（答题）/u389.png"/>
+        <div id="u396_text" class="text ">
+          <p><span>8</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Ellipse) -->
+      <div id="u397" class="ax_default refs-design-apple1">
+        <img id="u397_img" class="img " src="images/知识练兵场（答题）/u389.png"/>
+        <div id="u397_text" class="text ">
+          <p><span>9</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Ellipse) -->
+      <div id="u398" class="ax_default refs-design-apple1">
+        <img id="u398_img" class="img " src="images/知识练兵场（答题）/u389.png"/>
+        <div id="u398_text" class="text ">
+          <p><span>10</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

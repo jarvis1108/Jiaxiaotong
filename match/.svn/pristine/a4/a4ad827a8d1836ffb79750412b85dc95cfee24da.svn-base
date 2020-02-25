@@ -1,0 +1,23 @@
+package com.dxtwangxiao.strongestsuperscholar.module.match.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.LPConsumeRecord;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * @author meiyu
+ * 对战消费记录
+ */
+
+
+public interface LPConsumeRecordService {
+
+    LPConsumeRecord create(LPConsumeRecord lpConsumeRecord) throws ErrorInfo;
+
+    List<LPConsumeRecord> getLPConsumeRecordList(Integer pageSize, Integer currentPage);
+
+    List<LPConsumeRecord> findByUserId(String userId)throws ErrorInfo;
+
+    LPConsumeRecord save(LPConsumeRecord lpConsumeRecord);
+}

@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>私有题库题库页面</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/私有题库题库页面/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/ie.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="files/私有题库题库页面/data.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4988" class="ax_default box_1">
+        <div id="u4988_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4989" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4990" class="ax_default box_1">
+        <div id="u4990_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4991" class="text" style="visibility: visible;">
+          <p><span>私有题库</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4992" class="ax_default box_3">
+        <div id="u4992_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4993" class="text" style="visibility: visible;">
+          <p><span>上传题目</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4994" class="ax_default box_3">
+        <div id="u4994_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4995" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4996" class="ax_default box_3">
+        <div id="u4996_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4997" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4998" class="ax_default label">
+        <div id="u4998_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4999" class="text" style="visibility: visible;">
+          <p><span>sk.tu</span></p><p><span><br></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (图片) -->
+      <div id="u5000" class="ax_default image1">
+        <img id="u5000_img" class="img " src="images/私有题库页面/u4890.png"/>
+        <!-- Unnamed () -->
+        <div id="u5001" class="text" style="display: none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u5002" class="ax_default box_3">
+        <div id="u5002_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u5003" class="text" style="visibility: visible;">
+          <p><span>我的题库</span></p>
+        </div>
+      </div>
+
+      <!-- 搜索框面板 (动态面板) -->
+      <div id="u5004" class="ax_default" data-label="搜索框面板">
+        <div id="u5004_state0" class="panel_state" data-label="常规搜索框">
+          <div id="u5004_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (组合) -->
+            <div id="u5005" class="ax_default">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u5006" class="ax_default refs-design-apple1">
+                <div id="u5006_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u5007" class="text" style="display: none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (图片) -->
+              <div id="u5008" class="ax_default refs-design-apple1">
+                <img id="u5008_img" class="img " src="images/私有题库题库页面/u5008.png"/>
+                <!-- Unnamed () -->
+                <div id="u5009" class="text" style="display: none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (文本框) -->
+              <div id="u5010" class="ax_default refs-design-apple1">
+                <input id="u5010_input" type="search" value="搜索"/>
+              </div>
+
+              <!-- Unnamed (图片) -->
+              <div id="u5011" class="ax_default refs-design-apple1">
+                <img id="u5011_img" class="img " src="images/私有题库题库页面/u5011.png"/>
+                <!-- Unnamed () -->
+                <div id="u5012" class="text" style="display: none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="u5004_state1" class="panel_state" data-label="焦点搜索框">
+          <div id="u5004_state1_content" class="panel_state_content">
+
+            <!-- Unnamed (组合) -->
+            <div id="u5013" class="ax_default">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u5014" class="ax_default refs-design-apple1">
+                <div id="u5014_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u5015" class="text" style="display: none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (矩形) -->
+              <div id="u5016" class="ax_default refs-design-apple1">
+                <div id="u5016_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u5017" class="text" style="visibility: visible;">
+                  <p><span>取消</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (组合) -->
+            <div id="u5018" class="ax_default">
+
+              <!-- Unnamed (矩形) -->
+              <div id="u5019" class="ax_default refs-design-apple1">
+                <div id="u5019_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u5020" class="text" style="display: none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (图片) -->
+              <div id="u5021" class="ax_default refs-design-apple1">
+                <img id="u5021_img" class="img " src="images/私有题库题库页面/u5008.png"/>
+                <!-- Unnamed () -->
+                <div id="u5022" class="text" style="display: none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (文本框) -->
+              <div id="u5023" class="ax_default refs-design-apple1">
+                <input id="u5023_input" type="search" value="搜索"/>
+              </div>
+
+              <!-- Unnamed (图片) -->
+              <div id="u5024" class="ax_default refs-design-apple1">
+                <img id="u5024_img" class="img " src="images/私有题库题库页面/u5011.png"/>
+                <!-- Unnamed () -->
+                <div id="u5025" class="text" style="display: none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u5026" class="ax_default paragraph">
+        <div id="u5026_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u5027" class="text" style="visibility: visible;">
+          <p><span style="font-family:'Arial Normal', 'Arial';">1</span><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">、《将进酒》的作者是谁？</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">A:李白</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">B:苏轼</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">C:王维</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">D:杜牧</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';">正确答案：A</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC';"><br></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u5028" class="ax_default refs-webm-wechat">
+        <img id="u5028_img" class="img " src="images/私有题库题库页面/u5028.png"/>
+        <!-- Unnamed () -->
+        <div id="u5029" class="text" style="visibility: visible;">
+          <p><span>上一题</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u5030" class="ax_default refs-webm-wechat">
+        <img id="u5030_img" class="img " src="images/私有题库题库页面/u5028.png"/>
+        <!-- Unnamed () -->
+        <div id="u5031" class="text" style="visibility: visible;">
+          <p><span>下一题</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

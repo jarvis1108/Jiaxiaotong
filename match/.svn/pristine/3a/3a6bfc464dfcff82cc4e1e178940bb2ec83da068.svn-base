@@ -1,0 +1,92 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.User;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 用户服务单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 04:20
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserServiceTest {
+
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public void getUserList() {
+        List<User> userList = userService.getUserList(1, 1);
+        assertNotEquals(0, userList.size());
+
+        userList.forEach(System.out::println);
+    }
+
+    @Test
+    public void getAllUsers() {
+        List<User> userList = userService.getAllUsers();
+        assertNotEquals(0, userList.size());
+
+        userList.forEach(System.out::println);
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        User user = new User();
+        user.setUserId("5");
+        User result = userService.create(user);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void update() throws ErrorInfo {
+        User user = new User();
+        user.setUserId("5");
+
+        User result = userService.update(user);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteByUserId() throws ErrorInfo {
+        String userId = "5";
+        boolean result1 = userService.deleteByUserId(userId);
+
+        assertTrue(result1);
+    }
+
+    @Test
+    public void save() throws ErrorInfo{
+
+        String userId = "1";
+        String telephone = "1111";
+       User result = userService.save(userId,telephone);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void findUserByUserId()throws ErrorInfo{
+        String openId="6";
+        User user=userService.findUserByUserId(openId);
+        assertNotNull(user);
+        System.out.println(user);
+    }
+
+}

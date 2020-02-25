@@ -1,0 +1,47 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.vo.BackOrderRecordVO;
+import com.dxtwangxiao.strongestsuperscholar.module.system.vo.BackUserBaseInfo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @author 程志强
+ * @date 2018/10/11 22:42
+ * @Description TODO
+ */
+@Repository
+public interface BackUserBaseInfoVORepository extends CrudRepository<BackUserBaseInfo, String>, JpaSpecificationExecutor<BackUserBaseInfo> {
+    /**
+     * 功能描述: 后台管理系统 用户管理基本信息 当前页面数据查询
+     *
+     * @param: pageable 页码数据
+     * @return: 当前页面所有数据
+     * @auther: 程志强
+     * @date: 2018/10/11 22:46
+     */
+    Page<BackUserBaseInfo> findAll(Pageable pageable);
+
+    /**
+     * 功能描述: 后台管理系统 用户管理基本信息 所有数据查询
+     *
+     * @return: 所有数据
+     * @auther: 程志强
+     * @date: 2018/10/11 22:46
+     */
+    List<BackUserBaseInfo> findAll();
+
+    /**
+     * 功能描述: 根据当前用户id查找行数据（唯一）
+     *
+     * @return:
+     * @auther: 程志强
+     * @date: 2018/10/11 23:06
+     */
+    BackUserBaseInfo findByUserId(String userId);
+}

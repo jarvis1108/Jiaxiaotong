@@ -1,0 +1,73 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.match;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.match.entity.MatchRecordUser;
+import com.dxtwangxiao.strongestsuperscholar.module.match.service.MatchRecordUserService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * @author meiyu
+ * 对战记录参与用户
+ */
+@RestController
+@RequestMapping("/mth/MatchRecordUser")
+
+public class MatchRecordUserController {
+
+    private final MatchRecordUserService matchRecordUserService;
+    @Autowired
+    public MatchRecordUserController(MatchRecordUserService matchRecordUserService){
+        this.matchRecordUserService = matchRecordUserService;
+    }
+
+    /**
+     * 获取所有对战记录用户列表
+     * @param pageSize
+     * @param currentPage
+     * @param request
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo getMatchRecordList(Integer pageSize, Integer currentPage, HttpServletRequest request) {
+
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<MatchRecordUser> matchRecordUsers;
+        if (pageSize == null || currentPage == null){
+            matchRecordUsers = matchRecordUserService.getMatchRecordUserList(pageSize,currentPage);
+        }else if (pageSize <= 0 || currentPage <= 0){
+            return new ResponseInfo(requestInfo,CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }else {
+            matchRecordUsers = matchRecordUserService.getMatchRecordUserList(pageSize,currentPage);
+        }
+
+        return new ResponseInfo(requestInfo,matchRecordUsers);
+    }
+
+    /**
+     * 新增对战记录用户
+     * @param requestInfo
+     * @return
+     * @throws ErrorInfo
+     */
+    @PostMapping("/add")
+    public ResponseInfo addMatchRecordUser(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParams = requestInfo.getReqParam();
+        if (reqParams.getString("matchRecordUserId") == null){
+            return new ResponseInfo(requestInfo,CommConst.ERR_REQ_PARAM.getCode(),CommConst.ERR_REQ_PARAM.getMessage(),null);
+        }
+        MatchRecordUser matchRecordUser = JSON.parseObject(reqParams.toJSONString(),MatchRecordUser.class);
+        MatchRecordUser result = matchRecordUserService.create(matchRecordUser);
+        return new ResponseInfo(requestInfo,result);
+    }
+}
+

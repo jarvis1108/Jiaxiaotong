@@ -1,0 +1,111 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.system;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.QuestionSetting;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.QuestionSettingService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * 出题设置接口控制器
+ * <p>
+ * Created by Devin
+ * 2018-07-03 上午 09:48
+ */
+@RestController
+@RequestMapping("/api/v1/sys/QuestionSetting")
+public class QuestionSettingController {
+
+    private final QuestionSettingService questionSettingService;
+
+    @Autowired
+    public QuestionSettingController(QuestionSettingService questionSettingService) {
+        this.questionSettingService = questionSettingService;
+    }
+
+    /**
+     * 获取出题设置信息列表
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页数，从1开始
+     * @param request     Http请求
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo getQuestionSettingList(Integer pageSize, Integer currentPage, HttpServletRequest request) throws ErrorInfo {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<QuestionSetting> questionSettings;
+        if (pageSize == null || currentPage == null) {
+            questionSettings = questionSettingService.getAllQuestionSettings();
+        } else if (pageSize <= 0 || currentPage <= 0) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        } else {
+            questionSettings = questionSettingService.getQuestionSettingList(pageSize, currentPage);
+        }
+
+        return new ResponseInfo(requestInfo, questionSettings);
+    }
+
+    /**
+     * 编辑出题设置信息
+     *
+     * @param requestInfo 请求体中的请求信息
+     * @return
+     */
+    @PostMapping("/edit")
+    public ResponseInfo editQuestionSetting(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        // 获取请求参数，并进行封装
+        JSONObject reqParam = requestInfo.getReqParam();
+        if (reqParam.getString("questionSettingId") == null) {
+            // 必须传入出题设置ID
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+
+        QuestionSetting updatedQuestionSetting = JSON.parseObject(reqParam.toJSONString(), QuestionSetting.class);
+        QuestionSetting result = questionSettingService.update(updatedQuestionSetting);
+
+        return new ResponseInfo(requestInfo, result);
+    }
+
+    /**
+     * 新增出题设置
+     *
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/add")
+    public ResponseInfo addQuestionSetting(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParam = requestInfo.getReqParam();
+        if (reqParam.getString("questionSettingId") == null) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+
+        QuestionSetting questionSetting = JSON.parseObject(reqParam.toJSONString(), QuestionSetting.class);
+        QuestionSetting result = questionSettingService.create(questionSetting);
+
+        return new ResponseInfo(requestInfo, result);
+    }
+
+    /**
+     * 根据id删除某一出题设置（逻辑删除）
+     *
+     * @param questionSettingID
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/rmquestionsetting")
+    public ResponseInfo deleteQuestionSettingById(@RequestParam("QuestionSettingID") String questionSettingID, @RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        questionSettingService.deleteByQuestionSettingId(questionSettingID);
+        return new ResponseInfo(requestInfo, CommConst.ERR_SUCCESS.getCode(), CommConst.ERR_SUCCESS.getMessage(), null);
+    }
+
+}

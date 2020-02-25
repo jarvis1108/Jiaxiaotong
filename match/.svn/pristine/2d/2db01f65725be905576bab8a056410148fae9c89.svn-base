@@ -1,0 +1,56 @@
+package com.dxtwangxiao.strongestsuperscholar.module.mall.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.CouponDetail;
+import com.dxtwangxiao.strongestsuperscholar.module.mall.entity.OrderRecord;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.List;
+
+import static org.junit.Assert.*;
+/**
+*@author: meiyu
+*@Date: 2018/7/5 11:59
+*@description 订单记录使用测试
+*/
+
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class OrderRecordRepositoryTest {
+
+    @Autowired
+    private OrderRecordRepository orderRecordRepository;
+
+    @Test
+    public void findAll() {
+        PageRequest pageable = PageRequest.of(1,1);
+        Page<OrderRecord> orderRecordPage = orderRecordRepository.findAll(pageable);
+
+        List<OrderRecord> orderRecordList = orderRecordPage.getContent();
+        assertEquals(0,orderRecordList.size());
+        orderRecordList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAll1() {
+        List<OrderRecord> orderRecordList = orderRecordRepository.findAll();
+        assertNotEquals(1, orderRecordList.size());
+
+        orderRecordList.forEach(System.out::println);
+    }
+
+    @Test
+    public void finAllByUserId(){
+        String userId="1";
+        List<OrderRecord> orderRecord=orderRecordRepository.findAllByUserId(userId);
+        assertNotNull(orderRecord);
+        System.out.println(orderRecord);
+    }
+}

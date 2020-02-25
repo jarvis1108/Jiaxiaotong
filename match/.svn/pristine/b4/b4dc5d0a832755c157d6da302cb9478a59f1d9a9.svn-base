@@ -1,0 +1,45 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserLoginRecord;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+
+import java.util.List;
+
+/**
+ * 用户登陆记录服务接口
+ * <p>
+ * Created by Devin
+ * 2018-07-01 上午 11:38
+ */
+public interface UserLoginRecordService {
+
+    /**
+     * 分页查询所有用户的登陆记录列表
+     * @param pageSize
+     * @param currentPage
+     * @return
+     */
+    List<UserLoginRecord> getUserLoginRecordList(Integer pageSize, Integer currentPage);
+
+    /**
+     * 查询所有用户的登陆记录列表
+     * @return
+     */
+    List<UserLoginRecord> getAllUserLoginRecords();
+
+    /**
+     * 创建用户登陆记录表
+     * @param newUserLoginRecord
+     * @return
+     * @throws ErrorInfo
+     */
+    UserLoginRecord create(UserLoginRecord newUserLoginRecord) throws ErrorInfo;
+
+    /**
+     * 更新用户登陆记录表
+     * @param updatedUserLoginRecord
+     * @return
+     * @throws ErrorInfo
+     */
+    UserLoginRecord update(UserLoginRecord updatedUserLoginRecord) throws ErrorInfo;
+}

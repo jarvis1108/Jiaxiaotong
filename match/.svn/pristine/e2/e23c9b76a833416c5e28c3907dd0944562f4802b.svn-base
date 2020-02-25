@@ -1,0 +1,77 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller.system;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.UserLoginRecord;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserLoginRecordService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.util.commconstant.CommConst;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * 用户登陆记录控制器
+ * <p>
+ * Created by Devin
+ * 2018-07-02 下午 02:25
+ */
+@RestController
+@RequestMapping("/api/v1/sys/loginrecord")
+public class UserLoginRecordController {
+
+    private final UserLoginRecordService userLoginRecordService;
+
+    @Autowired
+    public UserLoginRecordController(UserLoginRecordService userLoginRecordService) {
+        this.userLoginRecordService = userLoginRecordService;
+    }
+
+    /**
+     * 分页查看系统所有的用户登陆记录
+     *
+     * @param pageSize    页大小
+     * @param currentPage 当前页，从1开始
+     * @param request
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseInfo getUserLoginRecordList(Integer pageSize, Integer currentPage, HttpServletRequest request) {
+        RequestInfo requestInfo = WebUtil.parseGetRequest(request);
+        List<UserLoginRecord> userLoginRecordList;
+        if (pageSize == null || currentPage == null) {
+            userLoginRecordList = userLoginRecordService.getAllUserLoginRecords();
+        } else if (pageSize <= 0 || currentPage <= 0) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        } else {
+            userLoginRecordList = userLoginRecordService.getUserLoginRecordList(pageSize, currentPage);
+        }
+
+        return new ResponseInfo(requestInfo, userLoginRecordList);
+    }
+
+
+    /**
+     * 新增一条用户登陆记录
+     *
+     * @param requestInfo
+     * @return
+     */
+    @PostMapping("/add")
+    public ResponseInfo addUser(@RequestBody RequestInfo requestInfo) throws ErrorInfo {
+        JSONObject reqParam = requestInfo.getReqParam();
+        if (reqParam.getString("UserLoginId") == null) {
+            return new ResponseInfo(requestInfo, CommConst.ERR_REQ_PARAM.getCode(), CommConst.ERR_REQ_PARAM.getMessage(), null);
+        }
+
+        UserLoginRecord user = JSON.parseObject(reqParam.toJSONString(), UserLoginRecord.class);
+        UserLoginRecord result = userLoginRecordService.create(user);
+
+        return new ResponseInfo(requestInfo, result);
+    }
+}

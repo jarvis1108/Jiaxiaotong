@@ -1,0 +1,59 @@
+<template name="index$3fbe5678">
+  <view class="_div data-v-58b59c9d">
+    <image id="bg" src="/static/images/bg@2x.png" class="_img data-v-58b59c9d"></image>
+    <image class="_img data-v-58b59c9d winImg" wx:if="{{win}}" src="/static/images/battleResult/Challengesuccess@2x.png"></image>
+    <image class="_img data-v-58b59c9d winImg" wx:if="{{!win}}" src="/static/images/battleResult/Challengefailure@2x.png"></image>
+    <view class="_div data-v-58b59c9d info">
+      <view id="user" class="_div data-v-58b59c9d" style=" {{'width:' + userWidth + '%'}}">
+        <image id="userIcon" src="{{user.icon}}" class="_img data-v-58b59c9d"></image>
+        <label id="userName" class="_span data-v-58b59c9d">{{user.name}}</label>
+        <label id="userAnswerNum" style="font-weight: bold;" class="_span data-v-58b59c9d">答对{{userAnswerNum}}题</label>
+        <view class="_div data-v-58b59c9d mark" id="userMark">
+          <label class="_span data-v-58b59c9d">{{animatedUserMark}}</label>
+          <label style="font-size: 16px" class="_span data-v-58b59c9d">分</label>
+          <view class="_div data-v-58b59c9d">
+            <label class="_span data-v-58b59c9d flag">—</label>
+          </view>
+        </view>
+      </view>
+      <view id="opponent" class="_div data-v-58b59c9d" style=" {{'width:' + opponentWidth + '%'}}">
+        <image id="opponentIcon" src="{{opponent.icon}}" class="_img data-v-58b59c9d"></image>
+        <label id="opponentName" class="_span data-v-58b59c9d">{{opponent.name}}</label>
+        <label id="opponentAnswerNum" style="font-weight: bold;" class="_span data-v-58b59c9d">答对{{opponentAnswerNum}}题</label>
+        <view class="_div data-v-58b59c9d mark" id="opponentMark">
+          <label class="_span data-v-58b59c9d">{{animatedOpponentMark}}</label>
+          <label style="font-size: 18px" class="_span data-v-58b59c9d">分</label>
+          <view class="_div data-v-58b59c9d">
+            <label class="_span data-v-58b59c9d flag">—</label>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-58b59c9d table">
+      <view style="display: table-row" class="_div data-v-58b59c9d">
+        <view style="display: table-cell;width: 50%" class="_div data-v-58b59c9d">金币：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-58b59c9d">+{{coin}}</view>
+      </view>
+      <view style="display: table-row" class="_div data-v-58b59c9d">
+        <view style="display: table-cell;width: 50%" class="_div data-v-58b59c9d">绩点：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-58b59c9d">+{{gpa}}</view>
+      </view>
+      <view style="display: table-row" class="_div data-v-58b59c9d">
+        <view style="display: table-cell;width: 50%" class="_div data-v-58b59c9d">学点：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-58b59c9d">-{{lp}}</view>
+      </view>
+      <view style="display: table-row" class="_div data-v-58b59c9d">
+        <view style="display: table-cell;width: 50%" class="_div data-v-58b59c9d">经验：</view>
+        <view style="display: table-cell;width: 50%" class="_div data-v-58b59c9d">+{{experience}}</view>
+      </view>
+    </view>
+    <image bindtap="handleProxy" class="_img data-v-58b59c9d btn" id="continue" src="/static/images/battleResult/1.1Continue-btn@2x.png" data-eventid="{{'0'}}" data-comkey="{{$k}}"></image>
+    <button wx:if="{{win}}" class="_button data-v-58b59c9d btn" id="showoff" open-type="share">
+      <image class="_img data-v-58b59c9d btn_img" src="/static/images/battleResult/1.1Showoff-btn@2x.png"></image>
+    </button>
+    <button wx:if="{{!win}}" class="_button data-v-58b59c9d btn" id="share" open-type="share">
+      <image class="_img data-v-58b59c9d btn_img" src="/static/images/battleResult/Shareresults-btn@2x.png"></image>
+    </button>
+    <label id="tip" class="_span data-v-58b59c9d">分享到微信群可获得50金币奖励</label>
+  </view>
+</template>

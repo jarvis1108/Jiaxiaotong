@@ -1,0 +1,81 @@
+package com.dxtwangxiao.strongestsuperscholar.module.system.service;
+
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.AdminPurview;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ErrorInfo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * 管理员角色设置服务单元测试
+ * <p>
+ * Created by Devin
+ * 2018-07-03 下午 04:43
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class AdminPurviewServiceTest {
+
+    @Autowired
+    private AdminPurviewService adminPurviewService;
+
+    @Test
+    public void getAdminPurviewList() {
+        List<AdminPurview> adminPurviewList = adminPurviewService.getAdminPurviewList();
+        assertNotEquals(0, adminPurviewList.size());
+
+        adminPurviewList.forEach(System.out::println);
+    }
+
+    @Test
+    public void getAdminPurviewList1() {
+        List<AdminPurview> adminPurviewList = adminPurviewService.getAdminPurviewList(2, 1);
+        assertNotEquals(0, adminPurviewList.size());
+
+        adminPurviewList.forEach(System.out::println);
+    }
+
+    @Test
+    public void create() throws ErrorInfo {
+        AdminPurview adminPurview = new AdminPurview();
+        adminPurview.setAdminPurviewId("4");
+        adminPurview.setAdminId("4");
+        adminPurview.setAdminNo("4");
+        adminPurview.setAdminRoleId("4");
+        adminPurview.setAdminRoleNo("4");
+
+        AdminPurview result = adminPurviewService.create(adminPurview);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void update() throws ErrorInfo {
+        AdminPurview adminPurview = new AdminPurview();
+        adminPurview.setAdminPurviewId("4");
+        adminPurview.setAdminId("4");
+        adminPurview.setAdminNo("4");
+        adminPurview.setAdminRoleId("3");
+        adminPurview.setAdminRoleNo("3");
+
+        AdminPurview result = adminPurviewService.update(adminPurview);
+        assertNotNull(result);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void deleteByAdminPurviewId() throws ErrorInfo {
+        String adminPurViewId = "4";
+        boolean result = adminPurviewService.deleteByAdminPurviewId(adminPurViewId);
+
+        assertTrue(result);
+    }
+}

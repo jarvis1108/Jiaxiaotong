@@ -1,0 +1,203 @@
+<template>
+<div class="st-battle-ready-container">
+  <img class="st-battle-ready-bg" src="/static/images/battleReady/Matching_bg@2x.png"/>
+
+  <!-- user -->
+  <div class="st-battle-ready-user-div">
+    <div class="st-battle-ready-user-img">
+      <img class="st-battle-ready-meteor" src="/static/images/battleReady/Meteor1_bg@2x.png"/>
+      <img class="st-battle-ready-user-icon" :src="userInfo.headImage"/>
+    </div>
+    <img class="st-battle-ready-user-line" src="/static/images/battleReady/Dottedline2@2x.png" />
+    <div class="st-battle-ready-userinfo-div">
+      <span class="st-battle-ready-span">{{userInfo.wechatName}}同学</span>
+      <br>
+      <span class="st-battle-ready-span">来自：{{userInfo.city}}</span>
+      <br>
+      <span class="st-battle-ready-span">等级：{{userLevel}}</span>
+    </div>
+  </div>
+
+  <img class="st-battle-ready-vs" src="/static/images/battleReady/vs@2x.png"/>
+
+  <div class="st-battle-ready-opponent-div">
+    <div class="st-battle-ready-opponent-img">
+      <img class="st-battle-ready-meteor" src="/static/images/battleReady/Meteor2_bg@2x.png"/>
+      <img class="st-battle-ready-opponent-icon" :src="opponentInfo.headImage"/>
+    </div>
+    <img class="st-battle-ready-opponent-line" src="/static/images/battleReady/Dottedline1@2x.png" />
+    <div class="st-battle-ready-opponentInfo-div">
+      <span class="st-battle-ready-span">{{opponentInfo.wechatName}}同学</span>
+      <br>
+      <span class="st-battle-ready-span">来自：{{opponentInfo.city}}</span>
+      <br>
+      <span class="st-battle-ready-span">等级：{{opponentLevel}}</span>
+    </div>
+  </div>
+</div>
+</template>
+
+<script>
+import wxs from "../../utils/wx";
+export default {
+  data() {
+    return {
+      userInfo: {},
+      opponentInfo: {},
+      type: 0
+    };
+  },
+  computed: {
+    userLevel() {
+      return this.level(this.userInfo.externalLevel);
+    },
+    opponentLevel() {
+      return this.level(this.opponentInfo.externalLevel);
+    }
+  },
+  onLoad(option) {
+    this.userInfo = JSON.parse(option.userInfo);
+    this.opponentInfo = JSON.parse(option.opponentInfo);
+    this.type = option.type;
+
+    setTimeout(() => {
+      wxs.redirectTo(
+        `../battle/main?userInfo=${JSON.stringify(
+          this.userInfo
+        )}&opponentInfo=${JSON.stringify(this.opponentInfo)}&type=${this.type}`
+      );
+    }, 6000);
+  },
+  methods: {
+    level(level) {
+      let proficiency = parseInt(level / 5);
+      switch (proficiency) {
+        case 0:
+          return "新手";
+          break;
+        case 1:
+          return "熟手";
+          break;
+        case 2:
+          return "优秀";
+          break;
+        case 3:
+          return "课代表";
+          break;
+        case 4:
+          return "学霸";
+          break;
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+.st-battle-ready-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.st-battle-ready-user-div {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 19%;
+  height: 30%;
+}
+.st-battle-ready-user-img {
+  position: absolute;
+  width: 60%;
+  left: 0;
+  height: 100%;
+  animation: slideFromLeftBottom 1s;
+}
+.st-battle-ready-user-icon {
+  position: absolute;
+  top: 6%;
+  right: 6%;
+  width: 24%;
+  height: 25%;
+  border: 3px solid #fff;
+  background: #fff;
+  border-radius: 50%;
+}
+.st-battle-ready-user-line {
+  position: absolute;
+  height: 20%;
+  left: 50%;
+  width: 20%;
+  top: 40%;
+  animation: opacity 2s;
+}
+.st-battle-ready-userinfo-div {
+  position: absolute;
+  width: 25%;
+  left: 72%;
+  height: 50%;
+  top: 20%;
+  animation: opacity 2s;
+}
+.st-battle-ready-span {
+  position: relative;
+  width: 100%;
+  color: rgb(5, 239, 245);
+  font-size: 15px;
+  margin-bottom: 5%;
+}
+.st-battle-ready-vs {
+  position: absolute;
+  top: 45%;
+  width: 30%;
+  left: 35%;
+  height: 15%;
+  animation: zoomDelay 2s;
+}
+.st-battle-ready-opponent-icon {
+  position: absolute;
+  bottom: 10%;
+  left: 6%;
+  width: 24%;
+  height: 25%;
+  border: 3px solid #fff;
+  background: #fff;
+  border-radius: 50%;
+}
+.st-battle-ready-opponent-div {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 55%;
+  height: 50%;
+}
+.st-battle-ready-opponent-img {
+  position: absolute;
+  width: 60%;
+  right: 0;
+  height: 60%;
+  animation: slideFromRightTop 1s;
+}
+.st-battle-ready-opponent-line {
+  position: absolute;
+  height: 12%;
+  right: 50%;
+  width: 20%;
+  bottom: 30%;
+  animation: opacity 2s;
+}
+.st-battle-ready-opponentInfo-div {
+  position: absolute;
+  height: 30%;
+  right: 70%;
+  bottom: 25%;
+  width: 25%;
+  text-align: right;
+  animation: opacity 2s;
+}
+.st-battle-ready-meteor {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+</style>

@@ -1,0 +1,114 @@
+package com.dxtwangxiao.strongestsuperscholar.web.controller;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.dxtwangxiao.strongestsuperscholar.module.system.entity.User;
+import com.dxtwangxiao.strongestsuperscholar.module.system.service.UserService;
+import com.dxtwangxiao.strongestsuperscholar.web.util.WebUtil;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.RequestInfo;
+import com.dxtwangxiao.strongestsuperscholar.web.vo.ResponseInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * Created by Devin
+ * 2018-06-25 上午 10:52
+ */
+
+@RestController
+@RequestMapping("/example/index")
+public class ExampleController {
+
+    /**
+     * 用户服务对象
+     */
+    @Autowired
+    private UserService userService;
+
+    /**
+     * Controller的应用示例（接收HttpServletRequest方式，针对GET请求）
+     * 因为GET请求的参数，会议queryString的方式附在URL上，并不在请求体中
+     *
+     * @param page    Url中的路径参数（针对框架以外的参数，一般情况下不用）
+     * @param request Http请求
+     * @return Http处理后的结果
+     * @remark 该方式是目前项目中采用的方式（该方式需要Spring Boot的支持）
+     */
+    @GetMapping("/sys/GetUserList_A")
+    public ResponseInfo getUserList_A(@RequestParam("page") Integer page, HttpServletRequest request) {
+        // 1.通过工具类解析request，生成RequestInfo对象
+        RequestInfo requestInfo = WebUtil.parseRequest(request);
+
+        // 2.根据业务需求对requestInfo中的属性进行解析判断
+        JSONObject jsonObject = requestInfo.getReqUserInfo();
+        String userId = (String) jsonObject.get("userId");
+        System.out.println(userId);
+
+        // 3.使用相应的服务获取相应信息
+        List<User> userList = null;
+
+        // 4.包装成ResponseInfo，返回给前端
+        ResponseInfo responseInfo = new ResponseInfo(requestInfo, userList);
+
+        return responseInfo;
+    }
+
+    /**
+     * Controller的应用示例（采用requestBody直接注入方式，项目中推荐使用，主要针对POST等方式）
+     *
+     * @param page        Url中的路径参数（针对框架以外的参数，一般情况下不用）
+     * @param requestInfo 请求体，直接包装成requestInfo
+     * @return Http处理后的结果
+     * @remark 该方式是目前项目中采用的方式（该方式需要Spring Boot的支持）
+     */
+    @PostMapping("/sys/GetUserList_B")
+    public ResponseInfo getUserList_B(@RequestParam("page") Integer page, @RequestBody RequestInfo requestInfo) {
+
+        // 1.根据业务需求对requestInfo中的属性进行解析判断
+        JSONObject jsonObject = requestInfo.getReqUserInfo();
+        String userId = (String) jsonObject.get("userId");
+        System.out.println(userId);
+
+        // 2.使用相应的服务获取相应信息
+        List<User> userList = null;
+
+        // 3.包装成ResponseInfo，返回给前端
+        ResponseInfo responseInfo = new ResponseInfo(requestInfo, userList);
+
+        return responseInfo;
+    }
+
+    /**
+     * Controller的应用示例
+     *
+     * @param page    Url中的路径参数（针对框架以外的参数，一般情况下不用，均可）
+     * @param request Http请求
+     * @return Http处理后的结果
+     * @remark 该方式是更通用的方式不需要Spring Boot的支持，在目前项目中一般不使用该方式
+     */
+    @GetMapping("/sys/GetUserList_C")
+    public String getUserList_C(@RequestParam("page") Integer page, HttpServletRequest request) {
+        // 1.通过工具类解析request，生成RequestInfo对象
+        RequestInfo requestInfo = WebUtil.parseRequest(request);
+
+        // 2.根据业务需求对requestInfo中的属性进行解析判断
+        JSONObject jsonObject = requestInfo.getReqUserInfo();
+        String userId = (String) jsonObject.get("userId");
+        System.out.println(userId);
+
+        // 3.使用相应的服务获取相应信息
+        List<User> userList = null;
+
+        // 4.包装成ResponseInfo，返回给前端
+        ResponseInfo responseInfo = new ResponseInfo(requestInfo, userList);
+
+        //5.将结果转换为Json方法
+        String strResResult = JSON.toJSON(responseInfo).toString();
+
+        // 6.将字符串Json的结果返回给客户端
+        return strResResult;
+    }
+}

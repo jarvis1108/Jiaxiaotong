@@ -1,0 +1,16 @@
+package com.dxtwangxiao.strongestsuperscholar.module.question.dao;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created By Devin
+ * 2018-09-07 下午 04:43
+ */
+public class MultipleQuestionRepositoryTest {
+
+    @Test
+    public void findBySubjectId() {
+    }
+}

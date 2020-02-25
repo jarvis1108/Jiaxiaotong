@@ -1,0 +1,46 @@
+<import src="authenticate-dialog$6585e1b4" />
+<template name="index$599c63d4">
+  <view class="_div data-v-74781a4d st-personal-center-container-div">
+    <image class="_img data-v-74781a4d st-personal-center-usericon" src="{{userInfo.headImage}}"></image>
+    <label class="_span data-v-74781a4d st-personal-center-username">{{userInfo.wechatName}}</label>
+    <view wx:if="{{!authenticate}}" class="_div data-v-74781a4d st-personal-center-authenticate-tip"> 认证可获得大量学点金币奖励哦,
+      <label bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_span data-v-74781a4d">去认证</label>
+    </view>
+    <view wx:if="{{authenticate}}" class="_div data-v-74781a4d st-personal-center-authenticated-tip">
+      <image class="_img data-v-74781a4d st-personal-center-authenticate-icon" src="/static/images/personalCenter/Certified_icon.png"></image>
+      <label class="_span data-v-74781a4d">  已认证</label>
+    </view>
+    <view class="_div data-v-74781a4d st-personal-center-level-div">
+      <label class="_span data-v-74781a4d">等级{{userInfo.externalLevel}}</label>
+      <view class="_div data-v-74781a4d st-personal-center-level-outer">
+        <view class="_div data-v-74781a4d st-personal-center-level-inner" style=" {{'width:' + progress + '%'}}"></view>
+      </view>
+      <label class="_span data-v-74781a4d st-personal-center-level-span">{{userInfo.experience}}/{{userInfo.upgradeExperience}}</label>
+    </view>
+    <view class="_div data-v-74781a4d st-personal-center-infolist">
+      <view class="_ul data-v-74781a4d">
+        <view class="_li data-v-74781a4d">
+          <view class="_div data-v-74781a4d st-personal-center-infoList-green">性别：{{userSex}}</view>
+          <view class="_div data-v-74781a4d st-personal-center-infoList-blue">来自：{{userInfo.city}}</view>
+        </view>
+        <view class="_li data-v-74781a4d">
+          <view class="_div data-v-74781a4d st-personal-center-infoList-green">绩点：{{userInfo.gradePoint}}</view>
+          <view class="_div data-v-74781a4d st-personal-center-infoList-blue">总场次：{{userInfo.matchSumCount}}</view>
+        </view>
+        <view class="_li data-v-74781a4d">
+          <view class="_div data-v-74781a4d st-personal-center-infoList-green">胜率：{{winRate}}%</view>
+          <view class="_div data-v-74781a4d st-personal-center-infoList-blue">胜场：{{userInfo.matchWinCount}}</view>
+        </view>
+        <view class="_li data-v-74781a4d">
+          <view class="_div data-v-74781a4d st-personal-center-infoList-green">学点：{{userInfo.learningPoint}}</view>
+          <view class="_div data-v-74781a4d st-personal-center-infoList-blue">金币：{{userInfo.coin}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-74781a4d st-personal-center-record-div">
+      <navigator url="../exchange-record/main" class="_a data-v-74781a4d">兑换记录</navigator>
+      <navigator url="../topup-record/main" class="_a data-v-74781a4d">充值记录</navigator>
+    </view>
+    <template wx:if="{{showAuthenticateDialog}}" bindlistenAuthenticateSuccess="handleProxy" bindlistenCloseDialog="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'0'], $root}}" is="authenticate-dialog$6585e1b4"></template>
+  </view>
+</template>

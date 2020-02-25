@@ -1,0 +1,73 @@
+package com.dxtwangxiao.strongestsuperscholar.module.community.dao;
+
+import com.dxtwangxiao.strongestsuperscholar.module.community.entity.SpecialTraining;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SpecialTrainingRepositoryTest {
+    @Autowired
+    private SpecialTrainingRepository repository;
+
+
+    @Test
+    public void findAll() {
+        PageRequest pageable=PageRequest.of(0,1);
+        Page<SpecialTraining> specialTrainingsPage=repository.findAll(pageable);
+        List<SpecialTraining> specialTrainingList=specialTrainingsPage.getContent();
+        assertNotEquals(0,specialTrainingList.size());
+        specialTrainingList.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void findAll1() {
+        List<SpecialTraining> specialTrainingList=repository.findAll();
+        assertNotEquals(0,specialTrainingList.size());
+        specialTrainingList.forEach(System.out::println);
+    }
+
+    @Test
+    public void save() {
+        SpecialTraining specialTraining=new SpecialTraining();
+        specialTraining.setSpecialTrainingId("234");
+        specialTraining.setIsValid(Byte.valueOf("0"));
+        specialTraining.setSpecialTrainingName("we");
+        SpecialTraining result=repository.save(specialTraining);
+        assertNotNull(result);
+        System.out.println(result);
+    }
+
+    @Test
+    public void findBySpecialTrainingId() {
+        String specialTrainingId="12";
+        SpecialTraining specialTraining=repository.findBySpecialTrainingId(specialTrainingId);
+        assertNotNull(specialTraining);
+        System.out.println(specialTraining);
+
+    }
+
+
+    @Test
+    public void deleteBySpecialTrainingId() {
+        String specialTrainingId="34";
+        repository.deleteBySpecialTrainingId(specialTrainingId);
+    }
+
+    @Test
+    public void finAllByUserId(){
+        String userId="1";
+        List<SpecialTraining> specialTrainings = repository.findByUserId(userId);
+        assertNotNull(specialTrainings);
+        System.out.println(specialTrainings);
+    }
+}
